@@ -29,6 +29,6 @@ class StudentOutcome(models.Model):
     _description = 'Student Outcome'
     _order = 'sequence'
 
-    name = fields.Text(string='SO', required=True)
+    name = fields.Html(string='SO', required=True)
     sequence = fields.Integer(string='Sequence', default=1)
     program_id = fields.Many2one(comodel_name='a3catalog.program', string='Program')
