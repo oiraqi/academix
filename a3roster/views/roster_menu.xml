@@ -3,7 +3,7 @@
     <data>
     
        <!-- This Menu Item must have a parent and an action -->
-        <menuitem id="a3roster_section_menu" name="Sections" parent="a3.a3_root_menu" action="action_section" sequence="50"/> 
+        <menuitem id="a3roster_section_menu" name="Sections" parent="a3.a3_root_menu" action="action_section" sequence="60"/> 
     
     </data>
     

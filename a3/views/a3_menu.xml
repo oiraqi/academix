@@ -6,7 +6,7 @@
     <!-- Bar menu item -->    
     <menuitem id="a3_school_menu" name="Schools" parent="a3_root_menu" sequence="20" action="action_school"/>
 
-    <menuitem id="a3_course_menu" name="Courses" parent="a3_root_menu" sequence="40" action="action_course"/>
+    <menuitem id="a3_course_menu" name="Courses" parent="a3_root_menu" sequence="50" action="action_course"/>
 
     <menuitem id="a3_student_menu" name="Students" parent="a3_root_menu" sequence="80" action="action_student" groups="a3.group_setup,a3.group_coordinator,a3.group_vpaa"/>
     

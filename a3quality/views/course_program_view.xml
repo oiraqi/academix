@@ -16,7 +16,7 @@
                                     <field name="course_ilo_id" domain="[('course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                                     <field name="so_id" domain="[('program_id', '=', program_id)]"
                                         options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
-                                        style="width: 60%"/>
+                                        style="width: 200px"/>
                                     <field name="level"/>
                                     <field name="course_id" invisible="1"/>
                                     <field name="program_id" invisible="1"/>
