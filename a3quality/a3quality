@@ -1,1 +1,2 @@
 oc -n a3quality.portfolio -v Portfolio -m n:Portfolios p:a3quality_root -g a3.group_faculty:1111 a3.group_coordinator:1000 a3.group_vpaa:1000
+oc -n a3quality.portfolio -f section_id:mo:a3roster.section:Section
