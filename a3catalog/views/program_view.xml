@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- a3catalog.program form view -->
+        <record id="program_view_form" model="ir.ui.view">
+            <field name="name">a3catalog.program.view.form</field>
+            <field name="model">a3catalog.program</field>
+            <field name="arch" type="xml">
+                <form string="Program">
+                    <sheet>
+                        <div calss="oe_title">
+                            <h1>
+                                <field name="code" default_focus="1" placeholder="e.g. BSCSC" style="width: 15%"/>
+                                <field name="name" placeholder="Program Name..." style="width: 75%"/>
+                            </h1>
+                        </div>
+                        <group name="info" string="General Information" col="4">                            
+                            <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="level" widget="radio" options="{'horizontal': True}"/>
+                            <field name="description" colspan="4"/>
+                            <field name="sch"/>
+                        </group>
+                        <group name="components" string="Components">
+                            <field name="component_ids"
+                                domain="[('school_id', '=', school_id), ('level', '=', level), ('parent_id', '=', False)]"
+                                context="{'default_school_id': school_id, 'default_level': level}"
+                                nolabel="1">
+                                <tree>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="sch" sum="Total SCH"/>                                    
+                                    <field name="school_id" invisible="1"/>
+                                    <field name="level" invisible="1"/>
+                                    <field name="parent_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- a3catalog.program tree view -->
+        <record id="program_view_tree" model="ir.ui.view">
+            <field name="name">a3catalog.program.view.tree</field>
+            <field name="model">a3catalog.program</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="sch"/>
+                    <field name="ncomponents"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- a3catalog.program action window -->
+        <record id="program_action" model="ir.actions.act_window">
+            <field name="name">Programs</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3catalog.program</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'group_by': ['school_id', 'level']}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create academic programs here
+                </p><p>
+                    Created programs will be organized by school and level (Un/graduate)
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

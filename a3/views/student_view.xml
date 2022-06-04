@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_student_form" model="ir.ui.view">
+            <field name="name">a3.student.form</field>
+            <field name="model">a3.student</field>
+            <field name="arch" type="xml">
+                <form string="student">
+                    <sheet>
+                        <field name="avatar_128" invisible="1"/>
+                        <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "avatar_128"}'/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" default_focus="1" placeholder="Firstname Lastname"/>
+                            </h1>
+                        </div>
+                        <group name="info" string="General Information" col="4">
+                            <field name="email" widget="email" required="1"/>
+                            <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_student_tree" model="ir.ui.view">
+            <field name="name">a3.student.tree</field>
+            <field name="model">a3.student</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="student">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_student" model="ir.actions.act_window">
+            <field name="name">Students</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3.student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'group_by': 'school_id'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create a student
+                </p>
+                <p>
+                Once saved, you will have a button that will alow you to send a password initialization email.
+                </p>
+            </field>
+        </record>
+        <record id="action_student_my_form" model="ir.actions.server">
+            <field name="name">student</field>
+            <field name="model_id" ref="model_a3_student"/>
+            <field name="state">code</field>
+            <field name="code">
+            	action = {
+            		'type': 'ir.actions.act_window',
+			        'view_mode': 'form',
+			        'res_model': 'a3.student',
+                	'res_id': env['a3.student'].search([('user_id', '=', env.user.id)]).id,
+                	'views': [(False, 'form')]
+            	}
+            </field>
+        </record>
+        <record id="action_student_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_student_form"/>
+            <field name="act_window_id" ref="action_student"/>
+        </record>
+        <record id="action_student_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_student_tree"/>
+            <field name="act_window_id" ref="action_student"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_a3performance_ts_action_faculty,access.a3performance.ts.action.faculty,model_a3performance_ts_action,a3.group_faculty,1,1,1,0
+access_a3performance_ts_action_dean,access.a3performance.ts.action.dean,model_a3performance_ts_action,a3.group_dean,1,0,0,0
+access_a3performance_ts_action_vpaa,access.a3performance.ts.action.vpaa,model_a3performance_ts_action,a3.group_vpaa,1,0,0,0
+access_a3performance_ts_action_committee_member,access.a3performance.ts.action.committee_member,model_a3performance_ts_action,a3performance.group_committee_member,1,0,0,0
+
+access_a3performance_ts_supervision_faculty,access.a3performance.ts.supervision.faculty,model_a3performance_ts_supervision,a3.group_faculty,1,1,1,0
+access_a3performance_ts_supervision_dean,access.a3performance.ts.supervision.dean,model_a3performance_ts_supervision,a3.group_dean,1,0,0,0
+access_a3performance_ts_supervision_vpaa,access.a3performance.ts.supervision.vpaa,model_a3performance_ts_supervision,a3.group_vpaa,1,0,0,0
+access_a3performance_ts_supervision_committee_member,access.a3performance.ts.supervision.committee_member,model_a3performance_ts_supervision,a3performance.group_committee_member,1,0,0,0
+
+access_a3performance_ts_student_evaluation_faculty,access.a3performance.ts.student.evaluation.faculty,model_a3performance_ts_student_evaluation,a3.group_faculty,1,1,1,0
+access_a3performance_ts_student_evaluation_dean,access.a3performance.ts.student.evaluation.dean,model_a3performance_ts_student_evaluation,a3.group_dean,1,0,0,0
+access_a3performance_ts_student_evaluation_vpaa,access.a3performance.ts.student.evaluation.vpaa,model_a3performance_ts_student_evaluation,a3.group_vpaa,1,0,0,0
+access_a3performance_ts_student_evaluation_committee_member,access.a3performance.ts.student.evaluation.committee_member,model_a3performance_ts_student_evaluation,a3performance.group_committee_member,1,0,0,0

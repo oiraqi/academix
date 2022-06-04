@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Specific Rules -->
+        <record id="process_faculty_write_rule" model="ir.rule">
+            <field name="name">Grant write access to own processes in faculty, f2c, and committee (for interaction) only</field>
+            <field name="model_id" ref="model_a3performance_eval_process"/>
+            <field name="domain_force">[('create_uid', '=', user.id), ('state', 'in', ['faculty', 'f2c', 'committee'])]</field>
+            <field name="groups" eval="[(4, ref('a3.group_faculty'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+        </record>
+        <record id="process_committee_member_read_rule" model="ir.rule">
+            <field name="name">Grant read access to processes in committee and c2d states only, within own school</field>
+            <field name="model_id" ref="model_a3performance_eval_process"/>
+            <field name="domain_force">[('state', 'in', ['committee', 'c2d']), ('school_id', 'in', user.school_ids.ids)]</field>
+            <field name="groups" eval="[(4, ref('a3performance.group_committee_member'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record id="process_committee_member_write_rule" model="ir.rule">
+            <field name="name">Grant write access to processes in committee state only, within own school</field>
+            <field name="model_id" ref="model_a3performance_eval_process"/>
+            <field name="domain_force">[('state', '=', 'committee'), ('school_id', 'in', user.school_ids.ids)]</field>
+            <field name="groups" eval="[(4, ref('a3performance.group_committee_member'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+        <record id="process_committee_chair_rule" model="ir.rule">
+            <field name="name">Grant read/write access to processes in f2c, committee, and c2d states only, within own school</field>
+            <field name="model_id" ref="model_a3performance_eval_process"/>
+            <field name="domain_force">[('state', 'in', ['f2c', 'committee', 'c2d']), ('school_id', 'in', user.school_ids.ids)]</field>
+            <field name="groups" eval="[(4, ref('a3performance.group_committee_chair'))]"/>
+        </record>
+        <record id="process_dean_read_rule" model="ir.rule">
+            <field name="name">Grant read/write access to processes in c2d, dean, and d2v states only, within own school</field>
+            <field name="model_id" ref="model_a3performance_eval_process"/>
+            <field name="domain_force">[('state', 'in', ['c2d', 'dean', 'd2v', 'vpaa', 'done']), ('school_id', 'in', user.school_ids.ids)]</field>
+            <field name="groups" eval="[(4, ref('a3.group_dean'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record id="process_dean_write_rule" model="ir.rule">
+            <field name="name">Grant read/write access to processes in c2d, dean, and d2v states only, within own school</field>
+            <field name="model_id" ref="model_a3performance_eval_process"/>
+            <field name="domain_force">[('state', 'in', ['c2d', 'dean', 'd2v']), ('school_id', 'in', user.school_ids.ids)]</field>
+            <field name="groups" eval="[(4, ref('a3.group_dean'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+        <record id="process_vpaa_rule" model="ir.rule">
+            <field name="name">Grant read/write access to processes in d2v, vpaa, and d2v states only</field>
+            <field name="model_id" ref="model_a3performance_eval_process"/>
+            <field name="domain_force">[('state', 'in', ['d2v', 'vpaa', 'done'])]</field>
+            <field name="groups" eval="[(4, ref('a3.group_vpaa'))]"/>
+        </record>
+    </data>
+</odoo>

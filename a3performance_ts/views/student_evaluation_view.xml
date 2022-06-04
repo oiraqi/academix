@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_student_evaluation_form" model="ir.ui.view">
+            <field name="name">a3performance.ts.student.evaluation.form</field>
+            <field name="model">a3performance.ts.student.evaluation</field>
+            <field name="arch" type="xml">
+                <form string="Student Evaluation">
+                    <field name="locked" invisible="1"/>
+                    <sheet>                        
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>                                                        
+                        </div>
+                        <group col="4" string="Section Information">
+                            <label for="semester" string="Semester &#38; Year"/>
+                            <div>
+                                <field name="semester" widget='radio' options="{'horizontal': true}" style="width: 65%"/>
+                                <field name="year" style="width: 35%"/>
+                                <span style="color: red" attrs="{'invisible': [('locked', '=', False)]}">Locked for Evaluation</span>
+                            </div>
+                            <field name="section_id"
+                                options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+                                domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]"/>
+                            <field name="nstudents" style="width: 25%"/>
+                        </group>
+                        <group col="4" string="Student Evaluation">
+                            <field name="score" colspan="2" style="width: 10%"/>
+                            <field name="student_feedback" widget="html" colspan="4"/>                            
+                        </group>
+                        <group>
+                            <field name="document_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="mimetype"/>
+                                    <field name="file_size"/>
+                                    <button type="object" name="unlink" icon="fa-trash" groups="a3.group_faculty"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group col="4" string="Log">
+                            <field name="create_uid"/>
+                            <field name="create_date"/>
+                            <field name="write_uid"/>
+                            <field name="write_date"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter"/>
+                </form>
+            </field>
+        </record>
+        <record id="view_student_evaluation_tree" model="ir.ui.view">
+            <field name="name">a3performance.ts.student.evaluation.tree</field>
+            <field name="model">a3performance.ts.student.evaluation</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Student Evaluations">
+                    <field name="name"/>
+                    <field name="semester" widget="badge" decoration-success="semester == '1'" decoration-danger="semester == '2'" decoration-info="semester == '3'"/>
+                    <field name="nstudents"/>
+                    <field name="score"/>
+                    <field name="student_feedback"/>
+                    <field name="document_count" string="Evidence"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_student_evaluation" model="ir.actions.act_window">
+            <field name="name">Student Evaluations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3performance.ts.student.evaluation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'group_by': 'year'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create a student evaluation
+                </p>
+                <p>
+                Created student evaluations will be organized here by year.
+                </p>
+            </field>
+        </record>
+        <record id="action_student_evaluation_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_student_evaluation_form"/>
+            <field name="act_window_id" ref="action_student_evaluation"/>
+        </record>
+        <record id="action_student_evaluation_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_student_evaluation_tree"/>
+            <field name="act_window_id" ref="action_student_evaluation"/>
+        </record>
+    </data>
+</odoo>

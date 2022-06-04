@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- a3capint.evaluation form view -->
+        <record id="model_name_view_form" model="ir.ui.view">
+            <field name="name">a3capint.evaluation.view.form</field>
+            <field name="model">a3capint.evaluation</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group col="4">
+                            <field name="project_id"/>
+                            <field name="student_id"/>
+                        </group>
+                        <group name="log" string="Log" col="4">
+                            <field name="create_uid" />
+                            <field name="create_date" />
+                            <field name="write_uid" />
+                            <field name="write_date" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

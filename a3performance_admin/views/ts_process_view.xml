@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_ts_process_form_admin" model="ir.ui.view">
+            <field name="name">a3performance.eval.ad.ts.process.form</field>
+            <field name="model">a3performance.eval.process</field>
+            <field name="inherit_id" ref="a3performance.eval.l.view_ts_process_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook[@name='ts']" position="after">                    
+                    <group groups="a3performance.group_committee_member,a3.group_dean,a3.group_vpaa">
+                        <field name="committee_ts_feedback" widget="html"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

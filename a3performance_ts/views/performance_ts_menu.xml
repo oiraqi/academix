@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+    <!-- Bar menu item -->
+    <menuitem id="menu_performance_ts" name="Teaching &#38; Supervision" parent="a3performance.menu_performance_root" sequence="20" groups="a3.group_faculty"/>
+
+    <!-- Secondary menu item -->
+    <menuitem id="menu_performance_ts_student_evaluation" name="Student Evaluations" parent="menu_performance_ts" sequence="20" action="action_student_evaluation"/>
+    <menuitem id="menu_performance_ts_action" name="Actions" parent="menu_performance_ts" sequence="80" action="action_action"/>
+    <menuitem id="menu_performance_ts_supervision" name="Supervision" parent="menu_performance_ts" sequence="100" action="action_supervision"/>
+</odoo>

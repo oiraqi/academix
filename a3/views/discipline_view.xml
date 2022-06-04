@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_discipline_form" model="ir.ui.view">
+            <field name="name">a3.discipline.form</field>
+            <field name="model">a3.discipline</field>
+            <field name="arch" type="xml">
+                <form string="Discipline">
+                    <sheet>
+                        <group>
+                            <field name="code" placeholder="e.g. CS"/>
+                            <field name="name" placeholder="e.g. Computer Science"/>
+                            <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_discipline_tree" model="ir.ui.view">
+            <field name="name">a3.discipline.tree</field>
+            <field name="model">a3.discipline</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Disciplines">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_discipline_form" model="ir.actions.act_window">
+            <field name="name">Disciplines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3.discipline</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'group_by': 'school_id'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create a discipline
+                </p>
+                <p>
+                Created disciplines will be organized here by school.
+                </p>
+            </field>
+        </record>
+        <record id="action_discipline_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_discipline_form"/>
+            <field name="act_window_id" ref="action_discipline_form"/>
+        </record>
+        <record id="action_discipline_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_discipline_tree"/>
+            <field name="act_window_id" ref="action_discipline_form"/>
+        </record>
+    </data>
+</odoo>

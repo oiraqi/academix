@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_faculty_form" model="ir.ui.view">
+            <field name="name">a3.faculty.form</field>
+            <field name="model">a3.faculty</field>
+            <field name="arch" type="xml">
+                <form string="Faculty">
+                    <sheet>
+                        <field name="avatar_128" invisible="1"/>
+                        <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "avatar_128"}'/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" default_focus="1" placeholder="e.g. Kevin Smith"/>
+                            </h1>
+                        </div>
+                        <group name="info" string="General Information" col="4">
+                            <field name="email" widget="email" required="1"/>
+                            <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="hiring_date"/>
+                        </group>
+                        <group name="academics" string="Academic Information">
+                            <field name="course_ids" domain="[('school_id', '=', school_id)]" context="{'default_school_id': school_id}" colspan="4">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="school_id" invisible="1" />
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_faculty_tree" model="ir.ui.view">
+            <field name="name">a3.faculty.tree</field>
+            <field name="model">a3.faculty</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Faculty">
+                    <field name="name"/>
+                    <field name="hiring_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_faculty" model="ir.actions.act_window">
+            <field name="name">Faculty</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3.faculty</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'group_by': 'school_id'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create a Faculty
+                </p>
+                <p>
+                Once saved, you will have a button that will alow you to send a password initialization email.
+                </p>
+            </field>
+        </record>
+        <record id="action_faculty_my_form" model="ir.actions.server">
+            <field name="name">Faculty</field>
+            <field name="model_id" ref="model_a3_faculty"/>
+            <field name="state">code</field>
+            <field name="code">
+            	action = {
+            		'type': 'ir.actions.act_window',
+			        'view_mode': 'form',
+			        'res_model': 'a3.faculty',
+                	'res_id': env['a3.faculty'].search([('user_id', '=', env.user.id)]).id,
+                	'views': [(False, 'form')]
+            	}
+            </field>
+        </record>
+        <record id="action_faculty_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_faculty_form"/>
+            <field name="act_window_id" ref="action_faculty"/>
+        </record>
+        <record id="action_faculty_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_faculty_tree"/>
+            <field name="act_window_id" ref="action_faculty"/>
+        </record>
+    </data>
+</odoo>

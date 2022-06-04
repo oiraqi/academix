@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_ts_process_form" model="ir.ui.view">
+            <field name="name">a3performance.eval.ts.process.form</field>
+            <field name="model">a3performance.eval.process</field>
+            <field name="inherit_id" ref="view_process_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='ts']" position="inside">
+                    <group col="4" string="TS Goals &#38; KPIs" groups="a3.group_faculty">
+                        <field name="ts_goal_achievement" widget="badge" decoration-danger="ts_goal_progress &lt; 30" decoration-warning="ts_goal_progress &gt;= 30 and ts_goal_progress &lt; 60" decoration-info="ts_goal_progress &gt;= 60 and ts_goal_progress &lt; 100" decoration-success="ts_goal_progress &gt;= 100"/>
+                        <field name="ts_goal_progress" widget="progressbar" decoration-danger="ts_goal_progress &lt; 30" decoration-warning="ts_goal_progress &gt;= 30 and ts_goal_progress &lt; 60" decoration-info="ts_goal_progress &gt;= 60 and ts_goal_progress &lt; 100" decoration-success="ts_goal_progress &gt;= 100"/>
+                        <field name="ts_goal_ids" colspan="4">
+                            <tree editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="kpi"/>
+                                <field name="target"/>
+                                <field name="cvalue" widget="badge" decoration-danger="achieved == False" decoration-success="achieved == True"/>
+                                <field name="achieved" invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group name="ts_narrative" string="TS Narrative">
+                        <field name="ts_narrative" nolabel="1"/>
+                    </group>
+                    <group string="TS Records">
+                        <notebook name="ts">
+                            <page string="Student Evaluations">
+                            </page>
+                            <page string="Class Observations">
+                            </page>
+                            <page string="Actions">
+                            </page>
+                            <page string="Supervision">
+                            </page>
+                        </notebook>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

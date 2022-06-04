@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+    <!-- Bar menu item -->
+    <menuitem id="menu_performance_sd" name="Service &#38; Development" parent="a3performance.menu_performance_root" sequence="60" groups="a3.group_faculty"/>
+
+    <!-- Secondary menu items -->
+    <menuitem id="menu_performance_sd_committee_activity" name="Committee Activities" parent="menu_performance_sd" sequence="10" action="action_committee_activity"/>
+</odoo>

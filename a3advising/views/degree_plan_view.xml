@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_degree_plan_form" model="ir.ui.view">
+            <field name="name">a3advising.degree.plan.form</field>
+            <field name="model">a3advising.degree.plan</field>
+            <field name="arch" type="xml">
+                <form string="Degree Plan Wizard">                    
+                    <header>
+                        <button string="Generate" name="generate" type="object" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <b>Student</b>
+                        <h1>
+                            <field name="student_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                        </h1>
+                        <group name="info" string="General Information" col="4">
+                            <field name="program_id"/>
+                            <field name="faculty_id" string="Advisor" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="school_id" />
+                        </group>
+                        <group name="info" string="Initial Parameters" col="4">
+                            <label for="semester" string="Starting"/>
+                            <div>
+                                <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 70%"/>
+                                <field name="year" style="width: 30%"/>
+                            </div>
+                            <field name="pace" title="Number of courses per regular semester" widget="radio" options="{'horizontal': True}"/>
+                            <field name="take_summer" widget="radio" options="{'horizontal': True}"/>
+                        </group>
+                        <div id="canvas"></div>
+                        <script type="text/javascript">
+                            var g = new Dracula.Graph();
+
+                            /*g.addEdge("strawberry", "cherry");
+                            g.addEdge("strawberry", "apple");
+                            g.addEdge("strawberry", "tomato");
+
+                            g.addEdge("tomato", "apple");
+                            g.addEdge("tomato", "kiwi");
+
+                            g.addEdge("cherry", "apple");
+                            g.addEdge("cherry", "kiwi");*/
+
+                            for (let i=1; i &lt; 10; i++) {
+                                g.addEdge("" + i, "" + (i + 1));
+                            }
+
+                            for (let i=12; i &lt; 21; i++) {
+                                g.addEdge("" + i, "" + (i + 1));
+                            }
+
+                            for (let i=23; i &lt; 32; i++) {
+                                g.addEdge("" + i, "" + (i + 1));
+                            }
+
+                            for (let i=34; i &lt; 43; i++) {
+                                g.addEdge("" + i, "" + (i + 1));
+                            }
+
+                            var layouter = new Dracula.Layout.Spring(g);
+                            layouter.layout();
+
+                            var renderer = new Dracula.Renderer.Raphael(document.getElementById('canvas'), g, 1000, 600);
+                            renderer.draw();
+                        </script>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_degree_plan_tree" model="ir.ui.view">
+            <field name="name">a3advising.degree.plan.tree</field>
+            <field name="model">a3advising.degree.plan</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Degree Plan Wizard">
+                    <field name="student_id"/>
+                    <field name="program_id"/>
+                    <field name="semester" string="Starting Semester"/>
+                    <field name="year" string="Starting Year"/>
+                    <field name="pace"/>
+                    <field name="take_summer"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_degree_plan" model="ir.actions.act_window">
+            <field name="name">Degree Plan Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3advising.degree.plan</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                The generated degree plan will be displayed here
+                </p>
+                <p>
+                You can then drag'n move planned courses between semesters, while the system is checking for constraints on your behalf
+                </p>
+            </field>
+        </record>
+        <record id="action_degree_plan_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_degree_plan_form"/>
+            <field name="act_window_id" ref="action_degree_plan"/>
+        </record>
+        <record id="action_degree_plan_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_degree_plan_tree"/>
+            <field name="act_window_id" ref="action_degree_plan"/>
+        </record>
+    </data>
+</odoo>

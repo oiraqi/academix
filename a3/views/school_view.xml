@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_school_form" model="ir.ui.view">
+            <field name="name">a3.school.form</field>
+            <field name="model">a3.school</field>
+            <field name="arch" type="xml">
+                <form string="School">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="code" default_focus="1" placeholder="e.g. SSE" style="width: 20%"/>
+                                <field name="name" placeholder="e.g. School of Science and Engineering" style="width: 80%"/>
+                            </h1>
+                        </div>
+                        <!--<group col="4">                            
+                            <field name="dean_id" domain="[('school_ids', 'in', id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                        </group>
+                        <group name="mission" string="Mission">
+                            <field name="mission" widget="html" nolabel="1"/>
+                        </group>-->
+                        <notebook>
+                            <page name="disciplines" string="Disciplines">
+                                <group>
+                                    <field name="discipline_ids" nolabel="1" colspan="4">
+                                        <tree editable="bottom">
+                                            <field name="code"/>
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_school_tree" model="ir.ui.view">
+            <field name="name">a3.school.tree</field>
+            <field name="model">a3.school</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Schools">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_school" model="ir.actions.act_window">
+            <field name="name">Schools</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3.school</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create schools here
+                </p>
+            </field>
+        </record>
+        <record id="action_school_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_school_form"/>
+            <field name="act_window_id" ref="action_school"/>
+        </record>
+        <record id="action_school_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_school_tree"/>
+            <field name="act_window_id" ref="action_school"/>
+        </record>
+    </data>
+</odoo>

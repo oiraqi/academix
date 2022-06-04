@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- a3.school inherit form view -->
+        <record id="view_school_form_catalog" model="ir.ui.view">
+            <field name="name">a3.school.inherit.view.form</field>
+            <field name="model">a3.school</field>
+            <field name="inherit_id" ref="a3.view_school_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='disciplines']" position="before">
+                        <page name="programs" string="Programs">
+                            <group>
+                                <field name="program_ids" nolabel="1" colspan="4" edit="false" create="false">
+                                    <tree>
+                                        <field name="code"/>
+                                        <field name="name"/>
+                                        <field name="level" widget="badge"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>

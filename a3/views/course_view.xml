@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_course_form" model="ir.ui.view">
+            <field name="name">a3.course.form</field>
+            <field name="model">a3.course</field>
+            <field name="arch" type="xml">
+                <form string="course">
+                    <sheet>
+                        <h1>
+                            <field name="code" placeholder="e.g. CSC 3374" style="width: 20%"/>
+                            <field name="name_only" placeholder="e.g. Advanced and Distributed Programming Paradigms" style="width: 80%"/>
+                        </h1>
+                        <group name="info" string="General Information" col="4">                            
+                            <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                            <field name="discipline_id" domain="[('school_id', '=', school_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="level" widget='radio' options="{'horizontal': true}"/>
+                            <field name="instructor_ids" widget="many2many_tags" domain="[('school_id', '=', school_id)]" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_course_tree" model="ir.ui.view">
+            <field name="name">a3.course.tree</field>
+            <field name="model">a3.course</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Courses">
+                    <field name="code"/>
+                    <field name="name_only"/>
+                    <field name="level" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_course" model="ir.actions.act_window">
+            <field name="name">Courses</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3.course</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'group_by': ['school_id', 'discipline_id']}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create a course
+                </p>
+                <p>
+                Created courses will be organized here by school and level (under/graduate).
+                </p>
+            </field>
+        </record>
+        <record id="action_course_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_course_form"/>
+            <field name="act_window_id" ref="action_course"/>
+        </record>
+        <record id="action_course_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_course_tree"/>
+            <field name="act_window_id" ref="action_course"/>
+        </record>
+    </data>
+</odoo>

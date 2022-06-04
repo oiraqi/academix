@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_rp_process_form" model="ir.ui.view">
+            <field name="name">a3performance.eval.rp.process.form</field>
+            <field name="model">a3performance.eval.process</field>
+            <field name="inherit_id" ref="view_process_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='rp']" position="inside">
+                    <group col="4" string="RP Goals &#38; KPIs" groups="a3.group_faculty">
+                        <field name="rp_goal_achievement" widget="badge" decoration-danger="rp_goal_progress &lt; 30" decoration-warning="rp_goal_progress &gt;= 30 and rp_goal_progress &lt; 60" decoration-info="rp_goal_progress &gt;= 60 and rp_goal_progress &lt; 100" decoration-success="rp_goal_progress &gt;= 100"/>
+                        <field name="rp_goal_progress" widget="progressbar" decoration-danger="rp_goal_progress &lt; 30" decoration-warning="rp_goal_progress &gt;= 30 and rp_goal_progress &lt; 60" decoration-info="rp_goal_progress &gt;= 60 and rp_goal_progress &lt; 100" decoration-success="rp_goal_progress &gt;= 100"/>
+                        <field name="rp_goal_ids" colspan="4">
+                            <tree editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="kpi"/>
+                                <field name="target"/>
+                                <field name="cvalue" widget="badge" decoration-danger="achieved == False" decoration-success="achieved == True"/>
+                                <field name="achieved" invisible="1"/>                                
+                            </tree>
+                        </field>
+                    </group>
+                    <group name="rp_narrative" string="RP Narrative">
+                        <field name="rp_narrative" nolabel="1"/>
+                    </group>
+                    <group string="RP Records">
+                        <notebook name="rp">
+                            <page string="Activities">
+                            </page>
+                            <page string="Journal Articles">
+                            </page>
+                            <page string="Books &#38; Monographs">
+                            </page>
+                            <page string="Papers in Proceedings">
+                            </page>
+                            <page string="Presentations">
+                            </page>
+                        </notebook>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- a3advising.degree.planning kanban view -->
+        <record id="view_planned_course_kanban" model="ir.ui.view">
+            <field name="name">a3advising.planned.course.kanban</field>
+            <field name="model">a3advising.planned.course</field>
+            <field name="arch" type="xml">
+                <kanban string="Planned Course" class="o_hr_employee_kanban">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click" style="background-color: #eef1f5;">
+                                <div name="details" class="oe_kanban_details">
+                                    <a type="open">
+                                        <field name="name" />
+                                    </a>
+                                    <field name="semester" invisible="1"/>
+                                    <field name="year" invisible="1"/>
+                                    <field name="semester_year" invisible="1"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <record id="view_planned_course_form" model="ir.ui.view">
+            <field name="name">a3advising.planned.course.form</field>
+            <field name="model">a3advising.planned.course</field>
+            <field name="arch" type="xml">
+                <form string="Planned Course">
+                    <sheet>
+                        <h1>
+                            <field name="course_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                        </h1>
+                        <group name="info" string="Planned Course Information" col="4">
+                            <label for="semester" string="Semester &#38; Year"/>
+                            <div>
+                                <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 70%"/>
+                                <field name="year" style="width: 30%"/>
+                            </div>
+                            <field name="student_id" readonly="1"/>
+                            <field name="grade"/>
+                            <field name="description" widget="html" colspan="4"/>
+                            <field name="semester_year" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_planned_course_tree" model="ir.ui.view">
+            <field name="name">a3advising.planned.course.tree</field>
+            <field name="model">a3advising.planned.course</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Planned Courses">
+                    <field name="course_id"/>
+                    <field name="semester"/>
+                    <field name="year"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_planned_course" model="ir.actions.act_window">
+            <field name="name">Degree Plan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3advising.planned.course</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'group_by': ['semester_year']}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                The generated degree plan will be displayed here
+                </p>
+                <p>
+                You can then drag'n move planned courses between semesters, while the system is checking for constraints on your behalf
+                </p>
+            </field>
+        </record>
+        <record id="action_planned_course_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_planned_course_form"/>
+            <field name="act_window_id" ref="action_planned_course"/>
+        </record>
+        <record id="action_planned_course_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_planned_course_tree"/>
+            <field name="act_window_id" ref="action_planned_course"/>
+        </record>
+        <record id="action_planned_course_kanban_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_planned_course_kanban"/>
+            <field name="act_window_id" ref="action_planned_course"/>
+        </record>
+    </data>
+</odoo>

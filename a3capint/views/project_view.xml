@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="project_view_form" model="ir.ui.view">
+            <field name="name">project.view.form</field>
+            <field name="model">a3capint.project</field>
+            <field name="arch" type="xml">
+                <form string="Project">                    
+                    <header>
+                        <button string="Approve" states="draft" name="supervisor_approve" type="object" class="oe_highlight" attrs="{'invisible': [('is_supervisor', '=', False)]}" groups="a3.group_faculty"/>
+                        <button string="Approve" states="supervisor" name="coordinator_approve" type="object" class="oe_highlight" groups="a3capint.group_capint_coordinator"/>
+                        <button string="Schedule for Defense" states="ongoing" name="schedule_defense" type="object" class="oe_highlight" groups="a3capint.group_capint_coordinator"/>
+                        <button string="Mark Completed" states="defense" name="mark_done" type="object" class="oe_highlight" groups="a3capint.group_capint_coordinator"/>
+                        <field name="state" widget="statusbar" />
+                        <field name="is_supervisor" invisible="1" />
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" default_focus="1" placeholder="Project Title..." />
+                            </h1>
+                            <h2>
+                                <field name="code" readonly="1" />
+                            </h2>                            
+                        </div>
+                        <group string="Project Information" col="4">
+                            <label for="semester" string="Semester &#38; Year"/>
+                            <div>
+                                <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 65%" />
+                                <field name="year" style="width: 35%" />
+                            </div>
+                            <field name="type" />
+                            <field name="student_id" context="{'default_school_id': school_id}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
+                            <field name="supervisor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
+                            <field name="tag_ids" widget="many2many_tags" />
+                            <field name="initial_idea" widget="html" colspan="4" />
+                            <field name="final_abstract" widget="html" colspan="4" />
+                            <field name="school_id" invisible="1" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
+                        </group>
+                        <group name="diaries" string="Diaries &#38; Final Report">
+                            <field name="document_ids" string="Diaries">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="mimetype" />
+                                    <field name="file_size" />
+                                    <field name="create_date" />
+                                    <button icon="fa-trash" name="unlink" type="object" />
+                                </tree>
+                            </field>
+                            <field name="final_report" />
+                        </group>
+                        <group name="defense" string="Defense" col="4">
+                            <field name="date_time_defense" />
+                            <field name="reader_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
+                            <field name="external_examiner_id" attrs="{'invisible': [('type', 'not in', ['MP', 'MT'])],
+                                                              'required': [('type', 'in', ['MP', 'MT'])]}" />
+                        </group>
+                        <group name="evaluation" groups="a3.group_faculty,a3capint.group_capint_coordinator">
+                            <field name="evaluation_ids">
+                                <tree>
+                                    <field name="create_uid" string="Evaluator" />
+                                    <field name="supervisor" />
+                                    <field name="write_date" string="Date &#38; Time" />
+                                </tree>
+                            </field>
+                        </group>
+                        <group name="log" string="Log" col="4">
+                            <field name="create_uid" />
+                            <field name="create_date" />
+                            <field name="write_uid" />
+                            <field name="write_date" />
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- a3capint.project inherit form view -->
+        <record id="project_view_form_no_create" model="ir.ui.view">
+            <field name="name">a3capint.project.inherit.view.form</field>
+            <field name="model">a3capint.project</field>
+            <field name="inherit_id" ref="project_view_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="attributes">
+                    <attribute name="create">false</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="project_view_tree" model="ir.ui.view">
+            <field name="name">project.view.tree</field>
+            <field name="model">a3capint.project</field>
+            <field name="arch" type="xml">
+                <tree string="Projects">
+                    <field name="name" />
+                    <field name="type" />
+                    <field name="student_id" />
+                    <field name="supervisor_id" />
+                    <field name="reader_id" />
+                    <field name="date_time_defense" />
+                    <field name="final_report" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- a3capint.project inherit tree view -->
+        <record id="project_view_tree_no_create" model="ir.ui.view">
+            <field name="name">a3capint.project.inherit.view.tree</field>
+            <field name="model">a3capint.project</field>
+            <field name="inherit_id" ref="project_view_tree"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="create">false</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- a3capint.project.proposals action window -->
+        <record id="project_action_proposals" model="ir.actions.act_window">
+            <field name="name">Proposals</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3capint.project</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state', 'in', ['draft', 'supervisor'])]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create project proposals here
+                </p>
+            </field>
+        </record>
+
+        <!-- a3capint.project.ongoing action window -->
+        <record id="project_action_ongoing" model="ir.actions.act_window">
+            <field name="name">Ongoing Projects</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3capint.project</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state', '=', 'ongoing')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Approved / Ongoing projects will be organized here by type
+                </p>
+            </field>
+        </record>
+
+        <!-- a3capint.project.defenses action window -->
+        <record id="project_action_defenses" model="ir.actions.act_window">
+            <field name="name">Defenses</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3capint.project</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state', '=', 'defense')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Scheduled defenses will be organized here by type
+                </p>
+            </field>
+        </record>
+
+        <!-- a3capint.project.completed action window -->
+        <record id="project_action_completed" model="ir.actions.act_window">
+            <field name="name">Completed Projects</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3capint.project</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state', '=', 'done')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Completed projects will be organized here by year, semester and type
+                </p>
+            </field>
+        </record>
+
+        <record id="project_action_proposals_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_view_form"/>
+            <field name="act_window_id" ref="project_action_proposals"/>
+        </record>
+        <record id="project_action_proposals_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="project_view_tree"/>
+            <field name="act_window_id" ref="project_action_proposals"/>
+        </record>
+
+        <record id="project_action_ongoing_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_view_form_no_create"/>
+            <field name="act_window_id" ref="project_action_ongoing"/>
+        </record>
+        <record id="project_action_ongoing_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="project_view_tree_no_create"/>
+            <field name="act_window_id" ref="project_action_ongoing"/>
+        </record>
+
+        <record id="project_action_defenses_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_view_form_no_create"/>
+            <field name="act_window_id" ref="project_action_defenses"/>
+        </record>
+        <record id="project_action_defenses_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="project_view_tree_no_create"/>
+            <field name="act_window_id" ref="project_action_defenses"/>
+        </record>
+
+        <record id="project_action_completed_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_view_form_no_create"/>
+            <field name="act_window_id" ref="project_action_completed"/>
+        </record>
+        <record id="project_actioncompleted_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="project_view_tree_no_create"/>
+            <field name="act_window_id" ref="project_action_completed"/>
+        </record>
+    </data>
+</odoo>

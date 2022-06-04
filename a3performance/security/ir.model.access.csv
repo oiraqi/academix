@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_a3performance_srank_user,access.a3performance.srank.user,model_a3performance_srank,base.group_user,1,0,0,0
+access_a3performance_srank_setup,access.a3performance.srank.setup,model_a3performance_srank,a3.group_setup,1,1,1,1
+
+access_a3performance_degree_user,access.a3performance.degree.user,model_a3performance_degree,base.group_user,1,0,0,0
+access_a3performance_degree_faculty,access.a3performance.degree.faculty,model_a3performance_degree,a3.group_faculty,1,1,1,1

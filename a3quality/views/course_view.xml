@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- a3.course inherit form view -->
+        <record id="view_course_form_quality" model="ir.ui.view">
+            <field name="name">a3.course.inherit.quality.view.form</field>
+            <field name="model">a3.course</field>
+            <field name="inherit_id" ref="a3catalog.view_course_form_catalog"/>
+            <field name="arch" type="xml">                
+                <xpath expr="//group[@name='desc_ilos_syllabus']" position="after">                    
+                    <group name="qa" string="Quality Assurance" col="4">
+                        <field name="course_program_ids" string="ILO/SO Mapping" readonly="1">
+                            <tree>                                
+                                <field name="program_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>

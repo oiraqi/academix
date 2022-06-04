@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_srank_form" model="ir.ui.view">
+            <field name="name">a3performance.srank.form</field>
+            <field name="model">a3performance.srank</field>
+            <field name="arch" type="xml">
+                <form string="Subrank">
+                    <sheet>
+                        <group col="4">                            
+                            <field name="name" placeholder="e.g. C4"/>
+                            <field name="rank"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_srank_tree" model="ir.ui.view">
+            <field name="name">a3performance.srank.tree</field>
+            <field name="model">a3performance.srank</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Sub ranks">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_srank_form" model="ir.actions.act_window">
+            <field name="name">Ranks</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3performance.srank</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'group_by': 'rank'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create a Sub-Rank
+                </p>
+                <p>
+                Created sub-ranks will be organized here by school.
+                </p>
+            </field>
+        </record>
+        <record id="action_srank_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_srank_form"/>
+            <field name="act_window_id" ref="action_srank_form"/>
+        </record>
+        <record id="action_srank_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_srank_tree"/>
+            <field name="act_window_id" ref="action_srank_form"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_a3capint_project_user,access.a3capint.project.user,model_a3capint_project,base.group_user,1,0,0,0
+access_a3capint_project_faculty,access.a3capint.project.faculty,model_a3capint_project,a3.group_faculty,1,1,1,0
+
+access_a3capint_tag_user,access.a3capint.tag.user,model_a3capint_tag,base.group_user,1,0,0,0
+access_a3capint_tag_faculty,access.a3capint.tag.faculty,model_a3capint_tag,a3.group_faculty,1,1,1,0
+access_a3capint_tag_capint_coordinator,access.a3capint.tag.capint_coordinator,model_a3capint_tag,a3capint.group_capint_coordinator,1,1,1,0
+
+access_a3capint_evaluation_faculty,access.a3capint.evaluation.faculty,model_a3capint_evaluation,a3.group_faculty,1,1,1,0
+access_a3capint_evaluation_capint_coordinator,access.a3capint.evaluation.capint_coordinator,model_a3capint_evaluation,a3capint.group_capint_coordinator,1,0,0,0

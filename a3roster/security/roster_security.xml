@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="faculty_section_write_rule" model="ir.rule">
+            <field name="name">Grant write access to own-created and assigned records only</field>
+            <field name="model_id" ref="model_a3roster_section"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('a3.group_faculty'))]"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_read" eval="False"/>
+        </record>    
+    </data>
+    
+</odoo>

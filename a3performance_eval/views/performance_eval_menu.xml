@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+    <!-- Bar menu item -->
+    <menuitem id="menu_a3performance_eval" name="Process" parent="a3performance.menu_performance_root" sequence="10" action="action_process" groups="a3.group_faculty,a3performance.group_committee_member,a3.group_dean,a3.group_vpaa"/>
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_sd_process_form" model="ir.ui.view">
+            <field name="name">a3performance.eval.sd.process.form</field>
+            <field name="model">a3performance.eval.process</field>
+            <field name="inherit_id" ref="view_process_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sd']" position="inside">
+                    <group col="4" string="SD Goals &#38; KPIs" groups="a3.group_faculty">
+                        <field name="sd_goal_achievement" widget="badge" decoration-danger="sd_goal_progress &lt; 30" decoration-warning="sd_goal_progress &gt;= 30 and sd_goal_progress &lt; 60" decoration-info="sd_goal_progress &gt;= 60 and sd_goal_progress &lt; 100" decoration-success="sd_goal_progress &gt;= 100"/>
+                        <field name="sd_goal_progress" widget="progressbar" decoration-danger="sd_goal_progress &lt; 30" decoration-warning="sd_goal_progress &gt;= 30 and sd_goal_progress &lt; 60" decoration-info="sd_goal_progress &gt;= 60 and sd_goal_progress &lt; 100" decoration-success="sd_goal_progress &gt;= 100"/>
+                        <field name="sd_goal_ids" colspan="4">
+                            <tree editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="kpi"/>
+                                <field name="target"/>
+                                <field name="cvalue" widget="badge" decoration-danger="achieved == False" decoration-success="achieved == True"/>
+                                <field name="achieved" invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group name="sd_narrative" string="SD Narrative">
+                        <field name="sd_narrative" nolabel="1"/>
+                    </group>
+                    <group string="SD Records">
+                        <notebook name="sd">
+                            <page string="Committees">
+                            </page>
+                            <page string="Service">
+                            </page>
+                            <page string="Professional Development">
+                            </page>
+                            <page string="Professional Experience">
+                            </page>
+                        </notebook>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

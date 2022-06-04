@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_action_form" model="ir.ui.view">
+            <field name="name">a3performance.ts.action.form</field>
+            <field name="model">a3performance.ts.action</field>
+            <field name="arch" type="xml">
+                <form string="Action">
+                    <field name="locked" invisible="1"/>
+                    <sheet>                        
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" default_focus="1" placeholder="Action Title..."/>
+                            </h1>
+                            <h3>
+                                <field name="semester" widget='radio' options="{'horizontal': true}" style="width: 35%"/>
+                                <field name="year" options="{'format': 0}" style="width: 15%"/>
+                                <span style="color: red" attrs="{'invisible': [('locked', '=', False)]}">Locked for Evaluation</span>
+                            </h3>                            
+                        </div>
+                        <group>
+                            <field name="description" widget="html"/>
+                        </group>
+                        <group>
+                            <field name="document_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="mimetype"/>
+                                    <field name="file_size"/>
+                                    <button type="object" name="unlink" icon="fa-trash" groups="a3.group_faculty"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group col="4" groups="a3.group_faculty">
+                            <field name="create_date"/>
+                            <field name="write_date"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter"/>
+                </form>
+            </field>
+        </record>
+        <record id="view_action_tree" model="ir.ui.view">
+            <field name="name">a3performance.ts.action.tree</field>
+            <field name="model">a3performance.ts.action</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Actions">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="semester" widget="badge" decoration-success="semester == '1'" decoration-danger="semester == '2'" decoration-info="semester == '3'"/>
+                    <field name="document_count" string="Evidence"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_action" model="ir.actions.act_window">
+            <field name="name">Actions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3performance.ts.action</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'group_by': 'year'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create an action
+                </p>
+                <p>
+                Created actions will be organized here and can be filtered, searched, and browsed. They can also be grouped by year and semester.
+                </p>
+            </field>
+        </record>
+        <record id="action_action_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_action_form"/>
+            <field name="act_window_id" ref="action_action"/>
+        </record>
+        <record id="action_action_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_action_tree"/>
+            <field name="act_window_id" ref="action_action"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- a3.course inherit form view -->
+        <record id="view_course_form_catalog" model="ir.ui.view">
+            <field name="name">a3.course.inherit.view.form</field>
+            <field name="model">a3.course</field>
+            <field name="inherit_id" ref="a3.view_course_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='level']" position="after">
+                    <label for="offered_in_fall" string="Offered in"/>
+                    <div>
+                        <span>Fall</span><![CDATA[&nbsp;]]>
+                        <field name="offered_in_fall"/>
+                        <span>Spring</span><![CDATA[&nbsp;]]>
+                        <field name="offered_in_spring"/>
+                        <span>Summer</span><![CDATA[&nbsp;]]>
+                        <field name="offered_in_summer"/>
+                    </div>                    
+                </xpath>
+                <xpath expr="//field[@name='instructor_ids']" position="after">
+                    <field name="req_class" widget='radio' options="{'horizontal': true}"/>
+                    <field name="remarks" colspan="4"/>
+                </xpath>
+                <xpath expr="//group[@name='info']" position="after">
+                    <notebook>
+                        <page string="Requisites" name="requisites">
+                            <group name="requisites" col="4">
+                                <field name="prerequisite_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="alternative_ids" string="Prerequisite - alternatives if any (OR relation) are shown in the same cell"
+                                            widget="many2many_tags"/>
+                                    </tree>
+                                </field>
+                                <field name="corequisite_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="corequisite_id"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Requisite for" name="requisites">
+                            <group name="requisites" col="4">
+                                <field name="prerequisite_for_ids" nolabel="1" readonly="1">
+                                    <tree>
+                                        <field name="name" string="Prerequisite for"/>
+                                    </tree>
+                                </field>
+                                <field name="corequisite_for_ids" nolabel="1" readonly="1">
+                                    <tree>
+                                        <field name="name" string="Corequisite for"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page name="components" string="Part of">
+                            <group name="components">
+                                <field name="component_ids" readonly="1" nolabel="1">
+                                    <tree>
+                                        <field name="name" string="Component"/>
+                                        <field name="program_ids" widget="many2many_tags" string="Program(s)"/>
+                                        <field name="school_id"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                    <group name="desc_ilos_syllabus" string="Description &#38; Master Syllabus" col="4">
+                        <field name="description" widget="html" colspan="4"/>
+                        <field name="ilo_ids" colspan="4">
+                            <tree editable="bottom">
+                                <field name="sequence" widget="handle" />
+                                <field name="name" />
+                            </tree>
+                        </field>
+                        <field name="syllabus"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>
