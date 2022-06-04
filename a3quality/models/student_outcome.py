@@ -29,6 +29,14 @@ class StudentOutcome(models.Model):
     _description = 'Student Outcome'
     _order = 'sequence'
 
-    name = fields.Html(string='SO', required=True)
+    name = fields.Char(compute='_compute_name', string='name')
+    
+    @api.depends('sequence')
+    @api.onchange('sequence')
+    def _compute_name(self):
+        for rec in self:
+            rec.name = 'SO' + str(rec.sequence)
+    
+    description = fields.Text(string='SO', required=True)
     sequence = fields.Integer(string='Sequence', default=1)
     program_id = fields.Many2one(comodel_name='a3catalog.program', string='Program')
