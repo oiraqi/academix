@@ -2,6 +2,7 @@
 <odoo>
     <data>    
         <menuitem id="a3quality_root_menu" name="Quality Assurance" sequence="50"/>
+		<menuitem id="a3quality_accreditation_menu" name="Accreditation" action="action_accreditation" parent="a3quality_root_menu" sequence="50"/>
 		<menuitem id="a3quality_portfolio_menu" name="Portfolios" action="action_portfolio" parent="a3quality_root_menu" sequence="50"/>
     </data>    
 </odoo>

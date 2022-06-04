@@ -35,7 +35,7 @@
                 <tree string="Accreditations"></tree>
             </field>
         </record>
-        <record id="accreditation_action" model="ir.actions.act_window">
+        <record id="action_accreditation" model="ir.actions.act_window">
             <field name="name">Accreditations</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">a3quality.accreditation</field>
