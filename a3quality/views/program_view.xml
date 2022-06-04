@@ -26,6 +26,7 @@
             <field name="name">a3catalog.program.inherit.quality.soc.view.form</field>
             <field name="model">a3catalog.program</field>
             <field name="inherit_id" ref="a3catalog.view_program_form"/>
+            <field name="mode">primary</field>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='sch']" position="after">                    
                     <field name="accreditation_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
@@ -71,6 +72,12 @@
 			<field name="sequence" eval="2"/>
 			<field name="view_mode">form</field>
 			<field name="view_id" ref="view_program_form_quality_soc"/>
+			<field name="act_window_id" ref="action_program_quality_soc"/>
+		</record>
+        <record id="action_program_tree_view_quality_soc" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="a3catalog.view_program_tree"/>
 			<field name="act_window_id" ref="action_program_quality_soc"/>
 		</record>
     </data>
