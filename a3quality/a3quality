@@ -6,3 +6,5 @@ oc -n a3quality.accreditation -v Accreditation -m n:Accreditation p:a3quality_ro
 oc -n a3quality.course.program -m n:ILO/SO Mapping p:a3quality_root
 
 oc -m i:a3quality_soc n:SO Coverage p:a3quality_root a:action_program_quality_soc
+
+oc -n a3quality.assessment.technique -v Assessment Technique -g a3quality.group_faculty:1000 a3quality.group_coordinator:1110 a3quality.group_vpaa:1000 a3quality.group_setup:1110 -m n:AssessmentTechniques p:a3quality_root
