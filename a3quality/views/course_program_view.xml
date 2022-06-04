@@ -22,7 +22,7 @@
                 </form>
             </field>
         </record>
-        <record id="course_program_action" model="ir.actions.act_window">
+        <record id="action_course_program" model="ir.actions.act_window">
             <field name="name">Course Program Mapping</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">a3quality.course.program</field>
