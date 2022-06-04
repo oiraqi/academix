@@ -15,7 +15,10 @@
                             <tree editable="bottom">
                                 <field name="sequence"/>
                                 <field name="name"/>
-                                <field name="description"/>
+                                <!--<field name="description"/>-->
+                                <field name="introducing_course_ids" widget="many2many_tags"/>
+                                <field name="reinforcing_course_ids" widget="many2many_tags"/>
+                                <field name="emphasizing_course_ids" widget="many2many_tags"/>
                             </tree>
                         </field>
                     </group>

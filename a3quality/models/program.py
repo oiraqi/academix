@@ -29,5 +29,5 @@ class Program(models.Model):
 
     so_ids = fields.One2many(comodel_name='a3quality.student.outcome', inverse_name='program_id', string='Student Outcomes')
     accreditation_ids = fields.Many2many('a3quality.accreditation', 'a3quality_program_accreditation_rel', 'program_id', 'accreditation_id', 'Accreditations')
-    course_program_ids = fields.One2many(comodel_name='a3quality.course.program', inverse_name='program_id', string='Assessed Courses')    
+    course_program_ids = fields.One2many(comodel_name='a3quality.course.program', inverse_name='program_id', string='Assessed Courses')
     
