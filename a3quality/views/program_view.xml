@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_program_form_quality" model="ir.ui.view">
+            <field name="name">a3catalog.program.inherit.quality.view.form</field>
+            <field name="model">a3catalog.program</field>
+            <field name="inherit_id" ref="a3catalog.view_program_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sch']" position="after">                    
+                    <field name="accreditation_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                </xpath>
+                <xpath expr="//group[@name='components']" position="after">                    
+                    <group name="sos" string="Student Outcomes" col="4">
+                        <field name="so_ids" readonly="1" nolabel="1">
+                            <tree>
+                                <field name="sequence" widget="handle"/>
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -12,7 +12,7 @@
                         </h1>
                         <group col="4">
                             <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True}" colspan="2"/>
-                            <field name="program_ids">
+                            <field name="program_ids" colspan="4">
                                 <tree>
                                     <field name="name"/>
                                 </tree>
