@@ -30,7 +30,7 @@ class StudentOutcome(models.Model):
     _order = 'sequence'
     _sql_constraints = [('a3quality_sequence_ukey', 'unique(sequence)', 'Sequence must be unique')]
 
-    name = fields.Char(compute='_compute_name', string='SO')
+    name = fields.Char(compute='_compute_name', string='Ref.')
     
     @api.depends('sequence')
     @api.onchange('sequence')
@@ -38,6 +38,6 @@ class StudentOutcome(models.Model):
         for rec in self:
             rec.name = 'SO' + str(rec.sequence)
     
-    description = fields.Text(string='Statement', required=True)
+    description = fields.Text(string='SO', required=True)
     sequence = fields.Integer(string='Sequence', default=1)
     program_id = fields.Many2one(comodel_name='a3catalog.program', string='Program')

@@ -30,7 +30,7 @@ class ILO(models.Model):
     _order = 'sequence'
     _sql_constraints = [('a3catalog_course_ilo_sequence_ukey', 'unique(sequence)', 'Sequence must be unique')]
 
-    name = fields.Char(compute='_compute_name', string='ILO')
+    name = fields.Char(compute='_compute_name', string='Ref?')
     
     @api.depends('sequence')
     @api.onchange('sequence')
@@ -38,6 +38,6 @@ class ILO(models.Model):
         for rec in self:
             rec.name = 'ILO' + str(rec.sequence)
     
-    description = fields.Char(string='Statement', required=True)
+    description = fields.Char(string='ILO', required=True)
     sequence = fields.Integer(string='Sequence', default=1)
     course_id = fields.Many2one('a3.course', string='Course', required=True)

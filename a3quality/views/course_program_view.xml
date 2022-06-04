@@ -53,7 +53,7 @@
         </record>
 
         <record id="action_course_program" model="ir.actions.act_window">
-            <field name="name">Course Program Mapping</field>
+            <field name="name">Outcome Mapping</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">a3quality.course.program</field>
             <field name="view_mode">tree,form</field>
