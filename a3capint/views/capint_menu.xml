@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
-    <menuitem id="capint_menu_root" name="Projects" sequence="100"/>
+    <menuitem id="capint_menu_root" name="Projects" sequence="40"/>
     <!-- This Menu Item Must have a parent -->
     <!-- This Menu Item must have a parent and an action -->
     <menuitem id="project_menu_act_proposals" name="Proposals" parent="capint_menu_root" action="project_action_proposals" sequence="20"/>

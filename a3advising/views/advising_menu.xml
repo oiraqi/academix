@@ -3,7 +3,7 @@
     <data>
     
         <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
-        <menuitem id="advising_menu_root" name="Advising" sequence="40"/>
+        <menuitem id="advising_menu_root" name="Advising" sequence="20"/>
 
         <!-- This Menu Item must have a parent and an action -->
         <!--<menuitem id="advising_my_advisees_menu_act" name="Advisees" parent="advising_menu_root" action="action_my_advisees" sequence="10" groups="a3.group_faculty"/>-->
