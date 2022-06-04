@@ -29,6 +29,14 @@ class ILO(models.Model):
     _description = 'Course ILO'
     _order = 'sequence'
 
-    name = fields.Char(string='ILO', required=True)
+    name = fields.Char(compute='_compute_name', string='name')
+    
+    @api.depends('sequence')
+    @api.onchange('sequence')
+    def _compute_name(self):
+        for rec in self:
+            rec.name = 'ILO' + str(rec.sequence)
+    
+    description = fields.Char(string='ILO', required=True)
     sequence = fields.Integer(string='Sequence', default=1)
     course_id = fields.Many2one('a3.course', string='Course', required=True)

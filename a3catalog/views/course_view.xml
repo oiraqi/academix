@@ -71,8 +71,9 @@
                         <field name="description" widget="html" colspan="4"/>
                         <field name="ilo_ids" colspan="4">
                             <tree editable="bottom">
-                                <field name="sequence" widget="handle" />
+                                <field name="sequence" />
                                 <field name="name" />
+                                <field name="description"/>
                             </tree>
                         </field>
                         <field name="syllabus"/>

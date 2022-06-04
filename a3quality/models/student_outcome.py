@@ -28,6 +28,7 @@ class StudentOutcome(models.Model):
     _name = 'a3quality.student.outcome'
     _description = 'Student Outcome'
     _order = 'sequence'
+    _sql_constraints = [('a3quality_sequence_ukey', 'unique(sequence)', 'Sequence must be unique')]
 
     name = fields.Char(compute='_compute_name', string='name')
     
