@@ -33,9 +33,10 @@
             <field name="model">a3quality.accreditation</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
-                <tree string="Accreditations">
+                <tree string="Accreditations" editable="bottom">
                     <field name="name"/>
-                    <field name="school_id"/>
+                    <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                    <field name="program_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                 </tree>
             </field>
         </record>

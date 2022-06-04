@@ -11,7 +11,7 @@
                 </xpath>
                 <xpath expr="//group[@name='components']" position="after">                    
                     <group name="sos" string="Student Outcomes" col="4">
-                        <field name="so_ids" readonly="1" nolabel="1">
+                        <field name="so_ids" nolabel="1">
                             <tree>
                                 <field name="sequence" widget="handle"/>
                                 <field name="name"/>
