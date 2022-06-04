@@ -18,7 +18,7 @@
                                 options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
                                 domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]"/>
 						</group>
-						<group name="asessment_techniques" string="Used Assessment Techniques">
+						<group name="asessment_techniques" string="Used Assessment Techniques" col="4">
 							<field name="useful_assessment_technique_ids"
 								domain="[('id', 'not in', not_recommended_assessment_technique_ids)]"
 								widget="many2many_tags"
