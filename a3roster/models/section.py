@@ -15,7 +15,7 @@ class Section(models.Model):
     def _compute_name(self):
         for rec in self:
             if rec.course_id and rec.number and rec.year and rec.semester:
-                rec.name = rec.course_id.code + rec.number + rec.suffix
+                rec.name = rec.prefix + rec.course_id.code.replace(' ', '') + rec.number
             else:
                 rec.name = ''
     

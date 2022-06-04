@@ -65,7 +65,7 @@ class StudentEvaluation(models.Model):
         for rec in self:
             if rec.year and rec.semester:
                 sections = self.env['a3roster.section'].search(
-                    [('instructor_id', '=', self.env.user.id), ('year', '=', rec.year),
+                    [('instructor_id.user_id', '=', self.env.user.id), ('year', '=', rec.year),
                     ('semester', '=', rec.semester)])
                 if sections:
                     rec.section_id = sections[0]

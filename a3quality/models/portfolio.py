@@ -1,10 +1,36 @@
-from odoo import models, fields
+from odoo import api, models, fields
 
 
 class Portfolio(models.Model):
 	_name = 'a3quality.portfolio'
 	_description = 'Portfolio'
+	_inherit = 'a3.faculty.activity'
 
-	name = fields.Char('Name', required=True)
+	name = fields.Char('Name', compute='_compute_name', store=True)
 	section_id = fields.Many2one('a3roster.section', 'Section', required=True)
+	course_id = fields.Many2one(comodel_name='a3.course', related='section_id.course_id', store=True)
+	school_id = fields.Many2one(comodel_name='a3.school', related='section_id.school_id', store=True)	
+
+	@api.onchange('section_id')
+	@api.depends('section_id')
+	def _compute_name(self):
+		for rec in self:
+			if rec.section_id:
+				rec.name = rec.section_id.name + '-Portfolio'
+			else:
+				rec.name = ''
+
+	
+	@api.onchange('year', 'semester')
+	def _onchange_year_semester(self):
+		for rec in self:
+			if rec.year and rec.semester:
+				sections = self.env['a3roster.section'].search(
+                    [('instructor_id.user_id', '=', self.env.user.id), ('year', '=', rec.year),
+                    ('semester', '=', rec.semester)])
+				if sections:
+					rec.section_id = sections[0]
+				else:
+					rec.section_id = False
+
 	

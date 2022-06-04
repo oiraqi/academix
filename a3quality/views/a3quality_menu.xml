@@ -3,7 +3,7 @@
     <data>    
         <menuitem id="a3quality_root_menu" name="Quality Assurance" sequence="60"/>		
 		<menuitem id="a3quality_accreditation_menu" name="Accreditations" action="action_accreditation" parent="a3quality_root_menu" sequence="10"/>
-        <menuitem id="a3quality_soc_menu" name="SO Coverage" action="action_program_quality_soc" parent="a3quality_root_menu" sequence="20"/>
+        <menuitem id="a3quality_soc_menu" name="Programs" action="action_program_quality_soc" parent="a3quality_root_menu" sequence="20"/>
         <menuitem id="a3quality_course_program_menu" name="ILO/SO Mapping" action="action_course_program" parent="a3quality_root_menu" sequence="40"/>
 		<menuitem id="a3quality_portfolio_menu" name="Portfolios" action="action_portfolio" parent="a3quality_root_menu" sequence="60"/>
     </data>    

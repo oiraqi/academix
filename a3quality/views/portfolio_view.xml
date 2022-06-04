@@ -7,9 +7,16 @@
 			<field name="arch" type="xml">
 				<form string="Portfolio">
 					<sheet>
-						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
-						<group name="info" string="General Information" col="4">
-							<field name="section_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+						<h1><field name="name"/></h1>
+						<group name="info" string="Section Information" col="4">
+							<label for="semester" string="Semester &#38; Year"/>
+                            <div>
+                                <field name="semester" widget='radio' options="{'horizontal': true}" style="width: 65%"/>
+                                <field name="year" style="width: 35%"/>
+                            </div>
+                            <field name="section_id"
+                                options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+                                domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
