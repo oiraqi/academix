@@ -87,18 +87,18 @@ class Activity(models.AbstractModel):
             if semester == 'Fall':
                 rec.year = str(year) + '/' + str(year + 1)
                 rec.semester = '1'
-                rec.suffix = '-FA-' + str(year)
-                rec.prefix = 'FA-' + str(year) + '-'
+                rec.suffix = '-FA' + str(year)
+                rec.prefix = 'FA' + str(year) + '-'
             elif semester == 'Spring':
                 rec.year = str(year - 1) + '/' + str(year)
                 rec.semester = '2'
-                rec.suffix = '-SP-' + str(year)
-                rec.prefix = 'SP-' + str(year) + '-'
+                rec.suffix = '-SP' + str(year)
+                rec.prefix = 'SP' + str(year) + '-'
             else:
                 rec.year = str(year - 1) + '/' + str(year)
                 rec.semester = '3'
-                rec.suffix = '-SU-' + str(year)
-                rec.prefix = 'SU-' + str(year) + '-'
+                rec.suffix = '-SU' + str(year)
+                rec.prefix = 'SU' + str(year) + '-'
 
     @api.onchange('semester', 'year')
     def _onchange_semester_or_year(self):
@@ -106,16 +106,16 @@ class Activity(models.AbstractModel):
             year = int(rec.year.split('/')[0]) + 2000
             if rec.semester == '1':
                 rec.semester_year = str(year) + ' - Fall'
-                rec.suffix = '-FA-' + str(year - 2000)
-                rec.prefix = 'FA-' + str(year - 2000) + '-'
+                rec.suffix = '-FA' + str(year - 2000)
+                rec.prefix = 'FA' + str(year - 2000) + '-'
                 rec.iyear = year
             elif rec.semester == '2':
                 rec.semester_year = str(year + 1) + ' - Spring'
-                rec.suffix = '-SP-' + str(year - 1999)
-                rec.prefix = 'SP-' + str(year - 1999) + '-'
+                rec.suffix = '-SP' + str(year - 1999)
+                rec.prefix = 'SP' + str(year - 1999) + '-'
                 rec.iyear = year + 1
             else:
                 rec.semester_year = str(year + 1) + ' - Summer'
-                rec.suffix = '-SU-' + str(year - 1999)
-                rec.prefix = 'SU-' + str(year - 1999) + '-'
+                rec.suffix = '-SU' + str(year - 1999)
+                rec.prefix = 'SU' + str(year - 1999) + '-'
                 rec.iyear = year + 1
