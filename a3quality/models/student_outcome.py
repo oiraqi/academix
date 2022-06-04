@@ -30,7 +30,7 @@ class StudentOutcome(models.Model):
     _order = 'sequence'
     _sql_constraints = [('a3quality_sequence_ukey', 'unique(sequence)', 'Sequence must be unique')]
 
-    name = fields.Char(compute='_compute_name', string='name')
+    name = fields.Char(compute='_compute_name', string='Code')
     
     @api.depends('sequence')
     @api.onchange('sequence')

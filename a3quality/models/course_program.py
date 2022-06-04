@@ -11,4 +11,5 @@ class CourseProgram(models.Model):
     ilo_so_ids = fields.One2many(comodel_name='a3quality.course.ilo.so', inverse_name='course_program_id', string='Outcome Mapping')
     discipline_id = fields.Many2one(comodel_name='a3.discipline', related='course_id.discipline_id', store=True)
     school_id = fields.Many2one(comodel_name='a3.school', related='course_id.school_id', store=True)
-    
+    ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids', string="Course ILOs")
+    so_ids = fields.One2many('a3quality.student.outcome', related='program_id.so_ids', string="Program SOs")
