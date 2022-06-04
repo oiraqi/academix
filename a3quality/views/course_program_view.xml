@@ -29,6 +29,7 @@
         <record id="view_course_program_tree" model="ir.ui.view">
             <field name="name">a3quality.course.program.tree</field>
             <field name="model">a3quality.course.program</field>
+            <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Course/Program Mappings">
                     <field name="program_id"/>
@@ -42,7 +43,7 @@
             <field name="res_model">a3quality.course.program</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
-            <field name="context">{group_by: ['school_id', 'discipline_id', 'course_id']}</field>
+            <field name="context">{'group_by': ['school_id', 'discipline_id', 'course_id']}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create a course.program</p>
                 <p>Created course.programs will be organized here by school.</p>
