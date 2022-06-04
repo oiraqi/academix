@@ -9,7 +9,7 @@
         <!--<menuitem id="advising_my_advisees_menu_act" name="Advisees" parent="advising_menu_root" action="action_my_advisees" sequence="10" groups="a3.group_faculty"/>-->
         <menuitem id="advising_planned_course_menu_act" name="Degree Plan" parent="advising_menu_root" action="action_planned_course" sequence="20"/>
         <menuitem id="advising_degree_plan_menu_act" name="Degree Plan Wizard" parent="advising_menu_root" action="action_degree_plan" sequence="40"/>
-        <menuitem id="advising_menu_catalog_programs" name="Programs" parent="advising_menu_root" sequence="60" action="a3catalog.program_action"/>
+        <menuitem id="advising_menu_catalog_programs" name="Programs" parent="advising_menu_root" sequence="60" action="a3catalog.action_program"/>
         <menuitem id="advising_menu_catalog_courses" name="Courses" parent="advising_menu_root" sequence="80" action="a3.action_course"/>        
     </data>
     
