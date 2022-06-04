@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <!-- a3catalog.program form view -->
-        <record id="program_view_form" model="ir.ui.view">
+        <record id="view_program_form" model="ir.ui.view">
             <field name="name">a3catalog.program.view.form</field>
             <field name="model">a3catalog.program</field>
             <field name="arch" type="xml">
