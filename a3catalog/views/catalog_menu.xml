@@ -1,4 +1,4 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
-    <menuitem id="a3catalog_program_menu" name="Programs" parent="a3.a3_root_menu" sequence="40" action="program_action"/>
+    <menuitem id="a3catalog_program_menu" name="Programs" parent="a3.a3_root_menu" sequence="40" action="action_program"/>
 </odoo>

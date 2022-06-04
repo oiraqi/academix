@@ -5,3 +5,4 @@ oc -n a3quality.accreditation -v Accreditation -m n:Accreditation p:a3quality_ro
 
 oc -n a3quality.course.program -m n:ILO/SO Mapping p:a3quality_root
 
+oc -m i:a3quality_soc n:SO Coverage p:a3quality_root a:action_program_quality_soc
