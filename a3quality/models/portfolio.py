@@ -33,4 +33,6 @@ class Portfolio(models.Model):
 				else:
 					rec.section_id = False
 
+	useful_assessment_technique_ids = fields.Many2many('a3quality.assessment.technique', 'Useful', required=True)
+	not_recommended_assessment_technique_ids = fields.Many2many('a3quality.assessment.technique', 'Not Recommended')
 	
