@@ -35,4 +35,5 @@ class Portfolio(models.Model):
 
 	useful_assessment_technique_ids = fields.Many2many('a3quality.assessment.technique', 'a3quality_portfolio_assessment_technique_useful', 'portfolio_id', 'assessment_technique_id', 'Useful', required=True)
 	not_recommended_assessment_technique_ids = fields.Many2many('a3quality.assessment.technique', 'a3quality_portfolio_assessment_technique_nr', 'portfolio_id', 'assessment_technique_id', 'Not Recommended')
+	deviations = fields.Html('Significant Deviations in Course Content from Syllabus', required=True)
 	

@@ -11,6 +11,9 @@
         <record id="a3quality_assessment_technique_quz" model="a3quality.assessment.technique">
             <field name="name">Quizzes</field>
         </record>
+        <record id="a3quality_assessment_technique_prj" model="a3quality.assessment.technique">
+            <field name="name">Projects</field>
+        </record>
         <record id="a3quality_assessment_technique_opr" model="a3quality.assessment.technique">
             <field name="name">Oral Presentations</field>
         </record>
