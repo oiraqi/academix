@@ -9,7 +9,9 @@ access_a3quality_accreditation_user,access.a3quality_accreditation.user,model_a3
 access_a3quality_accreditation_coordinator,access.a3quality_accreditation.coordinator,model_a3quality_accreditation,a3.group_coordinator,1,1,1,1
 
 access_a3quality_student_outcome_user,access.a3quality_student_outcome.user,model_a3quality_student_outcome,base.group_user,1,0,0,0
-access_a3quality_student_outcome_coordinator,access.a3quality_student_outcome.coordinator,model_a3quality_student_outcome,a3.group_coordinator,1,0,0,0access_a3quality_portfolio_faculty,access.a3quality.portfolio.faculty,model_a3quality_portfolio,a3.group_faculty,1,1,1,1
+access_a3quality_student_outcome_coordinator,access.a3quality_student_outcome.coordinator,model_a3quality_student_outcome,a3.group_coordinator,1,0,0,0
+
+access_a3quality_portfolio_faculty,access.a3quality.portfolio.faculty,model_a3quality_portfolio,a3.group_faculty,1,1,1,1
 access_a3quality_portfolio_coordinator,access.a3quality.portfolio.coordinator,model_a3quality_portfolio,a3.group_coordinator,1,0,0,0
 access_a3quality_portfolio_vpaa,access.a3quality.portfolio.vpaa,model_a3quality_portfolio,a3.group_vpaa,1,0,0,0
 
