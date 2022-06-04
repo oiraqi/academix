@@ -27,6 +27,7 @@ from odoo import models, fields
 class Discipline(models.Model):
     _name = 'a3.discipline'
     _order = 'code'
+    _sql_constraints = [('a3_discipline_code_ukey', 'unique(code)', 'Code already exists')]
 
     code = fields.Char('Code', required=True)
     name = fields.Char('Name', required=True)

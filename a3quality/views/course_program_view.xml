@@ -12,9 +12,11 @@
                             <field name="program_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="ilo_so_ids" colspan="4">
                                 <tree editable="bottom">
-                                    <field name="course_ilo_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                                    <field name="so_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                                    <field name="course_ilo_id" domain="[('course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                                    <field name="so_id" domain="[('program_id', '=', program_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                                     <field name="level"/>
+                                    <field name="course_id" invisible="1"/>
+                                    <field name="program_id" invisible="1"/>
                                 </tree>
                             </field>
                         </group>

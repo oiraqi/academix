@@ -4,6 +4,7 @@ from odoo import api, fields, models
 class CourseProgram(models.Model):
     _name = 'a3quality.course.program'
     _description = 'Course Program Mapping'
+    _sql_constraints = [('a3quality_course_program_ukey', 'unique(course_id, program_id)', 'Course/Program mapping already exists')]
 
     course_id = fields.Many2one(comodel_name='a3.course', string='Course', required=True)
     program_id = fields.Many2one(comodel_name='a3catalog.program', string='Program', required=True)
