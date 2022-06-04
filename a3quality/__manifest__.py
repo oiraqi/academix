@@ -18,6 +18,8 @@
         'views/course_view.xml',
         'views/course_program_view.xml',
         "views/accreditation_view.xml",
+        "views/portfolio_view.xml",
+        "views/a3quality_menu.xml",
     ],
     'installable': True,
     'auto_install': False,
