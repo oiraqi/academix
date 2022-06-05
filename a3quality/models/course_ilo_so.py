@@ -10,7 +10,7 @@ class CourseIlOSO(models.Model):
     so_id = fields.Many2one(comodel_name='a3quality.student.outcome', string='SO', required=True)
     course_program_id = fields.Many2one(comodel_name='a3quality.course.program', string='Course/Program', required=True)    
     level = fields.Selection(string='Level', selection=[('introduce', 'Introduce'), ('reinforce', 'Reinforce'), ('emphasize', 'Emphasize')], default='introduce', required=True)
-    course_id = fields.Many2one(comodel_name='a3.course', related='course_program_id.course_id')
-    program_id = fields.Many2one(comodel_name='a3catalog.program', related='course_program_id.program_id')
+    course_id = fields.Many2one(comodel_name='a3.course', related='course_program_id.course_id', store=True)
+    program_id = fields.Many2one(comodel_name='a3catalog.program', related='course_program_id.program_id', store=True)
     
     

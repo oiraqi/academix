@@ -44,6 +44,7 @@
 								<tree>
 									<field name="program_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="nstudents"/>
+									<field name="so_ids" widget="many2many_tags"/>
 									<field name="course_id" invisible="1"/>
 									<field name="school_id" invisible="1"/>
 								</tree>
