@@ -55,27 +55,27 @@ class StudentOutcome(models.Model):
         for rec in self:
             records = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'introduce'), ('course_program_id.program_id', '=', rec.program_id.id)])
-            if not records:
-                rec.introducing_course_ids = False
-            else:
+            if records:
                 rec.introducing_course_ids = [record.course_program_id.course_id.id for record in records]
+            else:
+                rec.introducing_course_ids = False
 
     @api.onchange('program_id')
     def _reinforcing_course_ids(self):
         for rec in self:
             records = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'reinforce'), ('course_program_id.program_id', '=', rec.program_id.id)])
-            if not records:
-                rec.reinforcing_course_ids = False
-            else:
+            if records:
                 rec.reinforcing_course_ids = [record.course_program_id.course_id.id for record in records]
+            else:
+                rec.reinforcing_course_ids = False
 
     @api.onchange('program_id')
     def _emphasizing_course_ids(self):
         for rec in self:
             records = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'emphasize'), ('course_program_id.program_id', '=', rec.program_id.id)])
-            if not records:
-                rec.emphasizing_course_ids = False
-            else:
+            if records:
                 rec.emphasizing_course_ids = [record.course_program_id.course_id.id for record in records]
+            else:
+                rec.emphasizing_course_ids = False
