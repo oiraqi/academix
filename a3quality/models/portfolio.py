@@ -41,7 +41,6 @@ class Portfolio(models.Model):
 		for rec in self:
 			if rec.section_id:
 				rec.name = rec.section_id.name + '-Portfolio'
-				rec.course_id = rec.section_id.course_id
 			else:
 				rec.name = ''
 

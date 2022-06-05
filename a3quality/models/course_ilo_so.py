@@ -24,7 +24,7 @@
 from odoo import api, fields, models
 
 
-class CourseIlOSO(models.Model):
+class CourseIloSO(models.Model):
     _name = 'a3quality.course.ilo.so'
     _description = 'Course ILO & SO Mapping'
     _sql_constraints = [('a3quality_ilo_so_course_program_so_ukey', 'unique(course_program_id, so_id)', 'SO mapping already exists')]

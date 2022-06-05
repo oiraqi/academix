@@ -53,29 +53,29 @@ class StudentOutcome(models.Model):
     @api.onchange('program_id')
     def _introducing_cours_ids(self):
         for rec in self:
-            results = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
+            records = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'introduce'), ('course_program_id.program_id', '=', rec.program_id.id)])
-            if not results:
+            if not records:
                 rec.introducing_course_ids = False
             else:
-                rec.introducing_course_ids = [record.course_program_id.course_id.id for record in results]
+                rec.introducing_course_ids = [record.course_program_id.course_id.id for record in records]
 
     @api.onchange('program_id')
     def _reinforcing_course_ids(self):
         for rec in self:
-            results = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
+            records = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'reinforce'), ('course_program_id.program_id', '=', rec.program_id.id)])
-            if not results:
+            if not records:
                 rec.reinforcing_course_ids = False
             else:
-                rec.reinforcing_course_ids = [record.course_program_id.course_id.id for record in results]
+                rec.reinforcing_course_ids = [record.course_program_id.course_id.id for record in records]
 
     @api.onchange('program_id')
     def _emphasizing_course_ids(self):
         for rec in self:
-            results = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
+            records = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'emphasize'), ('course_program_id.program_id', '=', rec.program_id.id)])
-            if not results:
+            if not records:
                 rec.emphasizing_course_ids = False
             else:
-                rec.emphasizing_course_ids = [record.course_program_id.course_id.id for record in results]
+                rec.emphasizing_course_ids = [record.course_program_id.course_id.id for record in records]
