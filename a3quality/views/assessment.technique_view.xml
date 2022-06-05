@@ -26,8 +26,7 @@
 			<field name="model">a3quality.assessment.technique</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Assessment Techniques" editable="bottom">
-					<field name="sequence" widget="handle"/>
+				<tree string="Assessment Techniques">
 					<field name="name"/>
 				</tree>
 			</field>

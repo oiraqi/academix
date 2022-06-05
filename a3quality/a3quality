@@ -11,3 +11,10 @@ oc -m i:a3quality_soc n:SO Coverage p:a3quality_root a:action_program_quality_so
 
 oc -n a3quality.assessment.technique -v Assessment Technique -g a3quality.group_faculty:1000 a3quality.group_coordinator:1110 a3quality.group_vpaa:1000 a3quality.group_setup:1110 -m n:AssessmentTechniques p:a3quality_root
 
+oc -n a3quality.assessment -v Assessment -g a3.group_faculty:1111 a3.group_coordinator:1000 a3.group_vpaa:1000
+oc -n a3quality.assessment -f section_id:mo:a3roster.section:Section program_id:mo:a3catalog.program:Program nstudents:i:Students
+
+oc -n a3quality.assessment.line -g a3.group_faculty:1111 a3.group_coordinator:1000 a3.group_vpaa:1000
+oc -n a3quality.assessment.line -f assessment_id:mo:a3quality.assessment:Assessment ilo_id:mo:a3catalog.course.ilo:ILO so_ids:om:a3quality.student.outcome:SOs targetted:f:Targetted achieved:f:Achieved action_id:mo:a3quality.action:Action
+
+oc -n a3quality.action -g a3.group_faculty:1111 a3.group_coordinator:1000 a3.group_vpaa:1000

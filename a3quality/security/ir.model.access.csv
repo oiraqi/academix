@@ -20,3 +20,15 @@ access_a3quality_assessment_technique_coordinator,access.a3quality.assessment.te
 access_a3quality_assessment_technique_vpaa,access.a3quality.assessment.technique.vpaa,model_a3quality_assessment_technique,a3.group_vpaa,1,0,0,0
 access_a3quality_assessment_technique_setup,access.a3quality.assessment.technique.setup,model_a3quality_assessment_technique,a3.group_setup,1,1,1,0
 
+access_a3quality_assessment_faculty,access.a3quality.assessment.faculty,model_a3quality_assessment,a3.group_faculty,1,1,1,1
+access_a3quality_assessment_coordinator,access.a3quality.assessment.coordinator,model_a3quality_assessment,a3.group_coordinator,1,0,0,0
+access_a3quality_assessment_vpaa,access.a3quality.assessment.vpaa,model_a3quality_assessment,a3.group_vpaa,1,0,0,0
+
+access_a3quality_assessment_line_faculty,access.a3quality.assessment.line.faculty,model_a3quality_assessment_line,a3.group_faculty,1,1,1,1
+access_a3quality_assessment_line_coordinator,access.a3quality.assessment.line.coordinator,model_a3quality_assessment_line,a3.group_coordinator,1,0,0,0
+access_a3quality_assessment_line_vpaa,access.a3quality.assessment.line.vpaa,model_a3quality_assessment_line,a3.group_vpaa,1,0,0,0
+
+access_a3quality_action_faculty,access.a3quality.action.faculty,model_a3quality_action,a3.group_faculty,1,1,1,1
+access_a3quality_action_coordinator,access.a3quality.action.coordinator,model_a3quality_action,a3.group_coordinator,1,0,0,0
+access_a3quality_action_vpaa,access.a3quality.action.vpaa,model_a3quality_action,a3.group_vpaa,1,0,0,0
+
