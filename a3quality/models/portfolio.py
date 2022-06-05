@@ -36,5 +36,8 @@ class Portfolio(models.Model):
 	useful_assessment_technique_ids = fields.Many2many('a3quality.assessment.technique', 'a3quality_portfolio_assessment_technique_useful', 'portfolio_id', 'assessment_technique_id', 'Useful', required=True)
 	not_recommended_assessment_technique_ids = fields.Many2many('a3quality.assessment.technique', 'a3quality_portfolio_assessment_technique_nr', 'portfolio_id', 'assessment_technique_id', 'Not Recommended')
 	assessment_ids = fields.One2many(comodel_name='a3quality.assessment', inverse_name='portfolio_id', string='Assessment / Program')
-	deviations = fields.Html('Significant Deviations in Course Content from Syllabus', required=True)
+	action_ids = fields.One2many(comodel_name='a3quality.action', inverse_name='portfolio_id', string='Recommended Remedial Actions')	
+	ilo_changes = fields.Html('Recommended Changes To Course ILOs')
+	ass_tech_modifications = fields.Html('Recommended Modifications To Assssment Techniques')
+	deviations = fields.Html('Significant Deviations in Course Content from Syllabus')	
 	
