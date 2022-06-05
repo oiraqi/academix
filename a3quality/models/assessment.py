@@ -11,7 +11,7 @@ class Assessment(models.Model):
 	portfolio_id = fields.Many2one('a3quality.portfolio', 'Portfolio', required=True)	
 	program_id = fields.Many2one('a3catalog.program', 'Program', required=True)
 	nstudents = fields.Integer('Student Population', required=True)
-	kpi = fields.Integer(string='ILO Achievement Threshold (%)', default=80)
+	kpi = fields.Integer(string='Minimum ILO Acquiisition %', default=80)
 	assessment_line_ids = fields.One2many(comodel_name='a3quality.assessment.line', inverse_name='assessment_id', string='Assessment Lines')
 	course_id = fields.Many2one(comodel_name='a3.course', string='Course', required=True)
 	section_id = fields.Many2one('a3roster.section', related='portfolio_id.section_id')
