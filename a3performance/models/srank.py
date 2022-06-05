@@ -27,7 +27,7 @@ from odoo import models, fields
 class Srank(models.Model):
     _name = 'a3performance.srank'
     _order = 'rank,name'
-    _sql_constraints = [('a3_srank_name_ukey', 'unique(name)', 'Sub rank already exists')]
+    _sql_constraints = [('name_ukey', 'unique(name)', 'Sub rank already exists')]
 
     name = fields.Char('Code', required=True)
     rank = fields.Selection([('D', 'Lecturer'), ('C', 'Assistant Professor'), (

@@ -28,7 +28,7 @@ class TSGoal(models.Model):
     _name='a3performance.eval.ts.goal'
     _inherit = 'a3performance.eval.goal'
     _description = 'A TS goal to set and achieve in a given evaluation process'
-    _sql_constraints = [('a3performance.eval.ts_goal_process_id_kpi_ukey', 'unique(process_id,kpi)', 'Goal already set for this evaluation process')]
+    _sql_constraints = [('process_id_kpi_ukey', 'unique(process_id,kpi)', 'Goal already set for this evaluation process')]
 
     process_id = fields.Many2one('a3performance.eval.process', string='TS Process', required=True)
     kpi = fields.Selection([('se_avg_score', 'Average Student Evaluation Score / 100'),

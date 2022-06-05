@@ -28,7 +28,7 @@ class SDGoal(models.Model):
     _name='a3performance.eval.sd.goal'
     _inherit = 'a3performance.eval.goal'
     _description = 'An SD goal to set and achieve in a given evaluation process'
-    _sql_constraints = [('a3performance.eval.sd_goal_process_id_kpi_ukey', 'unique(process_id,kpi)', 'Goal already set for this evaluation process')]
+    _sql_constraints = [('process_id_kpi_ukey', 'unique(process_id,kpi)', 'Goal already set for this evaluation process')]
 
     process_id = fields.Many2one('a3performance.eval.process', string='SD Process', required=True)
     kpi = fields.Selection([('ca_number', 'Number of Significant Committee Activities'),

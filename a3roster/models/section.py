@@ -6,7 +6,7 @@ class Section(models.Model):
     _description = 'Course Section'
     _inherit = 'a3.activity'
     _order = 'course_id,number'
-    _sql_constraints = [('a3roster_section_ukey', 'unique(year, semester, course_id, number)', 'Section already exists')]
+    _sql_constraints = [('section_ukey', 'unique(year, semester, course_id, number)', 'Section already exists')]
 
     name = fields.Char(compute='_compute_name', string='Name', store=True)
     

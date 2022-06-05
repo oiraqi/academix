@@ -27,7 +27,7 @@ from odoo import models, fields
 class School(models.Model):
     _name = 'a3.school'
     _order = 'code'
-    _sql_constraints = [('a3_school_code_ukey', 'unique(code)', 'School already exists')]
+    _sql_constraints = [('code_ukey', 'unique(code)', 'School already exists')]
 
     name = fields.Char('Name', required=True)
     code = fields.Char('Code', required=True)

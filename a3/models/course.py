@@ -29,7 +29,7 @@ import re
 class Course(models.Model):
     _name = 'a3.course'
     _sql_constraints = [
-        ('a3_course_code_ukey', 'unique(code)', 'Course already exists')]
+        ('code_ukey', 'unique(code)', 'Course already exists')]
     _order = 'code'
 
     name = fields.Char('Code and Name', required=True)

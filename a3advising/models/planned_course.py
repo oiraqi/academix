@@ -6,7 +6,7 @@ class PlannedCourse(models.Model):
     _name = 'a3advising.planned.course'
     _description = 'Planned Course'
     _inherit = ['a3.student.owned', 'a3.activity']
-    _sql_constraints = [('a3advising_planned_course_ukey', 'unique(course_id, student_id)', 'Course already planned!')]
+    _sql_constraints = [('course_student_ukey', 'unique(course_id, student_id)', 'Course already planned!')]
 
     course_id = fields.Many2one(comodel_name='a3.course', string='Course', required=True)
     name = fields.Char(string='Name', compute='_set_name')

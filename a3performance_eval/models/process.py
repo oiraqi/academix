@@ -34,7 +34,7 @@ class Process(models.Model):
     _inherits = {'a3performance.eval.ts.process': 'ts_process_id',
                  'a3performance.eval.rp.process': 'rp_process_id',
                  'a3performance.eval.sd.process': 'sd_process_id'}
-    _sql_constraints = [('a3performance.eval.process_ukey', 'unique(from_year,to_year,from_semester,to_semester)', 'An evaluation process for the selected period already exists')]
+    _sql_constraints = [('from_to_ukey', 'unique(from_year, to_year, from_semester, to_semester)', 'An evaluation process for the selected period already exists')]
 
     @api.model
     def _from_year_selection(self):

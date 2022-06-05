@@ -5,7 +5,7 @@ class DegreePlan(models.Model):
     _name = 'a3advising.degree.plan'
     _description = 'Student Degree Plan'
     _inherit = ['a3.faculty.student.shared', 'a3.activity']
-    _sql_constraints = [('a3advising_degree_plan_ukey',
+    _sql_constraints = [('student_ukey',
                          'unique(student_id)', 'A student can only have one degree plan')]
     
     name = fields.Char(related='student_id.name')
