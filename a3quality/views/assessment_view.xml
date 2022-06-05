@@ -14,17 +14,21 @@
 							<field name="kpi"/>
 							<field name="portfolio_id" invisible="1"/>
 							<field name="school_id" invisible="1"/>
+							<field name="course_id" invisible="1"/>
 						</group>
 						<group name="assessment_lines" string="Assessment Lines">
-							<field name="assessment_line_ids" nolabel="1">
+							<field name="assessment_line_ids" nolabel="1" context="{'default_course_id': course_id}">
 								<tree editable="bottom">
-									<field name="ilo_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+									<field name="ilo_id"
+										domain="[('course_id', '=', course_id)]"
+										options="{'no_quick_create': True, 'no_create_edit': True}"/>
 									<field name="so_ids" widget="many2many_tags"/>
 									<field name="assessment_technique_ids" widget="many2many_tags"
 										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="achieved"/>
 									<field name="targetted"/>
 									<field name="action_id"/>
+									<field name="course_id" invisible="1"/>
 								</tree>
 							</field>
 						</group>

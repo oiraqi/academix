@@ -24,6 +24,7 @@
         "views/program_view.xml",
         "views/assessment_technique_view.xml",
         "views/assessment_view.xml",
+        "views/school_view.xml",
         "views/a3quality_menu.xml",
     ],
     'installable': True,
