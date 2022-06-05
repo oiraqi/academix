@@ -40,4 +40,8 @@ class Portfolio(models.Model):
 	ilo_changes = fields.Html('Recommended Changes To Course ILOs')
 	ass_tech_modifications = fields.Html('Recommended Modifications To Assssment Techniques')
 	deviations = fields.Html('Significant Deviations in Course Content from Syllabus')	
+	grade_matrix = fields.Binary(string='Grade Matrix')
+	good_performance = fields.Binary(string='Good Student Performance Samples')
+	avg_performance = fields.Binary(string='Average Student Performance Samples')
+	poor_performance = fields.Binary(string='Poor Student Performance Samples')
 	

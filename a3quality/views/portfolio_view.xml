@@ -7,36 +7,46 @@
 			<field name="arch" type="xml">
 				<form string="Portfolio">
 					<sheet>
-						<h1><field name="name"/></h1>
+						<h1>
+							<field name="name"/>
+						</h1>
+						<h2>
+							<field name="course_id"/>
+						</h2>
+						<h2>
+							<field name="faculty_id"/>
+						</h2>
 						<group name="info" string="Section Information" col="4">
 							<label for="semester" string="Semester &#38; Year"/>
-                            <div>
-                                <field name="semester" widget='radio' options="{'horizontal': true}" style="width: 65%"/>
-                                <field name="year" style="width: 35%"/>
-                            </div>
-                            <field name="section_id"
-                                options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
-                                domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]"/>
+							<div>
+								<field name="semester" widget='radio' options="{'horizontal': true}" style="width: 65%"/>
+								<field name="year" style="width: 35%"/>
+							</div>
+							<field name="section_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]"/>
 							<field name="school_id" invisible="1"/>
 							<field name="course_id" invisible="1"/>
 						</group>
-						<group name="asessment_techniques" string="Used Assessment Techniques" col="4">
-							<field name="useful_assessment_technique_ids"
-								domain="[('id', 'not in', not_recommended_assessment_technique_ids)]"
-								widget="many2many_tags"
-								options="{'no_quick_create': True, 'no_create_edit': True}"
-								string="Provided useful data"/>
-							<field name="not_recommended_assessment_technique_ids"
-								domain="[('id', 'not in', useful_assessment_technique_ids)]"
-								widget="many2many_tags"
-								options="{'no_quick_create': True, 'no_create_edit': True}"/>
-						</group>
+						<notebook>
+							<page string="" name="Used Assessment Techniques">
+								<group name="asessment_techniques" col="4">
+									<field name="useful_assessment_technique_ids" domain="[('id', 'not in', not_recommended_assessment_technique_ids)]" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}" string="Provided useful data"/>
+									<field name="not_recommended_assessment_technique_ids" domain="[('id', 'not in', useful_assessment_technique_ids)]" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+								</group>
+							</page>
+							<page string="" name="Student Grades and Copies">
+								<group name="grades_copies" col="4">
+									<field name="grade_matrix"/>
+									<field name="good_performance"/>
+									<field name="avg_performance"/>
+									<field name="poor_performance"/>
+								</group>
+							</page>
+						</notebook>
 						<group name="assessment" string="1. Assessment / Program and Student Population">
 							<field name="assessment_ids" nolabel="1" context="{'default_school_id': school_id, 'default_course_id': course_id}">
 								<tree>
 									<field name="program_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="nstudents"/>
-									<field name="kpi"/>
 									<field name="course_id" invisible="1"/>
 									<field name="school_id" invisible="1"/>
 								</tree>
@@ -89,10 +99,10 @@
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
-				
+
 				</p>
 				<p>
-				
+
 				</p>
 			</field>
 		</record>
