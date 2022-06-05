@@ -1,4 +1,5 @@
 from odoo import api, models, fields
+from odoo.exceptions import UserError
 
 
 class Assessment(models.Model):
@@ -10,6 +11,15 @@ class Assessment(models.Model):
 	portfolio_id = fields.Many2one('a3quality.portfolio', 'Portfolio', required=True)	
 	program_id = fields.Many2one('a3catalog.program', 'Program', required=True)
 	nstudents = fields.Integer('Student Population', required=True)
+
+	@api.constrains('nstudents')
+	def _nstudents(self):
+		for rec in self:
+			if rec.nstudents <= 0:
+				raise UserError('The student population (size) must be > 0')
+			if rec.nstudents > 50:
+				raise UserError('The student population is unusually large')
+
 	kpi = fields.Selection(string='Minimum ILO Acquisition %', selection=[
 		('70', '70'), ('75', '75'), ('80', '80'),
 		('85', '85'), ('90', '90'), ('95', '95'), ('100', '100')], default='80', required=True)

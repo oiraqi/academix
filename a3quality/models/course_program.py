@@ -13,6 +13,15 @@ class CourseProgram(models.Model):
     school_id = fields.Many2one(comodel_name='a3.school', related='course_id.school_id', store=True)
     ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids', string="Course ILOs")
     so_ids = fields.One2many('a3quality.student.outcome', related='program_id.so_ids', string="Program SOs")
+    covered_so_ids = fields.One2many(comodel_name='a3quality.student.outcome', compute='_covered_so_ids', string='Covered/Assessed SOs')
+
+    def _covered_so_ids(self):
+        for rec in self:
+            if not rec.ilo_so_ids:
+                rec.covered_so_ids = False
+                continue
+            rec.covered_so_ids = [record.so_id.id for record in rec.ilo_so_ids]
+    
 
     @api.onchange('course_id', 'program_id')
     def _onchange_course_program(self):
