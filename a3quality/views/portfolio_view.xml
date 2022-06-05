@@ -30,7 +30,7 @@
 								options="{'no_quick_create': True, 'no_create_edit': True}"/>
 						</group>
 						<group name="assessment" string="1. Assessment / Program and Student Population">
-							<field name="assessment_id" nolabel="1">
+							<field name="assessment_ids" nolabel="1">
 								<tree>
 									<field name="program_id" options="{'no_quick_create': True, 'no_create_edit': True, no_open=True}"/>
 									<field name="nstudents"/>
