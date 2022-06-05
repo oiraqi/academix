@@ -11,6 +11,7 @@ class AssessmentLine(models.Model):
 	ilo_id = fields.Many2one('a3catalog.course.ilo', 'ILO', required=True)
 	so_ids = fields.One2many('a3quality.student.outcome', compute='_so_ids', string='SOs')
 	assessment_technique_ids = fields.Many2many(comodel_name='a3quality.assessment.technique', string='Techniques', required=True)
+	used_assessment_technique_ids = fields.Many2many(comodel_name='a3quality.assessment.technique', related='assessment_id.used_assessment_technique_ids')
 	targetted = fields.Float('Targetted', required=True, default=80)
 	achieved = fields.Float('Achieved', required=True)
 	action_id = fields.Many2one('a3quality.action', 'Action')

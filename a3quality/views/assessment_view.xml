@@ -33,6 +33,7 @@
 									<field name="targetted" string="Targetted*"/>
 									<field name="action_id"/>
 									<field name="course_id" invisible="1"/>
+									<field name="used_assessment_technique_ids" invisible="1"/>
 								</tree>
 							</field>
 							<span>(*): % of students who achieved the minimum ILO acquisition %</span>
