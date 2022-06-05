@@ -26,7 +26,7 @@
                                 <tree editable="bottom">
                                     <field name="so_id" domain="[('program_id', '=', program_id)]"
                                         options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                                    <field name="ilo_ids" domain="[('course_id', '=', course_id)]"
+                                    <field name="ilo_ids"
                                         options="{'no_quick_create': True, 'no_create_edit': True}"
                                         widget="many2many_tags"/>
                                     <field name="level"/>
