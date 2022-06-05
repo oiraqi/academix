@@ -9,8 +9,8 @@
             <field name="arch" type="xml">                
                 <xpath expr="//group[@name='desc_ilos_syllabus']" position="after">                    
                     <group name="qa" string="Quality Assurance" col="4">
-                        <field name="course_program_ids" string="ILO/SO Mapping">
-                            <tree>                                
+                        <field name="course_program_ids" string="ILO/SO Mapping" readonly="1">
+                            <tree>
                                 <field name="program_id"/>
                                 <field name="covered_so_ids" widget="many2many_tags"/>
                             </tree>
