@@ -44,9 +44,11 @@
 						</group>
 						<group name="ilo_changes" string="2. Recommended Remedial Actions">
 							<field name="action_ids" nolabel="1">
-								<field name="name"/>
-								<field name="ilo_id"/>
-								<field name="state" widget="badge"/>
+								<tree>
+									<field name="name"/>
+									<field name="ilo_id"/>
+									<field name="state" widget="badge"/>
+								</tree>
 							</field>
 						</group>
 						<group name="ilo_changes" string="3. Recommended Changes To Course ILOs">
