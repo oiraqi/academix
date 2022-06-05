@@ -39,7 +39,7 @@
 								</group>
 							</page>
 						</notebook>
-						<group name="assessment" string="1. Assessment / Program and Student Population">
+						<group name="assessment" string="Assessment per Program and Student Population">
 							<field name="assessment_ids" nolabel="1" context="{'default_school_id': school_id, 'default_course_id': course_id}">
 								<tree>
 									<field name="program_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
@@ -49,7 +49,7 @@
 								</tree>
 							</field>
 						</group>
-						<group name="ilo_changes" string="2. Recommended Remedial Actions">
+						<group name="ilo_changes" string="Recommended Remedial Actions">
 							<field name="action_ids" nolabel="1">
 								<tree>
 									<field name="name"/>
@@ -58,13 +58,13 @@
 								</tree>
 							</field>
 						</group>
-						<group name="ilo_changes" string="3. Recommended Changes To Course ILOs">
+						<group name="ilo_changes" string="Recommended Changes To Course ILOs">
 							<field name="ilo_changes" nolabel="1" widget="html"/>
 						</group>
-						<group name="ass_tech_mods" string="4. Recommended Modifications To Assssment Techniques">
+						<group name="ass_tech_mods" string="Recommended Modifications To Assssment Techniques">
 							<field name="ass_tech_modifications" nolabel="1" widget="html"/>
 						</group>
-						<group name="deviations" string="5. Significant Deviations in Course Content from Syllabus">
+						<group name="deviations" string="Significant Deviations in Course Content from Syllabus">
 							<field name="deviations" nolabel="1" widget="html"/>
 						</group>
 						<group name="log" string="Log" col="4">
