@@ -7,7 +7,6 @@ class Assessment(models.Model):
 	_inherit = 'a3.school.owned'
 	_sql_constraints = [('a3quality_assessment_portfolio_program_ukey', 'unique(portfolio_id, program_id)', 'Duplicate assessment of the same program in the same portfolio!')]
 
-	name = fields.Char('Name', required=True)
 	portfolio_id = fields.Many2one('a3quality.portfolio', 'Portfolio', required=True)	
 	program_id = fields.Many2one('a3catalog.program', 'Program', required=True)
 	nstudents = fields.Integer('Student Population', required=True)
