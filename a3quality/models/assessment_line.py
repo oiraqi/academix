@@ -6,7 +6,7 @@ class AssessmentLine(models.Model):
 	_description = 'AssessmentLine'
 
 	assessment_id = fields.Many2one('a3quality.assessment', 'Assessment', required=True)
-	course_id = fields.Many2one(comodel_name='a3.course', related='assessment_id.course_id')
+	course_id = fields.Many2one(comodel_name='a3.course', required=True)
 	faculty_id = fields.Many2one(comodel_name='a3.faculty', related='assessment_id.faculty_id', store=True)	
 	ilo_id = fields.Many2one('a3catalog.course.ilo', 'ILO', required=True)
 	so_ids = fields.One2many('a3quality.student.outcome', compute='_so_ids', string='SOs')
