@@ -27,7 +27,7 @@ class Assessment(models.Model):
 			for uat in rec.portfolio_id.useful_assessment_technique_ids:
 				used_assessment_technique_ids.append(uat.id)
 			
-			for uat in rec.not_recommended_assessment_technique_ids:
+			for uat in rec.portfolio_id.not_recommended_assessment_technique_ids:
 				used_assessment_technique_ids.append(uat.id)
 			
 			rec.used_assessment_technique_ids = used_assessment_technique_ids
