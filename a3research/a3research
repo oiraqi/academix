@@ -1,0 +1,2 @@
+oc -m n:Research i:a3rsearch_root
+oc -n a3research.publisher -v Publisher -m n:Publishers p:a3rsearch_root -g base.group_user:1000 a3.group_faculty:1111
