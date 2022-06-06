@@ -28,8 +28,5 @@ class Article(models.Model):
     _name = 'a3research.article'
     _inherit = 'a3research.publication'
 
-    journal = fields.Char('Journal Name', required=True)
-    impact = fields.Selection(
-        [('if', 'Impact Factor'), ('ix', 'Indexed'), ('nix', 'Non-indexed')], 'Impact', required=True)
-    
+    journal_id = fields.Many2one('a3research.journal', 'Journal', required=True)
     vpages = fields.Char('Volume and Pages')

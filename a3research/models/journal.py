@@ -6,4 +6,6 @@ class Journal(models.Model):
 	_description = 'Journal'
 
 	name = fields.Char('Name', required=True)
+	impact = fields.Selection(
+        [('if', 'Impact Factor'), ('ix', 'Indexed'), ('nix', 'Non-indexed')], 'Impact', required=True)
 	
