@@ -1,8 +1,8 @@
 <odoo>
 	<data>
-		<menuitem id="a3rsearch_root_menu" name="Research" sequence="100"/>
-		<menuitem id="a3research_article_menu" name="Articles" action="action_article" parent="a3rsearch_root_menu" sequence="50"/>
-		<menuitem id="a3research_journal_menu" name="Journals" action="action_journal" parent="a3rsearch_root_menu" sequence="180"/>
-		<menuitem id="a3research_publisher_menu" name="Publishers" action="action_publisher" parent="a3rsearch_root_menu" sequence="200"/>
+		<menuitem id="a3research_root_menu" name="Research" sequence="100"/>
+		<menuitem id="a3research_article_menu" name="Articles" action="action_article" parent="a3research_root_menu" sequence="50"/>
+		<menuitem id="a3research_journal_menu" name="Journals" action="action_journal" parent="a3research_root_menu" sequence="180"/>
+		<menuitem id="a3research_publisher_menu" name="Publishers" action="action_publisher" parent="a3research_root_menu" sequence="200"/>
 	</data>
 </odoo>
