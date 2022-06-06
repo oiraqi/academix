@@ -5,3 +5,6 @@ access_a3research_publisher_faculty,access.a3research.publisher.faculty,model_a3
 access_a3research_journal_user,access.a3research.journal.user,model_a3research_journal,base.group_user,1,0,0,0
 access_a3research_journal_faculty,access.a3research.journal.faculty,model_a3research_journal,a3.group_faculty,1,1,1,0
 
+access_a3research_article_user,access.a3research.article.user,model_a3research_article,base.group_user,1,0,0,0
+access_a3research_article_faculty,access.a3research.article.faculty,model_a3research_article,a3.group_faculty,1,1,1,1
+
