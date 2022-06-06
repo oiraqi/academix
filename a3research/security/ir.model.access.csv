@@ -17,3 +17,6 @@ access_a3research_presentation_faculty,access.a3research.presentation.faculty,mo
 access_a3research_paper_user,access.a3research.paper.user,model_a3research_paper,base.group_user,1,0,0,0
 access_a3research_paper_faculty,access.a3research.paper.faculty,model_a3research_paper,a3.group_faculty,1,1,1,1
 
+access_a3research_activity_user,access.a3research.activity.user,model_a3research_activity,base.group_user,1,0,0,0
+access_a3research_activity_faculty,access.a3research.activity.faculty,model_a3research_activity,a3.group_faculty,1,1,1,1
+

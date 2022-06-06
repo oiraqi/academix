@@ -21,6 +21,7 @@
         'views/book_view.xml',
         'views/presentation_view.xml',
         'views/paper_view.xml',
+        'views/activity_view.xml',
         'views/a3research_menu.xml',
     ],
     'installable': True,
