@@ -28,7 +28,4 @@ class Paper(models.Model):
     _name = 'a3research.paper'
     _inherit = 'a3research.presentation'
 
-    conference = fields.Char('Conference', required=True)
-    scope = fields.Selection(
-        [('nat', 'National'), ('int', 'International')], 'Scope', required=True)
     vpages = fields.Char('Volume and Pages')

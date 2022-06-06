@@ -6,3 +6,7 @@ oc -n a3research.journal -v Journal -m n:Journals p:a3research_root -g base.grou
 oc -n a3research.article -v Article -m n:Articles p:a3research_root -g base.group_user:1000 a3.group_faculty:1111
 
 oc -n a3research.book -v Book -m n:Books p:a3research_root -g base.group_user:1000 a3.group_faculty:1111
+
+oc -n a3research.presentation -v Presentation -m n:Presentations p:a3research_root -g base.group_user:1000 a3.group_faculty:1111
+
+oc -n a3research.paper -v Paper -m n:Papers p:a3research_root -g base.group_user:1000 a3.group_faculty:1111
