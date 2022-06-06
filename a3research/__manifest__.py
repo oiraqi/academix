@@ -15,6 +15,7 @@
     ],    
     'data': [
         'security/ir.model.access.csv',
+        'views/journal_view.xml',
         'views/publisher_view.xml',
         'views/a3research_menu.xml',
     ],

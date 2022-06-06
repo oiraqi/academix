@@ -30,7 +30,7 @@ class Publication(models.AbstractModel):
 
     name = fields.Text('Title', required=True)
     authors = fields.Text('Authors', required=True)
-    publisher = fields.Text('Publisher with City/Country', required=True)
+    publisher_id = fields.Many2one('a3research.publisher', 'Publisher', required=True)
     date = fields.Date('Date of Publication', required=True)
     isn = fields.Char('ISBN/ISSN', required=True)
     doi = fields.Char('DOI')

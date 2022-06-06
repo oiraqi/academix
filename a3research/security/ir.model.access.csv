@@ -2,3 +2,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_a3research_publisher_user,access.a3research.publisher.user,model_a3research_publisher,base.group_user,1,0,0,0
 access_a3research_publisher_faculty,access.a3research.publisher.faculty,model_a3research_publisher,a3.group_faculty,1,1,1,1
 
+access_a3research_journal_user,access.a3research.journal.user,model_a3research_journal,base.group_user,1,0,0,0
+access_a3research_journal_faculty,access.a3research.journal.faculty,model_a3research_journal,a3.group_faculty,1,1,1,0
+
