@@ -8,3 +8,6 @@ access_a3research_journal_faculty,access.a3research.journal.faculty,model_a3rese
 access_a3research_article_user,access.a3research.article.user,model_a3research_article,base.group_user,1,0,0,0
 access_a3research_article_faculty,access.a3research.article.faculty,model_a3research_article,a3.group_faculty,1,1,1,1
 
+access_a3research_book_user,access.a3research.book.user,model_a3research_book,base.group_user,1,0,0,0
+access_a3research_book_faculty,access.a3research.book.faculty,model_a3research_book,a3.group_faculty,1,1,1,1
+
