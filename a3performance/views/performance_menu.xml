@@ -3,10 +3,7 @@
     <!-- Top menu item -->
     <menuitem id="menu_performance_root" name="Performance" sequence="30" groups="base.group_user"/>
     
-    <!-- Bar menu item -->   
-    
-    <menuitem id="menu_performance_profile" name="Profile" parent="menu_performance_root" sequence="500" action="a3.action_faculty_my_form" groups="a3.group_faculty"/>
-
+    <!-- Bar menu item -->
     <menuitem id="menu_performance_settings" name="Settings" parent="menu_performance_root" sequence="1000" groups="a3.group_setup"/>
     
     <menuitem id="menu_performance_ranks" name="Ranks" parent="menu_performance_settings" sequence="10" action="action_srank_form"/>

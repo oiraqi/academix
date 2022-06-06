@@ -8,9 +8,11 @@
 
     <menuitem id="a3_course_menu" name="Courses" parent="a3_root_menu" sequence="50" action="action_course"/>
 
-    <menuitem id="a3_student_menu" name="Students" parent="a3_root_menu" sequence="80" action="action_student" groups="a3.group_setup,a3.group_coordinator,a3.group_vpaa"/>
+    <menuitem id="a3_faculty_my_menu" name="Profile" parent="a3_root_menu" sequence="100" action="action_faculty_my" groups="a3.group_faculty"/>
+
+    <menuitem id="a3_student_menu" name="Students" parent="a3_root_menu" sequence="200" action="action_student" groups="a3.group_setup,a3.group_coordinator,a3.group_vpaa"/>
     
-    <menuitem id="a3_faculty_menu" name="Faculty" parent="a3_root_menu" sequence="100" action="action_faculty" groups="a3.group_coordinator,a3.group_vpaa"/>
+    <menuitem id="a3_faculty_menu" name="Faculty" parent="a3_root_menu" sequence="220" action="action_faculty" groups="a3.group_coordinator,a3.group_vpaa"/>
     
-    <menuitem id="a3_staff_menu" name="Staff" parent="a3_root_menu" sequence="1200" action="action_staff" groups="a3.group_setup"/>
+    <menuitem id="a3_staff_menu" name="Staff" parent="a3_root_menu" sequence="240" action="action_staff" groups="a3.group_setup"/>
 </odoo>

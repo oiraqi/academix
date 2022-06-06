@@ -58,7 +58,23 @@
                 </p>
             </field>
         </record>
-        <record id="action_faculty_my_form" model="ir.actions.server">
+        <record id="action_faculty_my" model="ir.actions.act_window">
+            <field name="name">Faculty</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3.faculty</field>
+            <field name="view_mode">form</field>
+            <field name="domain">[('user_id', '=', uid)]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create a Faculty
+                </p>
+                <p>
+                Once saved, you will have a button that will alow you to send a password initialization email.
+                </p>
+            </field>
+        </record>
+        <!--<record id="action_faculty_my" model="ir.actions.server">
             <field name="name">Faculty</field>
             <field name="model_id" ref="model_a3_faculty"/>
             <field name="state">code</field>
@@ -71,7 +87,7 @@
                 	'views': [(False, 'form')]
             	}
             </field>
-        </record>
+        </record>-->
         <record id="action_faculty_form_view" model="ir.actions.act_window.view">
             <field name="sequence" eval="2"/>
             <field name="view_mode">form</field>
