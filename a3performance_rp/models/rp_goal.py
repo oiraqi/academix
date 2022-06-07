@@ -2,7 +2,7 @@
 ###############################################################################
 #
 #    Al Akhawayn University in Ifrane -- AUI
-#    Copyright (C) 2022-TODAY AUI(<http://www.aui.ma>).
+#    Copyright (C) 2022-TODAY AUI(<http://www.a3ma>).
 #
 #    Author: Omar Iraqi Houssaini | https://github.com/oiraqi
 #
@@ -24,11 +24,17 @@
 from odoo import models, fields
 
 
-class Paper(models.Model):
-    _name = 'a3performance.rp.paper'
-    _inherit = 'a3performance.rp.presentation'
+class RPGoal(models.Model):
+    _name='a3performance.rp.goal'
+    _inherit = 'a3performance.goal'
+    _description = 'An RP goal to set and achieve in a given evaluation process'
+    _sql_constraints = [('process_id_kpi_ukey', 'unique(process_id,kpi)', 'Goal already set for this evaluation process')]
 
-    conference = fields.Char('Conference', required=True)
-    scope = fields.Selection(
-        [('nat', 'National'), ('int', 'International')], 'Scope', required=True)
-    vpages = fields.Char('Volume and Pages')
+    kpi = fields.Selection([('ar_imp_number', 'Number of Impact Factor Journal Articles'),
+                            ('ar_idx_number', 'Number of Indexed Journal Articles'),
+                            ('bk_number', 'Number of Books'),
+                            ('ch_number', 'Number of Book Chapters'),
+                            ('cp_number', 'Number of Papers in Proceedings'),
+                            ('pr_number', 'Number of Presentations'),
+                            ('sp_number', 'Number of Supervised PhD Theses'),
+                            ('sm_number', 'Number of Supervised Master Projects/Theses')], 'KPI', required=True)

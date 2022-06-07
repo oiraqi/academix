@@ -23,9 +23,25 @@
 
 from odoo import models, fields
 
-class SDProcess(models.Model):
-    _name = 'a3performance.eval.sd.process'
+class Process(models.Model):
+    _inherit = 'a3performance.process'
     _description = 'Process Projection on SD'
+
+    sd_goal_ids = fields.One2many('a3performance.sd.goal', 'process_id', string='Goals')
+    sd_goal_progress = fields.Float('Goal Progress', compute='_sd_goal_progress')
+    sd_goal_achievement = fields.Char('Goal Achievement', compute='_sd_goal_progress')
+    
+    def _sd_goal_progress(self):
+        for rec in self:
+            goal_count = len(rec.sd_goal_ids)
+            if goal_count == 0:
+                rec.sd_goal_progress = 0
+                rec.sd_goal_achievement = '0 / 0'
+                continue
+            
+            achieved_goal_count = sum(1 for goal in rec.sd_goal_ids if goal.achieved)
+            rec.sd_goal_progress = round(100 * achieved_goal_count / goal_count)
+            rec.sd_goal_achievement = str(achieved_goal_count) + ' / ' + str(goal_count)
 
     committee_school_activity_ids = fields.One2many(
         'a3performance.sd.activity', string='School Committees', compute='_committee_school_activity_ids')
@@ -40,3 +56,14 @@ class SDProcess(models.Model):
     
     sd_narrative = fields.Html('Narrative',
         readonly=True, states={'faculty': [('readonly', False)]})
+
+    sd_committee_review = fields.Html('Committee Review',
+        readonly=True, states={'committee': [('readonly', False)]},
+        groups='a3.group_committee_member,a3.group_dean,a3.group_vpaa')
+    sd_dean_review = fields.Html('Dean Review',
+        readonly=True, states={'dean': [('readonly', False)]},
+        groups='a3.group_dean,a3.group_vpaa')
+    sd_vpaa_review = fields.Html('VPAA Review',
+        readonly=True, states={'vpaa': [('readonly', False)]},
+        groups='a3.group_dean,a3.group_vpaa')
+

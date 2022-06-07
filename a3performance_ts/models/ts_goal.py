@@ -21,21 +21,19 @@
 #
 ###############################################################################
 
-from odoo import models, fields
+from odoo import models, fields, api
 
 
-class TSProcess(models.Model):
-    _name = 'a3performance.eval.ts.process'
-    _description = 'Process Projection on TS'
+class TSGoal(models.Model):
+    _name='a3performance.ts.goal'
+    _inherit = 'a3performance.goal'
+    _description = 'A TS goal to set and achieve in a given evaluation process'
+    _sql_constraints = [('process_id_kpi_ukey', 'unique(process_id,kpi)', 'Goal already set for this evaluation process')]
 
-    student_evaluation_ids = fields.One2many(
-        'a3performance.ts.student.evaluation', string='Student Evaluation', compute='_student_evaluation_ids')
-    class_observation_ids = fields.One2many(
-        'a3performance.ts.class.observation', string='Class Observation', compute='_class_observation_ids')
-    action_ids = fields.One2many(
-        'a3performance.ts.action', string='Actions', compute='_action_ids')
-    supervision_ids = fields.One2many(
-        'a3performance.ts.supervision', string='Supervised Projects', compute='_supervision_ids')
-    
-    ts_narrative = fields.Html('Narrative',
-        readonly=True, states={'faculty': [('readonly', False)]})
+    kpi = fields.Selection([('se_avg_score', 'Average Student Evaluation Score / 100'),
+                            ('se_wavg_score', 'Weighted Average Student Evaluation Score / 100'),
+                            ('se_prc_4', 'Percentage of Student Evaluation Scores >= 4'),
+                            ('se_prc_45', 'Percentage of Student Evaluation Scores >= 4.5'),
+                            ('co_number', 'Number of Classroom Observations'),
+                            ('ac_number', 'Number of Actions'),
+                            ('sp_number', 'Number of Supervised Projects')], 'KPI', required=True)

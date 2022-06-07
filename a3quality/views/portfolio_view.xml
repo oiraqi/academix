@@ -11,7 +11,7 @@
 							<field name="name"/>
 						</h1>
 						<h2>
-							<field name="faculty_name"/><![CDATA[&nbsp;]]>-<![CDATA[&nbsp;]]><field name="course_id"/>
+							<field name="course_id"/>
 						</h2>
 						<group name="info" string="Section Information" col="4">
 							<label for="semester" string="Semester &#38; Year"/>

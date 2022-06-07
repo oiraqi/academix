@@ -20,10 +20,7 @@
                             </tree>
                         </field>
                     </group>
-                    <group name="rp_narrative" string="RP Narrative">
-                        <field name="rp_narrative" nolabel="1"/>
-                    </group>
-                    <group string="RP Records">
+                    <group name="rp_records" string="RP Records">
                         <notebook name="rp">
                             <page string="Activities">
                             </page>
@@ -37,6 +34,33 @@
                             </page>
                         </notebook>
                     </group>
+                    <group name="rp_narrative" string="RP Narrative">
+                        <field name="rp_narrative" nolabel="1"/>
+                    </group>
+                    <group name="rp_committee_review" string="RP Committee Review"
+                        groups="a3.group_committee_member,a3.group_dean,a3.group_vpaa">
+                        <field name="rp_committee_review" nolabel="1"/>
+                    </group>
+                    <group name="rp_dean_review" string="RP Committee Review"
+                        groups="a3.group_dean,a3.group_vpaa">
+                        <field name="rp_dean_review" nolabel="1"/>
+                    </group>
+                    <group name="rp_vpaa_review" string="RP Committee Review"
+                        groups="a3.group_dean,a3.group_vpaa">
+                        <field name="rp_vpaa_review" nolabel="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_process_tree_rp" model="ir.ui.view">
+            <field name="name">a3performance.rp.process.tree</field>
+            <field name="model">a3performance.process</field>
+            <field name="inherit_id" ref="a3performance.view_process_tree"/>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">                    
+                    <field name="rp_goal_progress" invisible="1"/>                    
+                    <field name="rp_goal_achievement" string="RP Goals" widget="badge" decoration-danger="rp_goal_progress &lt; 30" decoration-warning="rp_goal_progress &gt;= 30 and rp_goal_progress &lt; 60" decoration-info="rp_goal_progress &gt;= 60 and rp_goal_progress &lt; 100" decoration-success="rp_goal_progress &gt;= 100"/>                    
                 </xpath>
             </field>
         </record>

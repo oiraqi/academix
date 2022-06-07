@@ -4,3 +4,8 @@ access_a3performance_srank_setup,access.a3performance.srank.setup,model_a3perfor
 
 access_a3performance_degree_user,access.a3performance.degree.user,model_a3performance_degree,base.group_user,1,0,0,0
 access_a3performance_degree_faculty,access.a3performance.degree.faculty,model_a3performance_degree,a3.group_faculty,1,1,1,1
+
+access_a3performance_process_faculty,access.a3performance.process.faculty,model_a3performance_process,a3.group_faculty,1,1,1,0
+access_a3performance_process_committee_member,access.a3performance.process.committee_member,model_a3performance_process,a3performance.group_committee_member,1,1,0,0
+access_a3performance_process_dean,access.a3performance.process.dean,model_a3performance_process,a3.group_dean,1,1,0,0
+access_a3performance_process_vpaa,access.a3performance.process.vpaa,model_a3performance_process,a3.group_vpaa,1,1,0,0

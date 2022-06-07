@@ -35,12 +35,14 @@ class Portfolio(models.Model):
 	course_id = fields.Many2one(comodel_name='a3.course', related='section_id.course_id', store=True)
 	school_id = fields.Many2one(comodel_name='a3.school', related='section_id.school_id', store=True)	
 
-	@api.onchange('section_id')
-	@api.depends('section_id')
+	@api.onchange('section_id', 'faculty_id')
+	@api.depends('section_id', 'faculty_id')
 	def _compute_name(self):
 		for rec in self:
 			if rec.section_id:
 				rec.name = rec.section_id.name + '-Portfolio'
+				if rec.faculty_id:
+					rec.name += ' - ' + rec.faculty_id.name
 			else:
 				rec.name = ''
 

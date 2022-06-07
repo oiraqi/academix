@@ -58,20 +58,18 @@
                 </p>
             </field>
         </record>
-        <record id="action_faculty_my" model="ir.actions.act_window">
+        <record id="action_faculty_my" model="ir.actions.server">
             <field name="name">Faculty</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3.faculty</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[('user_id', '=', uid)]</field>
-            <field name="context">{}</field>
-            <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">
-                Create a Faculty
-                </p>
-                <p>
-                Once saved, you will have a button that will alow you to send a password initialization email.
-                </p>
+            <field name="model_id" ref="model_a3_faculty"/>
+            <field name="state">code</field>
+            <field name="code">
+            	action = {
+            		'type': 'ir.actions.act_window',
+			        'view_mode': 'form',
+			        'res_model': 'a3.faculty',
+                	'res_id': env['a3.faculty'].search([('user_id', '=', env.user.id)]).id,
+                	'views': [(False, 'form')]
+            	}
             </field>
         </record>
         <record id="action_faculty_form_view" model="ir.actions.act_window.view">
@@ -85,18 +83,6 @@
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_faculty_tree"/>
             <field name="act_window_id" ref="action_faculty"/>
-        </record>
-        <record id="action_faculty_my_form_view" model="ir.actions.act_window.view">
-            <field name="sequence" eval="1"/>
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="view_faculty_form"/>
-            <field name="act_window_id" ref="action_faculty_my"/>
-        </record>
-        <record id="action_faculty_my_tree_view" model="ir.actions.act_window.view">
-            <field name="sequence" eval="2"/>
-            <field name="view_mode">tree</field>
-            <field name="view_id" ref="view_faculty_tree"/>
-            <field name="act_window_id" ref="action_faculty_my"/>
         </record>
     </data>
 </odoo>

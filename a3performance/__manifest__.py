@@ -17,6 +17,7 @@ The Faculty Performance Management App.
         'views/faculty_view.xml',
         'views/srank_view.xml',
         'views/staff_view.xml',
+        'views/process_view.xml',
         'views/performance_menu.xml',
         'data/sranks.xml'
         

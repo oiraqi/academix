@@ -2,6 +2,7 @@
 <odoo>
     <!-- Top menu item -->
     <menuitem id="menu_performance_root" name="Performance" sequence="30" groups="base.group_user"/>
+    <menuitem id="menu_a3performance_eval" name="Process" parent="menu_performance_root" sequence="10" action="action_process" groups="a3.group_faculty,a3performance.group_committee_member,a3.group_dean,a3.group_vpaa"/>
     
     <!-- Bar menu item -->
     <menuitem id="menu_performance_settings" name="Settings" parent="menu_performance_root" sequence="1000" groups="a3.group_setup"/>

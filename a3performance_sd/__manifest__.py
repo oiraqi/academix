@@ -15,6 +15,7 @@ The Service and Development module under Performance Management.
         #'security/performance_eval_security.xml',
         'security/ir.model.access.csv',
         'views/committee_activity_view.xml',
+        'views/process_view.xml',
         'views/performance_sd_menu.xml',
     ],
     'test': [],

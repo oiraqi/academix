@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_process_form" model="ir.ui.view">
+            <field name="name">a3performance.process.form</field>
+            <field name="model">a3performance.process</field>
+            <field name="arch" type="xml">
+                <form string="Process">
+                    <header>
+                        <button name="faculty_to_f2c" states="faculty" string="Submit To Committee" type="object" class="oe_highlight" groups="a3.group_faculty"/>
+                        <button name="f2c_to_faculty" states="f2c" string="Bring Back" type="object" class="oe_highlight" groups="a3.group_faculty"/>
+
+                        <button name="f2c_to_committee" states="f2c" string="Accept" type="object" class="oe_highlight" groups="a3.group_committee_chair"/>
+                        <button name="committee_to_f2c" states="committee" string="Return to Faculty" type="object" class="oe_highlight" groups="a3.group_committee_chair"/>
+
+                        <button name="committee_to_c2d" states="committee" string="Submit To Dean" type="object" class="oe_highlight" groups="a3.group_committee_chair"/>
+                        <button name="c2d_to_committee" states="c2d" string="Bring Back To Committee" type="object" class="oe_highlight" groups="a3.group_committee_chair"/>
+
+                        <button name="c2d_to_dean" states="c2d" string="Receive from Committee" type="object" class="oe_highlight" groups="a3.group_dean"/>
+                        <button name="dean_to_c2d" states="dean" string="Return To Committee" type="object" class="oe_highlight" groups="a3.group_dean"/>
+
+                        <button name="dean_to_d2v" states="dean" string="Submit To VPAA" type="object" class="oe_highlight" groups="a3.group_dean"/>
+                        <button name="d2v_to_dean" states="d2v" string="Bring Back" type="object" class="oe_highlight" groups="a3.group_dean"/>
+
+                        <button name="d2v_to_vpaa" states="d2v" string="Receive from Dean" type="object" class="oe_highlight" groups="a3.group_vpaa"/>
+                        <button name="vpaa_to_d2v" states="vpaa" string="Return To Dean" type="object" class="oe_highlight" groups="a3.group_vpaa"/>
+
+                        <button name="vpaa_to_done" states="vpaa" string="Mark as Done" type="object" class="oe_highlight" groups="a3.group_vpaa"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="faculty,committee,dean,vpaa,done"/>
+                    </header>
+                    <sheet>
+                        <field name="faculty_id" invisible="1"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group string="Faculty &#38; Evaluation Information" col="4">
+                            <field name="school_id" readonly="1"/>
+                            <field name="hiring_date"/>
+                            <field name="rank" style="width: 75%"/>
+                            <field name="srank_id" domain="[('rank', '=', rank)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" style="width: 15%"/>
+                            <field name="type" widget="radio" options="{'horizontal': true}"/>
+                            <label for="from_semester" string="Evaluation Period"/>
+                            <div class="o_address_format">
+                                <field name="from_semester" widget="radio" options="{'horizontal': true}" style="width: 50%"/>
+                                <field name="from_year" style="width: 25%"/>
+                                <field name="to_semester" widget="radio" options="{'horizontal': true}" style="width: 50%"/>
+                                <field name="to_year" style="width: 25%"/>
+                            </div>
+                            <field name="previous_evaluation"/>
+                            <field name="previous_process_id" domain="[('from_year', '&lt;', from_year)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" attrs="{'invisible': [('previous_evaluation', '=', False)], 'required': [('previous_evaluation', '=', True)]}"/>
+                        </group>
+                        <notebook>
+                            <page name="ts" string="Teaching &#38; Supervision"/>
+                            <page name="rp" string="Research &#38; Publication"/>
+                            <page name="sd" string="Service &#38; Development"/>
+                            <page name="ose" string="Overall Evaluation">
+                                <group string="Overall Self-Evaluation">
+                                    <field name="overall_self_evaluation" nolabel="1" widget="html"/>
+                                </group>
+                                <group string="Committee's Overall Evaluation" groups="a3performance.group_committee_member,a3.group_dean,a3.group_vpaa">
+                                    <field name="committee_recommendation" widget="radio" options="{'horizontal': True}"/>
+                                    <field name="committee_feedback" widget="html"/>
+                                </group>
+                                <group string="Dean's Overall Evaluation" groups="a3.group_dean,a3.group_vpaa">
+                                    <field name="dean_recommendation" widget="radio" options="{'horizontal': True}"/>
+                                    <field name="dean_new_rank" widget="radio" options="{'horizontal': True}"/>
+                                    <field name="dean_new_srank_id" domain="[('rank', '=', dean_new_rank)]"/>
+                                    <field name="dean_feedback" widget="html"/>
+                                </group>
+                                <group string="VPAA's Overall Evaluation">
+                                    <field name="vpaa_decision" widget="radio" options="{'horizontal': True}"/>
+                                    <field name="vpaa_new_rank" widget="radio" options="{'horizontal': True}"/>
+                                    <field name="vpaa_new_srank_id"/>
+                                    <field name="vpaa_feedback" widget="html"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_process_tree" model="ir.ui.view">
+            <field name="name">a3performance.process.tree</field>
+            <field name="model">a3performance.process</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Processes">
+                    <field name="name"/>
+                    <field name="rank"/>
+                    <field name="srank_id"/>
+                    <field name="type"/>
+                    <field name="state" widget="badge"/>
+                    <field name="vpaa_decision"/>
+                    <field name="vpaa_new_rank"/>
+                    <field name="vpaa_new_srank_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_process" model="ir.actions.act_window">
+            <field name="name">Processes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">a3performance.process</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create an evaluation process
+                </p>
+            </field>
+        </record>
+        <record id="action_process_form_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_process_form"/>
+            <field name="act_window_id" ref="action_process"/>
+        </record>
+        <record id="action_process_tree_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_process_tree"/>
+            <field name="act_window_id" ref="action_process"/>
+        </record>
+    </data>
+</odoo>

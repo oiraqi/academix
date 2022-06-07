@@ -20,9 +20,6 @@
                             </tree>
                         </field>
                     </group>
-                    <group name="sd_narrative" string="SD Narrative">
-                        <field name="sd_narrative" nolabel="1"/>
-                    </group>
                     <group string="SD Records">
                         <notebook name="sd">
                             <page string="Committees">
@@ -35,6 +32,33 @@
                             </page>
                         </notebook>
                     </group>
+                    <group name="sd_narrative" string="SD Narrative">
+                        <field name="sd_narrative" nolabel="1"/>
+                    </group>
+                    <group name="sd_committee_review" string="SD Committee Review"
+                        groups="a3.group_committee_member,a3.group_dean,a3.group_vpaa">
+                        <field name="sd_committee_review" nolabel="1"/>
+                    </group>
+                    <group name="sd_dean_review" string="SD Committee Review"
+                        groups="a3.group_dean,a3.group_vpaa">
+                        <field name="sd_dean_review" nolabel="1"/>
+                    </group>
+                    <group name="sd_vpaa_review" string="SD Committee Review"
+                        groups="a3.group_dean,a3.group_vpaa">
+                        <field name="sd_vpaa_review" nolabel="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_process_tree_sd" model="ir.ui.view">
+            <field name="name">a3performance.sd.process.tree</field>
+            <field name="model">a3performance.process</field>
+            <field name="inherit_id" ref="a3performance.view_process_tree"/>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">                    
+                    <field name="sp_goal_progress" invisible="1"/>                    
+                    <field name="sd_goal_achievement" string="SD Goals" widget="badge" decoration-danger="sd_goal_progress &lt; 30" decoration-warning="sd_goal_progress &gt;= 30 and sd_goal_progress &lt; 60" decoration-info="sd_goal_progress &gt;= 60 and sd_goal_progress &lt; 100" decoration-success="sd_goal_progress &gt;= 100"/>                    
                 </xpath>
             </field>
         </record>

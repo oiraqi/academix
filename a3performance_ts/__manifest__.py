@@ -17,6 +17,7 @@ The Teaching and Supervision module under Performance Management.
         'views/student_evaluation_view.xml',
         'views/action_view.xml',
         'views/supervision_view.xml',
+        'views/process_view.xml',
         'views/performance_ts_menu.xml',
     ],
     'test': [],

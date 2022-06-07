@@ -13,3 +13,5 @@ access_a3performance_ts_student_evaluation_faculty,access.a3performance.ts.stude
 access_a3performance_ts_student_evaluation_dean,access.a3performance.ts.student.evaluation.dean,model_a3performance_ts_student_evaluation,a3.group_dean,1,0,0,0
 access_a3performance_ts_student_evaluation_vpaa,access.a3performance.ts.student.evaluation.vpaa,model_a3performance_ts_student_evaluation,a3.group_vpaa,1,0,0,0
 access_a3performance_ts_student_evaluation_committee_member,access.a3performance.ts.student.evaluation.committee_member,model_a3performance_ts_student_evaluation,a3performance.group_committee_member,1,0,0,0
+
+access_a3performance_ts_goal_faculty,access.a3performance.ts.goal.faculty,model_a3performance_ts_goal,a3.group_faculty,1,1,1,1

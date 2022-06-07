@@ -30,7 +30,6 @@ class FacultyOwned(models.AbstractModel):
     faculty_id = fields.Many2one(
         'a3.faculty', string='Faculty', default=lambda self: self.env['a3.faculty'].search(
             [('user_id', '=', self.env.user.id)]), required=True)
-    faculty_name = fields.Char(related='faculty_id.name')
     school_id = fields.Many2one('a3.school', string='School', default=lambda self: self.env['a3.faculty'].search(
             [('user_id', '=', self.env.user.id)]).school_id, required=True)
     locked = fields.Boolean('Locked', readonly=True, default=False)

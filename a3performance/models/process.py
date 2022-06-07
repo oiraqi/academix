@@ -25,15 +25,12 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 from datetime import date
 
-SEMESTERS = {'1': 'Fall', '2': 'Spring', '3': 'Summer'}
+SEMESTERS = {'1': 'FA', '2': 'SP'}
 
 class Process(models.Model):
-    _name = 'a3performance.eval.process'
+    _name = 'a3performance.process'
     _description = 'Evaluation Process'
     _inherit = ['a3.faculty.owned', 'mail.thread']
-    _inherits = {'a3performance.eval.ts.process': 'ts_process_id',
-                 'a3performance.eval.rp.process': 'rp_process_id',
-                 'a3performance.eval.sd.process': 'sd_process_id'}
     _sql_constraints = [('from_to_ukey', 'unique(from_year, to_year, from_semester, to_semester)', 'An evaluation process for the selected period already exists')]
 
     @api.model
@@ -42,7 +39,8 @@ class Process(models.Model):
         year = current_year - 5
         year_list = []
         while year <= current_year:
-            year_list.append((str(year), str(year)))
+            year_list.append((str(year - 2000) + '/' + str(year - 1999),
+                             str(year) + '/' + str(year - 1999)))
             year += 1
         return year_list
 
@@ -52,7 +50,8 @@ class Process(models.Model):
         year = current_year
         year_list = []
         while year <= current_year + 5:
-            year_list.append((str(year), str(year)))
+            year_list.append((str(year - 2000) + '/' + str(year - 1999),
+                             str(year) + '/' + str(year - 1999)))
             year += 1
         return year_list
 
@@ -66,7 +65,7 @@ class Process(models.Model):
             year += 1
         return year_list
 
-    name = fields.Char('Evaluation Process', compute='_set_name')
+    name = fields.Char('Evaluation Process', compute='_set_name', store=True)
     hiring_date = fields.Date(related='faculty_id.hiring_date')
     rank = fields.Selection([('D', 'Lecturer'), ('C', 'Assistant Professor'), (
         'B', 'Associate Professor'), ('A', 'Full Professor')], 'Rank', default=lambda self: self.env['a3.faculty'].search(
@@ -85,36 +84,17 @@ class Process(models.Model):
                                readonly=True, states={'faculty': [('readonly', False)]},
                                default=lambda self: str(date.today().year))
     from_semester = fields.Selection(
-        [('1', 'Spring'), ('3', 'Fall')], 'From', default='1', required=True,
+        [('1', 'Fall'), ('2', 'Spring')], 'From', default='2', required=True,
         readonly=True, states={'faculty': [('readonly', False)]})
     to_year = fields.Selection(_to_year_selection, 'To Year', required=True,
                              readonly=True, states={'faculty': [('readonly', False)]})
     to_semester = fields.Selection(
-        [('1', 'Spring'), ('3', 'Fall')], 'To', default='3', required=True,
+        [('1', 'Fall'), ('2', 'Spring')], 'To', default='1', required=True,
         readonly=True, states={'faculty': [('readonly', False)]})
     period = fields.Char('Period under Evaluation', compute='_set_name')
     
     previous_evaluation = fields.Boolean('Evaluated before?', default=True, readonly=True, states={'faculty': [('readonly', False)]})
-    previous_process_id = fields.Many2one('a3performance.eval.process', string='Previous Evaluation')
-
-    ts_goal_ids = fields.One2many('a3performance.eval.ts.goal', 'process_id', string='Goals')
-    ts_goal_progress = fields.Float('Goal Progress', compute='_ts_goal_progress')
-    ts_goal_achievement = fields.Char('Goal Achievement', compute='_ts_goal_progress')
-
-    sd_goal_ids = fields.One2many('a3performance.eval.sd.goal', 'process_id', string='Goals')
-    sd_goal_progress = fields.Float('Goal Progress', compute='_sd_goal_progress')
-    sd_goal_achievement = fields.Char('Goal Achievement', compute='_sd_goal_progress')
-
-    rp_goal_ids = fields.One2many('a3performance.eval.rp.goal', 'process_id', string='Goals')
-    rp_goal_progress = fields.Float('Goal Progress', compute='_rp_goal_progress')
-    rp_goal_achievement = fields.Char('Goal Achievement', compute='_rp_goal_progress')
-
-    ts_process_id = fields.Many2one(
-        'a3performance.eval.ts.process', string='TS Process', required=True)
-    rp_process_id = fields.Many2one(
-        'a3performance.eval.rp.process', string='RP Process', required=True)
-    sd_process_id = fields.Many2one(
-        'a3performance.eval.sd.process', string='SD Process', required=True)
+    previous_process_id = fields.Many2one('a3performance.process', string='Previous Evaluation')
 
     overall_self_evaluation = fields.Html('Overall Self-Evaluation',
                                   readonly=True, states={'faculty': [('readonly', False)]})
@@ -131,9 +111,19 @@ class Process(models.Model):
     def _set_name(self):
         for rec in self:
             if rec.from_year and rec.from_semester and rec.to_year and rec.to_semester:
-                rec.period = SEMESTERS[rec.from_semester] + ' ' + rec.from_year + ' - ' + SEMESTERS[rec.to_semester] + ' ' + rec.to_year
+                if rec.from_semester == '1':
+                    from_year = int(rec.from_year.split('/')[0]) - 2000
+                else:
+                    from_year = int(rec.from_year.split('/')[1]) - 2000
+                if rec.to_semester == '1':
+                    to_year = int(rec.to_year.split('/')[0]) - 2000
+                else:
+                    to_year = int(rec.to_year.split('/')[1]) - 2000
+                
+                rec.period = SEMESTERS[rec.from_semester] + str(from_year) + '-' + SEMESTERS[rec.to_semester] + str(to_year)
+                rec.name = rec.period + '-' + 'Eval'
                 if rec.faculty_id:
-                    rec.name = rec.faculty_id.name + ' / ' + rec.period
+                    rec.name += ' - ' + rec.faculty_id.name
     
     @api.onchange('from_year', 'type')
     def _update_to_year(self):
@@ -157,38 +147,93 @@ class Process(models.Model):
             elif rec.from_semester == '3':
                 rec.to_semester = '1'
 
-    def _ts_goal_progress(self):
-        for rec in self:
-            goal_count = len(rec.ts_goal_ids)
-            if goal_count == 0:
-                rec.ts_goal_progress = 0
-                rec.ts_goal_achievement = '0 / 0'
-                continue
-            
-            achieved_goal_count = sum(1 for goal in rec.ts_goal_ids if goal.achieved)
-            rec.ts_goal_progress = round(100 * achieved_goal_count / goal_count)
-            rec.ts_goal_achievement = str(achieved_goal_count) + ' / ' + str(goal_count)
+    # Committee section
+    committee_state_datetime = fields.Datetime()    
+    committee_recommendation = fields.Selection(
+        [('promote', 'Promote'), ('not_promote', "Don't promote")], 'Recommendation',
+        readonly=True, states={'committee': [('readonly', False)]},
+        groups='a3.group_committee_member,a3.group_dean,a3.group_vpaa')
+    committee_feedback = fields.Html("Feedback",
+                                     readonly=True, states={'committee': [('readonly', False)]},
+                                     groups='a3.group_committee_member,a3.group_dean,a3.group_vpaa')
 
-    def _sd_goal_progress(self):
-        for rec in self:
-            goal_count = len(rec.sd_goal_ids)
-            if goal_count == 0:
-                rec.sd_goal_progress = 0
-                rec.sd_goal_achievement = '0 / 0'
-                continue
-            
-            achieved_goal_count = sum(1 for goal in rec.sd_goal_ids if goal.achieved)
-            rec.sd_goal_progress = round(100 * achieved_goal_count / goal_count)
-            rec.sd_goal_achievement = str(achieved_goal_count) + ' / ' + str(goal_count)
+    # Dean section
+    dean_recommendation = fields.Selection(
+        [('promote', 'Promote'), ('not_promote', "Don't promote")], 'Recommendation',
+        readonly=True, states={'dean': [('readonly', False)]},
+        groups='a3.group_dean,a3.group_vpaa')
+    dean_new_rank = fields.Selection([('D', 'Lecturer'), ('C', 'Assistant Professor'), (
+        'B', 'Associate Professor'), ('A', 'Full Professor')], 'New Rank',
+        readonly=True, states={'dean': [('readonly', False)]},
+        attrs="{'invisible': [('dean_recommendation', '=', 'not_promote')], 'required': [('dean_recommendation', '=', 'promote')]}",
+        groups='a3.group_dean,a3.group_vpaa')
+    dean_new_srank_id = fields.Many2one('a3performance.srank', string='New Sub-Rank',
+                                        readonly=True, states={'dean': [('readonly', False)]},
+                                        attrs="{'invisible': [('dean_recommendation', '=', 'not_promote')], 'required': [('dean_recommendation', '=', 'promote')]}",
+                                        groups='a3.group_dean,a3.group_vpaa')
+    dean_feedback = fields.Html("Feedback",
+                                readonly=True, states={'dean': [('readonly', False)]},
+                                groups='a3.group_dean,a3.group_vpaa')
 
-    def _rp_goal_progress(self):
-        for rec in self:
-            goal_count = len(rec.rp_goal_ids)
-            if goal_count == 0:
-                rec.rp_goal_progress = 0
-                rec.rp_goal_achievement = '0 / 0'
-                continue
-            
-            achieved_goal_count = sum(1 for goal in rec.rp_goal_ids if goal.achieved)
-            rec.rp_goal_progress = round(100 * achieved_goal_count / goal_count)
-            rec.rp_goal_achievement = str(achieved_goal_count) + ' / ' + str(goal_count)
+    # VPAA section
+    vpaa_decision = fields.Selection(
+        [('promote', 'Promote'), ('not_promote', "Don't promote")], 'Decision',
+        readonly=True, states={'vpaa': [('readonly', False)]})
+    vpaa_new_rank = fields.Selection([('D', 'Lecturer'), ('C', 'Assistant Professor'), (
+        'B', 'Associate Professor'), ('A', 'Full Professor')], 'New Rank',
+        readonly=True, states={'vpaa': [('readonly', False)]},
+        attrs="{'invisible': [('vpaa_decision', '=', 'not_promote')], 'required': [('vpaa_decision', '=', 'promote')]}")
+    vpaa_new_srank_id = fields.Many2one('a3performance.srank', string='New Sub-Rank',
+                                        readonly=True, states={'vpaa': [('readonly', False)]},
+                                        attrs="{'invisible': [('vpaa_decision', '=', 'not_promote')], 'required': [('vpaa_decision', '=', 'promote')]}")
+    vpaa_feedback = fields.Html("Feedback",
+                                readonly=True, states={'vpaa': [('readonly', False)]})
+
+    
+    # Workflow section
+    def faculty_to_f2c(self):
+        self.write({'state': 'f2c'})
+
+    def f2c_to_faculty(self):
+        self.write({'state': 'faculty'})
+
+    def f2c_to_committee(self):
+        self.ensure_one()
+        self.write(
+            {'state': 'committee', 'committee_state_date': fields.Datetime.now()})
+
+    def committee_to_f2c(self):
+        self.ensure_one()
+        self.write({'state': 'f2c'})
+
+    def committee_to_c2d(self):
+        self.write({'state': 'c2d'})
+
+    def c2d_to_committee(self):
+        self.write({'state': 'committee'})
+
+    def c2d_to_dean(self):
+        # verify all required fields, e.g., committee feedback, have been filled
+        self.write({'state': 'dean'})
+
+    def dean_to_c2d(self):
+        self.write({'state': 'c2d'})
+
+    def dean_to_d2v(self):
+        # verify all required fields, e.g., dean_new_srank_id or dean_new_rank, have been filled
+        self.write({'state': 'd2v'})
+
+    def d2v_to_dean(self):
+        self.write({'state': 'dean'})
+
+    def d2v_to_vpaa(self):
+        self.write({'state': 'vpaa'})
+
+    def vpaa_to_d2v(self):
+        self.write({'state': 'd2v'})
+
+    def vpaa_to_done(self):
+        # verify all required fields, e.g., dean_new_srank_id or dean_new_rank, have been filled
+        self.ensure_one()
+        self.write({'state': 'done'})
+    

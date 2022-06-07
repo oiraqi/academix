@@ -19,10 +19,7 @@
                                 <field name="achieved" invisible="1"/>
                             </tree>
                         </field>
-                    </group>
-                    <group name="ts_narrative" string="TS Narrative">
-                        <field name="ts_narrative" nolabel="1"/>
-                    </group>
+                    </group>                    
                     <group string="TS Records">
                         <notebook name="ts">
                             <page string="Student Evaluations">
@@ -35,6 +32,33 @@
                             </page>
                         </notebook>
                     </group>
+                    <group name="ts_narrative" string="TS Narrative">
+                        <field name="ts_narrative" nolabel="1"/>
+                    </group>
+                    <group name="ts_committee_review" string="TS Committee Review"
+                        groups="a3.group_committee_member,a3.group_dean,a3.group_vpaa">
+                        <field name="ts_committee_review" nolabel="1"/>
+                    </group>
+                    <group name="ts_dean_review" string="TS Committee Review"
+                        groups="a3.group_dean,a3.group_vpaa">
+                        <field name="ts_dean_review" nolabel="1"/>
+                    </group>
+                    <group name="ts_vpaa_review" string="TS Committee Review"
+                        groups="a3.group_dean,a3.group_vpaa">
+                        <field name="ts_vpaa_review" nolabel="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_process_tree_ts" model="ir.ui.view">
+            <field name="name">a3performance.ts.process.tree</field>
+            <field name="model">a3performance.process</field>
+            <field name="inherit_id" ref="a3performance.view_process_tree"/>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">                    
+                    <field name="ts_goal_progress" invisible="1"/>                    
+                    <field name="ts_goal_achievement" string="TS Goals" widget="badge" decoration-danger="ts_goal_progress &lt; 30" decoration-warning="ts_goal_progress &gt;= 30 and ts_goal_progress &lt; 60" decoration-info="ts_goal_progress &gt;= 60 and ts_goal_progress &lt; 100" decoration-success="ts_goal_progress &gt;= 100"/>
                 </xpath>
             </field>
         </record>

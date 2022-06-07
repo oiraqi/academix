@@ -2,7 +2,7 @@
 ###############################################################################
 #
 #    Al Akhawayn University in Ifrane -- AUI
-#    Copyright (C) 2022-TODAY AUI(<http://www.aui.ma>).
+#    Copyright (C) 2022-TODAY AUI(<http://www.a3ma>).
 #
 #    Author: Omar Iraqi Houssaini | https://github.com/oiraqi
 #
@@ -21,12 +21,15 @@
 #
 ###############################################################################
 
-from odoo import models, fields
+from odoo import models, fields, api
 
-class Book(models.Model):
-    _name = 'a3performance.rp.book'
-    _inherit = 'a3performance.rp.publication'
 
-    type = fields.Selection([('book', 'Book'), ('chapters', 'Chapter(s)')], 'Type', required=True)
-    scope = fields.Selection([('nat', 'National'), ('int', 'International')], 'Scope', required=True)
-    pages = fields.Char('Pages')
+class SDGoal(models.Model):
+    _name='a3performance.sd.goal'
+    _inherit = 'a3performance.goal'
+    _description = 'An SD goal to set and achieve in a given evaluation process'
+    _sql_constraints = [('process_id_kpi_ukey', 'unique(process_id,kpi)', 'Goal already set for this evaluation process')]
+
+    kpi = fields.Selection([('ca_number', 'Number of Significant Committee Activities'),
+                            ('pd_number', 'Number of Professional Development Activities'),
+                            ('sr_number', 'Number of Services')], 'KPI', required=True)
