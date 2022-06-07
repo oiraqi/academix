@@ -10,11 +10,11 @@
                         <button name="faculty_to_f2c" states="faculty" string="Submit To Committee" type="object" class="oe_highlight" groups="a3.group_faculty"/>
                         <button name="f2c_to_faculty" states="f2c" string="Bring Back" type="object" class="oe_highlight" groups="a3.group_faculty"/>
 
-                        <button name="f2c_to_committee" states="f2c" string="Accept" type="object" class="oe_highlight" groups="a3.group_committee_chair"/>
-                        <button name="committee_to_f2c" states="committee" string="Return to Faculty" type="object" class="oe_highlight" groups="a3.group_committee_chair"/>
+                        <button name="f2c_to_committee" states="f2c" string="Accept" type="object" class="oe_highlight" groups="a3performance.group_committee_chair"/>
+                        <button name="committee_to_f2c" states="committee" string="Return to Faculty" type="object" class="oe_highlight" groups="a3performance.group_committee_chair"/>
 
-                        <button name="committee_to_c2d" states="committee" string="Submit To Dean" type="object" class="oe_highlight" groups="a3.group_committee_chair"/>
-                        <button name="c2d_to_committee" states="c2d" string="Bring Back To Committee" type="object" class="oe_highlight" groups="a3.group_committee_chair"/>
+                        <button name="committee_to_c2d" states="committee" string="Submit To Dean" type="object" class="oe_highlight" groups="a3performance.group_committee_chair"/>
+                        <button name="c2d_to_committee" states="c2d" string="Bring Back To Committee" type="object" class="oe_highlight" groups="a3performance.group_committee_chair"/>
 
                         <button name="c2d_to_dean" states="c2d" string="Receive from Committee" type="object" class="oe_highlight" groups="a3.group_dean"/>
                         <button name="dean_to_c2d" states="dean" string="Return To Committee" type="object" class="oe_highlight" groups="a3.group_dean"/>

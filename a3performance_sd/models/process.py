@@ -25,7 +25,6 @@ from odoo import models, fields
 
 class Process(models.Model):
     _inherit = 'a3performance.process'
-    _description = 'Process Projection on SD'
 
     sd_goal_ids = fields.One2many('a3performance.sd.goal', 'process_id', string='Goals')
     sd_goal_progress = fields.Float('Goal Progress', compute='_sd_goal_progress')
@@ -59,7 +58,7 @@ class Process(models.Model):
 
     sd_committee_review = fields.Html('Committee Review',
         readonly=True, states={'committee': [('readonly', False)]},
-        groups='a3.group_committee_member,a3.group_dean,a3.group_vpaa')
+        groups='a3performance.group_committee_member,a3.group_dean,a3.group_vpaa')
     sd_dean_review = fields.Html('Dean Review',
         readonly=True, states={'dean': [('readonly', False)]},
         groups='a3.group_dean,a3.group_vpaa')

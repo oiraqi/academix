@@ -38,7 +38,7 @@
                         <field name="rp_narrative" nolabel="1"/>
                     </group>
                     <group name="rp_committee_review" string="RP Committee Review"
-                        groups="a3.group_committee_member,a3.group_dean,a3.group_vpaa">
+                        groups="a3performance.group_committee_member,a3.group_dean,a3.group_vpaa">
                         <field name="rp_committee_review" nolabel="1"/>
                     </group>
                     <group name="rp_dean_review" string="RP Committee Review"

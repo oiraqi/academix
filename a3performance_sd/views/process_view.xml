@@ -36,7 +36,7 @@
                         <field name="sd_narrative" nolabel="1"/>
                     </group>
                     <group name="sd_committee_review" string="SD Committee Review"
-                        groups="a3.group_committee_member,a3.group_dean,a3.group_vpaa">
+                        groups="a3performance.group_committee_member,a3.group_dean,a3.group_vpaa">
                         <field name="sd_committee_review" nolabel="1"/>
                     </group>
                     <group name="sd_dean_review" string="SD Committee Review"

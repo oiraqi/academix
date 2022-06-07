@@ -36,7 +36,7 @@
                         <field name="ts_narrative" nolabel="1"/>
                     </group>
                     <group name="ts_committee_review" string="TS Committee Review"
-                        groups="a3.group_committee_member,a3.group_dean,a3.group_vpaa">
+                        groups="a3performance.group_committee_member,a3.group_dean,a3.group_vpaa">
                         <field name="ts_committee_review" nolabel="1"/>
                     </group>
                     <group name="ts_dean_review" string="TS Committee Review"

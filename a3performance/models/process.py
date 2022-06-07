@@ -152,10 +152,10 @@ class Process(models.Model):
     committee_recommendation = fields.Selection(
         [('promote', 'Promote'), ('not_promote', "Don't promote")], 'Recommendation',
         readonly=True, states={'committee': [('readonly', False)]},
-        groups='a3.group_committee_member,a3.group_dean,a3.group_vpaa')
+        groups='a3performance.group_committee_member,a3.group_dean,a3.group_vpaa')
     committee_feedback = fields.Html("Feedback",
                                      readonly=True, states={'committee': [('readonly', False)]},
-                                     groups='a3.group_committee_member,a3.group_dean,a3.group_vpaa')
+                                     groups='a3performance.group_committee_member,a3.group_dean,a3.group_vpaa')
 
     # Dean section
     dean_recommendation = fields.Selection(

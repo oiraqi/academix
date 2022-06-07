@@ -24,9 +24,8 @@
 from odoo import models, fields
 
 
-class RPProcess(models.Model):
+class Process(models.Model):
     _inherit = 'a3performance.process'
-    _description = 'Process Projection on RP'
 
     rp_goal_ids = fields.One2many('a3performance.rp.goal', 'process_id', string='Goals')
     rp_goal_progress = fields.Float('Goal Progress', compute='_rp_goal_progress')
@@ -64,7 +63,7 @@ class RPProcess(models.Model):
 
     rp_committee_review = fields.Html('Committee Review',
         readonly=True, states={'committee': [('readonly', False)]},
-        groups='a3.group_committee_member,a3.group_dean,a3.group_vpaa')
+        groups='a3performance.group_committee_member,a3.group_dean,a3.group_vpaa')
     rp_dean_review = fields.Html('Dean Review',
         readonly=True, states={'dean': [('readonly', False)]},
         groups='a3.group_dean,a3.group_vpaa')
