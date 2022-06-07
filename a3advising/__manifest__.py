@@ -6,7 +6,7 @@
     'author': 'Omar IRAQI',
     'maintainer': 'Omar IRAQI',
     'website': '',
-    'license': '',
+    'license': 'LGPL-3',
     'contributors': [
         '',
     ],
