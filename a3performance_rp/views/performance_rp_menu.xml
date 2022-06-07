@@ -4,6 +4,6 @@
     <menuitem id="menu_performance_rp" name="Research &#38; Publication" parent="a3performance.menu_performance_root" sequence="40" groups="a3.group_faculty"/>
 
     <!-- Secondary menu items -->
-    <menuitem id="menu_performance_rp_activity" name="Activities" parent="menu_performance_rp" sequence="10" action="action_activity"/>
+    <menuitem id="menu_performance_rp_activity" name="Activities" parent="menu_performance_rp" sequence="10" action="a3research.action_activity"/>
 
 </odoo>
