@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="view_rp_process_form" model="ir.ui.view">
-            <field name="name">a3performance.eval.rp.process.form</field>
-            <field name="model">a3performance.eval.process</field>
+            <field name="name">a3performance.rp.process.form</field>
+            <field name="model">a3performance.process</field>
             <field name="inherit_id" ref="a3performance.view_process_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='rp']" position="inside">

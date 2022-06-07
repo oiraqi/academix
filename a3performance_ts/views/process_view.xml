@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <record id="view_ts_process_form" model="ir.ui.view">
-            <field name="name">a3performance.eval.ts.process.form</field>
-            <field name="model">a3performance.eval.process</field>
-            <field name="inherit_id" ref="view_process_form"/>
+            <field name="name">a3performance.ts.process.form</field>
+            <field name="model">a3performance.process</field>
+            <field name="inherit_id" ref="a3performance.view_process_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='ts']" position="inside">
                     <group col="4" string="TS Goals &#38; KPIs" groups="a3.group_faculty">
