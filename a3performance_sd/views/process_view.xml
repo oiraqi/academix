@@ -57,7 +57,7 @@
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='type']" position="after">                    
-                    <field name="sp_goal_progress" invisible="1"/>                    
+                    <field name="sd_goal_progress" invisible="1"/>                    
                     <field name="sd_goal_achievement" string="SD Goals" widget="badge" decoration-danger="sd_goal_progress &lt; 30" decoration-warning="sd_goal_progress &gt;= 30 and sd_goal_progress &lt; 60" decoration-info="sd_goal_progress &gt;= 60 and sd_goal_progress &lt; 100" decoration-success="sd_goal_progress &gt;= 100"/>                    
                 </xpath>
             </field>
