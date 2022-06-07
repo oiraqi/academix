@@ -14,7 +14,6 @@
         'a3performance',
     ],
     'data': [
-        '',
     ],
     'installable': True,
     'auto_install': False,
