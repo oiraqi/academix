@@ -165,14 +165,15 @@ class DegreePlan(models.Model):
         else:
             year = str(iyear - 2001) + '/' + str(iyear - 2000)
         for course in courses:
-            self.env['a3advising.planned.course'].create({
+            if not self.env['a3advising.planned.course'].search([('course_id', '=', course.id), ('student_id', '=', self.student_id.id)]):
+                self.env['a3advising.planned.course'].create({
                 'course_id': course.id,
                 'student_id': self.student_id.id,
                 'school_id': self.student_id.school_id.id,
                 'semester': semester,
                 'year': year,                
-            })
-            planned_course_ids.append(course.id)
+                })
+                planned_course_ids.append(course.id)
 
     def _prerequisites_fulfilled(self, course, planned_course_ids):
         for prerequisite in course.prerequisite_ids:
