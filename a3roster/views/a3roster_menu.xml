@@ -1,0 +1,6 @@
+<odoo>
+	<data>
+		<menuitem id="calendar_menu" name="Calendar" action="action_calendar" parent="a3.a3_root_menu" sequence="55"/>
+		<menuitem id="a3roster_section_menu" name="Sections" parent="a3.a3_root_menu" action="action_section" sequence="60"/>
+	</data>
+</odoo>

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+        <record id="view_calendar_event_roster_form" model="ir.ui.view">
+            <field name="name">calendar.event.roster.form</field>
+            <field name="model">calendar.event</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Events">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button string="Document" icon="fa-bars" type="object" name="action_open_calendar_event" attrs="{'invisible': ['|', ('res_model', '=', False), ('res_id', '=', False)]}"/>
+                        </div>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <field name="res_model" invisible="1" />
+                        <field name="res_id" invisible="1" />
+                        <field name="attendee_status" invisible="1"/>
+                        <field name="active" invisible="1"/>
+                        <div class="oe_title mb-3">
+                            <div>
+                                <label for="name" string="Event"/>
+                            </div>
+                            <h1>
+                                <field name="name" placeholder="e.g. President Speach"/>
+                            </h1>
+                        </div>
+                        <group string="Event Details" col="4">
+                            <field name="allday" force_save="1" colspan="4"/>
+
+                            <field name="start_date" string="Starting at" attrs="{'required': [('allday','=',True)], 'invisible': [('allday','=',False)]}" force_save="1"/>
+                            <field name="stop_date" string="Ending at" attrs="{'required': [('allday','=',True)],'invisible': [('allday','=',False)]}" force_save="1"/>
+
+                            <field name="start" string="Starting at" attrs="{'required': [('allday','=',False)], 'invisible': [('allday','=',True)]}"/>
+                            <field name="stop" string="Ending At" attrs="{'invisible': [('allday','=',True)]}"/>
+                            <label for="duration" attrs="{'invisible': [('allday','=',True)]}"/>
+                            <div attrs="{'invisible': [('allday','=',True)]}">
+                                <field name="duration" widget="float_time" string="Duration" class="oe_inline" attrs="{'readonly': [('id', '!=', False), ('recurrency','=',True)]}"/>
+                                <span> hours</span>
+                            </div>
+                            <field name="event_tz" attrs="{'invisible': [('recurrency', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids" />
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_calendar" model="ir.actions.act_window">
+            <field name="name">Calendar</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">calendar.event</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create calendar events here
+                </p><p>
+                    Created events will be organized by as a timeline and as a calendar view
+                </p>
+            </field>
+        </record>
+
+        <record id="action_calendar_roster_form_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="2"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_calendar_event_roster_form"/>
+			<field name="act_window_id" ref="action_calendar"/>
+		</record>
+
+    </data>
+
+</odoo>

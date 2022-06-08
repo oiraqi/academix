@@ -15,7 +15,7 @@
         </record>
 
         <record id="calendar_event_type_class_begin" model="calendar.event.type">
-            <field name="name">Classes Begin. First day of late registration First day of Add/Drop (schedule revision)</field>
+            <field name="name">Classes Begin - First day of late registration - First day of Add/Drop (schedule revision)</field>
         </record>
 
         <record id="calendar_event_type_pr_speach" model="calendar.event.type">
