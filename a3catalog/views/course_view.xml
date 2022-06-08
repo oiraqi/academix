@@ -41,7 +41,7 @@
                                 </field>
                             </group>
                         </page>
-                        <page string="Requisite for" name="requisites">
+                        <page string="Requisite for" name="requisites_for">
                             <group name="requisites" col="4">
                                 <field name="prerequisite_for_ids" nolabel="1" readonly="1">
                                     <tree>

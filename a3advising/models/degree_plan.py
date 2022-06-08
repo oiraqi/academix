@@ -118,11 +118,11 @@ class DegreePlan(models.Model):
             # inverted corequisite anticipation
             unsatisfied_prerequisite_of_corequisite = False
             for corequisite in course.corequisite_ids:                
-                if corequisite.id in temp_planned_co_course_ids or corequisite.id in planned_course_ids:
+                if corequisite.corequisite_id.id in temp_planned_co_course_ids or corequisite.corequisite_id.id in planned_course_ids:
                     # Corequisite already added. Skip.
                     continue
                 
-                if not self._prerequisites_fulfilled(corequisite, planned_course_ids):
+                if not self._prerequisites_fulfilled(corequisite.corequisite_id, planned_course_ids):
                     unsatisfied_prerequisite_of_corequisite = True
                     break
 
@@ -133,7 +133,7 @@ class DegreePlan(models.Model):
                 if len(temp_planned_course_ids) + len(temp_planned_co_course_ids) <= pace - 2:
                     # Plan them together
                     temp_planned_co_course_ids.append(course)
-                    temp_planned_co_course_ids.append(corequisite)
+                    temp_planned_co_course_ids.append(corequisite.corequisite_id)
                 elif len(temp_planned_course_ids) + len(temp_planned_co_course_ids) == pace - 1:
                     # Room for one course only
                     temp_planned_course_ids.append(course)
