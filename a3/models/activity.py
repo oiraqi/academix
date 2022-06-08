@@ -85,7 +85,7 @@ class Activity(models.AbstractModel):
                 rec.byear = year + 1
                 rec.bsemester = '1'
             else:
-                rec.semester_year = str(year + 1) + ' - Summer'
+                rec.term = str(year + 1) + ' - Summer'
                 rec.suffix = '-SU' + str(year - 1999)
                 rec.prefix = 'SU' + str(year - 1999) + '-'
                 rec.byear = year + 1
