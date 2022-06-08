@@ -11,7 +11,7 @@
         '',
     ],
     'depends': [
-        'a3catalog', 'calendar'
+        'a3catalog'
     ],
     'data': [
         'security/ir.model.access.csv',

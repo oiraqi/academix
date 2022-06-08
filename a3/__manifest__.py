@@ -10,7 +10,7 @@
 The base of all A3 apps
 ===================================================
 """,
-    'depends': ['web', 'mail', 'attachment_indexation'],
+    'depends': ['web', 'mail', 'attachment_indexation', 'calendar'],
     'data': [
         'security/a3_security.xml',
         'security/ir.model.access.csv',
