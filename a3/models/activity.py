@@ -32,6 +32,68 @@ class Activity(models.AbstractModel):
     _order = 'year desc,semester'
 
     @api.model
+    def create(self, vals):
+        if 'year' in vals and 'semester' in vals:
+            year = int(vals['year'].split('/')[0]) + 2000
+            if vals['semester'] == '1':
+                semester = '3'
+            elif vals['semester'] == '2':
+                semester = '1'
+                year += 1
+            else:
+                semester = '2'
+                year += 1
+            vals['term_id'] = self.env['a3.term'].sudo().get_or_create(year, semester).id
+        return super(Activity, self).create(vals)
+        
+    def write(self, vals):
+        if 'term_id' in vals:
+            records = self.env['a3.term'].browse([vals['term_id']])
+            year = records[0].year
+            semester = records[0].semester - 2000
+            if records:                 
+                if semester == '1':
+                    vals['year'] = str(year - 1) + '/' + str(year)
+                    vals['semester'] = '2'
+                elif semester == '2':
+                    vals['year'] = str(year - 1) + '/' + str(year)
+                    vals['semester'] = '3'
+                else:
+                    vals['year'] = str(year) + '/' + str(year + 1)
+                    vals['semester'] = '1'
+            return super(Activity, self).write(vals)
+        
+        if 'semester' in vals and 'year' in vals:
+            year = int(vals['year'].split('/')[0]) + 2000
+            if vals['semester'] == '1':
+                semester = '3'
+            elif vals['semester'] == '2':
+                semester = '1'
+                year += 1
+            else:
+                semester = '2'
+                year += 1
+            vals['term_id'] = self.env['a3.term'].sudo().get_or_create(year, semester).id
+            return super(Activity, self).write(vals)
+        
+        result = super(Activity, self).write(vals)
+        for rec in self:
+            year = int(rec.year.split('/')[0]) + 2000
+            if rec.semester == '1':
+                semester = '3'
+            elif rec.semester == '2':
+                semester = '1'
+                year += 1
+            else:
+                semester = '2'
+                year += 1
+            rec.term_id = self.env['a3.term'].sudo().get_or_create(year, semester)
+        
+        return result
+
+
+
+    @api.model
     def _year_selection(self):
         current_year = date.today().year
         year = current_year - 5
@@ -45,7 +107,7 @@ class Activity(models.AbstractModel):
     year = fields.Selection(_year_selection, 'Year', required=True, default=lambda self: str(date.today().year - 2001) + '/' + str(date.today().year - 2000) if date.today().month < 8 else str(date.today().year - 2000) + '/' + str(date.today().year - 1999))
     semester = fields.Selection(
         [('1', 'Fall'), ('2', 'Spring'), ('3', 'Summer')], 'Semester', default=lambda self: '1' if date.today().month >= 8 and date.today().month <= 12 else '2' if date.today().month >= 1 and date.today().month <= 5 else '3', required=True)
-    term_id = fields.Many2one('a3.term', string='Term', compute='_onchange_semester_or_year', store=True)
+    term_id = fields.Many2one('a3.term', string='Term')
     suffix = fields.Char(compute='_onchange_semester_or_year')
     prefix = fields.Char(compute='_onchange_semester_or_year')
 
