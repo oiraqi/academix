@@ -22,6 +22,7 @@
 ###############################################################################
 
 from odoo import fields, models
+from odoo.exceptions import UserError
 
 
 class DegreePlan(models.Model):
@@ -115,38 +116,37 @@ class DegreePlan(models.Model):
             
             # Go back to corequisites, missed earlier in
             # inverted corequisite anticipation
-            if course.corequisite_ids:
-                unsatisfied_prerequisite_of_corequisite = False
-                for corequisite in course.corequisite_ids:                
-                    if corequisite.id in temp_planned_co_course_ids or corequisite.id in planned_course_ids:
-                        # Corequisite already added. Skip.
-                        continue
+            unsatisfied_prerequisite_of_corequisite = False
+            for corequisite in course.corequisite_ids:                
+                if corequisite.id in temp_planned_co_course_ids or corequisite.id in planned_course_ids:
+                    # Corequisite already added. Skip.
+                    continue
                 
-                    if not self._prerequisites_fulfilled(corequisite, planned_course_ids):
-                        unsatisfied_prerequisite_of_corequisite = True
-                        break
+                if not self._prerequisites_fulfilled(corequisite, planned_course_ids):
+                    unsatisfied_prerequisite_of_corequisite = True
+                    break
 
-                    while len(temp_planned_course_ids) > 0 and len(temp_planned_course_ids) + len(temp_planned_co_course_ids) > pace - 2:
-                        # Free room for co-courses, for optimization
-                        temp_planned_course_ids.pop()
+                while len(temp_planned_course_ids) > 0 and len(temp_planned_course_ids) + len(temp_planned_co_course_ids) > pace - 2:
+                    # Free room for co-courses, for optimization
+                    temp_planned_course_ids.pop()
                 
-                    if len(temp_planned_course_ids) + len(temp_planned_co_course_ids) <= pace - 2:
-                        # Plan them together
-                        temp_planned_co_course_ids.append(course)
-                        temp_planned_co_course_ids.append(corequisite)
-                    elif len(temp_planned_course_ids) + len(temp_planned_co_course_ids) == pace - 1:
-                        # Room for one course only
-                        temp_planned_course_ids.append(course)
-                    if len(temp_planned_course_ids) + len(temp_planned_co_course_ids) == pace: # Don't mislead for else
-                        # Pace reached, we're done for this semester
-                        # Plan retained courses and leave
-                        self._plan_courses(temp_planned_co_course_ids, semester, iyear, planned_course_ids)
-                        self._plan_courses(temp_planned_course_ids, semester, iyear, planned_course_ids)
-                        return True
+                if len(temp_planned_course_ids) + len(temp_planned_co_course_ids) <= pace - 2:
+                    # Plan them together
+                    temp_planned_co_course_ids.append(course)
+                    temp_planned_co_course_ids.append(corequisite)
+                elif len(temp_planned_course_ids) + len(temp_planned_co_course_ids) == pace - 1:
+                    # Room for one course only
+                    temp_planned_course_ids.append(course)
+                if len(temp_planned_course_ids) + len(temp_planned_co_course_ids) == pace: # Don't mislead for else
+                    # Pace reached, we're done for this semester
+                    # Plan retained courses and leave
+                    self._plan_courses(temp_planned_co_course_ids, semester, iyear, planned_course_ids)
+                    self._plan_courses(temp_planned_course_ids, semester, iyear, planned_course_ids)
+                    return True
                 
-                if unsatisfied_prerequisite_of_corequisite:
-                    # Skip this course as at least a prerequisite of its 
-                    continue            
+            if unsatisfied_prerequisite_of_corequisite:
+                # Skip this course as at least a prerequisite of its 
+                continue            
             temp_planned_course_ids.append(course)
             if len(temp_planned_course_ids) + len(temp_planned_co_course_ids) == pace:                
                 # Pace reached, we're done for this semester

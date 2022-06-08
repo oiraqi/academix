@@ -32,7 +32,7 @@ class Course(models.Model):
     prerequisite_ids = fields.One2many(
         'a3catalog.prerequisite', 'course_id', string='Prerequisites')
     corequisite_ids = fields.One2many(
-        'a3catalog.course', compute='_corequisite_ids', string='Corequisites')
+        'a3.course', compute='_corequisite_ids', string='Corequisites')
     prerequisite_for_ids = fields.One2many(
         'a3.course', compute='_prerequisite_for_ids', string='Prerequisite For')
     corequisite_for_ids = fields.One2many(
