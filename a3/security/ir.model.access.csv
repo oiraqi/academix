@@ -27,3 +27,7 @@ access_a3_staff_vpaa,access.a3.staff.vpaa,model_a3_staff,group_vpaa,1,0,0,0
 
 access_a3_school_setup,access.a3.school.setup,model_a3_school,a3.group_setup,1,1,1,0
 access_a3_school_user,access.a3.school.user,model_a3_school,base.group_user,1,0,0,0
+
+access_a3_term_user,access.a3.term.user,model_a3_term,base.group_user,1,0,0,0
+access_a3_term_setup,access.a3.term.setup,model_a3_term,a3.group_setup,1,1,1,0
+
