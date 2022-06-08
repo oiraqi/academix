@@ -22,6 +22,7 @@
 ###############################################################################
 
 from odoo import fields, models
+from odoo.exceptions import UserError
 
 
 class DegreePlan(models.Model):
@@ -117,6 +118,8 @@ class DegreePlan(models.Model):
             # inverted corequisite anticipation
             unsatisfied_prerequisite_of_corequisite = False
             for corequisite in course.corequisite_ids:
+                if corequisite is None:
+                    raise UserError(course.corequisite_ids)
                 if corequisite.id in temp_planned_co_course_ids or corequisite.id in planned_course_ids:
                     # Corequisite already added. Skip.
                     continue
