@@ -81,7 +81,7 @@ class Process(models.Model):
                                readonly=True, states={'faculty': [('readonly', False)]},
                                default=lambda self: str(date.today().year))
     from_semester = fields.Selection(
-        [('1', 'Spring'), ('3', 'Fall')], 'From', default='2', required=True,
+        [('1', 'Spring'), ('3', 'Fall')], 'From', default='1', required=True,
         readonly=True, states={'faculty': [('readonly', False)]})
     to_year = fields.Selection(_to_year_selection, 'To Year', required=True,
                              readonly=True, states={'faculty': [('readonly', False)]})
