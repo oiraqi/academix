@@ -37,11 +37,11 @@ class PlannedCourse(models.Model):
     grade = fields.Selection(string='Grade', selection=[('p', 'P'), ('f', 'F')], default='p')
 
 
-    @api.constrains('semester_year')
+    @api.constrains('term_id')
     def _check_max_courses(self):
         for rec in self:
             if self.env['a3advising.planned.course'].search_count(
-                [('semester_year', '=', rec.semester_year)]) > 6:
+                [('term_id', '=', rec.term_id.id)]) > 6:
                 raise ValidationError('Max allowed number of courses exceeded!')
 
     

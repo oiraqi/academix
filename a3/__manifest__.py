@@ -20,6 +20,7 @@ The base of all A3 apps
         'views/faculty_view.xml',
         'views/school_view.xml',
         'views/staff_view.xml',
+        'views/event_view.xml',
         'views/a3_menu.xml',
         'data/schools.xml',
         'data/disciplines.xml',

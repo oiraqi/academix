@@ -14,3 +14,4 @@ from . import res_users
 from . import school
 from . import school_activity
 from . import staff
+from . import event

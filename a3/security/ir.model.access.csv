@@ -31,3 +31,6 @@ access_a3_school_user,access.a3.school.user,model_a3_school,base.group_user,1,0,
 access_a3_term_user,access.a3.term.user,model_a3_term,base.group_user,1,0,0,0
 access_a3_term_setup,access.a3.term.setup,model_a3_term,a3.group_setup,1,1,1,0
 
+access_a3_event_user,access.a3.event.user,model_a3_event,base.group_user,1,0,0,0
+access_a3_event_setup,access.a3.event.setup,model_a3_event,a3.group_setup,1,1,1,1
+
