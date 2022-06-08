@@ -39,19 +39,16 @@ class Process(models.Model):
         year = current_year - 5
         year_list = []
         while year <= current_year:
-            year_list.append((str(year - 2000) + '/' + str(year - 1999),
-                             str(year) + '/' + str(year - 1999)))
+            year_list.append((str(year), str(year)))
             year += 1
         return year_list
-
     @api.model
     def _to_year_selection(self):
         current_year = date.today().year
         year = current_year
         year_list = []
         while year <= current_year + 5:
-            year_list.append((str(year - 2000) + '/' + str(year - 1999),
-                             str(year) + '/' + str(year - 1999)))
+            year_list.append((str(year), str(year)))
             year += 1
         return year_list
 
@@ -111,16 +108,7 @@ class Process(models.Model):
     def _set_name(self):
         for rec in self:
             if rec.from_year and rec.from_semester and rec.to_year and rec.to_semester:
-                if rec.from_semester == '1':
-                    from_year = int(rec.from_year.split('/')[0]) - 2000
-                else:
-                    from_year = int(rec.from_year.split('/')[1]) - 2000
-                if rec.to_semester == '1':
-                    to_year = int(rec.to_year.split('/')[0]) - 2000
-                else:
-                    to_year = int(rec.to_year.split('/')[1]) - 2000
-                
-                rec.period = SEMESTERS[rec.from_semester] + str(from_year) + '-' + SEMESTERS[rec.to_semester] + str(to_year)
+                rec.period = SEMESTERS[rec.from_semester] + ' ' + rec.from_year + ' - ' + SEMESTERS[rec.to_semester] + ' ' + rec.to_year
                 rec.name = rec.period + '-' + 'Eval'
                 if rec.faculty_id:
                     rec.name += ' - ' + rec.faculty_id.name
