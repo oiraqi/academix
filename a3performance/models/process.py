@@ -108,7 +108,7 @@ class Process(models.Model):
     def _set_name(self):
         for rec in self:
             if rec.from_year and rec.from_semester and rec.to_year and rec.to_semester:
-                rec.period = SEMESTERS[rec.from_semester] + str(int(rec.from_year) - 2000) + ' - ' + SEMESTERS[rec.to_semester] + str(int(rec.to_year) - 2000)
+                rec.period = SEMESTERS[rec.from_semester] + str(int(rec.from_year) - 2000) + '-' + SEMESTERS[rec.to_semester] + str(int(rec.to_year) - 2000)
                 rec.name = rec.period + '-' + 'Eval'
                 if rec.faculty_id:
                     rec.name += ' - ' + rec.faculty_id.name
