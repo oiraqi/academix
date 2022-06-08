@@ -124,7 +124,8 @@ class Process(models.Model):
                 raise UserError(
                     'From Year/Semester should be before To Year/Semester')
 
-    @api.onchange('from_year', 'to_year', 'from_semester', 'to_semester')     
+    @api.depends('from_year', 'to_year', 'from_semester', 'to_semester')
+    @api.onchange('from_year', 'to_year', 'from_semester', 'to_semester')
     def _set_name(self):
         for rec in self:
             if rec.from_year and rec.from_semester and rec.to_year and rec.to_semester:
@@ -132,6 +133,9 @@ class Process(models.Model):
                 rec.name = rec.period + '-' + 'Eval'
                 if rec.faculty_id:
                     rec.name += ' - ' + rec.faculty_id.name
+            else:
+                rec.period = ''
+                rec.name = ''
     
     @api.onchange('from_year', 'type')
     def _update_to_year(self):
