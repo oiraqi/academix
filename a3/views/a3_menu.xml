@@ -8,6 +8,8 @@
 
     <menuitem id="a3_course_menu" name="Courses" parent="a3_root_menu" sequence="50" action="action_course"/>
 
+    <menuitem id="calendar_menu" name="Calendar" action="action_calendar" parent="a3_root_menu" sequence="55"/>
+
     <menuitem id="a3_faculty_my_menu" name="Profile" parent="a3_root_menu" sequence="100" action="action_faculty_my" groups="a3.group_faculty"/>
 
     <menuitem id="a3_student_menu" name="Students" parent="a3_root_menu" sequence="200" action="action_student" groups="a3.group_setup,a3.group_coordinator,a3.group_vpaa"/>
