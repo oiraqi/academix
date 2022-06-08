@@ -39,11 +39,11 @@
                         groups="a3performance.group_committee_member,a3.group_dean,a3.group_vpaa">
                         <field name="sd_committee_review" nolabel="1"/>
                     </group>
-                    <group name="sd_dean_review" string="SD Committee Review"
+                    <group name="sd_dean_review" string="SD Dean Review"
                         groups="a3.group_dean,a3.group_vpaa">
                         <field name="sd_dean_review" nolabel="1"/>
                     </group>
-                    <group name="sd_vpaa_review" string="SD Committee Review"
+                    <group name="sd_vpaa_review" string="SD VPAA Review"
                         groups="a3.group_dean,a3.group_vpaa">
                         <field name="sd_vpaa_review" nolabel="1"/>
                     </group>

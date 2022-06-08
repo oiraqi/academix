@@ -31,6 +31,7 @@ class Process(models.Model):
     _name = 'a3performance.process'
     _description = 'Evaluation Process'
     _inherit = ['a3.faculty.owned', 'mail.thread']
+    _order = 'from_year,from_semester'
     _sql_constraints = [('from_to_ukey', 'unique(from_year, to_year, from_semester, to_semester)', 'An evaluation process for the selected period already exists')]
 
     @api.model
@@ -89,9 +90,15 @@ class Process(models.Model):
         [('1', 'Spring'), ('3', 'Fall')], 'To', default='1', required=True,
         readonly=True, states={'faculty': [('readonly', False)]})
     period = fields.Char('Period under Evaluation', compute='_set_name')
-    
-    previous_evaluation = fields.Boolean('Evaluated before?', default=True, readonly=True, states={'faculty': [('readonly', False)]})
-    previous_process_id = fields.Many2one('a3performance.process', string='Previous Evaluation')
+    previous_process_id = fields.Many2one('a3performance.process', string='Previous Evaluation', compute='_previous_process_id')
+
+    def _previous_process_id(self):
+        for rec in self:
+            records = self.env['a3performance.process'].search([('faculty_id.user_id', '=', self.env.user.id), ('state', '=', 'done')], order='from_year desc,from_semester desc')
+            if records:
+                rec.previous_process_id = records[0]
+            else:
+                rec.previous_process_id = False
 
     overall_self_evaluation = fields.Html('Overall Self-Evaluation',
                                   readonly=True, states={'faculty': [('readonly', False)]})

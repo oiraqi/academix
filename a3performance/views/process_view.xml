@@ -48,9 +48,8 @@
                                 <field name="from_year" style="width: 25%"/>
                                 <field name="to_semester" widget="radio" options="{'horizontal': true}" style="width: 50%"/>
                                 <field name="to_year" style="width: 25%"/>
-                            </div>
-                            <field name="previous_evaluation"/>
-                            <field name="previous_process_id" domain="[('from_year', '&lt;', from_year)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" attrs="{'invisible': [('previous_evaluation', '=', False)], 'required': [('previous_evaluation', '=', True)]}"/>
+                            </div>                            
+                            <field name="previous_process_id"/>
                         </group>
                         <notebook>
                             <page name="ts" string="Teaching &#38; Supervision"/>
