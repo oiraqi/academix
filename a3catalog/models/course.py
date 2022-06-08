@@ -32,7 +32,7 @@ class Course(models.Model):
     prerequisite_ids = fields.One2many(
         'a3catalog.prerequisite', 'course_id', string='Prerequisites')
     corequisite_ids = fields.One2many(
-        'a3catalog.corequisite', 'course_id', string='Corequisites')
+        'a3catalog.course', compute='_corequisite_ids', string='Corequisites')
     prerequisite_for_ids = fields.One2many(
         'a3.course', compute='_prerequisite_for_ids', string='Prerequisite For')
     corequisite_for_ids = fields.One2many(
@@ -50,6 +50,15 @@ class Course(models.Model):
     is_internship = fields.Boolean(string='Internship', default=False)
     ilo_ids = fields.One2many('a3catalog.course.ilo', 'course_id', string='ILOs')
     syllabus = fields.Binary(string='Master Syllabus')
+
+    def _corequisite_ids(self):
+        for rec in self:
+            corequisites = self.env['a3catalog.corequisite'].search(
+                [('course_id', '=', rec.id)])
+            if not corequisites:
+                rec.corequisite_ids = False
+            else:            
+                rec.corequisite_ids = [corequisite.corequisite_id.id for corequisite in corequisites]            
 
     def _corequisite_for_ids(self):
         for rec in self:
