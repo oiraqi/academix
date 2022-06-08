@@ -47,7 +47,7 @@ class DegreePlan(models.Model):
                 program_course_ids.append(course.id)
 
         semester = self.semester
-        iyear = self.iyear
+        iyear = self.term_id.year
 
         while self._plan_for_semester(planned_course_ids, program_course_ids, semester, iyear):
             if semester == '1':
