@@ -49,8 +49,8 @@ class Activity(models.AbstractModel):
     def write(self, vals):
         if 'term_id' in vals:
             records = self.env['a3.term'].browse([vals['term_id']])
-            year = records[0].year
-            semester = records[0].semester - 2000
+            year = records[0].year - 2000
+            semester = records[0].semester
             if records:                 
                 if semester == '1':
                     vals['year'] = str(year - 1) + '/' + str(year)
