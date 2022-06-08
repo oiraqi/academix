@@ -11,13 +11,14 @@
         '',
     ],
     'depends': [
-        'a3catalog',
+        'a3catalog', 'calendar'
     ],
     'data': [
         'security/ir.model.access.csv',
         'security/roster_security.xml',
         'views/section_view.xml',
-        'views/roster_menu.xml'
+        'views/roster_menu.xml',
+        'data/standard_events.xml',
     ],
     'installable': True,
     'auto_install': False,

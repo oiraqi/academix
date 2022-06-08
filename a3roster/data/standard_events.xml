@@ -2,23 +2,23 @@
 <odoo>
     <data>
         
-        <record id="a3calendar_standard_event_gfc" model="a3calendar.standard.event">
+        <record id="calendar_event_type_gfc" model="calendar.event.type">
             <field name="name">General Faculty Convocation</field>
         </record>
 
-        <record id="a3calendar_standard_event_nsr" model="a3calendar.standard.event">
+        <record id="calendar_event_type_nsr" model="calendar.event.type">
             <field name="name">New and International Students Registration</field>
         </record>
 
-        <record id="a3calendar_standard_event_csr" model="a3calendar.standard.event">
+        <record id="calendar_event_type_csr" model="calendar.event.type">
             <field name="name">Continuing Student Registration &#38; Fee Payment</field>
         </record>
 
-        <record id="a3calendar_standard_event_classes_begin" model="a3calendar.standard.event">
+        <record id="calendar_event_type_class_begin" model="calendar.event.type">
             <field name="name">Classes Begin. First day of late registration First day of Add/Drop (schedule revision)</field>
         </record>
 
-        <record id="a3calendar_standard_event_pr_speech" model="a3calendar.standard.event">
+        <record id="calendar_event_type_pr_speach" model="calendar.event.type">
             <field name="name">President Speech</field>
         </record>
         
