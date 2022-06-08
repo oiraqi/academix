@@ -21,7 +21,6 @@
 #
 ###############################################################################
 
-from a3.models.activity import SEMESTERS
 from odoo import api, fields, models
 
 SEMESTERS = {'1': 'Spring', '2': 'Summer', '3': 'Fall'}
