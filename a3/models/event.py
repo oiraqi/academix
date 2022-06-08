@@ -2,7 +2,7 @@ from odoo import models, fields
 
 
 class Event(models.Model):
-	_name = 'a3.event'
+	_name = 'calendar.event'
 	_inherit = ['calendar.event', 'a3.activity']
 	_description = 'Event'
 
