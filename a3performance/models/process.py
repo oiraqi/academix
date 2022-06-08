@@ -25,7 +25,7 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 from datetime import date
 
-SEMESTERS = {'1': 'FA', '2': 'SP'}
+SEMESTERS = {'1': 'SP', '3': 'FA'}
 
 class Process(models.Model):
     _name = 'a3performance.process'
