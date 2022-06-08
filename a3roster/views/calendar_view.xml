@@ -60,7 +60,7 @@
                     <field name="start" string="Start Date" readonly="1"/>
                     <field name="stop" string="End Date" readonly="1"/>
                     <field name="duration" widget="float_time" readonly="1"/>
-                    <field name="description" optional="hide"/>
+                    <field name="description"/>
                     <field name="allday" invisible="1"/>
                 </tree>
             </field>
