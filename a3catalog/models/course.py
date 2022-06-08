@@ -55,7 +55,10 @@ class Course(models.Model):
         for rec in self:
             corequisites = self.env['a3catalog.corequisite'].search(
                 [('course_id', '=', rec.id)])
-            rec.corequisite_ids = [corequisite.corequisite_id.id for corequisite in corequisites]            
+            if not corequisites:
+                rec.corequisite_ids = []
+            else:
+                rec.corequisite_ids = [corequisite.corequisite_id.id for corequisite in corequisites]            
 
     def _corequisite_for_ids(self):
         for rec in self:
