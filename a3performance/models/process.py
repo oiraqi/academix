@@ -68,6 +68,19 @@ class Process(models.Model):
     rank = fields.Selection([('D', 'Lecturer'), ('C', 'Assistant Professor'), (
         'B', 'Associate Professor'), ('A', 'Full Professor')], 'Rank', default=lambda self: self.env['a3.faculty'].search(
             [('partner_id', '=', self.env.user.partner_id.id)]).rank, required=True)
+
+    @api.onchange('rank')
+    def _onchange_rank(self):
+        for rec in self:
+            if rec.rank:
+                records = self.env['a3performance.srank'].search([('rank', '=', rec.rank)])
+                if records:
+                    rec.srank_id = records[0]
+                else:
+                    rec.srank_id = False
+            else:
+                rec.srank_id = False
+
     srank_id = fields.Many2one('a3performance.srank', string='Sub-Rank', default=lambda self: self.env['a3.faculty'].search(
             [('partner_id', '=', self.env.user.partner_id.id)]).srank_id, required=True)
     state = fields.Selection([('faculty', 'Faculty'), ('f2c', 'Submitted'),
