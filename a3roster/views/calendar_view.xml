@@ -35,10 +35,9 @@
                             <field name="stop" string="Ending At" attrs="{'invisible': [('allday','=',True)]}"/>
                             <label for="duration" attrs="{'invisible': [('allday','=',True)]}"/>
                             <div attrs="{'invisible': [('allday','=',True)]}">
-                                <field name="duration" widget="float_time" string="Duration" class="oe_inline" attrs="{'readonly': [('id', '!=', False), ('recurrency','=',True)]}"/>
+                                <field name="duration" widget="float_time" string="Duration" class="oe_inline"/>
                                 <span> hours</span>
-                            </div>
-                            <field name="event_tz" attrs="{'invisible': [('recurrency', '=', False)]}"/>
+                            </div>                            
                         </group>
                         <group>
                             <field name="description"/>
