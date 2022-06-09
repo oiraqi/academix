@@ -126,7 +126,7 @@ class Project(models.Model):
     def schedule_defense(self):
         for rec in self:
             if not rec.event_start or not rec.event_stop:
-                raise ValidationError('Start and End Time must be set first!')
+                raise ValidationError('Start Time and End Time must be set first!')
             if not rec.internal_examiner_ids:
                 raise ValidationError('At least, one internal examiner must be set!')
             if rec.type in ['MP', 'MT'] and not rec.external_examiner_ids:
@@ -139,11 +139,11 @@ class Project(models.Model):
             for external_examiner in rec.external_examiner_ids:
                 attendee_ids.append(external_examiner.id)
             attendee_ids.append(self.env.user.partner_id.id)
-            rec.set_event(rec.name, rec.event_start, rec.event_stop, attendee_ids)
+            rec.set_event(rec.name, rec.event_start, rec.event_stop, [(6, 0, attendee_ids)])
             rec.event_id.project_id = rec
 
         self.write({'state': 'defense'})
-        
+
         for rec in self:
             message = 'The defense of the ' + TYPES[rec.type] + ' ' + rec.name + ' by the student ' + rec.student_id.name + ' has been scheduled: ' + rec.event_start + ' - ' + rec.event_stop
             message += '<br/>Supervisor: ' + rec.supervisor_id.name
