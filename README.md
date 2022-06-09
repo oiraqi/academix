@@ -1,1 +1,1 @@
-# Welcome To AUI Agile Apps - A3: Ultimetaly, The Single Source of Truth
+# Welcome To AUI Agile Apps - A3: Ultimetly, The Single Source of Truth
