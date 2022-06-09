@@ -38,6 +38,7 @@ class Project(models.Model):
     _name = 'a3capint.project'
     _inherit = ['a3.school.activity', 'a3.calendarized', 'mail.thread']
     _description = 'A capstone, internship, combined, master project or thesis'
+    _sql_constraints = [('student_year_semester_type_ukey', 'unique(student_id, year, semester, type)', 'Project already exists')]
 
     name = fields.Char('Title', required=True, readonly=True,
                        states={'draft': [('readonly', False)]})
@@ -95,7 +96,7 @@ class Project(models.Model):
     initial_idea = fields.Html(string='Initial Idea', required=True,
                                readonly=True, states={'draft': [('readonly', False)]})
     final_abstract = fields.Html(string='Final Abstract',
-                                 readonly=True, states={'defense': [('readonly', False)]})
+                                 readonly=True, states={'ongoing': [('readonly', False)], 'defense': [('readonly', False)]})
 
     tag_ids = fields.Many2many(
         comodel_name='a3capint.tag', string='Keywords', required=True)
