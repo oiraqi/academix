@@ -15,3 +15,4 @@ from . import school
 from . import school_activity
 from . import staff
 from . import event
+from . import calendarized
