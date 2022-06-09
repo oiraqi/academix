@@ -142,16 +142,15 @@ class Project(models.Model):
             rec.set_event(rec.name, rec.event_start, rec.event_stop, [(6, 0, attendee_ids)])
             rec.event_id.project_id = rec
 
-        self.write({'state': 'defense'})
-
-        for rec in self:
-            message = 'The defense of the ' + TYPES[rec.type] + ' ' + rec.name + ' by the student ' + rec.student_id.name + ' has been scheduled: ' + rec.event_start + ' - ' + rec.event_stop
+            message = 'The defense of the ' + TYPES[rec.type] + ' ' + rec.name + ' by the student ' + rec.student_id.name + ' has been scheduled: ' + fields.Datetime.to_string(rec.event_start) + ' - ' + fields.Datetime.to_string(rec.event_stop)
             message += '<br/>Supervisor: ' + rec.supervisor_id.name
             for internal_examiner in rec.internal_examiner_ids:
                 message += '<br/>Internal Examiner: ' + internal_examiner.name
             for external_examiner in rec.external_examiner_ids:
                 message += '<br/>External Examiner: ' + external_examiner.name
             rec.message_post(body=message)
+        
+        self.write({'state': 'defense'})
 
     def mark_done(self):
         self.write({'state': 'done'})
