@@ -129,8 +129,6 @@ class Project(models.Model):
                 raise ValidationError('At least, one internal examiner must be set!')
             if rec.type in ['MP', 'MT'] and not rec.external_examiner_ids:
                 raise ValidationError('At least, one external examiner must be set!')
-            if not rec.event_id:
-                raise ValidationError('The defense event must be created and added to the calendar!')
             
             attendee_ids = [internal_examiner.partner_id.id for internal_examiner in rec.internal_examiner_ids]
             rec.message_subscribe(attendee_ids)            
@@ -139,8 +137,8 @@ class Project(models.Model):
             for external_examiner in rec.external_examiner_ids:
                 attendee_ids.append(external_examiner.id)
             attendee_ids.append(self.env.user.partner_id.id)
-
-            rec.event_id.partner_ids = [(6, 0, attendee_ids)]
+            rec.set_event(rec.name, rec.start_event, rec.stop_event, attendee_ids)
+            rec.event_id.project_id = rec
 
         self.write({'state': 'defense'})
         message = 'The defense of the ' + TYPES[rec.type] + ' ' + rec.name + ' by the student ' + rec.student_id.name + ' has been scheduled: ' + rec.start + ' - ' + rec.stop

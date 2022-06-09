@@ -5,5 +5,5 @@ class Event(models.Model):
     _inherit = 'calendar.event'
 	
     
-    student_id = fields.Many2one(comodel_name='a3.student', string='Student')
+    project_id = fields.Many2one(comodel_name='a3capint.project', string='Project')
     
