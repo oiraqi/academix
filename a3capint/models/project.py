@@ -125,7 +125,7 @@ class Project(models.Model):
 
     def schedule_defense(self):
         for rec in self:
-            if not rec.start_event or not rec.stop_event:
+            if not rec.event_start or not rec.event_stop:
                 raise ValidationError('Start and End Time must be set first!')
             if not rec.internal_examiner_ids:
                 raise ValidationError('At least, one internal examiner must be set!')
@@ -139,17 +139,19 @@ class Project(models.Model):
             for external_examiner in rec.external_examiner_ids:
                 attendee_ids.append(external_examiner.id)
             attendee_ids.append(self.env.user.partner_id.id)
-            rec.set_event(rec.name, rec.start_event, rec.stop_event, attendee_ids)
+            rec.set_event(rec.name, rec.event_start, rec.event_stop, attendee_ids)
             rec.event_id.project_id = rec
 
         self.write({'state': 'defense'})
-        message = 'The defense of the ' + TYPES[rec.type] + ' ' + rec.name + ' by the student ' + rec.student_id.name + ' has been scheduled: ' + rec.start + ' - ' + rec.stop
-        message += '<br/>Supervisor: ' + rec.supervisor_id.name
-        for internal_examiner in rec.internal_examiner_ids:
-            message += '<br/>Internal Examiner: ' + internal_examiner.name
-        for external_examiner in rec.external_examiner_ids:
-            message += '<br/>External Examiner: ' + external_examiner.name
-        rec.message_post(body=message)
+        
+        for rec in self:
+            message = 'The defense of the ' + TYPES[rec.type] + ' ' + rec.name + ' by the student ' + rec.student_id.name + ' has been scheduled: ' + rec.event_start + ' - ' + rec.event_stop
+            message += '<br/>Supervisor: ' + rec.supervisor_id.name
+            for internal_examiner in rec.internal_examiner_ids:
+                message += '<br/>Internal Examiner: ' + internal_examiner.name
+            for external_examiner in rec.external_examiner_ids:
+                message += '<br/>External Examiner: ' + external_examiner.name
+            rec.message_post(body=message)
 
     def mark_done(self):
         self.write({'state': 'done'})
