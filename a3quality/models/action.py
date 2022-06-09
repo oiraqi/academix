@@ -26,6 +26,7 @@ from odoo import api, models, fields
 
 class Action(models.Model):
 	_name = 'a3quality.action'
+	_inherit = 'mail.thread'
 	_description = 'Action'
 
 	name = fields.Char('Title', required=True)
@@ -47,4 +48,4 @@ class Action(models.Model):
 
 	state = fields.Selection([
         ('planned', 'Planned'), ('implemented', 'Implemented'),
-        ('assessed', 'Assessed')], string='State', default='planned', required=True, track=True)
+        ('assessed', 'Assessed')], string='State', default='planned', required=True, tracking=True)
