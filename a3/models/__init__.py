@@ -16,5 +16,5 @@ from . import school_activity
 from . import staff
 from . import event
 from . import building
-from . import classroom
+from . import room
 from . import calendarized
