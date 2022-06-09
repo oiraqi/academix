@@ -1,5 +1,7 @@
 <odoo>
-	<data>		
-		<menuitem id="a3roster_section_menu" name="Sections" parent="a3.a3_root_menu" action="action_section" sequence="30"/>
+	<data>
+		<!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+		<menuitem id="planning_menu_root" name="Planning" sequence="50"/>
+		<menuitem id="section_menu" name="Sections" parent="a3.a3_root_menu" action="action_section" sequence="30"/>
 	</data>
 </odoo>
