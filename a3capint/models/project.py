@@ -125,6 +125,8 @@ class Project(models.Model):
 
     def schedule_defense(self):
         for rec in self:
+            if not rec.start_event or not rec.stop_event:
+                raise ValidationError('Start and End Time must be set first!')
             if not rec.internal_examiner_ids:
                 raise ValidationError('At least, one internal examiner must be set!')
             if rec.type in ['MP', 'MT'] and not rec.external_examiner_ids:
