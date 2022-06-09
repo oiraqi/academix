@@ -127,7 +127,7 @@ class Project(models.Model):
         for rec in self:
             if not rec.event_start or not rec.event_stop:
                 raise ValidationError('Start Time and End Time must be set!')
-            if (not rec.room_id or not rec.building_id) and not rec.video_location:
+            if (not rec.room_id or not rec.building_id) and not rec.videocall_location:
                 raise ValidationError('Room and Building must be set, or at least the conference URL!')
             if not rec.internal_examiner_ids:
                 raise ValidationError('At least, one internal examiner must be set!')

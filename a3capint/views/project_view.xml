@@ -57,7 +57,7 @@
                                 <field name="building_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                                 <field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True}" domain="[('building_id', '=', building_id)]"/>
                             </div>
-                            <field name="video_location"/>
+                            <field name="videocall_location"/>
                             <field name="internal_examiner_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
                             <field name="external_examiner_ids" widget="many2many_tags" attrs="{'invisible': [('type', 'not in', ['MP', 'MT'])]}"/>
                         </group>
