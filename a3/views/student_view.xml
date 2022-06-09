@@ -13,6 +13,9 @@
                             <h1>
                                 <field name="name" default_focus="1" placeholder="Firstname Lastname"/>
                             </h1>
+                            <h2>
+                                <field name="sid" placeholder="Student ID"/>
+                            </h2>
                         </div>
                         <group name="info" string="General Information" col="4">
                             <field name="email" widget="email" required="1"/>

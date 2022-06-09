@@ -66,7 +66,7 @@ class Project(models.Model):
     def _compute_code(self):
         for rec in self:
             if rec.state != 'draft':
-                rec.code = rec.prefix + rec.type + str(rec.id)
+                rec.code = rec.prefix + rec.type + '-' + rec.student_id.sid
             else:
                 rec.code = ''
 

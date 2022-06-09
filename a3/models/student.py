@@ -31,5 +31,7 @@ class Student(models.Model):
     _inherits = {'res.partner': 'partner_id'}
     _inherit = 'a3.school.owned'
     _description = 'Student'
+    _sql_constraints = [('sid_ukey', 'unique(sid)', 'Student ID already exists')]
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
+    sid = fields.Char(string='Student ID', required=True)    
