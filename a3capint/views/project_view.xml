@@ -31,11 +31,11 @@
                             </div>
                             <field name="type" />
                             <field name="student_id" context="{'default_school_id': school_id}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
-                            <field name="supervisor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
+                            <field name="supervisor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                             <field name="tag_ids" widget="many2many_tags" />
                             <field name="initial_idea" widget="html" colspan="4" />
                             <field name="final_abstract" widget="html" colspan="4" />
-                            <field name="school_id" invisible="1" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
+                            <field name="school_id" invisible="1"/>
                         </group>
                         <group name="diaries" string="Diaries &#38; Final Report">
                             <field name="document_ids" string="Diaries">

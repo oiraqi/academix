@@ -74,6 +74,14 @@ class Project(models.Model):
                                     default=lambda self: self.env['a3.faculty'].search(
                                         [('user_id', '=', self.env.user.id)]),
                                     readonly=True, states={'draft': [('readonly', False)]})
+
+    @api.onchange('student_id', 'supervisor_id')
+    def _set_school(self):
+        for rec in self:
+            if rec.student_id:
+                rec.school_id = rec.student_id.school_id
+            elif rec.supervisor_id:
+                rec.school_id = rec.supervisor_id.school_id
     
     is_supervisor = fields.Boolean(compute='_compute_is_supervisor', string='Supervisor?')
     
@@ -92,7 +100,7 @@ class Project(models.Model):
     tag_ids = fields.Many2many(
         comodel_name='a3capint.tag', string='Keywords', required=True)
 
-    internal_examiner_ids = fields.Many2many('a3.faculty', string='Iternal Examiners',
+    internal_examiner_ids = fields.Many2many('a3.faculty', string='Internal Examiners',
                                 readonly=True, states={'ongoing': [('readonly', False)]})
 
     external_examiner_ids = fields.Many2many('res.partner', string='External Examiners',
