@@ -50,7 +50,7 @@
                             <field name="final_report" />
                         </group>
                         <group name="defense" string="Defense" col="4">
-                            <field name="event_id" domain="[('student_id', '=', student_id), ('term_id', '=', term_id)]"
+                            <field name="event_id" domain="[('student_id', '=', student_id), ('year', '=', year), ('semester', '=', semester)]"
                                 context="{'default_name': name, 'default_privacy': 'private', 'default_student_id': student_id, 'default_year': year, 'default_semester': semester}"/>
                             <field name="internal_examiner_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
                             <field name="event_start"/>
