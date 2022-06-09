@@ -10,6 +10,8 @@ class Calendarized(models.AbstractModel):
 	event_stop = fields.Datetime('End Time')
 	building_id = fields.Many2one(comodel_name='a3.building', string='Building')
 	room_id = fields.Many2one(comodel_name='a3.room', string='Room')
+	videocall_location = fields.Char(string='Conference URL')
+	
 
 	@api.onchange('building_id')
 	def _room(self):
