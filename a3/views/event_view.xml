@@ -73,7 +73,9 @@
             <field name="model">calendar.event</field>
             <field name="priority" eval="2"/>
             <field name="arch" type="xml">
-                <calendar js_class="attendee_calendar" string="Events" date_start="start" date_stop="stop" date_delay="duration" all_day="allday" event_open_popup="true" event_limit="5" color="partner_ids">
+                <calendar js_class="attendee_calendar" string="Events" date_start="start" date_stop="stop"
+                    date_delay="duration" all_day="allday" event_open_popup="true"
+                    event_limit="5" color="partner_ids" mode="month">
                     <field name="attendee_status" invisible="1"/>
                     <field name="partner_ids" options="{'block': True, 'icon': 'fa fa-users'}" filters="1" widget="many2manyattendee" write_model="calendar.filters" write_field="partner_id" filter_field="partner_checked" avatar_field="avatar_128" />
                     <field name="is_highlighted" invisible="1"/>
@@ -115,13 +117,13 @@
             <field name="act_window_id" ref="action_calendar"/>
         </record>
         <record id="action_calendar_tree_view" model="ir.actions.act_window.view">
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="2"/>
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_event_tree"/>
             <field name="act_window_id" ref="action_calendar"/>
         </record>
         <record id="action_calendar_calendar_view" model="ir.actions.act_window.view">
-            <field name="sequence" eval="2"/>
+            <field name="sequence" eval="1"/>
             <field name="view_mode">calendar</field>
             <field name="view_id" ref="view_event_calendar"/>
             <field name="act_window_id" ref="action_calendar"/>
