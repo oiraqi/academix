@@ -25,7 +25,9 @@ from odoo import fields, models
 
 
 class Building(models.Model):
-    _name = 'a3roster.building'
+    _name = 'a3.building'
     _description = 'Building'
 
     name = fields.Char(string='Name', required=True)
+    room_ids = fields.One2many(comodel_name='a3.room', inverse_name='building_id', string='Rooms')
+    
