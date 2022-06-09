@@ -1,5 +1,5 @@
 <odoo>
 	<data>		
-		<menuitem id="a3roster_section_menu" name="Sections" parent="a3.a3_root_menu" action="action_section" sequence="60"/>
+		<menuitem id="a3roster_section_menu" name="Sections" parent="a3.a3_root_menu" action="action_section" sequence="30"/>
 	</data>
 </odoo>
