@@ -28,7 +28,7 @@
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Rooms">
-					<field name="name"/>
+					<field name="number"/>
 					<field name="type" widget="badge"/>
 					<field name="building_id" invisible="1"/>
 				</tree>

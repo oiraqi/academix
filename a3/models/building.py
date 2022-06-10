@@ -27,6 +27,7 @@ from odoo import fields, models
 class Building(models.Model):
     _name = 'a3.building'
     _description = 'Building'
+    _inherit = 'a3.school.owned'
     _sql_constraints = [('b=name_ukey', 'unique(name)', 'Building already exists')]
 
     name = fields.Char(string='Name', required=True)
