@@ -111,6 +111,7 @@
                     <field name="external_examiner_ids" widget="many2many_tags" />
                     <field name="event_start" string="Defense Start Time"/>
                     <field name="event_stop" string="Defense End Time"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
