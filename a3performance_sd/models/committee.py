@@ -27,6 +27,6 @@ class Committee(models.Model):
     _name = 'a3performance.sd.committee'
 
     name = fields.Char('Name', required=True)
-    type = fields.Selection([('school', 'School'), ('university',
+    scope = fields.Selection([('school', 'School'), ('university',
                             'University')], 'Scope', default='school', required=True)
     school_id = fields.Many2one('a3.school', string='School')

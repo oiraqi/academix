@@ -20,10 +20,12 @@
                             </h1>
                         </div>
                         <group col="4">
-                            <field name="year" options="{'format': 0}"/>
-                            <field name="semester" widget='radio' options="{'horizontal': true}"/>
+                            <div>
+                                <field name="semester" widget='radio' options="{'horizontal': true}" style="width: 65%"/>
+                                <field name="year" style="width: 35%"/>
+                            </div>
                             <field name="committee_id"/>
-                            <field name="type" widget='radio' options="{'horizontal': true}"/>
+                            <field name="scope" widget='radio' options="{'horizontal': true}"/>
                             <field name="role" widget='radio' options="{'horizontal': true}"/>
                         </group>
                         <group>

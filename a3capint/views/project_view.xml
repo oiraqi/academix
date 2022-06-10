@@ -54,12 +54,12 @@
                             <field name="event_stop"/>
                             <label for="building_id" string="Location"/>
                             <div>
-                                <field name="building_id" options="{'no_quick_create': True, 'no_create_edit': True}" style="width: 45%"/>
-                                <field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True}" domain="[('building_id', '=', building_id)]" style="width: 45%"/>
+                                <field name="building_id" options="{'no_quick_create': True, 'no_create_edit': True}" style="width: 50%"/>
+                                <field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True}" domain="[('building_id', '=', building_id)]" style="width: 50%"/>
                             </div>
                             <field name="videocall_location"/>
                             <field name="internal_examiner_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
-                            <field name="external_examiner_ids" widget="many2many_tags" attrs="{'invisible': [('type', 'not in', ['MP', 'MT'])]}"/>
+                            <field name="external_examiner_ids" widget="many2many_tags"/>
                         </group>
                         <group name="evaluation" groups="a3.group_faculty,a3capint.group_capint_coordinator" attrs="{'invisible': [('state', 'not in', ['defense', 'done'])]}">
                             <field name="evaluation_ids">

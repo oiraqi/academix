@@ -31,4 +31,4 @@ class CommitteeActivity(models.Model):
     committee_id = fields.Many2one('a3performance.sd.committee', string='Committee', required=True)
     role = fields.Selection([('chair', 'Chair'), ('member',
                             'Member')], 'Role', default='member', required=True)
-    type = fields.Selection(related='committee_id.type', readonly=True, store=True)
+    scope = fields.Selection(related='committee_id.scope', store=True)
