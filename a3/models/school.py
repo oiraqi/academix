@@ -34,4 +34,6 @@ class School(models.Model):
     mission = fields.Html(string='Mission')
     dean_id = fields.Many2one('a3.staff', string='Dean')
     discipline_ids = fields.One2many('a3.discipline', 'school_id', string='Disciplines')
+    building_ids = fields.One2many(comodel_name='a3.building', inverse_name='school_id', string='Buildings')
+    
     color = fields.Integer('Color')

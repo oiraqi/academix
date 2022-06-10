@@ -26,6 +26,7 @@ from odoo import api, fields, models
 
 class Room(models.Model):
     _name = 'a3.room'
+    _inherit = 'a3.school.owned'
     _description = 'Room'
     _order = 'building_id,number'
     _sql_constraints = [('number_blg_ukey', 'unique(number, building_id)', 'Room already exists')]
@@ -33,7 +34,6 @@ class Room(models.Model):
     name = fields.Char(string='Name & Building', compute='_compute_name', store=True)
     number = fields.Char(string='Number', required=True)
     building_id = fields.Many2one(comodel_name='a3.building', string='Building', required=True)
-    school_id = fields.Many2one(comodel_name='a3.school', related='building_id.school_id')
     
     type = fields.Selection(string='Type', selection=[('classroom', 'Classroom'), ('office', 'Office'), ('lab', 'Lab')], default='classroom')
     
@@ -46,3 +46,11 @@ class Room(models.Model):
                 rec.name = rec.building_id.name + ' / ' + rec.number
             else:
                 rec.name = False
+
+    @api.onchange('school_id')
+    def _onchange_school_id(self):
+        for rec in self:
+            if rec.school_id and rec.school_id.building_ids:
+                rec.building_id = rec.school_id.building_ids[0]
+            else:
+                rec.building_id = False
