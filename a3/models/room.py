@@ -33,6 +33,8 @@ class Room(models.Model):
     name = fields.Char(string='Name & Building', compute='_compute_name', store=True)
     number = fields.Char(string='Number', required=True)
     building_id = fields.Many2one(comodel_name='a3.building', string='Building', required=True)
+    school_id = fields.Many2one(comodel_name='a3.school', related='building_id.school_id')
+    
     type = fields.Selection(string='Type', selection=[('classroom', 'Classroom'), ('office', 'Office'), ('lab', 'Lab')], default='classroom')
     
 
