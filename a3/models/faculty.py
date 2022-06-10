@@ -35,6 +35,8 @@ class Faculty(models.Model):
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
     user_id = fields.Many2one('res.users', string='User')
     hiring_date = fields.Date('Hiring Date')
+    room_id = fields.Many2one(comodel_name='a3.room', string='Office')
+    
     course_ids = fields.Many2many('a3.course', 'a3_course_faculty_rel', 'instructor_id', 'course_id', string='Taught Courses')
 
     @api.model

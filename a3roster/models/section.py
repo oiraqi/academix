@@ -27,7 +27,7 @@ from odoo import api, fields, models
 class Section(models.Model):
     _name = 'a3roster.section'
     _description = 'Course Section'
-    _inherit = 'a3.activity'
+    _inherit = 'a3.school.activity'
     _order = 'course_id,number'
     _sql_constraints = [('section_ukey', 'unique(year, semester, course_id, number)', 'Section already exists')]
 
@@ -48,12 +48,46 @@ class Section(models.Model):
                                                           ('05', '05'), ('06', '06'),
                                                           ('07', '07'), ('08', '08'),
                                                           ('09', '09'), ('10', '10')], default='01', required=True)
-    school_id = fields.Many2one(comodel_name='a3.school',
-                    related='course_id.school_id', readonly=True, store=True)
-    discipline_id = fields.Many2one(comodel_name='a3.discipline',
-                    related='course_id.discipline_id', readonly=True, store=True)
+    discipline_id = fields.Many2one(comodel_name='a3.discipline', string='Discipline', required=True)
     instructor_id = fields.Many2one(comodel_name='a3.faculty', string='Instructor')
+    start_time = fields.Float(string='Start Time', required=True)
+    end_time = fields.Float(string='End Time', required=True)
+    monday = fields.Boolean(string='M', default=False)
+    tuesday = fields.Boolean(string='T', default=False)
+    wednesday = fields.Boolean(string='W', default=False)
+    thursday = fields.Boolean(string='R', default=False)
+    friday = fields.Boolean(string='F', default=False)
+    timeslot = fields.Char('Timeslot', compute='_timeslot')
     classroom_id = fields.Many2one(comodel_name='a3roster.classroom', string='Classroom')
-    timeslot_id = fields.Many2one(comodel_name='a3roster.timeslot', string='Timeslot')    
     syllabus = fields.Binary(string='Syllabus')    
     student_ids = fields.Many2many('a3.student', 'a3roster_section_student_rel', 'section_id', 'student_id', 'Students')        
+
+    @api.depends('start_time', 'end_time', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
+    @api.onchange('start_time', 'end_time', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
+    def _timeslot(self):
+        for rec in self:
+            if rec.start_time and rec.end_time and rec.end_time > rec.start_time:
+                days = ''
+                if rec.monday:
+                    days = 'M'
+                if rec.tuesday:
+                    days += 'T'
+                if rec.wednesday:
+                    days += 'W'
+                if rec.thursday:
+                    days += 'R'
+                if rec.friday:
+                    days += 'F'
+                if days == '':
+                    rec.timeslot = ''
+                    continue
+                start_hours = int(rec.start_time)
+                start_minutes = (rec.start_time - start_hours) * 60
+                start_time = str(start_hours) + ':' + str(start_minutes)
+                end_hours = int(rec.end_time)
+                end_minutes = (rec.end_time - end_hours) * 60
+                end_time = str(end_hours) + ':' + str(end_minutes)
+                rec.timeslot = days + ' ' + start_time + ' - ' + end_time
+            else:
+                rec.timeslot = ''
+    

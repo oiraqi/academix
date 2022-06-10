@@ -13,12 +13,12 @@
                                 <field name="name" placeholder="e.g. School of Science and Engineering" style="width: 80%"/>
                             </h1>
                         </div>
-                        <!--<group col="4">                            
+                        <group col="4">                            
                             <field name="dean_id" domain="[('school_ids', 'in', id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                         </group>
                         <group name="mission" string="Mission">
                             <field name="mission" widget="html" nolabel="1"/>
-                        </group>-->
+                        </group>
                         <notebook>
                             <page name="disciplines" string="Disciplines">
                                 <group>
@@ -28,6 +28,11 @@
                                             <field name="name"/>
                                         </tree>
                                     </field>
+                                </group>
+                            </page>
+                            <page string="Buildings" name="buildings">
+                                <group>
+                                    <field name="name"/>
                                 </group>
                             </page>
                         </notebook>

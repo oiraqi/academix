@@ -18,6 +18,7 @@
                             <field name="email" widget="email" required="1"/>
                             <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                             <field name="hiring_date"/>
+                            <field name="room_id" domain="[('school_id', '=', school_id), ('type', '=', 'office')]"/>
                         </group>
                         <group name="academics" string="Academic Information">
                             <field name="course_ids" domain="[('school_id', '=', school_id)]" context="{'default_school_id': school_id}" colspan="4">
