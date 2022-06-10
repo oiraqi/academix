@@ -23,7 +23,7 @@
                                 <field name="code" readonly="1" />
                             </h2>
                         </div>
-                        <group string="Project Information" col="4">
+                        <!--<group string="Project Information" col="4">
                             <label for="semester" string="Semester &#38; Year"/>
                             <div>
                                 <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 65%" />
@@ -49,7 +49,7 @@
                             </field>
                             <field name="final_report" />
                         </group>
-                        <!--<group name="defense" string="Defense" col="4" attrs="{'invisible': [('state', 'not in', ['ongoing', 'defense', 'done'])]}">
+                        <group name="defense" string="Defense" col="4" attrs="{'invisible': [('state', 'not in', ['ongoing', 'defense', 'done'])]}">
                             <field name="event_start"/>
                             <field name="event_stop"/>
                             <label for="building_id" string="Location"/>
