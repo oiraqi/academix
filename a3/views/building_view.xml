@@ -35,6 +35,7 @@
 			<field name="arch" type="xml">
 				<tree string="Buildings">
 					<field name="name"/>
+					<field name="school_id" invisible="1"/>
 				</tree>
 			</field>
 		</record>
@@ -44,7 +45,7 @@
 			<field name="res_model">a3.building</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
-			<field name="context">{}</field>
+			<field name="context">{'group_by': 'school_id'}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 				
