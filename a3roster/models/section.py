@@ -58,7 +58,7 @@ class Section(models.Model):
     thursday = fields.Boolean(string='R', default=False)
     friday = fields.Boolean(string='F', default=False)
     timeslot = fields.Char('Timeslot', compute='_timeslot')
-    classroom_id = fields.Many2one(comodel_name='a3roster.classroom', string='Classroom')
+    classroom_id = fields.Many2one(comodel_name='a3.room', string='Classroom')
     syllabus = fields.Binary(string='Syllabus')    
     student_ids = fields.Many2many('a3.student', 'a3roster_section_student_rel', 'section_id', 'student_id', 'Students')        
 
