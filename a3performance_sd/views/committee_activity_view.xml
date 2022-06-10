@@ -20,6 +20,7 @@
                             </h1>
                         </div>
                         <group col="4">
+                            <label for="semester" string="Semester &#38; Year"/>
                             <div>
                                 <field name="semester" widget='radio' options="{'horizontal': true}" style="width: 65%"/>
                                 <field name="year" style="width: 35%"/>
