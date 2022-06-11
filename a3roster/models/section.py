@@ -27,7 +27,7 @@ from odoo import api, fields, models
 class Section(models.Model):
     _name = 'a3roster.section'
     _description = 'Course Section'
-    _inherit = 'a3.school.activity'
+    _inherit = ['a3.school.activity', 'a3.calendarized']
     _order = 'course_id,number'
     _sql_constraints = [('section_ukey', 'unique(year, semester, course_id, number)', 'Section already exists')]
 
@@ -49,16 +49,13 @@ class Section(models.Model):
                                                           ('07', '07'), ('08', '08'),
                                                           ('09', '09'), ('10', '10')], default='01', required=True)
     discipline_id = fields.Many2one(comodel_name='a3.discipline', string='Discipline', required=True)
-    instructor_id = fields.Many2one(comodel_name='a3.faculty', string='Instructor')
-    start_time = fields.Float(string='Start Time', required=True)
-    end_time = fields.Float(string='End Time', required=True)
+    instructor_id = fields.Many2one(comodel_name='a3.faculty', string='Instructor')    
     monday = fields.Boolean(string='M', default=False)
     tuesday = fields.Boolean(string='T', default=False)
     wednesday = fields.Boolean(string='W', default=False)
     thursday = fields.Boolean(string='R', default=False)
     friday = fields.Boolean(string='F', default=False)
-    timeslot = fields.Char('Timeslot', compute='_timeslot')
-    classroom_id = fields.Many2one(comodel_name='a3.room', string='Classroom')
+    timeslot = fields.Char('Timeslot', compute='_timeslot')    
     syllabus = fields.Binary(string='Syllabus')    
     student_ids = fields.Many2many('a3.student', 'a3roster_section_student_rel', 'section_id', 'student_id', 'Students')        
 

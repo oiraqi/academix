@@ -6,8 +6,8 @@ class Calendarized(models.AbstractModel):
 	_description = 'Calendarized'
 
 	event_id = fields.Many2one(comodel_name='calendar.event', string='Event')
-	event_start = fields.Datetime('Start Time')
-	event_stop = fields.Datetime('End Time')
+	start_time = fields.Datetime('Start Time')
+	end_time = fields.Datetime('End Time')
 	building_id = fields.Many2one(comodel_name='a3.building', string='Building')
 	room_id = fields.Many2one(comodel_name='a3.room', string='Room')
 	videocall_location = fields.Char(string='Conference URL')

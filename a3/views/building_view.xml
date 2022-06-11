@@ -14,6 +14,7 @@
 								<tree editable="bottom">
 									<field name="number"/>
 									<field name="type"/>
+									<field name="capacity"/>
 									<field name="school_id" invisible="1"/>
 								</tree>
 							</field>
