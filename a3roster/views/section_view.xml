@@ -32,8 +32,8 @@
                                 <field name="wednesday" style="width: 6%"/>
                                 <field name="thursday" style="width: 6%"/>
                                 <field name="friday" style="width: 6%"/>
-                                <field name="start_timeslot" style="width: 35%"/>
-                                <field name="end_timeslot" style="width: 35%"/>
+                                <field name="start_timeslot" widget="float_time" style="width: 30%"/>
+                                <field name="end_timeslot" widget="float_time" style="width: 30%"/>
                             </div>                            
                             <field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
                                 domain="[('type', 'in', ['classroom', 'lab'])]"/>
