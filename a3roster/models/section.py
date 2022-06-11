@@ -65,23 +65,24 @@ class Section(models.Model):
     @api.depends('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
     @api.onchange('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
     def _timeslot(self):
-        for rec in self:
+        for rec in self:            
+            days = ''
+            if rec.monday:
+                days = 'M'
+            if rec.tuesday:
+                days += 'T'
+            if rec.wednesday:
+                days += 'W'
+            if rec.thursday:
+                days += 'R'
+            if rec.friday:
+                days += 'F'
+            rec.days = days
+            if days == '':
+                rec.timeslot = ''
+                continue
+            
             if rec.start_timeslot and rec.end_timeslot and rec.end_timeslot > rec.start_timeslot:
-                days = ''
-                if rec.monday:
-                    days = 'M'
-                if rec.tuesday:
-                    days += 'T'
-                if rec.wednesday:
-                    days += 'W'
-                if rec.thursday:
-                    days += 'R'
-                if rec.friday:
-                    days += 'F'
-                if days == '':
-                    rec.timeslot = ''
-                    continue
-                rec.days = days
                 start_hours = int(rec.start_timeslot)
                 start_minutes = (rec.start_timeslot - start_hours) * 60
                 start_time = str(start_hours) + ':' + str(start_minutes)
