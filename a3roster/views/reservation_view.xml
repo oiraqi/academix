@@ -15,9 +15,9 @@
 								<field name="room_min_capacity" style="width: 50%"/>
 							</div>
 							<field name="section_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-							<field name="start_time"/>
-							<field name="end_time"/>
-							<field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+							<field name="start_time" required="1"/>
+							<field name="end_time" required="1"/>
+							<field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True}" required="1"/>
 							
 						</group>
 						<group name="log" string="Log" col="4">
@@ -37,6 +37,10 @@
 			<field name="arch" type="xml">
 				<tree string="Reservations">
 					<field name="name"/>
+					<field name="room_id"/>
+					<field name="room_tye" widget="badge"/>
+					<field name="start_time"/>
+					<field name="end_time"/>
 				</tree>
 			</field>
 		</record>

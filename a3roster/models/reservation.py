@@ -5,6 +5,7 @@ class Reservation(models.Model):
 	_name = 'a3.reservation'
 	_inherit = 'a3.calendarized'
 	_description = 'Reservation'
+	_order = 'start_time desc,end_time'
 
 	name = fields.Char('Name', required=True)
 	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section')
