@@ -25,7 +25,7 @@
                                 <field name="year" style="width: 35%"/>
                             </div>
                             <field name="instructor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-                            <label for="monday" string="MTWRF &#38; Time"/>
+                            <label for="monday" string="Meeting Time"/>
                             <div>
                                 <field name="monday" style="width: 10%"/>
                                 <field name="tuesday" style="width: 10%"/>

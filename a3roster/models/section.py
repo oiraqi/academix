@@ -22,6 +22,7 @@
 ###############################################################################
 
 from odoo import api, fields, models
+from odoo.exceptions import UserError
 
 
 class Section(models.Model):
@@ -92,4 +93,10 @@ class Section(models.Model):
                 rec.timeslot = days + ' ' + start_time + ' - ' + end_time
             else:
                 rec.timeslot = ''
+
+    @api.constrains('start_timeslot', 'start_timeslot')
+    def _constrains_start_timeslot(self):
+        for rec in self:
+            if rec.start_timeslot >= rec.end_timeslot or rec.start_timeslot < 8 or rec.start_timeslot >= 24 or rec.end_timeslot < 8 or rec.end_timeslot >= 24:
+                raise UserError('Error in timeslot')
     
