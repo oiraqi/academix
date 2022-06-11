@@ -57,6 +57,7 @@ class Section(models.Model):
     wednesday = fields.Boolean(string='W', default=False)
     thursday = fields.Boolean(string='R', default=False)
     friday = fields.Boolean(string='F', default=False)
+    days = fields.Char(compute='_timeslot')    
     timeslot = fields.Char('Timeslot', compute='_timeslot')
     syllabus = fields.Binary(string='Syllabus')    
     student_ids = fields.Many2many('a3.student', 'a3roster_section_student_rel', 'section_id', 'student_id', 'Students')        
@@ -80,6 +81,7 @@ class Section(models.Model):
                 if days == '':
                     rec.timeslot = ''
                     continue
+                rec.days = days
                 start_hours = int(rec.start_timeslot)
                 start_minutes = (rec.start_timeslot - start_hours) * 60
                 start_time = str(start_hours) + ':' + str(start_minutes)

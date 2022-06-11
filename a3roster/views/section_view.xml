@@ -27,13 +27,15 @@
                             <field name="instructor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                             <label for="monday" string="MTWRF &#38; Time"/>
                             <div>
-                                <field name="monday" style="width: 15%"/>
-                                <field name="tuesday" style="width: 15%"/>
-                                <field name="wednesday" style="width: 14%"/>
-                                <field name="thursday" style="width: 15%"/>
-                                <field name="friday" style="width: 15%"/>
-                                <field name="start_timeslot" widget="float_time" style="width: 13%"/>
-                                <field name="end_timeslot" widget="float_time" style="width: 13%"/>
+                                <field name="monday" style="width: 10%"/>
+                                <field name="tuesday" style="width: 10%"/>
+                                <field name="wednesday" style="width: 10%"/>
+                                <field name="thursday" style="width: 10%"/>
+                                <field name="friday" style="width: 10%"/>
+                                <field name="days" style="width: 30%"/>
+                                <field name="start_timeslot" widget="float_time" style="width: 10%"/>
+                                <span>-</span>
+                                <field name="end_timeslot" widget="float_time" style="width: 10%"/>
                             </div>                            
                             <field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
                                 domain="[('type', 'in', ['classroom', 'lab'])]"/>
