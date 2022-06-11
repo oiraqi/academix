@@ -2,7 +2,7 @@ from odoo import models, fields
 
 
 class Reservation(models.Model):
-	_name = 'a3.reservation'
+	_name = 'a3roster.reservation'
 	_inherit = 'a3.calendarized'
 	_description = 'Reservation'
 	_order = 'start_time desc,end_time'
