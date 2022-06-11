@@ -35,7 +35,8 @@
                                 <field name="start_time" style="width: 25%"/>
                                 <field name="end_time" style="width: 25%"/>
                             </div>                            
-                            <field name="classroom_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+                                domain="[('type', 'in', ['classroom', 'lab'])]"/>
                             <field name="syllabus"/>                            
                         </group>
                         <group name="log" string="Log" col="4">
@@ -59,7 +60,7 @@
                     <field name="name"/>
                     <field name="instructor_id"/>
                     <field name="timeslot"/>
-                    <field name="classroom_id"/>
+                    <field name="room_id"/>
                 </tree>
             </field>
         </record>
