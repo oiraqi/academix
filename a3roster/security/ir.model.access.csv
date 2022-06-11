@@ -3,5 +3,5 @@ access_a3roster_section_user,access.a3roster.section.user,model_a3roster_section
 access_a3roster_section_faculty,access.a3roster.section.faculty,model_a3roster_section,a3.group_faculty,1,1,1,0
 access_a3roster_section_coordinator,access.a3roster.section.coordinator,model_a3roster_section,a3.group_coordinator,1,1,1,0
 access_a3roster_reservation_user,access.a3roster.reservation.user,model_a3roster_reservation,base.group_user,1,0,0,0
-access_a3roster_reservation_faculty,access.a3roster.reservation.faculty,model_a3rosterreservation,a3.group_faculty,1,1,1,1
+access_a3roster_reservation_faculty,access.a3roster.reservation.faculty,model_a3roster_reservation,a3.group_faculty,1,1,1,1
 
