@@ -49,21 +49,23 @@ class Section(models.Model):
                                                           ('07', '07'), ('08', '08'),
                                                           ('09', '09'), ('10', '10')], default='01', required=True)
     discipline_id = fields.Many2one(comodel_name='a3.discipline', string='Discipline', required=True)
-    instructor_id = fields.Many2one(comodel_name='a3.faculty', string='Instructor')    
+    instructor_id = fields.Many2one(comodel_name='a3.faculty', string='Instructor')
+    start_timeslot = fields.Float(string='Start Time', required=True)
+    end_timeslot = fields.Float(string='End Time', required=True)
     monday = fields.Boolean(string='M', default=False)
     tuesday = fields.Boolean(string='T', default=False)
     wednesday = fields.Boolean(string='W', default=False)
     thursday = fields.Boolean(string='R', default=False)
     friday = fields.Boolean(string='F', default=False)
-    timeslot = fields.Char('Timeslot', compute='_timeslot')    
+    timeslot = fields.Char('Timeslot', compute='_timeslot')
     syllabus = fields.Binary(string='Syllabus')    
     student_ids = fields.Many2many('a3.student', 'a3roster_section_student_rel', 'section_id', 'student_id', 'Students')        
 
-    @api.depends('start_time', 'end_time', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
-    @api.onchange('start_time', 'end_time', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
+    @api.depends('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
+    @api.onchange('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
     def _timeslot(self):
         for rec in self:
-            if rec.start_time and rec.end_time and rec.end_time > rec.start_time:
+            if rec.start_timeslot and rec.end_timeslot and rec.end_timeslot > rec.start_timeslot:
                 days = ''
                 if rec.monday:
                     days = 'M'
@@ -78,11 +80,11 @@ class Section(models.Model):
                 if days == '':
                     rec.timeslot = ''
                     continue
-                start_hours = int(rec.start_time)
-                start_minutes = (rec.start_time - start_hours) * 60
+                start_hours = int(rec.start_timeslot)
+                start_minutes = (rec.start_timeslot - start_hours) * 60
                 start_time = str(start_hours) + ':' + str(start_minutes)
-                end_hours = int(rec.end_time)
-                end_minutes = (rec.end_time - end_hours) * 60
+                end_hours = int(rec.end_timeslot)
+                end_minutes = (rec.end_timeslot - end_hours) * 60
                 end_time = str(end_hours) + ':' + str(end_minutes)
                 rec.timeslot = days + ' ' + start_time + ' - ' + end_time
             else:
