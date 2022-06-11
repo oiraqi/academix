@@ -85,21 +85,21 @@ class Section(models.Model):
             
             if rec.start_timeslot and rec.end_timeslot and rec.end_timeslot > rec.start_timeslot:
                 start_hours = int(rec.start_timeslot)
+                start_minutes = int((rec.start_timeslot - start_hours) * 60)
                 if start_hours < 10:
                     start_hours = '0' + str(start_hours)
                 else:
-                    start_hours = str(start_hours)
-                start_minutes = int((rec.start_timeslot - start_hours) * 60)
+                    start_hours = str(start_hours)                
                 if start_minutes < 10:
                     start_minutes = '0' + str(start_minutes)
                 start_time = start_hours + ':' + str(start_minutes)
                 
                 end_hours = int(rec.end_timeslot)
+                end_minutes = int((rec.end_timeslot - end_hours) * 60)
                 if end_hours < 10:
                     end_hours = '0' + str(end_hours)
                 else:
-                    end_hours = str(end_hours)
-                end_minutes = int((rec.end_timeslot - end_hours) * 60)
+                    end_hours = str(end_hours)                
                 if end_minutes < 10:
                     end_minutes = '0' + str(end_minutes)
                 else:
