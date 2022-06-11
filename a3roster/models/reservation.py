@@ -10,5 +10,5 @@ class Reservation(models.Model):
 	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section')
 	room_min_capacity = fields.Integer(string='Minimum capacity', required=True)
 	room_type = fields.Selection(string='Type', selection=[('classroom', 'Classroom'), ('office', 'Office'),
-        ('lab', 'Lab'), ('general', 'General Purpose')], default='classroom')
+        ('lab', 'Lab'), ('general', 'General Purpose')], default='classroom', required=True)
 	
