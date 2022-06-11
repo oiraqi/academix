@@ -17,7 +17,7 @@
         'security/ir.model.access.csv',
         'security/roster_security.xml',
         'views/section_view.xml',
-        'views/reservation_view',
+        'views/reservation_view.xml',
         'views/a3roster_menu.xml',
         'data/standard_events.xml',
     ],
