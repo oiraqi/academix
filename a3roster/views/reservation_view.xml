@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="view_reservation_form" model="ir.ui.view">
+			<field name="name">a3.reservation.form</field>
+			<field name="model">a3.reservation</field>
+			<field name="arch" type="xml">
+				<form string="Reservation">
+					<sheet>
+						<h1><field name="name"/></h1>
+						<group name="info" string="General Information" col="4">
+							<field name="room_type"/>
+							<field name="room_min_capacity"/>
+							<field name="start_time"/>
+							<field name="end_time"/>
+							<field name="room_id"/>
+							<field name="section_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+						</group>
+						<group name="log" string="Log" col="4">
+							<field name="create_uid"/>
+							<field name="create_date"/>
+							<field name="write_uid"/>
+							<field name="write_date"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_reservation_tree" model="ir.ui.view">
+			<field name="name">a3.reservation.tree</field>
+			<field name="model">a3.reservation</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Reservations">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_reservation" model="ir.actions.act_window">
+			<field name="name">Reservations</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">a3.reservation</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>
+		<record id="action_reservation_form_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="2"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_reservation_form"/>
+			<field name="act_window_id" ref="action_reservation"/>
+		</record>
+		<record id="action_reservation_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_reservation_tree"/>
+			<field name="act_window_id" ref="action_reservation"/>
+		</record>
+	</data>
+</odoo>
