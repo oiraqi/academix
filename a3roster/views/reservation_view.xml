@@ -16,12 +16,13 @@
 							</div>
 							<label for="purpose" string="Purpose"/>
 							<div>
-							<field name="purpose" style="width: 40%"/>
+							<field name="purpose" style="width: 30%"/>
 							<field name="section_id"
 								options="{'no_quick_create': True, 'no_create_edit': True}"
 								 attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"
-								style="width: 60%"/>
-							<field name="description" attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}" style="width: 60%"/>
+								style="width: 70%"/>
+							<field name="description" placeholder="Brief description..."
+								attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}" style="width: 70%"/>
 							</div>
 							<field name="start_time" required="1"/>
 							<field name="end_time" required="1"/>
