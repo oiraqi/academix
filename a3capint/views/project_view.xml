@@ -33,7 +33,8 @@
                             <field name="student_id" context="{'default_school_id': school_id}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
                             <field name="tag_ids" widget="many2many_tags" />
                             <field name="supervisor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>                            
-                            <field name="cosupervisor_ids" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>                            
+                            <field name="cosupervisor_ids" widget="many2many_tags"
+                                options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>                            
                             <field name="initial_idea" widget="html" colspan="4" attrs="{'invisible': [('state', 'in', ['defense', 'done'])]}"/>
                             <field name="final_abstract" widget="html" colspan="4" attrs="{'invisible': [('state', 'not in', ['ongoing', 'defense', 'done'])]}"/>
                             <field name="school_id" invisible="1"/>
@@ -109,8 +110,9 @@
                     <field name="type" widget="badge"/>
                     <field name="student_id" />
                     <field name="supervisor_id" />
-                    <field name="internal_examiner_ids" widget="many2many_tags" />
-                    <field name="external_examiner_ids" widget="many2many_tags" />
+                    <field name="cosupervisor_ids" widget="many2many_tags"/>
+                    <field name="internal_examiner_ids" widget="many2many_tags"/>
+                    <field name="external_examiner_ids" widget="many2many_tags"/>
                     <field name="start_time" string="Defense Start Time"/>
                     <field name="end_time" string="Defense End Time"/>
                     <field name="state" invisible="1"/>
