@@ -44,8 +44,12 @@ class PlannedCourse(models.Model):
                 [('term_id', '=', rec.term_id.id)])
             if records:
                 sum_credits = sum([record.course_id.sch for record in records])
-                if sum_credits > 18:
+                if sum_credits > 18:# To do: should depend on student credit limit / semester
                     raise ValidationError('Max allowed number of credits (18) exceeded!')
+            
+    @api.constrains('term_id')
+    def _check_prerequisites(self):# Incomplete
+        for rec in self:
             records = self.env['a3advising.planned.course'].search(
                 ['|', ('year', '<', rec.year), '&', ('year', '=', rec.year), ('semester', '<', rec.semester)]
             )
