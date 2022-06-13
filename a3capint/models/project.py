@@ -76,7 +76,7 @@ class Project(models.Model):
                                         [('user_id', '=', self.env.user.id)]),
                                     readonly=True, states={'draft': [('readonly', False)]})
 
-    cosupervisor_ids = fields.Many2many('a3.faculty', string='Co-supervisors',                                    
+    cosupervisor_ids = fields.Many2many('a3.faculty', relation='a3capint_project_cosupervisor_rel', string='Co-supervisors',                                    
                                     readonly=True, states={'draft': [('readonly', False)]})
 
     @api.onchange('student_id', 'supervisor_id')
