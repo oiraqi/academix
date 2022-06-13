@@ -27,4 +27,4 @@ from odoo import fields, models
 class Room(models.Model):
     _inherit = 'a3.room'
 
-    section_ids = fields.Many2many('a3roster.section', 'a3roster_section_room_rel', 'room_id', 'section_id', 'Sections', order_by='year desc,semester desc')
+    section_ids = fields.One2many('a3roster.section', 'room_id', 'Sections', order_by='year desc,semester desc')

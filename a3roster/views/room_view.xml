@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='info']" position="after">
                     <group name="sections" string="Sections">
-                        <field name="section_ids">
+                        <field name="section_ids" nolabel="1">
                             <tree>
                                 <field name="name"/>
                                 <field name="instructor_id"/>
