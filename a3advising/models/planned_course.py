@@ -38,11 +38,31 @@ class PlannedCourse(models.Model):
 
 
     @api.constrains('term_id')
-    def _check_max_courses(self):
+    def _check_max_credits(self):
         for rec in self:
-            if self.env['a3advising.planned.course'].search_count(
-                [('term_id', '=', rec.term_id.id)]) > 6:
-                raise ValidationError('Max allowed number of courses exceeded!')
+            records = self.env['a3advising.planned.course'].search(
+                [('term_id', '=', rec.term_id.id)])
+            if records:
+                sum_credits = sum([record.course_id.sch for record in records])
+                if sum_credits > 18:
+                    raise ValidationError('Max allowed number of credits (18) exceeded!')
+            records = self.env['a3advising.planned.course'].search(
+                ['|', ('year', '<', rec.year), '&', ('year', '=', rec.year), ('semester', '<', rec.semester)]
+            )
+            planned_courses = [record.course_id.id for record in records]
+            prerequisites = rec.course_id.prerequisite_ids
+            for prerequisite in prerequisites:
+                satisfied = False
+                unsatisfied = ''
+                for alternative in prerequisite.alternative_ids:
+                    if unsatisfied:
+                        unsatisfied += ', or '
+                    unsatisfied += alternative.name
+                    if alternative.id in planned_courses:
+                        satisfied = True
+                        break
+                if not satisfied:
+                    raise ValidationError('Prerequisite ' + unsatisfied + ': not satisfied!')
 
     
     @api.onchange('course_id')
