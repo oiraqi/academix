@@ -10,7 +10,7 @@
 Student Capstones, Internships, Combined, Master Projects and Theses.
 ===================================================
 """,
-    'depends': ['a3'],
+    'depends': ['a3roster'],
     'data': [
         'security/capint_security.xml',
         'security/ir.model.access.csv',
