@@ -31,8 +31,9 @@
                             </div>
                             <field name="type" />
                             <field name="student_id" context="{'default_school_id': school_id}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
-                            <field name="supervisor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                             <field name="tag_ids" widget="many2many_tags" />
+                            <field name="supervisor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>                            
+                            <field name="cosupervisor_ids" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>                            
                             <field name="initial_idea" widget="html" colspan="4" attrs="{'invisible': [('state', 'in', ['defense', 'done'])]}"/>
                             <field name="final_abstract" widget="html" colspan="4" attrs="{'invisible': [('state', 'not in', ['ongoing', 'defense', 'done'])]}"/>
                             <field name="school_id" invisible="1"/>

@@ -76,6 +76,9 @@ class Project(models.Model):
                                         [('user_id', '=', self.env.user.id)]),
                                     readonly=True, states={'draft': [('readonly', False)]})
 
+    cosupervisor_ids = fields.Many2many('a3.faculty', string='Co-supervisors',                                    
+                                    readonly=True, states={'draft': [('readonly', False)]})
+
     @api.onchange('student_id', 'supervisor_id')
     def _set_school(self):
         for rec in self:
@@ -85,12 +88,23 @@ class Project(models.Model):
                 rec.school_id = rec.supervisor_id.school_id
     
     is_supervisor = fields.Boolean(compute='_compute_is_supervisor', string='Supervisor?')
+    is_cosupervisor = fields.Boolean(compute='_compute_is_cosupervisor', string='Co-supervisor?')
     
     @api.onchange('supervisor_id')
     @api.depends('supervisor_id')
     def _compute_is_supervisor(self):
         for rec in self:
             rec.is_supervisor = rec.supervisor_id.user_id == self.env.user
+
+    @api.onchange('cosupervisor_ids')
+    @api.depends('cosupervisor_ids')
+    def _compute_is_cosupervisor(self):
+        for rec in self:
+            rec.is_cosupervisor = False
+            for cosupervisor in rec.cosupervisor_ids:
+                if cosupervisor.user_id == self.env.user:
+                    rec.is_cosupervisor = True
+                    break
     
 
     initial_idea = fields.Html(string='Initial Idea', required=True,
