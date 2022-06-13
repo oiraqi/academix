@@ -62,7 +62,7 @@ class PlannedCourse(models.Model):
                         satisfied = True
                         break
                 if not satisfied:
-                    raise ValidationError('Prerequisite ' + unsatisfied + ': not satisfied!')
+                    raise ValidationError('Prerequisite ' + unsatisfied + ': Unsatisfied!')
 
     
     @api.onchange('course_id')
