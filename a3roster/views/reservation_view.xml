@@ -9,21 +9,17 @@
 					<sheet>
 						<h1><field name="name"/></h1>
 						<group name="info" string="General Information" col="4">
-							<label for="room_type" string="Type / Min Capacity"/>
+							<label for="room_type" string="Type / Min Capacity / Purpose"/>
 							<div>
-								<field name="room_type" style="width: 50%"/>
-								<field name="room_min_capacity" style="width: 50%"/>
-							</div>
-							<label for="purpose" string="Purpose"/>
-							<div>
-							<field name="purpose" style="width: 30%"/>
+								<field name="room_type" style="width: 35%"/>
+								<field name="room_min_capacity" style="width: 15%"/>
+								<field name="purpose" style="width: 50%"/>
+							</div>							
 							<field name="section_id"
 								options="{'no_quick_create': True, 'no_create_edit': True}"
-								 attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"
-								style="width: 70%"/>
-							<field name="description" placeholder="Brief description..."
-								attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}" style="width: 70%"/>
-							</div>
+								attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"/>
+							<field name="description"
+								attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}"/>
 							<field name="start_time" required="1"/>
 							<field name="end_time" required="1"/>
 							<field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True}" required="1"/>
