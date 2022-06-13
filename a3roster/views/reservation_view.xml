@@ -19,8 +19,9 @@
 							<field name="purpose" style="width: 40%"/>
 							<field name="section_id"
 								options="{'no_quick_create': True, 'no_create_edit': True}"
-								 attrs="{'invisible': [('purpose', '!=', 'makeup')]}"/>
-							<field name="description" attrs="{'invisible': [('purpose', '=', 'makeup')]}"/>
+								 attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"
+								style="width: 60%"/>
+							<field name="description" attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}" style="width: 60%"/>
 							</div>
 							<field name="start_time" required="1"/>
 							<field name="end_time" required="1"/>
