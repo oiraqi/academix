@@ -34,6 +34,7 @@
                             <field name="tag_ids" widget="many2many_tags" />
                             <field name="supervisor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>                            
                             <field name="cosupervisor_ids" widget="many2many_tags"
+                                domain="[('id', '!=', supervisor_id)]"
                                 options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>                            
                             <field name="initial_idea" widget="html" colspan="4" attrs="{'invisible': [('state', 'in', ['defense', 'done'])]}"/>
                             <field name="final_abstract" widget="html" colspan="4" attrs="{'invisible': [('state', 'not in', ['ongoing', 'defense', 'done'])]}"/>
@@ -61,7 +62,9 @@
                                     domain="[('building_id', '=', building_id), ('type', '!=', 'office')]" style="width: 50%"/>
                             </div>
                             <field name="videocall_location"/>
-                            <field name="internal_examiner_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
+                            <field name="internal_examiner_ids" widget="many2many_tags"
+                                domain="[('id', '!=', supervisor_id), ('id', 'not in', cosupervisor_ids)]"
+                                options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
                             <field name="external_examiner_ids" widget="many2many_tags"/>
                         </group>
                         <group name="evaluation" groups="a3.group_faculty,a3capint.group_capint_coordinator" attrs="{'invisible': [('state', 'not in', ['defense', 'done'])]}">
