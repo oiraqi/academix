@@ -4,16 +4,20 @@ from odoo import models, fields
 class Calendarized(models.AbstractModel):
 	_inherit = 'a3.calendarized'
 
+	def set_event(self, name, partner_ids=False, videocall_location=False):
+		self._make_reservation()
+		super(Calendarized, self).set_event(name, partner_ids, videocall_location)
+
 	def _make_reservation(self):
-		self.ensure_one()
-		self.env['a3roster.reservation'].create({
-            'room_type': self.room_id.type,
-            'room_capacity': '5',
-            'purpose': 'presentation',
-            'description': 'Project Defense',
-            'room_id': self.room_id.id,
-            'start_time': self.start_time,
-            'end_time': self.end_time
-        })
+		for rec in self:
+			self.env['a3roster.reservation'].create({
+	            'room_type': rec.room_id.type,
+    	        'room_capacity': '5',
+        	    'purpose': 'presentation',
+            	'description': 'Project Defense',
+	            'room_id': rec.room_id.id,
+    	        'start_time': rec.start_time,
+        	    'end_time': rec.end_time
+        	})
 	
 	

@@ -19,7 +19,6 @@ class Calendarized(models.AbstractModel):
 			if rec.building_id and rec.building_id.room_ids:
 				rec.room_id = rec.building_id.room_ids[0]
 	
-	
 
 	def set_event(self, name, partner_ids=False, videocall_location=False):
 		for rec in self:

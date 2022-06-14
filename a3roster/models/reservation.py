@@ -8,6 +8,12 @@ class Reservation(models.Model):
 	_description = 'Reservation'
 	_order = 'start_time desc,end_time'
 
+	@api.model
+	def create(self, vals):
+		record = super(Reservation, self).create(vals)
+		record.set_event(record.section_id and record.section_id.name or record.description, partner_ids=[record.create_uid.partner_id.id])
+		return record
+
 	purpose = fields.Selection(string='Purpose', selection=[('makeup', 'Make-up'), ('presentation', 'Presentation'), ('meeting', 'Meeting'), ('event', 'Event'), ('other', 'Other')], default='makeup', required=True)	
 	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section')
 	description = fields.Char(string='Brief description')
@@ -24,3 +30,6 @@ class Reservation(models.Model):
 		for rec in self:
 			if self.env['a3roster.reservation'].search([('room_id', '=', rec.room_id.id), ('start_time', '<', rec.end_time), ('end_time', '>', rec.start_time )]):
 				raise ValidationError('Reservation conflict! Please select another room or change the timeslot.')
+	
+	def _make_reservation(self):
+		return
