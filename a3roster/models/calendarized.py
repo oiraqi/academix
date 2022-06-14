@@ -1,7 +1,7 @@
 from odoo import models, fields
 
 
-class Calendarized(models.Model):
+class Calendarized(models.AbstractModel):
 	_inherit = 'a3.calendarized'
 
 	def _make_reservation(self):
