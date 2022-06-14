@@ -28,3 +28,5 @@ class Room(models.Model):
     _inherit = 'a3.room'
 
     section_ids = fields.One2many('a3roster.section', 'room_id', 'Sections', order_by='year desc,semester desc')
+    reservation_ids = fields.One2many(comodel_name='a3roster.reservation', inverse_name='room_id', string='Reservations')
+    

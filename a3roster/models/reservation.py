@@ -1,4 +1,5 @@
-from odoo import models, fields
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class Reservation(models.Model):
@@ -18,3 +19,8 @@ class Reservation(models.Model):
         ('lab', 'Lab'), ('general', 'General Purpose')], default='classroom', required=True)
 	room_capacity = fields.Integer(related='room_id.capacity')
 	
+	@api.constrains('room_id', 'start_time', 'end_time')
+	def check_conflict(self):
+		for rec in self:
+			if self.env['a3roster.reservation'].search([('room_id', '=', rec.room_id.id), ('start_time', '<', rec.end_time), ('end_time', '>', rec.start_time )]):
+				raise ValidationError('Reservation conflict! Please select another room or change the timeslot.')

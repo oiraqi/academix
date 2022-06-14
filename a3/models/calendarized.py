@@ -21,14 +21,14 @@ class Calendarized(models.AbstractModel):
 	
 	
 
-	def set_event(self, name, start, stop, location, videocall_location=False, partner_ids=False):
+	def set_event(self, name, partner_ids=False, videocall_location=False):
 		for rec in self:
 			if not rec.event_id:
 				rec.event_id = self.env['calendar.event'].create({
 					'name': name,
-					'start': start,
-					'stop': stop,
-					'location': location,
+					'start': rec.start_time,
+					'stop': rec.end_time,
+					'location': rec.room_id.name,
 					'videocall_location': videocall_location,
 					'privacy': 'private',
 					'allday': False,

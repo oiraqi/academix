@@ -156,7 +156,7 @@ class Project(models.Model):
             for external_examiner in rec.external_examiner_ids:
                 attendee_ids.append(external_examiner.id)
             attendee_ids.append(self.env.user.partner_id.id)
-            rec.set_event(rec.name, rec.start_time, rec.end_time, rec.room_id.name, False, [(6, 0, attendee_ids)])
+            rec.set_event(rec.name, [(6, 0, attendee_ids)])
             rec.event_id.project_id = rec
 
             message = 'The defense of the ' + TYPES[rec.type] + ' ' + rec.name + ' by the student ' + rec.student_id.name + ' has been scheduled: ' + fields.Datetime.to_string(rec.start_time) + ' - ' + fields.Datetime.to_string(rec.end_time)

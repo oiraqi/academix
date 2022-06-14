@@ -1,27 +1,41 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-    
+
         <record id="view_room_form_roster" model="ir.ui.view">
             <field name="name">a3.room.inherit.view.form</field>
             <field name="model">a3.room</field>
             <field name="inherit_id" ref="a3.view_room_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='info']" position="after">
-                    <group name="sections" string="Sections">
-                        <field name="section_ids" nolabel="1" readonly="1">
-                            <tree>
-                                <field name="name"/>
-                                <field name="instructor_id"/>
-                                <field name="timeslot"/>
-                                <field name="term_id" widget="badge"/>
-                            </tree>
-                        </field>
-                    </group>
+                    <notebook>
+                        <page name="sections" string="Sections">
+                            <field name="section_ids" nolabel="1" readonly="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="instructor_id"/>
+                                    <field name="timeslot"/>
+                                    <field name="term_id" widget="badge"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="reservations" string="Reservations">
+                            <group>
+                                <field name="reservation_ids" nolabel="1" readonly="1">
+                                    <tree>                                        
+                                        <field name="purpose" widget="badge"/>
+                                        <field name="start_time"/>
+                                        <field name="end_time"/>
+                                        <field name="create_uid"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
                 </xpath>
             </field>
         </record>
-    
+
     </data>
-    
+
 </odoo>
