@@ -20,7 +20,7 @@ class Calendarized(models.AbstractModel):
 				rec.room_id = rec.building_id.room_ids[0]
 	
 
-	def set_event(self, name, partner_ids=[], videocall_location=False):
+	def set_event(self, name, partner_ids=[], videocall_location=''):
 		for rec in self:
 			if not rec.event_id:
 				rec.event_id = self.env['calendar.event'].create({
@@ -31,6 +31,6 @@ class Calendarized(models.AbstractModel):
 					'videocall_location': videocall_location,
 					'privacy': 'private',
 					'allday': False,
-					'partner_ids': partner_ids
+					'partner_ids': (6, 0, partner_ids)
 				})
 	
