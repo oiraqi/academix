@@ -17,7 +17,7 @@
 							<field name="section_id"
 								options="{'no_quick_create': True, 'no_create_edit': True}"
 								attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"/>
-							<field name="description" nolabel="1" placeholder="A brief description..."
+							<field name="description"
 								attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}"/>
 							<field name="start_time" required="1"/>
 							<field name="end_time" required="1"/>
