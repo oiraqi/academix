@@ -11,7 +11,7 @@ class Reservation(models.Model):
 	@api.model
 	def create(self, vals):
 		record = super(Reservation, self).create(vals)
-		record.set_event(record.section_id and record.section_id.name or record.description, partner_ids=[record.create_uid.partner_id])
+		record.set_event(record.section_id and record.section_id.name or record.description)
 		return record
 
 	purpose = fields.Selection(string='Purpose', selection=[('makeup', 'Make-up'), ('presentation', 'Presentation'), ('meeting', 'Meeting'), ('event', 'Event'), ('other', 'Other')], default='makeup', required=True)	
