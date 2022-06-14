@@ -31,6 +31,6 @@ class Calendarized(models.AbstractModel):
 					'videocall_location': videocall_location,
 					'privacy': 'private',
 					'allday': False,
-					'partner_ids': (6, 0, partner_ids)
+					'partner_ids': [(6, 0, partner_ids)]
 				})
 	
