@@ -7,7 +7,7 @@
 			<field name="arch" type="xml">
 				<form string="Reservation">
 					<sheet>
-						<group name="info" string="General Information" col="4">
+						<group name="info" string="Search Criteria" col="4">
 							<label for="room_type" string="Type / Min Capacity"/>
 							<div>
 								<field name="room_type" style="width: 60%"/>
@@ -21,8 +21,9 @@
 								attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}"/>
 							<field name="start_time" required="1"/>
 							<field name="end_time" required="1"/>
+						</group>
+						<group name="room" string="Reserved Room" col="4">
 							<field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" required="1"/>
-							
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
@@ -40,7 +41,6 @@
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Reservations">
-					<field name="name"/>
 					<field name="room_id"/>
 					<field name="room_type" widget="badge"/>
 					<field name="purpose" widget="badge"/>
