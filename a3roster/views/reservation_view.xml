@@ -22,11 +22,12 @@
 							<field name="start_time" required="1"/>
 							<field name="end_time" required="1"/>
 						</group>
-						<group name="room" col="4">
+						<group name="room" string="Reserved Room" col="4">
 							<field name="room_id"
-								string="Reserved Room"
+								string="Room"
 								options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
-								required="1" colspan="2"/>
+								required="1"/>
+							<field name="room_capacity"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>

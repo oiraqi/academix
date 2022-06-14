@@ -16,4 +16,5 @@ class Reservation(models.Model):
 		('45', '45'), ('50', '50'), ('75', '75'), ('100', '100'),], default='15', required=True)
 	room_type = fields.Selection(string='Type', selection=[('classroom', 'Classroom'),
         ('lab', 'Lab'), ('general', 'General Purpose')], default='classroom', required=True)
+	room_capacity = fields.Integer(related='room_id.capacity')
 	
