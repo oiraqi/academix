@@ -7,14 +7,13 @@
 			<field name="arch" type="xml">
 				<form string="Reservation">
 					<sheet>
-						<h1><field name="name"/></h1>
 						<group name="info" string="General Information" col="4">
-							<label for="room_type" string="Type / Min Capacity / Purpose"/>
+							<label for="room_type" string="Type / Min Capacity"/>
 							<div>
-								<field name="room_type" style="width: 40%"/>
-								<field name="room_min_capacity" style="width: 25%"/>
-								<field name="purpose" style="width: 35%"/>
-							</div>							
+								<field name="room_type" style="width: 60%"/>
+								<field name="room_min_capacity" style="width: 40%"/>
+							</div>
+							<field name="purpose"/>
 							<field name="section_id"
 								options="{'no_quick_create': True, 'no_create_edit': True}"
 								attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"/>
