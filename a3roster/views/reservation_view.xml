@@ -17,11 +17,11 @@
 							<field name="section_id"
 								options="{'no_quick_create': True, 'no_create_edit': True}"
 								attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"/>
-							<field name="description"
+							<field name="description" nolabel="1" placeholder="A brief description..."
 								attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}"/>
 							<field name="start_time" required="1"/>
 							<field name="end_time" required="1"/>
-							<field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True}" required="1"/>
+							<field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" required="1"/>
 							
 						</group>
 						<group name="log" string="Log" col="4">
