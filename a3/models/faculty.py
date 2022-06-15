@@ -41,7 +41,7 @@ class Faculty(models.Model):
     
     room_id = fields.Many2one(comodel_name='a3.room', string='Office')
     
-    course_ids = fields.Many2many('a3.course', 'a3_course_faculty_rel', 'instructor_id', 'course_id', string='Taught Courses')
+    course_ids = fields.Many2many('a3.course', 'a3_course_faculty_rel', 'instructor_id', 'course_id', string='Courses')
 
     @api.model
     def create(self, vals):
