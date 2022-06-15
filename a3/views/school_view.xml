@@ -40,7 +40,7 @@
                             <page string="Buildings" name="buildings">
                                 <group>
                                     <field name="building_ids" nolabel="1">
-                                        <tree>
+                                        <tree editable="bottom">
                                             <field name="name"/>
                                         </tree>
                                     </field>
