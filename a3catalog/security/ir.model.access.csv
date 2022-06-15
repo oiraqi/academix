@@ -1,30 +1,16 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_a3catalog_course_ilo_user,access.a3catalog.course_ilo.user,model_a3catalog_course_ilo,base.group_user,1,0,0,0
-access_a3catalog_course_ilo_setup,access.a3catalog.course_ilo.setup,model_a3catalog_course_ilo,a3.group_setup,1,1,1,1
-access_a3catalog_course_ilo_faculty,access.a3catalog.course_ilo.faculty,model_a3catalog_course_ilo,a3.group_faculty,1,1,1,1
-access_a3catalog_course_ilo_coordinator,access.a3catalog.course_ilo.coordinator,model_a3catalog_course_ilo,a3.group_coordinator,1,1,1,1
-access_a3catalog_course_ilo_vpaa,access.a3catalog.course_ilo.vpaa,model_a3catalog_course_ilo,a3.group_vpaa,1,1,0,0
+access_a3catalog_course_ilo_user,access.a3catalog.course.ilo.user,model_a3catalog_course_ilo,base.group_user,1,0,0,0
+access_a3catalog_course_ilo_course_manager,access.a3catalog.course.ilo.course.manager,model_a3catalog_course_ilo,a3.group_course_manager,1,1,1,1
 
 access_a3catalog_prerequisite_user,access.a3catalog.prerequisite.user,model_a3catalog_prerequisite,base.group_user,1,0,0,0
-access_a3catalog_prerequisite_setup,access.a3catalog.prerequisite.setup,model_a3catalog_prerequisite,a3.group_setup,1,1,1,1
-access_a3catalog_prerequisite_faculty,access.a3catalog.prerequisite.faculty,model_a3catalog_prerequisite,a3.group_faculty,1,0,0,0
-access_a3catalog_prerequisite_coordinator,access.a3catalog.prerequisite.coordinator,model_a3catalog_prerequisite,a3.group_coordinator,1,1,1,1
-access_a3catalog_prerequisite_vpaa,access.a3catalog.prerequisite.vpaa,model_a3catalog_prerequisite,a3.group_vpaa,1,1,0,0
+access_a3catalog_prerequisite_course_manager,access.a3catalog.prerequisite.course.manager,model_a3catalog_prerequisite,a3.group_course_manager,1,1,1,1
 
 access_a3catalog_corequisite_user,access.a3catalog.corequisite.user,model_a3catalog_corequisite,base.group_user,1,0,0,0
-access_a3catalog_corequisite_setup,access.a3catalog.corequisite.setup,model_a3catalog_corequisite,a3.group_setup,1,1,1,1
-access_a3catalog_corequisite_faculty,access.a3catalog.corequisite.faculty,model_a3catalog_corequisite,a3.group_faculty,1,0,0,0
-access_a3catalog_corequisite_coordinator,access.a3catalog.corequisite.coordinator,model_a3catalog_corequisite,a3.group_coordinator,1,1,1,1
-access_a3catalog_corequisite_vpaa,access.a3catalog.corequisite.vpaa,model_a3catalog_corequisite,a3.group_vpaa,1,1,0,0
+access_a3catalog_corequisite_course_manager,access.a3catalog.corequisite.course.manager,model_a3catalog_corequisite,a3.group_course_manager,1,1,1,1
+
 
 access_a3catalog_program_user,access.a3catalog.program.user,model_a3catalog_program,base.group_user,1,0,0,0
-access_a3catalog_program_setup,access.a3catalog.program.setup,model_a3catalog_program,a3.group_setup,1,1,1,1
-access_a3catalog_program_faculty,access.a3catalog.program.faculty,model_a3catalog_program,a3.group_faculty,1,0,0,0
-access_a3catalog_program_coordinator,access.a3catalog.program.coordinator,model_a3catalog_program,a3.group_coordinator,1,1,1,0
-access_a3catalog_program_vpaa,access.a3catalog.program.vpaa,model_a3catalog_program,a3.group_vpaa,1,1,0,0
+access_a3catalog_program_program_manager,access.a3catalog.program.program.manager,model_a3catalog_program,a3catalog.group_program_manager,1,1,1,1
 
 access_a3catalog_component_user,access.a3catalog.component.user,model_a3catalog_component,base.group_user,1,0,0,0
-access_a3catalog_component_setup,access.a3catalog.component.setup,model_a3catalog_component,a3.group_setup,1,1,1,1
-access_a3catalog_component_faculty,access.a3catalog.component.faculty,model_a3catalog_component,a3.group_faculty,1,0,0,0
-access_a3catalog_component_coordinator,access.a3catalog.component.coordinator,model_a3catalog_component,a3.group_coordinator,1,1,1,0
-access_a3catalog_component_vpaa,access.a3catalog.component.vpaa,model_a3catalog_component,a3.group_vpaa,1,1,0,0
+access_a3catalog_component_program_manager,access.a3catalog.component.program_manager,model_a3catalog_component,a3catalog.group_program_manager,1,1,1,1

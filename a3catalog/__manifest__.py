@@ -15,7 +15,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        #'security/catalog_security.xml',
+        'security/catalog_security.xml',
         'views/course_view.xml',
         'views/program_view.xml',
         'views/component_view.xml',

@@ -1,9 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_a3_course_user,access.a3.course.user,model_a3_course,base.group_user,1,0,0,0
-access_a3_course_setup,access.a3.course.setup,model_a3_course,group_setup,1,1,1,0
-access_a3_course_faculty,access.a3.course.faculty,model_a3_course,group_faculty,1,0,0,0
-access_a3_course_coordinator,access.a3.course.coordinator,model_a3_course,group_coordinator,1,1,1,0
-access_a3_course_vpaa,access.a3.course.vpaa,model_a3_course,group_vpaa,1,1,0,0
+access_a3_course_cousre_manager,access.a3.course.course.manager,model_a3_course,group_course_manager,1,1,1,0
 
 access_a3_student_user,access.a3.student.user,model_a3_course,base.group_user,1,0,0,0
 access_a3_student_setup,access.a3.student.setup,model_a3_student,group_setup,1,1,1,0

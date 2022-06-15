@@ -1,7 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-    
+        <record id="group_program_manager" model="res.groups">
+            <field name="name">Program Manager</field>
+            <field name="category_id" ref="module_category_a3"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
     </data>
     
 </odoo>
