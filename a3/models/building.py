@@ -55,7 +55,7 @@ class Building(models.Model):
                     offices += 1
                 elif room.type == 'general':
                     general_rooms += 1
-                capacity += room.capacity
+                capacity += int(room.capacity)
             rec.classrooms = classrooms
             rec.labs = labs
             rec.offices = offices
