@@ -21,7 +21,7 @@
 #
 ###############################################################################
 
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class Building(models.Model):
@@ -32,4 +32,30 @@ class Building(models.Model):
 
     name = fields.Char(string='Name', required=True)
     room_ids = fields.One2many(comodel_name='a3.room', inverse_name='building_id', string='Rooms')
+    classrooms = fields.Integer(compute='_rooms', string='Classrooms', store=True)
+    labs = fields.Integer(compute='_rooms', string='Labs', store=True)
+    offices = fields.Integer(compute='_rooms', string='Offices', store=True)
+    general_rooms = fields.Integer(compute='_rooms', string='General Purpose Rooms', store=True)
+
+
+    @api.depends('room_ids')
+    def _rooms(self):
+        for rec in self:
+            classrooms = 0
+            labs = 0
+            offices = 0
+            general_rooms = 0
+            for room in rec.room_ids:
+                if room.type == 'classroom':
+                    classrooms += 1
+                elif room.type == 'lab':
+                    labs += 1
+                elif room.type == 'office':
+                    offices += 1
+                elif room.type == 'general':
+                    general_rooms += 1
+            rec.classrooms = classrooms
+            rec.labs = labs
+            rec.offices = offices
+            rec.general_rooms = general_rooms
     
