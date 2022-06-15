@@ -7,9 +7,12 @@
 			<field name="arch" type="xml">
 				<form string="Building">
 					<sheet>
-						<h1><field name="name" default_focus="1" placeholder="Name..." style="width: 30%"/></h1>
+						<h1>
+							<field name="name" default_focus="1" placeholder="Name..." style="width: 30%"/>
+						</h1>
 						<group name="owner_rooms" col="4">
-							<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True}" string="Owner" colspan="4"/>
+							<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True}" string="Owner"/>
+							<field name="capacity"/>
 							<field name="classrooms"/>
 							<field name="labs"/>
 							<field name="offices"/>
@@ -40,6 +43,11 @@
 			<field name="arch" type="xml">
 				<tree string="Buildings">
 					<field name="name"/>
+					<field name="classrooms"/>
+					<field name="labs"/>
+					<field name="offices"/>
+					<field name="general_rooms"/>
+					<field name="capacity"/>
 					<field name="school_id" invisible="1"/>
 				</tree>
 			</field>
@@ -53,10 +61,10 @@
 			<field name="context">{'group_by': 'school_id'}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
-				
+
 				</p>
 				<p>
-				
+
 				</p>
 			</field>
 		</record>

@@ -36,7 +36,7 @@ class Building(models.Model):
     labs = fields.Integer(compute='_rooms', string='Labs', store=True)
     offices = fields.Integer(compute='_rooms', string='Offices', store=True)
     general_rooms = fields.Integer(compute='_rooms', string='General Purpose Rooms', store=True)
-
+    capacity = fields.Integer(compute='_rooms', string='Total Capacity', store=True)
 
     @api.depends('room_ids')
     def _rooms(self):
@@ -45,6 +45,7 @@ class Building(models.Model):
             labs = 0
             offices = 0
             general_rooms = 0
+            capacity = 0
             for room in rec.room_ids:
                 if room.type == 'classroom':
                     classrooms += 1
@@ -54,8 +55,10 @@ class Building(models.Model):
                     offices += 1
                 elif room.type == 'general':
                     general_rooms += 1
+                capacity += room.capacity
             rec.classrooms = classrooms
             rec.labs = labs
             rec.offices = offices
             rec.general_rooms = general_rooms
+            rec.capacity = capacity
     
