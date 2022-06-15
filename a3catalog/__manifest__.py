@@ -14,8 +14,8 @@
         'a3',
     ],
     'data': [
-        'security/ir.model.access.csv',
         'security/catalog_security.xml',
+        'security/ir.model.access.csv',        
         'views/course_view.xml',
         'views/program_view.xml',
         'views/component_view.xml',
