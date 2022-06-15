@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="module_category_a3" model="ir.module.category">
-            <field name="name">AUI</field>
-            <field name="description">AUI</field>
+            <field name="name">A3</field>
+            <field name="description">A3</field>
             <field name="sequence">10</field>
         </record>
         <record id="group_faculty" model="res.groups">
@@ -25,13 +25,13 @@
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="group_coordinator" model="res.groups">
-            <field name="name">Coordinator</field>
+            <field name="name">School Coordinator</field>
             <field name="category_id" ref="module_category_a3"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="group_dean" model="res.groups">
-            <field name="name">Dean</field>
+            <field name="name">School Dean</field>
             <field name="category_id" ref="module_category_a3"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
             <field name="implied_ids" eval="[(4, ref('group_coordinator'))]"/>
