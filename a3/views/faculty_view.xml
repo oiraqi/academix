@@ -20,11 +20,13 @@
                             <field name="hiring_date"/>
                             <field name="room_id" domain="[('school_id', '=', school_id), ('type', '=', 'office')]"/>
                         </group>
-                        <group name="academics" string="Academic Information">
-                            <field name="course_ids" domain="[('school_id', '=', school_id)]" context="{'default_school_id': school_id}" colspan="4">
+                        <group name="academics" string="Academic Information" col="4">
+                            <field name="discipline_ids" options="{'no_quick_create': True, 'no_create_edit': True}"
+                                        domain="[('school_id', '=', school_id)]"/>
+                            <field name="course_ids" domain="[('discipline_id', 'in', discipline_ids)]" context="{'default_school_id': school_id}" colspan="4">
                                 <tree>
                                     <field name="name" />
-                                    <field name="school_id" invisible="1" />
+                                    <field name="school_id" invisible="1" />                                    
                                 </tree>
                             </field>
                         </group>

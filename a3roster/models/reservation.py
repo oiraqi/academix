@@ -1,3 +1,4 @@
+from unicodedata import name
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
@@ -11,7 +12,15 @@ class Reservation(models.Model):
 	@api.model
 	def create(self, vals):
 		record = super(Reservation, self).create(vals)
-		record.set_event(record.section_id and record.section_id.name or record.description, partner_ids=[record.create_uid.partner_id.id])
+		if not record.event_id:
+			partners = [record.create_uid.partner_id.id]
+			if record.purpose == 'makeup' and record.section_id:
+				for student in record.section_id.student_ids:
+					partners.append(student.partner_id.id)
+				name = 'Makeup ' + record.section_id.name
+			else:
+				name = record.description
+			record.set_event(name , partners)
 		return record
 
 	purpose = fields.Selection(string='Purpose', selection=[('makeup', 'Make-up'), ('presentation', 'Presentation'), ('meeting', 'Meeting'), ('event', 'Event'), ('other', 'Other')], default='makeup', required=True)	
@@ -25,11 +34,11 @@ class Reservation(models.Model):
         ('lab', 'Lab'), ('general', 'General Purpose')], default='classroom', required=True)
 	room_capacity = fields.Integer(related='room_id.capacity')
 	
-	#@api.constrains('room_id', 'start_time', 'end_time')
-	#def check_conflict(self):
-	#	for rec in self:
-	#		if self.env['a3roster.reservation'].search([('room_id', '=', rec.room_id.id), ('start_time', '<', rec.end_time), ('end_time', '>', rec.start_time)]):
-	#			raise ValidationError('Reservation conflict! Please select another room or change the timeslot.')
+	@api.constrains('room_id', 'start_time', 'end_time')
+	def check_conflict(self):
+		for rec in self:
+			if self.env['a3roster.reservation'].search_count([('room_id', '=', rec.room_id.id), ('start_time', '<', rec.end_time), ('end_time', '>', rec.start_time)]) > 1:
+				raise ValidationError('Reservation conflict! Please select another room or change the timeslot.')
 	
 	def _make_reservation(self):
 		return

@@ -25,6 +25,8 @@ from odoo import fields, models
 
 
 class Student(models.Model):
-    _inherit = 'a3.student'
+    _name = 'a3.student'
+    _inherit = ['a3.student', 'mail.thread']
 
+    program_id = fields.Many2one(comodel_name='a3catalog.program', string='Program', required=True, tracking=True)    
     section_ids = fields.Many2many('a3roster.section', 'a3roster_section_student_rel', 'student_id', 'section_id', 'Sections')

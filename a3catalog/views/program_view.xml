@@ -19,6 +19,9 @@
                             <field name="level" widget="radio" options="{'horizontal': True}"/>
                             <field name="description" colspan="4"/>
                             <field name="sch"/>
+                            <field name="manager_ids"
+                                domain="[('school_id', '=', school_id)]"
+                                options="{'no_quick_create': True, 'no_create_edit': True}" widget="many2many_tags"/>
                         </group>
                         <group name="components" string="Components">
                             <field name="component_ids"
@@ -49,6 +52,7 @@
                     <field name="code"/>
                     <field name="name"/>
                     <field name="sch"/>
+                    <field name="manager_ids" widget="many2many_tags"/>
                     <field name="ncomponents"/>
                 </tree>
             </field>

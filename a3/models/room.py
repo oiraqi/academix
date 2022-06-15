@@ -22,6 +22,7 @@
 ###############################################################################
 
 from odoo import api, fields, models
+from odoo.exceptions import UserError
 
 
 class Room(models.Model):
@@ -55,3 +56,19 @@ class Room(models.Model):
                 rec.building_id = rec.school_id.building_ids[0]
             else:
                 rec.building_id = False
+
+    @api.model
+    def get_from_name(self, name):
+        building_name = name.split(' / ')[0]
+        building_id = self.env['a3.building'].search([('name', '=', building_name)])
+        if not building_id:
+            raise UserError('Unknown building / room')
+        
+        room_number = name.split(' / ')[1]
+        room_id = self.search([('number', '=', room_number), ('building_id', '=', building_id.id)])
+        if not room_id:
+            raise UserError('Unknown building / room')
+        
+        return room_id
+    
+    

@@ -33,4 +33,16 @@ class Calendarized(models.AbstractModel):
 					'allday': False,
 					'partner_ids': [(6, 0, partner_ids)]
 				})
+
+	@api.depends('room_id', 'start_time', 'end_time')
+	def update_calendar(self):
+		for rec in self:
+			if rec.event_id:
+				if rec.event_id.start != rec.start_time:
+					rec.event_id.start = rec.start_time
+				if rec.event_id.stop != rec.end_time:
+					rec.event_id.stop = rec.end_time
+				if rec.event_id.location != rec.room_id.name:
+					rec.event_id.location = rec.room_id.name
+
 	

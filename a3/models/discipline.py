@@ -32,3 +32,8 @@ class Discipline(models.Model):
     code = fields.Char('Code', required=True)
     name = fields.Char('Name', required=True)
     school_id = fields.Many2one('a3.school', string='School', required=True)
+    faculty_ids = fields.Many2many('a3.faculty', 'a3_faculty_discipline_rel', 'discipline_id', 'faculty_id', 'Faculty')
+    undergrad_manager_ids = fields.Many2many('a3.faculty', 'a3_discipline_undergrad_manager_rel', 'discipline_id', 'manager_id', 'Undergraduate Course Managers')
+    grad_manager_ids = fields.Many2many('a3.faculty', 'a3_discipline_grad_manager_rel', 'discipline_id', 'manager_id', 'Graduate Course Managers')
+    
+    

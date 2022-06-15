@@ -33,15 +33,17 @@ class Assessment(models.Model):
 
 	portfolio_id = fields.Many2one('a3quality.portfolio', 'Portfolio', required=True)	
 	program_id = fields.Many2one('a3catalog.program', 'Program', required=True)
-	nstudents = fields.Integer('Student Population', required=True)
+	nstudents = fields.Integer('Student Population', compute='_nstudents', store=True, required=True)
 
-	@api.constrains('nstudents')
+	@api.depends('portfolio_id', 'program_id')
 	def _nstudents(self):
 		for rec in self:
-			if rec.nstudents <= 0:
-				raise UserError('The student population (size) must be > 0')
-			if rec.nstudents > 50:
-				raise UserError('The student population is unusually large')
+			nstudents = 0
+			if rec.portfolio_id and rec.program_id:
+				for student in rec.portfolio_id.section_id.student_ids:
+					if student.program_id == rec.program_id:
+						nstudents += 1
+			rec.nstudents = nstudents
 
 	kpi = fields.Selection(string='Minimum ILO Acquisition %', selection=[
 		('70', '70'), ('75', '75'), ('80', '80'),

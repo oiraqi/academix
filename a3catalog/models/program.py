@@ -37,6 +37,9 @@ class Program(models.Model):
     component_ids = fields.Many2many('a3catalog.component', 'a3catalog_program_component_rel', 'program_id', 'component_id', string='Components')
     sch = fields.Integer(compute='_compute_sch_ncomponents', string='SCH')
     ncomponents = fields.Integer(compute='_compute_sch_ncomponents', string='Number of Components')
+    manager_ids = fields.Many2many('a3.faculty', 'a3catalog_program_a3_faculty', 'program_id', 'manager_id', string='Managers')
+    
+    
     
     @api.onchange('component_ids')
     @api.depends('component_ids')

@@ -4,3 +4,4 @@ from . import room
 from . import timeslot
 from . import reservation
 from . import calendarized
+from . import event

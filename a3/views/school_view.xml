@@ -22,10 +22,15 @@
                         <notebook>
                             <page name="disciplines" string="Disciplines">
                                 <group>
-                                    <field name="discipline_ids" nolabel="1" colspan="4">
+                                    <field name="discipline_ids" nolabel="1" colspan="4" context="{'default_school_id': id}">
                                         <tree editable="bottom">
                                             <field name="code"/>
                                             <field name="name"/>
+                                            <field name="undergrad_manager_ids" widget="many2many_tags"
+                                                domain="[('school_id', '=', school_id)]"/>
+                                            <field name="grad_manager_ids" widget="many2many_tags"
+                                                domain="[('school_id', '=', school_id)]"/>
+                                            <field name="school_id" invisible="1"/>
                                         </tree>
                                     </field>
                                 </group>

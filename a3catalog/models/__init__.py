@@ -4,4 +4,4 @@ from . import prerequisite
 from . import corequisite
 from . import program
 from . import school
-from . import component
+from . import componentfrom . import faculty
