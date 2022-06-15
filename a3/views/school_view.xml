@@ -27,9 +27,11 @@
                                             <field name="code"/>
                                             <field name="name"/>
                                             <field name="undergrad_manager_ids" widget="many2many_tags"
-                                                domain="[('school_id', '=', school_id)]"/>
+                                                domain="[('school_id', '=', school_id)]"
+                                                options="{'no_quick_create': True, 'no_create_edit': True}"/>
                                             <field name="grad_manager_ids" widget="many2many_tags"
-                                                domain="[('school_id', '=', school_id)]"/>
+                                                domain="[('school_id', '=', school_id)]"
+                                                options="{'no_quick_create': True, 'no_create_edit': True}"/>
                                             <field name="school_id" invisible="1"/>
                                         </tree>
                                     </field>
