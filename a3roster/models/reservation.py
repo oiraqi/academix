@@ -49,7 +49,7 @@ class Reservation(models.Model):
 		candidate_rooms = []
 		if self.start_time and self.end_time and self.room_capacity and self.room_type:
 			available_rooms = self.env['a3.room'].available_rooms(self.start_time, self.end_time)
-			candidate_rooms = self.env['a3.room'].search([('id', 'in', available_rooms),
+			candidate_rooms = self.env['a3.room'].search([('id', 'in', available_rooms[0]),
 				('capacity', '>=', self.room_capacity),
 				('type', '=', self.room_type)])
 			candidate_rooms = [room.id for room in candidate_rooms]
