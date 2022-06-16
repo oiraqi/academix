@@ -65,8 +65,7 @@
                             <field name="internal_examiner_ids" widget="many2many_tags"
                                 domain="[('id', '!=', supervisor_id), ('id', 'not in', cosupervisor_ids)]"
                                 options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
-                            <field name="external_examiner_ids" widget="many2many_tags"
-                                options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="external_examiner_ids" widget="many2many_tags"/>
                         </group>
                         <group name="evaluation" groups="a3.group_faculty,a3capint.group_capint_coordinator" attrs="{'invisible': [('state', 'not in', ['defense', 'done'])]}">
                             <field name="evaluation_ids">

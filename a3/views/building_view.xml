@@ -20,7 +20,7 @@
 							<field name="room_ids" colspan="4" context="{'default_school_id': school_id}">
 								<tree editable="bottom">
 									<field name="number"/>
-									<field name="type" widget="badge"/>
+									<field name="type"/>
 									<field name="capacity"/>
 									<field name="school_id" invisible="1"/>
 								</tree>
