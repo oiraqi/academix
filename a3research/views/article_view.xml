@@ -48,7 +48,7 @@
 					<field name="journal_id"/>
 					<field name="publisher_id"/>
 					<field name="authors"/>
-					<field name="authorship" widget="radio" options="{'horizontal': True}"/>
+					<field name="authorship"/>
 				</tree>
 			</field>
 		</record>
