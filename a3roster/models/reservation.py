@@ -55,9 +55,9 @@ class Reservation(models.Model):
 				('type', '=', self.room_type)], order='capacity')
 			if not candidate_rooms:
 				self.room_id = False
-				raise ValidationErr('No available rooms for the specified criteria!')
-			self.room_id = candidate_rooms[0]
-			max_capacity = candidate_rooms[0].capacity + 5
-			candidate_rooms = [room.id for room in candidate_rooms if room.capacity <= max_capacity]			
+			else:
+				self.room_id = candidate_rooms[0]
+				max_capacity = candidate_rooms[0].capacity + 5
+				candidate_rooms = [room.id for room in candidate_rooms if room.capacity <= max_capacity]			
 		return {'domain': {'room_id': [('id', 'in', candidate_rooms)]}}
 	
