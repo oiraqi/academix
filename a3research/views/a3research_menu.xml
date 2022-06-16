@@ -1,7 +1,7 @@
 <odoo>
 	<data>
 		<menuitem id="a3research_root_menu" name="Research" sequence="100"/>		
-		<menuitem id="a3research_article_menu" name="Articles" action="action_article_my" parent="a3research_root_menu" sequence="20"/>
+		<menuitem id="a3research_article_menu" name="Articles" action="action_article" parent="a3research_root_menu" sequence="20"/>
 		<menuitem id="a3research_book_menu" name="Books" action="action_book" parent="a3research_root_menu" sequence="40"/>
 		<menuitem id="a3research_paper_menu" name="Papers" action="action_paper" parent="a3research_root_menu" sequence="60"/>
 		<menuitem id="a3research_presentation_menu" name="Presentations" action="action_presentation" parent="a3research_root_menu" sequence="80"/>

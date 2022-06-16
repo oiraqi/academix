@@ -11,7 +11,7 @@ class Journal(models.Model):
 	editor = fields.Char('Editor(s)')	
 	impact = fields.Selection(
         [('if', 'Impact Factor'), ('ix', 'Indexed'), ('nix', 'Non-indexed')], 'Impact', required=True)
-	tier = fields.Selection(string='Tier', selection=[('1', '1'), ('2', '2'), ('3', '3')], required=True, tracking=True)
+	tier = fields.Selection(string='Tier', selection=[('1', 'Tier 1'), ('2', 'Tier 2'), ('3', 'Tier 3')], required=True, tracking=True)
 	state = fields.Selection(string='State', selection=[('proposed', 'Proposed'),
 		('approved', 'Approved'), ('rejected', 'Rejected')], default='proposed', required=True, tracking=True)
 	
