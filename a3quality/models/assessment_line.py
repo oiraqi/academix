@@ -59,7 +59,7 @@ class AssessmentLine(models.Model):
 			
 			records = self.env['a3quality.course.ilo.so'].search([
 				('course_program_id.program_id', '=', rec.assessment_id.program_id.id),
-				('ilo_ids', 'in', rec.ilo_id.id)])
+				('ilo_id', '=', rec.ilo_id.id)])
 			if not records:
 				rec.so_ids = False
 			else:
