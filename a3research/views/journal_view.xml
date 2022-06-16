@@ -40,6 +40,11 @@
 			<field name="arch" type="xml">
 				<tree string="Journals">
 					<field name="name"/>
+					<field name="publisher_id"/>
+					<field name="editor"/>
+					<field name="impact"/>
+					<field name="state" invisible="1"/>
+					<field name="tier" invisible="1"/>
 				</tree>
 			</field>
 		</record>
@@ -49,7 +54,7 @@
 			<field name="res_model">a3research.journal</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
-			<field name="context">{}</field>
+			<field name="context">{'group_by': ['state', 'tier']}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 				
