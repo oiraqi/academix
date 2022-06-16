@@ -47,7 +47,6 @@ class Reservation(models.Model):
 	@api.onchange('start_time', 'end_time', 'room_min_capacity', 'room_type')
 	def room_search(self):		
 		self.ensure_one()		
-		candidate_rooms = []
 		if self.start_time and self.end_time:			
 			available_rooms = self.env['a3.room'].available_rooms(self.start_time, self.end_time)
 			candidate_rooms = self.env['a3.room'].search([('id', 'in', available_rooms),
@@ -55,6 +54,7 @@ class Reservation(models.Model):
 				('type', '=', self.room_type)], order='capacity')
 			if not candidate_rooms:
 				self.room_id = False
+				candidate_rooms = []
 			else:
 				self.room_id = candidate_rooms[0]
 				max_capacity = candidate_rooms[0].capacity + 5
