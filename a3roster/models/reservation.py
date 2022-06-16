@@ -46,10 +46,10 @@ class Reservation(models.Model):
 
 	@api.onchange('start_time', 'end_time', 'room_capacity', 'room_type')
 	def room_search(self):		
-		self.ensure_one()
-		raise ValidationError('Hi!')
+		self.ensure_one()		
 		candidate_rooms = []
-		if self.start_time and self.end_time and self.room_capacity and self.room_type:
+		if self.start_time and self.end_time:
+			raise ValidationError('Hi!')
 			available_rooms = self.env['a3.room'].available_rooms(self.start_time, self.end_time)
 			raise ValidationErr(available_rooms)
 			candidate_rooms = self.env['a3.room'].search([('id', 'in', available_rooms),
