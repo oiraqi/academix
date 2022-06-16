@@ -6,10 +6,18 @@
 			<field name="model">a3research.journal</field>
 			<field name="arch" type="xml">
 				<form string="Journal">
+					<header>
+						<button name="approve" states="proposed" string="Approve" type="object" class="oe_highlight" groups="a3.group_vpaa"/>
+						<button name="reject" states="proposed,approved" string="Reject" type="object" groups="a3.group_vpaa"/>
+						<field name="state" widget="statusbar" statusbar_visible="proposed,approved"/>
+					</header>
 					<sheet>
 						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
 						<group name="info" string="General Information" col="4">
-						
+							<field name="publisher_id"/>
+							<field name="editor"/>
+							<field name="impact"/>
+							<field name="tier"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
@@ -18,6 +26,10 @@
 							<field name="write_date"/>
 						</group>
 					</sheet>
+					<div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
 				</form>
 			</field>
 		</record>

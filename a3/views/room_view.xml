@@ -7,15 +7,14 @@
 			<field name="arch" type="xml">
 				<form string="Room">
 					<sheet>
-						<h1><field name="name"/></h1>
+						<h1>
+							<field name="name"/>
+						</h1>
 						<group name="info" string="General Information" col="4">
-						<field name="school_id" string="Owner"
-							options="{'no_quick_create': True, 'no_create_edit': True}"/>
-							<field name="building_id"
-								domain="[('school_id', '=', school_id)]"
-								options="{'no_quick_create': True, 'no_create_edit': True}"/>
-							<field name="number"/>
+							<field name="school_id" string="Owner" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 							<field name="type"/>
+							<field name="building_id" domain="[('school_id', '=', school_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+							<field name="number"/>
 							<field name="capacity"/>
 						</group>
 						<group name="log" string="Log" col="4">
@@ -51,10 +50,10 @@
 			<field name="context">{'group_by': ['school_id', 'building_id', 'type']}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
-				
+
 				</p>
 				<p>
-				
+
 				</p>
 			</field>
 		</record>
