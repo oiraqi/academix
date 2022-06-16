@@ -52,8 +52,9 @@ class Reservation(models.Model):
 			available_rooms = self.env['a3.room'].available_rooms(self.start_time, self.end_time)
 			candidate_rooms = self.env['a3.room'].search([('id', 'in', available_rooms),
 				('capacity', '>=', self.room_capacity),
-				('type', '=', self.room_type)])
-			candidate_rooms = [room.id for room in candidate_rooms]
+				('type', '=', self.room_type)], order='capacity')
+			max_capacity = candidate_rooms[0].capacity + 5
+			candidate_rooms = [room.id for room in candidate_rooms if room.capacity <= max_capacity]
 		return {'domain': {'room_id': [('id', 'in', candidate_rooms)]}}
 
 	
