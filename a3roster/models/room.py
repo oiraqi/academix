@@ -60,6 +60,7 @@ class Room(models.Model):
                 sections = self.env['a3roster.section'].search([(WEEK_DAYS[day], '=', True)])
                 for section in sections:
                     busy_rooms.append(section.room_id.id)
+                day += 1
         
         available_rooms = self.search([('id', 'not in', busy_rooms)])
         return [room.id for room in available_rooms]
