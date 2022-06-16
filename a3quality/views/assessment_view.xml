@@ -20,7 +20,7 @@
 							<field name="ilo_so_ids" nolabel="1">
 								<tree>
 									<field name="so_id"/>
-									<field name="ilo_ids" widget="many2many_tags"/>
+									<field name="ilo_id"/>
 									<field name="level"/>
 								</tree>
 							</field>
