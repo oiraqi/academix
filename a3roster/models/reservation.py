@@ -46,13 +46,13 @@ class Reservation(models.Model):
 	@api.onchange('start_time', 'end_time', 'room_capacity', 'room_type')
 	def room_search(self):
 		self.ensure_one()
+		candidate_rooms = []
 		if self.start_time and self.end_time and self.room_capacity and self.room_type:
 			available_rooms = self.env['a3.room'].available_rooms(self.start_time, self.end_time)
 			candidate_rooms = self.env['a3.room'].search([('id', 'in', available_rooms),
 				('capacity', '>=', self.room_capacity),
 				('type', '=', self.room_type)])
 			candidate_rooms = [room.id for room in candidate_rooms]
-			return {'domain': {'room_id': [('id', 'in', candidate_rooms)]}}
-		return {'domain': {'room_id': [(1, '=', 0)]}}
+		return {'domain': {'room_id': [('id', 'in', candidate_rooms)]}}
 
 	
