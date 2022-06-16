@@ -50,7 +50,7 @@
 					<field name="purpose" widget="badge"/>
 					<field name="start_time"/>
 					<field name="end_time"/>
-					<field name="create_uid"/>
+					<field name="create_uid" string="Reserved By"/>
 				</tree>
 			</field>
 		</record>
