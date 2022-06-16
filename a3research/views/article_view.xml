@@ -7,9 +7,25 @@
 			<field name="arch" type="xml">
 				<form string="Article">
 					<sheet>
-						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
+						<h1>
+							<field name="name" default_focus="1" placeholder="Name..."/>
+						</h1>
 						<group name="info" string="General Information" col="4">
-						
+							<field name="faculty_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="schoo_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+							<label for="semester" string="Semester &#38; Year"/>
+							<div>
+								<field name="semester" style="width: 65%"/>
+								<field name="year" style="width: 35%"/>
+							</div>
+							<field name="date"/>
+							<field name="journal_id"/>
+							<field name="publisher_id"/>
+							<field name="authors"/>
+							<field name="authorship" widget="radio" options="{'horizontal': True}"/>
+							<field name="isn"/>
+							<field name="vpages"/>
+							<field name="doi"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
@@ -28,6 +44,11 @@
 			<field name="arch" type="xml">
 				<tree string="Articles">
 					<field name="name"/>
+					<field name="date"/>
+					<field name="journal_id"/>
+					<field name="publisher_id"/>
+					<field name="authors"/>
+					<field name="authorship" widget="radio" options="{'horizontal': True}"/>
 				</tree>
 			</field>
 		</record>
@@ -37,13 +58,13 @@
 			<field name="res_model">a3research.article</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
-			<field name="context">{}</field>
+			<field name="context">{'group_by': ['term_id', 'school_id']}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
-				
+
 				</p>
 				<p>
-				
+
 				</p>
 			</field>
 		</record>
@@ -56,10 +77,10 @@
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
-				
+
 				</p>
 				<p>
-				
+
 				</p>
 			</field>
 		</record>
