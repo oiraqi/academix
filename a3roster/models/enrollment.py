@@ -13,9 +13,9 @@ class Enrollment(models.Model):
 	state = fields.Selection(string='State', selection=[('created', 'Created'), ('enrolled', 'Enrolled'),
 		('dropped', 'Dropped'), ('withdrawn', 'Withdrawn')], default='created',
 		required=True, tracking=True)
-	school_id = fields.Many2one(comodel_name='a3.school', string='School', related='section_id.school_id')
-	discipline_id = fields.Many2one(comodel_name='a3.discipline', string='Discipline', related='section_id.course_id.discipline_id')
-	term_id = fields.Many2one(comodel_name='a3.term', string='Term', related='section_id.term_id')	
+	school_id = fields.Many2one(comodel_name='a3.school', string='School', related='section_id.school_id', store=True)
+	discipline_id = fields.Many2one(comodel_name='a3.discipline', string='Discipline', related='section_id.course_id.discipline_id', store=True)
+	term_id = fields.Many2one(comodel_name='a3.term', string='Term', related='section_id.term_id', store=True)
 	
 	def _set_name(self):
 		for rec in self:
