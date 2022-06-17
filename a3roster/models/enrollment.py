@@ -14,7 +14,7 @@ class Enrollment(models.Model):
 		('dropped', 'Dropped'), ('withdrawn', 'Withdrawn')], default='created',
 		required=True, tracking=True)
 	school_id = fields.Many2one(comodel_name='a3.school', string='School', related='section_id.school_id')
-	discipline_id = fields.Many2one(comodel_name='a3.disciline', string='Discipline', related='section_id.course_id.discipline_id')
+	discipline_id = fields.Many2one(comodel_name='a3.discipline', string='Discipline', related='section_id.course_id.discipline_id')
 	term_id = fields.Many2one(comodel_name='a3.term', string='Term', related='section_id.term_id')	
 	
 	def _set_name(self):
