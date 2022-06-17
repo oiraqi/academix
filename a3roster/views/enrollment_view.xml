@@ -15,7 +15,7 @@
 						<button string="Request For IP" states="enrolled" name="req_to_ip" type="object" groups="a3.group_faculty"/>
 						<field name="state" widget="statusbar" statusbar_visible="created,enrolled"/>
 					</header>
-					<header attrs="{'invisible': [('wstate', '!=', False)]}">
+					<header attrs="{'invisible': [('wstate', '=', False)]}">
 						<button string="Approve" states="wreq" name="app_w_adv" type="object" groups="a3.group_faculty"/>
 						<button string="Approve" states="wadv" name="app_w_ins" type="object" groups="a3.group_faculty"/>
 						<button string="Approve" states="wpreq" name="app_wp" type="object" groups="a3roster.group_roster_manager"/>
