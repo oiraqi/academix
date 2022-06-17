@@ -38,7 +38,7 @@ class Enrollment(models.Model):
 		for prerequisite in course.prerequisite_ids:
 			alternatives = []
 			for alternative in prerequisite.alternative_ids:
-				alternatives.append(alternative.code)
+				alternatives.append(alternative.name)
 				fulfilled = False
 				if self.search([('student_id', '=', student.id), ('section_id.course_id', '=', alternative.id), ('state', '=', 'passed')]):
 					fulfilled = True

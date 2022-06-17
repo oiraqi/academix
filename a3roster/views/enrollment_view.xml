@@ -13,7 +13,7 @@
 						<button string="Request For a WP" states="enrolled" name="req_to_wp" type="object" groups="a3.group_faculty"/>
 						<button string="Request For a WF" states="enrolled" name="req_to_wf" type="object" groups="a3.group_faculty"/>
 						<button string="Request For IP" states="enrolled" name="req_to_ip" type="object" groups="a3.group_faculty"/>
-						<field name="state" widget="statusbar" statusbar_visible="created,enrolled"/>
+						<field name="state" widget="statusbar" statusbar_visible="enrolled,passed"/>
 					</header>
 					<header attrs="{'invisible': [('wstate', '=', False)]}">
 						<button string="Approve" states="wreq" name="app_w_adv" type="object" groups="a3.group_faculty"/>
