@@ -6,14 +6,14 @@
 			<field name="model">a3roster.enrollment</field>
 			<field name="arch" type="xml">
 				<form string="Entollment">
-					<header>
+					<header attrs="{'invisible': [('id', '=', False)]}">
 						<button string="Approve" states="created" name="enroll" type="object" class="oe_highlight" groups="a3.group_faculty"/>
 						<button string="Drop" states="enrolled" name="drop" type="object" groups="a3.group_faculty"/>
 						<button string="Request To Withdraw" states="enrolled" name="req_to_w" type="object" groups="a3.group_student"/>
 						<button string="Request For a WP" states="enrolled" name="req_to_wp" type="object" groups="a3.group_faculty"/>
 						<button string="Request For a WF" states="enrolled" name="req_to_wf" type="object" groups="a3.group_faculty"/>
 						<button string="Request For IP" states="enrolled" name="req_to_ip" type="object" groups="a3.group_faculty"/>
-						<field name="state" widget="statusbar" statusbar_visible="enrolled,passed"/>
+						<field name="state" widget="statusbar" statusbar_visible="created,enrolled"/>
 					</header>
 					<header attrs="{'invisible': [('wstate', '=', False)]}">
 						<button string="Approve" states="wreq" name="app_w_adv" type="object" groups="a3.group_faculty"/>
