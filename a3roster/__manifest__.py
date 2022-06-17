@@ -14,8 +14,8 @@
         'a3catalog'
     ],
     'data': [
-        'security/ir.model.access.csv',
         'security/roster_security.xml',
+        'security/ir.model.access.csv',        
         'views/section_view.xml',
         'views/enrollment_view.xml',
         'views/room_view.xml',
