@@ -60,10 +60,19 @@ class Section(models.Model):
     friday = fields.Boolean(string='F', default=False)
     days = fields.Char(compute='_timeslot')    
     timeslot = fields.Char('Timeslot', compute='_timeslot')
-    syllabus = fields.Binary(string='Syllabus')   
+    syllabus = fields.Binary(string='Syllabus')
+    capacity = fields.Integer(string='Capacity', default=24, required=True)    
     student_ids = fields.One2many('a3.student', compute='_student_ids', string='Students')
     dropped_student_ids = fields.One2many('a3.student', compute='_dropped_student_ids', string='Dropped Students')
     withdrawn_student_ids = fields.One2many('a3.student', compute='_withdrawn_student_ids', string='Withdrawn Students')
+    is_open = fields.Boolean(string='Open', compute='_is_open')
+    
+    def _is_open(self):
+        for rec in self:
+            if not rec.student_ids:
+                rec.is_open = True
+            else:
+                rec.is_open = len(rec.student_ids) < rec.capacity
     
     def _student_ids(self):
         for rec in self:
