@@ -60,13 +60,27 @@ class Section(models.Model):
     friday = fields.Boolean(string='F', default=False)
     days = fields.Char(compute='_timeslot')    
     timeslot = fields.Char('Timeslot', compute='_timeslot')
-    syllabus = fields.Binary(string='Syllabus')    
-    student_ids = fields.Many2many('a3.student', 'a3roster_section_student_rel', 'section_id', 'student_id', 'Students')        
+    syllabus = fields.Binary(string='Syllabus')   
+    student_ids = fields.One2many('a3.student', compute='_student_ids', string='Students')
+    dropped_student_ids = fields.One2many('a3.student', compute='_dropped_student_ids', string='Dropped Students')
+    withdrawn_student_ids = fields.One2many('a3.student', compute='_withdrawn_student_ids', string='Withdrawn Students')
+    
+    def _student_ids(self):
+        for rec in self:
+            rec.student_ids = self.env['a3roster.enrolment'].search([('section_id', '=', rec.id), ('state', '=', 'enrolled')])
+
+    def _dropped_student_ids(self):
+        for rec in self:
+            rec.dropped_student_ids = self.env['a3roster.enrolment'].search([('section_id', '=', rec.id), ('state', '=', 'dropped')])
+
+    def _withdrawn_student_ids(self):
+        for rec in self:
+            rec.withdrawn_student_ids = self.env['a3roster.enrolment'].search([('section_id', '=', rec.id), ('state', '=', 'withdrawn')])
 
     @api.depends('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
     @api.onchange('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
     def _timeslot(self):
-        for rec in self:            
+        for rec in self:
             days = ''
             if rec.monday:
                 days = 'M'
