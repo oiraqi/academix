@@ -62,5 +62,5 @@ class Enrollment(models.Model):
 	def app_wf(self):
 		return
 
-	def aap_ip(self):
+	def app_ip(self):
 		return
