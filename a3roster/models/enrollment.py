@@ -36,4 +36,31 @@ class Enrollment(models.Model):
 
 	def withdraw(self):
 		for rec in self:
-			rec.state = 'withdrawn'	
+			rec.state = 'withdrawn'
+
+	def req_to_w(self):
+		return
+
+	def req_to_wp(self):
+		return
+
+	def req_to_wf(self):
+		return
+
+	def req_to_ip(self):
+		return
+
+	def app_w_adv(self):
+		return
+
+	def app_w_ins(self):
+		return
+	
+	def app_wp(self):
+		return
+
+	def app_wf(self):
+		return
+
+	def aap_ip(self):
+		return
