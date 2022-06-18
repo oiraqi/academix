@@ -32,6 +32,10 @@ class PlannedCourse(models.Model):
     _sql_constraints = [('course_student_ukey', 'unique(course_id, student_id)', 'Course already planned!')]
 
     course_id = fields.Many2one(comodel_name='a3.course', string='Course', required=True)
+    prerequisite_ids = fields.One2many('a3catalog.prerequisite', related='course_id.prerequisite_ids')
+    corequisite_ids = fields.One2many('a3catalog.corequisite', related='course_id.corequisite_ids')
+    prerequisite_for_ids = fields.One2many('a3.course', related='course_id.prerequisite_for_ids')
+    corequisite_for_ids = fields.One2many('a3.course', related='course_id.corequisite_for_ids')
     name = fields.Char(string='Name', compute='_set_name')
     description = fields.Html(related='course_id.description')
     section_id = fields.Many2one(comodel_name='a3roster.section', string='Section')

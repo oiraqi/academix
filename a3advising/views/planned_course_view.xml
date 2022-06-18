@@ -30,7 +30,7 @@
             <field name="arch" type="xml">
                 <form string="Planned Course">
                     <header attrs="{'invisible': ['|', ('section_id', '=', False), ('enrollment_id', '!=', False)]}">
-                        <button string="Pre-register" name="preregister" type="object" class="oe_highlight"/>                        
+                        <button string="Pre-register" name="preregister" type="object" class="oe_highlight"/>
                     </header>
                     <header attrs="{'invisible': [('enrollment_id', '=', False)]}">
                         <field name="state" widget="statusbar"/>
@@ -39,17 +39,51 @@
                         <h1>
                             <field name="course_id" readonly="1"/>
                         </h1>
-                        <group name="course_planning" string="Course Planning" col="4">                  
-                            <field name="description" widget="html" colspan="4"/>                        
+                        <group name="course_description" string="Course Information" col="4">
+                            <notebook>
+                                <page string="Description" name="course_description">
+                                    <group>
+                                        <field name="description"/>
+                                    </group>
+                                </page>
+                                <page string="Requisites" name="requisites">
+                                    <group name="requisites" col="4">
+                                        <field name="prerequisite_ids" nolabel="1">
+                                            <tree editable="bottom">                                                
+                                                <field name="alternative_ids" string="Prerequisite - alternatives if any (OR relation) are shown in the same cell" widget="many2many_tags"/>
+                                            </tree>
+                                        </field>
+                                        <field name="corequisite_ids" nolabel="1">
+                                            <tree editable="bottom">                                                
+                                                <field name="corequisite_id"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                                <page string="Requisite for" name="requisites_for">
+                                    <group name="requisites" col="4">
+                                        <field name="prerequisite_for_ids" nolabel="1" readonly="1">
+                                            <tree>
+                                                <field name="name" string="Prerequisite for"/>
+                                            </tree>
+                                        </field>
+                                        <field name="corequisite_for_ids" nolabel="1" readonly="1">
+                                            <tree>
+                                                <field name="name" string="Corequisite for"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                            </notebook>                            
+                        </group>
+                        <group name="course_planning" string="Course Planning" col="4">
                             <label for="semester" string="Semester &#38; Year"/>
                             <div>
                                 <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 70%"/>
                                 <field name="year" style="width: 30%"/>
                             </div>
                             <field name="student_id" readonly="1"/>
-                            <field name="section_id"
-                                domain="[('course_id', '=', course_id), ('term_id', '=', term_id)]"
-                                options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                            <field name="section_id" attrs="{'readonly': [('enrollment_id', '!=', False)]}" domain="[('course_id', '=', course_id), ('term_id', '=', term_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="grade"/>
                             <field name="term_id" invisible="1"/>
                             <field name="enrollment_id" invisible="1"/>
