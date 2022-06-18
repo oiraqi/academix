@@ -90,6 +90,9 @@ class Enrollment(models.Model):
 			else:
 				rec.name = ''
 
+	def drop(self):
+		return
+	
 	def confirm_drop(self):
 		for rec in self:
 			rec.state = 'dropped'
