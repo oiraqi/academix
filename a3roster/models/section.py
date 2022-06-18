@@ -62,11 +62,13 @@ class Section(models.Model):
     timeslot = fields.Char('Timeslot', compute='_timeslot')
     syllabus = fields.Binary(string='Syllabus')
     capacity = fields.Integer(string='Capacity', default=24, required=True)    
-    student_ids = fields.One2many('a3.student', compute='_student_ids', string='Students')
+    student_ids = fields.One2many('a3.student', compute='_active_enrollment_ids', string='Students')
     active_enrollment_ids = fields.One2many('a3roster.enrollment', compute='_active_enrollment_ids', string='Dropped Students')
     dropped_enrollment_ids = fields.One2many('a3roster.enrollment', compute='_dropped_enrollment_ids', string='Dropped Students')
     withdrawn_enrollment_ids = fields.One2many('a3roster.enrollment', compute='_withdrawn_enrollment_ids', string='Withdrawn Students')
     is_open = fields.Boolean(string='Open', compute='_is_open')
+    nstudents = fields.Integer(string='Enrolled Students', compute='_active_enrollment_ids')
+    available_seats = fields.Integer(string='Available Seats', compute='_active_enrollment_ids')    
     
     def _is_open(self):
         for rec in self:
@@ -74,22 +76,18 @@ class Section(models.Model):
                 rec.is_open = True
             else:
                 rec.is_open = len(rec.student_ids) < rec.capacity
-    
-    def _student_ids(self):
-        for rec in self:
-            enrollment_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'enrolled')])
-            if enrollment_ids:
-                rec.student_ids = [enrollment.student_id.id for enrollment in enrollment_ids]
-            else:
-                rec.student_ids = False
 
     def _active_enrollment_ids(self):
         for rec in self:
             enrollment_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'enrolled')])
             if enrollment_ids:
-                rec.active_enrollment_ids = enrollment_ids
+                rec.student_ids = [enrollment.student_id.id for enrollment in enrollment_ids]
+                rec.active_enrollment_ids = enrollment_ids                
             else:
+                rec.student_ids = False
                 rec.active_enrollment_ids = False
+            rec.nstudents = len(enrollment_ids)
+            rec.available_seats = rec.capacity - rec.nstudents
     
     def _dropped_enrollment_ids(self):
         for rec in self:

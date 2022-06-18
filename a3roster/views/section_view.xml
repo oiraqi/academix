@@ -22,6 +22,9 @@
                                 <field name="year" style="width: 35%"/>
                             </div>
                             <field name="instructor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="capacity"/>
+                            <field name="nstudents"/>
+                            <field name="available_seats"/>
                             <label for="monday" string="Meeting Time"/>
                             <div>
                                 <field name="monday" style="width: 10%"/>
@@ -96,6 +99,8 @@
                 <tree string="Sections">
                     <field name="name"/>
                     <field name="instructor_id"/>
+                    <field name="nstudents"/>
+                    <field name="available_seats"/>
                     <field name="timeslot"/>
                     <field name="room_id"/>
                 </tree>

@@ -1,13 +1,13 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_a3roster_section_user,access.a3roster.section.user,model_a3roster_section,base.group_user,1,0,0,0
-access_a3roster_section_faculty,access.a3roster.section.faculty,model_a3roster_section,a3.group_faculty,1,1,1,0
-access_a3roster_section_coordinator,access.a3roster.section.coordinator,model_a3roster_section,a3.group_coordinator,1,1,1,0
+access_a3roster_section_registrar,access.a3roster.section.registrar,model_a3roster_section,a3roster.group_registrar,1,1,1,1
+
 access_a3roster_reservation_user,access.a3roster.reservation.user,model_a3roster_reservation,base.group_user,1,0,0,0
 access_a3roster_reservation_faculty,access.a3roster.reservation.faculty,model_a3roster_reservation,a3.group_faculty,1,1,1,1
 
-access_a3roster_enrollment_faculty,access.a3roster.enrollment.faculty,model_a3roster_enrollment,a3.group_faculty,1,0,0,0
-access_a3roster_enrollment_coordinator,access.a3roster.enrollment.coordinator,model_a3roster_enrollment,a3.group_coordinator,1,0,0,0
-access_a3roster_enrollment_vpaa,access.a3roster.enrollment.vpaa,model_a3roster_enrollment,a3.group_vpaa,1,0,0,0
 access_a3roster_enrollment_student,access.a3roster.enrollment.student,model_a3roster_enrollment,a3.group_student,1,1,1,0
 access_a3roster_enrollment_registrar,access.a3roster.enrollment.registrar,model_a3roster_enrollment,group_registrar,1,1,1,1
+access_a3roster_enrollment_faculty,access.a3roster.enrollment.faculty,model_a3roster_enrollment,a3.group_faculty,1,1,0,0
+access_a3roster_enrollment_coordinator,access.a3roster.enrollment.coordinator,model_a3roster_enrollment,a3.group_coordinator,1,0,0,0
+access_a3roster_enrollment_vpaa,access.a3roster.enrollment.vpaa,model_a3roster_enrollment,a3.group_vpaa,1,0,0,0
 
