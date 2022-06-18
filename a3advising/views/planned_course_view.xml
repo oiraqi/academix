@@ -30,7 +30,8 @@
             <field name="arch" type="xml">
                 <form string="Planned Course">
                     <header attrs="{'invisible': ['|', ('section_id', '=', False), ('enrollment_id', '!=', False)]}">
-                        <button string="Pre-register" name="preregister" type="object" class="oe_highlight"/>
+                        <button string="Pre-register" name="preregister" type="object" class="oe_highlight"
+                            groups="a3.group_student"/>
                     </header>
                     <header attrs="{'invisible': [('enrollment_id', '=', False)]}">
                         <field name="state" widget="statusbar"/>
@@ -41,7 +42,7 @@
                         </h1>
                         <group name="course_planning_info">
                             <notebook>
-                                <page string="Course Planning" name="course_planning">
+                                <page string="Planning" name="course_planning">
                                     <group name="course_planning" col="4">
                                         <label for="semester" string="Semester &#38; Year"/>
                                         <div>
@@ -55,12 +56,12 @@
                                         <field name="enrollment_id" invisible="1"/>
                                     </group>
                                 </page>
-                                <page string="Course Description" name="course_description">
+                                <page string="Description" name="course_description">
                                     <group>
                                         <field name="description" nolabel="1"/>
                                     </group>
                                 </page>
-                                <page string="Course Requisites" name="requisites">
+                                <page string="Requisites" name="requisites">
                                     <group name="requisites" col="4">
                                         <field name="prerequisite_ids" nolabel="1">
                                             <tree editable="bottom">

@@ -86,4 +86,7 @@ class PlannedCourse(models.Model):
 
 
     def preregister(self):
-        return
+        self.env['a3roster.enrollment'].create({
+            'student_id': self.student_id.id,
+            'section_id': self.section_id.id
+        })
