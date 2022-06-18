@@ -76,15 +76,15 @@ class Section(models.Model):
     
     def _student_ids(self):
         for rec in self:
-            rec.student_ids = self.env['a3roster.enrolment'].search([('section_id', '=', rec.id), ('state', '=', 'enrolled')])
+            rec.student_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'enrolled')])
 
     def _dropped_student_ids(self):
         for rec in self:
-            rec.dropped_student_ids = self.env['a3roster.enrolment'].search([('section_id', '=', rec.id), ('state', '=', 'dropped')])
+            rec.dropped_student_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'dropped')])
 
     def _withdrawn_student_ids(self):
         for rec in self:
-            rec.withdrawn_student_ids = self.env['a3roster.enrolment'].search([('section_id', '=', rec.id), ('state', '=', 'withdrawn')])
+            rec.withdrawn_student_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'withdrawn')])
 
     @api.depends('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
     @api.onchange('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
