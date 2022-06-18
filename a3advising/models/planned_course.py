@@ -34,6 +34,11 @@ class PlannedCourse(models.Model):
     course_id = fields.Many2one(comodel_name='a3.course', string='Course', required=True)
     name = fields.Char(string='Name', compute='_set_name')
     description = fields.Html(related='course_id.description')
+    section_id = fields.Many2one(comodel_name='a3roster.section', string='Section')
+    enrollment_id = fields.Many2one(comodel_name='a3roster.enrollment', string='Enrollment')
+    state = fields.Selection(string='State', selection=[('created', 'Created'), ('enrolled', 'Enrolled'),
+		('dropped', 'Dropped'), ('passed', 'Passed'), ('failed', 'Failed'), ('w', 'Withdrawn - W'), ('wf', 'WF'), ('wp', 'WP'), ('ip', 'IP')], related='enrollment_id.state')
+    
     grade = fields.Selection(string='Grade', selection=[('p', 'P'), ('f', 'F')], default='p')
 
 
@@ -75,3 +80,6 @@ class PlannedCourse(models.Model):
             if rec.course_id:
                 rec.name = rec.course_id.name
 
+
+    def preregister(self):
+        return
