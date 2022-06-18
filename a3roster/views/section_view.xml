@@ -42,8 +42,9 @@
                                         <tree>
                                             <field name="name"/>
                                             <field name="sid"/>
-                                            <field name="email"/>
-                                            <field name="program_id" widget="badge"/>
+                                            <field name="attendance_mode" widget="badge"/>
+                                            <field name="email"/>                                            
+                                            <field name="program_id" widget="badge"/>                                            
                                         </tree>
                                     </field>
                                 </group>

@@ -35,3 +35,4 @@ class Student(models.Model):
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
     sid = fields.Char(string='Student ID', required=True)    
+    attendance_mode = fields.Selection(string='Attendance Mode', selection=[('f2f', 'Face To Face'), ('online', 'Online'),], default='f2f', required=True)
