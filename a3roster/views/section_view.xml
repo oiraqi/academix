@@ -50,7 +50,7 @@
                                     </field>
                                 </group>
                             </page>
-                            <page string="Withdrwan Students" name="wstudents">
+                            <page string="Withdrawn Students" name="wstudents">
                                 <group>
                                     <field name="withdrawn_enrollment_ids" nolabel="1">
                                         <tree>
