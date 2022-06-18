@@ -50,18 +50,18 @@
                             </page>
                             <page string="Withdrwan Students" name="wstudents">
                                 <group>
-                                    <field name="withdrawn_student_ids" nolabel="1">
+                                    <field name="withdrawn_enrollment_ids" nolabel="1">
                                         <tree>
-                                            <field name="name"/>
-                                            <field name="sid"/>
+                                            <field name="student_id"/>
                                             <field name="program_id"/>
+                                            <field name="wstate" widget="badge"/>                                            
                                         </tree>
                                     </field>
                                 </group>
                             </page>
                             <page string="Dropped Students" name="students" nolabel="1" groups="a3roster.group_registrar">
                                 <group>
-                                    <field name="dropped_student_ids">
+                                    <field name="dropped_student_ids" nolabel="1">
                                         <tree>
                                             <field name="name"/>
                                             <field name="sid"/>

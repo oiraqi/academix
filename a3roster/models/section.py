@@ -64,7 +64,7 @@ class Section(models.Model):
     capacity = fields.Integer(string='Capacity', default=24, required=True)    
     student_ids = fields.One2many('a3.student', compute='_student_ids', string='Students')
     dropped_student_ids = fields.One2many('a3.student', compute='_dropped_student_ids', string='Dropped Students')
-    withdrawn_student_ids = fields.One2many('a3.student', compute='_withdrawn_student_ids', string='Withdrawn Students')
+    withdrawn_enrollment_ids = fields.One2many('a3roster.enrollment', compute='_withdrawn_enrollment_ids', string='Withdrawn Students')
     is_open = fields.Boolean(string='Open', compute='_is_open')
     
     def _is_open(self):
@@ -90,13 +90,13 @@ class Section(models.Model):
             else:
                 rec.dropped_student_ids = False
 
-    def _withdrawn_student_ids(self):
+    def _withdrawn_enrollment_ids(self):
         for rec in self:
             enrollment_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'withdrawn')])
             if enrollment_ids:
-                rec.withdrawn_student_ids = [enrollment.student_id.id for enrollment in enrollment_ids]
+                rec.withdrawn_enrollment_ids = enrollment_ids
             else:
-                rec.withdrawn_student_ids = False
+                rec.withdrawn_enrollment_ids = False
 
     @api.depends('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
     @api.onchange('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
