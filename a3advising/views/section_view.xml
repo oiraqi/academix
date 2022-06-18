@@ -7,7 +7,7 @@
             <field name="model">a3roster.section</field>
             <field name="inherit_id" ref="a3roster.view_section_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='student_ids']/tree/field[@name='rgrade']" position="after">                    
+                <xpath expr="//field[@name='active_enrollment_ids']/tree/field[@name='rgrade']" position="after">                    
                     <field name="advisor_id"/>
                 </xpath>                
             </field>
