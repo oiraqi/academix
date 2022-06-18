@@ -15,7 +15,7 @@
 						<field name="state" widget="statusbar" statusbar_visible="enrolled"/>
 					</header>
 					<header>
-						<button string="Confirm" states="enrolled" name="confirm_drop" type="object" groups="a3.group_student"/>
+						<button string="Confirm (irreversible)" states="enrolled" name="confirm_drop" type="object" groups="a3.group_student"/>
 						<button string="Cancel" states="enrolled" name="cancel_drop" type="object" groups="a3.group_student"/>
 						<field name="dstate" widget="statusbar"/>
 					</header>

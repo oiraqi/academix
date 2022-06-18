@@ -14,12 +14,15 @@ class Enrollment(models.Model):
 	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section', required=True)
 	state = fields.Selection(string='State', selection=[('enrolled', 'Enrolled'),
 		('dropped', 'Dropped'), ('withdrawn', 'Withdrawn')], default='enrolled', required=True, tracking=True)
-	dstate = fields.Selection(string='Drop State', selection=[('triggered', 'Triggered'), ('confirmed', 'Confirmed (irreversible)')])	
-	wstate = fields.Selection(string='W State', selection=[('wreq', 'Request To Withdraw'), ('wadv', 'W Approved by Advisor'), ('winst', 'W Approved by Instructor'),
-		('wreg', 'Processed')], tracking=True)
-	wfstate = fields.Selection(string='WF State', selection=[('wfreq', 'WF Request'), ('wfdean', 'WF Approved by the Dean/Director'), ('wfreg', 'WF Processed')], tracking=True)
-	wpstate = fields.Selection(string='WP State', selection=[('wpreq', 'WP Request'), ('wpdean', 'WP Approved by the Dean/Director'), ('wpreg', 'WP Processed')], tracking=True)
-	ipstate = fields.Selection(string='IP State', selection=[('ipreq', 'IP Request'), ('ipdean', 'IP Approved by the Dean/Director'), ('ipreg', 'IP Processed')], tracking=True)
+	dstate = fields.Selection(string='Drop State', selection=[('triggered', 'Triggered'), ('confirmed', 'Confirmed')], default='triggered')
+	wstate = fields.Selection(string='W State', selection=[('triggered', 'Triggered'), ('wreq', 'Request To Withdraw'), ('wadv', 'W Approved by Advisor'), ('winst', 'W Approved by Instructor'),
+		('wreg', 'Processed')], default='triggered', tracking=True)
+	wfstate = fields.Selection(string='WF State', selection=[('triggered', 'Triggered'), ('wfreq', 'WF Request'), ('wfdean', 'WF Approved by the Dean/Director'), ('wfreg', 'WF Processed')],
+		default='triggered', tracking=True)
+	wpstate = fields.Selection(string='WP State', selection=[('triggered', 'Triggered'), ('wpreq', 'WP Request'), ('wpdean', 'WP Approved by the Dean/Director'), ('wpreg', 'WP Processed')],
+		default='triggered', tracking=True)
+	ipstate = fields.Selection(string='IP State', selection=[('triggered', 'Triggered'), ('ipreq', 'IP Request'), ('ipdean', 'IP Approved by the Dean/Director'), ('ipreg', 'IP Processed')],
+		default='triggered', tracking=True)
 	wdtime = fields.Datetime()
 
 	# Related fields
