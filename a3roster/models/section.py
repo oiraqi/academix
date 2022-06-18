@@ -86,9 +86,9 @@ class Section(models.Model):
         for rec in self:
             enrollment_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'dropped')])
             if enrollment_ids:
-                rec.dropped_student_ids = enrollment_ids
+                rec.dropped_enrollment_ids = enrollment_ids
             else:
-                rec.dropped_student_ids = False
+                rec.dropped_enrollment_ids = False
 
     def _withdrawn_enrollment_ids(self):
         for rec in self:
