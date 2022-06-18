@@ -38,8 +38,36 @@
                             </div>                            
                             <field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
                                 domain="[('type', 'in', ['classroom', 'lab'])]"/>
-                            <field name="syllabus"/>                            
                         </group>
+                        <notebook groups="a3.group_faculty,a3roster.group_registrar,a3.group_coordinator,a3.group_vpaa">
+                            <page string="Enrolled Students" name="students">
+                                <group>
+                                    <field name="student_ids" nolabel="1">
+                                        <field name="name"/>
+                                        <field name="sid"/>
+                                        <field name="program_id"/>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Withdrwan Students" name="wstudents">
+                                <group>
+                                    <field name="withdrawn_student_ids" nolabel="1">
+                                        <field name="name"/>
+                                        <field name="sid"/>
+                                        <field name="program_id"/>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Dropped Students" name="students" nolabel="1" groups="a3roster.group_registrar">
+                                <group>
+                                    <field name="dropped_student_ids">
+                                        <field name="name"/>
+                                        <field name="sid"/>
+                                        <field name="program_id"/>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
                         <group name="log" string="Log" col="4">
                             <field name="create_uid"/>
                             <field name="create_date"/>

@@ -9,5 +9,5 @@ access_a3roster_enrollment_faculty,access.a3roster.enrollment.faculty,model_a3ro
 access_a3roster_enrollment_coordinator,access.a3roster.enrollment.coordinator,model_a3roster_enrollment,a3.group_coordinator,1,0,0,0
 access_a3roster_enrollment_vpaa,access.a3roster.enrollment.vpaa,model_a3roster_enrollment,a3.group_vpaa,1,0,0,0
 access_a3roster_enrollment_student,access.a3roster.enrollment.student,model_a3roster_enrollment,a3.group_student,1,1,1,0
-access_a3roster_enrollment_roster_manager,access.a3roster.enrollment.roster_manager,model_a3roster_enrollment,group_roster_manager,1,1,1,1
+access_a3roster_enrollment_registrar,access.a3roster.enrollment.registrar,model_a3roster_enrollment,group_registrar,1,1,1,1
 

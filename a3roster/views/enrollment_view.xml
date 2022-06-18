@@ -18,9 +18,9 @@
 					<header attrs="{'invisible': [('wstate', '=', False)]}">
 						<button string="Approve" states="wreq" name="app_w_adv" type="object" groups="a3.group_faculty"/>
 						<button string="Approve" states="wadv" name="app_w_ins" type="object" groups="a3.group_faculty"/>
-						<button string="Approve" states="wpreq" name="app_wp" type="object" groups="a3roster.group_roster_manager"/>
-						<button string="Approve" states="wfreq" name="app_wf" type="object" groups="a3roster.group_roster_manager"/>
-						<button string="Approve" states="ipreq" name="app_ip" type="object" groups="a3roster.group_roster_manager"/>
+						<button string="Approve" states="wpreq" name="app_wp" type="object" groups="a3roster.group_registrar"/>
+						<button string="Approve" states="wfreq" name="app_wf" type="object" groups="a3roster.group_registrar"/>
+						<button string="Approve" states="ipreq" name="app_ip" type="object" groups="a3roster.group_registrar"/>
 						<field name="wstate" widget="statusbar"/>
 					</header>
 					<sheet>
