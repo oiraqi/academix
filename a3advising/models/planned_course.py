@@ -39,6 +39,7 @@ class PlannedCourse(models.Model):
     name = fields.Char(string='Name', compute='_set_name')
     description = fields.Html(related='course_id.description')
     section_id = fields.Many2one(comodel_name='a3roster.section', string='Section')
+    timeslot = fields.Char(related='section_id.timeslot')    
     enrollment_id = fields.Many2one(comodel_name='a3roster.enrollment', string='Enrollment')
     state = fields.Selection(string='State', selection=[('created', 'Created'), ('enrolled', 'Enrolled'),
 		('dropped', 'Dropped'), ('passed', 'Passed'), ('failed', 'Failed'), ('w', 'Withdrawn - W'), ('wf', 'WF'), ('wp', 'WP'), ('ip', 'IP')], related='enrollment_id.state')

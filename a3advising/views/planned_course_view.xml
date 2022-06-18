@@ -51,6 +51,7 @@
                                         </div>
                                         <field name="student_id" readonly="1"/>
                                         <field name="section_id" attrs="{'readonly': [('enrollment_id', '!=', False)]}" domain="[('course_id', '=', course_id), ('term_id', '=', term_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                                        <field name="timeslot"/>
                                         <field name="grade"/>
                                         <field name="term_id" invisible="1"/>
                                         <field name="enrollment_id" invisible="1"/>
