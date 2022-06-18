@@ -41,11 +41,9 @@ class PlannedCourse(models.Model):
     section_id = fields.Many2one(comodel_name='a3roster.section', string='Section')
     timeslot = fields.Char(related='section_id.timeslot')    
     enrollment_id = fields.Many2one(comodel_name='a3roster.enrollment', string='Enrollment')
-    state = fields.Selection(string='State', selection=[('created', 'Created'), ('enrolled', 'Enrolled'),
-		('dropped', 'Dropped'), ('passed', 'Passed'), ('failed', 'Failed'), ('w', 'Withdrawn - W'), ('wf', 'WF'), ('wp', 'WP'), ('ip', 'IP')], related='enrollment_id.state')
-    
-    grade = fields.Selection(string='Grade', selection=[('p', 'P'), ('f', 'F')], default='p')
-
+    state = fields.Selection(related='enrollment_id.state')    
+    grade = fields.Char(related='enrollment_id.rgrade')
+    passed = fields.Boolean(related='enrollment_id.passed')
 
     @api.constrains('term_id')
     def _check_max_credits(self):

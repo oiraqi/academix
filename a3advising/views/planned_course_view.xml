@@ -29,16 +29,18 @@
             <field name="model">a3advising.planned.course</field>
             <field name="arch" type="xml">
                 <form string="Planned Course">
-                    <header attrs="{'invisible': ['|', ('section_id', '=', False), ('enrollment_id', '!=', False)]}">
-                        <button string="Pre-register" name="preregister" type="object" class="oe_highlight"
+                    <header>
+                        <button attrs="{'invisible': ['|', ('section_id', '=', False), ('enrollment_id', '!=', False)]}"
+                            string="Pre-register" name="preregister" type="object" class="oe_highlight"
                             groups="a3.group_student"/>
-                    </header>
-                    <header attrs="{'invisible': [('enrollment_id', '=', False)]}">
-                        <field name="state" widget="statusbar"/>
+                        <field attrs="{'invisible': [('enrollment_id', '=', False)]}" name="state"
+                            widget="statusbar" statusbar_visible="enrolled"/>
                     </header>
                     <sheet>
                         <h1>
                             <field name="course_id" readonly="1"/>
+                            <br/>
+                            <field name="grade"/>
                         </h1>
                         <group name="course_planning_info">
                             <notebook>

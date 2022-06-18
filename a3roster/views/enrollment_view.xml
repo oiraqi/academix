@@ -6,22 +6,46 @@
 			<field name="model">a3roster.enrollment</field>
 			<field name="arch" type="xml">
 				<form string="Entollment">
-					<header attrs="{'invisible': [('id', '=', False)]}">
-						<button string="Approve" states="created" name="enroll" type="object" class="oe_highlight" groups="a3.group_faculty"/>
-						<button string="Drop" states="enrolled" name="drop" type="object" groups="a3.group_faculty"/>
+					<header attrs="{'invisible': [('id', '=', False)]}">						
+						<button string="Drop" states="enrolled" name="drop" type="object" groups="a3.group_student"/>
 						<button string="Request To Withdraw" states="enrolled" name="req_to_w" type="object" groups="a3.group_student"/>
-						<button string="Request For a WP" states="enrolled" name="req_to_wp" type="object" groups="a3.group_faculty"/>
-						<button string="Request For a WF" states="enrolled" name="req_to_wf" type="object" groups="a3.group_faculty"/>
-						<button string="Request For IP" states="enrolled" name="req_to_ip" type="object" groups="a3.group_faculty"/>
-						<field name="state" widget="statusbar" statusbar_visible="created,enrolled"/>
+						<button string="File a WP" states="enrolled" name="req_to_wp" type="object" groups="a3.group_faculty"/>
+						<button string="File a WF" states="enrolled" name="req_to_wf" type="object" groups="a3.group_faculty"/>
+						<button string="File an IP" states="enrolled" name="req_to_ip" type="object" groups="a3.group_faculty"/>
+						<field name="state" widget="statusbar" statusbar_visible="enrolled"/>
 					</header>
-					<header attrs="{'invisible': [('wstate', '=', False)]}">
+					<header>
+						<button string="Confirm" states="enrolled" name="confirm_drop" type="object" groups="a3.group_student"/>
+						<button string="Cancel" states="enrolled" name="cancel_drop" type="object" groups="a3.group_student"/>
+						<field name="dstate" widget="statusbar"/>
+					</header>
+					<header>
+						<button string="Confirm" states="enrolled" name="confirm_wrequest" type="object" groups="a3.group_student"/>
+						<button string="Cancel" states="enrolled" name="cancel_wrequest" type="object" groups="a3.group_student"/>
 						<button string="Approve" states="wreq" name="app_w_adv" type="object" groups="a3.group_faculty"/>
 						<button string="Approve" states="wadv" name="app_w_ins" type="object" groups="a3.group_faculty"/>
-						<button string="Approve" states="wpreq" name="app_wp" type="object" groups="a3roster.group_registrar"/>
-						<button string="Approve" states="wfreq" name="app_wf" type="object" groups="a3roster.group_registrar"/>
-						<button string="Approve" states="ipreq" name="app_ip" type="object" groups="a3roster.group_registrar"/>
 						<field name="wstate" widget="statusbar"/>
+					</header>
+					<header>
+						<button string="Confirm" states="enrolled" name="confirm_wprequest" type="object" groups="a3.group_faculty"/>
+						<button string="Cancel" states="enrolled" name="cancel_wprequest" type="object" groups="a3.group_faculty"/>
+						<button string="Approve" states="wpreq" name="app_wp_dean" type="object" groups="a3.group_dean"/>
+						<button string="Approve" states="wpreg" name="app_wp_reg" type="object" groups="a3roster.group_registrar"/>
+						<field name="wpstate" widget="statusbar"/>
+					</header>
+					<header>
+						<button string="Confirm" states="enrolled" name="confirm_wfrequest" type="object" groups="a3.group_faculty"/>
+						<button string="Cancel" states="enrolled" name="cancel_wfrequest" type="object" groups="a3.group_faculty"/>
+						<button string="Approve" states="wfreq" name="app_wf_dean" type="object" groups="a3.group_dean"/>
+						<button string="Approve" states="wfreg" name="app_wf_reg" type="object" groups="a3roster.group_registrar"/>
+						<field name="wfstate" widget="statusbar"/>
+					</header>
+					<header>
+						<button string="Confirm" states="enrolled" name="confirm_iprequest" type="object" groups="a3.group_faculty"/>
+						<button string="Cancel" states="enrolled" name="cancel_iprequest" type="object" groups="a3.group_faculty"/>
+						<button string="Approve" states="ipreq" name="app_ip_dean" type="object" groups="a3.group_dean"/>
+						<button string="Approve" states="ipreg" name="app_ip_reg" type="object" groups="a3roster.group_registrar"/>
+						<field name="ipstate" widget="statusbar"/>
 					</header>
 					<sheet>
 						<h1><field name="name"/></h1>
