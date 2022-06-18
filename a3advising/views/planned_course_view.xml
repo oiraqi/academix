@@ -52,6 +52,7 @@
                             <field name="section_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="grade"/>
                             <field name="term_id" invisible="1"/>
+                            <field name="enrollment_id" invisible="1"/>
                         </group>
                     </sheet>
                 </form>
