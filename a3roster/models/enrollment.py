@@ -20,6 +20,7 @@ class Enrollment(models.Model):
 	school_id = fields.Many2one(comodel_name='a3.school', string='School', related='section_id.school_id', store=True)
 	discipline_id = fields.Many2one(comodel_name='a3.discipline', string='Discipline', related='section_id.course_id.discipline_id', store=True)
 	term_id = fields.Many2one(comodel_name='a3.term', string='Term', related='section_id.term_id', store=True)
+	sid = fields.Char(related="student_id.sid")
 	program_id = fields.Many2one(comodel_name='a3catalog.program', related='student_id.program_id', store=True)
 
 	@api.constrains('student_id', 'section_id')
