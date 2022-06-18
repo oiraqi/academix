@@ -43,7 +43,7 @@
                                         <tree>
                                             <field name="name"/>
                                             <field name="sid"/>
-                                            <field name="program_id"/>
+                                            <field name="program_id" widget="badge"/>
                                         </tree>
                                     </field>
                                 </group>
@@ -54,7 +54,8 @@
                                         <tree>
                                             <field name="student_id"/>
                                             <field name="program_id"/>
-                                            <field name="wstate" widget="badge"/>                                            
+                                            <field name="state" widget="badge" string="Grade"/>
+                                            <field name="wtime"/>
                                         </tree>
                                     </field>
                                 </group>
@@ -65,7 +66,7 @@
                                         <tree>
                                             <field name="name"/>
                                             <field name="sid"/>
-                                            <field name="program_id"/>
+                                            <field name="program_id" widget="badge"/>
                                         </tree>
                                     </field>
                                 </group>
