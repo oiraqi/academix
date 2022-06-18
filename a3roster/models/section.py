@@ -77,6 +77,7 @@ class Section(models.Model):
             else:
                 rec.is_open = len(rec.student_ids) < rec.capacity
 
+    @api.onchange('capacity')
     def _active_enrollment_ids(self):
         for rec in self:
             enrollment_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'enrolled')])

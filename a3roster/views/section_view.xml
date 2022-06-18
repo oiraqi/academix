@@ -24,8 +24,8 @@
                             <field name="instructor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                             <label for="nstudents" string="Enrolled Students"/>
                             <div>
-                                <field name="nstudents" style="width: 20%"/>/
-                                <field name="capacity" style="width: 20%"/>
+                                <field name="nstudents" style="width: 15%"/>/
+                                <field name="capacity" style="width: 15%"/>
                             </div>
                             <field name="available_seats"/>
                             <label for="monday" string="Meeting Time"/>
