@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-    
+
         <!-- a3roster.section form view -->
         <record id="section_view_form" model="ir.ui.view">
             <field name="name">a3roster.section.view.form</field>
@@ -14,10 +14,8 @@
                         </h1>
                         <group string="Section Information" col="4">
                             <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                            <field name="discipline_id" domain="[('school_id', '=', school_id)]" 
-                                options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                            <field name="course_id" domain="[('discipline_id', '=', discipline_id)]"
-                                options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                            <field name="discipline_id" domain="[('school_id', '=', school_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                            <field name="course_id" domain="[('discipline_id', '=', discipline_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="number"/>
                             <label for="semester" string="Semester &#38; Year"/>
                             <div>
@@ -35,35 +33,40 @@
                                 <field name="days" style="width: 20%"/>
                                 <field name="start_timeslot" widget="float_time" style="width: 12%"/>
                                 <field name="end_timeslot" widget="float_time" style="width: 12%"/>
-                            </div>                            
-                            <field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
-                                domain="[('type', 'in', ['classroom', 'lab'])]"/>
+                            </div>
+                            <field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('type', 'in', ['classroom', 'lab'])]"/>
                         </group>
                         <notebook groups="a3.group_faculty,a3roster.group_registrar,a3.group_coordinator,a3.group_vpaa">
                             <page string="Enrolled Students" name="students">
                                 <group>
                                     <field name="student_ids" nolabel="1">
-                                        <field name="name"/>
-                                        <field name="sid"/>
-                                        <field name="program_id"/>
+                                        <tree>
+                                            <field name="name"/>
+                                            <field name="sid"/>
+                                            <field name="program_id"/>
+                                        </tree>
                                     </field>
                                 </group>
                             </page>
                             <page string="Withdrwan Students" name="wstudents">
                                 <group>
                                     <field name="withdrawn_student_ids" nolabel="1">
-                                        <field name="name"/>
-                                        <field name="sid"/>
-                                        <field name="program_id"/>
+                                        <tree>
+                                            <field name="name"/>
+                                            <field name="sid"/>
+                                            <field name="program_id"/>
+                                        </tree>
                                     </field>
                                 </group>
                             </page>
                             <page string="Dropped Students" name="students" nolabel="1" groups="a3roster.group_registrar">
                                 <group>
                                     <field name="dropped_student_ids">
-                                        <field name="name"/>
-                                        <field name="sid"/>
-                                        <field name="program_id"/>
+                                        <tree>
+                                            <field name="name"/>
+                                            <field name="sid"/>
+                                            <field name="program_id"/>
+                                        </tree>
                                     </field>
                                 </group>
                             </page>
@@ -104,12 +107,13 @@
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Create sections here
-                </p><p>
+                </p>
+                <p>
                     Created sections are organized by School, year, semester, discipline, and course
                 </p>
             </field>
         </record>
-    
+
     </data>
-    
+
 </odoo>
