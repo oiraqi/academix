@@ -16,7 +16,7 @@ class Enrollment(models.Model):
 		required=True, tracking=True)
 	wstate = fields.Selection(string='WState', selection=[('wreq', 'Request To Withdraw'), ('wadv', 'W Approved by Advisor'), ('winst', 'W Approved by Instructor'),
 		('wfreq', 'WF Request'), ('wpreq', 'WP Request'), ('ipreq', 'IP Request')], tracking=True)
-	wtime = fields.Datetime('Withdraw Date')
+	wdtime = fields.Datetime()
 	school_id = fields.Many2one(comodel_name='a3.school', string='School', related='section_id.school_id', store=True)
 	discipline_id = fields.Many2one(comodel_name='a3.discipline', string='Discipline', related='section_id.course_id.discipline_id', store=True)
 	term_id = fields.Many2one(comodel_name='a3.term', string='Term', related='section_id.term_id', store=True)
@@ -74,11 +74,12 @@ class Enrollment(models.Model):
 	def drop(self):
 		for rec in self:
 			rec.state = 'dropped'
+			rec.wdtime = fields.Datetime.now()
 
 	def withdraw(self):
 		for rec in self:
 			rec.state = 'withdrawn'
-			rec.wtime = fields.Datetime.now()
+			rec.wdtime = fields.Datetime.now()
 
 	def req_to_w(self):
 		return
