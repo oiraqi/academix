@@ -92,6 +92,18 @@ class Enrollment(models.Model):
 
 	def drop(self):
 		return
+
+	def req_w(self):
+		return
+	
+	def file_wp(self):
+		return
+	
+	def file_wf(self):
+		return
+
+	def file_ip(self):
+		return
 	
 	def confirm_drop(self):
 		for rec in self:

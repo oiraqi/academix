@@ -8,10 +8,10 @@
 				<form string="Entollment">
 					<header attrs="{'invisible': [('id', '=', False)]}">						
 						<button string="Drop" states="enrolled" name="drop" type="object" groups="a3.group_student"/>
-						<button string="Request To Withdraw" states="enrolled" name="req_to_w" type="object" groups="a3.group_student"/>
-						<button string="File a WP" states="enrolled" name="req_to_wp" type="object" groups="a3.group_faculty"/>
-						<button string="File a WF" states="enrolled" name="req_to_wf" type="object" groups="a3.group_faculty"/>
-						<button string="File an IP" states="enrolled" name="req_to_ip" type="object" groups="a3.group_faculty"/>
+						<button string="Request To Withdraw" states="enrolled" name="req_w" type="object" groups="a3.group_student"/>
+						<button string="File a WP" states="enrolled" name="file_wp" type="object" groups="a3.group_faculty"/>
+						<button string="File a WF" states="enrolled" name="file_wf" type="object" groups="a3.group_faculty"/>
+						<button string="File an IP" states="enrolled" name="file_ip" type="object" groups="a3.group_faculty"/>
 						<field name="state" widget="statusbar" statusbar_visible="enrolled"/>
 					</header>
 					<header>
