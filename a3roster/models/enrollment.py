@@ -24,10 +24,10 @@ class Enrollment(models.Model):
 	def _check(self):
 		for rec in self:
 			if rec.student_id and rec.section_id:
-				# From a performance perspective, we should start with the cheap
-				# is_open check, then the time conflict check. However, for a more
-				# pertinent feedback to the user, we deem it's worth it to start
-				# with the costly prerequisites check.
+				# From a performance perspective, we should start with the cheap is_open check,
+				# then the time conflict check, and only then the prerequisites check.
+				# However, for a more pertinent feedback to the user, we deem it's worth it to start
+				# with the more expensive prerequisites check.
 				self.env['a3roster.enrollment'].check_prerequisites(rec.student_id, rec.section_id.course_id)				
 				if not rec.section_id.is_open:
 					raise ValidationError('Section closed!')
