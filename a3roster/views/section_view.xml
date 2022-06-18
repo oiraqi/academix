@@ -38,13 +38,14 @@
                         <notebook groups="a3.group_faculty,a3roster.group_registrar,a3.group_coordinator,a3.group_vpaa">
                             <page string="Enrolled Students" name="students">
                                 <group>
-                                    <field name="student_ids" nolabel="1">
+                                    <field name="active_enrollment_ids" nolabel="1">
                                         <tree>
-                                            <field name="name"/>
+                                            <field name="student_id" string="Name"/>
                                             <field name="sid"/>
                                             <field name="attendance_mode" widget="badge"/>
                                             <field name="email"/>                                            
-                                            <field name="program_id" widget="badge"/>                                            
+                                            <field name="program_id" widget="badge"/>
+                                            <field name="rgrade"/>
                                         </tree>
                                     </field>
                                 </group>
@@ -56,7 +57,7 @@
                                             <field name="student_id" string="Name"/>
                                             <field name="sid"/>
                                             <field name="program_id"/>
-                                            <field name="state" widget="badge" string="Withdraw Grade"/>
+                                            <field name="rgrade" widget="badge"/>
                                             <field name="wdtime" string="Withdrawing Date &#38; Time"/>
                                         </tree>
                                     </field>

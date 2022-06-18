@@ -31,6 +31,8 @@ class Enrollment(models.Model):
 	term_id = fields.Many2one(comodel_name='a3.term', string='Term', related='section_id.term_id', store=True)
 	sid = fields.Char(related="student_id.sid")
 	program_id = fields.Many2one(comodel_name='a3catalog.program', related='student_id.program_id', store=True)
+	attendance_mode = fields.Selection(related='student_id.attendance_mode')
+	email = fields.Char(related='student_id.email')	
 
 	# Max protection for grade: group restriction (faculty, registrar) + accounting (tracking who did what, when)
 	grade = fields.Char(string='Grade', groups='a3.group_faculty,a3roster.group_registrar', tracking=True)
