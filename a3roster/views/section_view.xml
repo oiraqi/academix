@@ -1,10 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-
         <!-- a3roster.section form view -->
-        <record id="section_view_form" model="ir.ui.view">
-            <field name="name">a3roster.section.view.form</field>
+        <record id="view_section_form" model="ir.ui.view">
+            <field name="name">a3roster.section.form</field>
             <field name="model">a3roster.section</field>
             <field name="arch" type="xml">
                 <form string="Section">
@@ -87,8 +86,8 @@
         </record>
 
         <!-- a3roster.section tree view -->
-        <record id="section_view_tree" model="ir.ui.view">
-            <field name="name">a3roster.section.view.tree</field>
+        <record id="view_section_tree" model="ir.ui.view">
+            <field name="name">a3roster.section.tree</field>
             <field name="model">a3roster.section</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
@@ -117,7 +116,5 @@
                 </p>
             </field>
         </record>
-
     </data>
-
 </odoo>
