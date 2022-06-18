@@ -39,22 +39,36 @@
                         <h1>
                             <field name="course_id" readonly="1"/>
                         </h1>
-                        <group name="course_description" string="Course Information" col="4">
+                        <group name="course_planning_info">
                             <notebook>
-                                <page string="Description" name="course_description">
-                                    <group>
-                                        <field name="description"/>
+                                <page string="Course Planning" name="course_planning">
+                                    <group name="course_planning" col="4">
+                                        <label for="semester" string="Semester &#38; Year"/>
+                                        <div>
+                                            <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 70%"/>
+                                            <field name="year" style="width: 30%"/>
+                                        </div>
+                                        <field name="student_id" readonly="1"/>
+                                        <field name="section_id" attrs="{'readonly': [('enrollment_id', '!=', False)]}" domain="[('course_id', '=', course_id), ('term_id', '=', term_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                                        <field name="grade"/>
+                                        <field name="term_id" invisible="1"/>
+                                        <field name="enrollment_id" invisible="1"/>
                                     </group>
                                 </page>
-                                <page string="Requisites" name="requisites">
+                                <page string="Course Description" name="course_description">
+                                    <group>
+                                        <field name="description" nolabel="1"/>
+                                    </group>
+                                </page>
+                                <page string="Course Requisites" name="requisites">
                                     <group name="requisites" col="4">
                                         <field name="prerequisite_ids" nolabel="1">
-                                            <tree editable="bottom">                                                
+                                            <tree editable="bottom">
                                                 <field name="alternative_ids" string="Prerequisite - alternatives if any (OR relation) are shown in the same cell" widget="many2many_tags"/>
                                             </tree>
                                         </field>
                                         <field name="corequisite_ids" nolabel="1">
-                                            <tree editable="bottom">                                                
+                                            <tree editable="bottom">
                                                 <field name="corequisite_id"/>
                                             </tree>
                                         </field>
@@ -74,19 +88,7 @@
                                         </field>
                                     </group>
                                 </page>
-                            </notebook>                            
-                        </group>
-                        <group name="course_planning" string="Course Planning" col="4">
-                            <label for="semester" string="Semester &#38; Year"/>
-                            <div>
-                                <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 70%"/>
-                                <field name="year" style="width: 30%"/>
-                            </div>
-                            <field name="student_id" readonly="1"/>
-                            <field name="section_id" attrs="{'readonly': [('enrollment_id', '!=', False)]}" domain="[('course_id', '=', course_id), ('term_id', '=', term_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                            <field name="grade"/>
-                            <field name="term_id" invisible="1"/>
-                            <field name="enrollment_id" invisible="1"/>
+                            </notebook>
                         </group>
                     </sheet>
                 </form>
