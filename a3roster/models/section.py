@@ -76,15 +76,27 @@ class Section(models.Model):
     
     def _student_ids(self):
         for rec in self:
-            rec.student_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'enrolled')])
+            enrollment_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'enrolled')])
+            if enrollment_ids:
+                rec.student_ids = [enrollment.student_id.id for enrollment in enrollment_ids]
+            else:
+                rec.student_ids = False
 
     def _dropped_student_ids(self):
         for rec in self:
-            rec.dropped_student_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'dropped')])
+            enrollment_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'dropped')])
+            if enrollment_ids:
+                rec.dropped_student_ids = [enrollment.student_id.id for enrollment in enrollment_ids]
+            else:
+                rec.dropped_student_ids = False
 
     def _withdrawn_student_ids(self):
         for rec in self:
-            rec.withdrawn_student_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'withdrawn')])
+            enrollment_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'withdrawn')])
+            if enrollment_ids:
+                rec.withdrawn_student_ids = [enrollment.student_id.id for enrollment in enrollment_ids]
+            else:
+                rec.withdrawn_student_ids = False
 
     @api.depends('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
     @api.onchange('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
