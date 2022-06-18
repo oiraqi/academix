@@ -14,6 +14,8 @@ class Enrollment(models.Model):
 	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section', required=True)
 	state = fields.Selection(string='State', selection=[('enrolled', 'Enrolled'),
 		('dropped', 'Dropped'), ('withdrawn', 'Withdrawn')], default='enrolled', required=True, tracking=True)
+	dstae = fields.Selection(string='Drop State', selection=[('triggered', 'Triggered'), ('confirmed', 'Confirmed (irreversible)')])
+	
 	wstate = fields.Selection(string='W State', selection=[('wreq', 'Request To Withdraw'), ('wadv', 'W Approved by Advisor'), ('winst', 'W Approved by Instructor'),
 		('wreg', 'Processed')], tracking=True)
 	wfstate = fields.Selection(string='WF State', selection=[('wfreq', 'WF Request'), ('wfdean', 'WF Approved by the Dean/Director'), ('wfreg', 'WF Processed')], tracking=True)
