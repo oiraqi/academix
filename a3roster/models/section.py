@@ -63,7 +63,7 @@ class Section(models.Model):
     syllabus = fields.Binary(string='Syllabus')
     capacity = fields.Integer(string='Capacity', default=24, required=True)    
     student_ids = fields.One2many('a3.student', compute='_student_ids', string='Students')
-    dropped_student_ids = fields.One2many('a3.student', compute='_dropped_student_ids', string='Dropped Students')
+    dropped_enrollment_ids = fields.One2many('a3roster.enrollment', compute='_dropped_enrollment_ids', string='Dropped Students')
     withdrawn_enrollment_ids = fields.One2many('a3roster.enrollment', compute='_withdrawn_enrollment_ids', string='Withdrawn Students')
     is_open = fields.Boolean(string='Open', compute='_is_open')
     
@@ -82,11 +82,11 @@ class Section(models.Model):
             else:
                 rec.student_ids = False
 
-    def _dropped_student_ids(self):
+    def _dropped_enrollment_ids(self):
         for rec in self:
             enrollment_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'dropped')])
             if enrollment_ids:
-                rec.dropped_student_ids = [enrollment.student_id.id for enrollment in enrollment_ids]
+                rec.dropped_student_ids = enrollment_ids
             else:
                 rec.dropped_student_ids = False
 
