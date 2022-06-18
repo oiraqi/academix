@@ -19,6 +19,7 @@
         'views/degree_plan_view.xml',
         'views/advising_menu.xml',
         'views/student_view.xml',
+        'views/section_view.xml',
     ],
     'assets': {
         'web.assets_backend': [

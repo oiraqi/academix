@@ -45,7 +45,6 @@
                                             <field name="sid"/>
                                             <field name="email"/>
                                             <field name="program_id" widget="badge"/>
-                                            <field name="advisor_id"/>
                                         </tree>
                                     </field>
                                 </group>
