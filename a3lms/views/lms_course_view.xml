@@ -23,23 +23,37 @@
 							<field name="room_id"/>
 							<field name="office_hour_ids" widget="many2many_tags"/>
 						</group>
-						<group name="description" string="Course Description, ILOs &#38; Textbooks">
-							<field name="description"/>						
-							<field name="ilo_ids">
-								<tree>									
-									<field name="idx_description"/>
-								</tree>
-							</field>						
-							<field name="textbook_ids">
-								<tree>
-									<field name="thumbnail" widget="image" class="oe_left oe_avatar"/>
-									<field name="name"/>
-									<field name="isbn" string="ISBN"/>
-									<field name="authors"/>
-									<field name="publisher"/>
-									<field name="edition"/>
-								</tree>
-							</field>
+						<notebook>
+							<page string="Course Descrition" name="description">
+								<group>
+									<field name="description" nolabel="1"/>
+								</group>
+							</page>
+							<page string="Course ILOs" name="ilos">
+								<group>
+									<field name="ilo_ids" nolabel="1">
+										<tree>
+											<field name="idx_description"/>
+										</tree>
+									</field>
+								</group>
+							</page>
+							<page string="Textbooks" name="textbooks">
+								<group>
+									<field name="textbook_ids" nolabel="1">
+										<tree>
+											<field name="thumbnail" widget="image" class="oe_left oe_avatar"/>
+											<field name="name"/>
+											<field name="isbn" string="ISBN"/>
+											<field name="authors"/>
+											<field name="publisher"/>
+											<field name="edition"/>
+										</tree>
+									</field>
+								</group>
+							</page>
+						</notebook>
+						<group name="timeline" string="Timeline">
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
