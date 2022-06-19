@@ -14,8 +14,8 @@
                             <field name="wednesday"/>
                             <field name="thursday"/>
                             <field name="friday"/>
-                            <field name="start_timeslot"/>
-                            <field name="end_timeslot"/>
+                            <field name="start_timeslot" widget="float_time"/>
+                            <field name="end_timeslot" float="float_time"/>
                             <field name="school_id" invisible="1"/>
                         </tree>
                     </field>
