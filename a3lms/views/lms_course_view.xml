@@ -37,7 +37,7 @@
 								<tree>									
 									<field name="thumbnail" widget="image" class="oe_left oe_avatar"/>
 									<field name="name"/>
-									<field name="isbn"/>
+									<field name="isbn" string="ISBN"/>
 									<field name="authors"/>
 									<field name="publisher"/>
 									<field name="edition"/>

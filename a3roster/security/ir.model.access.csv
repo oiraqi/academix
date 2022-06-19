@@ -11,3 +11,6 @@ access_a3roster_enrollment_faculty,access.a3roster.enrollment.faculty,model_a3ro
 access_a3roster_enrollment_coordinator,access.a3roster.enrollment.coordinator,model_a3roster_enrollment,a3.group_coordinator,1,0,0,0
 access_a3roster_enrollment_vpaa,access.a3roster.enrollment.vpaa,model_a3roster_enrollment,a3.group_vpaa,1,0,0,0
 
+access_a3roster_office_hour_user,access.a3roster.office.hour.user,model_a3roster_office_hour,base.group_user,1,0,0,0
+access_a3roster_office_hour_faculty,access.a3roster.office.hour.faculty,model_a3roster_office_hour,a3.group_faculty,1,1,1,1
+

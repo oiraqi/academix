@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_faculty_form_roster_inherit" model="ir.ui.view">
+            <field name="name">a3.faculty.form.roster.inherit</field>
+            <field name="model">a3.faculty</field>
+            <field name="inherit_id" ref="a3.view_faculty_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="after">                    
+                    <field name="office_hour_ids">
+                        <tree editable="True">
+                            <field name="monday"/>
+                            <field name="tuesday"/>
+                            <field name="wednesday"/>
+                            <field name="thursday"/>
+                            <field name="friday"/>
+                            <field name="start_timeslot"/>
+                            <field name="end_timeslot"/>
+                        </tree>
+                    </field>
+                </xpath>
+                <xpath expr="//group[@name='academics']" position="inside">
+                        <field name="degree_ids" string="Degrees">
+                            <tree editable="bottom">
+                                <field name="sequence" widget="handle" />
+                                <field name="name"/>
+                                <field name="year" options="{'format': 0}"/>                                
+                            </tree>
+                        </field>                    
+                </xpath>
+            </field>
+        </record>
+        <record id="view_faculty_tree_fe_inherit" model="ir.ui.view">
+            <field name="name">a3.faculty.tree.fe.inherit</field>
+            <field name="model">a3.faculty</field>
+            <field name="inherit_id" ref="a3.view_faculty_tree" />
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">                    
+                    <field name="rank"/>
+                    <field name="srank_id"/>
+                    <field name="latest_evaluation_date"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
