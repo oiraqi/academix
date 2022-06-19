@@ -58,7 +58,7 @@ class Enrollment(models.Model):
 	def _check_student_section(self):
 		for rec in self:
 			if rec.state != 'created':
-				raise ValidationError('Can\'t change a student/section mapping once created!')
+				raise ValidationError('Can\'t change a student/section mapping once enrolled!')
 			
 			if rec.student_id and rec.section_id:
 				# From a performance perspective, we should start with the cheap is_open check,
@@ -102,6 +102,10 @@ class Enrollment(models.Model):
 			else:
 				rec.name = ''
 
+	def enroll(self):
+		if self.state == 'created':
+			self.state='enrolled'
+	
 	def drop(self):
 		self.dtriggered = True
 

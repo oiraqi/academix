@@ -11,7 +11,8 @@
 					<field name="wptriggered" invisible="1"/>
 					<field name="wftriggered" invisible="1"/>
 					<field name="iptriggered" invisible="1"/>
-					<header attrs="{'invisible': [('id', '=', False)]}">						
+					<header attrs="{'invisible': [('id', '=', False)]}">
+						<button string="Enroll" states="created" name="enroll" type="object" class="oe_highlight" groups="a3.group_student"/>
 						<button string="Drop" attrs="{'invisible': ['|', ('dtriggered', '=', True), ('state', '!=', 'enrolled')]}" name="drop" type="object" groups="a3.group_student"/>
 						<button string="Request To Withdraw" attrs="{'invisible': ['|', ('wtriggered', '=', True), ('state', '!=', 'enrolled')]}" name="req_w" type="object" groups="a3.group_student"/>
 						<button string="File a WP" attrs="{'invisible': ['|', ('wptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="file_wp" type="object" groups="a3.group_faculty"/>
