@@ -40,5 +40,5 @@ class Textbook(models.Model):
                     if book_info.get('imageLinks') and book_info["imageLinks"].get('smallThumbnail'):
                         response = urllib.request.urlopen(
                             book_info["imageLinks"]["smallThumbnail"])
-                        rec.thumbnail = base64.encodesbytes(response.read())
+                        rec.thumbnail = base64.encodebytes(response.read())
     
