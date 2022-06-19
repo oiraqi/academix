@@ -18,11 +18,18 @@
 							</div>
 							<field name="section_id" domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 							<field name="instructor_id"/>
+							<field name="discipline_id"/>
 							<field name="timeslot"/>
 							<field name="room_id"/>
-							<field name="office_hour_ids">
+							<field name="office_hour_ids" colspan="4">
 								<tree>
-									<field name="timeslot"/>
+									<field name="monday"/>
+									<field name="tuesday"/>
+									<field name="wednesday"/>
+									<field name="thursday"/>
+									<field name="friday"/>
+									<field name="start_timeslot"/>
+									<field name="end_timeslot"/>
 								</tree>
 							</field>
 						</group>
@@ -39,7 +46,7 @@
 						</group>
 						<group name="textbooks" string="Textbooks" col="4">
 							<field name="textbook_ids" nolabel="1">
-								<tree>									
+								<tree>
 									<field name="thumbnail" widget="image" class="oe_left oe_avatar"/>
 									<field name="name"/>
 									<field name="isbn" string="ISBN"/>

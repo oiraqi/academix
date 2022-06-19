@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='phone']" position="after">                    
                     <field name="office_hour_ids" colspan="4" context="{'default_school_id': school_id}">
-                        <tree editable="True">
+                        <tree editable="bottom">
                             <field name="monday"/>
                             <field name="tuesday"/>
                             <field name="wednesday"/>
