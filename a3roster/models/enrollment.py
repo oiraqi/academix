@@ -136,6 +136,7 @@ class Enrollment(models.Model):
 	
 	def app_w_adv(self):
 		# Don't trust the interface, perform the server-side check!
+		# If someone is playing with us, drop silently
 		if self.env.ref('a3.group_faculty') in self.env.user.groups_id:
 			self.wstate = 'wadv'
 	
