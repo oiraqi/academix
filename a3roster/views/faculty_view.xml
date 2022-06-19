@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="a3.view_faculty_form" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='phone']" position="after">                    
-                    <field name="office_hour_ids">
+                    <field name="office_hour_ids" colspan="4">
                         <tree editable="True">
                             <field name="monday"/>
                             <field name="tuesday"/>
