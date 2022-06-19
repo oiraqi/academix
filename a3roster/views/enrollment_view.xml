@@ -33,24 +33,24 @@
 						<field name="wstate" widget="statusbar"/>
 					</header>
 					<header attrs="{'invisible': ['|', ('wptriggered', '=', False), ('state', '!=', 'enrolled')]}">
-						<button string="Confirm" states="enrolled" name="confirm_wprequest" type="object" groups="a3.group_faculty"/>
-						<button string="Cancel" states="enrolled" name="cancel_wprequest" type="object" groups="a3.group_faculty"/>
-						<button string="Approve" states="wpreq" name="app_wp_dean" type="object" groups="a3.group_dean"/>
-						<button string="Approve" states="wpreg" name="app_wp_reg" type="object" groups="a3roster.group_registrar"/>
+						<button string="Confirm" attrs="{'invisible': [('wpstate', '!=', 'draft')]}" name="confirm_wprequest" type="object" groups="a3.group_faculty"/>
+						<button string="Cancel" attrs="{'invisible': [('wpstate', '!=', 'draft')]}" name="cancel_wprequest" type="object" groups="a3.group_faculty"/>
+						<button string="Approve" attrs="{'invisible': [('wpstate', '!=', 'wpreq')]}" name="app_wp_dean" type="object" groups="a3.group_dean"/>
+						<button string="Approve" attrs="{'invisible': [('wpstate', '!=', 'wpdean')]}" name="app_wp_reg" type="object" groups="a3roster.group_registrar"/>
 						<field name="wpstate" widget="statusbar"/>
 					</header>
 					<header attrs="{'invisible': ['|', ('wftriggered', '=', False), ('state', '!=', 'enrolled')]}">
-						<button string="Confirm" states="enrolled" name="confirm_wfrequest" type="object" groups="a3.group_faculty"/>
-						<button string="Cancel" states="enrolled" name="cancel_wfrequest" type="object" groups="a3.group_faculty"/>
-						<button string="Approve" states="wfreq" name="app_wf_dean" type="object" groups="a3.group_dean"/>
-						<button string="Approve" states="wfreg" name="app_wf_reg" type="object" groups="a3roster.group_registrar"/>
+						<button string="Confirm" attrs="{'invisible': [('wfstate', '!=', 'draft')]}" name="confirm_wfrequest" type="object" groups="a3.group_faculty"/>
+						<button string="Cancel" attrs="{'invisible': [('wfstate', '!=', 'draft')]}" name="cancel_wfrequest" type="object" groups="a3.group_faculty"/>
+						<button string="Approve" attrs="{'invisible': [('wfstate', '!=', 'wfreq')]}" name="app_wf_dean" type="object" groups="a3.group_dean"/>
+						<button string="Approve" attrs="{'invisible': [('wfstate', '!=', 'wfdean')]}" name="app_wf_reg" type="object" groups="a3roster.group_registrar"/>
 						<field name="wfstate" widget="statusbar"/>
 					</header>
 					<header attrs="{'invisible': ['|', ('iptriggered', '=', False), ('state', '!=', 'enrolled')]}">
-						<button string="Confirm" states="enrolled" name="confirm_iprequest" type="object" groups="a3.group_faculty"/>
-						<button string="Cancel" states="enrolled" name="cancel_iprequest" type="object" groups="a3.group_faculty"/>
-						<button string="Approve" states="ipreq" name="app_ip_dean" type="object" groups="a3.group_dean"/>
-						<button string="Approve" states="ipreg" name="app_ip_reg" type="object" groups="a3roster.group_registrar"/>
+						<button string="Confirm" attrs="{'invisible': [('ipstate', '!=', 'draft')]}" name="confirm_iprequest" type="object" groups="a3.group_faculty"/>
+						<button string="Cancel" attrs="{'invisible': [('ipstate', '!=', 'draft')]}" name="cancel_iprequest" type="object" groups="a3.group_faculty"/>
+						<button string="Approve" attrs="{'invisible': [('ipstate', '!=', 'ipreq')]}" name="app_ip_dean" type="object" groups="a3.group_dean"/>
+						<button string="Approve" attrs="{'invisible': [('ipstate', '!=', 'ipdean')]}" name="app_ip_reg" type="object" groups="a3roster.group_registrar"/>
 						<field name="ipstate" widget="statusbar"/>
 					</header>
 					<sheet>
