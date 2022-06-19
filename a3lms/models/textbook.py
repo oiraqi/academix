@@ -35,7 +35,7 @@ class Textbook(models.Model):
                         rec.authors = ', '.join(book_info['authors'])
 
                     if book_info.get('publisher'):                   
-                        rec.publisher_id = book_info["publisher"]
+                        rec.publisher = book_info["publisher"]
 
                     if book_info.get('imageLinks') and book_info["imageLinks"].get('smallThumbnail'):
                         response = urllib.request.urlopen(
