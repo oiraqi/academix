@@ -15,14 +15,19 @@ class Enrollment(models.Model):
 	state = fields.Selection(string='State', selection=[('enrolled', 'Enrolled'),
 		('dropped', 'Dropped'), ('withdrawn', 'Withdrawn')], default='enrolled', required=True, tracking=True)
 	dstate = fields.Selection(string='Drop State', selection=[('draft', 'Draft'), ('confirmed', 'Confirmed')], default='draft')
+	dtriggered = fields.Boolean(default=False)	
 	wstate = fields.Selection(string='W State', selection=[('draft', 'Draft'), ('wreq', 'Request To Withdraw'), ('wadv', 'W Approved by Advisor'), ('winst', 'W Approved by Instructor'),
 		('wreg', 'Processed')], default='draft', tracking=True)
+	wtriggered = fields.Boolean(default=False)
 	wfstate = fields.Selection(string='WF State', selection=[('draft', 'Draft'), ('wfreq', 'WF Request'), ('wfdean', 'WF Approved by the Dean/Director'), ('wfreg', 'WF Processed')],
 		default='draft', tracking=True)
+	wftriggered = fields.Boolean(default=False)
 	wpstate = fields.Selection(string='WP State', selection=[('draft', 'Draft'), ('wpreq', 'WP Request'), ('wpdean', 'WP Approved by the Dean/Director'), ('wpreg', 'WP Processed')],
 		default='draft', tracking=True)
+	wptriggered = fields.Boolean(default=False)
 	ipstate = fields.Selection(string='IP State', selection=[('draft', 'Draft'), ('ipreq', 'IP Request'), ('ipdean', 'IP Approved by the Dean/Director'), ('ipreg', 'IP Processed')],
 		default='draft', tracking=True)
+	iptriggered = fields.Boolean(default=False)
 	wdtime = fields.Datetime()
 
 	# Related fields
@@ -98,19 +103,19 @@ class Enrollment(models.Model):
 				rec.name = ''
 
 	def drop(self):
-		return
+		self.dtriggered = True
 
 	def req_w(self):
-		return
+		self.wtriggered = True
 	
 	def file_wp(self):
-		return
+		self.wptriggered = True
 	
 	def file_wf(self):
-		return
+		self.wftriggered = True
 
 	def file_ip(self):
-		return
+		self.iptriggered = True
 	
 	def confirm_drop(self):
 		for rec in self:
@@ -118,7 +123,7 @@ class Enrollment(models.Model):
 			rec.wdtime = fields.Datetime.now()		
 
 	def cancel_drop(self):
-		return
+		self.dtriggered = False
 	
 	def confirm_wrequest(self):
 		return
