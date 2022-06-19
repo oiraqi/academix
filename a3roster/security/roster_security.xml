@@ -11,9 +11,9 @@
         <record id="faculty_enrollment_rule" model="ir.rule">
             <field name="name">Restrict access to enrollments related to taught sections or advisees</field>
             <field name="model_id" ref="model_a3roster_enrollment"/>
-            <field name="domain_force">['|', ('section_id.instructor_id.user_id', '=', user.id), ('student_id.advisor_id.user_id', '=', user.id)]</field>
+            <field name="domain_force">[('section_id.instructor_id.user_id', '=', user.id)]</field>
             <field name="groups" eval="[(4, ref('a3.group_faculty'))]"/>
-        </record>    
+        </record>
     </data>
     
 </odoo>

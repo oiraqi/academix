@@ -14,6 +14,7 @@
         'a3roster',
     ],
     'data': [
+        'security/advising_security.xml',
         'security/ir.model.access.csv',
         'views/planned_course_view.xml',
         'views/degree_plan_view.xml',
