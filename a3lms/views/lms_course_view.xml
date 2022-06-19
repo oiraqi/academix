@@ -70,9 +70,11 @@
 									<label for="attendance_grading" string="Attendance Grading"
 										attrs="{'invisible': [('attendance_prc', '=', 0.0)]}"/>
 									<div attrs="{'invisible': [('attendance_prc', '=', 0.0)]}">
-										<field name="attendance_grading" style="width: 85%"/>
-										<field name="absence_limit" style="width: 15%"
-											attrs="{'invisible': [('attendance_grading', '=', 'linear')]}"/>
+										<field name="attendance_grading" style="width: 60%"
+											attrs="{'required': [('attendance_prc', '>', 0.0)]}"/>
+										<field name="absence_limit" style="width: 10%"
+											attrs="{'invisible': [('attendance_grading', '!=', 'linz')], 'required': [('attendance_grading', '=', 'linz')]}"/>
+										<span attrs="{'invisible': [('attendance_grading', '!=', 'linz')]}">Absences</span>
 									</div>
 								</group>
 							</page>

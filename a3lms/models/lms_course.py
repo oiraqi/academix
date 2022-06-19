@@ -21,7 +21,7 @@ class LmsCourse(models.Model):
 	assessment_technique_ids = fields.Many2many(comodel_name='a3lms.assessment.technique', string='Assessment Techniques', required=True)
 	assess_by = fields.Selection(string='Group Assessessment By', selection=[('technique', 'Technique'), ('module', 'Module'),])	
 	attendance_prc = fields.Float(string='Attendance %', default=0.0)
-	attendance_grading = fields.Selection(string='Attendance Grading', selection=[('linear', 'Linear'), ('linzero', 'Linear but Zero after'),])
+	attendance_grading = fields.Selection(string='Attendance Grading', selection=[('linear', 'Linear'), ('linz', 'Linear but Zero after'),])
 	absence_limit = fields.Integer(string='Max Absences')
 	
 	
