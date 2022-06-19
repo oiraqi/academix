@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="view_course_form" model="ir.ui.view">
+			<field name="name">a3lms.course.form</field>
+			<field name="model">a3lms.course</field>
+			<field name="arch" type="xml">
+				<form string="Course">
+					<sheet>
+						<h1>
+							<field name="name"/><br/>
+							<field name="course_id"/>
+						</h1>
+						<group name="info" string="General Information" col="4">
+							<div>
+                                <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 65%"/>
+                                <field name="year" style="width: 35%"/>
+                            </div>
+							<field name="section_id"
+								domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]"
+								options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="instructor_id"/>
+							<field name="timeslot"/>
+							<field name="room_id"/>
+						</group>
+						<group name="log" string="Log" col="4">
+							<field name="create_uid"/>
+							<field name="create_date"/>
+							<field name="write_uid"/>
+							<field name="write_date"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_course_tree" model="ir.ui.view">
+			<field name="name">a3lms.course.tree</field>
+			<field name="model">a3lms.course</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Courses">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_course" model="ir.actions.act_window">
+			<field name="name">Courses</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">a3lms.course</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>
+		<record id="action_course_form_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="2"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_course_form"/>
+			<field name="act_window_id" ref="action_course"/>
+		</record>
+		<record id="action_course_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_course_tree"/>
+			<field name="act_window_id" ref="action_course"/>
+		</record>
+	</data>
+</odoo>
