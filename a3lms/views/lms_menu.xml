@@ -3,6 +3,6 @@
 		<menuitem id="a3lms_root_menu" name="LMS" sequence="20"/>
 		<menuitem id="a3lms_course_current_menu" name="Current Courses" action="action_course_current" sequence="10" parent="a3lms_root_menu"/>
 		<menuitem id="a3lms_course_past_menu" name="Past Courses" action="action_course_past" sequence="20" parent="a3lms_root_menu"/>
-		<menuitem id="a3lms_assessment_technique_menu" name="Assessment Techniques" action="action_assessment_technique" parent="a3quality_root_menu" sequence="200"/>
+		<menuitem id="a3lms_assessment_technique_menu" name="Assessment Techniques" action="action_assessment_technique" parent="a3lms_root_menu" sequence="200"/>
 	</data>
 </odoo>
