@@ -16,8 +16,7 @@ class Enrollment(models.Model):
 		('dropped', 'Dropped'), ('withdrawn', 'Withdrawn')], default='created', required=True, tracking=True)
 	dstate = fields.Selection(string='Drop State', selection=[('draft', 'Draft'), ('confirmed', 'Confirmed')], default='draft')
 	dtriggered = fields.Boolean(default=False)	
-	wstate = fields.Selection(string='W State', selection=[('draft', 'Draft'), ('wreq', 'Request To Withdraw'), ('wadv', 'W Approved by Advisor'), ('winst', 'W Approved by Instructor'),
-		('wreg', 'Processed')], default='draft', tracking=True)
+	wstate = fields.Selection(string='W State', selection=[('draft', 'Draft'), ('wreq', 'Request To Withdraw'), ('wadv', 'W Approved by Advisor'), ('winst', 'W Approved by Instructor')], default='draft', tracking=True)
 	wtriggered = fields.Boolean(default=False)
 	wfstate = fields.Selection(string='WF State', selection=[('draft', 'Draft'), ('wfreq', 'WF Request'), ('wfdean', 'WF Approved by the Dean/Director'), ('wfreg', 'WF Processed')],
 		default='draft', tracking=True)
@@ -133,7 +132,7 @@ class Enrollment(models.Model):
 		return
 	
 	def cancel_wrequest(self):
-		return
+		self.wtriggered = False
 	
 	def app_w_adv(self):
 		return
@@ -148,7 +147,7 @@ class Enrollment(models.Model):
 		return
 	
 	def cancel_wprequest(self):
-		return
+		self.wptriggered = False
 	
 	def app_wp_dean(self):
 		return
@@ -160,7 +159,7 @@ class Enrollment(models.Model):
 		return
 	
 	def cancel_wfrequest(self):
-		return
+		self.wftriggered = False
 	
 	def app_wf_dean(self):
 		return
@@ -172,7 +171,7 @@ class Enrollment(models.Model):
 		return
 	
 	def cancel_iprequest(self):
-		return
+		self.iptriggered = False
 	
 	def app_ip_dean(self):
 		return
