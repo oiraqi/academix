@@ -20,6 +20,11 @@
 							<field name="instructor_id"/>
 							<field name="timeslot"/>
 							<field name="room_id"/>
+							<field name="office_hour_ids">
+								<tree>
+									<field name="timeslot"/>
+								</tree>
+							</field>
 						</group>
 						<group name="description" string="Course Description">
 							<field name="description" nolabel="1"/>

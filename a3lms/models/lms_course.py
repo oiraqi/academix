@@ -15,5 +15,7 @@ class LmsCourse(models.Model):
 	description = fields.Html(related='course_id.description')
 	ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids')
 	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
+	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
+	
 	
 	
