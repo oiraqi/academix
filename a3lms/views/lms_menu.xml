@@ -1,6 +1,6 @@
 <odoo>
 	<data>
-		<menuitem id="a3lms_root_menu" name="LMS" sequence="50"/>
+		<menuitem id="a3lms_root_menu" name="LMS" sequence="20"/>
 		<menuitem id="a3lms_course_menu" name="Courses" action="action_course" sequence="10" parent="a3lms_root_menu"/>
 	</data>
 </odoo>
