@@ -8,7 +8,6 @@
 				<form string="Course">
 					<sheet>
 						<h1>
-							<field name="name"/><br/>
 							<field name="course_id"/>
 						</h1>
 						<group name="info" string="General Information" col="4">
@@ -26,6 +25,9 @@
 						</group>
 						<group name="description" string="Course Description">
 							<field name="description" nolabel="1"/>
+						</group>
+						<group name="ilos" string="Course ILOs">
+							<field name="ilo_ids" nolabel="1"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>

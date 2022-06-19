@@ -12,5 +12,6 @@ class Course(models.Model):
 	instructor_id = fields.Many2one(comodel_name='a3.faculty', related='section_id.instructor_id')
 	timeslot = fields.Char(related='section_id.timeslot')	
 	room_id = fields.Many2one(comodel_name='a3.room', related='section_id.room_id')
-	description = fields.Html(related='course_id.description')	
+	description = fields.Html(related='course_id.description')
+	ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids')
 	

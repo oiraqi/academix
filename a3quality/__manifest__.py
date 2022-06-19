@@ -11,8 +11,7 @@
         '',
     ],
     'depends': [
-        'a3catalog',
-        'a3roster',
+        'a3lms',
     ],
     'data': [
         'security/ir.model.access.csv',
