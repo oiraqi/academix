@@ -21,7 +21,9 @@
 							<field name="discipline_id"/>
 							<field name="timeslot"/>
 							<field name="room_id"/>
-							<field name="office_hour_ids" colspan="4">
+						</group>
+						<group>
+							<field name="office_hour_ids">
 								<tree>
 									<field name="monday"/>
 									<field name="tuesday"/>
