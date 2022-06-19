@@ -15,7 +15,6 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'data/assessment_techniques.xml',
         'views/course_view.xml',
         'views/course_program_view.xml',
         "views/accreditation_view.xml",

@@ -5,6 +5,7 @@ class LmsCourse(models.Model):
 	_name = 'a3lms.course'
 	_description = 'LMS Course'
 	_inherit = ['a3.activity']
+	_sql_constraints = [('section_ukey', 'unique(section_id)', 'LMS course already created!')]
 
 	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section', required=True)	
 	name = fields.Char(related='section_id.name')	
@@ -17,6 +18,9 @@ class LmsCourse(models.Model):
 	ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids')
 	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
+	assessment_technique_ids = fields.Many2many(comodel_name='a3lms.assessment.technique', string='Assessment Techniques', required=True)
+	assess_by = fields.Selection(string='Group Assessessment By', selection=[('technique', 'Assessment Technique'), ('module', 'Module'),])	
+	details = fields.Html(string='More Details')
 	
 	
 	

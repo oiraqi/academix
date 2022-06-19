@@ -35,8 +35,8 @@ class AssessmentLine(models.Model):
 	faculty_id = fields.Many2one(comodel_name='a3.faculty', related='assessment_id.faculty_id', store=True)	
 	ilo_id = fields.Many2one('a3catalog.course.ilo', 'ILO', required=True)
 	so_ids = fields.One2many('a3quality.student.outcome', compute='_so_ids', string='SOs')
-	assessment_technique_ids = fields.Many2many(comodel_name='a3quality.assessment.technique', string='Techniques', required=True)
-	used_assessment_technique_ids = fields.Many2many(comodel_name='a3quality.assessment.technique', related='assessment_id.used_assessment_technique_ids')
+	assessment_technique_ids = fields.Many2many(comodel_name='a3lms.assessment.technique', string='Techniques', required=True)
+	used_assessment_technique_ids = fields.Many2many(comodel_name='a3lms.assessment.technique', related='assessment_id.used_assessment_technique_ids')
 	targetted = fields.Selection(string='Targetted', selection=[
 		('70', '70'), ('75', '75'), ('80', '80'),
 		('85', '85'), ('90', '90'), ('95', '95'), ('100', '100')], default='80', required=True)

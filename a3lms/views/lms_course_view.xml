@@ -13,10 +13,15 @@
 						<group name="info" string="General Information" col="4">
 							<label for="semester" string="Semester &#38; Year"/>
 							<div>
-								<field name="semester" widget="radio" options="{'horizontal': True}" style="width: 65%"/>
-								<field name="year" style="width: 35%"/>
+								<field name="semester" widget="radio"
+									attrs="{'readonly': [('id', '!=', False)]}"
+									options="{'horizontal': True}" style="width: 65%"/>
+								<field name="year" attrs="{'readonly': [('id', '!=', False)]}"
+									style="width: 35%"/>
 							</div>
-							<field name="section_id" domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="section_id"
+								attrs="{'readonly': [('id', '!=', False)]}"
+								domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 							<field name="instructor_id"/>
 							<field name="discipline_id"/>
 							<field name="timeslot"/>
@@ -24,7 +29,7 @@
 							<field name="office_hour_ids" widget="many2many_tags"/>
 						</group>
 						<notebook>
-							<page string="Course Descrition" name="description">
+							<page string="Course Description" name="description">
 								<group>
 									<field name="description" nolabel="1"/>
 								</group>
@@ -52,8 +57,13 @@
 									</field>
 								</group>
 							</page>
+							<page string="Timeline" name="timeline">
+								<group>
+								</group>
+							</page>
 						</notebook>
-						<group name="timeline" string="Timeline">
+						<group name="details" string="More Details">
+							<field name="details" widget="html" nolabel="1"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>

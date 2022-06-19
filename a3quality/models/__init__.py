@@ -5,7 +5,6 @@ from . import course
 from . import program
 from . import course_ilo_so
 from . import portfolio
-from . import assessment_technique
 from . import assessment
 from . import assessment_line
 from . import action

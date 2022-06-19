@@ -31,7 +31,7 @@ class Assessment(models.Model):
 	_inherit = 'a3.school.owned'
 	_sql_constraints = [('a3quality_assessment_portfolio_program_ukey', 'unique(portfolio_id, program_id)', 'Duplicate assessment of the same program in the same portfolio!')]
 
-	portfolio_id = fields.Many2one('a3quality.portfolio', 'Portfolio', required=True)	
+	portfolio_id = fields.Many2one('a3quality.portfolio', 'Portfolio', required=True)
 	program_id = fields.Many2one('a3catalog.program', 'Program', required=True)
 	nstudents = fields.Integer('Student Population', compute='_nstudents', store=True, required=True)
 
@@ -48,7 +48,7 @@ class Assessment(models.Model):
 	kpi = fields.Selection(string='Minimum ILO Acquisition %', selection=[
 		('70', '70'), ('75', '75'), ('80', '80'),
 		('85', '85'), ('90', '90'), ('95', '95'), ('100', '100')], default='80', required=True)
-	used_assessment_technique_ids = fields.Many2many(comodel_name='a3quality.assessment.technique', compute='_uat_ids')
+	used_assessment_technique_ids = fields.Many2many(comodel_name='a3lms.assessment.technique', compute='_uat_ids')
 
 	@api.onchange('portfolio_id')
 	def _uat_ids(self):
