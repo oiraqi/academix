@@ -153,10 +153,8 @@ class Enrollment(models.Model):
         self.wtriggered = False
 
     def app_w_adv(self):
-        # Don't trust the interface, perform the server-side check!
-        # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_faculty') in self.env.user.groups_id and self.student_id.advisor_id.user_id == self.env.user:
-            self.wstate = 'wadv'
+		# Declare it here. Overwritten by the Advising module
+        return
 
     def app_w_ins(self):
         # Don't trust the interface, perform the server-side check!
@@ -180,7 +178,7 @@ class Enrollment(models.Model):
     def app_wp_dean(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id == self.env.user:
+        if self.env.ref('a3.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id.user_id == self.env.user:
             self.wpstate = 'wpdean'
 
     def app_wp_reg(self):
@@ -205,7 +203,7 @@ class Enrollment(models.Model):
     def app_wf_dean(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id == self.env.user:
+        if self.env.ref('a3.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id.user_id == self.env.user:
             self.wfstate = 'wfdean'
 
     def app_wf_reg(self):
@@ -230,7 +228,7 @@ class Enrollment(models.Model):
     def app_ip_dean(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id == self.env.user:
+        if self.env.ref('a3.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id.user_id == self.env.user:
             self.ipstate = 'ipdean'
 
     def app_ip_reg(self):
