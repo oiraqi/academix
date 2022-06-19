@@ -129,52 +129,97 @@ class Enrollment(models.Model):
 		self.dtriggered = False
 	
 	def confirm_wrequest(self):
-		return
+		self.wstate = 'wreq'
 	
 	def cancel_wrequest(self):
 		self.wtriggered = False
 	
 	def app_w_adv(self):
-		return
+		# Don't trust the interface, perform the server-side check!
+		if self.env.ref('a3.group_faculty') in self.env.user.groups_id:
+			self.wstate = 'wadv'
 	
 	def app_w_ins(self):
-		self.write({
-			'state': 'withdrawn',
-			'wdtime': fields.Datetime.now()
-		})
+		# Don't trust the interface, perform the server-side check!
+		# If someone is playing with us, drop silently
+		if self.env.ref('a3.group_faculty') in self.env.user.groups_id:
+			self.write({
+				'wstate': 'winst',
+				'state': 'withdrawn',
+				'wdtime': fields.Datetime.now()
+			})
 	
 	def confirm_wprequest(self):
-		return
+		# Don't trust the interface, perform the server-side check!
+		# If someone is playing with us, drop silently
+		if self.env.ref('a3.group_faculty') in self.env.user.groups_id:
+			self.wpstate = 'wpreq'
 	
 	def cancel_wprequest(self):
 		self.wptriggered = False
 	
 	def app_wp_dean(self):
-		return
+		# Don't trust the interface, perform the server-side check!
+		# If someone is playing with us, drop silently
+		if self.env.ref('a3.group_dean') in self.env.user.groups_id:
+			self.wpstate = 'wpdean'
 	
 	def app_wp_reg(self):
-		return
+		# Don't trust the interface, perform the server-side check!
+		# If someone is playing with us, drop silently
+		if self.env.ref('a3roster.group_registrar') in self.env.user.groups_id:
+			self.write({
+				'wpstate': 'wpreg',
+				'state': 'withdrawn',
+				'wdtime': fields.Datetime.now()
+			})
 	
 	def confirm_wfrequest(self):
-		return
+		# Don't trust the interface, perform the server-side check!
+		# If someone is playing with us, drop silently
+		if self.env.ref('a3.group_faculty') in self.env.user.groups_id:
+			self.wfstate = 'wfreq'
 	
 	def cancel_wfrequest(self):
 		self.wftriggered = False
 	
 	def app_wf_dean(self):
-		return
+		# Don't trust the interface, perform the server-side check!
+		# If someone is playing with us, drop silently
+		if self.env.ref('a3.group_dean') in self.env.user.groups_id:
+			self.wfstate = 'wfdean'
 	
 	def app_wf_reg(self):
-		return
+		# Don't trust the interface, perform the server-side check!
+		# If someone is playing with us, drop silently
+		if self.env.ref('a3roster.group_registrar') in self.env.user.groups_id:
+			self.write({
+				'wfstate': 'wfreg',
+				'state': 'withdrawn',
+				'wdtime': fields.Datetime.now()
+			})
 	
 	def confirm_iprequest(self):
-		return
+		# Don't trust the interface, perform the server-side check!
+		# If someone is playing with us, drop silently
+		if self.env.ref('a3.group_faculty') in self.env.user.groups_id:
+			self.ipstate = 'ipreq'
 	
 	def cancel_iprequest(self):
 		self.iptriggered = False
 	
 	def app_ip_dean(self):
-		return
+		# Don't trust the interface, perform the server-side check!
+		# If someone is playing with us, drop silently
+		if self.env.ref('a3.group_dean') in self.env.user.groups_id:
+			self.ipstate = 'ipdean'
 	
 	def app_ip_reg(self):
-		return
+		# Don't trust the interface, perform the server-side check!
+		# If someone is playing with us, drop silently
+		if self.env.ref('a3roster.group_registrar') in self.env.user.groups_id:
+			self.write({
+				'ipstate': 'ipreg',
+				'state': 'withdrawn',
+				'wdtime': fields.Datetime.now()
+			})
