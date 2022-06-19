@@ -12,8 +12,8 @@ class Enrollment(models.Model):
 	name = fields.Char('Name', compute='_set_name')
 	student_id = fields.Many2one(comodel_name='a3.student', string='Student', required=True)
 	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section', required=True)
-	state = fields.Selection(string='State', selection=[('enrolled', 'Enrolled'),
-		('dropped', 'Dropped'), ('withdrawn', 'Withdrawn')], default='enrolled', required=True, tracking=True)
+	state = fields.Selection(string='State', selection=[('created', 'Created'), ('enrolled', 'Enrolled'),
+		('dropped', 'Dropped'), ('withdrawn', 'Withdrawn')], default='created', required=True, tracking=True)
 	dstate = fields.Selection(string='Drop State', selection=[('draft', 'Draft'), ('confirmed', 'Confirmed')], default='draft')
 	dtriggered = fields.Boolean(default=False)	
 	wstate = fields.Selection(string='W State', selection=[('draft', 'Draft'), ('wreq', 'Request To Withdraw'), ('wadv', 'W Approved by Advisor'), ('winst', 'W Approved by Instructor'),
@@ -57,7 +57,7 @@ class Enrollment(models.Model):
 	@api.constrains('student_id', 'section_id')
 	def _check_student_section(self):
 		for rec in self:
-			if rec.id:
+			if rec.state != 'created':
 				raise ValidationError('Can\'t change a student/section mapping once created!')
 			
 			if rec.student_id and rec.section_id:
