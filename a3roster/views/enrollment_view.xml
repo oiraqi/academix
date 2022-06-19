@@ -26,10 +26,10 @@
 						<field name="dstate" widget="statusbar"/>
 					</header>
 					<header attrs="{'invisible': ['|', ('wtriggered', '=', False), ('state', '!=', 'enrolled')]}">
-						<button string="Confirm" states="enrolled" name="confirm_wrequest" type="object" groups="a3.group_student"/>
-						<button string="Cancel" states="enrolled" name="cancel_wrequest" type="object" groups="a3.group_student"/>
-						<button string="Approve" states="wreq" name="app_w_adv" type="object" groups="a3.group_faculty"/>
-						<button string="Approve" states="wadv" name="app_w_ins" type="object" groups="a3.group_faculty"/>
+						<button string="Confirm" attrs="{'invisible': [('wstate', '!=', 'draft')]}" name="confirm_wrequest" type="object" groups="a3.group_student"/>
+						<button string="Cancel" attrs="{'invisible': [('wstate', '!=', 'draft')]}" name="cancel_wrequest" type="object" groups="a3.group_student"/>
+						<button string="Approve" attrs="{'invisible': [('wstate', '!=', 'wreq')]}" name="app_w_adv" type="object" groups="a3.group_faculty"/>
+						<button string="Approve" attrs="{'invisible': [('wstate', '!=', 'wadv')]}" name="app_w_ins" type="object" groups="a3.group_faculty"/>
 						<field name="wstate" widget="statusbar"/>
 					</header>
 					<header attrs="{'invisible': ['|', ('wptriggered', '=', False), ('state', '!=', 'enrolled')]}">
