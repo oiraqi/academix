@@ -1,4 +1,4 @@
-import urllib2
+import urllib
 import json
 import base64
 from odoo import models, fields, api
@@ -22,7 +22,7 @@ class Textbook(models.Model):
     def onchange_isbn(self):
         for rec in self:
             if rec.isbn and (len(rec.isbn) == 10 or len(rec.isbn) == 13):
-                response = urllib2.urlopen(
+                response = urllib.request.urlopen(
                     'https://www.googleapis.com/books/v1/volumes?q=isbn:' + rec.isbn)
                 book = json.loads(response.read())
                 if book.get('totalItems') and book["totalItems"] == 1:
@@ -38,7 +38,7 @@ class Textbook(models.Model):
                         rec.publisher_id = book_info["publisher"]
 
                     if book_info.get('imageLinks') and book_info["imageLinks"].get('smallThumbnail'):
-                        response = urllib2.urlopen(
+                        response = urllib.request.urlopen(
                             book_info["imageLinks"]["smallThumbnail"])
                         rec.thumbnail = base64.encodestring(response.read())
     
