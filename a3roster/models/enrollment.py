@@ -3,7 +3,6 @@ from odoo.exceptions import ValidationError
 
 PASSING_GRADES = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-']
 
-
 class Enrollment(models.Model):
     _name = 'a3roster.enrollment'
     _inherit = 'mail.thread'
