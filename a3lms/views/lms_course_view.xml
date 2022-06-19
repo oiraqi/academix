@@ -61,6 +61,12 @@
 								<group>
 								</group>
 							</page>
+							<page string="Assessment Techniques &#38; Structure" name="assessment">								
+								<group col="4">
+									<field name="assessment_technique_ids" widget="many2many_tags"/>
+									<field name="assess_by"/>
+								</group>
+							</page>
 						</notebook>
 						<group name="details" string="More Details">
 							<field name="details" widget="html" nolabel="1"/>
