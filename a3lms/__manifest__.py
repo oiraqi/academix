@@ -14,7 +14,7 @@
         'a3roster',
     ],
     'data': [
-        'security/ir.access.model.csv',
+        'security/ir.model.access.csv',
         'views/course_view.xml',
         'views/lms_menu.xml',
     ],
