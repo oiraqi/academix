@@ -39,5 +39,10 @@ class ILO(models.Model):
             rec.name = 'ILO' + str(rec.sequence)
     
     description = fields.Char(string='ILO', required=True)
+    idx_description = fields.Char(string='ILO', compute='_idx_description')
     sequence = fields.Integer(string='Sequence', default=1)
     course_id = fields.Many2one('a3.course', string='Course', required=True)
+
+    def _idx_description(self):
+        for rec in self:
+            rec.idx_description = rec.name + '. ' + rec.description

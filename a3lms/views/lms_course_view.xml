@@ -26,9 +26,8 @@
 						<group name="description" string="Course Description, ILOs &#38; Textbooks">
 							<field name="description"/>						
 							<field name="ilo_ids">
-								<tree>
-									<field name="name" style="width: 15%"/>
-									<field name="description" style="width: 85%"/>
+								<tree>									
+									<field name="idx_description"/>
 								</tree>
 							</field>						
 							<field name="textbook_ids">
