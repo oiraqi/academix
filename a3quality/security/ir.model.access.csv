@@ -15,11 +15,6 @@ access_a3quality_portfolio_faculty,access.a3quality.portfolio.faculty,model_a3qu
 access_a3quality_portfolio_coordinator,access.a3quality.portfolio.coordinator,model_a3quality_portfolio,a3.group_coordinator,1,0,0,0
 access_a3quality_portfolio_vpaa,access.a3quality.portfolio.vpaa,model_a3quality_portfolio,a3.group_vpaa,1,0,0,0
 
-access_a3quality_assessment_technique_faculty,access.a3quality.assessment.technique.faculty,model_a3quality_assessment_technique,a3.group_faculty,1,0,0,0
-access_a3quality_assessment_technique_coordinator,access.a3quality.assessment.technique.coordinator,model_a3quality_assessment_technique,a3.group_coordinator,1,1,1,0
-access_a3quality_assessment_technique_vpaa,access.a3quality.assessment.technique.vpaa,model_a3quality_assessment_technique,a3.group_vpaa,1,0,0,0
-access_a3quality_assessment_technique_setup,access.a3quality.assessment.technique.setup,model_a3quality_assessment_technique,a3.group_setup,1,1,1,0
-
 access_a3quality_assessment_faculty,access.a3quality.assessment.faculty,model_a3quality_assessment,a3.group_faculty,1,1,1,1
 access_a3quality_assessment_coordinator,access.a3quality.assessment.coordinator,model_a3quality_assessment,a3.group_coordinator,1,0,0,0
 access_a3quality_assessment_vpaa,access.a3quality.assessment.vpaa,model_a3quality_assessment,a3.group_vpaa,1,0,0,0
