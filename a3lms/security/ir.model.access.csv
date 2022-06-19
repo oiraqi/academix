@@ -4,3 +4,6 @@ access_a3lms_course_student,access.a3lms.course.student,model_a3lms_course,a3.gr
 access_a3lms_course_coordinator,access.a3lms.course.coordinator,model_a3lms_course,a3.group_coordinator,1,0,0,0
 access_a3lms_course_vpaa,access.a3lms.course.vpaa,model_a3lms_course,a3.group_vpaa,1,0,0,0
 
+access_a3lms_textbook_user,access.a3lms.textbook.user,model_a3lms_textbook,base.group_user,1,0,0,0
+access_a3lms_textbook_faculty,access.a3lms.textbook.faculty,model_a3lms_textbook,a3.group_faculty,1,1,1,1
+

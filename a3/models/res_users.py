@@ -28,6 +28,34 @@ class ResUsers(models.Model):
     _inherit = 'res.users'
 
     school_ids = fields.One2many('a3.school', compute='_school_ids')
+    student_id = fields.Many2one(comodel_name='a3.student', compute='_student')
+    faculty_id = fields.Many2one(comodel_name='a3.faculty', compute='_faculty')
+    staff_id = fields.Many2one(comodel_name='a3.staff', compute='_staff')
+
+
+    def _student(self):
+        for user in self:
+            student = self.env['a3.student'].search([('user_id', '=', user.id)])
+            if student:
+                user.student_id = student[0]
+            else:
+                user.student_id = False
+
+    def _faculty(self):
+        for user in self:
+            faculty = self.env['a3.faculty'].search([('user_id', '=', user.id)])
+            if faculty:
+                user.faculty_id = faculty[0]
+            else:
+                user.faculty_id = False
+    
+    def _staff(self):
+        for user in self:
+            staff = self.env['a3.staff'].search([('user_id', '=', user.id)])
+            if staff:
+                user.staff_id = staff[0]
+            else:
+                user.staff_id = False
 
     def _school_ids(self):
         for user in self:

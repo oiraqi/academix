@@ -1,17 +1,31 @@
-from odoo import models, fields
+# -*- coding: utf-8 -*-
+###############################################################################
+#
+#    Al Akhawayn University in Ifrane -- AUI
+#    Copyright (C) 2022-TODAY AUI(<http://www.aui.ma>).
+#
+#    Author: Omar Iraqi Houssaini | https://github.com/oiraqi
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Lesser General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Lesser General Public License for more details.
+#
+#    You should have received a copy of the GNU Lesser General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+###############################################################################
+
+from odoo import models, fields, api
 
 
 class Course(models.Model):
-	_name = 'a3lms.course'
-	_description = 'LMS Course'
-	_inherit = ['a3.activity']
+    _inherit = 'a3.course'
 
-	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section', required=True)	
-	name = fields.Char(related='section_id.name')	
-	course_id = fields.Many2one(comodel_name='a3.course', related='section_id.course_id')
-	instructor_id = fields.Many2one(comodel_name='a3.faculty', related='section_id.instructor_id')
-	timeslot = fields.Char(related='section_id.timeslot')	
-	room_id = fields.Many2one(comodel_name='a3.room', related='section_id.room_id')
-	description = fields.Html(related='course_id.description')
-	ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids')
-	
+    textbook_ids = fields.One2many('a3lms.textbook', 'course_id', 'Textbooks')
+    
