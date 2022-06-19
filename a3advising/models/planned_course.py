@@ -89,3 +89,4 @@ class PlannedCourse(models.Model):
             'student_id': self.student_id.id,
             'section_id': self.section_id.id
         })
+        self.enrollment_id.enroll()
