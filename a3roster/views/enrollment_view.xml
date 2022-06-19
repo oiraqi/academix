@@ -25,7 +25,7 @@
 						<button string="Cancel" states="enrolled" name="cancel_drop" type="object" groups="a3.group_student"/>
 						<field name="dstate" widget="statusbar"/>
 					</header>
-					<header attrs="{'invisible': ['|', ('wtriggered', '=', False), ('state', '!=', 'enrolled')]}">
+					<header attrs="{'invisible': ['|', ('wtriggered', '=', False), ('state', 'not in', ['enrolled', 'withdrawn'])]}">
 						<button string="Confirm" attrs="{'invisible': [('wstate', '!=', 'draft')]}" name="confirm_wrequest" type="object" groups="a3.group_student"/>
 						<button string="Cancel" attrs="{'invisible': [('wstate', '!=', 'draft')]}" name="cancel_wrequest" type="object" groups="a3.group_student"/>
 						<button string="Approve" attrs="{'invisible': [('wstate', '!=', 'wreq')]}" name="app_w_adv" type="object" groups="a3.group_faculty"/>
