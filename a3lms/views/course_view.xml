@@ -12,6 +12,7 @@
 							<field name="course_id"/>
 						</h1>
 						<group name="info" string="General Information" col="4">
+							<label for="semester" string="Semester &#38; Year"/>
 							<div>
                                 <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 65%"/>
                                 <field name="year" style="width: 35%"/>
