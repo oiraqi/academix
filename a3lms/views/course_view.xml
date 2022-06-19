@@ -24,6 +24,9 @@
 							<field name="timeslot"/>
 							<field name="room_id"/>
 						</group>
+						<group name="description" string="Course Description">
+							<field name="description" nolabel="1"/>
+						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
 							<field name="create_date"/>
