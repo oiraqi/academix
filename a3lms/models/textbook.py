@@ -10,7 +10,7 @@ class Textbook(models.Model):
                          ('A book with the same ISBN exists already!'))]    
     
     name = fields.Char('Title', size=128, required=True)
-    isbn = fields.Char('ISBN Code', size=13, required=True)
+    isbn = fields.Char('ISBN (10 or 13)', size=13, required=True)
     thumbnail = fields.Binary('Cover')
     authors = fields.Text(string='Author(s)', required=True)
     edition = fields.Char('Edition', required=True)

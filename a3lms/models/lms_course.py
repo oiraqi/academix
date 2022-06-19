@@ -14,4 +14,6 @@ class LmsCourse(models.Model):
 	room_id = fields.Many2one(comodel_name='a3.room', related='section_id.room_id')
 	description = fields.Html(related='course_id.description')
 	ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids')
+	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
+	
 	

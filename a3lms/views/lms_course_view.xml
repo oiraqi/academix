@@ -32,6 +32,18 @@
 								</tree>
 							</field>
 						</group>
+						<group name="textbooks" string="Textbooks" col="4">
+							<field name="textbook_ids" nolabel="1">
+								<tree>									
+									<field name="thumbnail" widget="image" class="oe_left oe_avatar"/>
+									<field name="name"/>
+									<field name="isbn"/>
+									<field name="authors"/>
+									<field name="publisher"/>
+									<field name="edition"/>
+								</tree>
+							</field>
+						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
 							<field name="create_date"/>
@@ -99,7 +111,7 @@
 
 				</p>
 			</field>
-		</record>		
+		</record>
 		<record id="action_course_form_view" model="ir.actions.act_window.view">
 			<field name="sequence" eval="2"/>
 			<field name="view_mode">form</field>
