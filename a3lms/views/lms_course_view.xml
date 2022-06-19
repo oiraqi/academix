@@ -21,19 +21,7 @@
 							<field name="discipline_id"/>
 							<field name="timeslot"/>
 							<field name="room_id"/>
-						</group>
-						<group>
-							<field name="office_hour_ids">
-								<tree>
-									<field name="monday"/>
-									<field name="tuesday"/>
-									<field name="wednesday"/>
-									<field name="thursday"/>
-									<field name="friday"/>
-									<field name="start_timeslot"/>
-									<field name="end_timeslot"/>
-								</tree>
-							</field>
+							<field name="office_hour_ids" widget="many2many_tags"/>
 						</group>
 						<group name="description" string="Course Description">
 							<field name="description" nolabel="1"/>

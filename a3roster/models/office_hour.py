@@ -1,4 +1,4 @@
-from odoo import models
+from odoo import models, fields
 
 
 class OfficeHour(models.Model):
@@ -6,4 +6,5 @@ class OfficeHour(models.Model):
 	_description = 'Office Hour'
 	_inherit = ['a3.faculty.owned', 'a3roster.scheduled']
 
+	name = fields.Char(related='timeslot')
 	
