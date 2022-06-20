@@ -70,13 +70,16 @@
 									<label for="attendance_grading" string="Attendance Grading"
 										attrs="{'invisible': [('attendance_prc', '=', 0.0)]}"/>
 									<div attrs="{'invisible': [('attendance_prc', '=', 0.0)]}">
-										<field name="attendance_grading" style="width: 50%"
+										<field name="attendance_grading" style="width: 60%"
 											attrs="{'required': [('attendance_prc', '>', 0.0)]}"/>
 										<![CDATA[&nbsp;]]>
-										<field name="absence_limit" style="width: 15%"
-											attrs="{'invisible': [('attendance_grading', '!=', 'linz')], 'required': [('attendance_grading', '=', 'linz')]}"/>
+										<field name="absence_limit" style="max-width: 15%"
+											attrs="{'invisible': [('attendance_grading', '!=', 'ratez')], 'required': [('attendance_grading', '=', 'ratez')]}"/>
+										<field name="penalty_per_absence" style="max-width: 15%"
+											attrs="{'invisible': [('attendance_grading', '!=', 'penalty')], 'required': [('attendance_grading', '=', 'penalty')]}"/>
 										<![CDATA[&nbsp;]]>
-										<span attrs="{'invisible': [('attendance_grading', '!=', 'linz')]}">Absences</span>
+										<span attrs="{'invisible': [('attendance_grading', '!=', 'ratez')]}">Absences</span>
+										<span attrs="{'invisible': [('attendance_grading', '!=', 'penalty')]}">%</span>
 									</div>
 								</group>
 							</page>

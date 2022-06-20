@@ -19,10 +19,11 @@ class LmsCourse(models.Model):
 	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
 	assessment_technique_ids = fields.Many2many(comodel_name='a3lms.assessment.technique', string='Assessment Techniques', required=True)
-	assess_by = fields.Selection(string='Group Assessessment By', selection=[('technique', 'Technique'), ('module', 'Module'),])	
+	assess_by = fields.Selection(string='Group Assessment By', selection=[('technique', 'Technique'), ('module', 'Module'),])	
 	attendance_prc = fields.Float(string='Attendance %', default=0.0)
-	attendance_grading = fields.Selection(string='Attendance Grading', selection=[('linear', 'Linear'), ('linz', 'Linear but Zero after'),])
+	attendance_grading = fields.Selection(string='Attendance Grading', selection=[('rate', 'Attendance Rate'), ('ratez', 'Attendance Rate but Zero after'), ('penalty', 'Penalty/Absence')])
 	absence_limit = fields.Integer(string='Max Absences')
+	penalty_per_absence = fields.Float(string='Penalty/Absence', default=0.0)
 	
 	
 	
