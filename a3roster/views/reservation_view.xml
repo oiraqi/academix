@@ -13,12 +13,17 @@
 								<field name="room_type" style="width: 60%"/>
 								<field name="room_min_capacity" style="width: 40%"/>
 							</div>
-							<field name="purpose"/>
-							<field name="section_id"
-								options="{'no_quick_create': True, 'no_create_edit': True}"
-								attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"/>
-							<field name="description"
-								attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}"/>
+							<label for="purpose" string="Purpose"/>
+							<div>
+								<field name="purpose" style="width: 30%"/>
+								<field name="section_id"
+									options="{'no_quick_create': True, 'no_create_edit': True}"
+									attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"
+									style="max-width: 70%"/>
+								<field name="description" placeholder="A few keywords..."
+									attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}"
+									style="max-width: 70%"/>
+							</div>
 							<field name="start_time" required="1"/>
 							<field name="end_time" required="1"/>
 						</group>
