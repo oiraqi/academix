@@ -27,6 +27,7 @@ class LmsCourse(models.Model):
 	penalty_per_absence = fields.Float(string='Penalty/Absence', default=5.0)
 	module_ids = fields.One2many(comodel_name='a3lms.module', inverse_name='course_id', string='Modules')
 	weighted_technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', inverse_name='course_id', string='Techniques')
+	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='course_id', string='Assessments')
 	
 	
 	details = fields.Html(string='More Details')

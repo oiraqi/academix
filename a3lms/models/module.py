@@ -8,5 +8,5 @@ class Module(models.Model):
 	name = fields.Char('Name', required=True)
 	weight = fields.Float(string='Weight (%)', required=True, default=0.0)
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
-		
+	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='module_id', string='Assessments')
 	
