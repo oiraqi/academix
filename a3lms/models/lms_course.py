@@ -19,14 +19,14 @@ class LmsCourse(models.Model):
 	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
 	assessment_technique_ids = fields.Many2many(comodel_name='a3lms.assessment.technique', string='Assessment Techniques', required=True)
-	assess_by = fields.Selection(string='Group Assessment Grading By', selection=[('technique', 'Technique'), ('module', 'Module'),])	
-	attendance_prc = fields.Float(string='Attendance %', default=0.0)
+	assess_by = fields.Selection(string='Group Assessment Grading By', selection=[('technique', 'Technique'), ('module', 'Module'),], required=True)
+	attendance_weight = fields.Float(string='Attendance Weight', default=0.0)
 	attendance_grading = fields.Selection(string='Attendance Grading', selection=[('rate', 'Attendance Rate'),
 		('ratez', 'Attendance Rate but Zero after'), ('penalty', 'Penalty/Absence')], default='rate')
-	absence_limit = fields.Integer(string='Max Absences', defaulr=5)
+	absence_limit = fields.Integer(string='Max Absences', default=5)
 	penalty_per_absence = fields.Float(string='Penalty/Absence', default=5.0)
-	
-	
+	module_ids = fields.One2many(comodel_name='a3lms.module', inverse_name='course_id', string='Modules')
+	weighted_technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', inverse_name='course_id', string='Techniques')
 	
 	
 	details = fields.Html(string='More Details')

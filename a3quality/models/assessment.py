@@ -27,7 +27,7 @@ from odoo.exceptions import UserError
 
 class Assessment(models.Model):
 	_name = 'a3quality.assessment'
-	_description = 'Assessment'
+	_description = 'Course Assessment'
 	_inherit = 'a3.school.owned'
 	_sql_constraints = [('a3quality_assessment_portfolio_program_ukey', 'unique(portfolio_id, program_id)', 'Duplicate assessment of the same program in the same portfolio!')]
 

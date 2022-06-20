@@ -61,17 +61,14 @@
 								<group>
 								</group>
 							</page>
-							<page string="Assessment Techniques &#38; Structure" name="assessment">								
+							<page string="Assessment Techniques &#38; Grading Structure" name="assessment">								
 								<group col="4">
-									<field name="assessment_technique_ids" widget="many2many_tags"
-										options="{'no_quick_create': True, 'no_create_edit': True}"/>
-									<field name="assess_by"/>
-									<field name="attendance_prc" style="width: 15%"/>
+									<field name="attendance_weight" style="width: 15%"/><![CDATA[&nbsp;]]>%
 									<label for="attendance_grading" string="Attendance Grading"
-										attrs="{'invisible': [('attendance_prc', '=', 0.0)]}"/>
-									<div attrs="{'invisible': [('attendance_prc', '=', 0.0)]}">
+										attrs="{'invisible': [('attendance_weight', '=', 0.0)]}"/>
+									<div attrs="{'invisible': [('attendance_weight', '=', 0.0)]}">
 										<field name="attendance_grading" style="width: 60%"
-											attrs="{'required': [('attendance_prc', '>', 0.0)]}"/>
+											attrs="{'required': [('attendance_weight', '>', 0.0)]}"/>
 										<![CDATA[&nbsp;]]>
 										<field name="absence_limit" style="max-width: 15%"
 											attrs="{'invisible': [('attendance_grading', '!=', 'ratez')], 'required': [('attendance_grading', '=', 'ratez')]}"/>
@@ -81,6 +78,23 @@
 										<span attrs="{'invisible': [('attendance_grading', '!=', 'ratez')]}">Absences</span>
 										<span attrs="{'invisible': [('attendance_grading', '!=', 'penalty')]}">%</span>
 									</div>
+								</group>
+								<group col="4">
+									<field name="assess_by"/>
+									<field name="module_ids" string="Assessment weight per module (must add up to 100%)"
+										attrs="{'invisible': [('assess_by', '=', 'technique')]}" style="max-width: 100%">
+										<tree editable="bottom">
+											<field name="name"/>
+											<field name="weight"/>
+										</tree>
+									</field>
+									<field name="weighted_technique_ids" string="Assessment weight per technique (must add up to 100%)"
+										attrs="{'invisible': [('assess_by', '=', 'module')]}" style="max-width: 100%">
+										<tree editable="bottom">
+											<field name="technique_id"/>
+											<field name="weight"/>
+										</tree>
+									</field>
 								</group>
 							</page>
 						</notebook>

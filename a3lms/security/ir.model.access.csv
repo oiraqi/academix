@@ -9,5 +9,13 @@ access_a3lms_textbook_faculty,access.a3lms.textbook.faculty,model_a3lms_textbook
 
 access_a3lms_assessment_technique_faculty,access.a3lms.assessment.technique.faculty,model_a3lms_assessment_technique,a3.group_faculty,1,0,0,0
 access_a3lms_assessment_technique_coordinator,access.a3lms.assessment.technique.coordinator,model_a3lms_assessment_technique,a3.group_coordinator,1,1,1,0
+
 access_a3lms_assessment_technique_vpaa,access.a3lms.assessment.technique.vpaa,model_a3lms_assessment_technique,a3.group_vpaa,1,0,0,0
 access_a3lms_assessment_technique_setup,access.a3lms.assessment.technique.setup,model_a3lms_assessment_technique,a3.group_setup,1,1,1,0
+
+access_a3lms_module_faculty,access.a3lms.module.faculty,model_a3lms_module,a3.group_faculty,1,1,1,1
+access_a3lms_module_user,access.a3lms.module.user,model_a3lms_module,base.group_user,1,0,0,0
+
+access_a3lms_weighted_technique_faculty,access.a3lms.weighted.technique.faculty,model_a3lms_weighted_technique,a3.group_faculty,1,1,1,1
+access_a3lms_weighted_technique_user,access.a3lms.weighted.technique.user,model_a3lms_weighted_technique,base.group_user,1,0,0,0
+

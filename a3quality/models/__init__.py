@@ -1,5 +1,5 @@
 from . import accreditation
-from . import student_outcome
+from . import so
 from . import course_program
 from . import course
 from . import program
