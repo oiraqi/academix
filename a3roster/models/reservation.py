@@ -44,6 +44,17 @@ class Reservation(models.Model):
 	def _make_reservation(self):
 		return
 
+	@api.onchange('section_id')
+	def _onchange_section(self):
+		for rec in self:
+			if rec.section_id:
+				if rec.section_id.nstudents > 100:
+					raise ValidationError('More than 100!?!')
+				if rec.section_id.nstudents % 5 == 0:
+					rec.room_min_capacity = str(rec.section_id.nstudents)
+				else:
+					rec.room_min_capacity = str((int(rec.section_id.nstudents / 5) + 1) * 5)
+
 	@api.onchange('start_time', 'end_time', 'room_min_capacity', 'room_type')
 	def room_search(self):		
 		self.ensure_one()

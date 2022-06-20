@@ -8,22 +8,24 @@
 				<form string="Reservation">
 					<sheet>
 						<group name="info" string="Search Criteria" col="4">
-							<label for="room_type" string="Type / Min Capacity"/>
+						<label for="purpose" string="Purpose"/>
 							<div>
-								<field name="room_type" style="width: 60%"/>
-								<field name="room_min_capacity" style="width: 40%"/>
-							</div>
-							<label for="purpose" string="Purpose"/>
-							<div>
-								<field name="purpose" style="width: 30%"/>
+								<field name="purpose" style="width: 35%"/>
+								<![CDATA[&nbsp;]]>
 								<field name="section_id"
 									options="{'no_quick_create': True, 'no_create_edit': True}"
 									attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"
-									style="max-width: 70%"/>
+									style="max-width: 60%"/>
 								<field name="description" placeholder="A few keywords..."
 									attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}"
-									style="max-width: 70%"/>
+									style="max-width: 60%"/>
 							</div>
+							<label for="room_type" string="Type / Min Capacity"/>
+							<div>
+								<field name="room_type" style="width: 60%"/>
+								<field name="room_min_capacity" style="width: 40%"
+									attrs="{'readonly': [('purpose', '=', 'makeup')]}"/>
+							</div>							
 							<field name="start_time" required="1"/>
 							<field name="end_time" required="1"/>
 						</group>
