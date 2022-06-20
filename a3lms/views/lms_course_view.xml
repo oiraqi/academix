@@ -80,7 +80,21 @@
 									</div>
 								</group>
 								<group col="4">
-									<field name="assess_by"/>									
+									<field name="assess_by"/>
+									<field name="module_ids" string="Assessment weight per module (must add up to 100%)"
+										attrs="{'invisible': [('assess_by', '=', 'technique')]}" style="max-width: 100%">
+										<tree editable="bottom">
+											<field name="name"/>
+											<field name="weight"/>
+										</tree>
+									</field>
+									<field name="weighted_technique_ids" string="Assessment weight per technique (must add up to 100%)"
+										attrs="{'invisible': [('assess_by', '=', 'module')]}" style="max-width: 100%">
+										<tree editable="bottom">
+											<field name="technique_id"/>
+											<field name="weight"/>
+										</tree>
+									</field>
 								</group>
 							</page>
 						</notebook>
