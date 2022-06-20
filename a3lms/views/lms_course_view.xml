@@ -89,7 +89,7 @@
 										</tree>
 									</field>
 									<field name="weighted_technique_ids" string="Assessment weight per technique (must add up to 100%)"
-										attrs="{'invisible': [('assess_by', '=', 'module')]}"">
+										attrs="{'invisible': [('assess_by', '=', 'module')]}">
 										<tree editable="bottom">
 											<field name="technique_id"/>
 											<field name="weight"/>
