@@ -15,10 +15,10 @@
 								<field name="section_id"
 									options="{'no_quick_create': True, 'no_create_edit': True}"
 									attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"
-									style="max-width: 65%"/>
+									style="max-width: 60%"/>
 								<field name="description" placeholder="A few keywords..."
 									attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}"
-									style="max-width: 65%"/>
+									style="max-width: 60%"/>
 							</div>
 							<label for="room_type" string="Type / Min Capacity"/>
 							<div>
