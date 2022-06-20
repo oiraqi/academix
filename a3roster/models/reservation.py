@@ -50,7 +50,9 @@ class Reservation(models.Model):
 			if rec.section_id:
 				if rec.section_id.nstudents > 100:
 					raise ValidationError('More than 100!?!')
-				if rec.section_id.nstudents % 5 == 0:
+				if rec.section_id.nstudents == 0:
+					rec.room_min_capacity = '5'
+				elif rec.section_id.nstudents % 5 == 0:
 					rec.room_min_capacity = str(rec.section_id.nstudents)
 				else:
 					rec.room_min_capacity = str((int(rec.section_id.nstudents / 5) + 1) * 5)
