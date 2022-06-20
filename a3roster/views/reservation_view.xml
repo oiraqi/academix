@@ -22,9 +22,9 @@
 							</div>
 							<label for="room_type" string="Type / Min Capacity"/>
 							<div>
-								<field name="room_type" style="width: 50%"/>
+								<field name="room_type" style="width: 30%"/>
 								<![CDATA[&nbsp;]]>
-								<field name="room_min_capacity" style="width: 40%"
+								<field name="room_min_capacity" style="width: 15%"
 									attrs="{'readonly': [('purpose', '=', 'makeup')]}"/>
 							</div>							
 							<field name="start_time" required="1"/>

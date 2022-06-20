@@ -30,7 +30,7 @@ class Reservation(models.Model):
 	room_min_capacity = fields.Selection(string='Minimum Capacity', selection=[
 		('5', '5'), ('10', '10'), ('15', '15'), ('20', '20'),
 		('25', '25'), ('30', '30'), ('35', '35'), ('40', '40'),
-		('45', '45'), ('50', '50'), ('75', '75'), ('100', '100'),], default='15', required=True)
+		('45', '45'), ('50', '50'), ('75', '75'), ('100', '100'),], default='5', required=True)
 	room_type = fields.Selection(string='Type', selection=[('classroom', 'Classroom'),
         ('lab', 'Lab'), ('general', 'General Purpose')], default='classroom', required=True)
 	room_capacity = fields.Integer(related='room_id.capacity')
