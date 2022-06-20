@@ -15,14 +15,14 @@
 								<field name="section_id"
 									options="{'no_quick_create': True, 'no_create_edit': True}"
 									attrs="{'invisible': [('purpose', '!=', 'makeup')], 'required': [('purpose', '=', 'makeup')]}"
-									style="max-width: 60%"/>
+									style="max-width: 65%"/>
 								<field name="description" placeholder="A few keywords..."
 									attrs="{'invisible': [('purpose', '=', 'makeup')], 'required': [('purpose', '!=', 'makeup')]}"
-									style="max-width: 60%"/>
+									style="max-width: 65%"/>
 							</div>
 							<label for="room_type" string="Type / Min Capacity"/>
 							<div>
-								<field name="room_type" style="width: 30%"/>
+								<field name="room_type" style="width: 35%"/>
 								<![CDATA[&nbsp;]]>
 								<field name="room_min_capacity" style="width: 15%"
 									attrs="{'readonly': [('purpose', '=', 'makeup')]}"/>
