@@ -98,8 +98,8 @@
 									<field name="assessment_ids">
 										<tree editable="bottom">
 											<field name="name"/>
-											<field name="technique_id" domain="[('id', 'in', weighted_technique_ids)]"/>
-											<field name="module_id" domain="[('id', 'in', module_ids)]"/>
+											<field name="technique_id"/>
+											<field name="module_id"/>
 											<field name="weight" sum="Total Weight"/>											
 										</tree>
 									</field>
