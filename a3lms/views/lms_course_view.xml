@@ -63,7 +63,7 @@
 							</page>
 							<page string="Assessment Techniques &#38; Grading Structure" name="assessment">								
 								<group col="4">
-									<field name="attendance_weight" style="width: 15%"/><![CDATA[&nbsp;]]>
+									<field name="attendance_weight" style="width: 15%"/>
 									<label for="attendance_grading" string="Attendance Grading"
 										attrs="{'invisible': [('attendance_weight', '=', 0.0)]}"/>
 									<div attrs="{'invisible': [('attendance_weight', '=', 0.0)]}">
