@@ -107,7 +107,7 @@
 											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
 												domain="[('id', 'in', assessment_technique_ids)]"/>
 											<field name="module_id" domain="[('course_id', '=', course_id)]" options="{'no_open': True}"/>											
-											<field name="end_time" string="Due"/>
+											<field name="due_time"/>
 											<field name="weight"/>
 											<field name="assessment_technique_ids" invisible="1"/>
 											<field name="course_id" invisible="1"/>
