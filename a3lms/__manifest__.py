@@ -20,7 +20,7 @@
         'views/assessment_technique_view.xml',
         'views/lms_course_view.xml',
         'views/course_view.xml',
-        'views/assessment_view.xml'
+        'views/assessment_view.xml',
         'views/lms_menu.xml',
     ],
     'installable': True,

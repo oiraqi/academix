@@ -11,7 +11,7 @@
 							<field name="course_id"/>
 						</h1>
 						<div class="oe_button_box" name="button_box">
-							<button name="%(a3lms.action_assessment)d" type="action" class="oe_stat_button" icon="fa-pen-to-square">
+							<button name="%(action_assessment)d" type="action" class="oe_stat_button" icon="fa-pen-to-square">
 								<field name="nassessments" string="Number of Assessments" widget="statinfo"/>
 							</button>
 						</div>
