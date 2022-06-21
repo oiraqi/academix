@@ -38,7 +38,7 @@ class LmsCourse(models.Model):
 
 
 	attendance_grading = fields.Selection(string='Attendance Grading', selection=[('rate', 'Attendance Rate'),
-		('ratez', 'Attendance Rate but Zero after'), ('penalty', 'Penalty/Absence')], default='rate')
+		('ratez', 'Attendance Rate but Zero after'), ('penalty', 'Penalty(%) / Absence')], default='rate')
 	absence_limit = fields.Integer(string='Max Absences', default=5)
 	penalty_per_absence = fields.Float(string='Penalty(%) / Absence', default=5.0)
 	module_ids = fields.One2many(comodel_name='a3lms.module', inverse_name='course_id', string='Modules')
