@@ -53,7 +53,7 @@ class LmsCourse(models.Model):
 			if rec.assess_by == 'technique' and rec.weighted_technique_ids:
 				rec.assessment_technique_ids = [weighted_technique.technique_id.id for weighted_technique in rec.weighted_technique_ids]
 			else:
-				rec.rec.assessment_technique_ids = self.env['a3lms.assessment.technique'].search([])
+				rec.assessment_technique_ids = self.env['a3lms.assessment.technique'].search([])
 	
 	details = fields.Html(string='More Details')
 	
