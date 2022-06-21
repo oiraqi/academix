@@ -57,10 +57,6 @@
 									</field>
 								</group>
 							</page>
-							<page string="Timeline" name="timeline">
-								<group>
-								</group>
-							</page>
 							<page string="Assessment Structure" name="assessment">							
 								<group>
 									<field name="assess_by" style="width: 20%"/>
