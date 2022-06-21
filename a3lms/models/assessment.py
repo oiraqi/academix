@@ -5,6 +5,7 @@ class Assessment(models.Model):
 	_name = 'a3lms.assessment'
 	_description = 'LMS Assessment'
 	_inherit = 'a3.calendarized'
+	_order = 'start_time,module_id'
 
 	name = fields.Char('Name', required=True)
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)

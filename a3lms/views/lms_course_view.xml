@@ -65,6 +65,7 @@
 									<field name="module_ids" string="Assessment weight per module"
 										attrs="{'invisible': [('assess_by', '!=', 'module')]}">
 										<tree editable="bottom">
+											<field name="sequence" widget="handle"/>
 											<field name="name"/>
 											<field name="weight" sum="Total Weight"/>
 										</tree>
@@ -82,7 +83,7 @@
 									<label for="attendance_grading" string="Attendance Grading"
 										attrs="{'invisible': [('attendance_weight', '=', 0.0)]}"/>
 									<div attrs="{'invisible': [('attendance_weight', '=', 0.0)]}">
-										<field name="attendance_grading" style="width: 60%"
+										<field name="attendance_grading" style="max-width: 60%"
 											attrs="{'required': [('attendance_weight', '>', 0.0)]}"/>
 										<![CDATA[&nbsp;]]>
 										<field name="absence_limit" style="max-width: 15%"
