@@ -34,6 +34,11 @@
 			<field name="arch" type="xml">
 				<tree string="Assessments">
 					<field name="name"/>
+					<field name="technique_id" widget="badge"/>
+					<field name="due_time"/>
+					<field name="from_time"/>
+					<field name="to_time"/>
+					<field name="weight"/>
 				</tree>
 			</field>
 		</record>
@@ -42,8 +47,8 @@
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">a3lms.assessment</field>
 			<field name="view_mode">tree,form</field>
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
+			<field name="domain">[('course_id', '=', 'active_id')]</field>
+			<field name="context">{'group_by': 'module_id'}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 				
