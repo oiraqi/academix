@@ -99,8 +99,7 @@
 											<field name="name"/>
 											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
 												domain="[('id', 'in', assessment_technique_ids)]"/>
-											<field name="module_id" domain="[('id', 'in', module_ids)]"
-												context="{'default_course_id': course_id}"/>											
+											<field name="module_id" domain="[('id', 'in', module_ids)]" options="{'no_open': True}"/>
 											<field name="weight" sum="Total Weight"/>
 											<field name="assessment_technique_ids" invisible="1"/>
 											<field name="module_ids" invisible="1"/>
