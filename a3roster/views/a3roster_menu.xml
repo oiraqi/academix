@@ -8,7 +8,8 @@
 		<menuitem id="planning_section_menu" name="Sections" parent="planning_root_menu" action="action_section" sequence="30"/>
 		<menuitem id="a3roster_enrollment_menu" name="Enrollment" action="action_enrollment" parent="planning_root_menu" sequence="40"/>
 		<menuitem id="planning_reservation_menu" name="Reservations" action="a3roster.action_reservation" parent="planning_root_menu" sequence="50"/>
-		<menuitem id="planning_building_menu" name="Buildings" action="a3.action_building" parent="planning_root_menu" sequence="100"/>
-		<menuitem id="planning_room_menu" name="Rooms" action="a3.action_room" parent="planning_root_menu" sequence="120"/>		
+		<menuitem id="planning_term_menu" name="Terms" parent="planning_root_menu" action="a3.action_term" sequence="100" groups="a3roster.group_registrar"/>
+		<menuitem id="planning_building_menu" name="Buildings" action="a3.action_building" parent="planning_root_menu" sequence="120"/>
+		<menuitem id="planning_room_menu" name="Rooms" action="a3.action_room" parent="planning_root_menu" sequence="140"/>
 	</data>
 </odoo>

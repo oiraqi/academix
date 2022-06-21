@@ -7,9 +7,12 @@
 			<field name="arch" type="xml">
 				<form string="Term">
 					<sheet>
-						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
+						<h1><field name="name"/></h1>
 						<group name="info" string="General Information" col="4">
-						
+							<field name="year"/>
+							<field name="semester"/>
+							<field name="start_date"/>
+							<field name="end_date"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
