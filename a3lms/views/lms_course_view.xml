@@ -102,9 +102,10 @@
 									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}">
 										<tree editable="bottom">
 											<field name="name"/>
-											<field name="technique_id"/>
-											<field name="module_id"/>
-											<field name="weight" sum="Total Weight"/>								
+											<field name="technique_id" domain="[('id', 'in', assessment_technique_ids)]"/>
+											<field name="module_id"/>											
+											<field name="weight" sum="Total Weight"/>
+											<field name="assessment_technique_ids" invisible="1"/>
 										</tree>
 									</field>
 								</group>

@@ -8,7 +8,7 @@ class Assessment(models.Model):
 	name = fields.Char('Name', required=True)
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
 	module_id = fields.Many2one(comodel_name='a3lms.module', string='Module')
-	technique_id = fields.Many2one(comodel_name='a3lms.weighted.technique', string='Assessment Technique', required=True)
+	technique_id = fields.Many2one(comodel_name='a3lms.assessment.technique', string='Assessment Technique', required=True)
 	weight = fields.Float(string='Weight (%)')
 	
 		

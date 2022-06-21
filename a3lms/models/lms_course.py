@@ -44,8 +44,16 @@ class LmsCourse(models.Model):
 	penalty_per_absence = fields.Float(string='Penalty/Absence', default=5.0)
 	module_ids = fields.One2many(comodel_name='a3lms.module', inverse_name='course_id', string='Modules')
 	weighted_technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', inverse_name='course_id', string='Techniques')
+	assessment_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_assessment_techniques')	
 	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='course_id', string='Assessments')
 	
+	@api.onchange('assess_by', 'weighted_technique_ids')
+	def _assessment_techniques(self):
+		for rec in self:
+			if rec.assess_by == 'technique' and rec.weighted_technique_ids:
+				rec.assessment_technique_ids = [weighted_technique.technique_id.id for weighted_technique in rec.weighted_technique_ids]
+			else:
+				rec.rec.assessment_technique_ids = self.env['a3lms.assessment.technique'].search([])
 	
 	details = fields.Html(string='More Details')
 	
