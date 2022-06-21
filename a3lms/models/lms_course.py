@@ -1,4 +1,5 @@
-from odoo import models, fields
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class LmsCourse(models.Model):
@@ -19,8 +20,24 @@ class LmsCourse(models.Model):
 	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
 	assessment_technique_ids = fields.Many2many(comodel_name='a3lms.assessment.technique', string='Assessment Techniques', required=True)
-	assess_by = fields.Selection(string='Group Assessment Grading By', selection=[('technique', 'Technique'), ('module', 'Module'),], required=True)
-	attendance_weight = fields.Float(string='Attendance Weight (%)', default=0.0)
+	assess_by = fields.Selection(string='Group Assessment Grading By', selection=[('module', 'Module'), ('technique', 'Technique'),], default='module', required=True)
+	attendance_weight = fields.Float(string='Attendance Weight (%)', compute='_attendance_weight')
+
+	@api.onchange('assess_by', 'module_ids', 'weighted_technique_ids')
+	def _attendance_weight(self):
+		for rec in self:
+			sum_weights = 0
+			if rec.assess_by == 'module' and rec.module_ids:
+				sum_weights = sum([module.weight for module in rec.module_ids])
+				if sum_weights > 100:						
+					raise ValidationError('The sum of module weights must be <= 100%')
+			elif rec.assess_by == 'technique' and rec.weighted_technique_ids:
+				sum_weights = sum([weighted_technique.weight for weighted_technique in rec.weighted_technique_ids])
+				if sum_weights > 100:						
+					raise ValidationError('The sum of technique weights must be <= 100%')
+			rec.attendance_weight = 100 - sum_weights
+
+
 	attendance_grading = fields.Selection(string='Attendance Grading', selection=[('rate', 'Attendance Rate'),
 		('ratez', 'Attendance Rate but Zero after'), ('penalty', 'Penalty/Absence')], default='rate')
 	absence_limit = fields.Integer(string='Max Absences', default=5)
