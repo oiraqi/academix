@@ -4,7 +4,7 @@ from odoo import models, fields
 class Assessment(models.Model):
 	_name = 'a3lms.assessment'
 	_description = 'LMS Assessment'
-	_order = 'start_time,module_id'
+	_order = 'due_time,module_id'
 
 	name = fields.Char('Name', required=True)
 	description = fields.Html(string='Description')
