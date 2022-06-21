@@ -19,7 +19,6 @@ class LmsCourse(models.Model):
 	ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids')
 	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
-	assessment_technique_ids = fields.Many2many(comodel_name='a3lms.assessment.technique', string='Assessment Techniques', required=True)
 	assess_by = fields.Selection(string='Group Assessment Grading By', selection=[('module', 'Module'), ('technique', 'Technique'),], default='module', required=True)
 	attendance_weight = fields.Float(string='Attendance Weight (%)', compute='_attendance_weight')
 
@@ -41,11 +40,10 @@ class LmsCourse(models.Model):
 	attendance_grading = fields.Selection(string='Attendance Grading', selection=[('rate', 'Attendance Rate'),
 		('ratez', 'Attendance Rate but Zero after'), ('penalty', 'Penalty/Absence')], default='rate')
 	absence_limit = fields.Integer(string='Max Absences', default=5)
-	penalty_per_absence = fields.Float(string='Penalty/Absence', default=5.0)
+	penalty_per_absence = fields.Float(string='Penalty(%) / Absence', default=5.0)
 	module_ids = fields.One2many(comodel_name='a3lms.module', inverse_name='course_id', string='Modules')
 	weighted_technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', inverse_name='course_id', string='Techniques')
-	assessment_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_assessment_techniques')	
-	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='course_id', string='Assessments')
+	assessment_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_assessment_techniques')
 	
 	@api.onchange('assess_by', 'weighted_technique_ids')
 	def _assessment_techniques(self):
@@ -54,6 +52,17 @@ class LmsCourse(models.Model):
 				rec.assessment_technique_ids = [weighted_technique.technique_id.id for weighted_technique in rec.weighted_technique_ids]
 			else:
 				rec.assessment_technique_ids = self.env['a3lms.assessment.technique'].search([])
+	
+	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='course_id', string='Assessments')
+	used_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_used_techniques')
+	
+	@api.onchange('assessment_ids')
+	def _used_technique_ids(self):
+		for rec in self:
+			if rec.assessment_ids:
+				rec.used_technique_ids = [assessment.technique_id.id for assessment in rec.assessment_ids]
+			else:
+				rec.used_technique_ids = False
 	
 	details = fields.Html(string='More Details')
 	
