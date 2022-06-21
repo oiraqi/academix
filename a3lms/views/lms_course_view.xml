@@ -59,27 +59,24 @@
 							</page>
 							<page string="Assessment Structure" name="assessment">							
 								<group>
-									<label for="assess_by" string="Group Assessment By"/>
-									<div>
-										<field name="assess_by" style="width: 20%"/>								
-										<field name="module_ids" string="Assessment weight per module"
-											attrs="{'invisible': [('assess_by', '!=', 'module')]}"
-											style="max-width: 80%">
-											<tree editable="bottom">
-												<field name="sequence" widget="handle"/>
-												<field name="name"/>
-												<field name="weight" sum="Total Weight"/>
-											</tree>
-										</field>
-										<field name="weighted_technique_ids" string="Assessment weight per technique"
-											attrs="{'invisible': [('assess_by', '!=', 'technique')]}"
-											style="max-width: 80%">
-											<tree editable="bottom">
-												<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-												<field name="weight" sum="Total Weight"/>
-											</tree>
-										</field>
-									</div>
+									<field name="assess_by" style="width: 20%"/>
+								</group>
+								<group>
+									<field name="module_ids" string="Assessment weight per module"
+										attrs="{'invisible': [('assess_by', '!=', 'module')]}">
+										<tree editable="bottom">
+											<field name="sequence" widget="handle"/>
+											<field name="name"/>
+											<field name="weight" sum="Total Weight"/>
+										</tree>
+									</field>
+									<field name="weighted_technique_ids" string="Assessment weight per technique"
+										attrs="{'invisible': [('assess_by', '!=', 'technique')]}">
+										<tree editable="bottom">
+											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="weight" sum="Total Weight"/>
+										</tree>
+									</field>									
 								</group>
 								<group col="4">
 									<field name="attendance_weight" style="width: 15%"/>
