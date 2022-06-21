@@ -100,7 +100,9 @@
 											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
 												domain="[('id', 'in', assessment_technique_ids)]"/>
 											<field name="module_id" domain="[('id', 'in', module_ids)]" options="{'no_open': True}"/>
-											<field name="weight" sum="Total Weight"/>
+											<field name="start_time"/>
+											<field name="end_time"/>
+											<field name="weight"/>
 											<field name="assessment_technique_ids" invisible="1"/>
 											<field name="module_ids" invisible="1"/>
 										</tree>
