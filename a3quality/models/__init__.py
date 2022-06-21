@@ -8,3 +8,4 @@ from . import portfolio
 from . import assessment
 from . import assessment_line
 from . import action
+from . import lms_assessment
