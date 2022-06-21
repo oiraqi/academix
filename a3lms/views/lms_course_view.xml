@@ -88,10 +88,11 @@
 										<![CDATA[&nbsp;]]>
 										<field name="absence_limit" style="max-width: 15%"
 											attrs="{'invisible': [('attendance_grading', '!=', 'ratez')], 'required': [('attendance_grading', '=', 'ratez')]}"/>
+										<span attrs="{'invisible': [('attendance_grading', '!=', 'penalty')]}">:</span>
 										<field name="penalty_per_absence" style="max-width: 15%"
 											attrs="{'invisible': [('attendance_grading', '!=', 'penalty')], 'required': [('attendance_grading', '=', 'penalty')]}"/>
 										<![CDATA[&nbsp;]]>
-										<span attrs="{'invisible': [('attendance_grading', '!=', 'ratez')]}">Absences</span>										
+										<span attrs="{'invisible': [('attendance_grading', '!=', 'ratez')]}">Absences</span>
 									</div>
 								</group>
 								<group>
