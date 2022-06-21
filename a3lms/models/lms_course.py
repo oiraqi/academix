@@ -54,15 +54,18 @@ class LmsCourse(models.Model):
 				rec.assessment_technique_ids = self.env['a3lms.assessment.technique'].search([])
 	
 	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='course_id', string='Assessments')
-	used_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_used_techniques')
+	nassessments = fields.Integer(string='Number of Assessments', compute='_assessment_ids')	
+	used_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_assessment_ids')
 	
 	@api.onchange('assessment_ids')
-	def _used_technique_ids(self):
+	def _assessment_ids(self):
 		for rec in self:
 			if rec.assessment_ids:
 				rec.used_technique_ids = [assessment.technique_id.id for assessment in rec.assessment_ids]
+				rec.nassessments = len(rec.assessment_ids)
 			else:
 				rec.used_technique_ids = False
+				rec.nassessments = 0
 	
 	details = fields.Html(string='More Details')
 	
