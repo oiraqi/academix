@@ -30,7 +30,7 @@ class ILO(models.Model):
     _order = 'sequence'
     _sql_constraints = [('sequence_course_ukey', 'unique(sequence, course_id)', 'Sequence must be unique')]
 
-    name = fields.Char(compute='_compute_name', string='Reference')
+    name = fields.Char(compute='_compute_name', string='REF.')
     
     @api.depends('sequence')
     @api.onchange('sequence')

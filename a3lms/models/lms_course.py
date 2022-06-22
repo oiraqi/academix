@@ -20,8 +20,8 @@ class LmsCourse(models.Model):
 	ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids')
 	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
-	assess_by = fields.Selection(string='Group Assessment Grading By', selection=[('module', 'Module'), ('technique', 'Technique'),], default='module', required=True)
-	attendance_weight = fields.Float(string='Attendance Weight (%)', compute='_attendance_weight')
+	assess_by = fields.Selection(string='Group Assessment By', selection=[('module', 'Module'), ('technique', 'Technique'),], default='module', required=True)
+	attendance_weight = fields.Float(string='Attendance %', compute='_attendance_weight')
 
 	@api.onchange('assess_by', 'module_ids', 'weighted_technique_ids')
 	def _attendance_weight(self):
@@ -34,7 +34,7 @@ class LmsCourse(models.Model):
 			elif rec.assess_by == 'technique' and rec.weighted_technique_ids:
 				sum_weights = sum([weighted_technique.weight for weighted_technique in rec.weighted_technique_ids])
 				if sum_weights > 100:						
-					raise ValidationError('The sum of technique weights must be <= 100%')
+					raise ValidationError('The sum of technique percentages must be <= 100%')
 			rec.attendance_weight = 100 - sum_weights
 
 
