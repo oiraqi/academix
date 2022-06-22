@@ -22,3 +22,12 @@ access_a3lms_weighted_technique_user,access.a3lms.weighted.technique.user,model_
 access_a3lms_assessment_faculty,access.a3lms.assessment.faculty,model_a3lms_assessment,a3.group_faculty,1,1,1,1
 access_a3lms_assessment_user,access.a3lms.assessment.user,model_a3lms_assessment,base.group_user,1,0,0,0
 
+access_a3lms_attendance_faculty,access.a3lms.attendance.faculty,model_a3lms_attendance,a3.group_faculty,1,1,1,0
+access_a3lms_attendance_coordinator,access.a3lms.attendance.coordinator,model_a3lms_attendance,a3.group_coordinator,1,0,0,0
+access_a3lms_attendance_vpaa,access.a3lms.attendance.vpaa,model_a3lms_attendance,a3.group_vpaa,1,0,0,0
+
+access_a3lms_attendance_line_faculty,access.a3lms.attendance.line.faculty,model_a3lms_attendance_line,a3.group_faculty,1,1,1,0
+access_a3lms_attendance_line_coordinator,access.a3lms.attendance.line.coordinator,model_a3lms_attendance_line,a3.group_coordinator,1,0,0,0
+access_a3lms_attendance_line_vpaa,access.a3lms.attendance.line.vpaa,model_a3lms_attendance_line,a3.group_vpaa,1,0,0,0
+access_a3lms_attendance_line_student,access.a3lms.attendance.line.student,model_a3lms_attendance_line,a3.group_student,1,0,0,0
+

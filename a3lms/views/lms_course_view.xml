@@ -11,7 +11,7 @@
 							<field name="course_id"/>
 						</h1>
 						<div class="oe_button_box" name="button_box">
-							<button name="%(action_assessment)d" type="action" class="oe_stat_button" icon="fa-pen-to-square">
+							<button name="%(action_assessment)d" type="action" class="oe_stat_button" icon="fa-file-pen">
 								<field name="nassessments" string="Assessments" widget="statinfo"/>
 							</button>
 							<button name="%(a3roster.action_enrollment)d" type="action" class="oe_stat_button" icon="fa-user">
@@ -67,11 +67,11 @@
 							</page>
 							<page string="Assessment Structure" name="assessment">
 								<group>
-									<field name="assess_by" style="width: 20%"/>
+									<field name="grade_grouping" style="width: 20%"/>
 								</group>
 								<group>
 									<field name="module_ids" string="Assessment % per module"
-										attrs="{'invisible': [('assess_by', '!=', 'module')]}"
+										attrs="{'invisible': [('grade_grouping', '!=', 'module')]}"
 										style="width: 50%">
 										<tree editable="bottom">
 											<field name="sequence" widget="handle"/>
@@ -80,7 +80,7 @@
 										</tree>
 									</field>
 									<field name="weighted_technique_ids" string="Assessment % per technique"
-										attrs="{'invisible': [('assess_by', '!=', 'technique')]}"
+										attrs="{'invisible': [('grade_grouping', '!=', 'technique')]}"
 										style="width: 50%">
 										<tree editable="bottom">
 											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>

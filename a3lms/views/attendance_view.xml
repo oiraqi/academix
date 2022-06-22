@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="view_attendance_form" model="ir.ui.view">
+			<field name="name">a3lms.attendance.form</field>
+			<field name="model">a3lms.attendance</field>
+			<field name="arch" type="xml">
+				<form string="Attendance">
+					<sheet>
+						<h1><field name="name"/></h1>
+						<group name="info" col="4">
+							<field name="day"/>
+							<field name="course_id" invisible="1"/>
+						</group>
+						<group name="lines" string="Attendance Lines">
+							<field name="attendance_line_ids" nolabel="1">
+								<tree>
+									<field name="student_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="state" widget="radio" options="{'horizontal': True}"/>
+									<field name="excused"/>
+								</tree>
+							</field>
+						</group>
+						<group name="log" string="Log" col="4">
+							<field name="create_uid"/>
+							<field name="create_date"/>
+							<field name="write_uid"/>
+							<field name="write_date"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_attendance_tree" model="ir.ui.view">
+			<field name="name">a3lms.attendance.tree</field>
+			<field name="model">a3lms.attendance</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Attendances">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_attendance" model="ir.actions.act_window">
+			<field name="name">Attendances</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">a3lms.attendance</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>
+		<record id="action_attendance_form_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="2"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_attendance_form"/>
+			<field name="act_window_id" ref="action_attendance"/>
+		</record>
+		<record id="action_attendance_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_attendance_tree"/>
+			<field name="act_window_id" ref="action_attendance"/>
+		</record>
+	</data>
+</odoo>
