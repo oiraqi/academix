@@ -31,10 +31,9 @@
 								attrs="{'readonly': [('id', '!=', False)]}"
 								domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 							<field name="instructor_id"/>
-							<field name="discipline_id"/>
-							<field name="timeslot" widget="badge"/>
-							<field name="room_id"/>
 							<field name="office_hour_ids" widget="many2many_tags"/>
+							<field name="timeslot" widget="badge"/>
+							<field name="room_id"/>							
 						</group>
 						<notebook>
 							<page string="Course Description" name="description">
@@ -46,7 +45,8 @@
 								<group>
 									<field name="ilo_ids" nolabel="1">
 										<tree>
-											<field name="idx_description"/>
+											<field name="name"/>
+											<field name="description"/>
 										</tree>
 									</field>
 								</group>
@@ -65,7 +65,7 @@
 									</field>
 								</group>
 							</page>
-							<page string="Assessment Structure" name="assessment">							
+							<page string="Assessment Structure" name="assessment">
 								<group>
 									<field name="assess_by" style="width: 20%"/>
 								</group>
@@ -118,10 +118,12 @@
 									</field>
 								</group>
 							</page>
-						</notebook>
-						<group name="details" string="More Details">
-							<field name="details" widget="html" nolabel="1"/>
-						</group>
+							<page string="More Details" name="details">
+								<group name="details">
+									<field name="details" widget="html" nolabel="1"/>
+								</group>
+							</page>
+						</notebook>						
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
 							<field name="create_date"/>
