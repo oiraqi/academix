@@ -80,6 +80,7 @@
 											<field name="weight" sum="Total Points"/>
 										</tree>
 									</field>
+									<field name="id" invisible="1"/>
 									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}"
 										context="{'default_course_id': id}">
 										<tree editable="bottom">
