@@ -12,16 +12,21 @@
 								<field name="course_id"/>
 							</h1>
 						</div>
-						<div class="oe_button_box" name="button_box">
+						<div class="oe_button_box" name="button_box">							
 							<button name="%(action_attendance)d" type="action" class="oe_stat_button" icon="fa-calendar-check">
 								<field name="nstudents" string="Attendance" widget="statinfo"/>
 							</button>
 							<button name="%(action_attendance)d" type="action" class="oe_stat_button" icon="fa-calendar-check">
 								<field name="nstudents" string="Attendance" widget="statinfo"/>
 							</button>
-							<button name="%(action_attendance)d" type="action" class="oe_stat_button" icon="fa-calendar-check">
-								<field name="nstudents" string="Attendance" widget="statinfo"/>
+							<button name="%(action_assessment)d" type="action" class="oe_stat_button" icon="fa-pen-to-square">
+								<field name="nassessments" string="Assessments" widget="statinfo"/>
 							</button>
+							<button name="%(a3roster.action_enrollment)d" type="action" class="oe_stat_button" icon="fa-users">
+								<field name="nstudents" string="Students" widget="statinfo"/>
+							</button>
+						</div>
+						<div class="oe_button_box" name="button_box2">							
 							<button name="%(action_attendance)d" type="action" class="oe_stat_button" icon="fa-calendar-check">
 								<field name="nstudents" string="Attendance" widget="statinfo"/>
 							</button>
