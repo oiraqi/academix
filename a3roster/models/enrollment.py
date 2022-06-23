@@ -74,7 +74,7 @@ class Enrollment(models.Model):
     attendance_mode = fields.Selection(related='student_id.attendance_mode')
     email = fields.Char(related='student_id.email')
     timeslot = fields.Char('Timeslot', related='section_id.timeslot')
-    room_id = fields.Char('Room', related='section_id.room_id')
+    room_id = fields.Many2one('a3.room', related='section_id.room_id')
 
     # Max protection for grade: group restriction (faculty, registrar) + accounting (tracking who did what, when)
     grade = fields.Char(
