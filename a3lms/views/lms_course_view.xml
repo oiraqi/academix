@@ -62,25 +62,12 @@
 							</page>
 							<page string="Assessment Structure" name="assessment">
 								<group>
-									<field name="grade_grouping" style="width: 20%"/>
-								</group>
-								<group>
-									<field name="module_ids" string="Assessment % per module" attrs="{'invisible': [('grade_grouping', '!=', 'module')]}" style="width: 50%">
-										<tree editable="bottom">
-											<field name="sequence" widget="handle"/>
-											<field name="name"/>
-											<field name="weight" sum="Total Weight"/>
-										</tree>
-									</field>
-									<field name="weighted_technique_ids" string="Assessment % per technique" attrs="{'invisible': [('grade_grouping', '!=', 'technique')]}" style="width: 50%">
-										<tree editable="bottom">
-											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-											<field name="weight" sum="Total Weight"/>
-										</tree>
-									</field>
+									<field name="grade_grouping" style="width: 50%"/>
+									<field name="grade_weighting" style="width: 50%"/>
 								</group>
 								<group col="4">
-									<field name="attendance_weight" style="width: 15%"/>
+									<field name="attendance_weight" string="Attendance %" style="max-width: 15%" attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}"/>
+									<field name="attendance_weight" string="Attendance Points" style="max-width: 15%" attrs="{'invisible': [('grade_weighting', '!=', 'points')]}"/>
 									<label for="attendance_grading" string="Attendance Grading" attrs="{'invisible': [('attendance_weight', '=', 0.0)]}"/>
 									<div attrs="{'invisible': [('attendance_weight', '=', 0.0)]}">
 										<field name="attendance_grading" style="max-width: 60%" attrs="{'required': [('attendance_weight', '>', 0.0)]}"/>
@@ -92,22 +79,84 @@
 										<span attrs="{'invisible': [('attendance_grading', '!=', 'penalty')]}">%</span>
 									</div>
 								</group>
-								<group>
-									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}">
+								<group attrs="{'invisible': ['|', ('grade_grouping', '!=', 'module'), ('grade_weighting', '!=', 'percentage')]}">									
+									<field name="module_ids" string="Assessment % per Module">
 										<tree editable="bottom">
-											<groupby name="module_id">
-												<field name="name"/>
-											</groupby>
+											<field name="sequence" widget="handle"/>
+											<field name="name"/>
+											<field name="weight" string="%" sum="Total %"/>
+										</tree>
+									</field>
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}">
+										<tree editable="bottom">					
 											<field name="name"/>
 											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('id', 'in', assessment_technique_ids)]"/>
 											<field name="module_id" domain="[('course_id', '=', course_id)]" options="{'no_open': True}"/>
 											<field name="due_time"/>
-											<field name="weight"/>
+											<field name="weight" string="%"/>
 											<field name="assessment_technique_ids" invisible="1"/>
 											<field name="course_id" invisible="1"/>
 										</tree>
 									</field>
 								</group>
+								<group attrs="{'invisible': ['|', ('grade_grouping', '!=', 'module'), ('grade_weighting', '!=', 'points')]}">									
+									<field name="module_ids" string="Assessment Points per Module">
+										<tree editable="bottom">
+											<field name="sequence" widget="handle"/>
+											<field name="name"/>
+											<field name="weight" string="Points" sum="Total Points"/>
+										</tree>
+									</field>
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}">
+										<tree editable="bottom">					
+											<field name="name"/>
+											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('id', 'in', assessment_technique_ids)]"/>
+											<field name="module_id" domain="[('course_id', '=', course_id)]" options="{'no_open': True}"/>
+											<field name="due_time"/>
+											<field name="weight" string="Points"/>
+											<field name="assessment_technique_ids" invisible="1"/>
+											<field name="course_id" invisible="1"/>
+										</tree>
+									</field>
+								</group>
+								<group attrs="{'invisible': ['|', ('grade_grouping', '!=', 'technique'), ('grade_weighting', '!=', 'percentage')]}">									
+									<field name="weighted_technique_ids" string="Assessment % per Technique">
+										<tree editable="bottom">
+											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="weight" sum="Total %"/>
+										</tree>
+									</field>
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}">
+										<tree editable="bottom">					
+											<field name="name"/>
+											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('id', 'in', assessment_technique_ids)]"/>
+											<field name="module_id" domain="[('course_id', '=', course_id)]" options="{'no_open': True}"/>
+											<field name="due_time"/>
+											<field name="weight" string="%"/>
+											<field name="assessment_technique_ids" invisible="1"/>
+											<field name="course_id" invisible="1"/>
+										</tree>
+									</field>
+								</group>
+								<group attrs="{'invisible': ['|', ('grade_grouping', '!=', 'technique'), ('grade_weighting', '!=', 'points')]}">									
+									<field name="weighted_technique_ids" string="Assessment % per Technique">
+										<tree editable="bottom">
+											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="weight" sum="Total Points"/>
+										</tree>
+									</field>
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}">
+										<tree editable="bottom">					
+											<field name="name"/>
+											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('id', 'in', assessment_technique_ids)]"/>
+											<field name="module_id" domain="[('course_id', '=', course_id)]" options="{'no_open': True}"/>
+											<field name="due_time"/>
+											<field name="weight" string="Points"/>
+											<field name="assessment_technique_ids" invisible="1"/>
+											<field name="course_id" invisible="1"/>
+										</tree>
+									</field>
+								</group>																
 							</page>
 							<page string="More Details" name="details">
 								<group name="details">
