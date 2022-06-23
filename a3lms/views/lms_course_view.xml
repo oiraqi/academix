@@ -93,7 +93,7 @@
 									</field>
 								</group>
 								<group col="4">
-									<field name="attendance_weight" string="Attendance Points" style="max-width: 15%"/>
+									<field name="attendance_weight" string="Attendance Points" widget="progressbar" options="{'max_value': 25, 'editable': True}"/>
 									<label for="attendance_grading" string="Attendance Grading" attrs="{'invisible': [('attendance_weight', '=', 0.0)]}"/>
 									<div attrs="{'invisible': [('attendance_weight', '=', 0.0)]}">
 										<field name="attendance_grading" style="max-width: 60%" attrs="{'required': [('attendance_weight', '>', 0.0)]}"/>
