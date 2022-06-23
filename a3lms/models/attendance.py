@@ -45,10 +45,10 @@ class Attendance(models.Model):
 			else:
 				rec.name = ''
 
-	@api.onchange('course_id')
+	@api.onchange('course_id', 'day')
 	def _onchange_course_id(self):
 		for rec in self:
-			if rec.course_id and rec.course_id.student_ids:
+			if rec.day and rec.course_id and rec.course_id.student_ids:
 				attendance_lines = []
 				for student in rec.course_id.student_ids:
 					attendance_line = self.env['a3lms.attendance.line'].new({
