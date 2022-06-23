@@ -66,7 +66,7 @@
 								</group>
 								<group>
 									<field name="module_ids" string="Assessment Points per Module"
-										attrs="{'invisible': ['|', ('grade_grouping', '!=', 'module')]}">
+										attrs="{'invisible': [('grade_grouping', '!=', 'module')]}">
 										<tree editable="bottom">
 											<field name="sequence" widget="handle"/>
 											<field name="name"/>
@@ -74,7 +74,7 @@
 										</tree>
 									</field>
 									<field name="weighted_technique_ids" string="Assessment Points per Technique"
-										attrs="{'invisible': ['|', ('grade_grouping', '!=', 'technique')]}">
+										attrs="{'invisible': [('grade_grouping', '!=', 'technique')]}">
 										<tree editable="bottom">
 											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="weight" sum="Total Points"/>
