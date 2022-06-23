@@ -97,13 +97,13 @@
 									<label for="attendance_grading" string="Attendance Grading" attrs="{'invisible': [('attendance_weight', '=', 0.0)]}"/>
 									<div attrs="{'invisible': [('attendance_weight', '=', 0.0)]}">
 										<field name="attendance_grading" style="max-width: 60%" attrs="{'required': [('attendance_weight', '>', 0.0)]}"/>
-										<![CDATA[&nbsp;]]>
-										<field name="absence_limit" style="max-width: 15%" attrs="{'invisible': [('attendance_grading', '!=', 'ratez')], 'required': [('attendance_grading', '=', 'ratez')]}"/>
+										<![CDATA[&nbsp;]]>										
 										<field name="penalty_per_absence" style="max-width: 15%" attrs="{'invisible': [('attendance_grading', '!=', 'penalty')], 'required': [('attendance_grading', '=', 'penalty')]}"/>
-										<![CDATA[&nbsp;]]>
-										<span attrs="{'invisible': [('attendance_grading', '!=', 'ratez')]}">Absences</span>
+										<![CDATA[&nbsp;]]>										
 										<span attrs="{'invisible': [('attendance_grading', '!=', 'penalty')]}">%</span>
 									</div>
+									<field name="zero_after_max_abs"/>
+									<field name="max_absences" style="width: 10%"/>
 								</group>
 							</page>
 							<page string="More Details" name="details">
