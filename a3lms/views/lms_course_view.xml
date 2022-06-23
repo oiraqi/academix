@@ -14,6 +14,18 @@
 							<button name="%(action_attendance)d" type="action" class="oe_stat_button" icon="fa-calendar-check">
 								<field name="nstudents" string="Attendance" widget="statinfo"/>
 							</button>
+							<button name="%(action_attendance)d" type="action" class="oe_stat_button" icon="fa-calendar-check">
+								<field name="nstudents" string="Attendance" widget="statinfo"/>
+							</button>
+							<button name="%(action_attendance)d" type="action" class="oe_stat_button" icon="fa-calendar-check">
+								<field name="nstudents" string="Attendance" widget="statinfo"/>
+							</button>
+							<button name="%(action_attendance)d" type="action" class="oe_stat_button" icon="fa-calendar-check">
+								<field name="nstudents" string="Attendance" widget="statinfo"/>
+							</button>
+							<button name="%(action_attendance)d" type="action" class="oe_stat_button" icon="fa-calendar-check">
+								<field name="nstudents" string="Attendance" widget="statinfo"/>
+							</button>
 							<button name="%(action_assessment)d" type="action" class="oe_stat_button" icon="fa-pen-to-square">
 								<field name="nassessments" string="Assessments" widget="statinfo"/>
 							</button>
