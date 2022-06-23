@@ -103,7 +103,9 @@
 										<span attrs="{'invisible': [('attendance_grading', '!=', 'penalty')]}">%</span>
 									</div>
 									<field name="zero_after_max_abs" attrs="{'invisible': [('attendance_weight', '=', 0)]}"/>
-									<field name="max_absences" style="width: 10%" attrs="{'invisible': ['|', ('attendance_weight', '=', 0), ('zero_after_max_abs', '=', False)]}"/>
+									<field name="max_absences" style="width: 10%"
+										attrs="{'invisible': ['|', ('attendance_weight', '=', 0), ('zero_after_max_abs', '=', False)],
+												'required': [('attendance_weight', '!=', 0), ('zero_after_max_abs', '=', True)]}"/>
 								</group>
 							</page>
 							<page string="More Details" name="details">
