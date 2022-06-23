@@ -7,9 +7,11 @@
 			<field name="arch" type="xml">
 				<form string="Course">
 					<sheet>
-						<h1>
-							<field name="course_id"/>
-						</h1>
+						<div class="oe_title">
+							<h1>
+								<field name="course_id"/>
+							</h1>
+						</div>
 						<div class="oe_button_box" name="button_box">
 							<button name="%(action_attendance)d" type="action" class="oe_stat_button" icon="fa-calendar-check">
 								<field name="nstudents" string="Attendance" widget="statinfo"/>
@@ -31,7 +33,7 @@
 							</button>
 							<button name="%(a3roster.action_enrollment)d" type="action" class="oe_stat_button" icon="fa-users">
 								<field name="nstudents" string="Students" widget="statinfo"/>
-							</button>							
+							</button>
 						</div>
 						<group name="info" string="General Information" col="4">
 							<label for="semester" string="Semester &#38; Year"/>
@@ -80,29 +82,24 @@
 									<field name="grade_grouping" style="width: 25%"/>
 								</group>
 								<group>
-									<field name="module_ids" string="Assessment Points per Module"
-										attrs="{'invisible': [('grade_grouping', '!=', 'module')]}">
+									<field name="module_ids" string="Assessment Points per Module" attrs="{'invisible': [('grade_grouping', '!=', 'module')]}">
 										<tree editable="bottom">
 											<field name="sequence" widget="handle"/>
 											<field name="name"/>
 											<field name="weight" sum="Total Points"/>
 										</tree>
 									</field>
-									<field name="weighted_technique_ids" string="Assessment Points per Technique"
-										attrs="{'invisible': [('grade_grouping', '!=', 'technique')]}">
+									<field name="weighted_technique_ids" string="Assessment Points per Technique" attrs="{'invisible': [('grade_grouping', '!=', 'technique')]}">
 										<tree editable="bottom">
 											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="weight" sum="Total Points"/>
 										</tree>
 									</field>
-									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}"
-										context="{'default_course_id': id}">
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" context="{'default_course_id': id}">
 										<tree editable="bottom">
 											<field name="name"/>
-											<field name="module_id" domain="[('id', 'in', module_ids)]"
-												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
-												domain="[('id', 'in', assessment_technique_ids)]"/>
+											<field name="module_id" domain="[('id', 'in', module_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('id', 'in', assessment_technique_ids)]"/>
 											<field name="due_time"/>
 											<field name="weight"/>
 											<field name="assessment_technique_ids" invisible="1"/>
@@ -115,14 +112,13 @@
 									<label for="attendance_grading" string="Attendance Grading" attrs="{'invisible': [('attendance_weight', '=', 0.0)]}"/>
 									<div attrs="{'invisible': [('attendance_weight', '=', 0.0)]}">
 										<field name="attendance_grading" style="max-width: 60%" attrs="{'required': [('attendance_weight', '>', 0.0)]}"/>
-										<![CDATA[&nbsp;]]>										
+										<![CDATA[&nbsp;]]>
 										<field name="penalty_per_absence" style="max-width: 15%" attrs="{'invisible': [('attendance_grading', '!=', 'penalty')], 'required': [('attendance_grading', '=', 'penalty')]}"/>
-										<![CDATA[&nbsp;]]>										
+										<![CDATA[&nbsp;]]>
 										<span attrs="{'invisible': [('attendance_grading', '!=', 'penalty')]}">%</span>
 									</div>
 									<field name="zero_after_max_abs" attrs="{'invisible': [('attendance_weight', '=', 0)]}"/>
-									<field name="max_absences" style="width: 10%"
-										attrs="{'invisible': ['|', ('attendance_weight', '=', 0), ('zero_after_max_abs', '=', False)],
+									<field name="max_absences" style="width: 10%" attrs="{'invisible': ['|', ('attendance_weight', '=', 0), ('zero_after_max_abs', '=', False)],
 												'required': [('attendance_weight', '!=', 0), ('zero_after_max_abs', '=', True)]}"/>
 								</group>
 							</page>
