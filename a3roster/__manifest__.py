@@ -21,6 +21,7 @@
         'views/room_view.xml',
         'views/reservation_view.xml',
         'views/faculty_view.xml',
+        'views/student_view.xml',
         'views/a3roster_menu.xml',
         'data/standard_events.xml',
     ],

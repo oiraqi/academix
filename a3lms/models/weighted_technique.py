@@ -7,15 +7,15 @@ class WeightedTechnique(models.Model):
 
 	technique_id = fields.Many2one(comodel_name='a3lms.assessment.technique', string='Assessment Technique', required=True)
 	name = fields.Char(related='technique_id.name')	
-	weight = fields.Integer(string='Points', required=True, default=0)
-	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
-	total_assessment_weights = fields.Float(compute='_total_assessment_weights')
+	points = fields.Integer(string='Points', compute='_points')
+	percentage = fields.Float(string='%', default=0.0)
+	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)	
 
-	def _total_assessment_weights(self):
+	def _points(self):
 		for rec in self:
 			assessments = self.env['a3ls.assessment'].search([('course_id', '=', rec.course_id.id), ('technique_id', '=', rec.technique_id.id)])
 			if assessments:
-				rec.total_assessment_weights = sum([assessment.weight for assessment in assessments])
+				rec.points = sum([assessment.points for assessment in assessments])
 			else:
-				rec.total_assessment_weights = 0
+				rec.points = 0
 	

@@ -64,6 +64,8 @@ class Enrollment(models.Model):
                                     related='section_id.course_id.discipline_id', store=True)
     course_id = fields.Many2one(
         comodel_name='a3.course', string='Course', related='section_id.course_id', store=True)
+    instructor_id = fields.Many2one(
+        comodel_name='a3.faculty', string='Instructor', related='section_id.instructor_id', store=True)
     term_id = fields.Many2one(
         comodel_name='a3.term', string='Term', related='section_id.term_id', store=True)
     sid = fields.Char(related="student_id.sid")
@@ -71,6 +73,8 @@ class Enrollment(models.Model):
         comodel_name='a3catalog.program', related='student_id.program_id', store=True)
     attendance_mode = fields.Selection(related='student_id.attendance_mode')
     email = fields.Char(related='student_id.email')
+    timeslot = fields.Char('Timeslot', related='section_id.timeslot')
+    room_id = fields.Char('Room', related='section_id.room_id')
 
     # Max protection for grade: group restriction (faculty, registrar) + accounting (tracking who did what, when)
     grade = fields.Char(

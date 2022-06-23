@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+        <record id="view_student_form_lms" model="ir.ui.view">
+            <field name="name">a3.student.inherit.view.form</field>
+            <field name="model">a3.student</field>
+            <field name="inherit_id" ref="a3roster.view_student_form_roster"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sections']" position="after">
+                    <page name="attendance" string="Missed Classes">
+                        <field name="attendance_line_absent_ids" nolabel="1">
+                            <tree>
+                                <field name="day"/>
+                                <field name="section_id"/>
+                                <field name="excused"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

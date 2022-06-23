@@ -33,3 +33,9 @@ access_a3lms_attendance_line_coordinator,access.a3lms.attendance.line.coordinato
 access_a3lms_attendance_line_vpaa,access.a3lms.attendance.line.vpaa,model_a3lms_attendance_line,a3.group_vpaa,1,0,0,0
 access_a3lms_attendance_line_student,access.a3lms.attendance.line.student,model_a3lms_attendance_line,a3.group_student,1,0,0,0
 
+access_a3lms_assessment_line_faculty,access.a3lms.assessment.line.faculty,model_a3lms_assessment_line,a3.group_faculty,1,1,1,0
+access_a3lms_assessment_line_student,access.a3lms.assessment.line.student,model_a3lms_assessment_line,a3.group_student,1,0,0,0
+access_a3lms_assessment_line_coordinator,access.a3lms.assessment.line.coordinator,model_a3lms_assessment_line,a3.group_coordinator,1,0,0,0
+access_a3lms_assessment_line_vpaa,access.a3lms.assessment.line.vpaa,model_a3lms_assessment_line,a3.group_vpaa,1,0,0,0
+access_a3lms_assessment_line_registrar,access.a3lms.assessment.line.registrar,model_a3lms_assessment_line,a3roster.group_registrar,1,0,0,0
+

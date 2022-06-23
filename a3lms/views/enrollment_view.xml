@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- a3roster.enrollment inherit form view -->
+        <record id="view_enrollment_form_lms" model="ir.ui.view">
+            <field name="name">a3roster.enrollment.inherit.lms.view.form</field>
+            <field name="model">a3roster.enrollment</field>
+            <field name="inherit_id" ref="a3roster.view_enrollment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='info']" position="after">
+                    <page string="Missed Classes" name="attendance">
+                        <group>
+                            <field name="attendance_line_absent_ids" nolabel="1">
+                                <tree>
+                                    <field name="day"/>
+                                    <field name="section_id"/>
+                                    <field name="excused"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                    <page string="Assessment" name="assessment">
+                        <group>
+                            <field name="assessment_line_ids" nolabel="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="module_id"/>
+                                    <field name="technique_id" widget="badge"/>
+                                    <field name="bgrade"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -21,12 +21,25 @@
 #
 ###############################################################################
 
-from odoo import fields, models
+from odoo import models, fields, api
 
 
-class Student(models.Model):
-    _name = 'a3.student'
-    _inherit = ['a3.student', 'mail.thread']
+class Enrollment(models.Model):
+    _inherit = 'a3roster.enrollment'
 
-    program_id = fields.Many2one(comodel_name='a3catalog.program', string='Program', required=True, tracking=True)    
-    enrollment_ids = fields.One2many(comodel_name='a3roster.enrollment', inverse_name='student_id', string='Sections')
+    attendance_line_absent_ids = fields.One2many(comodel_name='a3lms.attendance.line', compute='_attendance_line_absent_ids', string='Missed Classes')
+    assessment_line_ids = fields.One2many(comodel_name='a3lms.assessment.line', compute='_assessment_line_ids', string='Assessments')
+    
+
+    def _attendance_line_absent_ids(self):
+        for rec in self:
+            rec.attendance_line_absent_ids = self.env['a3lms.attendance.line'].search([
+                ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id),
+                ('state', '=', 'absent')])
+    
+    def _assessment_line_ids(self):
+        for rec in self:
+            rec.assessment_line_ids = self.env['a3lms.assessment.line'].search([
+                ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id)])
+     
+    

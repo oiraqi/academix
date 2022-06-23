@@ -5,5 +5,8 @@ from . import assessment_technique
 from . import module
 from . import weighted_technique
 from . import assessment
+from . import assessment_line
 from . import attendance
 from . import attendance_line
+from . import enrollment
+from . import student

@@ -11,5 +11,6 @@ class AttendanceLine(models.Model):
 	state = fields.Selection(string='State', selection=[('present', 'Present'), ('absent', 'Absent'), ('late', 'Late')], default='Present', required=True)
 	excused = fields.Boolean(string='Excused', default='False')	
 	program_id = fields.Many2one(comodel_name='a3catalog.program', string='Program', related='student_id.program_id', store=True)
-	school_id = fields.Many2one(comodel_name='a3.school', string='School', related='attendance_id.course_id.section_id.school_id', store=True)	
+	school_id = fields.Many2one(comodel_name='a3.school', string='School', related='attendance_id.course_id.section_id.school_id', store=True)
+	day = fields.Date(related='attendance_id.day', store=True)
 		

@@ -1,5 +1,4 @@
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
 
 
 class LmsCourse(models.Model):
@@ -21,8 +20,22 @@ class LmsCourse(models.Model):
 	ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids')
 	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
-	grade_grouping = fields.Selection(string='Assessment Grouping', selection=[('module', 'By Course Module'), ('technique', 'By Assessment Technique'),], default='module', required=True)	
-	attendance_weight = fields.Integer(string='Attendance Points', default=0, required=True)
+	grade_grouping = fields.Selection(string='Assessment Grouping', selection=[('module', 'By Course Module'), ('technique', 'By Assessment Technique'),], default='module', required=True)
+	grade_weighting = fields.Selection(string='Assessment Weighting', selection=[('percentage', 'Percentage'), ('points', 'Points'),], default='percentage')	
+	attendance_points = fields.Integer(string='Attendance Points', default=0)
+	attendance_percentage = fields.Float(string='Attendance %', default=0.0)
+	attendance_weight = fields.Float(compute='_attendance_weight')
+	
+	@api.onchange('grade_weighting', 'attendance_percentage', 'attendance_points')
+	def _attendance_weight(self):
+		for rec in self:
+			if rec.grade_weighting == 'percentage':
+				rec.attendance_weight = rec.attendance_percentage
+			elif rec.grade_weighting == 'points':
+				rec.attendance_weight = float(rec.attendance_points)
+			else:
+				rec.attendance_weight = 0.0
+
 	attendance_grading = fields.Selection(string='Attendance Grading', selection=[('rate', 'Attendance Rate'),
 		('penalty', 'Penalty / Absence')], default='rate')	
 	penalty_per_absence = fields.Float(string='Penalty(%) / Absence', default=5.0)
