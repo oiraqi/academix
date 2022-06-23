@@ -22,23 +22,7 @@ class LmsCourse(models.Model):
 	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
 	grade_grouping = fields.Selection(string='Assessment Grouping', selection=[('module', 'By Course Module'), ('technique', 'By Assessment Technique'),], default='module', required=True)	
-	attendance_weight = fields.Float(string='Attendance Points', compute='_attendance_weight')
-
-	@api.onchange('grade_grouping', 'module_ids', 'weighted_technique_ids')
-	def _attendance_weight(self):
-		for rec in self:
-			sum_weights = 0
-			if rec.grade_grouping == 'module' and rec.module_ids:
-				sum_weights = sum([module.weight for module in rec.module_ids])
-				if sum_weights > 100:						
-					raise ValidationError('The sum of module weights must be <= 100%')
-			elif rec.grade_grouping == 'technique' and rec.weighted_technique_ids:
-				sum_weights = sum([weighted_technique.weight for weighted_technique in rec.weighted_technique_ids])
-				if sum_weights > 100:						
-					raise ValidationError('The sum of technique percentages must be <= 100%')
-			rec.attendance_weight = 100 - sum_weights
-
-
+	attendance_weight = fields.Float(string='Attendance Points', default=0.0, required=True)
 	attendance_grading = fields.Selection(string='Attendance Grading', selection=[('rate', 'Attendance Rate'),
 		('ratez', 'Attendance Rate but Zero after'), ('penalty', 'Penalty / Absence:')], default='rate')
 	absence_limit = fields.Integer(string='Max Absences', default=5)

@@ -8,7 +8,7 @@ class Module(models.Model):
 
 	name = fields.Char('Name', required=True)
 	sequence = fields.Integer(string='Sequence', required=True)	
-	weight = fields.Float(string='Weight', default=0.0)
+	weight = fields.Float(string='Points', default=0.0)
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
 	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='module_id', string='Assessments')
 	total_assessment_weights = fields.Float(compute='_total_assessment_weights')

@@ -70,7 +70,7 @@
 										<tree editable="bottom">
 											<field name="sequence" widget="handle"/>
 											<field name="name"/>
-											<field name="weight" string="Points" sum="Total Points"/>
+											<field name="weight" sum="Total Points"/>
 										</tree>
 									</field>
 									<field name="weighted_technique_ids" string="Assessment Points per Technique"
@@ -86,13 +86,13 @@
 											<field name="module_id" domain="[('course_id', '=', course_id)]" options="{'no_open': True}"/>
 											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('id', 'in', assessment_technique_ids)]"/>
 											<field name="due_time"/>
-											<field name="weight" string="Points"/>
+											<field name="weight"/>
 											<field name="assessment_technique_ids" invisible="1"/>
 											<field name="course_id" invisible="1"/>
 										</tree>
 									</field>
 								</group>
-								<group>
+								<group col="4">
 									<field name="attendance_weight" string="Attendance Points" style="max-width: 15%"/>
 									<label for="attendance_grading" string="Attendance Grading" attrs="{'invisible': [('attendance_weight', '=', 0.0)]}"/>
 									<div attrs="{'invisible': [('attendance_weight', '=', 0.0)]}">
