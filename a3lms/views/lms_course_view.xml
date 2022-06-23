@@ -84,7 +84,8 @@
 										context="{'default_course_id': id}">
 										<tree editable="bottom">
 											<field name="name"/>
-											<field name="module_id" domain="[('id', 'in', module_ids)]" options="{'no_open': True}"/>
+											<field name="module_id" domain="[('id', 'in', module_ids)]"
+												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
 												domain="[('id', 'in', assessment_technique_ids)]"/>
 											<field name="due_time"/>
