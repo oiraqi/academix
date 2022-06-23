@@ -27,7 +27,7 @@ class LmsCourse(models.Model):
 		('penalty', 'Penalty / Absence')], default='rate')	
 	penalty_per_absence = fields.Float(string='Penalty(%) / Absence', default=5.0)
 	zero_after_max_abs = fields.Boolean(string='Zero after Max Absences', default="False")	
-	absence_limit = fields.Integer(string='Max Absences', default=5)
+	max_absences = fields.Integer(string='Max Absences', default=5)
 	module_ids = fields.One2many(comodel_name='a3lms.module', inverse_name='course_id', string='Modules')
 	weighted_technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', inverse_name='course_id', string='Techniques')
 	assessment_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_assessment_techniques')
