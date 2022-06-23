@@ -7,7 +7,7 @@ class WeightedTechnique(models.Model):
 
 	technique_id = fields.Many2one(comodel_name='a3lms.assessment.technique', string='Assessment Technique', required=True)
 	name = fields.Char(related='technique_id.name')	
-	weight = fields.Float(string='Points', required=True, default=0.0)
+	weight = fields.Integer(string='Points', required=True, default=0)
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
 	total_assessment_weights = fields.Float(compute='_total_assessment_weights')
 
