@@ -12,7 +12,7 @@ class Assessment(models.Model):
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
 	section_id = fields.Many2one(comodel_name='a3roster.section', string='course_id.section_id', store=True)
 	module_id = fields.Many2one(comodel_name='a3lms.module', string='Module', required=True)
-	technique_id = fields.Many2one(comodel_name='a3lms.weighted.technique', string='Technique')
+	technique_id = fields.Many2one(comodel_name='a3lms.weighted.technique', string='Technique', required=True)
 	points = fields.Integer(string='Points', default=0)
 	percentage = fields.Float(string='%', default=0.0)
 	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', related='course_id.technique_ids')
