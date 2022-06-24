@@ -37,8 +37,11 @@ class AssessmentLine(models.Model):
 			else:
 				rec.percentage = 0
 
-	@api.depends('bgrade', 'percentage')
+	@api.depends('bgrade', 'grade_weighting', 'percentage', 'points')
 	def _wgrade(self):
 		for rec in self:
-			rec.wgrade = rec.bgrade * rec.percentage
+			if rec.grade_weighting == 'percentage':
+				rec.wgrade = rec.bgrade * rec.percentage
+			elif rec.grade_weighting == 'points':
+				rec.wgrade = (rec.bgrade / 100) * rec.points
 

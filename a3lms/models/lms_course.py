@@ -42,17 +42,7 @@ class LmsCourse(models.Model):
 	zero_after_max_abs = fields.Boolean(string='Zero after Max Absences', default=False)	
 	max_absences = fields.Integer(string='Max Absences', default=5)
 	module_ids = fields.One2many(comodel_name='a3lms.module', inverse_name='course_id', string='Modules')
-	weighted_technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', inverse_name='course_id', string='Techniques')
-	assessment_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_assessment_techniques')
-	
-	@api.onchange('grade_grouping', 'weighted_technique_ids')
-	def _assessment_techniques(self):
-		for rec in self:
-			if rec.grade_grouping == 'technique' and rec.weighted_technique_ids:
-				rec.assessment_technique_ids = [weighted_technique.technique_id.id for weighted_technique in rec.weighted_technique_ids]
-			else:
-				rec.assessment_technique_ids = self.env['a3lms.assessment.technique'].search([])
-	
+	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', inverse_name='course_id', string='Techniques')	
 	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='course_id', string='Assessments')
 	nassessments = fields.Integer(string='Number of Assessments', compute='_assessment_ids')	
 	used_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_assessment_ids')
