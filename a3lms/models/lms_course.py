@@ -22,7 +22,7 @@ class LmsCourse(models.Model):
 	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
 	grade_grouping = fields.Selection(string='Assessment Grouping', selection=[('module', 'Course Module'), ('technique', 'Assessment Technique'),], default='module', required=True)
-	grade_weighting = fields.Selection(string='Assessment Weighting', selection=[('percentage', '%'), ('points', 'Points'),], default='percentage', required=True)	
+	grade_weighting = fields.Selection(string='Assessment Weighting', selection=[('percentage', 'Percentage'), ('points', 'Points'),], default='percentage', required=True)	
 	attendance_points = fields.Integer(string='Attendance Points', default=0)
 	attendance_percentage = fields.Float(string='Attendance %', compute='_attendance_percentage')
 	attendance_weight = fields.Float(compute='_attendance_weight')
@@ -86,16 +86,18 @@ class LmsCourse(models.Model):
 					raise ValidationError('The sum of course module percentages cannot exceed 100%')
 				
 				for module in rec.module_ids:
-					if sum([assessment.percentage for assessment in module.assessment_ids]) != 100.00:
-						raise ValidationError('The sum of percentages of assessments under the same course module shall be equal to 100%')
+					s = sum([assessment.percentage for assessment in module.assessment_ids])
+					if s != 100.00:
+						raise ValidationError(f'The sum of percentages of assessments ({s}) under {module.name} shall be equal to 100%')
 
 			if rec.grade_grouping == 'technique' and rec.technique_ids:
 				if sum([technique.percentage for technique in rec.technique_ids]) > 100:
 					raise ValidationError('The sum of assessment technique percentages cannot exceed 100%')
 				
 				for technique in rec.technique_ids:
-					if sum([assessment.percentage for assessment in technique.assessment_ids]) != 100.00:
-						raise ValidationError('The sum of percentages of assessments under the same assessment technique shall be equal to 100%')
+					s = sum([assessment.percentage for assessment in technique.assessment_ids]) != 100.00
+					if s != 100.00:
+						raise ValidationError(f'The sum of percentages of assessments ({s}) under {technique.name} shall be equal to 100%')
 
 				
 	

@@ -48,13 +48,10 @@ class Attendance(models.Model):
 	@api.onchange('course_id', 'day')
 	def _onchange_course_id(self):
 		for rec in self:
-			if rec.day and rec.course_id and rec.course_id.student_ids:
-				attendance_lines = []
+			if rec.day and rec.course_id and rec.course_id.student_ids and not rec.attendance_line_ids:
 				for student in rec.course_id.student_ids:
-					attendance_line = self.env['a3lms.attendance.line'].new({
+					rec.attendance_line_ids += self.env['a3lms.attendance.line'].new({
 						'student_id': student.id,
 						'attendance_id': rec.id,
 						'state': 'present',
 					})
-					attendance_lines.append(attendance_line.id)
-				rec.attendance_line_ids = attendance_lines
