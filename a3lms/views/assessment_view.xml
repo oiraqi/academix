@@ -38,7 +38,8 @@
 					<field name="due_time"/>
 					<field name="from_time"/>
 					<field name="to_time"/>
-					<field name="weight"/>
+					<field name="percentage"/>
+					<field name="points"/>
 				</tree>
 			</field>
 		</record>
