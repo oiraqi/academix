@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class LmsCourse(models.Model):
@@ -73,6 +74,28 @@ class LmsCourse(models.Model):
 				rec.nassessments = 0
 	
 	details = fields.Html(string='More Details')
-	
-	
+
+	@api.constrains('grade_grouping', 'grade_weighting', 'module_ids', 'technique_ids')
+	def _check_sum_percentages(self):
+		for rec in self:
+			if rec.grade_weighting != 'percentage':
+				continue
+			
+			if rec.grade_grouping == 'module' and rec.module_ids:
+				if sum([module.percentage for module in rec.module_ids]) > 100:
+					raise ValidationError('The sum of course module percentages cannot exceed 100%')
+				
+				for module in rec.module_ids:
+					if sum([assessment.percentage for assessment in module.assessment_ids]) != 100:
+						raise ValidationError('The sum of percentages of assessments under the same course module shall be equal to 100%')
+
+			if rec.grade_grouping == 'technique' and rec.technique_ids:
+				if sum([technique.percentage for technique in rec.technique_ids]) > 100:
+					raise ValidationError('The sum of assessment technique percentages cannot exceed 100%')
+				
+				for technique in rec.technique_ids:
+					if sum([assessment.percentage for assessment in technique.assessment_ids]) != 100:
+						raise ValidationError('The sum of percentages of assessments under the same assessment technique shall be equal to 100%')
+
+				
 	

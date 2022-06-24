@@ -118,7 +118,7 @@
 										<field name="max_absences" style="width: 10%" attrs="{'invisible': [('zero_after_max_abs', '=', False)],
 												'required': [('zero_after_max_abs', '=', True)]}"/>
 										<![CDATA[&nbsp;]]>
-										<span attrs="{'invisible': [('zero_after_max_abs', '=', False)]}">Max Absences</span>
+										<span attrs="{'invisible': [('zero_after_max_abs', '=', False)]}">Absences</span>
 									</div>
 									<field name="attendance_weight" invisible="1"/>
 								</group>
