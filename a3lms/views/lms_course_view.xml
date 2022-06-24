@@ -76,8 +76,8 @@
 							</page>
 							<page string="Assessment Structure" name="assessment">
 								<group col="4">
-									<field name="grade_grouping" style="width: 25%"/>
-									<field name="grade_weighting" style="width: 25%"/>
+									<field name="grade_grouping" style="width: 50%"/>
+									<field name="grade_weighting" style="width: 50%"/>
 								</group>
 								<group col="4">
 									<field name="module_ids" string="Course Modules">

@@ -21,7 +21,7 @@ class LmsCourse(models.Model):
 	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
 	grade_grouping = fields.Selection(string='Assessment Grouping', selection=[('module', 'By Course Module'), ('technique', 'By Assessment Technique'),], default='module', required=True)
-	grade_weighting = fields.Selection(string='Assessment Weighting', selection=[('percentage', 'Percentage'), ('points', 'Points'),], default='percentage')	
+	grade_weighting = fields.Selection(string='Assessment Weighting', selection=[('percentage', 'Percentage'), ('points', 'Points'),], default='percentage', required=True)	
 	attendance_points = fields.Integer(string='Attendance Points', default=0)
 	attendance_percentage = fields.Float(string='Attendance %', default=0.0)
 	attendance_weight = fields.Float(compute='_attendance_weight')
