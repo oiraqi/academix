@@ -13,7 +13,7 @@ class WeightedTechnique(models.Model):
 
 	def _points(self):
 		for rec in self:
-			assessments = self.env['a3lms.assessment'].search([('course_id', '=', rec.course_id.id), ('technique_id', '=', rec.technique_id.id)])
+			assessments = self.env['a3lms.assessment'].search([('course_id', '=', rec.course_id.id), ('technique_id', '=', rec.id)])
 			if assessments:
 				rec.points = sum([assessment.points for assessment in assessments])
 			else:
