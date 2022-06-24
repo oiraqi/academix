@@ -97,7 +97,8 @@
 											<field name="points" sum="Points" attrs="{'column_invisible': ['|', ('parent.grade_grouping', '!=', 'technique'), ('parent.grade_weighting', '!=', 'points')]}"/>
 										</tree>
 									</field>
-									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4">
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4"
+										context="{'default_course_id': id}">
 										<tree editable="bottom">
 											<field name="name"/>
 											<field name="module_id" domain="[('id', 'in', module_ids)]"												
