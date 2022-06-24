@@ -86,7 +86,7 @@ class LmsCourse(models.Model):
 					raise ValidationError('The sum of course module percentages cannot exceed 100%')
 				
 				for module in rec.module_ids:
-					if sum([assessment.percentage for assessment in module.assessment_ids]) != 100:
+					if sum([assessment.percentage for assessment in module.assessment_ids]) != 100.00:
 						raise ValidationError('The sum of percentages of assessments under the same course module shall be equal to 100%')
 
 			if rec.grade_grouping == 'technique' and rec.technique_ids:
@@ -94,7 +94,7 @@ class LmsCourse(models.Model):
 					raise ValidationError('The sum of assessment technique percentages cannot exceed 100%')
 				
 				for technique in rec.technique_ids:
-					if sum([assessment.percentage for assessment in technique.assessment_ids]) != 100:
+					if sum([assessment.percentage for assessment in technique.assessment_ids]) != 100.00:
 						raise ValidationError('The sum of percentages of assessments under the same assessment technique shall be equal to 100%')
 
 				
