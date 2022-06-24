@@ -114,5 +114,5 @@ class LmsCourse(models.Model):
 	
 	def get_students(self):
 		self.ensure_one()
-		domain = [('student_id', 'in', self.enrollment_ids.ids)]		
+		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn'])]
 		return self._resolve_action('a3lms.action_enrollment', domain)
