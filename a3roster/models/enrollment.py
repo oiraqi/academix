@@ -32,6 +32,7 @@ class Enrollment(models.Model):
     _description = 'Enrollment'
     _sql_constraints = [('student_section_ukey', 'unique(student_id, section_id)',
                          'Student already enrolled in this section')]
+    _order = 'section_id,state,student_id'
 
     name = fields.Char('Name', compute='_set_name')
     student_id = fields.Many2one(

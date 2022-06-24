@@ -14,7 +14,6 @@
                                 <field name="attendance_line_absent_ids" nolabel="1">
                                     <tree>
                                         <field name="day"/>
-                                        <field name="section_id"/>
                                         <field name="excused"/>
                                     </tree>
                                 </field>
@@ -49,7 +48,7 @@
 			</field>
 		</record>
         <record id="action_enrollment" model="ir.actions.act_window">
-			<field name="name">Entollments</field>
+			<field name="name">Students</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">a3roster.enrollment</field>
 			<field name="view_mode">tree,form</field>

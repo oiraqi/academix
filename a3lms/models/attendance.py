@@ -4,6 +4,7 @@ from odoo import models, fields, api
 class Attendance(models.Model):
 	_name = 'a3lms.attendance'
 	_description = 'Attendance'
+	_order = 'day'
 
 	name = fields.Char('Name', compute='_set_name')
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='Course', required=True)

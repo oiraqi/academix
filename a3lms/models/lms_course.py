@@ -116,3 +116,19 @@ class LmsCourse(models.Model):
 		self.ensure_one()
 		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn'])]
 		return self._resolve_action('a3lms.action_enrollment', domain)
+
+	def get_assessments(self):
+		self.ensure_one()
+		domain = [('course_id', '=', self.id)]
+		if self.grade_grouping == 'module':
+			context = {'group_by': 'module_id'}
+		elif self.grade_grouping == 'technique':
+			context = {'group_by': 'technique_id'}
+		return self._resolve_action('a3lms.action_assessment', domain, context)
+
+	def get_attendance(self):
+		self.ensure_one()
+		domain = [('course_id', '=', self.id)]
+		context = {'default_course_id': self.id}
+		return self._resolve_action('a3lms.action_attendance', domain, context)
+
