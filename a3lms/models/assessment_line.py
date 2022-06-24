@@ -8,7 +8,7 @@ class AssessmentLine(models.Model):
 	name = fields.Char('Name', related='assessment_id.name')
 	assessment_id = fields.Many2one(comodel_name='a3lms.assessment', string='Assessment', required=True)
 	module_id = fields.Many2one(comodel_name='a3lms.module', related='assessment_id.module_id', store=True)
-	technique_id = fields.Many2one(comodel_name='a3lms.assessment.technique', related='assessment_id.technique_id', store=True)
+	technique_id = fields.Many2one(comodel_name='a3lms.weighted.technique', related='assessment_id.technique_id', store=True)
 	grade_grouping = fields.Selection(related='assessment_id.course_id.grade_grouping', store=True)
 	grade_weighting = fields.Selection(related='assessment_id.course_id.grade_weighting', store=True)
 	points = fields.Integer(related='assessment_id.points', store=True)
