@@ -32,6 +32,6 @@ class Student(models.Model):
     def _attendance_line_absent_ids(self):
         for rec in self:
             rec.attendance_line_absent_ids = self.env['a3lms.attendance.line'].search([
-                ('student_id', '=', rec.student_id.id), ('state', '=', 'absent')])
+                ('student_id', '=', rec.id), ('state', '=', 'absent')])
      
     
