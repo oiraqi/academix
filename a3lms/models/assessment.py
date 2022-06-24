@@ -14,7 +14,7 @@ class Assessment(models.Model):
 	technique_id = fields.Many2one(comodel_name='a3lms.weighted.technique', string='Technique', required=True)
 	points = fields.Integer(string='Points', default=0)
 	percentage = fields.Float(string='%', default=0.0)
-	assessment_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', related='course_id.assessment_technique_ids')
+	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', related='course_id.technique_ids')
 	module_ids = fields.One2many(comodel_name='a3lms.module', related='course_id.module_ids')
 	due_time = fields.Datetime(string='Due')
 	from_time = fields.Datetime(string='Available from')
