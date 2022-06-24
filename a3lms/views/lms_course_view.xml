@@ -76,8 +76,8 @@
 							</page>
 							<page string="Assessment Structure" name="assessment">
 								<group col="4" string="Assessment Grouping &#38; Weighting">
-									<field name="grade_grouping" style="width: 50%" string="Grouping By"/>
-									<field name="grade_weighting" style="width: 50%" string="Weighting By"/>
+									<field name="grade_grouping" style="width: 50%" string="Group by"/>
+									<field name="grade_weighting" style="width: 50%" string="Based on"/>
 								</group>
 								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
 									<field name="module_ids" nolabel="1">
@@ -99,7 +99,7 @@
 										</tree>
 									</field>
 								</group>								
-								<group col="4" string="Attendance">
+								<group string="Attendance">
 									<field name="attendance_points" string="Attendance Points" style="max-width: 15%"
 										attrs="{'invisible': [('grade_weighting', '!=', 'points')]}"/>
 									<field name="attendance_percentage" string="Attendance %" style="max-width: 15%"

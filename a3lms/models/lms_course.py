@@ -23,8 +23,23 @@ class LmsCourse(models.Model):
 	grade_grouping = fields.Selection(string='Assessment Grouping', selection=[('module', 'Course Module'), ('technique', 'Assessment Technique'),], default='module', required=True)
 	grade_weighting = fields.Selection(string='Assessment Weighting', selection=[('percentage', '%'), ('points', 'Points'),], default='percentage', required=True)	
 	attendance_points = fields.Integer(string='Attendance Points', default=0)
-	attendance_percentage = fields.Float(string='Attendance %', default=0.0)
+	attendance_percentage = fields.Float(string='Attendance %', compute='_attendance_percentage')
 	attendance_weight = fields.Float(compute='_attendance_weight')
+
+	@api.onchange('grade_grouping', 'module_ids', 'technique_ids')
+	def _attendance_percentage(self):
+		for rec in self:
+			if rec.grade_grouping == 'module' and rec.module_ids:
+				module_percentages = sum([module.percentage for module in rec.module_ids])
+				if module_percentages <= 100:
+					rec.attendance_percentage = 100 - module_percentages
+					return
+			elif rec.grade_grouping == 'technique' and rec.technique_ids:
+				technique_percentages = sum([technique.percentage for technique in rec.technique_ids])
+				if technique_percentages <= 100:
+					rec.attendance_percentage = 100 - technique_percentages
+					return
+			rec.attendance_percentage = 0.0
 	
 	@api.onchange('grade_weighting', 'attendance_percentage', 'attendance_points')
 	def _attendance_weight(self):
