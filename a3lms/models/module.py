@@ -7,7 +7,7 @@ class Module(models.Model):
 	_order = 'sequence'
 
 	name = fields.Char('Name', required=True)
-	sequence = fields.Integer(string='Sequence', required=True)	
+	sequence = fields.Integer(string='Sequence', required=True)
 	points = fields.Integer(string='Points', compute='_points')
 	percentage = fields.Float(string='%', default=0.0)
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)

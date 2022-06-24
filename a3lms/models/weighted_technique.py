@@ -6,7 +6,8 @@ class WeightedTechnique(models.Model):
 	_description = 'Weighted Technique'
 
 	technique_id = fields.Many2one(comodel_name='a3lms.assessment.technique', string='Assessment Technique', required=True)
-	name = fields.Char(related='technique_id.name')	
+	name = fields.Char(related='technique_id.name')
+	sequence = fields.Integer(string='Sequence', required=True)
 	points = fields.Integer(string='Points', compute='_points')
 	percentage = fields.Float(string='%', default=0.0)
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)	
