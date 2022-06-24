@@ -8,29 +8,31 @@
             <field name="inherit_id" ref="a3roster.view_enrollment_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='info']" position="after">
-                    <page string="Missed Classes" name="attendance">
-                        <group>
-                            <field name="attendance_line_absent_ids" nolabel="1">
-                                <tree>
-                                    <field name="day"/>
-                                    <field name="section_id"/>
-                                    <field name="excused"/>
-                                </tree>
-                            </field>
-                        </group>
-                    </page>
-                    <page string="Assessment" name="assessment">
-                        <group>
-                            <field name="assessment_line_ids" nolabel="1">
-                                <tree>
-                                    <field name="name"/>
-                                    <field name="module_id"/>
-                                    <field name="technique_id" widget="badge"/>
-                                    <field name="bgrade"/>
-                                </tree>
-                            </field>
-                        </group>
-                    </page>
+                    <notebook>
+                        <page string="Attendance" name="attendance">
+                            <group>
+                                <field name="attendance_line_absent_ids" nolabel="1">
+                                    <tree>
+                                        <field name="day"/>
+                                        <field name="section_id"/>
+                                        <field name="excused"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Assessment" name="assessment">
+                            <group>
+                                <field name="assessment_line_ids" nolabel="1">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="module_id"/>
+                                        <field name="technique_id" widget="badge"/>
+                                        <field name="bgrade"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
                 </xpath>
             </field>
         </record>
