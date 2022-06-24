@@ -11,7 +11,7 @@ class Assessment(models.Model):
 	submission_type = fields.Selection(string='Submission Type', selection=[('nosub', 'No Submission'), ('online', 'Online'), ('paper', 'Paper')], default='online')
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
 	module_id = fields.Many2one(comodel_name='a3lms.module', string='Module', required=True)
-	technique_id = fields.Many2one(comodel_name='a3lms.weighted.technique', string='Technique', required=True)
+	technique_id = fields.Many2one(comodel_name='a3lms.weighted.technique', string='Technique')
 	points = fields.Integer(string='Points', default=0)
 	percentage = fields.Float(string='%', default=0.0)
 	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', related='course_id.technique_ids')
