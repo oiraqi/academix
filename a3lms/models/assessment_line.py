@@ -6,6 +6,7 @@ class AssessmentLine(models.Model):
 	_description = 'AssessmentLine'
 
 	name = fields.Char('Name', related='assessment_id.name')
+	student_id = fields.Many2one(comodel_name='a3.student', string='Student', required=True)
 	assessment_id = fields.Many2one(comodel_name='a3lms.assessment', string='Assessment', required=True)
 	module_id = fields.Many2one(comodel_name='a3lms.module', related='assessment_id.module_id', store=True)
 	technique_id = fields.Many2one(comodel_name='a3lms.weighted.technique', related='assessment_id.technique_id', store=True)
