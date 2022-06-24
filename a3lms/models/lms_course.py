@@ -1,3 +1,4 @@
+from multiprocessing import context
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
@@ -16,6 +17,7 @@ class LmsCourse(models.Model):
 	timeslot = fields.Char(related='section_id.timeslot')	
 	room_id = fields.Many2one(comodel_name='a3.room', related='section_id.room_id')
 	student_ids = fields.One2many('a3.student', related='section_id.student_ids')
+	enrollment_ids = fields.One2many('a3roster.enrollment', related='section_id.enrollment_ids')
 	nstudents = fields.Integer(related='section_id.nstudents')
 	description = fields.Html(related='course_id.description')
 	ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids')
@@ -99,5 +101,18 @@ class LmsCourse(models.Model):
 					if s != 100.00:
 						raise ValidationError(f'The percentages of {technique.name} assessments shall add up to 100%, not {s}%')
 
-				
+		
+	def _resolve_action(self, action_id, domain, context=False):
+		action = self.env['ir.actions.act_window']._for_xml_id(action_id)
+		
+		action['domain'] = domain
+		if context:
+			action['context'] = context
+		# [('partner_id.commercial_partner_id.id', '=', self.id), ('partner_id', 'in', all_child.ids)]
+		
+		return action
 	
+	def get_students(self):
+		self.ensure_one()
+		domain = [('student_id', 'in', self.enrollment_ids.ids)]		
+		return self._resolve_action('a3lms.action_enrollment', domain)

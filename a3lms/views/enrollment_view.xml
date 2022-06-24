@@ -36,5 +36,39 @@
                 </xpath>
             </field>
         </record>
+        <record id="view_enrollment_tree" model="ir.ui.view">
+			<field name="name">a3roster.enrollment.tree</field>
+			<field name="model">a3roster.enrollment</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Entollments">
+					<field name="student_id"/>
+                    <field name="state" widget="badge"/>					
+					<field name="program_id" invisible="1"/>
+				</tree>
+			</field>
+		</record>
+        <record id="action_enrollment" model="ir.actions.act_window">
+			<field name="name">Entollments</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">a3roster.enrollment</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{'group_by': 'program_id'}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>        
+		<record id="action_enrollment_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_enrollment_tree"/>
+			<field name="act_window_id" ref="action_enrollment"/>
+		</record>
     </data>
 </odoo>

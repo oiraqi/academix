@@ -57,6 +57,7 @@ class Section(models.Model):
     active_enrollment_ids = fields.One2many('a3roster.enrollment', compute='_active_enrollment_ids', string='Dropped Students')
     dropped_enrollment_ids = fields.One2many('a3roster.enrollment', compute='_dropped_enrollment_ids', string='Dropped Students')
     withdrawn_enrollment_ids = fields.One2many('a3roster.enrollment', compute='_withdrawn_enrollment_ids', string='Withdrawn Students')
+    enrollment_ids = fields.One2many('a3roster.enrollment', compute='_enrollment_ids', string='Withdrawn Students')
     is_open = fields.Boolean(string='Open', compute='_is_open')
     nstudents = fields.Integer(string='Enrolled Students', compute='_active_enrollment_ids')
     available_seats = fields.Integer(string='Available Seats', compute='_active_enrollment_ids')    
@@ -96,4 +97,12 @@ class Section(models.Model):
                 rec.withdrawn_enrollment_ids = enrollment_ids
             else:
                 rec.withdrawn_enrollment_ids = False
+
+    def _enrollment_ids(self):
+        for rec in self:
+            enrollment_ids = self.env['a3roster.enrollment'].search([('section_id', '=', rec.id), ('state', 'in', ['enrolled', 'withdrawn'])])
+            if enrollment_ids:
+                rec.enrollment_ids = enrollment_ids
+            else:
+                rec.enrollment_ids = False
     
