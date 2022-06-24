@@ -105,8 +105,8 @@
 											<field name="technique_id" domain="[('id', 'in', technique_ids)]"												
 												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="due_time"/>
-											<field name="percentage" attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}"/>
-											<field name="points" attrs="{'invisible': [('grade_weighting', '!=', 'points')]}"/>
+											<field name="percentage" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
+											<field name="points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 											<field name="technique_ids" invisible="1"/>
 											<field name="module_ids" invisible="1"/>
 										</tree>
