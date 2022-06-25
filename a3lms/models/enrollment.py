@@ -31,7 +31,47 @@ class Enrollment(models.Model):
     attendance_line_absent_ids = fields.One2many(comodel_name='a3lms.attendance.line', compute='_attendance', string='Absences')
     attendance_rate = fields.Float(string='Attendance Rate', compute='_attendance')
     nabsences = fields.Integer(string='Absenses', compute='_attendance')    
-    attendance_grade = fields.Float(string='Attendance Grade', compute='_attendance')    
+    attendance_grade = fields.Float(string='Attendance Grade', compute='_attendance')
+    assessment_grade = fields.Float(string='Assessment Grade', compute='_grade')
+    overall_grade = fields.Float(string='Overall Grade', compute='_grade')
+    letter_grade = fields.Float(string='Letter Grade', compute='_grade')
+
+    def _grade(self):
+        for rec in self:
+            lms_course_id = rec.section_id.lms_course_id
+            rec.assessment_grade, assessment_weight = rec._assessment_grade(lms_course_id)
+            if lms_course_id.attendance_weight > 0:
+                rec.overall_grade = (rec.assessment_grade * assessment_weight + rec.attendance_grade * lms_course_id.attendance_weight) / (assessment_weight + lms_course_id.attendance_weight)
+            else:
+                rec.overall_grade = rec.assessment_grade
+            rec.letter_grade = 'A'
+
+    def _assessment_grade(self, lms_course_id):
+        if lms_course_id.grade_grouping == 'module' and lms_course_id.grade_weighting == 'percentage':
+            return self._assessment_grade_module_percentage(lms_course_id.module_ids)
+        
+        if lms_course_id.grade_grouping == 'module' and lms_course_id.grade_weighting == 'points':
+            return self._assessment_grade_module_points(lms_course_id.module_ids)
+        
+        if lms_course_id.grade_grouping == 'technique' and lms_course_id.grade_weighting == 'percentage':
+            return self._assessment_grade_technique_percentage(lms_course_id.technique_ids)
+        
+        if lms_course_id.grade_grouping == 'technique' and lms_course_id.grade_weighting == 'points':
+            return self._assessment_grade_technique_points(lms_course_id.technique_ids)
+        
+        return 100
+
+    def _assessment_grade_module_percentage(self, module_ids):
+        return 100, 90
+
+    def _assessment_grade_module_points(self, module_ids):
+        return 100, 90
+
+    def _assessment_grade_technique_percentage(self, technique_ids):
+        return 100, 90
+    
+    def _assessment_grade_technique_points(self, technique_ids):
+        return 100, 90
 
     def _attendance(self):
         for rec in self:
