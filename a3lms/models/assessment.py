@@ -18,11 +18,14 @@ class Assessment(models.Model):
 	percentage = fields.Float(string='%', default=0.0)
 	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', related='course_id.technique_ids')
 	module_ids = fields.One2many(comodel_name='a3lms.module', related='course_id.module_ids')
+
 	due_time = fields.Datetime(string='Due')
 	from_time = fields.Datetime(string='Open from')
 	to_time = fields.Datetime(string='Until')
 	bonus = fields.Float(string='Class-wide Bonus (%)', default=0.0)
 	penalty_per_late_day = fields.Float(string='Penalty per Late Day (%)', default=0.0)
+	teamwork = fields.Boolean(string='Team Work', default=False)	
+	team_ids = fields.Many2many(comodel_name='a3lms.team', string='Teams')	
 
 	assessment_line_ids = fields.One2many(comodel_name='a3lms.assessment.line', inverse_name='assessment_id', string='Assessment Lines')
 	submissions = fields.Char(string='Submissions', compute='_stats')

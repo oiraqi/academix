@@ -42,3 +42,6 @@ access_a3lms_assessment_line_registrar,access.a3lms.assessment.line.registrar,mo
 access_a3lms_letter_grade_user,access.a3lms.letter.grade.user,model_a3lms_letter_grade,base.group_user,1,0,0,0
 access_a3lms_letter_grade_vpaa,access.a3lms.letter.grade.vpaa,model_a3lms_letter_grade,a3.group_vpaa,1,1,1,1
 
+access_a3lms_team_faculty,access.a3lms.team.faculty,model_a3lms_team,a3.group_faculty,1,1,1,1
+access_a3lms_team_user,access.a3lms.team.user,model_a3lms_team,base.group_user,1,0,0,0
+

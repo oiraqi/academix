@@ -12,3 +12,4 @@ from . import attendance_line
 from . import section
 from . import enrollment
 from . import student
+from . import team

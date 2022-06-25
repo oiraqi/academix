@@ -67,6 +67,8 @@ class LmsCourse(models.Model):
 	used_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_assessment_ids')
 	attendance_ids = fields.One2many(comodel_name='a3lms.attendance', inverse_name='course_id', string='Attendance Sheets')
 	nattendance_sheets = fields.Integer(string='Number of Attendance Sheets', compute='_attendance_ids')
+	team_ids = fields.One2many(comodel_name='a3lms.team', inverse_name='course_id', string='Teams')
+		
 
 	def _attendance_ids(self):
 		for rec in self:
