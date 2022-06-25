@@ -7,9 +7,16 @@
 			<field name="arch" type="xml">
 				<form string="Assessment" create="false" delete="false">
 					<sheet>
-						<h1>
-							<field name="name" default_focus="1" placeholder="Name..."/>
-						</h1>
+						<div class="oe_title">
+							<h1>
+								<field name="name" default_focus="1" placeholder="Name..."/>
+							</h1>
+						</div>
+						<div class="oe_button_box" name="button_box">
+							<button name="get_assessment_lines" type="object" class="oe_stat_button" icon="fa-">
+								<field name="nsubmissions" string="Submissions" widget="statinfo"/>
+							</button>
+						</div>
 						<group name="info" string="Description" col="4">
 							<field name="description" nolabel="1"/>
 						</group>
@@ -20,8 +27,8 @@
 							<field name="to_time"/>
 						</group>
 						<group name="bonus_penalty" string="Bonus &#38; Penalty" col="4">
-							<field name="bonus"/>
-							<field name="penalty_per_late_day"/>							
+							<field name="bonus" style="width: 15%"/>
+							<field name="penalty_per_late_day" style="width: 15%"/>
 						</group>
 						<group name="stats" string="Statistics" col="4">
 							<field name="max_grade"/>

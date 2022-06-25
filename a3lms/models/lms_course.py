@@ -6,7 +6,7 @@ from odoo.exceptions import ValidationError
 class LmsCourse(models.Model):
 	_name = 'a3lms.course'
 	_description = 'LMS Course'
-	_inherit = ['a3.activity']
+	_inherit = ['a3.activity', 'a3.expandable']
 	_sql_constraints = [('section_ukey', 'unique(section_id)', 'LMS course already created!')]
 
 	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section', required=True)	
@@ -111,16 +111,6 @@ class LmsCourse(models.Model):
 						raise ValidationError(f'The percentages of {technique.name} assessments shall add up to 100%, not {s}%')
 
 		
-	def _resolve_action(self, action_id, domain, context=False):
-		action = self.env['ir.actions.act_window']._for_xml_id(action_id)
-		
-		action['domain'] = domain
-		if context:
-			action['context'] = context
-		# [('partner_id.commercial_partner_id.id', '=', self.id), ('partner_id', 'in', all_child.ids)]
-		
-		return action
-	
 	def get_students(self):
 		self.ensure_one()
 		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn'])]

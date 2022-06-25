@@ -1,3 +1,4 @@
+from . import expandable
 from . import term
 from . import activity
 from . import school_owned

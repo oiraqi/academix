@@ -4,6 +4,7 @@ from odoo import models, fields
 class Assessment(models.Model):
 	_name = 'a3lms.assessment'
 	_description = 'LMS Assessment'
+	_inherit = 'a3.expandable'
 	_order = 'due_time,module_id'
 
 	name = fields.Char('Name', required=True)
@@ -24,6 +25,8 @@ class Assessment(models.Model):
 	penalty_per_late_day = fields.Float(string='Penalty per Late Day (%)', default=0.0)
 
 	assessment_line_ids = fields.One2many(comodel_name='a3lms.assessment.line', inverse_name='assessment_id', string='Assessment Lines')
+	submissions = fields.Char(string='Submissions', compute='_stats')
+	
 	max_grade = fields.Float(string='Max Grade', compute='_stats')
 	min_grade = fields.Float(string='Min Grade', compute='_stats')
 	avg_grade = fields.Float(string='Avg. Grade', compute='_stats')
@@ -34,5 +37,13 @@ class Assessment(models.Model):
 			rec.max_grade = 100
 			rec.min_grade = 0
 			rec.avg_grade = 50
-			rec.stdev = 1
+			rec.stdev = 10
+			rec.nsubmissions = '12/15'
+
+	def get_assessment_lines(self):
+		self.ensure_one()
+		domain = [('assessment_id', '=', self.id)]
+		self._resolve_action('a3lms.action_assessment_line', domain)
+
+
 	
