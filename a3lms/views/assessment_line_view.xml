@@ -5,7 +5,7 @@
 			<field name="name">a3lms.assessment.line.form</field>
 			<field name="model">a3lms.assessment.line</field>
 			<field name="arch" type="xml">
-				<form string="AssessmentLine" create="False">
+				<form string="AssessmentLine" create="false">
 					<sheet>
 						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
 						<group name="info" string="General Information" col="4">
@@ -26,7 +26,7 @@
 			<field name="model">a3lms.assessment.line</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="AssessmentLines" create="False">
+				<tree string="AssessmentLines" create="false">
 					<field name="name"/>
 				</tree>
 			</field>
