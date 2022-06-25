@@ -16,8 +16,8 @@
 							<field name="course_id" invisible="1"/>
 						</group>
 						<group name="lines" string="Attendance Lines">
-							<field name="attendance_line_ids" nolabel="1">
-								<tree editable="bottom" create="False" delete="False">
+							<field name="attendance_line_ids" nolabel="1" create="False" delete="False">
+								<tree editable="bottom">
 									<field name="student_id" readonly="1"/>
 									<field name="state" widget="radio" options="{'horizontal': True}"/>
 									<field name="excused"/>
