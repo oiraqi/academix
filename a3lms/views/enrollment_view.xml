@@ -59,11 +59,11 @@
                     <field name="attendance_mode" widget="badge"/>
                     <field name="email"/>
                     <field name="state" widget="badge"/>
-                    <field name="attendance_rate" widget="percentage"/>
+                    <field name="attendance_rate"/>
                     <field name="nabsences"/>
-                    <field name="attendance_grade" widget="percentage"/>
-                    <field name="assessment_grade" widget="percentage"/>
-                    <field name="overall_grade" widget="percentage"/>
+                    <field name="attendance_grade"/>
+                    <field name="assessment_grade"/>
+                    <field name="overall_grade"/>
                     <field name="letter_grade"/>
                     <field name="program_id" invisible="1"/>
                 </tree>
