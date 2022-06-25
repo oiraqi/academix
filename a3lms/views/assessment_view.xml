@@ -34,12 +34,77 @@
 			<field name="arch" type="xml">
 				<tree string="Assessments">
 					<field name="name"/>
+					<field name="module_id"/>
 					<field name="technique_id" widget="badge"/>					
 					<field name="from_time"/>
 					<field name="to_time"/>
 					<field name="due_time"/>
 					<field name="percentage"/>
 					<field name="points"/>
+				</tree>
+			</field>
+		</record>
+		<record id="view_assessment_tree_module_percentage" model="ir.ui.view">
+			<field name="name">a3lms.assessment.module.percentage.tree</field>
+			<field name="model">a3lms.assessment</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Assessments">
+					<field name="name"/>					
+					<field name="technique_id" widget="badge"/>					
+					<field name="from_time"/>
+					<field name="to_time"/>
+					<field name="due_time"/>
+					<field name="percentage"/>
+					<field name="bonus"/>
+				</tree>
+			</field>
+		</record>
+		<record id="view_assessment_module_points_tree" model="ir.ui.view">
+			<field name="name">a3lms.assessment.module.points.tree</field>
+			<field name="model">a3lms.assessment</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Assessments">
+					<field name="name"/>					
+					<field name="technique_id" widget="badge"/>					
+					<field name="from_time"/>
+					<field name="to_time"/>
+					<field name="due_time"/>					
+					<field name="points"/>
+					<field name="bonus"/>
+				</tree>
+			</field>
+		</record>
+		<record id="view_assessment_tree_technique_percentage" model="ir.ui.view">
+			<field name="name">a3lms.assessment.technique.percentage.tree</field>
+			<field name="model">a3lms.assessment</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Assessments">
+					<field name="name"/>					
+					<field name="module_id" widget="badge"/>					
+					<field name="from_time"/>
+					<field name="to_time"/>
+					<field name="due_time"/>
+					<field name="percentage"/>
+					<field name="bonus"/>
+				</tree>
+			</field>
+		</record>
+		<record id="view_assessment_technique_points_tree" model="ir.ui.view">
+			<field name="name">a3lms.assessment.technique.points.tree</field>
+			<field name="model">a3lms.assessment</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Assessments">
+					<field name="name"/>					
+					<field name="module_id"/>					
+					<field name="from_time"/>
+					<field name="to_time"/>
+					<field name="due_time"/>					
+					<field name="points"/>
+					<field name="bonus"/>
 				</tree>
 			</field>
 		</record>
@@ -50,6 +115,70 @@
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>
+		<record id="action_assessment_module_percentage" model="ir.actions.act_window">
+			<field name="name">Assessments</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">a3lms.assessment</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{'group_by': 'module_id'}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>
+		<record id="action_assessment_module_points" model="ir.actions.act_window">
+			<field name="name">Assessments</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">a3lms.assessment</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{'group_by': 'module_id'}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>
+		<record id="action_assessment_technique_percentage" model="ir.actions.act_window">
+			<field name="name">Assessments</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">a3lms.assessment</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{'group_by': 'technique_id'}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>
+		<record id="action_assessment_technique_points" model="ir.actions.act_window">
+			<field name="name">Assessments</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">a3lms.assessment</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{'group_by': 'technique_id'}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 				
@@ -70,6 +199,30 @@
 			<field name="view_mode">tree</field>
 			<field name="view_id" ref="view_assessment_tree"/>
 			<field name="act_window_id" ref="action_assessment"/>
+		</record>
+		<record id="action_assessment_module_percentage_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_assessment_module_percentage_tree"/>
+			<field name="act_window_id" ref="action_assessment_module_percentage"/>
+		</record>
+		<record id="action_assessment_module_points_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_assessment_module_points_tree"/>
+			<field name="act_window_id" ref="action_assessment_module_points"/>
+		</record>
+		<record id="action_assessment_technique_percentage_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_assessment_technique_percentage_tree"/>
+			<field name="act_window_id" ref="action_assessment_technique_percentage"/>
+		</record>
+		<record id="action_assessment_technique_points_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_assessment_technique_points_tree"/>
+			<field name="act_window_id" ref="action_assessment_technique_points"/>
 		</record>
 	</data>
 </odoo>

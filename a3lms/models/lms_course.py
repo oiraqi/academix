@@ -129,11 +129,18 @@ class LmsCourse(models.Model):
 	def get_assessments(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
-		if self.grade_grouping == 'module':
-			context = {'group_by': 'module_id'}
-		elif self.grade_grouping == 'technique':
-			context = {'group_by': 'technique_id'}
-		return self._resolve_action('a3lms.action_assessment', domain, context)
+		if self.grade_grouping == 'module' and self.grade_weighting == 'percentage':
+			return self._resolve_action('a3lms.action_assessment_module_percentage', domain)
+
+		if self.grade_grouping == 'module' and self.grade_weighting == 'points':
+			return self._resolve_action('a3lms.action_assessment_module_points', domain)
+		
+		if self.grade_grouping == 'technique' and self.grade_weighting == 'percentage':
+			return self._resolve_action('a3lms.action_assessment_technique_percentage', domain)
+
+		if self.grade_grouping == 'technique' and self.grade_weighting == 'points':
+			return self._resolve_action('a3lms.action_assessment_technique_points', domain)
+		
 
 	def get_grade_matrix(self):
 		self.ensure_one()
