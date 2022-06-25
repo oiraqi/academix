@@ -132,7 +132,7 @@
 							<page string="Teams" name="teams">
 								<group>
 									<field name="team_ids" nolabel="1">
-										<tree>
+										<tree editable="bottom">
 											<field name="name"/>
 											<field name="member_ids" widget="many2many_tags" domain="[('id', 'in', student_ids)]"
 												options="{'no_quick_create': True, 'no_create_edit': True}"/>
