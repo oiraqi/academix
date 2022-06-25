@@ -119,7 +119,6 @@
 										<tree editable="bottom">
 											<groupby name="technique_id">
 												<field name="name"/>												
-												<button type="edit" name="edit" string="Edit"/>												
 											</groupby>
 											<field name="name" string="Assessment"/>
 											<field name="module_id" domain="[('id', 'in', module_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
