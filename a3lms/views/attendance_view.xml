@@ -17,7 +17,7 @@
 						</group>
 						<group name="lines" string="Attendance Lines">
 							<field name="attendance_line_ids" nolabel="1">
-								<tree editable="bottom">
+								<tree editable="bottom" create="False" delete="False">
 									<field name="student_id" readonly="1"/>
 									<field name="state" widget="radio" options="{'horizontal': True}"/>
 									<field name="excused"/>
@@ -51,7 +51,7 @@
 			</field>
 		</record>
 		<record id="action_attendance" model="ir.actions.act_window">
-			<field name="name">Attendances</field>
+			<field name="name">Attendance Sheets</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">a3lms.attendance</field>
 			<field name="view_mode">tree,form</field>
