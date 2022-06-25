@@ -8,6 +8,6 @@ class LetterGrade(models.Model):
 	name = fields.Char('Name', required=True)
 	min = fields.Float(string='Min Grade (Included)', required=True)
 	max = fields.Float(string='Max Grade (Excluded)', required=True)
-	passing = fields.Binary(string='Passing Grade', default=True, required=True)
+	passing = fields.Boolean(string='Passing Grade', default=True, required=True)
 	
 	
