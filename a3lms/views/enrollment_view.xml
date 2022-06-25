@@ -6,18 +6,18 @@
             <field name="name">a3roster.enrollment.inherit.lms.view.form</field>
             <field name="model">a3roster.enrollment</field>
             <field name="inherit_id" ref="a3roster.view_enrollment_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//group[@name='info']/field[@name='section_id']" position="after">
-                    <field name="program_id" colspan="4"/>
-                    <field name="attendance_mode" widget="badge"/>
-                    <field name="email"/>
-                </xpath>
+            <field name="arch" type="xml">                               
                 <xpath expr="//group[@name='info']" position="after">
-                    <group name="performance" string="Performance" col="4">
+                    <group name="student_info" string="Student Performance" col="4">
+                        <field name="program_id"/>
+                        <field name="attendance_mode" widget="badge"/>
+                        <field name="email"/>
+                    </group>
+                    <group name="student_performance" string="Student Performance" col="3">
                         <field name="attendance_grade" widget="percentpie" nolabel="1"/>
                         <field name="assessment_grade" widget="percentpie" nolabel="1"/>
                         <field name="overall_grade" widget="percentpie" nolabel="1"/>
-                        <field name="letter_grade" nolabel="1"/>
+                        <field name="letter_grade" colspan="3"/>
                     </group>
                     <notebook>
                         <page string="Attendance" name="attendance" col="4">

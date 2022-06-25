@@ -80,6 +80,7 @@
 			<field name="arch" type="xml">
 				<tree string="Entollments">
 					<field name="student_id"/>
+					<field name="program_id"/>
 					<field name="term_id" invisible="1"/>
 					<field name="school_id" invisible="1"/>
 					<field name="discipline_id" invisible="1"/>

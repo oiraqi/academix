@@ -24,8 +24,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
-PASSING_GRADES = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-']
-
 class Enrollment(models.Model):
     _name = 'a3roster.enrollment'
     _inherit = 'mail.thread'
@@ -75,22 +73,7 @@ class Enrollment(models.Model):
     attendance_mode = fields.Selection(related='student_id.attendance_mode')
     email = fields.Char(related='student_id.email')
     timeslot = fields.Char('Timeslot', related='section_id.timeslot')
-    room_id = fields.Many2one('a3.room', related='section_id.room_id')
-
-    # Max protection for grade: group restriction (faculty, registrar) + accounting (tracking who did what, when)
-    grade = fields.Char(
-        string='Grade', groups='a3.group_faculty,a3roster.group_registrar', tracking=True)
-
-    # Computed read-only grade and passed
-    rgrade = fields.Char(string='Grade', compute='_grade', store=True)
-    passed = fields.Boolean(string='Passed', compute='_grade', store=True)
-
-    @api.depends('grade')
-    def _grade(self):
-        for rec in self:
-            grade = rec.sudo().grade
-            rec.rgrade = grade
-            rec.passed = grade in PASSING_GRADES
+    room_id = fields.Many2one('a3.room', related='section_id.room_id')            
 
     @api.constrains('student_id', 'section_id')
     def _check_student_section(self):
