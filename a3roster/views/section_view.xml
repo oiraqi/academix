@@ -51,7 +51,7 @@
                                             <field name="attendance_mode" widget="badge"/>
                                             <field name="email"/>                                            
                                             <field name="program_id" widget="badge"/>
-                                            <field name="rgrade"/>
+                                            <field name="letter_grade"/>
                                         </tree>
                                     </field>
                                 </group>
@@ -63,7 +63,7 @@
                                             <field name="student_id" string="Name"/>
                                             <field name="sid"/>
                                             <field name="program_id"/>
-                                            <field name="rgrade" widget="badge"/>
+                                            <field name="letter_grade" widget="badge"/>
                                             <field name="wdtime" string="Withdrawing Date &#38; Time"/>
                                         </tree>
                                     </field>
