@@ -117,6 +117,9 @@
 								<group string="Assessments">
 									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4" context="{'default_course_id': id}" nolabel="1">
 										<tree editable="bottom">
+											<groupby name="technique_id">
+												<field name="name"/>
+											</groupby>
 											<field name="name" string="Assessment"/>
 											<field name="module_id" domain="[('id', 'in', module_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="teamwork" widget="boolean_toggle"/>
@@ -124,10 +127,7 @@
 											<field name="percentage" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
 											<field name="points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 											<field name="technique_ids" invisible="1"/>
-											<field name="module_ids" invisible="1"/>
-											<groupby name="technique_id">
-												<field name="name"/>
-											</groupby>
+											<field name="module_ids" invisible="1"/>											
 										</tree>
 									</field>
 								</group>
