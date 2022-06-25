@@ -72,7 +72,7 @@ class LmsCourse(models.Model):
 			if rec.assessment_ids:
 				rec.used_technique_ids = [assessment.technique_id.id for assessment in rec.assessment_ids]
 				rec.nassessments = len(rec.assessment_ids)
-				rec.nassessment_lines = self.env['a3lms.assessment.line'].search_count([('course_id', '=', rec.id), ('student_id', 'in', rec.student_id.ids)])
+				rec.nassessment_lines = self.env['a3lms.assessment.line'].search_count([('course_id', '=', rec.id), ('student_id', 'in', rec.student_ids.ids)])
 			else:
 				rec.used_technique_ids = False
 				rec.nassessments = 0
