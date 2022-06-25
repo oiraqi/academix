@@ -17,7 +17,7 @@
 						</group>
 						<group name="lines" string="Attendance Lines">
 							<field name="attendance_line_ids" nolabel="1">
-								<tree>
+								<tree editable="bottom">
 									<field name="student_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="state" widget="radio" options="{'horizontal': True}"/>
 									<field name="excused"/>
