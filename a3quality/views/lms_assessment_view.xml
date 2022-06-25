@@ -7,13 +7,11 @@
             <field name="model">a3lms.assessment</field>
             <field name="inherit_id" ref="a3lms.view_assessment_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//group[@name='stats']" position="before">
-                    <group name="ilos" string="Assessed ILOs">
+                <xpath expr="//field[@name='description']" position="after">                    
                         <field name="ilo_ids" domain="[('id', 'in', course_ilo_ids)]"
                             widget="many2many_tags"
                             options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                        <field name="course_ilo_ids" invisible="1"/>
-                    </group>
+                        <field name="course_ilo_ids" invisible="1"/>                    
                 </xpath>
                 <xpath expr="//group[@name='stats']" position="after">                    
                     <group name="performance" string="Sample Student Performance" col="6">
