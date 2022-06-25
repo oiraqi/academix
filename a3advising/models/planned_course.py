@@ -42,7 +42,7 @@ class PlannedCourse(models.Model):
     timeslot = fields.Char(related='section_id.timeslot')    
     enrollment_id = fields.Many2one(comodel_name='a3roster.enrollment', string='Enrollment')
     state = fields.Selection(related='enrollment_id.state')    
-    grade = fields.Char(related='enrollment_id.rgrade')
+    grade = fields.Char(related='enrollment_id.letter_grade')
     passed = fields.Boolean(related='enrollment_id.passed')
 
     @api.constrains('term_id')
