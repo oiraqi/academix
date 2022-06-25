@@ -28,7 +28,7 @@
 							<field name="teamwork" widget="boolean_toggle"/>
 							<field name="team_ids" attrs="{'invisible': [('teamwork', '=', False)]}"
 								context="{'default_course_id': course_id}" widget="many2many_tags"
-								domain="[('course_id', '=', course_id)]"/>
+								domain="[('course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 							<field name="course_id" invisible="1"/>
 						</group>
 						<group name="bonus_penalty" string="Bonus &#38; Penalty" col="4">

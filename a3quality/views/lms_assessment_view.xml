@@ -6,7 +6,15 @@
             <field name="name">a3lms.assessment.inherit.quality.view.form</field>
             <field name="model">a3lms.assessment</field>
             <field name="inherit_id" ref="a3lms.view_assessment_form"/>
-            <field name="arch" type="xml">                
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='stats']" position="before">
+                    <group name="ilos" string="Assessed ILOs">
+                        <field name="ilo_ids" domain="[('id', 'in', course_ilo_ids)]"
+                            widget="many2many_tags"
+                            options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                        <field name="course_ilo_ids" invisible="1"/>
+                    </group>
+                </xpath>
                 <xpath expr="//group[@name='stats']" position="after">                    
                     <group name="performance" string="Sample Student Performance" col="6">
                         <field name="good_performance"/>

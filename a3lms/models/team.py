@@ -17,6 +17,6 @@ class Team(models.Model):
 				rec.name = ''
 				continue
 			names = [member.name for member in rec.member_ids]
-			rec.name = '{' + ', '.join(names) + '}'
+			rec.name = '{ ' + ', '.join(names) + ' }'
 	
 	
