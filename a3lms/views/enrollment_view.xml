@@ -8,10 +8,21 @@
             <field name="inherit_id" ref="a3roster.view_enrollment_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='info']" position="after">
+                    <group name="academic_info" string="Academic Information">
+                        <field name="program_id"/>
+                        <field name="attendance_mode" widget="badge"/>
+                        <field name="email"/>
+                        <field name="attendance_grade"/>
+                        <field name="assessment_grade"/>
+                        <field name="overall_grade"/>
+                        <field name="letter_grade"/>                        
+                    </group>
                     <notebook>
-                        <page string="Attendance" name="attendance">
+                        <page string="Attendance" name="attendance" col="4">
                             <group>
-                                <field name="attendance_line_absent_ids" nolabel="1">
+                                <field name="attendance_rate"/>
+                                <field name="nabsences"/>
+                                <field name="attendance_line_absent_ids" nolabel="1" colspan="4">
                                     <tree>
                                         <field name="day"/>
                                         <field name="excused"/>
@@ -46,12 +57,12 @@
                     <field name="attendance_mode" widget="badge"/>
                     <field name="email"/>
                     <field name="state" widget="badge"/>
-                    <field name="attendance_rate"/>
+                    <field name="attendance_rate" widget="percentpie"/>
                     <field name="nabsences"/>
-                    <field name="attendance_grade"/>
-                    <field name="assessment_grade"/>
-                    <field name="overall_grade"/>
-                    <field name="letter_grade"/>                    
+                    <field name="attendance_grade" widget="percentpie"/>
+                    <field name="assessment_grade" widget="percentpie"/>
+                    <field name="overall_grade" widget="percentpie"/>
+                    <field name="letter_grade"/>
                     <field name="program_id" invisible="1"/>
                 </tree>
             </field>
