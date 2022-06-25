@@ -5,7 +5,7 @@
         <record id="view_lms_assessment_form_quality" model="ir.ui.view">
             <field name="name">a3lms.assessment.inherit.quality.view.form</field>
             <field name="model">a3lms.assessment</field>
-            <field name="inherit_id" ref="a3lms.view_lms_assessment_form"/>
+            <field name="inherit_id" ref="a3lms.view_assessment_form"/>
             <field name="arch" type="xml">                
                 <xpath expr="//group[@name='stats']" position="after">                    
                     <group name="performance" string="Sample Student Performance" col="6">
