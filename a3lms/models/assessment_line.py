@@ -7,9 +7,9 @@ class AssessmentLine(models.Model):
 	_order = 'student_id'
 
 	name = fields.Char('Name', related='assessment_id.name')
-	student_id = fields.Many2one(comodel_name='a3.student', string='Student', required=True)
-	program_id = fields.Many2one(comodel_name='a3catalog.program', related='student_id.program_id', store=True)	
+	student_id = fields.Many2one(comodel_name='a3.student', string='Student', required=True)	
 	assessment_id = fields.Many2one(comodel_name='a3lms.assessment', string='Assessment', required=True)
+	program_id = fields.Many2one(comodel_name='a3catalog.program', related='student_id.program_id', store=True)	
 	course_id = fields.Many2one(comodel_name='a3lms.course', related='assessment_id.course_id', store=True)
 	section_id = fields.Many2one(comodel_name='a3roster.section', related='assessment_id.section_id', store=True)
 	module_id = fields.Many2one(comodel_name='a3lms.module', related='assessment_id.module_id', store=True)

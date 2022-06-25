@@ -63,16 +63,10 @@
         </record>
         <record id="a3lms_letter_grade_d" model="a3lms.letter.grade">
             <field name="name">D</field>
-            <field name="min" eval="63.0"/>
+            <field name="min" eval="60.0"/>
             <field name="max" eval="67.0"/>
             <field name="passing" eval="False"/>
-        </record>
-        <record id="a3lms_letter_grade_d_minus" model="a3lms.letter.grade">
-            <field name="name">D-</field>
-            <field name="min" eval="60.0"/>
-            <field name="max" eval="63.0"/>
-            <field name="passing" eval="False"/>
-        </record>
+        </record>        
         <record id="a3lms_letter_grade_f" model="a3lms.letter.grade">
             <field name="name">F</field>
             <field name="min" eval="0.0"/>

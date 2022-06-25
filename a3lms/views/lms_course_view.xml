@@ -126,6 +126,10 @@
 											<field name="points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 											<field name="technique_ids" invisible="1"/>
 											<field name="module_ids" invisible="1"/>
+											<groupby name="technique_id">
+												<field name="name"/>												
+												<button type="edit" name="edit" string="Edit"/>												
+											</groupby>
 										</tree>
 									</field>
 								</group>
@@ -135,8 +139,7 @@
 									<field name="team_ids" nolabel="1">
 										<tree editable="bottom">
 											<field name="name"/>
-											<field name="member_ids" widget="many2many_tags" domain="[('id', 'in', student_ids)]"
-												options="{'no_quick_create': True, 'no_create_edit': True}"/>
+											<field name="member_ids" widget="many2many_tags" domain="[('id', 'in', student_ids)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 											<field name="student_ids" invisible="1"/>
 										</tree>
 									</field>
