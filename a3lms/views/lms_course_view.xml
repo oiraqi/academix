@@ -114,20 +114,33 @@
 									</div>
 									<field name="attendance_weight" invisible="1"/>
 								</group>
-								<group string="Assessments">
-									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4" context="{'default_course_id': id}" nolabel="1">
+								<group string="Assessments" attrs="{'invisible': [('grade_grouping', '!=', 'module')]}">
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4" context="{'default_course_id': id}" nolabel="1">										
 										<tree editable="bottom">
-											<groupby name="technique_id">
-												<field name="name"/>
-											</groupby>
 											<field name="name" string="Assessment"/>
-											<field name="module_id" domain="[('id', 'in', module_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="module_id" domain="[('id', 'in', module_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>											
+											<field name="percentage" string="% within Module" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
+											<field name="points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
+											<field name="technique_id" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="teamwork" widget="boolean_toggle"/>
 											<field name="due_time"/>
-											<field name="percentage" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
-											<field name="points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 											<field name="technique_ids" invisible="1"/>
-											<field name="module_ids" invisible="1"/>											
+											<field name="module_ids" invisible="1"/>
+										</tree>
+									</field>
+								</group>
+								<group string="Assessments" attrs="{'invisible': [('grade_grouping', '!=', 'technique')]}">
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4" context="{'default_course_id': id}" nolabel="1">										
+										<tree editable="bottom">
+											<field name="name" string="Assessment"/>
+											<field name="module_id" domain="[('id', 'in', module_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="technique_id" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="percentage" string="% within Technique" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
+											<field name="points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
+											<field name="teamwork" widget="boolean_toggle"/>
+											<field name="due_time"/>
+											<field name="technique_ids" invisible="1"/>
+											<field name="module_ids" invisible="1"/>
 										</tree>
 									</field>
 								</group>
