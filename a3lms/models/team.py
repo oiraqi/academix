@@ -10,7 +10,7 @@ class Team(models.Model):
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
 	student_ids = fields.One2many(comodel_name='a3.student', related='course_id.student_ids')	
 
-	@api.onchange(member_ids)
+	@api.onchange('member_ids')
 	def _set_name(self):
 		for rec in self:
 			if not rec.member_ids:
