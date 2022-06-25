@@ -13,11 +13,12 @@
                         <field name="attendance_mode" widget="badge"/>
                         <field name="email"/>
                     </group>
-                    <group name="student_performance" string="Student Performance" col="3">
+                    <group name="student_performance" string="Student Performance" col="4">
                         <field name="attendance_grade" widget="percentpie" nolabel="1"/>
                         <field name="assessment_grade" widget="percentpie" nolabel="1"/>
                         <field name="overall_grade" widget="percentpie" nolabel="1"/>
-                        <field name="letter_grade" colspan="3" widget="badge"/>
+                        <field name="letter_grade" nolabel="1"
+                            widget="badge" style="font-weight: bold"/>
                     </group>
                     <notebook>
                         <page string="Attendance" name="attendance" col="4">
@@ -69,11 +70,21 @@
                 </tree>
             </field>
         </record>
+        <!-- model.name graph view -->
+        <record id="view_enrollment_graph" model="ir.ui.view">
+            <field name="name">a3roster.enrollment.view.graph</field>
+            <field name="model">a3roster.enrollment</field>
+            <field name="arch" type="xml">
+                <graph string="Students">
+                    <field name="overall_grade" type="measure"/>                    
+                </graph>
+            </field>
+        </record>
         <record id="action_enrollment" model="ir.actions.act_window">
             <field name="name">Students</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">a3roster.enrollment</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,graph,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': 'program_id'}</field>
             <field name="help" type="html">
