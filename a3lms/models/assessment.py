@@ -43,7 +43,7 @@ class Assessment(models.Model):
 	def get_assessment_lines(self):
 		self.ensure_one()
 		domain = [('assessment_id', '=', self.id)]
-		self._resolve_action('a3lms.action_assessment_line', domain)
+		return self._resolve_action('a3lms.action_assessment_line', domain)
 
 
 	
