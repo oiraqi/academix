@@ -62,7 +62,8 @@ class LmsCourse(models.Model):
 	module_ids = fields.One2many(comodel_name='a3lms.module', inverse_name='course_id', string='Modules')
 	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', inverse_name='course_id', string='Techniques')	
 	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='course_id', string='Assessments')
-	nassessments = fields.Integer(string='Number of Assessments', compute='_assessment_ids')	
+	nassessments = fields.Integer(string='Number of Assessments', compute='_assessment_ids')
+	nassessment_lines = fields.Integer(string='Number of Assessment Lines', compute='_assessment_ids')
 	used_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_assessment_ids')
 	
 	@api.onchange('assessment_ids')
@@ -71,9 +72,11 @@ class LmsCourse(models.Model):
 			if rec.assessment_ids:
 				rec.used_technique_ids = [assessment.technique_id.id for assessment in rec.assessment_ids]
 				rec.nassessments = len(rec.assessment_ids)
+				rec.nassessment_lines = self.env['a3lms.assessment.line'].search_count([('course_id', '=', rec.id), ('student_id', 'in', rec.student_id.ids)])
 			else:
 				rec.used_technique_ids = False
 				rec.nassessments = 0
+				rec.nassessment_lines = 0
 	
 	details = fields.Html(string='More Details')
 
@@ -125,6 +128,17 @@ class LmsCourse(models.Model):
 		elif self.grade_grouping == 'technique':
 			context = {'group_by': 'technique_id'}
 		return self._resolve_action('a3lms.action_assessment', domain, context)
+
+	def get_grade_matrix(self):
+		self.ensure_one()
+		domain = [('course_id', '=', self.id), ('student_id', 'in', self.student_ids.ids)]
+		group_fields = ['program_id', 'student_id']
+		if self.grade_grouping == 'module':
+			group_fields.append('module_id')
+		elif self.grade_grouping == 'technique':
+			group_fields.append('technique_id')
+		context = {'group_by': group_fields}
+		return self._resolve_action('a3lms.action_assessment_line', domain, context)
 
 	def get_attendance(self):
 		self.ensure_one()

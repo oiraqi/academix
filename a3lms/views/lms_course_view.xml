@@ -28,6 +28,9 @@
 							<button name="get_assessments" type="object" class="oe_stat_button" icon="fa-pen-to-square">
 								<field name="nassessments" string="Assessments" widget="statinfo"/>
 							</button>
+							<button name="get_grade_matrix" type="object" class="oe_stat_button" icon="fa-pen-to-square">
+								<field name="nassessment_lines" string="Grade Matrix" widget="statinfo"/>
+							</button>
 							<button name="get_students" type="object" class="oe_stat_button" icon="fa-users">
 								<field name="nstudents" string="Students" widget="statinfo"/>
 							</button>

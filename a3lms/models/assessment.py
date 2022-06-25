@@ -18,7 +18,7 @@ class Assessment(models.Model):
 	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', related='course_id.technique_ids')
 	module_ids = fields.One2many(comodel_name='a3lms.module', related='course_id.module_ids')
 	due_time = fields.Datetime(string='Due')
-	from_time = fields.Datetime(string='Available from')
+	from_time = fields.Datetime(string='Open from')
 	to_time = fields.Datetime(string='Until')
 	bonus = fields.Float(string='Class-wide Bonus', default=0.0)
 	
