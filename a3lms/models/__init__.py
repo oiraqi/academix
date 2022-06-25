@@ -8,5 +8,6 @@ from . import assessment
 from . import assessment_line
 from . import attendance
 from . import attendance_line
+from . import section
 from . import enrollment
 from . import student
