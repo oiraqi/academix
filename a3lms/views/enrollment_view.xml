@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="a3roster.view_enrollment_form"/>
             <field name="arch" type="xml">                               
                 <xpath expr="//group[@name='info']" position="after">
-                    <group name="student_info" string="Student Performance" col="4">
+                    <group name="student_info" string="Student Information" col="4">
                         <field name="program_id"/>
                         <field name="attendance_mode" widget="badge"/>
                         <field name="email"/>

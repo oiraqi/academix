@@ -7,15 +7,27 @@
 			<field name="arch" type="xml">
 				<form string="Assessment" create="false" delete="false">
 					<sheet>
-						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
+						<h1>
+							<field name="name" default_focus="1" placeholder="Name..."/>
+						</h1>
 						<group name="info" string="Description" col="4">
 							<field name="description" nolabel="1"/>
 						</group>
-						<group name="config" string="Submission" col="4">
-							<field name="submission_type"/>
+						<group name="submission" string="Submission" col="4">
+							<field name="submission_type" string="Type"/>
 							<field name="due_time"/>
 							<field name="from_time"/>
 							<field name="to_time"/>
+						</group>
+						<group name="bonus_penalty" string="Bonus &#38; Penalty" col="4">
+							<field name="bonus"/>
+							<field name="penalty_per_late_day"/>							
+						</group>
+						<group name="stats" string="Statistics" col="4">
+							<field name="max_grade"/>
+							<field name="min_grade"/>
+							<field name="avg_grade"/>
+							<field name="stdev"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
@@ -35,7 +47,7 @@
 				<tree string="Assessments">
 					<field name="name"/>
 					<field name="module_id"/>
-					<field name="technique_id" widget="badge"/>					
+					<field name="technique_id" widget="badge"/>
 					<field name="from_time"/>
 					<field name="to_time"/>
 					<field name="due_time"/>
@@ -50,13 +62,17 @@
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Assessments">
-					<field name="name"/>					
-					<field name="technique_id" widget="badge"/>					
+					<field name="name"/>
+					<field name="technique_id" widget="badge"/>
 					<field name="from_time"/>
 					<field name="to_time"/>
 					<field name="due_time"/>
 					<field name="percentage"/>
 					<field name="bonus"/>
+					<field name="max_grade"/>
+					<field name="min_grade"/>
+					<field name="avg_grade"/>
+					<field name="stdev"/>
 				</tree>
 			</field>
 		</record>
@@ -66,13 +82,17 @@
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Assessments">
-					<field name="name"/>					
-					<field name="technique_id" widget="badge"/>					
+					<field name="name"/>
+					<field name="technique_id" widget="badge"/>
 					<field name="from_time"/>
 					<field name="to_time"/>
-					<field name="due_time"/>					
+					<field name="due_time"/>
 					<field name="points"/>
 					<field name="bonus"/>
+					<field name="max_grade"/>
+					<field name="min_grade"/>
+					<field name="avg_grade"/>
+					<field name="stdev"/>
 				</tree>
 			</field>
 		</record>
@@ -82,13 +102,17 @@
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Assessments">
-					<field name="name"/>					
-					<field name="module_id" widget="badge"/>					
+					<field name="name"/>
+					<field name="module_id" widget="badge"/>
 					<field name="from_time"/>
 					<field name="to_time"/>
 					<field name="due_time"/>
 					<field name="percentage"/>
 					<field name="bonus"/>
+					<field name="max_grade"/>
+					<field name="min_grade"/>
+					<field name="avg_grade"/>
+					<field name="stdev"/>
 				</tree>
 			</field>
 		</record>
@@ -98,13 +122,17 @@
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Assessments">
-					<field name="name"/>					
-					<field name="module_id"/>					
+					<field name="name"/>
+					<field name="module_id" widget="badge"/>
 					<field name="from_time"/>
 					<field name="to_time"/>
-					<field name="due_time"/>					
+					<field name="due_time"/>
 					<field name="points"/>
 					<field name="bonus"/>
+					<field name="max_grade"/>
+					<field name="min_grade"/>
+					<field name="avg_grade"/>
+					<field name="stdev"/>
 				</tree>
 			</field>
 		</record>
@@ -117,10 +145,10 @@
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
-				
+
 				</p>
 				<p>
-				
+
 				</p>
 			</field>
 		</record>
@@ -133,10 +161,10 @@
 			<field name="context">{'group_by': 'module_id'}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
-				
+
 				</p>
 				<p>
-				
+
 				</p>
 			</field>
 		</record>
@@ -149,10 +177,10 @@
 			<field name="context">{'group_by': 'module_id'}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
-				
+
 				</p>
 				<p>
-				
+
 				</p>
 			</field>
 		</record>
@@ -165,10 +193,10 @@
 			<field name="context">{'group_by': 'technique_id'}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
-				
+
 				</p>
 				<p>
-				
+
 				</p>
 			</field>
 		</record>
@@ -181,10 +209,10 @@
 			<field name="context">{'group_by': 'technique_id'}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
-				
+
 				</p>
 				<p>
-				
+
 				</p>
 			</field>
 		</record>

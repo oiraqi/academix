@@ -20,5 +20,19 @@ class Assessment(models.Model):
 	due_time = fields.Datetime(string='Due')
 	from_time = fields.Datetime(string='Open from')
 	to_time = fields.Datetime(string='Until')
-	bonus = fields.Float(string='Class-wide Bonus', default=0.0)
+	bonus = fields.Float(string='Class-wide Bonus (%)', default=0.0)
+	penalty_per_late_day = fields.Float(string='Penalty per Late Day (%)', default=0.0)
+
+	assessment_line_ids = fields.One2many(comodel_name='a3lms.assessment.line', inverse_name='assessment_id', string='Assessment Lines')
+	max_grade = fields.Float(string='Max Grade', compute='_stats')
+	min_grade = fields.Float(string='Min Grade', compute='_stats')
+	avg_grade = fields.Float(string='Avg. Grade', compute='_stats')
+	stdev = fields.Float(string='σ', compute='_stats')
+
+	def _stats(self):
+		for rec in self:
+			rec.max_grade = 100
+			rec.min_grade = 0
+			rec.avg_grade = 50
+			rec.stdev = 1
 	
