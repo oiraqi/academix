@@ -38,7 +38,7 @@ class Assessment(models.Model):
 			rec.min_grade = 0
 			rec.avg_grade = 50
 			rec.stdev = 10
-			rec.nsubmissions = '12/15'
+			rec.submissions = '12/15'
 
 	def get_assessment_lines(self):
 		self.ensure_one()
