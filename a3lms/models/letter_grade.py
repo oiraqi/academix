@@ -4,6 +4,7 @@ from odoo import models, fields
 class LetterGrade(models.Model):
 	_name = 'a3lms.letter.grade'
 	_description = 'LetterGrade'
+	_order = 'min desc'
 
 	name = fields.Char('Name', required=True)
 	min = fields.Float(string='Min Grade (Included)', required=True)
