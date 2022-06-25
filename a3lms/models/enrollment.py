@@ -41,7 +41,7 @@ class Enrollment(models.Model):
             rec.nabsences = len(rec.attendance_line_absent_ids)
             all_attendance_count = self.env['a3lms.attendance.line'].search_count([
                 ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id)])
-            rec.attendance_rate = rec.nabsence * 100 / all_attendance_count
+            rec.attendance_rate = rec.nabsences * 100 / all_attendance_count
             lms_course_id = rec.section_id.lms_course_id
             if lms_course_id.attendance_weight > 0:
                 if lms_course_id.zero_after_max_abs and rec.nabsences >= lms_course_id.max_absences:
