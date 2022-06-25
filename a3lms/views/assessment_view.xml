@@ -14,7 +14,7 @@
 						</div>
 						<div class="oe_button_box" name="button_box">
 							<button name="get_assessment_lines" type="object" class="oe_stat_button" icon="fa-">
-								<field name="nsubmissions" string="Submissions" widget="statinfo"/>
+								<field name="submissions" string="Submissions" widget="statinfo"/>
 							</button>
 						</div>
 						<group name="info" string="Description" col="4">
