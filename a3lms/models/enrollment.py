@@ -24,6 +24,8 @@
 from odoo import models, fields, api
 
 
+PASSING_GRADES = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-']
+
 class Enrollment(models.Model):
     _inherit = 'a3roster.enrollment'
 
@@ -35,6 +37,7 @@ class Enrollment(models.Model):
     assessment_grade = fields.Float(string='Assessment Grade', compute='_grade')
     overall_grade = fields.Float(string='Overall Grade', compute='_grade')
     letter_grade = fields.Char(string='Letter Grade', compute='_grade')
+    passed = fields.Boolean(string='Passed', compute='_grade')
 
     def _grade(self):
         for rec in self:
@@ -45,6 +48,7 @@ class Enrollment(models.Model):
             else:
                 rec.overall_grade = rec.assessment_grade
             rec.letter_grade = 'A'
+            rec.passed = rec.letter_grade in PASSING_GRADES
 
     def _assessment_grade(self, lms_course_id):
         if lms_course_id.grade_grouping == 'module' and lms_course_id.grade_weighting == 'percentage':

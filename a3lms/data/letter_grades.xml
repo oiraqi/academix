@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>    
+        <record id="a3lms_letter_grade_a_plus" model="a3lms.letter.grade">
+            <field name="name">A+</field>
+            <field name="min" eval="97.0"/>
+            <field name="max" eval="150.0"/>
+            <field name="passing" eval="True"/>
+        </record>
+        <record id="a3lms_letter_grade_a" model="a3lms.letter.grade">
+            <field name="name">A</field>
+            <field name="min" eval="93.0"/>
+            <field name="max" eval="97.0"/>
+            <field name="passing" eval="True"/>
+        </record>
+        <record id="a3lms_letter_grade_a_minus" model="a3lms.letter.grade">
+            <field name="name">A-</field>
+            <field name="min" eval="90.0"/>
+            <field name="max" eval="93.0"/>
+            <field name="passing" eval="True"/>
+        </record>
+        <record id="a3lms_letter_grade_b_plus" model="a3lms.letter.grade">
+            <field name="name">B+</field>
+            <field name="min" eval="87.0"/>
+            <field name="max" eval="90.0"/>
+            <field name="passing" eval="True"/>
+        </record>
+    </data>
+</odoo>

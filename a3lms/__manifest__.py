@@ -17,6 +17,8 @@
         'security/lms_security.xml',
         'security/ir.model.access.csv',
         'data/assessment_techniques.xml',
+        'data/letter_grades.xml',
+        'views/letter_grade_view.xml',
         'views/assessment_technique_view.xml',
         'views/assessment_view.xml',
         'views/assessment_line_view.xml',
