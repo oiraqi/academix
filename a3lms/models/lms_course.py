@@ -70,7 +70,7 @@ class LmsCourse(models.Model):
 
 	def _attendance_ids(self):
 		for rec in self:
-			rec.nattendance_shees = len(rec.attendance_ids)
+			rec.nattendance_sheets = len(rec.attendance_ids)
 	
 	@api.onchange('assessment_ids')
 	def _assessment_ids(self):
