@@ -25,7 +25,7 @@ from odoo import models, fields, api
 
 
 class Section(models.Model):
-    _inherit = 'a3roster.enrollment'
+    _inherit = 'a3roster.section'
 
     lms_course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', compute='_lms_course_id')
 
