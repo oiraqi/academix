@@ -8,7 +8,7 @@ class Team(models.Model):
 	name = fields.Char('Name', compute='_set_name')
 	member_ids = fields.Many2many(comodel_name='a3.student', string='Members', required=True)
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
-	
+	student_ids = fields.One2many(comodel_name='a3.student', related='course_id.student_ids')	
 
 	@api.onchange(member_ids)
 	def _set_name(self):

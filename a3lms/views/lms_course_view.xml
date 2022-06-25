@@ -12,7 +12,7 @@
 								<field name="course_id"/>
 							</h1>
 						</div>
-						<div class="oe_button_box" name="button_box">							
+						<div class="oe_button_box" name="button_box">
 							<button name="get_attendance" type="object" class="oe_stat_button" icon="fa-calendar-check">
 								<field name="nattendance_sheets" string="Att. Sheets" widget="statinfo"/>
 							</button>
@@ -92,12 +92,10 @@
 											<field name="points" sum="Points" attrs="{'column_invisible': ['|', ('parent.grade_grouping', '!=', 'technique'), ('parent.grade_weighting', '!=', 'points')]}"/>
 										</tree>
 									</field>
-								</group>								
+								</group>
 								<group string="Attendance" col="4">
-									<field name="attendance_points" string="Attendance Points" style="width: 10%"
-										attrs="{'invisible': [('grade_weighting', '!=', 'points')]}" colspan="4"/>
-									<field name="attendance_percentage" string="Attendance %" style="width: 10%"
-										attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" colspan="4"/>
+									<field name="attendance_points" string="Attendance Points" style="width: 10%" attrs="{'invisible': [('grade_weighting', '!=', 'points')]}" colspan="4"/>
+									<field name="attendance_percentage" string="Attendance %" style="width: 10%" attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" colspan="4"/>
 									<label for="attendance_grading" string="Attendance Grading" attrs="{'invisible': [('attendance_weight', '=', 0.0)]}"/>
 									<div attrs="{'invisible': [('attendance_weight', '=', 0.0)]}">
 										<field name="attendance_grading" style="max-width: 60%" attrs="{'required': [('attendance_weight', '>', 0.0)]}"/>
@@ -117,19 +115,28 @@
 									<field name="attendance_weight" invisible="1"/>
 								</group>
 								<group string="Assessments">
-									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4"
-										context="{'default_course_id': id}" nolabel="1">
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4" context="{'default_course_id': id}" nolabel="1">
 										<tree editable="bottom">
 											<field name="name" string="Assessment"/>
-											<field name="module_id" domain="[('id', 'in', module_ids)]"												
-												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-											<field name="technique_id" domain="[('id', 'in', technique_ids)]"												
-												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="module_id" domain="[('id', 'in', module_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="technique_id" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="due_time"/>
 											<field name="percentage" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
 											<field name="points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 											<field name="technique_ids" invisible="1"/>
 											<field name="module_ids" invisible="1"/>
+										</tree>
+									</field>
+								</group>
+							</page>
+							<page string="Teams" name="teams">
+								<group>
+									<field name="team_ids" nolabel="1">
+										<tree>
+											<field name="name"/>
+											<field name="member_ids" widget="many2many_tags" domain="[('id', 'in', student_ids)]"
+												options="{'no_quick_create': True, 'no_create_edit': True}"/>
+											<field name="student_ids" invisible="1"/>
 										</tree>
 									</field>
 								</group>
