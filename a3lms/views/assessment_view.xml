@@ -44,7 +44,7 @@
 				</tree>
 			</field>
 		</record>
-		<record id="view_assessment_tree_module_percentage" model="ir.ui.view">
+		<record id="view_assessment_module_percentage_tree" model="ir.ui.view">
 			<field name="name">a3lms.assessment.module.percentage.tree</field>
 			<field name="model">a3lms.assessment</field>
 			<field eval="8" name="priority"/>
@@ -76,7 +76,7 @@
 				</tree>
 			</field>
 		</record>
-		<record id="view_assessment_tree_technique_percentage" model="ir.ui.view">
+		<record id="view_assessment_technique_percentage_tree" model="ir.ui.view">
 			<field name="name">a3lms.assessment.technique.percentage.tree</field>
 			<field name="model">a3lms.assessment</field>
 			<field eval="8" name="priority"/>
