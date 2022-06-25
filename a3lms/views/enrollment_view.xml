@@ -7,15 +7,17 @@
             <field name="model">a3roster.enrollment</field>
             <field name="inherit_id" ref="a3roster.view_enrollment_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//group[@name='info']/field[@name='section_id']" position="after">
+                    <field name="program_id" colspan="4"/>
+                    <field name="attendance_mode" widget="badge"/>
+                    <field name="email"/>
+                </xpath>
                 <xpath expr="//group[@name='info']" position="after">
-                    <group name="academic_info" string="Academic Information" col="4">
-                        <field name="program_id" colspan="4"/>
-                        <field name="attendance_mode" widget="badge"/>
-                        <field name="email"/>
-                        <field name="attendance_grade" widget="percentpie"/>
-                        <field name="assessment_grade" widget="percentpie"/>
-                        <field name="overall_grade" widget="percentpie"/>
-                        <field name="letter_grade" widget="percentpie"/>     
+                    <group name="performance" string="Performance" col="4">
+                        <field name="attendance_grade" widget="percentpie" nolabel="1"/>
+                        <field name="assessment_grade" widget="percentpie" nolabel="1"/>
+                        <field name="overall_grade" widget="percentpie" nolabel="1"/>
+                        <field name="letter_grade"/>
                     </group>
                     <notebook>
                         <page string="Attendance" name="attendance" col="4">
