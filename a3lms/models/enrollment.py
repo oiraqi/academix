@@ -34,7 +34,7 @@ class Enrollment(models.Model):
     attendance_grade = fields.Float(string='Attendance Grade', compute='_attendance')
     assessment_grade = fields.Float(string='Assessment Grade', compute='_grade')
     overall_grade = fields.Float(string='Overall Grade', compute='_grade')
-    letter_grade = fields.Float(string='Letter Grade', compute='_grade')
+    letter_grade = fields.Char(string='Letter Grade', compute='_grade')
 
     def _grade(self):
         for rec in self:
