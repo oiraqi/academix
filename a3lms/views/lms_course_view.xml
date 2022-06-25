@@ -115,7 +115,7 @@
 									<field name="attendance_weight" invisible="1"/>
 								</group>								
 								<group string="Assessments">
-									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" context="{'default_course_id': id}" nolabel="1">										
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4" context="{'default_course_id': id}" nolabel="1">										
 										<tree editable="bottom">
 											<field name="name" string="Assessment"/>
 											<field name="module_id" domain="[('id', 'in', module_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
@@ -128,8 +128,10 @@
 											<field name="module_ids" invisible="1"/>
 										</tree>
 									</field>
-									<span attrs="{'invisible': ['|', ('grade_weighting', '!=', 'percentage'), ('grade_grouping', '!=', 'module')]}">(*) Percentage within course module. Percentages of assessments within the same module shall add up to 100%.</span>
-									<span attrs="{'invisible': ['|', ('grade_weighting', '!=', 'percentage'), ('grade_grouping', '!=', 'technique')]}">(*) Percentage within assessment technique. Percentages of assessments within the same technique shall add up to 100%.</span>
+									<div attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" colspan="4">
+										<span attrs="{'invisible': [('grade_grouping', '!=', 'module')]}">(*) Percentage within course module. Percentages of assessments within the same module shall add up to 100%.</span>
+										<span attrs="{'invisible': [('grade_grouping', '!=', 'technique')]}">(*) Percentage within assessment technique. Percentages of assessments within the same technique shall add up to 100%.</span>
+									</div>
 								</group>
 							</page>
 							<page string="Teams" name="teams">
