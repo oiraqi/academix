@@ -33,9 +33,9 @@ class Enrollment(models.Model):
     attendance_line_absent_ids = fields.One2many(comodel_name='a3lms.attendance.line', compute='_attendance', string='Absences')
     attendance_rate = fields.Float(string='Attendance Rate (%)', compute='_attendance')
     nabsences = fields.Integer(string='Absenses', compute='_attendance')    
-    attendance_grade = fields.Float(string='Attendance Grade (%)', compute='_attendance')
-    assessment_grade = fields.Float(string='Assessment Grade (%)', compute='_grade')
-    overall_grade = fields.Float(string='Overall Grade (%)', compute='_grade')
+    attendance_grade = fields.Float(string='Attendance Grade', compute='_attendance')
+    assessment_grade = fields.Float(string='Assessment Grade', compute='_grade')
+    overall_grade = fields.Float(string='Overall Grade', compute='_grade')
     letter_grade = fields.Char(string='Letter Grade', compute='_grade')
     passed = fields.Boolean(string='Passed', compute='_grade')
 

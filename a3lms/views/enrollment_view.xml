@@ -17,7 +17,7 @@
                         <field name="attendance_grade" widget="percentpie" nolabel="1"/>
                         <field name="assessment_grade" widget="percentpie" nolabel="1"/>
                         <field name="overall_grade" widget="percentpie" nolabel="1"/>
-                        <field name="letter_grade"/>
+                        <field name="letter_grade" nolabel="1"/>
                     </group>
                     <notebook>
                         <page string="Attendance" name="attendance" col="4">
@@ -59,11 +59,11 @@
                     <field name="attendance_mode" widget="badge"/>
                     <field name="email"/>
                     <field name="state" widget="badge"/>
-                    <field name="attendance_rate"/>
+                    <field name="attendance_rate" string="Attendance Rate (%)"/>
                     <field name="nabsences"/>
-                    <field name="attendance_grade"/>
-                    <field name="assessment_grade"/>
-                    <field name="overall_grade"/>
+                    <field name="attendance_grade" string="Attendance Grade (%)"/>
+                    <field name="assessment_grade" string="Assessment Grade (%)"/>
+                    <field name="overall_grade" string="Overall Grade (%)"/>
                     <field name="letter_grade"/>
                     <field name="program_id" invisible="1"/>
                 </tree>
