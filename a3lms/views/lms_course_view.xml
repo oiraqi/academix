@@ -95,9 +95,9 @@
 									</field>
 								</group>
 							</page>
-							<page string="Assessment Structure" name="assessment" attrs="{'invisible': [('module_ids', '=', False)]}">
+							<page string="Assessment Structure" name="assessment" attrs="{'invisible': [('module_ids', '=', [])]}">
 								<group col="4" string="Assessment Grouping &#38; Weighting">
-									<field name="grade_grouping" style="width: 50%" string="Group by"/>
+									<field name="grade_grouping" style="width: 50%" string="Grouped by"/>
 									<field name="grade_weighting" style="width: 50%" string="Weighted by"/>
 								</group>
 								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
