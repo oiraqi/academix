@@ -1,10 +1,11 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class LmsModule(models.Model):
     _inherit = 'a3lms.module'
 
     ilo_ids = fields.Many2many(comodel_name='a3catalog.course.ilo', compute='_ilo_ids', string='Covered ILOs')
 
+    @api.onchange('chapter_ids')
     def _ilo_ids(self):
         for rec in self:
             ilos = []
