@@ -64,7 +64,7 @@
 									</field>
 								</group>
 								<group name="chapters" string="Course Chapters" attrs="{'invisible': [('module_ids', '=', [])]}">
-									<field name="chapter_ids" nolabel="1" context="{'default_course_id': id}">
+									<field name="chapter_ids" nolabel="1" context="{'default_module_ids': module_ids}">
 										<tree editable="bottom">
 											<field name="sequence" widget="handle"/>
 											<field name="name"/>
