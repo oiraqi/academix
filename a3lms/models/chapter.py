@@ -8,9 +8,8 @@ class Chapter(models.Model):
 
 	name = fields.Char('Name', required=True)
 	sequence = fields.Integer(string='Sequence')	
-	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
 	module_id = fields.Many2one(comodel_name='a3lms.module', string='Module', required=True)
+	course_id = fields.Many2one(comodel_name='a3lms.course', related='module_id.course_id')
 	start_date = fields.Date(string='Start Date')
-	nsessions = fields.Integer(string='Sessions')
-	module_ids = fields.One2many(comodel_name='a3lms.module', related='course_id.module_ids')
+	nsessions = fields.Integer(string='Sessions')	
 		
