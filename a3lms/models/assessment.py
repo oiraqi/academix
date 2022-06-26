@@ -28,8 +28,8 @@ class Assessment(models.Model):
 	def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
 		if 'bonus' in fields:
 			fields.remove('bonus')
-		return super(Assessment, self).read_group(self, domain, fields, groupby, offset, limit, orderby, lazy)
-		
+		return super(Assessment, self).read_group(domain, fields, groupby, offset, limit, orderby, lazy)
+
 	penalty_per_late_day = fields.Float(string='Penalty per Late Day (%)', default=0.0)
 	teamwork = fields.Boolean(string='Teamwork', default=False)	
 	team_ids = fields.Many2many(comodel_name='a3lms.team', string='Teams')	
