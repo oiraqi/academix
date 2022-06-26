@@ -81,7 +81,7 @@
 					<field name="from_time"/>
 					<field name="to_time"/>
 					<field name="due_time"/>
-					<field name="percentage"/>
+					<field name="percentage" sum="Total %"/>
 					<field name="bonus"/>
 					<field name="max_grade"/>
 					<field name="min_grade"/>
@@ -101,7 +101,7 @@
 					<field name="from_time"/>
 					<field name="to_time"/>
 					<field name="due_time"/>
-					<field name="points"/>
+					<field name="points" sum="Total Points"/>
 					<field name="bonus"/>
 					<field name="max_grade"/>
 					<field name="min_grade"/>
@@ -121,7 +121,7 @@
 					<field name="from_time"/>
 					<field name="to_time"/>
 					<field name="due_time"/>
-					<field name="percentage"/>
+					<field name="percentage" sum="Total %"/>
 					<field name="bonus"/>
 					<field name="max_grade"/>
 					<field name="min_grade"/>
@@ -141,7 +141,7 @@
 					<field name="from_time"/>
 					<field name="to_time"/>
 					<field name="due_time"/>
-					<field name="points"/>
+					<field name="points" sum="Total Points"/>
 					<field name="bonus"/>
 					<field name="max_grade"/>
 					<field name="min_grade"/>
