@@ -33,8 +33,8 @@
 								<field name="year" attrs="{'readonly': [('id', '!=', False)]}" style="width: 35%"/>
 							</div>
 							<field name="section_id" attrs="{'readonly': [('id', '!=', False)]}" domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-							<field name="prerequisite_ids"/>
-							<field name="corequisite_ids"/>
+							<field name="prerequisite_ids" widget="many2many_tags"/>
+							<field name="corequisite_ids" widget="many2many_tags"/>
 							<field name="timeslot" widget="badge"/>
 							<field name="room_id"/>
 							<field name="instructor_id"/>
