@@ -63,8 +63,8 @@
 										</tree>
 									</field>
 								</group>
-								<group name="chapters" string="Course Chapters">
-									<field name="chapter_ids" attrs="{'invisible': [('id', '=', False)]}" nolabel="1">
+								<group name="chapters" string="Course Chapters" attrs="{'invisible': [('module_ids', '=', False)]}">
+									<field name="chapter_ids" nolabel="1">
 										<tree editable="bottom">
 											<field name="sequence" widget="handle"/>
 											<field name="name"/>
@@ -92,7 +92,7 @@
 									</field>
 								</group>
 							</page>
-							<page string="Assessment Structure" name="assessment">
+							<page string="Assessment Structure" name="assessment" attrs="{'invisible': [('module_ids', '=', False)]}">
 								<group col="4" string="Assessment Grouping &#38; Weighting">
 									<field name="grade_grouping" style="width: 50%" string="Group by"/>
 									<field name="grade_weighting" style="width: 50%" string="Weighted by"/>
