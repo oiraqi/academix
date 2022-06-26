@@ -23,6 +23,7 @@
         "views/assessment_view.xml",
         "views/lms_course_view.xml",
         'views/lms_assessment_view.xml',
+        'views/lms_module_view.xml',
         "views/school_view.xml",
         "views/a3quality_menu.xml",
     ],

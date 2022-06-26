@@ -9,3 +9,5 @@ from . import assessment
 from . import assessment_line
 from . import action
 from . import lms_assessment
+from . import lms_module
+from . import lms_chapter

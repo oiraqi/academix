@@ -1,0 +1,19 @@
+from odoo import models, fields
+
+class LmsModule(models.Model):
+    _inherit = 'a3lms.module'
+
+    ilo_ids = fields.Many2many(comodel_name='a3catalog.course.ilo', compute='_ilo_ids', string='Covered ILOs')
+
+    def _ilo_ids(self):
+        for rec in self:
+            ilos = []
+            for chapter in rec.chapter_ids:
+                for ilo in chapter.ilo_ids:
+                    if ilo.id not in ilos:
+                        ilos.append(ilo.id)
+            if len(ilos) > 0:
+                rec.ilo_ids = ilos                
+            else:
+                rec.ilo_ids = False
+    
