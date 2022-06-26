@@ -24,7 +24,7 @@
         'views/assessment_line_view.xml',
         'views/attendance_view.xml',
         'views/lms_course_view.xml',
-        'views/module_vieuw.xml',
+        'views/module_view.xml',
         'views/course_view.xml',
         'views/student_view.xml',
         'views/enrollment_view.xml',
