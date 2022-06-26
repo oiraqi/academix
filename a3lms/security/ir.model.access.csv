@@ -45,3 +45,6 @@ access_a3lms_letter_grade_vpaa,access.a3lms.letter.grade.vpaa,model_a3lms_letter
 access_a3lms_team_faculty,access.a3lms.team.faculty,model_a3lms_team,a3.group_faculty,1,1,1,1
 access_a3lms_team_user,access.a3lms.team.user,model_a3lms_team,base.group_user,1,0,0,0
 
+access_a3lms_chapter_faculty,access.a3lms.chapter.faculty,model_a3lms_chapter,a3.group_faculty,1,1,1,1
+access_a3lms_chapter_user,access.a3lms.chapter.user,model_a3lms_chapter,base.group_user,1,0,0,0
+

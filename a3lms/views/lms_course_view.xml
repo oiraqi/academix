@@ -54,6 +54,29 @@
 									</field>
 								</group>
 							</page>
+							<page string="Course Content &#38; Organization" name="content">
+								<group string="Course Modules" name="modules">
+									<field name="module_ids" nolabel="1">
+										<tree editable="bottom">
+											<field name="sequence" widget="handle"/>
+											<field name="name" string="Course Module"/>											
+										</tree>
+									</field>
+								</group>
+								<group name="chapters" string="Course Chapters">
+									<field name="chapter_ids" attrs="{'invisible': [('id', '=', False)]}" nolabel="1">
+										<tree editable="bottom">
+											<field name="sequence" widget="handle"/>
+											<field name="name"/>
+											<field name="start_date"/>
+											<field name="nsessions"/>
+										</tree>
+									</field>
+									<div attrs="{'invisible': [('id', '!=', False)]}" colspan="4">
+										<span>You will be able to add chapters once you add course modules <i>and save your changes</i></span>
+									</div>
+								</group>
+							</page>
 							<page string="Textbooks" name="textbooks">
 								<group>
 									<field name="textbook_ids" nolabel="1">
@@ -115,7 +138,7 @@
 									<field name="attendance_weight" invisible="1"/>
 								</group>								
 								<group string="Assessments">
-									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4" context="{'default_course_id': id}" nolabel="1">										
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4" context="{'default_course_id': id}" nolabel="1">
 										<tree editable="bottom">
 											<field name="name" string="Assessment"/>
 											<field name="module_id" string="Course Module" domain="[('id', 'in', module_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>

@@ -13,3 +13,4 @@ from . import section
 from . import enrollment
 from . import student
 from . import team
+from . import chapter
