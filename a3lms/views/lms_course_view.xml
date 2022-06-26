@@ -116,14 +116,14 @@
 											<field name="name" string="Assessment"/>
 											<field name="module_id" string="Course Module"
 												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
-												domain="[('course_id', '=', course_id)]"/>
+												domain="[('id', 'in', module_ids)]"/>
 											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>											
 											<field name="teamwork" widget="boolean_toggle"/>
 											<field name="due_time"/>
 											<field name="percentage" sum="%" string="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
 											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 											<field name="technique_ids" invisible="1"/>
-											<field name="course_id" invisible="1"/>
+											<field name="module_ids" invisible="1"/>
 										</tree>
 									</field>									
 								</group>								
