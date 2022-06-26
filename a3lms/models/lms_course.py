@@ -74,8 +74,6 @@ class LmsCourse(models.Model):
 	team_ids = fields.One2many(comodel_name='a3lms.team', inverse_name='course_id', string='Teams')
 	chapter_ids = fields.One2many(comodel_name='a3lms.chapter', inverse_name='course_id', string="Chapters & Timeline")
 
-	def _chapter_ids
-
 	def _attendance_ids(self):
 		for rec in self:
 			rec.nattendance_sheets = len(rec.attendance_ids)
