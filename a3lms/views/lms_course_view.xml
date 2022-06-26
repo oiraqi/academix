@@ -63,14 +63,17 @@
 										</tree>
 									</field>
 								</group>
-								<group name="chapters" string="Course Chapters" attrs="{'invisible': [('module_ids', '=', False)]}">
-									<field name="chapter_ids" nolabel="1">
+								<group name="chapters" string="Course Chapters" attrs="{'invisible': [('module_ids', '=', [])]}">
+									<field name="chapter_ids" nolabel="1" context="{'default_course_id': id}">
 										<tree editable="bottom">
 											<field name="sequence" widget="handle"/>
 											<field name="name"/>
-											<field name="module_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="module_id"
+												domain="[('id', 'in', module_ids)]"
+												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="start_date"/>
 											<field name="nsessions"/>
+											<field name="module_ids" invisible="1"/>
 										</tree>
 									</field>
 									<div attrs="{'invisible': [('id', '!=', False)]}" colspan="4">
@@ -101,18 +104,16 @@
 									<field name="assessed_module_ids" nolabel="1">
 										<tree editable="bottom">											
 											<field name="name" string="Course Module"/>
-											<field name="percentage" sum="%" attrs="{'column_invisible': ['|', ('parent.grade_grouping', '!=', 'module'),
-												('parent.grade_weighting', '!=', 'percentage')]}"/>
-											<field name="points" sum="Points" attrs="{'column_invisible': ['|', ('parent.grade_grouping', '!=', 'module'),
-												('parent.grade_weighting', '!=', 'points')]}"/>
+											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
+											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 										</tree>
 									</field>
 									<field name="technique_ids" nolabel="1">
 										<tree editable="bottom">
 											<field name="sequence" widget="handle"/>
 											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-											<field name="percentage" sum="%" attrs="{'column_invisible': ['|', ('parent.grade_grouping', '!=', 'technique'), ('parent.grade_weighting', '!=', 'percentage')]}"/>
-											<field name="points" sum="Points" attrs="{'column_invisible': ['|', ('parent.grade_grouping', '!=', 'technique'), ('parent.grade_weighting', '!=', 'points')]}"/>
+											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
+											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 										</tree>
 									</field>
 								</group>
