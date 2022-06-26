@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="a3_session_sp" model="a3.session">
+            <field name="name">Spring</field>
+            <field name="code">SP</field>
+            <field name="sequence" eval="1"/>
+        </record>
+        <record id="a3_session_su" model="a3.session">
+            <field name="name">Summer</field>
+            <field name="code">SU</field>
+            <field name="sequence" eval="2"/>
+        </record>
+        <record id="a3_session_fa" model="a3.session">
+            <field name="name">Fall</field>
+            <field name="code">FA</field>
+            <field name="sequence" eval="3"/>
+        </record>
+    
+    </data>
+    
+</odoo>

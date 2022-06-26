@@ -19,3 +19,4 @@ from . import event
 from . import building
 from . import room
 from . import calendarized
+from . import session

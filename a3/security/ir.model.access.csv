@@ -36,3 +36,6 @@ access_a3_building_setup,access.a3.building.setup,model_a3_building,a3.group_set
 access_a3_room_user,access.a3.room.user,model_a3_room,base.group_user,1,0,0,0
 access_a3_room_setup,access.a3.room.setup,model_a3_room,a3.group_setup,1,1,1,1
 
+access_a3_session_setup,access.a3.session.setup,model_a3_session,a3.group_setup,1,1,1,0
+access_a3_session_user,access.a3.session.user,model_a3_session,base.group_user,1,0,0,0
+
