@@ -28,6 +28,19 @@ class Prerequisite(models.Model):
     _name = 'a3catalog.prerequisite'
     _description = 'Course Prerequisite'
 
+    name = fields.Char(string='Name', compute='_set_name')
+
+    @api.onchange('alternative_ids')
+    def _set_name(self):
+        for rec in self:
+            name = ''
+            if rec.alternative_ids:
+                if len(rec.alternative_ids) == 1:
+                    name = rec.alternative_ids[0].name
+                else:
+                    name = '{ ' + ' or '.join([alternative.name for alternative in rec.alternative_ids]) + ' }'
+            rec.name = name
+    
     course_id = fields.Many2one('a3.course', string='Course')
     alternative_ids = fields.Many2many('a3.course', string='Prerequisite')
     sequence = fields.Integer(default='1', required=True)
