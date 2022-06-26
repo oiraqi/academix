@@ -114,10 +114,12 @@
 									<field name="assessment_ids" colspan="4" nolabel="1">
 										<tree editable="bottom">
 											<field name="name" string="Assessment"/>
-											<field name="module_id" string="Course Module" domain="[('id', 'in', module_ids)]"/>
+											<field name="module_id" string="Course Module"
+												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+												domain="[('id', 'in', module_ids)]"/>
 											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-											<field name="percentage" string="% (*)" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
-											<field name="points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
+											<field name="percentage" sum="%" string="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
+											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 											<field name="teamwork" widget="boolean_toggle"/>
 											<field name="due_time"/>
 											<field name="technique_ids" invisible="1"/>
