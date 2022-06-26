@@ -12,6 +12,8 @@ class LmsCourse(models.Model):
 	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section', required=True)	
 	name = fields.Char(related='section_id.name')	
 	course_id = fields.Many2one(comodel_name='a3.course', related='section_id.course_id')
+	prerequisite_ids = fields.One2many('a3catalog.prerequisite', related='course_id.prerequisite_ids')
+	corequisite_ids = fields.One2many('a3catalog.corequisite', related='course_id.corequisite_ids')
 	instructor_id = fields.Many2one(comodel_name='a3.faculty', related='section_id.instructor_id')
 	discipline_id = fields.Many2one(comodel_name='a3.discipline', related='section_id.discipline_id')
 	timeslot = fields.Char(related='section_id.timeslot')	
