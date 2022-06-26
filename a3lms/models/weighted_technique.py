@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class WeightedTechnique(models.Model):
@@ -11,13 +11,21 @@ class WeightedTechnique(models.Model):
 	points = fields.Integer(string='Points', compute='_points')
 	percentage = fields.Float(string='%', default=0.0)
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
-	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='technique_id', string='Assessments')
+	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='technique_id', string='Assessments')	
 
+	@api.onchange('assessment_ids')
 	def _points(self):
-		for rec in self:
-			assessments = self.env['a3lms.assessment'].search([('course_id', '=', rec.course_id.id), ('technique_id', '=', rec.id)])
-			if assessments:
-				rec.points = sum([assessment.points for assessment in assessments])
+		for rec in self:			
+			if rec.assessment_ids:
+				rec.points = sum([assessment.points for assessment in rec.assessment_ids])
 			else:
 				rec.points = 0
+
+	@api.onchange('assessment_ids')
+	def _percentage(self):
+		for rec in self:			
+			if rec.assessment_ids:
+				rec.percentage = sum([assessment.percentage for assessment in rec.assessment_ids])
+			else:
+				rec.percentage = 0
 	

@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class Assessment(models.Model):
@@ -15,7 +15,7 @@ class Assessment(models.Model):
 	module_id = fields.Many2one(comodel_name='a3lms.module', string='Module', required=True)
 	technique_id = fields.Many2one(comodel_name='a3lms.weighted.technique', string='Technique', required=True)
 	points = fields.Integer(string='Points', default=0)
-	percentage = fields.Float(string='%', default=0.0)
+	percentage = fields.Float(string='%', default=0.0)	
 	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', related='course_id.technique_ids')
 	module_ids = fields.One2many(comodel_name='a3lms.module', related='course_id.module_ids')
 

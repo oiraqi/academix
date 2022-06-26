@@ -68,6 +68,7 @@
 										<tree editable="bottom">
 											<field name="sequence" widget="handle"/>
 											<field name="name"/>
+											<field name="module_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="start_date"/>
 											<field name="nsessions"/>
 										</tree>
@@ -97,9 +98,8 @@
 									<field name="grade_weighting" style="width: 50%" string="Weighted by"/>
 								</group>
 								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
-									<field name="module_ids" nolabel="1">
-										<tree editable="bottom">
-											<field name="sequence" widget="handle"/>
+									<field name="assessed_module_ids" nolabel="1">
+										<tree editable="bottom">											
 											<field name="name" string="Course Module"/>
 											<field name="percentage" sum="%" attrs="{'column_invisible': ['|', ('parent.grade_grouping', '!=', 'module'),
 												('parent.grade_weighting', '!=', 'percentage')]}"/>
@@ -116,6 +116,24 @@
 										</tree>
 									</field>
 								</group>
+								<group string="Assessments">
+									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4"
+										context="{'default_course_id': id}" nolabel="1">
+										<tree editable="bottom">
+											<field name="name" string="Assessment"/>
+											<field name="module_id" string="Course Module"
+												domain="[('id', 'in', module_ids)]"
+												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="percentage" string="% (*)" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
+											<field name="points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
+											<field name="teamwork" widget="boolean_toggle"/>
+											<field name="due_time"/>
+											<field name="technique_ids" invisible="1"/>
+											<field name="module_ids" invisible="1"/>
+										</tree>
+									</field>									
+								</group>								
 								<group string="Attendance" col="4">
 									<field name="attendance_points" string="Attendance Points" style="width: 10%" attrs="{'invisible': [('grade_weighting', '!=', 'points')]}" colspan="4"/>
 									<field name="attendance_percentage" string="Attendance %" style="width: 10%" attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" colspan="4"/>
@@ -137,26 +155,7 @@
 									</div>
 									<field name="attendance_weight" invisible="1"/>
 								</group>								
-								<group string="Assessments">
-									<field name="assessment_ids" attrs="{'invisible': [('id', '=', False)]}" colspan="4" context="{'default_course_id': id}" nolabel="1">
-										<tree editable="bottom">
-											<field name="name" string="Assessment"/>
-											<field name="module_id" string="Course Module" domain="[('id', 'in', module_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-											<field name="percentage" string="% (*)" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
-											<field name="points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
-											<field name="teamwork" widget="boolean_toggle"/>
-											<field name="due_time"/>
-											<field name="technique_ids" invisible="1"/>
-											<field name="module_ids" invisible="1"/>
-										</tree>
-									</field>
-									<div attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" colspan="4">
-										<span attrs="{'invisible': [('grade_grouping', '!=', 'module')]}">(*) Percentage within course module. Percentages of assessments within the same module shall add up to 100%.</span>
-										<span attrs="{'invisible': [('grade_grouping', '!=', 'technique')]}">(*) Percentage within assessment technique. Percentages of assessments within the same technique shall add up to 100%.</span>
-									</div>
-								</group>
-							</page>
+							</page>								
 							<page string="Teams" name="teams">
 								<group>
 									<field name="team_ids" nolabel="1">

@@ -29,20 +29,16 @@ class LmsCourse(models.Model):
 	attendance_percentage = fields.Float(string='Attendance %', compute='_attendance_percentage')
 	attendance_weight = fields.Float(compute='_attendance_weight')
 
-	@api.onchange('grade_grouping', 'module_ids', 'technique_ids')
+	@api.onchange('assessment_ids')
 	def _attendance_percentage(self):
-		for rec in self:
-			if rec.grade_grouping == 'module' and rec.module_ids:
-				module_percentages = sum([module.percentage for module in rec.module_ids])
-				if module_percentages <= 100:
-					rec.attendance_percentage = 100 - module_percentages
-					return
-			elif rec.grade_grouping == 'technique' and rec.technique_ids:
-				technique_percentages = sum([technique.percentage for technique in rec.technique_ids])
-				if technique_percentages <= 100:
-					rec.attendance_percentage = 100 - technique_percentages
-					return
-			rec.attendance_percentage = 0.0
+		for rec in self:			
+			assessment_percentages = sum([assessment.percentage for assessment in rec.assessment_ids])
+			if assessment_percentages <= 100:
+				rec.attendance_percentage = 100 - assessment_percentages
+			else:
+				rec.attendance_percentage = 0.0
+				raise ValidationError('The sum of assessment percentages cannot exceed 100%')
+				
 	
 	@api.onchange('grade_weighting', 'attendance_percentage', 'attendance_points')
 	def _attendance_weight(self):
@@ -60,6 +56,14 @@ class LmsCourse(models.Model):
 	zero_after_max_abs = fields.Boolean(string='Zero after Max Absences', default=False)	
 	max_absences = fields.Integer(string='Max Absences', default=5)
 	module_ids = fields.One2many(comodel_name='a3lms.module', inverse_name='course_id', string='Modules')
+	assessed_module_ids = fields.One2many(comodel_name='a3lms.module', compute='_assessed_module_ids', string='Modules')	
+
+	@api.onchange('assessment_ids')
+	def _assessed_module_ids(self):
+		for rec in self:
+			assessed_module_ids = [assessment.module_id.id for assessment in rec.assessment_ids]
+			rec.assessed_module_ids = self.env['a3lms.module'].search([('id', 'in', assessed_module_ids)])
+
 	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', inverse_name='course_id', string='Techniques')	
 	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='course_id', string='Assessments')
 	nassessments = fields.Integer(string='Number of Assessments', compute='_assessment_ids')
@@ -69,7 +73,6 @@ class LmsCourse(models.Model):
 	nattendance_sheets = fields.Integer(string='Number of Attendance Sheets', compute='_attendance_ids')
 	team_ids = fields.One2many(comodel_name='a3lms.team', inverse_name='course_id', string='Teams')
 	chapter_ids = fields.One2many(comodel_name='a3lms.chapter', inverse_name='course_id', string='Chapters')
-
 
 	def _attendance_ids(self):
 		for rec in self:
@@ -89,30 +92,14 @@ class LmsCourse(models.Model):
 	
 	details = fields.Html(string='More Details')
 
-	@api.constrains('grade_grouping', 'grade_weighting', 'module_ids', 'technique_ids', 'assessment_ids')
+	@api.constrains('grade_weighting', 'assessment_ids')
 	def _check_sum_percentages(self):
 		for rec in self:
-			if rec.grade_weighting != 'percentage':
+			if rec.grade_weighting != 'percentage' or not rec.assessment_ids:
 				continue
 			
-			if rec.grade_grouping == 'module' and rec.module_ids:
-				if sum([module.percentage for module in rec.module_ids]) > 100:
-					raise ValidationError('The sum of course module percentages cannot exceed 100%')
-				
-				for module in rec.module_ids:
-					s = sum([assessment.percentage for assessment in module.assessment_ids])
-					if s != 100.00:
-						raise ValidationError(f'The percentages of assessments under {module.name} shall add up to 100%, not {s}%')
-
-			if rec.grade_grouping == 'technique' and rec.technique_ids:
-				if sum([technique.percentage for technique in rec.technique_ids]) > 100:
-					raise ValidationError('The sum of assessment technique percentages cannot exceed 100%')
-				
-				for technique in rec.technique_ids:
-					s = sum([assessment.percentage for assessment in technique.assessment_ids])
-					if s != 100.00:
-						raise ValidationError(f'The percentages of {technique.name} assessments shall add up to 100%, not {s}%')
-
+			if sum([assessment.percentage for assessment in rec.assessment_ids]) > 100:
+				raise ValidationError('The sum of assessment percentages cannot exceed 100%')
 		
 	def get_students(self):
 		self.ensure_one()
