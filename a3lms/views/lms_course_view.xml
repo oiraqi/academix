@@ -153,18 +153,7 @@
 									</div>
 									<field name="attendance_weight" invisible="1"/>
 								</group>								
-							</page>								
-							<page string="Teams" name="teams">
-								<group>
-									<field name="team_ids" nolabel="1">
-										<tree editable="bottom">
-											<field name="name"/>
-											<field name="member_ids" widget="many2many_tags" domain="[('id', 'in', student_ids)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-											<field name="student_ids" invisible="1"/>
-										</tree>
-									</field>
-								</group>
-							</page>
+							</page>							
 							<page string="More Details" name="details">
 								<group name="details">
 									<field name="details" widget="html" nolabel="1"/>
