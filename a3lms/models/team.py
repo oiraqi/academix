@@ -6,9 +6,10 @@ class Team(models.Model):
 	_description = 'Team'
 
 	name = fields.Char('Name', compute='_set_name')
-	member_ids = fields.Many2many(comodel_name='a3.student', string='Members', required=True)
-	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
-	student_ids = fields.One2many(comodel_name='a3.student', related='course_id.student_ids')	
+	teamset_id = fields.Many2one(comodel_name='a3lms.teamset', string='Team Set', required=True)	
+	member_ids = fields.One2many(comodel_name='a3lms.team.membership', inverse_name='team_id', string='Members')
+	course_id = fields.Many2one(comodel_name='a3lms.course', related='teamset_id.course_id', store=True)
+	student_ids = fields.One2many(comodel_name='a3.student', related='course_id.student_ids')
 
 	@api.onchange('member_ids')
 	def _set_name(self):
@@ -16,7 +17,7 @@ class Team(models.Model):
 			if not rec.member_ids:
 				rec.name = ''
 				continue
-			names = [member.name for member in rec.member_ids]
+			names = [member.member_id.name for member in rec.member_ids]
 			rec.name = '{ ' + ', '.join(names) + ' }'
 	
 	

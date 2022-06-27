@@ -13,6 +13,9 @@
 							</h1>
 						</div>
 						<div class="oe_button_box" name="button_box">
+							<button name="get_teamsets" type="object" class="oe_stat_button" icon="fa-calendar-check">
+								<field name="nteamsets" string="Teams" widget="statinfo"/>
+							</button>
 							<button name="get_attendance" type="object" class="oe_stat_button" icon="fa-calendar-check">
 								<field name="nattendance_sheets" string="Att. Sheets" widget="statinfo"/>
 							</button>

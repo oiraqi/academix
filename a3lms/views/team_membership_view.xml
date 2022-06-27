@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="view_team_membership_form" model="ir.ui.view">
+			<field name="name">a3lms.team.membership.form</field>
+			<field name="model">a3lms.team.membership</field>
+			<field name="arch" type="xml">
+				<form string="Membership">
+					<sheet>
+						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
+						<group name="info" string="General Information" col="4">
+						
+						</group>
+						<group name="log" string="Log" col="4">
+							<field name="create_uid"/>
+							<field name="create_date"/>
+							<field name="write_uid"/>
+							<field name="write_date"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="view_team_membership_tree" model="ir.ui.view">
+			<field name="name">a3lms.team.membership.tree</field>
+			<field name="model">a3lms.team.membership</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Memberships">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_team_membership" model="ir.actions.act_window">
+			<field name="name">Memberships</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">a3lms.team.membership</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{'group_by': 'team_id'}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>
+		<record id="action_team_membership_form_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="2"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_team_membership_form"/>
+			<field name="act_window_id" ref="action_team_membership"/>
+		</record>
+		<record id="action_team_membership_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_team_membership_tree"/>
+			<field name="act_window_id" ref="action_team_membership"/>
+		</record>
+	</data>
+</odoo>

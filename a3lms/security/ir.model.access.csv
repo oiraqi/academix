@@ -48,3 +48,9 @@ access_a3lms_team_user,access.a3lms.team.user,model_a3lms_team,base.group_user,1
 access_a3lms_chapter_faculty,access.a3lms.chapter.faculty,model_a3lms_chapter,a3.group_faculty,1,1,1,1
 access_a3lms_chapter_user,access.a3lms.chapter.user,model_a3lms_chapter,base.group_user,1,0,0,0
 
+access_a3lms_teamset_faculty,access.a3lms.teamset.faculty,model_a3lms_teamset,a3.group_faculty,1,1,1,1
+access_a3lms_teamset_student,access.a3lms.teamset.student,model_a3lms_teamset,a3.group_student,1,0,0,0
+
+access_a3lms_team_membership_faculty,access.a3lms.team.membership.faculty,model_a3lms_team_membership,a3.group_faculty,1,1,1,1
+access_a3lms_team_membership_student,access.a3lms.team.membership.student,model_a3lms_team_membership,a3.group_student,1,0,0,0
+

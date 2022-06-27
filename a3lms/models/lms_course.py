@@ -73,7 +73,17 @@ class LmsCourse(models.Model):
 	used_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_assessment_ids')
 	attendance_ids = fields.One2many(comodel_name='a3lms.attendance', inverse_name='course_id', string='Attendance Sheets')
 	nattendance_sheets = fields.Integer(string='Number of Attendance Sheets', compute='_attendance_ids')
-	team_ids = fields.One2many(comodel_name='a3lms.team', inverse_name='course_id', string='Teams')
+	teamset_ids = fields.One2many(comodel_name='a3lms.teamset', inverse_name='course_id', string='Team Sets')
+	nteamsets = fields.Integer(string='Number of Team Sets', compute='_nteamsets')
+
+	@api.onchange('teamset_ids')
+	def _nteamsets(self):
+		for rec in self:
+			if rec.teamset_ids:
+				rec.nteamsets = len(rec.teamset_ids)
+			else:
+				rec.nteamsets = 0
+	
 	chapter_ids = fields.One2many(comodel_name='a3lms.chapter', inverse_name='course_id', string="Chapters & Timeline")
 
 	def _attendance_ids(self):
@@ -140,4 +150,11 @@ class LmsCourse(models.Model):
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id}
 		return self._resolve_action('a3lms.action_attendance', domain, context)
+
+	def get_teamsets(self):
+		self.ensure_one()
+		domain = [('course_id', '=', self.id)]
+		context = {'default_course_id': self.id}
+		return self._resolve_action('a3lms.action_teamset', domain, context)
+
 

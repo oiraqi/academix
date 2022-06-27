@@ -28,6 +28,8 @@
         'views/course_view.xml',
         'views/student_view.xml',
         'views/enrollment_view.xml',
+        'views/teamset_view.xml',
+        'views/team_membership_view.xml',
         'views/lms_menu.xml',
     ],
     'installable': True,
