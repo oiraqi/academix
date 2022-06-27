@@ -26,6 +26,10 @@ class AssessmentLine(models.Model):
 	penalty = fields.Float('Penalty', compute='_penalty')
 	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
 	wgrade = fields.Float(string='Weighted Grade', compute='_wgrade', store=True)
+	max_grade = fields.Float(related='assessment_id.max_grade')
+	min_grade = fields.Float(related='assessment_id.min_grade')
+	avg_grade = fields.Float(related='assessment_id.avg_grade')
+	
 
 	@api.depends('grade', 'bonus')
 	@api.onchange('grade', 'bonus')
