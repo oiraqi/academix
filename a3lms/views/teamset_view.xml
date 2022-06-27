@@ -26,7 +26,7 @@
 			<field name="model">a3lms.teamset</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Teamsets" editable="bottom">
+				<tree string="Team Sets" editable="bottom">
 					<field name="name"/>
 					<field name="nmembers_per_team"/>
 					<button string="Consult" name="get_teams" type="object" class="oe_highlight"/>
@@ -35,7 +35,7 @@
 			</field>
 		</record>
 		<record id="action_teamset" model="ir.actions.act_window">
-			<field name="name">Teamsets</field>
+			<field name="name">Team Sets</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">a3lms.teamset</field>
 			<field name="view_mode">tree,form</field>

@@ -26,13 +26,13 @@
 			<field name="model">a3lms.team.membership</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Memberships">
+				<tree string="Teams">
 					<field name="name"/>
 				</tree>
 			</field>
 		</record>
 		<record id="action_team_membership" model="ir.actions.act_window">
-			<field name="name">Memberships</field>
+			<field name="name">Teams</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">a3lms.team.membership</field>
 			<field name="view_mode">tree,form</field>

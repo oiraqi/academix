@@ -20,33 +20,28 @@ class AssessmentLine(models.Model):
 	module_percentage = fields.Float(related='module_id.percentage', store=True)
 	technique_percentage = fields.Float(related='technique_id.percentage', store=True)
 	assessment_percentage = fields.Float(related='assessment_id.percentage', store=True)
-	percentage = fields.Float(string='Percentage', compute='_percentage', store=True)
+	percentage = fields.Float(related='assessment_id.percentage', store=True)
 	grade = fields.Float(string='Grade', default=0.0)
 	bonus = fields.Float(related='assessment_id.bonus', store=True)
-	bgrade = fields.Float(string='Grade', compute='_bgrade', store=True)
+	penalty = fields.Float('Penalty', compute='_penalty')
+	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
 	wgrade = fields.Float(string='Weighted Grade', compute='_wgrade', store=True)
 
 	@api.depends('grade', 'bonus')
 	@api.onchange('grade', 'bonus')
-	def _bgrade(self):
+	def _egrade(self):
 		for rec in self:
-			rec.bgrade = rec.grade + rec.bonus
+			rec.egrade = rec.grade + rec.bonus - rec.penalty
 
-	@api.depends('grade_grouping', 'module_percentage', 'technique_percentage', 'assessment_percentage')
-	def _percentage(self):
+	def _penalty(self):
 		for rec in self:
-			if rec.grade_grouping == 'module':
-				rec.percentage = rec.module_percentage * rec.assessment_percentage
-			elif rec.grade_grouping == 'technique':
-				rec.percentage = rec.technique_percentage * rec.assessment_percentage
-			else:
-				rec.percentage = 0
+			rec.penalty = 0.0
 
-	@api.depends('bgrade', 'grade_weighting', 'percentage', 'points')
+	@api.depends('egrade', 'grade_weighting', 'percentage', 'points')
 	def _wgrade(self):
 		for rec in self:
 			if rec.grade_weighting == 'percentage':
-				rec.wgrade = rec.bgrade * rec.percentage
+				rec.wgrade = rec.egrade * rec.percentage
 			elif rec.grade_weighting == 'points':
-				rec.wgrade = (rec.bgrade / 100) * rec.points
+				rec.wgrade = (rec.egrade / 100) * rec.points
 
