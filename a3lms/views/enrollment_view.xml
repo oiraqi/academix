@@ -40,7 +40,7 @@
                                         <field name="name"/>
                                         <field name="module_id"/>
                                         <field name="technique_id" widget="badge"/>
-                                        <field name="bgrade"/>
+                                        <field name="egrade"/>
                                     </tree>
                                 </field>
                             </group>
