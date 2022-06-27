@@ -207,7 +207,7 @@
 			<field name="sequence" eval="1"/>
 			<field name="view_mode">tree</field>
 			<field name="view_id" ref="view_assessment_line_module_points_tree"/>
-			<field name="act_window_id" ref="action_assessment_module_points_line"/>
+			<field name="act_window_id" ref="action_assessment_line_module_points"/>
 		</record>
 		<record id="action_assessment_line_technique_percentage_tree_view" model="ir.actions.act_window.view">
 			<field name="sequence" eval="1"/>
