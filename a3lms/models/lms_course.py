@@ -137,13 +137,17 @@ class LmsCourse(models.Model):
 	def get_grade_matrix(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id), ('student_id', 'in', self.student_ids.ids)]
-		group_fields = ['program_id', 'student_id']
-		if self.grade_grouping == 'module':
-			group_fields.append('module_id')
-		elif self.grade_grouping == 'technique':
-			group_fields.append('technique_id')
-		context = {'group_by': group_fields}
-		return self._resolve_action('a3lms.action_assessment_line', domain, context)
+		if self.grade_grouping == 'module' and self.grade_weighting == 'percentage':
+			return self._resolve_action('a3lms.action_assessment_line_module_percentage', domain)
+
+		if self.grade_grouping == 'module' and self.grade_weighting == 'points':
+			return self._resolve_action('a3lms.action_assessment_line_module_points', domain)
+		
+		if self.grade_grouping == 'technique' and self.grade_weighting == 'percentage':
+			return self._resolve_action('a3lms.action_assessment_line_technique_percentage', domain)
+
+		if self.grade_grouping == 'technique' and self.grade_weighting == 'points':
+			return self._resolve_action('a3lms.action_assessment_line_technique_points', domain)
 
 	def get_attendance(self):
 		self.ensure_one()

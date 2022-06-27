@@ -33,7 +33,7 @@
 					<field name="max_grade"/>
 					<field name="min_grade"/>
 					<field name="avg_grade"/>
-					<field name="wgrade" sum="Assessment Grade"/>					
+					<field name="wgrade"/>					
 				</tree>
 			</field>
 		</record>
@@ -50,7 +50,7 @@
 					<field name="max_grade"/>
 					<field name="min_grade"/>
 					<field name="avg_grade"/>
-					<field name="wgrade" sum="Assessment Grade"/>
+					<field name="wgrade"/>
 				</tree>
 			</field>
 		</record>
@@ -67,7 +67,7 @@
 					<field name="max_grade"/>
 					<field name="min_grade"/>
 					<field name="avg_grade"/>
-					<field name="wgrade" sum="Assessment Grade"/>
+					<field name="wgrade"/>
 				</tree>
 			</field>
 		</record>
@@ -84,7 +84,7 @@
 					<field name="max_grade"/>
 					<field name="min_grade"/>
 					<field name="avg_grade"/>
-					<field name="wgrade" sum="Assessment Grade"/>
+					<field name="wgrade"/>
 				</tree>
 			</field>
 		</record>
@@ -101,7 +101,7 @@
 					<field name="max_grade"/>
 					<field name="min_grade"/>
 					<field name="avg_grade"/>
-					<field name="wgrade" sum="Assessment Grade"/>
+					<field name="wgrade"/>
 				</tree>
 			</field>
 		</record>
