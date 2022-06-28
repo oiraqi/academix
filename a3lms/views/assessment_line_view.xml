@@ -7,9 +7,29 @@
 			<field name="arch" type="xml">
 				<form string="AssessmentLine" create="false">
 					<sheet>
-						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
+						<h1><field name="name"/></h1>
+						<div groups="a3.group_faculty">
+						<h1><field name="grade"/></h1>
+						</div>
+						<div groups="a3.group_student">
+						<h1><field name="rgrade"/></h1>
+						</div>
 						<group name="info" string="General Information" col="4">
-						
+							<field name="module_id"/>
+							<field name="technique_id"/>
+							<field name="submission_type"/>
+							<field name="x_to_time" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
+							<field name="penalty" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
+						</group>
+						<group name="submissions" string="Submissions" attrs="{'invisible': [('submission_type', '!=', 'online')]}">
+							<field name="submission_id">
+								<tree edit="false" create="false">
+									<field name="create_date"/>
+									<field name="write_date"/>
+									<field name="rgrade"/>
+									<button string="Consult" name="get_submission" type="object" class="oe_highlight"/>
+								</tree>
+							</field>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>

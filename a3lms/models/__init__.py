@@ -16,3 +16,4 @@ from . import team
 from . import chapter
 from . import teamset
 from . import team_membership
+from . import assessment_submission

@@ -22,6 +22,7 @@
         'views/assessment_technique_view.xml',
         'views/assessment_view.xml',
         'views/assessment_line_view.xml',
+        'views/assessment_submission_view.xml',
         'views/attendance_view.xml',
         'views/lms_course_view.xml',
         'views/module_view.xml',

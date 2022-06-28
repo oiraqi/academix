@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="view_assessment_submission_form" model="ir.ui.view">
+			<field name="name">a3lms.assessment.submission.form</field>
+			<field name="model">a3lms.assessment.submission</field>
+			<field name="arch" type="xml">
+				<form string="Submission">
+					<sheet>
+						<group name="artifacts" string="Submission Artifacts">
+							<field name="file" attrs="{'required': [('is_file_req', '=', True)]}"/>
+							<field name="url" attrs="{'required': [('is_url_req', '=', True)]}"/>
+							<field name="text" attrs="{'required': [('is_text_req', '=', True)]}"/>
+							<field name="is_file_req" invisible="1"/>
+							<field name="is_url_req" invisible="1"/>
+							<field name="is_text_req" invisible="1"/>
+						</group>
+						<group name="log" string="Log" col="4">
+							<field name="create_uid"/>
+							<field name="create_date"/>
+							<field name="write_uid"/>
+							<field name="write_date"/>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"/>
+						<field name="message_ids" widget="mail_thread"/>
+					</div>
+				</form>
+			</field>
+		</record>
+		<record id="view_assessment_submission_tree" model="ir.ui.view">
+			<field name="name">a3lms.assessment.submission.tree</field>
+			<field name="model">a3lms.assessment.submission</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Submissions">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_assessment_submission" model="ir.actions.act_window">
+			<field name="name">Submissions</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">a3lms.assessment.submission</field>
+			<field name="view_mode">form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>
+		<record id="action_assessment_submission_form_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="2"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_assessment_submission_form"/>
+			<field name="act_window_id" ref="action_assessment_submission"/>
+		</record>
+		<record id="action_assessment_submission_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_assessment_submission_tree"/>
+			<field name="act_window_id" ref="action_assessment_submission"/>
+		</record>
+	</data>
+</odoo>

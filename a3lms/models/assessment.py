@@ -9,7 +9,7 @@ class Assessment(models.Model):
 
 	name = fields.Char('Name', required=True)
 	description = fields.Html(string='Description')
-	submission_type = fields.Selection(string='Submission Type', selection=[('nosub', 'No Submission'), ('online', 'Online'), ('paper', 'Paper')], default='online')
+	
 	course_id = fields.Many2one(comodel_name='a3lms.course', string='LMS Course', required=True)
 	section_id = fields.Many2one(comodel_name='a3roster.section', string='course_id.section_id', store=True)
 	module_id = fields.Many2one(comodel_name='a3lms.module', string='Module', required=True)
@@ -19,9 +19,17 @@ class Assessment(models.Model):
 	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', related='course_id.technique_ids')
 	module_ids = fields.One2many(comodel_name='a3lms.module', related='course_id.module_ids')
 
+	submission_type = fields.Selection(string='Submission Type', selection=[('nosub', 'No Submission'), ('online', 'Online'), ('paper', 'Paper')], default='online')
+	is_file_req = fields.Boolean(string='File Required', default=False)
+	is_url_req = fields.Boolean(string='URL Required', default=False)
+	is_text_req = fields.Boolean(string='Inline Text Required', default=False)
+	teamwork = fields.Boolean(string='Teamwork', default=False)	
+	teamset_ids = fields.Many2many(comodel_name='a3lms.teamset', string='Team Set')
+
 	due_time = fields.Datetime(string='Due')
 	from_time = fields.Datetime(string='Open from')
 	to_time = fields.Datetime(string='Until')
+
 	bonus = fields.Float(string='Class-wide Bonus (%)', default=0.0)
 
 	@api.model
@@ -30,9 +38,7 @@ class Assessment(models.Model):
 			fields.remove('bonus')
 		return super(Assessment, self).read_group(domain, fields, groupby, offset, limit, orderby, lazy)
 
-	penalty_per_late_day = fields.Float(string='Penalty per Late Day (%)', default=0.0)
-	teamwork = fields.Boolean(string='Teamwork', default=False)	
-	team_ids = fields.Many2many(comodel_name='a3lms.team', string='Teams')	
+	penalty_per_late_day = fields.Float(string='Penalty per Late Day (%)', default=0.0)	
 
 	assessment_line_ids = fields.One2many(comodel_name='a3lms.assessment.line', inverse_name='assessment_id', string='Assessment Lines')
 	submissions = fields.Char(string='Submissions', compute='_stats')
@@ -54,6 +60,12 @@ class Assessment(models.Model):
 		self.ensure_one()
 		domain = [('assessment_id', '=', self.id)]
 		return self._resolve_action('a3lms.action_assessment_line', domain)
+
+	def get_submissions(self):
+		self.ensure_one()
+		domain = [('assessment_id', '=', self.id)]
+		context = {'default_assessment_id': self.id}
+		return self._resolve_action('a3lms.action_assessment_submission', domain, context)
 
 
 	

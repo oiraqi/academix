@@ -4,9 +4,18 @@ from odoo import models, fields, api
 class AssessmentLine(models.Model):
 	_name = 'a3lms.assessment.line'
 	_description = 'AssessmentLine'
+	_inherit = 'a3.expandable'
 	_order = 'student_id'
 
-	name = fields.Char('Name', related='assessment_id.name')
+	name = fields.Char('Name', compute='_set_name', store=True)
+
+	@api.depends('assessment_id', 'student_id')
+	@api.onchange('assessment_id', 'student_id')
+	def _set_name(self):
+		for rec in self:
+			if rec.assessment_id and rec.student_id:
+				rec.name = rec.assessment_id.name + ' / ' + rec.student_id.name
+	
 	student_id = fields.Many2one(comodel_name='a3.student', string='Student', required=True)	
 	assessment_id = fields.Many2one(comodel_name='a3lms.assessment', string='Assessment', required=True)
 	program_id = fields.Many2one(comodel_name='a3catalog.program', related='student_id.program_id', store=True)	
@@ -20,12 +29,18 @@ class AssessmentLine(models.Model):
 	module_percentage = fields.Float(related='module_id.percentage', store=True)
 	technique_percentage = fields.Float(related='technique_id.percentage', store=True)
 	assessment_percentage = fields.Float(related='assessment_id.percentage', store=True)
-	percentage = fields.Float(related='assessment_id.percentage', store=True)
-	grade = fields.Float(string='Grade', default=0.0)
+	percentage = fields.Float(related='assessment_id.percentage', store=True)	
 	bonus = fields.Float(related='assessment_id.bonus', store=True)
+	x_to_time = fields.Datetime(string='Extended Deadline')
+	
+
+	submission_type = fields.Selection(related='assessment_id.submission_type')	
+	submission_ids = fields.Many2many('a3lms.assessment.line', 'a3lms_assessment_line_submission', 'submiddion_id', 'assessment_line_id', string='Submissions')
+	grade = fields.Float(string='Grade', default=0.0)
 	penalty = fields.Float('Penalty', compute='_penalty')
 	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
 	wgrade = fields.Float(string='Weighted Grade', compute='_wgrade', store=True)
+	
 	max_grade = fields.Float(related='assessment_id.max_grade')
 	min_grade = fields.Float(related='assessment_id.min_grade')
 	avg_grade = fields.Float(related='assessment_id.avg_grade')
@@ -48,4 +63,9 @@ class AssessmentLine(models.Model):
 				rec.wgrade = rec.egrade * rec.percentage
 			elif rec.grade_weighting == 'points':
 				rec.wgrade = (rec.egrade / 100) * rec.points
+
+	def get_submission(self):
+		self.ensure_one()
+		domain = [('id', '=', self.env.context.get('active_id'))]
+		return self._resolve_action('a3lms.action_assessment_submission', domain)
 
