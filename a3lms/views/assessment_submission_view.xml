@@ -35,7 +35,9 @@
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Submissions">
-					<field name="name"/>
+					<field name="create_date"/>
+					<field name="file"/>
+					<field name="url"/>
 				</tree>
 			</field>
 		</record>
