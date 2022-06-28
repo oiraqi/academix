@@ -26,7 +26,7 @@
 								<tree edit="false" create="false">
 									<field name="create_date"/>
 									<field name="write_date"/>
-									<field name="egrade"/>
+									<field name="grade"/>
 									<button string="Consult" name="get_submission" type="object" class="oe_highlight"/>
 								</tree>
 							</field>
