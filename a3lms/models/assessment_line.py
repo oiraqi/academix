@@ -64,8 +64,3 @@ class AssessmentLine(models.Model):
 			elif rec.grade_weighting == 'points':
 				rec.wgrade = (rec.egrade / 100) * rec.points
 
-	def get_submission(self):
-		self.ensure_one()
-		domain = [('id', '=', self.env.context.get('active_id'))]
-		return self._resolve_action('a3lms.action_assessment_submission', domain)
-

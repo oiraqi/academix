@@ -42,3 +42,8 @@ class AssessmentSubmission(models.Model):
 	def _rgrade(self):
 		for rec in self:
 			rec.rgrade = rec.sudo().grade
+
+	def get_submission(self):
+		self.ensure_one()
+		domain = [('id', '=', self.id)]
+		return self._resolve_action('a3lms.action_assessment_submission', domain)
