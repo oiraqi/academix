@@ -35,7 +35,7 @@ class AssessmentLine(models.Model):
 	
 
 	submission_type = fields.Selection(related='assessment_id.submission_type')	
-	submission_ids = fields.Many2many('a3lms.assessment.line', 'a3lms_assessment_line_submission', 'submiddion_id', 'assessment_line_id', string='Submissions')
+	submission_ids = fields.Many2many('a3lms.assessment.submission', 'a3lms_assessment_line_submission', 'submiddion_id', 'assessment_line_id', string='Submissions')
 	grade = fields.Float(string='Grade', default=0.0)
 	penalty = fields.Float('Penalty', compute='_penalty')
 	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
