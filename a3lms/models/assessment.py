@@ -24,7 +24,7 @@ class Assessment(models.Model):
 	is_url_req = fields.Boolean(string='URL Required', default=False)
 	is_text_req = fields.Boolean(string='Inline Text Required', default=False)
 	teamwork = fields.Boolean(string='Teamwork', default=False)	
-	teamset_ids = fields.Many2many(comodel_name='a3lms.teamset', string='Team Set')
+	teamset_id = fields.Many2one(comodel_name='a3lms.teamset', string='Team Set')
 
 	due_time = fields.Datetime(string='Due')
 	from_time = fields.Datetime(string='Open from')
