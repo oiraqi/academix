@@ -22,7 +22,7 @@
 							<field name="penalty" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 						</group>
 						<group name="submissions" string="Submissions" attrs="{'invisible': [('submission_type', '!=', 'online')]}">
-							<field name="submission_id">
+							<field name="submission_ids">
 								<tree edit="false" create="false">
 									<field name="create_date"/>
 									<field name="write_date"/>
