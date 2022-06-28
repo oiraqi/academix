@@ -13,16 +13,16 @@
 							</h1>
 						</div>
 						<div class="oe_button_box" name="button_box">
-							<button name="get_teamsets" type="object" class="oe_stat_button" icon="fa-calendar-check">
+							<button name="get_teamsets" type="object" class="oe_stat_button" icon="fa-people-group">
 								<field name="nteamsets" string="Teams" widget="statinfo"/>
 							</button>
 							<button name="get_attendance" type="object" class="oe_stat_button" icon="fa-calendar-check">
 								<field name="nattendance_sheets" string="Att. Sheets" widget="statinfo"/>
 							</button>
-							<button name="get_assessments" type="object" class="oe_stat_button" icon="fa-pen-to-square">
+							<button name="get_assessments" type="object" class="oe_stat_button" icon="fa-edit">
 								<field name="nassessments" string="Assessments" widget="statinfo"/>
 							</button>
-							<button name="get_grade_matrix" type="object" class="oe_stat_button" icon="fa-pen-to-square">
+							<button name="get_grade_matrix" type="object" class="oe_stat_button" icon="fa-percent">
 								<field name="nassessment_lines" string="Grade Matrix" widget="statinfo"/>
 							</button>
 							<button name="get_students" type="object" class="oe_stat_button" icon="fa-users">
