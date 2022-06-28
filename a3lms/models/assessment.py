@@ -41,7 +41,7 @@ class Assessment(models.Model):
 	penalty_per_late_day = fields.Float(string='Penalty per Late Day (%)', default=0.0)	
 
 	assessment_line_ids = fields.One2many(comodel_name='a3lms.assessment.line', inverse_name='assessment_id', string='Assessment Lines')
-	submissions = fields.Char(string='Submissions', compute='_stats')
+	ngraded = fields.Char(string='Submissions', compute='_stats')
 	
 	max_grade = fields.Float(string='Max Grade', compute='_stats')
 	min_grade = fields.Float(string='Min Grade', compute='_stats')
@@ -54,7 +54,7 @@ class Assessment(models.Model):
 			rec.min_grade = 0
 			rec.avg_grade = 50
 			rec.stdev = 10
-			rec.submissions = '12/15'
+			rec.ngraded = '12/15'
 
 	def get_assessment_lines(self):
 		self.ensure_one()
