@@ -30,13 +30,13 @@
 							
 						</group>
 						<group name="teamwork" string="Teamwork" col="4">
-							<field name="teamwork" widget="radio" options="{'horizontal': True}"/>
+							<field name="teamwork"/>
 							<field name="teamset_id" attrs="{'invisible': [('teamwork', '=', False)], 'required': [('teamwork', '=', True)]}"
 								domain="[('course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 							<field name="course_id" invisible="1"/>
 						</group>						
 						<group name="timeline" string="Timeline(s)" col="4">
-							<field name="timeline"/>
+							<field name="timeline" widget="radio" options="{'horizontal': True}"/>
 							<field name="due_time" attrs="{'invisible': [('timeline', '!=', 'common')]}"/>
 							<field name="from_time" attrs="{'invisible': [('timeline', '!=', 'common')]}"/>
 							<field name="to_time" attrs="{'invisible': [('timeline', '!=', 'common')]}"/>
