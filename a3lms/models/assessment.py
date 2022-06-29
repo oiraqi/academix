@@ -44,6 +44,8 @@ class Assessment(models.Model):
 				rec.points = 0
 				rec.percentage = 0.0
 	
+	grade_weighting = fields.Selection(related='course_id.grade_weighting')
+	
 	bonus = fields.Float(string='Class-wide Bonus (%)', default=0.0)
 
 	@api.model
@@ -80,4 +82,3 @@ class Assessment(models.Model):
 		domain = [('assessment_id', '=', self.id)]
 		context = {'default_assessment_id': self.id}
 		return self._resolve_action('a3lms.action_assessment_submission', domain, context)
-	
