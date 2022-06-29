@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-
+from odoo.exceptions import ValidationError
 
 class Assessment(models.Model):
 	_name = 'a3lms.assessment'
@@ -54,14 +54,29 @@ class Assessment(models.Model):
 		for rec in self:
 			rec.graded = rec.points > 0
 
-	@api.constrains('percentage')
-	def _check_sum_percentages(self):
+	@api.constrains('points')
+	def _check_points(self):
 		for rec in self:
+			if rec.points < 0:
+				raise ValidationError('The assessment points must be >= 0')
+
+	@api.constrains('percentage')
+	def _check_percentage(self):
+		for rec in self:
+			if rec.percentage < 0 or rec.percentage > 100:
+				raise ValidationError('The assessment % must be between 0 and 100%')
+
 			rec.course_id.check_sum_percentages()
 	
 	grade_weighting = fields.Selection(related='course_id.grade_weighting')
 	
 	bonus = fields.Float(string='Class-wide Bonus (%)', default=0.0)
+
+	@api.constrains('bonus')
+	def _check_bonus(self):
+		for rec in self:
+			if rec.bonus < 0:
+				raise ValidationError('The assessment bonus must be >= 0')
 
 	@api.model
 	def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
@@ -69,7 +84,13 @@ class Assessment(models.Model):
 			fields.remove('bonus')
 		return super(Assessment, self).read_group(domain, fields, groupby, offset, limit, orderby, lazy)
 
-	penalty_per_late_day = fields.Float(string='Penalty per Late Day (%)', default=0.0)	
+	penalty_per_late_day = fields.Float(string='Penalty per Late Day (%)', default=0.0)
+
+	@api.constrains('penalty_per_late_day')
+	def _check_penalty(self):
+		for rec in self:
+			if rec.penalty_per_late_day < 0:
+				raise ValidationError('The assessment penalty per late day must be >= 0')
 
 	assessment_line_ids = fields.One2many(comodel_name='a3lms.assessment.line', inverse_name='assessment_id', string='Assessment Lines')
 	ngraded = fields.Char(string='Submissions', compute='_stats')
