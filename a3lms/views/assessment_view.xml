@@ -22,8 +22,17 @@
 							<field name="technique_id" readonly="1"/>
 							<field name="description" colspan="4"/>
 						</group>
-						<group name="grading" string="Grading" col="4">
+						<group name="grading_percentage" string="Grading"
+							 attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" col="4">
 							<field name="graded"/>
+							<field name="percentage"/>
+							<field name="bonus" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
+							<field name="penalty_per_late_day" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
+						</group>
+						<group name="grading_points" string="Grading"
+							 attrs="{'invisible': [('grade_weighting', '!=', 'points')]}" col="4">
+							<field name="graded"/>
+							<field name="points"/>
 							<field name="bonus" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
 							<field name="penalty_per_late_day" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
 						</group>

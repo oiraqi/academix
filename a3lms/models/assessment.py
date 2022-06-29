@@ -80,6 +80,4 @@ class Assessment(models.Model):
 		domain = [('assessment_id', '=', self.id)]
 		context = {'default_assessment_id': self.id}
 		return self._resolve_action('a3lms.action_assessment_submission', domain, context)
-
-
 	
