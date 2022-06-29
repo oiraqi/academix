@@ -60,3 +60,8 @@ access_a3lms_assessment_submission_student,access.a3lms.assessment.submission.st
 access_a3lms_assessment_timeline_faculty,access.a3lms.assessment.timeline.faculty,model_a3lms_assessment_timeline,a3.group_faculty,1,1,1,1
 access_a3lms_assessment_timeline_student,access.a3lms.assessment.timeline.student,model_a3lms_assessment_timeline,a3.group_student,1,0,0,0
 
+access_a3lms_resource_faculty,access.a3lms.resource.faculty,model_a3lms_resource,a3.group_faculty,1,1,1,1
+access_a3lms_resource_student,access.a3lms.resource.student,model_a3lms_resource,a3.group_student,1,0,0,0
+access_a3lms_resource_coordinator,access.a3lms.resource.coordinator,model_a3lms_resource,a3.group_coordinator,1,0,0,0
+access_a3lms_resource_vpaa,access.a3lms.resource.vpaa,model_a3lms_resource,a3.group_vpaa,1,0,0,0
+

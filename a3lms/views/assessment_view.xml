@@ -12,7 +12,7 @@
 								<field name="name" default_focus="1" placeholder="Name..."/>
 							</h1>
 						</div>
-						<div class="oe_button_box" name="button_box">
+						<div class="oe_button_box" name="button_box" attrs="{'invisible': [('graded', '=', False)]}">
 							<button name="get_assessment_lines" type="object" class="oe_stat_button" icon="fa-percent">
 								<field name="ngraded" string="Graded" widget="statinfo"/>
 							</button>
@@ -21,8 +21,14 @@
 							<field name="module_id" readonly="1"/>
 							<field name="technique_id" readonly="1"/>
 							<field name="description" colspan="4"/>
-						</group>						
-						<group name="submission_type" string="Submission Type" col="4">
+						</group>
+						<group name="grading" string="Grading" col="4">
+							<field name="graded"/>
+							<field name="bonus" attrs="{'invisible': [('graded', '=', False)]"} style="width: 15%"/>
+							<field name="penalty_per_late_day" attrs="{'invisible': [('graded', '=', False)]"} style="width: 15%"/>
+						</group>
+						<group name="submission_type" string="Submission Type"
+							attrs="{'invisible': [('graded', '=', False)]"} col="4">
 							<field name="submission_type" string="Type" required="1"/>
 							<field name="is_file_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 							<field name="is_url_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
@@ -57,11 +63,6 @@
 									<field name="team_ids" invisible="1"/>
 								</tree>
 							</field>
-						</group>
-						
-						<group name="bonus_penalty" string="Bonus &#38; Penalty" col="4">
-							<field name="bonus" style="width: 15%"/>
-							<field name="penalty_per_late_day" style="width: 15%"/>
 						</group>
 						<group name="stats" string="Statistics" col="4">
 							<field name="max_grade"/>
@@ -127,6 +128,7 @@
 					<field name="from_time"/>
 					<field name="to_time"/>
 					<field name="due_time"/>
+					<field name="graded"/>
 					<field name="points" sum="Total Points"/>
 					<field name="bonus"/>
 					<field name="max_grade"/>
