@@ -24,7 +24,7 @@
 						</group>
 						<group name="grading" string="Grading" col="4">
 							<field name="graded"/>
-							<field name="bonus" attrs="{'invisible': [('graded', '=', False)]"} style="width: 15%"/>
+							<field name="bonus" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
 							<field name="penalty_per_late_day" attrs="{'invisible': [('graded', '=', False)]"} style="width: 15%"/>
 						</group>
 						<group name="submission_type" string="Submission Type"
