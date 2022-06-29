@@ -21,9 +21,9 @@
 							<field name="module_id" readonly="1"/>
 							<field name="technique_id" readonly="1"/>
 							<field name="description" colspan="4"/>
-						</group>
+						</group>						
 						<group name="submission_type" string="Submission Type" col="4">
-							<field name="submission_type" string="Type"/>
+							<field name="submission_type" string="Type" required="1"/>
 							<field name="is_file_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 							<field name="is_url_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 							<field name="is_text_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
@@ -34,11 +34,23 @@
 							<field name="teamset_id" attrs="{'invisible': [('teamwork', '=', False)], 'required': [('teamwork', '=', True)]}"
 								domain="[('course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 							<field name="course_id" invisible="1"/>
-						</group>
-						<group name="submission_plan" string="Submission Plan" col="4">
-							<field name="from_time"/>
-							<field name="to_time"/>
-							<field name="due_time"/>
+						</group>						
+						<group name="timeline" string="Timeline(s)" col="4">
+							<field name="timeline"/>
+							<field name="due_time" attrs="{'invisible': [('timeline', '!=', 'common')]}"/>
+							<field name="from_time" attrs="{'invisible': [('timeline', '!=', 'common')]}"/>
+							<field name="to_time" attrs="{'invisible': [('timeline', '!=', 'common')]}"/>
+							<field name="timeline_ids" attrs="{'invisible': [('timeline', '!=', 'dedicated')]}" colspan="4">
+								<tree>
+									<field name="targetted_student_ids" widget="many2many_tags"
+										attrs="{'column_invisible': [('parent.teamwork', '=', True)]}"/>
+									<field name="targetted_team_ids" widget="many2many_tags"
+										attrs="{'column_invisible': [('parent.teamwork', '=', False)]}"/>
+									<field name="due_time"/>
+									<field name="from_time"/>
+									<field name="to_time"/>
+								</tree>
+							</field>
 						</group>
 						
 						<group name="bonus_penalty" string="Bonus &#38; Penalty" col="4">

@@ -57,3 +57,6 @@ access_a3lms_team_membership_student,access.a3lms.team.membership.student,model_
 access_a3lms_assessment_submission_faculty,access.a3lms.assessment.submission.faculty,model_a3lms_assessment_submission,a3.group_faculty,1,1,0,0
 access_a3lms_assessment_submission_student,access.a3lms.assessment.submission.student,model_a3lms_assessment_submission,a3.group_student,1,1,1,0
 
+access_a3lms_assessment_timeline_faculty,access.a3lms.assessment.timeline.faculty,model_a3lms_assessment_timeline,a3.group_faculty,1,1,1,1
+access_a3lms_assessment_timeline_student,access.a3lms.assessment.timeline.student,model_a3lms_assessment_timeline,a3.group_student,1,0,0,0
+

@@ -19,7 +19,7 @@ class Assessment(models.Model):
 	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', related='course_id.technique_ids')
 	module_ids = fields.One2many(comodel_name='a3lms.module', related='course_id.module_ids')
 
-	submission_type = fields.Selection(string='Submission Type', selection=[('nosub', 'No Submission'), ('online', 'Online'), ('paper', 'Paper')], default='online')
+	submission_type = fields.Selection(string='Submission Type', selection=[('nosub', 'No Submission / Self-assessment'), ('online', 'Online'), ('paper', 'Paper')], default='online')
 	is_file_req = fields.Boolean(string='File Required', default=False)
 	is_url_req = fields.Boolean(string='URL Required', default=False)
 	is_text_req = fields.Boolean(string='Inline Text Required', default=False)
@@ -29,6 +29,9 @@ class Assessment(models.Model):
 	due_time = fields.Datetime(string='Due')
 	from_time = fields.Datetime(string='Open from')
 	to_time = fields.Datetime(string='Until')
+
+	timeline_ids = fields.One2many(comodel_name='a3lms.assessment.timeline', inverse_name='assessment_id', string='Dedicated Timelines')
+	
 
 	bonus = fields.Float(string='Class-wide Bonus (%)', default=0.0)
 
