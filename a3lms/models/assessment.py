@@ -47,12 +47,12 @@ class Assessment(models.Model):
 	@api.onchange('percentage')
 	def _percentage(self):
 		for rec in self:
-			rec.graded = rec.percentage == 0
+			rec.graded = rec.percentage > 0
 
 	@api.onchange('points')
 	def _points(self):
 		for rec in self:
-			rec.graded = rec.points == 0
+			rec.graded = rec.points > 0
 	
 	grade_weighting = fields.Selection(related='course_id.grade_weighting')
 	
