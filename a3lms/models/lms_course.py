@@ -104,7 +104,14 @@ class LmsCourse(models.Model):
 	
 	details = fields.Html(string='More Details')
 
-	
+	@api.constrains('grade_weighting', 'assessment_ids')
+	def check_sum_percentages(self):
+		for rec in self:
+			if rec.grade_weighting != 'percentage' or not rec.assessment_ids:
+				continue
+			
+			if sum([assessment.percentage for assessment in rec.assessment_ids]) > 100:
+				raise ValidationError('The sum of assessment percentages cannot exceed 100%')
 		
 	def get_students(self):
 		self.ensure_one()
