@@ -53,6 +53,11 @@ class Assessment(models.Model):
 	def _points(self):
 		for rec in self:
 			rec.graded = rec.points > 0
+
+	@api.constrains('percentage')
+	def _check_sum_percentages(self):
+		for rec in self:
+			rec.course_id.check_sum_percentages()
 	
 	grade_weighting = fields.Selection(related='course_id.grade_weighting')
 	

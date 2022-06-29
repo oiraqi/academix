@@ -104,8 +104,8 @@ class LmsCourse(models.Model):
 	
 	details = fields.Html(string='More Details')
 
-	@api.constrains('grade_weighting', 'assessment_ids.percentage')
-	def _check_sum_percentages(self):
+	@api.constrains('grade_weighting', 'assessment_ids')
+	def check_sum_percentages(self):
 		for rec in self:
 			if rec.grade_weighting != 'percentage' or not rec.assessment_ids:
 				continue
