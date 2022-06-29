@@ -28,6 +28,7 @@
 							<field name="percentage"/>
 							<field name="bonus" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
 							<field name="penalty_per_late_day" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
+							<field name="grade_weighting" invisible="1"/>
 						</group>
 						<group name="grading_points" string="Grading"
 							 attrs="{'invisible': [('grade_weighting', '!=', 'points')]}" col="4">
@@ -35,6 +36,7 @@
 							<field name="points"/>
 							<field name="bonus" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
 							<field name="penalty_per_late_day" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
+							<field name="grade_weighting" invisible="1"/>
 						</group>
 						<group name="submission_type" string="Submission Type"
 							attrs="{'invisible': [('graded', '=', False)]}" col="4">
@@ -42,7 +44,6 @@
 							<field name="is_file_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 							<field name="is_url_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 							<field name="is_text_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
-							
 						</group>
 						<group name="teamwork" string="Teamwork" col="4">
 							<field name="teamwork"/>
