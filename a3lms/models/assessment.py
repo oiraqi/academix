@@ -26,7 +26,7 @@ class Assessment(models.Model):
 	teamwork = fields.Boolean(string='Teamwork', default=False)	
 	teamset_id = fields.Many2one(comodel_name='a3lms.teamset', string='Team Set')
 
-	timeline = fields.Selection(string='Timeline', selection=[('common', 'Common'), ('dedicated', 'Dedicated'),])
+	timeline = fields.Selection(string='Timeline', selection=[('common', 'Common'), ('dedicated', 'Dedicated')], default='common', required=True)
 	
 
 	due_time = fields.Datetime(string='Due')

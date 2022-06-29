@@ -10,5 +10,8 @@ class AssessmentTimeline(models.Model):
 	targetted_team_ids = fields.Many2many(comodel_name='a3lms.team', string='Teams')
 	due_time = fields.Datetime(string='Due')
 	from_time = fields.Datetime(string='Open from')
-	to_time = fields.Datetime(string='Until')	
+	to_time = fields.Datetime(string='Until')
+	student_ids = fields.One2many(comodel_name='a3.student', related='assessment_id.course_id.student_ids')
+	team_ids = fields.One2many(comodel_name='a3lms.team', related='assessment_id.teamset_id.team_ids')
 	
+		

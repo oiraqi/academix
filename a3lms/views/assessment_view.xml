@@ -30,7 +30,7 @@
 							
 						</group>
 						<group name="teamwork" string="Teamwork" col="4">
-							<field name="teamwork"/>
+							<field name="teamwork" widget="radio" options="{'horizontal': True}"/>
 							<field name="teamset_id" attrs="{'invisible': [('teamwork', '=', False)], 'required': [('teamwork', '=', True)]}"
 								domain="[('course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 							<field name="course_id" invisible="1"/>
@@ -41,14 +41,20 @@
 							<field name="from_time" attrs="{'invisible': [('timeline', '!=', 'common')]}"/>
 							<field name="to_time" attrs="{'invisible': [('timeline', '!=', 'common')]}"/>
 							<field name="timeline_ids" attrs="{'invisible': [('timeline', '!=', 'dedicated')]}" colspan="4">
-								<tree>
+								<tree editable="bottom">
 									<field name="targetted_student_ids" widget="many2many_tags"
-										attrs="{'column_invisible': [('parent.teamwork', '=', True)]}"/>
+										domain="[('id', 'in', student_ids)]"
+										attrs="{'column_invisible': [('parent.teamwork', '=', True)]}"
+										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="targetted_team_ids" widget="many2many_tags"
-										attrs="{'column_invisible': [('parent.teamwork', '=', False)]}"/>
+									domain="[('id', 'in', team_ids)]"
+										attrs="{'column_invisible': [('parent.teamwork', '=', False)]}"
+										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="due_time"/>
 									<field name="from_time"/>
 									<field name="to_time"/>
+									<field name="student_ids" invisible="1"/>
+									<field name="team_ids" invisible="1"/>
 								</tree>
 							</field>
 						</group>
