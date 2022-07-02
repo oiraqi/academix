@@ -22,8 +22,6 @@
         'views/school_view.xml',
         'views/student_view.xml',
         'views/catalog_menu.xml',
-        'data/ucourses.xml',
-        'data/corequisites.xml',
     ],
     'installable': True,
     'auto_install': False,

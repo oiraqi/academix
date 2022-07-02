@@ -23,7 +23,6 @@
         'views/faculty_view.xml',
         'views/student_view.xml',
         'views/roster_menu.xml',
-        'data/standard_events.xml',
     ],
     'installable': True,
     'auto_install': False,
