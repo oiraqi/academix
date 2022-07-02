@@ -5,6 +5,8 @@
 - Infinite eXpansion
 - Best-in-class Coverage
 - Ideal Uer eXperience
+  - eXtreme automation
+  - No data is ever entered twice
 
 ## The Unique Strengths
 - The vision
