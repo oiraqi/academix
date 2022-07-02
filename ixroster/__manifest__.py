@@ -22,7 +22,7 @@
         'views/reservation_view.xml',
         'views/faculty_view.xml',
         'views/student_view.xml',
-        'views/ixroster_menu.xml',
+        'views/roster_menu.xml',
         'data/standard_events.xml',
     ],
     'installable': True,
