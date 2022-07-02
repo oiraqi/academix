@@ -18,7 +18,7 @@ class Assessment(models.Model):
 	grade_weighting = fields.Selection(related='course_id.grade_weighting')
 	points = fields.Integer(string='Points', default=0)
 	percentage = fields.Float(string='%', default=0.0)
-	max_grade = fields.Integer(string='Grade', default=100)
+	grade_scale = fields.Integer(string='Graded over', default=100)
 
 	@api.onchange('graded')
 	def _graded(self):
@@ -26,21 +26,21 @@ class Assessment(models.Model):
 			if not rec.graded:
 				rec.points = 0
 				rec.percentage = 0.0
-				rec.max_grade = 0
+				rec.grade_scale = 0
 
 	@api.onchange('grade_weighting', 'points', 'percentage')
-	def _percentage_points_max_grade(self):
+	def _percentage_points_grade_scale(self):
 		for rec in self:
 			if rec.grade_weighting == 'percentage':
 				if rec.percentage > 0:
 					rec.graded = True
-				rec.max_grade = 100
+				rec.grade_scale = 100
 			elif rec.grade_weighting == 'points':
 				if rec.points > 0:
 					rec.graded = True				
-					rec.max_grade = rec.points
+					rec.grade_scale = rec.points
 				elif rec.graded:
-					rec.max_grade = 100
+					rec.grade_scale = 100
 				
 
 	
