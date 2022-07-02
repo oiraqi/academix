@@ -11,5 +11,5 @@ class Chapter(models.Model):
 	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
 	course_id = fields.Many2one(comodel_name='ixlms.course', related='module_id.course_id', store=True)
 	start_date = fields.Date(string='Start Date')
-	nsessions = fields.Integer(string='Sessions')	
+	nsessions = fields.Integer(string='Sessions')
 		
