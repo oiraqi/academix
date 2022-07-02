@@ -39,7 +39,7 @@ class Assessment(models.Model):
 				if rec.points > 0:
 					rec.graded = True				
 					rec.grade_scale = rec.points
-				elif rec.graded:
+				elif rec.graded and rec.grade_scale == 0:
 					rec.grade_scale = 100
 				
 
