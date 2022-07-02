@@ -90,6 +90,7 @@ class Enrollment(models.Model):
             else:
                 rec.attendance_rate = 100
             lms_course_id = rec.section_id.lms_course_id
+            rec.attendance_grade = 100
             if lms_course_id.attendance_weight > 0:
                 if lms_course_id.zero_after_max_abs and rec.nabsences >= lms_course_id.max_absences:
                     rec.attendance_grade = 0
