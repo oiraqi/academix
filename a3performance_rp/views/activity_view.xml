@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="view_activity_form" model="ir.ui.view">
-            <field name="name">a3performance.rp.activity.form</field>
-            <field name="model">a3performance.rp.activity</field>
+            <field name="name">ixperformance.rp.activity.form</field>
+            <field name="model">ixperformance.rp.activity</field>
             <field name="arch" type="xml">
                 <form string="Activity">
                     <field name="locked" invisible="1"/>
@@ -40,8 +40,8 @@
             </field>
         </record>
         <record id="view_activity_tree" model="ir.ui.view">
-            <field name="name">a3performance.rp.activity.tree</field>
-            <field name="model">a3performance.rp.activity</field>
+            <field name="name">ixperformance.rp.activity.tree</field>
+            <field name="model">ixperformance.rp.activity</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Activities">
@@ -55,7 +55,7 @@
         <record id="action_activity" model="ir.actions.act_window">
             <field name="name">Research Activities</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3performance.rp.activity</field>
+            <field name="res_model">ixperformance.rp.activity</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': 'year'}</field>

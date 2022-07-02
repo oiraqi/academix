@@ -2,12 +2,12 @@
 <odoo>
     <data>
         <record id="view_sd_process_form" model="ir.ui.view">
-            <field name="name">a3performance.sd.process.form</field>
-            <field name="model">a3performance.process</field>
-            <field name="inherit_id" ref="a3performance.view_process_form"/>
+            <field name="name">ixperformance.sd.process.form</field>
+            <field name="model">ixperformance.process</field>
+            <field name="inherit_id" ref="ixperformance.view_process_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='sd']" position="inside">
-                    <group col="4" string="SD Goals &#38; KPIs" groups="a3.group_faculty">
+                    <group col="4" string="SD Goals &#38; KPIs" groups="ix.group_faculty">
                         <field name="sd_goal_achievement" widget="badge" decoration-danger="sd_goal_progress &lt; 30" decoration-warning="sd_goal_progress &gt;= 30 and sd_goal_progress &lt; 60" decoration-info="sd_goal_progress &gt;= 60 and sd_goal_progress &lt; 100" decoration-success="sd_goal_progress &gt;= 100"/>
                         <field name="sd_goal_progress" widget="progressbar" decoration-danger="sd_goal_progress &lt; 30" decoration-warning="sd_goal_progress &gt;= 30 and sd_goal_progress &lt; 60" decoration-info="sd_goal_progress &gt;= 60 and sd_goal_progress &lt; 100" decoration-success="sd_goal_progress &gt;= 100"/>
                         <field name="sd_goal_ids" colspan="4">
@@ -36,24 +36,24 @@
                         <field name="sd_narrative" nolabel="1"/>
                     </group>
                     <group name="sd_committee_review" string="SD Committee Review"
-                        groups="a3performance.group_committee_member,a3.group_dean,a3.group_vpaa">
+                        groups="ixperformance.group_committee_member,ix.group_dean,ix.group_vpaa">
                         <field name="sd_committee_review" nolabel="1"/>
                     </group>
                     <group name="sd_dean_review" string="SD Dean Review"
-                        groups="a3.group_dean,a3.group_vpaa">
+                        groups="ix.group_dean,ix.group_vpaa">
                         <field name="sd_dean_review" nolabel="1"/>
                     </group>
                     <group name="sd_vpaa_review" string="SD VPAA Review"
-                        groups="a3.group_dean,a3.group_vpaa">
+                        groups="ix.group_dean,ix.group_vpaa">
                         <field name="sd_vpaa_review" nolabel="1"/>
                     </group>
                 </xpath>
             </field>
         </record>
         <record id="view_process_tree_sd" model="ir.ui.view">
-            <field name="name">a3performance.sd.process.tree</field>
-            <field name="model">a3performance.process</field>
-            <field name="inherit_id" ref="a3performance.view_process_tree"/>
+            <field name="name">ixperformance.sd.process.tree</field>
+            <field name="model">ixperformance.process</field>
+            <field name="inherit_id" ref="ixperformance.view_process_tree"/>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='type']" position="after">                    

@@ -2,30 +2,30 @@
 <odoo>
     <data>
         <record id="view_process_form" model="ir.ui.view">
-            <field name="name">a3performance.process.form</field>
-            <field name="model">a3performance.process</field>
+            <field name="name">ixperformance.process.form</field>
+            <field name="model">ixperformance.process</field>
             <field name="arch" type="xml">
                 <form string="Process">
                     <header>
-                        <button name="faculty_to_f2c" states="faculty" string="Submit To Committee" type="object" class="oe_highlight" groups="a3.group_faculty"/>
-                        <button name="f2c_to_faculty" states="f2c" string="Bring Back" type="object" class="oe_highlight" groups="a3.group_faculty"/>
+                        <button name="faculty_to_f2c" states="faculty" string="Submit To Committee" type="object" class="oe_highlight" groups="ix.group_faculty"/>
+                        <button name="f2c_to_faculty" states="f2c" string="Bring Back" type="object" class="oe_highlight" groups="ix.group_faculty"/>
 
-                        <button name="f2c_to_committee" states="f2c" string="Accept" type="object" class="oe_highlight" groups="a3performance.group_committee_chair"/>
-                        <button name="committee_to_f2c" states="committee" string="Return to Faculty" type="object" class="oe_highlight" groups="a3performance.group_committee_chair"/>
+                        <button name="f2c_to_committee" states="f2c" string="Accept" type="object" class="oe_highlight" groups="ixperformance.group_committee_chair"/>
+                        <button name="committee_to_f2c" states="committee" string="Return to Faculty" type="object" class="oe_highlight" groups="ixperformance.group_committee_chair"/>
 
-                        <button name="committee_to_c2d" states="committee" string="Submit To Dean" type="object" class="oe_highlight" groups="a3performance.group_committee_chair"/>
-                        <button name="c2d_to_committee" states="c2d" string="Bring Back To Committee" type="object" class="oe_highlight" groups="a3performance.group_committee_chair"/>
+                        <button name="committee_to_c2d" states="committee" string="Submit To Dean" type="object" class="oe_highlight" groups="ixperformance.group_committee_chair"/>
+                        <button name="c2d_to_committee" states="c2d" string="Bring Back To Committee" type="object" class="oe_highlight" groups="ixperformance.group_committee_chair"/>
 
-                        <button name="c2d_to_dean" states="c2d" string="Receive from Committee" type="object" class="oe_highlight" groups="a3.group_dean"/>
-                        <button name="dean_to_c2d" states="dean" string="Return To Committee" type="object" class="oe_highlight" groups="a3.group_dean"/>
+                        <button name="c2d_to_dean" states="c2d" string="Receive from Committee" type="object" class="oe_highlight" groups="ix.group_dean"/>
+                        <button name="dean_to_c2d" states="dean" string="Return To Committee" type="object" class="oe_highlight" groups="ix.group_dean"/>
 
-                        <button name="dean_to_d2v" states="dean" string="Submit To VPAA" type="object" class="oe_highlight" groups="a3.group_dean"/>
-                        <button name="d2v_to_dean" states="d2v" string="Bring Back" type="object" class="oe_highlight" groups="a3.group_dean"/>
+                        <button name="dean_to_d2v" states="dean" string="Submit To VPAA" type="object" class="oe_highlight" groups="ix.group_dean"/>
+                        <button name="d2v_to_dean" states="d2v" string="Bring Back" type="object" class="oe_highlight" groups="ix.group_dean"/>
 
-                        <button name="d2v_to_vpaa" states="d2v" string="Receive from Dean" type="object" class="oe_highlight" groups="a3.group_vpaa"/>
-                        <button name="vpaa_to_d2v" states="vpaa" string="Return To Dean" type="object" class="oe_highlight" groups="a3.group_vpaa"/>
+                        <button name="d2v_to_vpaa" states="d2v" string="Receive from Dean" type="object" class="oe_highlight" groups="ix.group_vpaa"/>
+                        <button name="vpaa_to_d2v" states="vpaa" string="Return To Dean" type="object" class="oe_highlight" groups="ix.group_vpaa"/>
 
-                        <button name="vpaa_to_done" states="vpaa" string="Mark as Done" type="object" class="oe_highlight" groups="a3.group_vpaa"/>
+                        <button name="vpaa_to_done" states="vpaa" string="Mark as Done" type="object" class="oe_highlight" groups="ix.group_vpaa"/>
 
                         <field name="state" widget="statusbar" statusbar_visible="faculty,committee,dean,vpaa,done"/>
                     </header>
@@ -59,11 +59,11 @@
                                 <group string="Overall Self-Evaluation">
                                     <field name="overall_self_evaluation" nolabel="1" widget="html"/>
                                 </group>
-                                <group string="Committee's Overall Evaluation" groups="a3performance.group_committee_member,a3.group_dean,a3.group_vpaa">
+                                <group string="Committee's Overall Evaluation" groups="ixperformance.group_committee_member,ix.group_dean,ix.group_vpaa">
                                     <field name="committee_recommendation" widget="radio" options="{'horizontal': True}"/>
                                     <field name="committee_feedback" widget="html"/>
                                 </group>
-                                <group string="Dean's Overall Evaluation" groups="a3.group_dean,a3.group_vpaa">
+                                <group string="Dean's Overall Evaluation" groups="ix.group_dean,ix.group_vpaa">
                                     <field name="dean_recommendation" widget="radio" options="{'horizontal': True}"/>
                                     <field name="dean_new_rank" widget="radio" options="{'horizontal': True}"/>
                                     <field name="dean_new_srank_id" domain="[('rank', '=', dean_new_rank)]"/>
@@ -86,8 +86,8 @@
             </field>
         </record>
         <record id="view_process_tree" model="ir.ui.view">
-            <field name="name">a3performance.process.tree</field>
-            <field name="model">a3performance.process</field>
+            <field name="name">ixperformance.process.tree</field>
+            <field name="model">ixperformance.process</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Processes">
@@ -105,7 +105,7 @@
         <record id="action_process" model="ir.actions.act_window">
             <field name="name">Processes</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3performance.process</field>
+            <field name="res_model">ixperformance.process</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{}</field>

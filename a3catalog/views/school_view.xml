@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-        <!-- a3.school inherit form view -->
+        <!-- ix.school inherit form view -->
         <record id="view_school_form_catalog" model="ir.ui.view">
-            <field name="name">a3.school.inherit.view.form</field>
-            <field name="model">a3.school</field>
-            <field name="inherit_id" ref="a3.view_school_form"/>
+            <field name="name">ix.school.inherit.view.form</field>
+            <field name="model">ix.school</field>
+            <field name="inherit_id" ref="ix.view_school_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook/page[@name='disciplines']" position="before">
                         <page name="programs" string="Programs">

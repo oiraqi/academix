@@ -2,7 +2,7 @@
 ###############################################################################
 #
 #    Al Akhawayn University in Ifrane -- AUI
-#    Copyright (C) 2022-TODAY AUI(<http://www.a3ma>).
+#    Copyright (C) 2022-TODAY AUI(<http://www.ixma>).
 #
 #    Author: Omar Iraqi Houssaini | https://github.com/oiraqi
 #
@@ -28,9 +28,9 @@ from datetime import date
 SEMESTERS = {'1': 'SP', '3': 'FA'}
 
 class Process(models.Model):
-    _name = 'a3performance.process'
+    _name = 'ixperformance.process'
     _description = 'Evaluation Process'
-    _inherit = ['a3.faculty.owned', 'mail.thread']
+    _inherit = ['ix.faculty.owned', 'mail.thread']
     _order = 'from_year,from_semester'
     _sql_constraints = [('from_to_ukey', 'unique(from_year, to_year, from_semester, to_semester)', 'An evaluation process for the selected period already exists')]
 
@@ -66,14 +66,14 @@ class Process(models.Model):
     name = fields.Char('Evaluation Process', compute='_set_name', store=True)
     hiring_date = fields.Date(related='faculty_id.hiring_date')
     rank = fields.Selection([('D', 'Lecturer'), ('C', 'Assistant Professor'), (
-        'B', 'Associate Professor'), ('A', 'Full Professor')], 'Rank', default=lambda self: self.env['a3.faculty'].search(
+        'B', 'Associate Professor'), ('A', 'Full Professor')], 'Rank', default=lambda self: self.env['ix.faculty'].search(
             [('partner_id', '=', self.env.user.partner_id.id)]).rank, required=True)
 
     @api.onchange('rank')
     def _onchange_rank(self):
         for rec in self:
             if rec.rank:
-                records = self.env['a3performance.srank'].search([('rank', '=', rec.rank)])
+                records = self.env['ixperformance.srank'].search([('rank', '=', rec.rank)])
                 if records:
                     rec.srank_id = records[0]
                 else:
@@ -81,7 +81,7 @@ class Process(models.Model):
             else:
                 rec.srank_id = False
 
-    srank_id = fields.Many2one('a3performance.srank', string='Sub-Rank', default=lambda self: self.env['a3.faculty'].search(
+    srank_id = fields.Many2one('ixperformance.srank', string='Sub-Rank', default=lambda self: self.env['ix.faculty'].search(
             [('partner_id', '=', self.env.user.partner_id.id)]).srank_id, required=True)
     state = fields.Selection([('faculty', 'Faculty'), ('f2c', 'Submitted'),
                              ('committee', 'Committee'), ('c2d',
@@ -103,11 +103,11 @@ class Process(models.Model):
         [('1', 'Spring'), ('3', 'Fall')], 'To', default='1', required=True,
         readonly=True, states={'faculty': [('readonly', False)]})
     period = fields.Char('Period under Evaluation', compute='_set_name')
-    previous_process_id = fields.Many2one('a3performance.process', string='Previous Evaluation', compute='_previous_process_id')
+    previous_process_id = fields.Many2one('ixperformance.process', string='Previous Evaluation', compute='_previous_process_id')
 
     def _previous_process_id(self):
         for rec in self:
-            records = self.env['a3performance.process'].search([('faculty_id.user_id', '=', self.env.user.id), ('state', '=', 'done')], order='from_year desc,from_semester desc')
+            records = self.env['ixperformance.process'].search([('faculty_id.user_id', '=', self.env.user.id), ('state', '=', 'done')], order='from_year desc,from_semester desc')
             if records:
                 rec.previous_process_id = records[0]
             else:
@@ -164,28 +164,28 @@ class Process(models.Model):
     committee_recommendation = fields.Selection(
         [('promote', 'Promote'), ('not_promote', "Don't promote")], 'Recommendation',
         readonly=True, states={'committee': [('readonly', False)]},
-        groups='a3performance.group_committee_member,a3.group_dean,a3.group_vpaa')
+        groups='ixperformance.group_committee_member,ix.group_dean,ix.group_vpaa')
     committee_feedback = fields.Html("Feedback",
                                      readonly=True, states={'committee': [('readonly', False)]},
-                                     groups='a3performance.group_committee_member,a3.group_dean,a3.group_vpaa')
+                                     groups='ixperformance.group_committee_member,ix.group_dean,ix.group_vpaa')
 
     # Dean section
     dean_recommendation = fields.Selection(
         [('promote', 'Promote'), ('not_promote', "Don't promote")], 'Recommendation',
         readonly=True, states={'dean': [('readonly', False)]},
-        groups='a3.group_dean,a3.group_vpaa')
+        groups='ix.group_dean,ix.group_vpaa')
     dean_new_rank = fields.Selection([('D', 'Lecturer'), ('C', 'Assistant Professor'), (
         'B', 'Associate Professor'), ('A', 'Full Professor')], 'New Rank',
         readonly=True, states={'dean': [('readonly', False)]},
         attrs="{'invisible': [('dean_recommendation', '=', 'not_promote')], 'required': [('dean_recommendation', '=', 'promote')]}",
-        groups='a3.group_dean,a3.group_vpaa')
-    dean_new_srank_id = fields.Many2one('a3performance.srank', string='New Sub-Rank',
+        groups='ix.group_dean,ix.group_vpaa')
+    dean_new_srank_id = fields.Many2one('ixperformance.srank', string='New Sub-Rank',
                                         readonly=True, states={'dean': [('readonly', False)]},
                                         attrs="{'invisible': [('dean_recommendation', '=', 'not_promote')], 'required': [('dean_recommendation', '=', 'promote')]}",
-                                        groups='a3.group_dean,a3.group_vpaa')
+                                        groups='ix.group_dean,ix.group_vpaa')
     dean_feedback = fields.Html("Feedback",
                                 readonly=True, states={'dean': [('readonly', False)]},
-                                groups='a3.group_dean,a3.group_vpaa')
+                                groups='ix.group_dean,ix.group_vpaa')
 
     # VPAA section
     vpaa_decision = fields.Selection(
@@ -195,7 +195,7 @@ class Process(models.Model):
         'B', 'Associate Professor'), ('A', 'Full Professor')], 'New Rank',
         readonly=True, states={'vpaa': [('readonly', False)]},
         attrs="{'invisible': [('vpaa_decision', '=', 'not_promote')], 'required': [('vpaa_decision', '=', 'promote')]}")
-    vpaa_new_srank_id = fields.Many2one('a3performance.srank', string='New Sub-Rank',
+    vpaa_new_srank_id = fields.Many2one('ixperformance.srank', string='New Sub-Rank',
                                         readonly=True, states={'vpaa': [('readonly', False)]},
                                         attrs="{'invisible': [('vpaa_decision', '=', 'not_promote')], 'required': [('vpaa_decision', '=', 'promote')]}")
     vpaa_feedback = fields.Html("Feedback",

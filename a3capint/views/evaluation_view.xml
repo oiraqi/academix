@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-        <!-- a3capint.evaluation form view -->
+        <!-- ixcapint.evaluation form view -->
         <record id="model_name_view_form" model="ir.ui.view">
-            <field name="name">a3capint.evaluation.view.form</field>
-            <field name="model">a3capint.evaluation</field>
+            <field name="name">ixcapint.evaluation.view.form</field>
+            <field name="model">ixcapint.evaluation</field>
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>

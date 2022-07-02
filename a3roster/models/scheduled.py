@@ -2,7 +2,7 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 
 class Scheduled(models.AbstractModel):
-    _name = 'a3roster.scheduled'
+    _name = 'ixroster.scheduled'
     _description = 'Scheduled with recurrence'
     
     start_timeslot = fields.Float(string='Start Time', required=True)

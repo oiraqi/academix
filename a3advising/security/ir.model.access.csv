@@ -1,8 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_a3advising_planned_course_student,access.a3advising.planned.course.student,model_a3advising_planned_course,a3.group_student,1,1,1,0
-access_a3advising_planned_course_faculty,access.a3advising.planned.course.faculty,model_a3advising_planned_course,a3.group_faculty,1,1,1,0
-access_a3advising_planned_course_coordinator,access.a3advising.planned.course.coordinator,model_a3advising_planned_course,a3.group_coordinator,1,1,1,0
+access_ixadvising_planned_course_student,access.ixadvising.planned.course.student,model_ixadvising_planned_course,ix.group_student,1,1,1,0
+access_ixadvising_planned_course_faculty,access.ixadvising.planned.course.faculty,model_ixadvising_planned_course,ix.group_faculty,1,1,1,0
+access_ixadvising_planned_course_coordinator,access.ixadvising.planned.course.coordinator,model_ixadvising_planned_course,ix.group_coordinator,1,1,1,0
 
-access_a3advising_degree_plan_student,access.a3advising.degree.plan.student,model_a3advising_degree_plan,a3.group_student,1,1,1,0
-access_a3advising_degree_plan_faculty,access.a3advising.degree.plan.faculty,model_a3advising_degree_plan,a3.group_faculty,1,1,1,0
-access_a3advising_degree_plan_coordinator,access.a3advising.degree.plan.coordinator,model_a3advising_degree_plan,a3.group_coordinator,1,1,1,0
+access_ixadvising_degree_plan_student,access.ixadvising.degree.plan.student,model_ixadvising_degree_plan,ix.group_student,1,1,1,0
+access_ixadvising_degree_plan_faculty,access.ixadvising.degree.plan.faculty,model_ixadvising_degree_plan,ix.group_faculty,1,1,1,0
+access_ixadvising_degree_plan_coordinator,access.ixadvising.degree.plan.coordinator,model_ixadvising_degree_plan,ix.group_coordinator,1,1,1,0

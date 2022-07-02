@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-        <!-- a3.student inherit form view -->
+        <!-- ix.student inherit form view -->
         <record id="view_student_form_advising" model="ir.ui.view">
-            <field name="name">a3.student.inherit.view.form</field>
-            <field name="model">a3.student</field>
-            <field name="inherit_id" ref="a3.view_student_form"/>
+            <field name="name">ix.student.inherit.view.form</field>
+            <field name="model">ix.student</field>
+            <field name="inherit_id" ref="ix.view_student_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='school_id']" position="after">
                     <field name="program_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
@@ -15,9 +15,9 @@
         </record>
 
         <record id="view_student_tree_advising" model="ir.ui.view">
-            <field name="name">a3.student.inherit.view.form</field>
-            <field name="model">a3.student</field>
-            <field name="inherit_id" ref="a3.view_student_tree"/>
+            <field name="name">ix.student.inherit.view.form</field>
+            <field name="model">ix.student</field>
+            <field name="inherit_id" ref="ix.view_student_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="advisor_id"/>
@@ -25,10 +25,10 @@
             </field>
         </record>
 
-        <record id="a3.action_student" model="ir.actions.act_window">
+        <record id="ix.action_student" model="ir.actions.act_window">
             <field name="name">Students</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3.student</field>
+            <field name="res_model">ix.student</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': ['school_id', 'program_id']}</field>

@@ -11,7 +11,7 @@
         '',
     ],
     'depends': [
-        'a3roster',
+        'ixroster',
     ],
     'data': [
         'security/lms_security.xml',

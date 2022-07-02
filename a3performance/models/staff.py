@@ -25,7 +25,7 @@ from odoo import models, fields
 
 
 class Staff(models.Model):
-    _inherit = 'a3.staff'
+    _inherit = 'ix.staff'
 
     is_committee_member = fields.Boolean('EC Member', default=False)
     is_committee_chair = fields.Boolean('EC Chair', default=False)
@@ -33,8 +33,8 @@ class Staff(models.Model):
     def write(self, vals):
         for staff in self:
             if 'is_committee_chair' in vals and vals['is_committee_chair']:
-                staff.user_id.sudo().groups_id = (4, self.enf.ref('a3performance.group_committee_chair').id)
+                staff.user_id.sudo().groups_id = (4, self.enf.ref('ixperformance.group_committee_chair').id)
             elif 'is_committee_member' in vals and  vals['is_committee_member']:
-                staff.user_id.sudo().groups_id = (4, self.enf.ref('a3performance.group_committee_member').id)
+                staff.user_id.sudo().groups_id = (4, self.enf.ref('ixperformance.group_committee_member').id)
         
         return super(Staff, self).write(vals)

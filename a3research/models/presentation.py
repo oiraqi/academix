@@ -25,8 +25,8 @@ from odoo import models, fields
 
 
 class Presentaion(models.Model):
-    _name = 'a3research.presentation'
-    _inherit = 'a3research.publication'
+    _name = 'ixresearch.presentation'
+    _inherit = 'ixresearch.publication'
 
     conference = fields.Char('Conference', required=True)
     scope = fields.Selection(

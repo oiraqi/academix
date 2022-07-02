@@ -2,7 +2,7 @@ from odoo import models, fields
 
 
 class LetterGrade(models.Model):
-	_name = 'a3lms.letter.grade'
+	_name = 'ixlms.letter.grade'
 	_description = 'LetterGrade'
 	_order = 'min desc'
 

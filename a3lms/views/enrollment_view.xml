@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-        <!-- a3roster.enrollment inherit form view -->
+        <!-- ixroster.enrollment inherit form view -->
         <record id="view_enrollment_form_lms" model="ir.ui.view">
-            <field name="name">a3roster.enrollment.inherit.lms.view.form</field>
-            <field name="model">a3roster.enrollment</field>
-            <field name="inherit_id" ref="a3roster.view_enrollment_form"/>
+            <field name="name">ixroster.enrollment.inherit.lms.view.form</field>
+            <field name="model">ixroster.enrollment</field>
+            <field name="inherit_id" ref="ixroster.view_enrollment_form"/>
             <field name="arch" type="xml">                               
                 <xpath expr="//group[@name='info']" position="after">
                     <group name="student_info" string="Student Information" col="4">
@@ -50,8 +50,8 @@
             </field>
         </record>
         <record id="view_enrollment_tree" model="ir.ui.view">
-            <field name="name">a3roster.enrollment.tree</field>
-            <field name="model">a3roster.enrollment</field>
+            <field name="name">ixroster.enrollment.tree</field>
+            <field name="model">ixroster.enrollment</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Entollments">
@@ -72,8 +72,8 @@
         </record>
         <!-- model.name graph view -->
         <record id="view_enrollment_graph" model="ir.ui.view">
-            <field name="name">a3roster.enrollment.view.graph</field>
-            <field name="model">a3roster.enrollment</field>
+            <field name="name">ixroster.enrollment.view.graph</field>
+            <field name="model">ixroster.enrollment</field>
             <field name="arch" type="xml">
                 <graph string="Students">
                     <field name="overall_grade" type="measure"/>                    
@@ -83,7 +83,7 @@
         <record id="action_enrollment" model="ir.actions.act_window">
             <field name="name">Students</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3roster.enrollment</field>
+            <field name="res_model">ixroster.enrollment</field>
             <field name="view_mode">tree,graph,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': 'program_id'}</field>

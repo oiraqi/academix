@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_assessment_submission_form" model="ir.ui.view">
-			<field name="name">a3lms.assessment.submission.form</field>
-			<field name="model">a3lms.assessment.submission</field>
+			<field name="name">ixlms.assessment.submission.form</field>
+			<field name="model">ixlms.assessment.submission</field>
 			<field name="arch" type="xml">
 				<form string="Submission">
 					<sheet>
@@ -30,8 +30,8 @@
 			</field>
 		</record>
 		<record id="view_assessment_submission_tree" model="ir.ui.view">
-			<field name="name">a3lms.assessment.submission.tree</field>
-			<field name="model">a3lms.assessment.submission</field>
+			<field name="name">ixlms.assessment.submission.tree</field>
+			<field name="model">ixlms.assessment.submission</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Submissions">
@@ -44,7 +44,7 @@
 		<record id="action_assessment_submission" model="ir.actions.act_window">
 			<field name="name">Submissions</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.assessment.submission</field>
+			<field name="res_model">ixlms.assessment.submission</field>
 			<field name="view_mode">form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>

@@ -25,7 +25,7 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 class Enrollment(models.Model):
-    _name = 'a3roster.enrollment'
+    _name = 'ixroster.enrollment'
     _inherit = 'mail.thread'
     _description = 'Enrollment'
     _sql_constraints = [('student_section_ukey', 'unique(student_id, section_id)',
@@ -34,9 +34,9 @@ class Enrollment(models.Model):
 
     name = fields.Char('Name', compute='_set_name')
     student_id = fields.Many2one(
-        comodel_name='a3.student', string='Student', required=True)
+        comodel_name='ix.student', string='Student', required=True)
     section_id = fields.Many2one(
-        comodel_name='a3roster.section', string='Section', required=True)
+        comodel_name='ixroster.section', string='Section', required=True)
     state = fields.Selection(string='State', selection=[('created', 'Created'), ('enrolled', 'Enrolled'),
                                                         ('dropped', 'Dropped'), ('withdrawn', 'Withdrawn')], default='created', required=True, tracking=True)
     dstate = fields.Selection(string='Drop State', selection=[(
@@ -58,22 +58,22 @@ class Enrollment(models.Model):
 
     # Related fields
     school_id = fields.Many2one(
-        comodel_name='a3.school', string='School', related='section_id.school_id', store=True)
-    discipline_id = fields.Many2one(comodel_name='a3.discipline', string='Discipline',
+        comodel_name='ix.school', string='School', related='section_id.school_id', store=True)
+    discipline_id = fields.Many2one(comodel_name='ix.discipline', string='Discipline',
                                     related='section_id.course_id.discipline_id', store=True)
     course_id = fields.Many2one(
-        comodel_name='a3.course', string='Course', related='section_id.course_id', store=True)
+        comodel_name='ix.course', string='Course', related='section_id.course_id', store=True)
     instructor_id = fields.Many2one(
-        comodel_name='a3.faculty', string='Instructor', related='section_id.instructor_id', store=True)
+        comodel_name='ix.faculty', string='Instructor', related='section_id.instructor_id', store=True)
     term_id = fields.Many2one(
-        comodel_name='a3.term', string='Term', related='section_id.term_id', store=True)
+        comodel_name='ix.term', string='Term', related='section_id.term_id', store=True)
     sid = fields.Char(related="student_id.sid")
     program_id = fields.Many2one(
-        comodel_name='a3catalog.program', related='student_id.program_id', store=True)
+        comodel_name='ixcatalog.program', related='student_id.program_id', store=True)
     attendance_mode = fields.Selection(related='student_id.attendance_mode')
     email = fields.Char(related='student_id.email')
     timeslot = fields.Char('Timeslot', related='section_id.timeslot')
-    room_id = fields.Many2one('a3.room', related='section_id.room_id')            
+    room_id = fields.Many2one('ix.room', related='section_id.room_id')            
 
     @api.constrains('student_id', 'section_id')
     def _check_student_section(self):
@@ -87,11 +87,11 @@ class Enrollment(models.Model):
                 # then the time conflict check, and only then, the prerequisites check.
                 # However, for a more pertinent feedback to the user, we deem it's worth it to start
                 # with the more expensive prerequisites check.
-                self.env['a3roster.enrollment'].check_prerequisites(
+                self.env['ixroster.enrollment'].check_prerequisites(
                     rec.student_id, rec.section_id.course_id)
                 if not rec.section_id.is_open:
                     raise ValidationError('Section closed!')
-                self.env['a3roster.enrollment'].check_time_conflict(
+                self.env['ixroster.enrollment'].check_time_conflict(
                     rec.student_id, rec.section_id)
 
     @api.model
@@ -169,7 +169,7 @@ class Enrollment(models.Model):
     def app_w_ins(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_faculty') in self.env.user.groups_id and self.section_id.instructor_id.user_id == self.env.user:
+        if self.env.ref('ix.group_faculty') in self.env.user.groups_id and self.section_id.instructor_id.user_id == self.env.user:
             self.write({
                 'wstate': 'winst',
                 'state': 'withdrawn',
@@ -179,7 +179,7 @@ class Enrollment(models.Model):
     def confirm_wprequest(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_faculty') in self.env.user.groups_id and self.section_id.instructor_id.user_id == self.env.user:
+        if self.env.ref('ix.group_faculty') in self.env.user.groups_id and self.section_id.instructor_id.user_id == self.env.user:
             self.wpstate = 'wpreq'
 
     def cancel_wprequest(self):
@@ -188,13 +188,13 @@ class Enrollment(models.Model):
     def app_wp_dean(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id.user_id == self.env.user:
+        if self.env.ref('ix.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id.user_id == self.env.user:
             self.wpstate = 'wpdean'
 
     def app_wp_reg(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3roster.group_registrar') in self.env.user.groups_id:
+        if self.env.ref('ixroster.group_registrar') in self.env.user.groups_id:
             self.write({
                 'wpstate': 'wpreg',
                 'state': 'withdrawn',
@@ -204,7 +204,7 @@ class Enrollment(models.Model):
     def confirm_wfrequest(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_faculty') in self.env.user.groups_id and self.section_id.instructor_id.user_id == self.env.user:
+        if self.env.ref('ix.group_faculty') in self.env.user.groups_id and self.section_id.instructor_id.user_id == self.env.user:
             self.wfstate = 'wfreq'
 
     def cancel_wfrequest(self):
@@ -213,13 +213,13 @@ class Enrollment(models.Model):
     def app_wf_dean(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id.user_id == self.env.user:
+        if self.env.ref('ix.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id.user_id == self.env.user:
             self.wfstate = 'wfdean'
 
     def app_wf_reg(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3roster.group_registrar') in self.env.user.groups_id:
+        if self.env.ref('ixroster.group_registrar') in self.env.user.groups_id:
             self.write({
                 'wfstate': 'wfreg',
                 'state': 'withdrawn',
@@ -229,7 +229,7 @@ class Enrollment(models.Model):
     def confirm_iprequest(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_faculty') in self.env.user.groups_id and self.section_id.instructor_id.user_id == self.env.user:
+        if self.env.ref('ix.group_faculty') in self.env.user.groups_id and self.section_id.instructor_id.user_id == self.env.user:
             self.ipstate = 'ipreq'
 
     def cancel_iprequest(self):
@@ -238,13 +238,13 @@ class Enrollment(models.Model):
     def app_ip_dean(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id.user_id == self.env.user:
+        if self.env.ref('ix.group_dean') in self.env.user.groups_id and self.section_id.school_id.dean_id.user_id == self.env.user:
             self.ipstate = 'ipdean'
 
     def app_ip_reg(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3roster.group_registrar') in self.env.user.groups_id:
+        if self.env.ref('ixroster.group_registrar') in self.env.user.groups_id:
             self.write({
                 'ipstate': 'ipreg',
                 'state': 'withdrawn',

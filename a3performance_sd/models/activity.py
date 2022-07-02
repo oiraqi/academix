@@ -24,8 +24,8 @@
 from odoo import models, fields
 
 class Activity(models.AbstractModel):
-    _name = 'a3performance.sd.activity'
-    _inherit = 'a3.faculty.activity'
+    _name = 'ixperformance.sd.activity'
+    _inherit = 'ix.faculty.activity'
 
     name = fields.Char('Title', required=True)
     achievements = fields.Html('Achievements', required=True)

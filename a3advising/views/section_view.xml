@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-        <!-- a3roster.section inherit form view -->
+        <!-- ixroster.section inherit form view -->
         <record id="view_section_form_advising" model="ir.ui.view">
-            <field name="name">a3roster.section.inherit.view.form</field>
-            <field name="model">a3roster.section</field>
-            <field name="inherit_id" ref="a3roster.view_section_form"/>
+            <field name="name">ixroster.section.inherit.view.form</field>
+            <field name="model">ixroster.section</field>
+            <field name="inherit_id" ref="ixroster.view_section_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='active_enrollment_ids']/tree/field[@name='program_id']" position="after">                    
                     <field name="advisor_id"/>

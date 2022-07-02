@@ -25,19 +25,19 @@ from odoo import api, fields, models
 
 
 class Program(models.Model):
-    _name = 'a3catalog.program'
+    _name = 'ixcatalog.program'
     _description = 'Academic Program'
-    _inherit = 'a3.school.owned'
+    _inherit = 'ix.school.owned'
 
     name = fields.Char(string='Name', required=True)
     code = fields.Char(string='Code', required=True)
     description = fields.Html(string='Description', required=True)    
     level = fields.Selection(
         [('u', 'Undergraduate'), ('g', 'Graduate')], 'Level', default='u', required=True)
-    component_ids = fields.Many2many('a3catalog.component', 'a3catalog_program_component_rel', 'program_id', 'component_id', string='Components')
+    component_ids = fields.Many2many('ixcatalog.component', 'ixcatalog_program_component_rel', 'program_id', 'component_id', string='Components')
     sch = fields.Integer(compute='_compute_sch_ncomponents', string='SCH')
     ncomponents = fields.Integer(compute='_compute_sch_ncomponents', string='Number of Components')
-    manager_ids = fields.Many2many('a3.faculty', 'a3catalog_program_a3_faculty', 'program_id', 'manager_id', string='Managers')
+    manager_ids = fields.Many2many('ix.faculty', 'ixcatalog_program_ix_faculty', 'program_id', 'manager_id', string='Managers')
     
     
     

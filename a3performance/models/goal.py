@@ -2,7 +2,7 @@
 ###############################################################################
 #
 #    Al Akhawayn University in Ifrane -- AUI
-#    Copyright (C) 2022-TODAY AUI(<http://www.a3ma>).
+#    Copyright (C) 2022-TODAY AUI(<http://www.ixma>).
 #
 #    Author: Omar Iraqi Houssaini | https://github.com/oiraqi
 #
@@ -25,12 +25,12 @@ from odoo import models, fields, api
 
 
 class Goal(models.AbstractModel):
-    _name='a3performance.goal'
+    _name='ixperformance.goal'
     _description = 'An abstract goal to set and achieve in a given evaluation process'
     _order = 'sequence'
 
     sequence = fields.Integer('Sequence', required=True, default=1)
-    process_id = fields.Many2one('a3performance.process', string='RP Process', required=True)
+    process_id = fields.Many2one('ixperformance.process', string='RP Process', required=True)
     target = fields.Integer('Target', required=True)
     value = fields.Integer('Value', compute='_value')
     cvalue = fields.Char('Value', compute='_value')

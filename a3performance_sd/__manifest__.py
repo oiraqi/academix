@@ -10,7 +10,7 @@
 The Service and Development module under Performance Management.
 ===================================================
 """,
-    'depends': ['a3performance'],
+    'depends': ['ixperformance'],
     'data': [
         #'security/performance_eval_security.xml',
         'security/ir.model.access.csv',

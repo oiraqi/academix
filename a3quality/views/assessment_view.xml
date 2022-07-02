@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_assessment_form" model="ir.ui.view">
-			<field name="name">a3quality.assessment.form</field>
-			<field name="model">a3quality.assessment</field>
+			<field name="name">ixquality.assessment.form</field>
+			<field name="model">ixquality.assessment</field>
 			<field name="arch" type="xml">
 				<form string="Assessment">
 					<sheet>
@@ -51,8 +51,8 @@
 			</field>
 		</record>
 		<record id="view_assessment_tree" model="ir.ui.view">
-			<field name="name">a3quality.assessment.tree</field>
-			<field name="model">a3quality.assessment</field>
+			<field name="name">ixquality.assessment.tree</field>
+			<field name="model">ixquality.assessment</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Assessments">
@@ -64,7 +64,7 @@
 		<record id="action_assessment" model="ir.actions.act_window">
 			<field name="name">Assessments</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3quality.assessment</field>
+			<field name="res_model">ixquality.assessment</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>

@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_a3performance_rp_goal_faculty,access.a3performance.rp.goal.faculty,model_a3performance_rp_goal,a3.group_faculty,1,1,1,1
+access_ixperformance_rp_goal_faculty,access.ixperformance.rp.goal.faculty,model_ixperformance_rp_goal,ix.group_faculty,1,1,1,1

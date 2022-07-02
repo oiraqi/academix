@@ -3,7 +3,7 @@
     <data noupdate="1">
         <record id="group_capint_coordinator" model="res.groups">
             <field name="name">Capstone/Internship Coordinator</field>
-            <field name="category_id" ref="a3.module_category_a3"/>
+            <field name="category_id" ref="ix.module_category_ix"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>

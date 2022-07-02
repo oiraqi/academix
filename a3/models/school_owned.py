@@ -25,7 +25,7 @@ from odoo import models, fields, api
 
 
 class SchoolOwned(models.AbstractModel):
-    _name = 'a3.school.owned'
+    _name = 'ix.school.owned'
 
-    school_id = fields.Many2one('a3.school', string='School', required=True)
+    school_id = fields.Many2one('ix.school', string='School', required=True)
  

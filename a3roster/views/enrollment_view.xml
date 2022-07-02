@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_enrollment_form" model="ir.ui.view">
-			<field name="name">a3roster.enrollment.form</field>
-			<field name="model">a3roster.enrollment</field>
+			<field name="name">ixroster.enrollment.form</field>
+			<field name="model">ixroster.enrollment</field>
 			<field name="arch" type="xml">
 				<form string="Entollment">
 					<field name="dtriggered" invisible="1"/>
@@ -12,45 +12,45 @@
 					<field name="wftriggered" invisible="1"/>
 					<field name="iptriggered" invisible="1"/>
 					<header attrs="{'invisible': [('id', '=', False)]}">
-						<button string="Enroll" states="created" name="enroll" type="object" class="oe_highlight" groups="a3roster.group_registrar"/>
-						<button string="Drop" attrs="{'invisible': ['|', ('dtriggered', '=', True), ('state', '!=', 'enrolled')]}" name="drop" type="object" groups="a3.group_student"/>
-						<button string="Request To Withdraw" attrs="{'invisible': ['|', ('wtriggered', '=', True), ('state', '!=', 'enrolled')]}" name="req_w" type="object" groups="a3.group_student"/>
-						<button string="File a WP" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="file_wp" type="object" groups="a3.group_faculty"/>
-						<button string="File a WF" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="file_wf" type="object" groups="a3.group_faculty"/>
-						<button string="File an IP" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="file_ip" type="object" groups="a3.group_faculty"/>
+						<button string="Enroll" states="created" name="enroll" type="object" class="oe_highlight" groups="ixroster.group_registrar"/>
+						<button string="Drop" attrs="{'invisible': ['|', ('dtriggered', '=', True), ('state', '!=', 'enrolled')]}" name="drop" type="object" groups="ix.group_student"/>
+						<button string="Request To Withdraw" attrs="{'invisible': ['|', ('wtriggered', '=', True), ('state', '!=', 'enrolled')]}" name="req_w" type="object" groups="ix.group_student"/>
+						<button string="File a WP" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="file_wp" type="object" groups="ix.group_faculty"/>
+						<button string="File a WF" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="file_wf" type="object" groups="ix.group_faculty"/>
+						<button string="File an IP" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="file_ip" type="object" groups="ix.group_faculty"/>
 						<field name="state" widget="statusbar" statusbar_visible="enrolled"/>
 					</header>
 					<header attrs="{'invisible': ['|', ('dtriggered', '=', False), ('state', '!=', 'enrolled')]}">
-						<button string="Confirm (irreversible)" name="confirm_drop" type="object" groups="a3.group_student"/>
-						<button string="Cancel" states="enrolled" name="cancel_drop" type="object" groups="a3.group_student"/>
+						<button string="Confirm (irreversible)" name="confirm_drop" type="object" groups="ix.group_student"/>
+						<button string="Cancel" states="enrolled" name="cancel_drop" type="object" groups="ix.group_student"/>
 						<field name="dstate" widget="statusbar"/>
 					</header>
 					<header attrs="{'invisible': ['|', ('wtriggered', '=', False), ('state', 'not in', ['enrolled', 'withdrawn'])]}">
-						<button string="Confirm" attrs="{'invisible': [('wstate', '!=', 'draft')]}" name="confirm_wrequest" type="object" groups="a3.group_student"/>
-						<button string="Cancel" attrs="{'invisible': [('wstate', '!=', 'draft')]}" name="cancel_wrequest" type="object" groups="a3.group_student"/>
-						<button string="Approve" attrs="{'invisible': [('wstate', '!=', 'wreq')]}" name="app_w_adv" type="object" groups="a3.group_faculty"/>
-						<button string="Approve" attrs="{'invisible': [('wstate', '!=', 'wadv')]}" name="app_w_ins" type="object" groups="a3.group_faculty"/>
+						<button string="Confirm" attrs="{'invisible': [('wstate', '!=', 'draft')]}" name="confirm_wrequest" type="object" groups="ix.group_student"/>
+						<button string="Cancel" attrs="{'invisible': [('wstate', '!=', 'draft')]}" name="cancel_wrequest" type="object" groups="ix.group_student"/>
+						<button string="Approve" attrs="{'invisible': [('wstate', '!=', 'wreq')]}" name="app_w_adv" type="object" groups="ix.group_faculty"/>
+						<button string="Approve" attrs="{'invisible': [('wstate', '!=', 'wadv')]}" name="app_w_ins" type="object" groups="ix.group_faculty"/>
 						<field name="wstate" widget="statusbar"/>
 					</header>
 					<header attrs="{'invisible': ['|', ('wptriggered', '=', False), ('state', '!=', 'enrolled')]}">
-						<button string="Confirm" attrs="{'invisible': [('wpstate', '!=', 'draft')]}" name="confirm_wprequest" type="object" groups="a3.group_faculty"/>
-						<button string="Cancel" attrs="{'invisible': [('wpstate', '!=', 'draft')]}" name="cancel_wprequest" type="object" groups="a3.group_faculty"/>
-						<button string="Approve" attrs="{'invisible': [('wpstate', '!=', 'wpreq')]}" name="app_wp_dean" type="object" groups="a3.group_dean"/>
-						<button string="Approve" attrs="{'invisible': [('wpstate', '!=', 'wpdean')]}" name="app_wp_reg" type="object" groups="a3roster.group_registrar"/>
+						<button string="Confirm" attrs="{'invisible': [('wpstate', '!=', 'draft')]}" name="confirm_wprequest" type="object" groups="ix.group_faculty"/>
+						<button string="Cancel" attrs="{'invisible': [('wpstate', '!=', 'draft')]}" name="cancel_wprequest" type="object" groups="ix.group_faculty"/>
+						<button string="Approve" attrs="{'invisible': [('wpstate', '!=', 'wpreq')]}" name="app_wp_dean" type="object" groups="ix.group_dean"/>
+						<button string="Approve" attrs="{'invisible': [('wpstate', '!=', 'wpdean')]}" name="app_wp_reg" type="object" groups="ixroster.group_registrar"/>
 						<field name="wpstate" widget="statusbar"/>
 					</header>
 					<header attrs="{'invisible': ['|', ('wftriggered', '=', False), ('state', '!=', 'enrolled')]}">
-						<button string="Confirm" attrs="{'invisible': [('wfstate', '!=', 'draft')]}" name="confirm_wfrequest" type="object" groups="a3.group_faculty"/>
-						<button string="Cancel" attrs="{'invisible': [('wfstate', '!=', 'draft')]}" name="cancel_wfrequest" type="object" groups="a3.group_faculty"/>
-						<button string="Approve" attrs="{'invisible': [('wfstate', '!=', 'wfreq')]}" name="app_wf_dean" type="object" groups="a3.group_dean"/>
-						<button string="Approve" attrs="{'invisible': [('wfstate', '!=', 'wfdean')]}" name="app_wf_reg" type="object" groups="a3roster.group_registrar"/>
+						<button string="Confirm" attrs="{'invisible': [('wfstate', '!=', 'draft')]}" name="confirm_wfrequest" type="object" groups="ix.group_faculty"/>
+						<button string="Cancel" attrs="{'invisible': [('wfstate', '!=', 'draft')]}" name="cancel_wfrequest" type="object" groups="ix.group_faculty"/>
+						<button string="Approve" attrs="{'invisible': [('wfstate', '!=', 'wfreq')]}" name="app_wf_dean" type="object" groups="ix.group_dean"/>
+						<button string="Approve" attrs="{'invisible': [('wfstate', '!=', 'wfdean')]}" name="app_wf_reg" type="object" groups="ixroster.group_registrar"/>
 						<field name="wfstate" widget="statusbar"/>
 					</header>
 					<header attrs="{'invisible': ['|', ('iptriggered', '=', False), ('state', '!=', 'enrolled')]}">
-						<button string="Confirm" attrs="{'invisible': [('ipstate', '!=', 'draft')]}" name="confirm_iprequest" type="object" groups="a3.group_faculty"/>
-						<button string="Cancel" attrs="{'invisible': [('ipstate', '!=', 'draft')]}" name="cancel_iprequest" type="object" groups="a3.group_faculty"/>
-						<button string="Approve" attrs="{'invisible': [('ipstate', '!=', 'ipreq')]}" name="app_ip_dean" type="object" groups="a3.group_dean"/>
-						<button string="Approve" attrs="{'invisible': [('ipstate', '!=', 'ipdean')]}" name="app_ip_reg" type="object" groups="a3roster.group_registrar"/>
+						<button string="Confirm" attrs="{'invisible': [('ipstate', '!=', 'draft')]}" name="confirm_iprequest" type="object" groups="ix.group_faculty"/>
+						<button string="Cancel" attrs="{'invisible': [('ipstate', '!=', 'draft')]}" name="cancel_iprequest" type="object" groups="ix.group_faculty"/>
+						<button string="Approve" attrs="{'invisible': [('ipstate', '!=', 'ipreq')]}" name="app_ip_dean" type="object" groups="ix.group_dean"/>
+						<button string="Approve" attrs="{'invisible': [('ipstate', '!=', 'ipdean')]}" name="app_ip_reg" type="object" groups="ixroster.group_registrar"/>
 						<field name="ipstate" widget="statusbar"/>
 					</header>
 					<sheet>
@@ -74,8 +74,8 @@
 			</field>
 		</record>
 		<record id="view_enrollment_tree" model="ir.ui.view">
-			<field name="name">a3roster.enrollment.tree</field>
-			<field name="model">a3roster.enrollment</field>
+			<field name="name">ixroster.enrollment.tree</field>
+			<field name="model">ixroster.enrollment</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Entollments">
@@ -93,7 +93,7 @@
 		<record id="action_enrollment" model="ir.actions.act_window">
 			<field name="name">Entollments</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3roster.enrollment</field>
+			<field name="res_model">ixroster.enrollment</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['term_id', 'school_id', 'discipline_id', 'course_id', 'section_id', 'state']}</field>

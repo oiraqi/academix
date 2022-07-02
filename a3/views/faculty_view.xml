@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="view_faculty_form" model="ir.ui.view">
-            <field name="name">a3.faculty.form</field>
-            <field name="model">a3.faculty</field>
+            <field name="name">ix.faculty.form</field>
+            <field name="model">ix.faculty</field>
             <field name="arch" type="xml">
                 <form string="Faculty">
                     <sheet>
@@ -37,8 +37,8 @@
             </field>
         </record>
         <record id="view_faculty_tree" model="ir.ui.view">
-            <field name="name">a3.faculty.tree</field>
-            <field name="model">a3.faculty</field>
+            <field name="name">ix.faculty.tree</field>
+            <field name="model">ix.faculty</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Faculty">
@@ -50,7 +50,7 @@
         <record id="action_faculty" model="ir.actions.act_window">
             <field name="name">Faculty</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3.faculty</field>
+            <field name="res_model">ix.faculty</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': 'school_id'}</field>
@@ -65,14 +65,14 @@
         </record>
         <record id="action_faculty_my" model="ir.actions.server">
             <field name="name">Faculty</field>
-            <field name="model_id" ref="model_a3_faculty"/>
+            <field name="model_id" ref="model_ix_faculty"/>
             <field name="state">code</field>
             <field name="code">
             	action = {
             		'type': 'ir.actions.act_window',
 			        'view_mode': 'form',
-			        'res_model': 'a3.faculty',
-                	'res_id': env['a3.faculty'].search([('user_id', '=', env.user.id)]).id,
+			        'res_model': 'ix.faculty',
+                	'res_id': env['ix.faculty'].search([('user_id', '=', env.user.id)]).id,
                 	'views': [(False, 'form')]
             	}
             </field>

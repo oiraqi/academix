@@ -28,8 +28,8 @@ SEMESTERS = {'1': 'FA', '2': 'SP', '3': 'SU'}
 
 
 class StudentEvaluation(models.Model):
-    _name = 'a3performance.ts.student.evaluation'
-    _inherit = 'a3.faculty.activity'
+    _name = 'ixperformance.ts.student.evaluation'
+    _inherit = 'ix.faculty.activity'
 
     @api.model
     def _nstudent_selection(self):
@@ -52,7 +52,7 @@ class StudentEvaluation(models.Model):
                 rec.name = ''
 
     section_id = fields.Many2one(
-        'a3roster.section', string='Section', required=True)
+        'ixroster.section', string='Section', required=True)
     level = fields.Selection(
         related='section_id.course_id.level', readonly=True, store=True)
     nstudents = fields.Selection(
@@ -64,7 +64,7 @@ class StudentEvaluation(models.Model):
     def _se_onchange_year_semester(self):
         for rec in self:
             if rec.year and rec.semester:
-                sections = self.env['a3roster.section'].search(
+                sections = self.env['ixroster.section'].search(
                     [('instructor_id.user_id', '=', self.env.user.id), ('year', '=', rec.year),
                     ('semester', '=', rec.semester)])
                 if sections:

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-        <!-- a3lms.module inherit form view -->
+        <!-- ixlms.module inherit form view -->
         <record id="view_lms_module_form_quality" model="ir.ui.view">
-            <field name="name">a3lms.module.inherit.quality.view.form</field>
-            <field name="model">a3lms.module</field>
-            <field name="inherit_id" ref="a3lms.view_module_form"/>
+            <field name="name">ixlms.module.inherit.quality.view.form</field>
+            <field name="model">ixlms.module</field>
+            <field name="inherit_id" ref="ixlms.view_module_form"/>
             <field name="arch" type="xml">                
                 <xpath expr="//field[@name='chapter_ids']/tree/field[@name='name']" position="after">                    
                     <field name="ilo_ids"

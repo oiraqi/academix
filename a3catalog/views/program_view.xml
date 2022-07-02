@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-        <!-- a3catalog.program form view -->
+        <!-- ixcatalog.program form view -->
         <record id="view_program_form" model="ir.ui.view">
-            <field name="name">a3catalog.program.view.form</field>
-            <field name="model">a3catalog.program</field>
+            <field name="name">ixcatalog.program.view.form</field>
+            <field name="model">ixcatalog.program</field>
             <field name="arch" type="xml">
                 <form string="Program">
                     <sheet>
@@ -43,10 +43,10 @@
             </field>
         </record>
 
-        <!-- a3catalog.program tree view -->
+        <!-- ixcatalog.program tree view -->
         <record id="view_program_tree" model="ir.ui.view">
-            <field name="name">a3catalog.program.view.tree</field>
-            <field name="model">a3catalog.program</field>
+            <field name="name">ixcatalog.program.view.tree</field>
+            <field name="model">ixcatalog.program</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="code"/>
@@ -58,11 +58,11 @@
             </field>
         </record>
 
-        <!-- a3catalog.program action window -->
+        <!-- ixcatalog.program action window -->
         <record id="action_program" model="ir.actions.act_window">
             <field name="name">Programs</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3catalog.program</field>
+            <field name="res_model">ixcatalog.program</field>
             <field name="view_mode">tree,form</field>
             <field name="context">{'group_by': ['school_id', 'level']}</field>
             <field name="help" type="html">

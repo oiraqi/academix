@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_article_form" model="ir.ui.view">
-			<field name="name">a3research.article.form</field>
-			<field name="model">a3research.article</field>
+			<field name="name">ixresearch.article.form</field>
+			<field name="model">ixresearch.article</field>
 			<field name="arch" type="xml">
 				<form string="Article">
 					<sheet>
@@ -38,8 +38,8 @@
 			</field>
 		</record>
 		<record id="view_article_tree" model="ir.ui.view">
-			<field name="name">a3research.article.tree</field>
-			<field name="model">a3research.article</field>
+			<field name="name">ixresearch.article.tree</field>
+			<field name="model">ixresearch.article</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Articles">
@@ -55,7 +55,7 @@
 		<record id="action_article" model="ir.actions.act_window">
 			<field name="name">Articles</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3research.article</field>
+			<field name="res_model">ixresearch.article</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['term_id', 'school_id']}</field>
@@ -71,7 +71,7 @@
 		<record id="action_article_my" model="ir.actions.act_window">
 			<field name="name">My Articles</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3research.article</field>
+			<field name="res_model">ixresearch.article</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[('faculty_id.user_id', '=', uid)]</field>
 			<field name="context">{}</field>

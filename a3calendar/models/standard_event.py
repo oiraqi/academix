@@ -25,7 +25,7 @@ from odoo import api, fields, models
 
 
 class StandardEvent(models.Model):
-    _name = 'a3calendar.standard.event'
+    _name = 'ixcalendar.standard.event'
     _description = 'Standard Event'
 
     name = fields.Char(string='Name', required=True)

@@ -2,7 +2,7 @@
 ###############################################################################
 #
 #    Al Akhawayn University in Ifrane -- AUI
-#    Copyright (C) 2022-TODAY AUI(<http://www.a3ma>).
+#    Copyright (C) 2022-TODAY AUI(<http://www.ixma>).
 #
 #    Author: Omar Iraqi Houssaini | https://github.com/oiraqi
 #
@@ -25,9 +25,9 @@ from odoo import models, fields
 
 
 class Process(models.Model):
-    _inherit = 'a3performance.process'
+    _inherit = 'ixperformance.process'
 
-    ts_goal_ids = fields.One2many('a3performance.ts.goal', 'process_id', string='Goals')
+    ts_goal_ids = fields.One2many('ixperformance.ts.goal', 'process_id', string='Goals')
     ts_goal_progress = fields.Float('Goal Progress', compute='_ts_goal_progress')
     ts_goal_achievement = fields.Char('Goal Achievement', compute='_ts_goal_progress')
 
@@ -44,23 +44,23 @@ class Process(models.Model):
             rec.ts_goal_achievement = str(achieved_goal_count) + ' / ' + str(goal_count)
 
     student_evaluation_ids = fields.One2many(
-        'a3performance.ts.student.evaluation', string='Student Evaluation', compute='_student_evaluation_ids')
+        'ixperformance.ts.student.evaluation', string='Student Evaluation', compute='_student_evaluation_ids')
     class_observation_ids = fields.One2many(
-        'a3performance.ts.class.observation', string='Class Observation', compute='_class_observation_ids')
+        'ixperformance.ts.class.observation', string='Class Observation', compute='_class_observation_ids')
     action_ids = fields.One2many(
-        'a3performance.ts.action', string='Actions', compute='_action_ids')
+        'ixperformance.ts.action', string='Actions', compute='_action_ids')
     supervision_ids = fields.One2many(
-        'a3performance.ts.supervision', string='Supervised Projects', compute='_supervision_ids')
+        'ixperformance.ts.supervision', string='Supervised Projects', compute='_supervision_ids')
     
     ts_narrative = fields.Html('Narrative',
         readonly=True, states={'faculty': [('readonly', False)]})
 
     ts_committee_review = fields.Html('Committee Review',
         readonly=True, states={'committee': [('readonly', False)]},
-        groups='a3performance.group_committee_member,a3.group_dean,a3.group_vpaa')
+        groups='ixperformance.group_committee_member,ix.group_dean,ix.group_vpaa')
     ts_dean_review = fields.Html('Dean Review',
         readonly=True, states={'dean': [('readonly', False)]},
-        groups='a3.group_dean,a3.group_vpaa')
+        groups='ix.group_dean,ix.group_vpaa')
     ts_vpaa_review = fields.Html('VPAA Review',
         readonly=True, states={'vpaa': [('readonly', False)]},
-        groups='a3.group_dean,a3.group_vpaa')
+        groups='ix.group_dean,ix.group_vpaa')

@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="view_supervision_form" model="ir.ui.view">
-            <field name="name">a3performance.ts.supervision.form</field>
-            <field name="model">a3performance.ts.supervision</field>
+            <field name="name">ixperformance.ts.supervision.form</field>
+            <field name="model">ixperformance.ts.supervision</field>
             <field name="arch" type="xml">
                 <form string="Supervision">
                     <field name="locked" invisible="1"/>
@@ -28,7 +28,7 @@
                                     <field name="name"/>
                                     <field name="mimetype"/>
                                     <field name="file_size"/>
-                                    <button type="object" name="unlink" icon="fa-trash" groups="a3.group_faculty"/>
+                                    <button type="object" name="unlink" icon="fa-trash" groups="ix.group_faculty"/>
                                 </tree>
                             </field>
                         </group>
@@ -44,8 +44,8 @@
             </field>
         </record>
         <record id="view_supervision_tree" model="ir.ui.view">
-            <field name="name">a3performance.ts.supervision.tree</field>
-            <field name="model">a3performance.ts.supervision</field>
+            <field name="name">ixperformance.ts.supervision.tree</field>
+            <field name="model">ixperformance.ts.supervision</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Supervision">
@@ -59,7 +59,7 @@
         <record id="action_supervision" model="ir.actions.act_window">
             <field name="name">Supervision</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3performance.ts.supervision</field>
+            <field name="res_model">ixperformance.ts.supervision</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': ['year', 'type']}</field>

@@ -2,16 +2,16 @@
 <odoo>
 	<data>
 		<record id="view_assessment_line_form" model="ir.ui.view">
-			<field name="name">a3lms.assessment.line.form</field>
-			<field name="model">a3lms.assessment.line</field>
+			<field name="name">ixlms.assessment.line.form</field>
+			<field name="model">ixlms.assessment.line</field>
 			<field name="arch" type="xml">
 				<form string="AssessmentLine" create="false">
 					<sheet>
 						<h1><field name="name"/></h1>
-						<div groups="a3.group_faculty">
+						<div groups="ix.group_faculty">
 						<h1><field name="grade"/></h1>
 						</div>
-						<div groups="a3.group_student">
+						<div groups="ix.group_student">
 						<h1><field name="egrade"/></h1>
 						</div>
 						<group name="info" string="General Information" col="4">
@@ -42,8 +42,8 @@
 			</field>
 		</record>
 		<record id="view_assessment_line_tree" model="ir.ui.view">
-			<field name="name">a3lms.assessment.line.tree</field>
-			<field name="model">a3lms.assessment.line</field>
+			<field name="name">ixlms.assessment.line.tree</field>
+			<field name="model">ixlms.assessment.line</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="AssessmentLines" create="false">
@@ -58,8 +58,8 @@
 			</field>
 		</record>
 		<record id="view_assessment_line_module_percentage_tree" model="ir.ui.view">
-			<field name="name">a3lms.assessment.line.tree</field>
-			<field name="model">a3lms.assessment.line</field>
+			<field name="name">ixlms.assessment.line.tree</field>
+			<field name="model">ixlms.assessment.line</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="AssessmentLines" create="false">
@@ -75,8 +75,8 @@
 			</field>
 		</record>
 		<record id="view_assessment_line_module_points_tree" model="ir.ui.view">
-			<field name="name">a3lms.assessment.line.tree</field>
-			<field name="model">a3lms.assessment.line</field>
+			<field name="name">ixlms.assessment.line.tree</field>
+			<field name="model">ixlms.assessment.line</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="AssessmentLines" create="false">
@@ -92,8 +92,8 @@
 			</field>
 		</record>
 		<record id="view_assessment_line_technique_percentage_tree" model="ir.ui.view">
-			<field name="name">a3lms.assessment.line.tree</field>
-			<field name="model">a3lms.assessment.line</field>
+			<field name="name">ixlms.assessment.line.tree</field>
+			<field name="model">ixlms.assessment.line</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="AssessmentLines" create="false">
@@ -109,8 +109,8 @@
 			</field>
 		</record>
 		<record id="view_assessment_line_technique_points_tree" model="ir.ui.view">
-			<field name="name">a3lms.assessment.line.tree</field>
-			<field name="model">a3lms.assessment.line</field>
+			<field name="name">ixlms.assessment.line.tree</field>
+			<field name="model">ixlms.assessment.line</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="AssessmentLines" create="false">
@@ -128,7 +128,7 @@
 		<record id="action_assessment_line" model="ir.actions.act_window">
 			<field name="name">Assessment Lines</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.assessment.line</field>
+			<field name="res_model">ixlms.assessment.line</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
@@ -144,7 +144,7 @@
 		<record id="action_assessment_line_module_percentage" model="ir.actions.act_window">
 			<field name="name">Assessment Lines</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.assessment.line</field>
+			<field name="res_model">ixlms.assessment.line</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['student_id', 'module_id']}</field>
@@ -160,7 +160,7 @@
 		<record id="action_assessment_line_module_points" model="ir.actions.act_window">
 			<field name="name">Assessment Lines</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.assessment.line</field>
+			<field name="res_model">ixlms.assessment.line</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['student_id', 'module_id']}</field>
@@ -176,7 +176,7 @@
 		<record id="action_assessment_line_technique_percentage" model="ir.actions.act_window">
 			<field name="name">Assessment Lines</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.assessment.line</field>
+			<field name="res_model">ixlms.assessment.line</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['student_id', 'technique_id']}</field>
@@ -192,7 +192,7 @@
 		<record id="action_assessment_line_technique_points" model="ir.actions.act_window">
 			<field name="name">Assessment Lines</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.assessment.line</field>
+			<field name="res_model">ixlms.assessment.line</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['student_id', 'technique_id']}</field>

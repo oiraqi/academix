@@ -1,12 +1,12 @@
 <odoo>
 	<data>
-		<menuitem id="a3research_root_menu" name="Research" sequence="100"/>		
-		<menuitem id="a3research_article_menu" name="Articles" action="action_article" parent="a3research_root_menu" sequence="20"/>
-		<menuitem id="a3research_book_menu" name="Books" action="action_book" parent="a3research_root_menu" sequence="40"/>
-		<menuitem id="a3research_paper_menu" name="Papers" action="action_paper" parent="a3research_root_menu" sequence="60"/>
-		<menuitem id="a3research_presentation_menu" name="Presentations" action="action_presentation" parent="a3research_root_menu" sequence="80"/>
-		<menuitem id="a3research_activity_menu" name="Activities" action="action_activity" parent="a3research_root_menu" sequence="100"/>
-		<menuitem id="a3research_journal_menu" name="Journals" action="action_journal" parent="a3research_root_menu" sequence="180"/>
-		<menuitem id="a3research_publisher_menu" name="Publishers" action="action_publisher" parent="a3research_root_menu" sequence="200"/>
+		<menuitem id="ixresearch_root_menu" name="Research" sequence="100"/>		
+		<menuitem id="ixresearch_article_menu" name="Articles" action="action_article" parent="ixresearch_root_menu" sequence="20"/>
+		<menuitem id="ixresearch_book_menu" name="Books" action="action_book" parent="ixresearch_root_menu" sequence="40"/>
+		<menuitem id="ixresearch_paper_menu" name="Papers" action="action_paper" parent="ixresearch_root_menu" sequence="60"/>
+		<menuitem id="ixresearch_presentation_menu" name="Presentations" action="action_presentation" parent="ixresearch_root_menu" sequence="80"/>
+		<menuitem id="ixresearch_activity_menu" name="Activities" action="action_activity" parent="ixresearch_root_menu" sequence="100"/>
+		<menuitem id="ixresearch_journal_menu" name="Journals" action="action_journal" parent="ixresearch_root_menu" sequence="180"/>
+		<menuitem id="ixresearch_publisher_menu" name="Publishers" action="action_publisher" parent="ixresearch_root_menu" sequence="200"/>
 	</data>
 </odoo>

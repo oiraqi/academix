@@ -25,7 +25,7 @@ from odoo import models, fields, api
 
 
 class Course(models.Model):
-    _inherit = 'a3.course'
+    _inherit = 'ix.course'
 
-    course_program_ids = fields.One2many(comodel_name='a3quality.course.program', inverse_name='course_id', string='Programs')
+    course_program_ids = fields.One2many(comodel_name='ixquality.course.program', inverse_name='course_id', string='Programs')
     

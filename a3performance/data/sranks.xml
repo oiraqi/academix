@@ -3,129 +3,129 @@
     <data noupdate="1">
 
         <!-- Lecturer Sub-Ranks -->
-        <record id="a3performance_srank_d6" model="a3performance.srank">
+        <record id="ixperformance_srank_d6" model="ixperformance.srank">
             <field name="name">D06</field>
             <field name="rank">D</field>            
         </record>
-        <record id="a3performance_srank_d7" model="a3performance.srank">
+        <record id="ixperformance_srank_d7" model="ixperformance.srank">
             <field name="name">D07</field>
             <field name="rank">D</field>            
         </record>
-        <record id="a3performance_srank_d9" model="a3performance.srank">
+        <record id="ixperformance_srank_d9" model="ixperformance.srank">
             <field name="name">D09</field>
             <field name="rank">D</field>            
         </record>
-        <record id="a3performance_srank_d10" model="a3performance.srank">
+        <record id="ixperformance_srank_d10" model="ixperformance.srank">
             <field name="name">D10</field>
             <field name="rank">D</field>            
         </record>
     
         <!-- Assistant Professor Sub-Rabks -->
-        <record id="a3performance_srank_c1" model="a3performance.srank">
+        <record id="ixperformance_srank_c1" model="ixperformance.srank">
             <field name="name">C1</field>
             <field name="rank">C</field>            
         </record>
-        <record id="a3performance_srank_c2" model="a3performance.srank">
+        <record id="ixperformance_srank_c2" model="ixperformance.srank">
             <field name="name">C2</field>
             <field name="rank">C</field>            
         </record>
-        <record id="a3performance_srank_c3" model="a3performance.srank">
+        <record id="ixperformance_srank_c3" model="ixperformance.srank">
             <field name="name">C3</field>
             <field name="rank">C</field>            
         </record>
-        <record id="a3performance_srank_c4" model="a3performance.srank">
+        <record id="ixperformance_srank_c4" model="ixperformance.srank">
             <field name="name">C4</field>
             <field name="rank">C</field>            
         </record>
-        <record id="a3performance_srank_c5" model="a3performance.srank">
+        <record id="ixperformance_srank_c5" model="ixperformance.srank">
             <field name="name">C5</field>
             <field name="rank">C</field>            
         </record>
-        <record id="a3performance_srank_c6" model="a3performance.srank">
+        <record id="ixperformance_srank_c6" model="ixperformance.srank">
             <field name="name">C6</field>
             <field name="rank">C</field>            
         </record>
     
         <!--Associate Professor Sub-Ranks -->
-        <record id="a3performance_srank_b1" model="a3performance.srank">
+        <record id="ixperformance_srank_b1" model="ixperformance.srank">
             <field name="name">B01</field>
             <field name="rank">B</field>            
         </record>
-        <record id="a3performance_srank_b2" model="a3performance.srank">
+        <record id="ixperformance_srank_b2" model="ixperformance.srank">
             <field name="name">B02</field>
             <field name="rank">B</field>            
         </record>
-        <record id="a3performance_srank_b3" model="a3performance.srank">
+        <record id="ixperformance_srank_b3" model="ixperformance.srank">
             <field name="name">B03</field>
             <field name="rank">B</field>            
         </record>
-        <record id="a3performance_srank_b4" model="a3performance.srank">
+        <record id="ixperformance_srank_b4" model="ixperformance.srank">
             <field name="name">B04</field>
             <field name="rank">B</field>            
         </record>
-        <record id="a3performance_srank_b5" model="a3performance.srank">
+        <record id="ixperformance_srank_b5" model="ixperformance.srank">
             <field name="name">B05</field>
             <field name="rank">B</field>            
         </record>
-        <record id="a3performance_srank_b6" model="a3performance.srank">
+        <record id="ixperformance_srank_b6" model="ixperformance.srank">
             <field name="name">B06</field>
             <field name="rank">B</field>            
         </record>
-        <record id="a3performance_srank_b7" model="a3performance.srank">
+        <record id="ixperformance_srank_b7" model="ixperformance.srank">
             <field name="name">B07</field>
             <field name="rank">B</field>            
         </record>
-        <record id="a3performance_srank_b8" model="a3performance.srank">
+        <record id="ixperformance_srank_b8" model="ixperformance.srank">
             <field name="name">B08</field>
             <field name="rank">B</field>            
         </record>
-        <record id="a3performance_srank_b9" model="a3performance.srank">
+        <record id="ixperformance_srank_b9" model="ixperformance.srank">
             <field name="name">B09</field>
             <field name="rank">B</field>            
         </record>
-        <record id="a3performance_srank_b10" model="a3performance.srank">
+        <record id="ixperformance_srank_b10" model="ixperformance.srank">
             <field name="name">B10</field>
             <field name="rank">B</field>            
         </record>
 
         <!-- Full Professor Sub-Ranks -->
-        <record id="a3performance_srank_a1" model="a3performance.srank">
+        <record id="ixperformance_srank_a1" model="ixperformance.srank">
             <field name="name">A01</field>
             <field name="rank">A</field>            
         </record>
-        <record id="a3performance_srank_a2" model="a3performance.srank">
+        <record id="ixperformance_srank_a2" model="ixperformance.srank">
             <field name="name">A02</field>
             <field name="rank">A</field>            
         </record>
-        <record id="a3performance_srank_a3" model="a3performance.srank">
+        <record id="ixperformance_srank_ix" model="ixperformance.srank">
             <field name="name">A03</field>
             <field name="rank">A</field>            
         </record>
-        <record id="a3performance_srank_a4" model="a3performance.srank">
+        <record id="ixperformance_srank_a4" model="ixperformance.srank">
             <field name="name">A04</field>
             <field name="rank">A</field>            
         </record>
-        <record id="a3performance_srank_a5" model="a3performance.srank">
+        <record id="ixperformance_srank_a5" model="ixperformance.srank">
             <field name="name">A05</field>
             <field name="rank">A</field>            
         </record>
-        <record id="a3performance_srank_a6" model="a3performance.srank">
+        <record id="ixperformance_srank_a6" model="ixperformance.srank">
             <field name="name">A06</field>
             <field name="rank">A</field>            
         </record>
-        <record id="a3performance_srank_a7" model="a3performance.srank">
+        <record id="ixperformance_srank_a7" model="ixperformance.srank">
             <field name="name">A07</field>
             <field name="rank">A</field>            
         </record>
-        <record id="a3performance_srank_a8" model="a3performance.srank">
+        <record id="ixperformance_srank_a8" model="ixperformance.srank">
             <field name="name">A08</field>
             <field name="rank">A</field>            
         </record>
-        <record id="a3performance_srank_a9" model="a3performance.srank">
+        <record id="ixperformance_srank_a9" model="ixperformance.srank">
             <field name="name">A09</field>
             <field name="rank">A</field>            
         </record>
-        <record id="a3performance_srank_a10" model="a3performance.srank">
+        <record id="ixperformance_srank_a10" model="ixperformance.srank">
             <field name="name">A10</field>
             <field name="rank">A</field>            
         </record>

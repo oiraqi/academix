@@ -25,13 +25,13 @@ from odoo import models, fields
 
 
 class Publication(models.AbstractModel):
-    _name = 'a3research.publication'
-    _inherit = 'a3.faculty.activity'
+    _name = 'ixresearch.publication'
+    _inherit = 'ix.faculty.activity'
 
     name = fields.Text('Title', required=True)
     authors = fields.Text('Authors', required=True)
     authorship = fields.Selection(string='Authorship', selection=[('single', 'Single Author'), ('first', 'First Author'), ('author', 'Author')])    
-    publisher_id = fields.Many2one('a3research.publisher', 'Publisher', required=True)
+    publisher_id = fields.Many2one('ixresearch.publisher', 'Publisher', required=True)
     date = fields.Date('Date of Publication', required=True)
     isn = fields.Char('ISBN/ISSN', required=True)
     doi = fields.Char('DOI')

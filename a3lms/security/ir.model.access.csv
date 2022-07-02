@@ -1,67 +1,67 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_a3lms_course_faculty,access.a3lms.course.faculty,model_a3lms_course,a3.group_faculty,1,1,1,0
-access_a3lms_course_student,access.a3lms.course.student,model_a3lms_course,a3.group_student,1,0,0,0
-access_a3lms_course_coordinator,access.a3lms.course.coordinator,model_a3lms_course,a3.group_coordinator,1,0,0,0
-access_a3lms_course_vpaa,access.a3lms.course.vpaa,model_a3lms_course,a3.group_vpaa,1,0,0,0
+access_ixlms_course_faculty,access.ixlms.course.faculty,model_ixlms_course,ix.group_faculty,1,1,1,0
+access_ixlms_course_student,access.ixlms.course.student,model_ixlms_course,ix.group_student,1,0,0,0
+access_ixlms_course_coordinator,access.ixlms.course.coordinator,model_ixlms_course,ix.group_coordinator,1,0,0,0
+access_ixlms_course_vpaa,access.ixlms.course.vpaa,model_ixlms_course,ix.group_vpaa,1,0,0,0
 
-access_a3lms_textbook_user,access.a3lms.textbook.user,model_a3lms_textbook,base.group_user,1,0,0,0
-access_a3lms_textbook_faculty,access.a3lms.textbook.faculty,model_a3lms_textbook,a3.group_faculty,1,1,1,1
+access_ixlms_textbook_user,access.ixlms.textbook.user,model_ixlms_textbook,base.group_user,1,0,0,0
+access_ixlms_textbook_faculty,access.ixlms.textbook.faculty,model_ixlms_textbook,ix.group_faculty,1,1,1,1
 
-access_a3lms_assessment_technique_faculty,access.a3lms.assessment.technique.faculty,model_a3lms_assessment_technique,a3.group_faculty,1,0,0,0
-access_a3lms_assessment_technique_coordinator,access.a3lms.assessment.technique.coordinator,model_a3lms_assessment_technique,a3.group_coordinator,1,1,1,0
+access_ixlms_assessment_technique_faculty,access.ixlms.assessment.technique.faculty,model_ixlms_assessment_technique,ix.group_faculty,1,0,0,0
+access_ixlms_assessment_technique_coordinator,access.ixlms.assessment.technique.coordinator,model_ixlms_assessment_technique,ix.group_coordinator,1,1,1,0
 
-access_a3lms_assessment_technique_vpaa,access.a3lms.assessment.technique.vpaa,model_a3lms_assessment_technique,a3.group_vpaa,1,0,0,0
-access_a3lms_assessment_technique_setup,access.a3lms.assessment.technique.setup,model_a3lms_assessment_technique,a3.group_setup,1,1,1,0
+access_ixlms_assessment_technique_vpaa,access.ixlms.assessment.technique.vpaa,model_ixlms_assessment_technique,ix.group_vpaa,1,0,0,0
+access_ixlms_assessment_technique_setup,access.ixlms.assessment.technique.setup,model_ixlms_assessment_technique,ix.group_setup,1,1,1,0
 
-access_a3lms_module_faculty,access.a3lms.module.faculty,model_a3lms_module,a3.group_faculty,1,1,1,1
-access_a3lms_module_user,access.a3lms.module.user,model_a3lms_module,base.group_user,1,0,0,0
+access_ixlms_module_faculty,access.ixlms.module.faculty,model_ixlms_module,ix.group_faculty,1,1,1,1
+access_ixlms_module_user,access.ixlms.module.user,model_ixlms_module,base.group_user,1,0,0,0
 
-access_a3lms_weighted_technique_faculty,access.a3lms.weighted.technique.faculty,model_a3lms_weighted_technique,a3.group_faculty,1,1,1,1
-access_a3lms_weighted_technique_user,access.a3lms.weighted.technique.user,model_a3lms_weighted_technique,base.group_user,1,0,0,0
+access_ixlms_weighted_technique_faculty,access.ixlms.weighted.technique.faculty,model_ixlms_weighted_technique,ix.group_faculty,1,1,1,1
+access_ixlms_weighted_technique_user,access.ixlms.weighted.technique.user,model_ixlms_weighted_technique,base.group_user,1,0,0,0
 
-access_a3lms_assessment_faculty,access.a3lms.assessment.faculty,model_a3lms_assessment,a3.group_faculty,1,1,1,1
-access_a3lms_assessment_student,access.a3lms.assessment.student,model_a3lms_assessment,a3.group_student,1,0,0,0
-access_a3lms_assessment_coordinator,access.a3lms.assessment.coordinator,model_a3lms_assessment,a3.group_coordinator,1,0,0,0
-access_a3lms_assessment_vpaa,access.a3lms.assessment.vpaa,model_a3lms_assessment,a3.group_vpaa,1,0,0,0
+access_ixlms_assessment_faculty,access.ixlms.assessment.faculty,model_ixlms_assessment,ix.group_faculty,1,1,1,1
+access_ixlms_assessment_student,access.ixlms.assessment.student,model_ixlms_assessment,ix.group_student,1,0,0,0
+access_ixlms_assessment_coordinator,access.ixlms.assessment.coordinator,model_ixlms_assessment,ix.group_coordinator,1,0,0,0
+access_ixlms_assessment_vpaa,access.ixlms.assessment.vpaa,model_ixlms_assessment,ix.group_vpaa,1,0,0,0
 
-access_a3lms_attendance_faculty,access.a3lms.attendance.faculty,model_a3lms_attendance,a3.group_faculty,1,1,1,0
-access_a3lms_attendance_coordinator,access.a3lms.attendance.coordinator,model_a3lms_attendance,a3.group_coordinator,1,0,0,0
-access_a3lms_attendance_vpaa,access.a3lms.attendance.vpaa,model_a3lms_attendance,a3.group_vpaa,1,0,0,0
+access_ixlms_attendance_faculty,access.ixlms.attendance.faculty,model_ixlms_attendance,ix.group_faculty,1,1,1,0
+access_ixlms_attendance_coordinator,access.ixlms.attendance.coordinator,model_ixlms_attendance,ix.group_coordinator,1,0,0,0
+access_ixlms_attendance_vpaa,access.ixlms.attendance.vpaa,model_ixlms_attendance,ix.group_vpaa,1,0,0,0
 
-access_a3lms_attendance_line_faculty,access.a3lms.attendance.line.faculty,model_a3lms_attendance_line,a3.group_faculty,1,1,1,0
-access_a3lms_attendance_line_coordinator,access.a3lms.attendance.line.coordinator,model_a3lms_attendance_line,a3.group_coordinator,1,0,0,0
-access_a3lms_attendance_line_vpaa,access.a3lms.attendance.line.vpaa,model_a3lms_attendance_line,a3.group_vpaa,1,0,0,0
-access_a3lms_attendance_line_student,access.a3lms.attendance.line.student,model_a3lms_attendance_line,a3.group_student,1,0,0,0
+access_ixlms_attendance_line_faculty,access.ixlms.attendance.line.faculty,model_ixlms_attendance_line,ix.group_faculty,1,1,1,0
+access_ixlms_attendance_line_coordinator,access.ixlms.attendance.line.coordinator,model_ixlms_attendance_line,ix.group_coordinator,1,0,0,0
+access_ixlms_attendance_line_vpaa,access.ixlms.attendance.line.vpaa,model_ixlms_attendance_line,ix.group_vpaa,1,0,0,0
+access_ixlms_attendance_line_student,access.ixlms.attendance.line.student,model_ixlms_attendance_line,ix.group_student,1,0,0,0
 
-access_a3lms_assessment_line_faculty,access.a3lms.assessment.line.faculty,model_a3lms_assessment_line,a3.group_faculty,1,1,1,0
-access_a3lms_assessment_line_student,access.a3lms.assessment.line.student,model_a3lms_assessment_line,a3.group_student,1,0,0,0
-access_a3lms_assessment_line_coordinator,access.a3lms.assessment.line.coordinator,model_a3lms_assessment_line,a3.group_coordinator,1,0,0,0
-access_a3lms_assessment_line_vpaa,access.a3lms.assessment.line.vpaa,model_a3lms_assessment_line,a3.group_vpaa,1,0,0,0
-access_a3lms_assessment_line_registrar,access.a3lms.assessment.line.registrar,model_a3lms_assessment_line,a3roster.group_registrar,1,0,0,0
+access_ixlms_assessment_line_faculty,access.ixlms.assessment.line.faculty,model_ixlms_assessment_line,ix.group_faculty,1,1,1,0
+access_ixlms_assessment_line_student,access.ixlms.assessment.line.student,model_ixlms_assessment_line,ix.group_student,1,0,0,0
+access_ixlms_assessment_line_coordinator,access.ixlms.assessment.line.coordinator,model_ixlms_assessment_line,ix.group_coordinator,1,0,0,0
+access_ixlms_assessment_line_vpaa,access.ixlms.assessment.line.vpaa,model_ixlms_assessment_line,ix.group_vpaa,1,0,0,0
+access_ixlms_assessment_line_registrar,access.ixlms.assessment.line.registrar,model_ixlms_assessment_line,ixroster.group_registrar,1,0,0,0
 
-access_a3lms_letter_grade_user,access.a3lms.letter.grade.user,model_a3lms_letter_grade,base.group_user,1,0,0,0
-access_a3lms_letter_grade_vpaa,access.a3lms.letter.grade.vpaa,model_a3lms_letter_grade,a3.group_vpaa,1,1,1,1
+access_ixlms_letter_grade_user,access.ixlms.letter.grade.user,model_ixlms_letter_grade,base.group_user,1,0,0,0
+access_ixlms_letter_grade_vpaa,access.ixlms.letter.grade.vpaa,model_ixlms_letter_grade,ix.group_vpaa,1,1,1,1
 
-access_a3lms_team_faculty,access.a3lms.team.faculty,model_a3lms_team,a3.group_faculty,1,1,1,1
-access_a3lms_team_user,access.a3lms.team.user,model_a3lms_team,base.group_user,1,0,0,0
+access_ixlms_team_faculty,access.ixlms.team.faculty,model_ixlms_team,ix.group_faculty,1,1,1,1
+access_ixlms_team_user,access.ixlms.team.user,model_ixlms_team,base.group_user,1,0,0,0
 
-access_a3lms_chapter_faculty,access.a3lms.chapter.faculty,model_a3lms_chapter,a3.group_faculty,1,1,1,1
-access_a3lms_chapter_user,access.a3lms.chapter.user,model_a3lms_chapter,base.group_user,1,0,0,0
+access_ixlms_chapter_faculty,access.ixlms.chapter.faculty,model_ixlms_chapter,ix.group_faculty,1,1,1,1
+access_ixlms_chapter_user,access.ixlms.chapter.user,model_ixlms_chapter,base.group_user,1,0,0,0
 
-access_a3lms_teamset_faculty,access.a3lms.teamset.faculty,model_a3lms_teamset,a3.group_faculty,1,1,1,1
-access_a3lms_teamset_student,access.a3lms.teamset.student,model_a3lms_teamset,a3.group_student,1,0,0,0
+access_ixlms_teamset_faculty,access.ixlms.teamset.faculty,model_ixlms_teamset,ix.group_faculty,1,1,1,1
+access_ixlms_teamset_student,access.ixlms.teamset.student,model_ixlms_teamset,ix.group_student,1,0,0,0
 
-access_a3lms_team_membership_faculty,access.a3lms.team.membership.faculty,model_a3lms_team_membership,a3.group_faculty,1,1,1,1
-access_a3lms_team_membership_student,access.a3lms.team.membership.student,model_a3lms_team_membership,a3.group_student,1,0,0,0
+access_ixlms_team_membership_faculty,access.ixlms.team.membership.faculty,model_ixlms_team_membership,ix.group_faculty,1,1,1,1
+access_ixlms_team_membership_student,access.ixlms.team.membership.student,model_ixlms_team_membership,ix.group_student,1,0,0,0
 
-access_a3lms_assessment_submission_faculty,access.a3lms.assessment.submission.faculty,model_a3lms_assessment_submission,a3.group_faculty,1,1,0,0
-access_a3lms_assessment_submission_student,access.a3lms.assessment.submission.student,model_a3lms_assessment_submission,a3.group_student,1,1,1,0
+access_ixlms_assessment_submission_faculty,access.ixlms.assessment.submission.faculty,model_ixlms_assessment_submission,ix.group_faculty,1,1,0,0
+access_ixlms_assessment_submission_student,access.ixlms.assessment.submission.student,model_ixlms_assessment_submission,ix.group_student,1,1,1,0
 
-access_a3lms_assessment_timeline_faculty,access.a3lms.assessment.timeline.faculty,model_a3lms_assessment_timeline,a3.group_faculty,1,1,1,1
-access_a3lms_assessment_timeline_student,access.a3lms.assessment.timeline.student,model_a3lms_assessment_timeline,a3.group_student,1,0,0,0
+access_ixlms_assessment_timeline_faculty,access.ixlms.assessment.timeline.faculty,model_ixlms_assessment_timeline,ix.group_faculty,1,1,1,1
+access_ixlms_assessment_timeline_student,access.ixlms.assessment.timeline.student,model_ixlms_assessment_timeline,ix.group_student,1,0,0,0
 
-access_a3lms_resource_faculty,access.a3lms.resource.faculty,model_a3lms_resource,a3.group_faculty,1,1,1,1
-access_a3lms_resource_student,access.a3lms.resource.student,model_a3lms_resource,a3.group_student,1,0,0,0
-access_a3lms_resource_coordinator,access.a3lms.resource.coordinator,model_a3lms_resource,a3.group_coordinator,1,0,0,0
-access_a3lms_resource_vpaa,access.a3lms.resource.vpaa,model_a3lms_resource,a3.group_vpaa,1,0,0,0
+access_ixlms_resource_faculty,access.ixlms.resource.faculty,model_ixlms_resource,ix.group_faculty,1,1,1,1
+access_ixlms_resource_student,access.ixlms.resource.student,model_ixlms_resource,ix.group_student,1,0,0,0
+access_ixlms_resource_coordinator,access.ixlms.resource.coordinator,model_ixlms_resource,ix.group_coordinator,1,0,0,0
+access_ixlms_resource_vpaa,access.ixlms.resource.vpaa,model_ixlms_resource,ix.group_vpaa,1,0,0,0
 

@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_letter_grade_form" model="ir.ui.view">
-			<field name="name">a3lms.letter.grade.form</field>
-			<field name="model">a3lms.letter.grade</field>
+			<field name="name">ixlms.letter.grade.form</field>
+			<field name="model">ixlms.letter.grade</field>
 			<field name="arch" type="xml">
 				<form string="Grade">
 					<sheet>
@@ -26,8 +26,8 @@
 			</field>
 		</record>
 		<record id="view_letter_grade_tree" model="ir.ui.view">
-			<field name="name">a3lms.letter.grade.tree</field>
-			<field name="model">a3lms.letter.grade</field>
+			<field name="name">ixlms.letter.grade.tree</field>
+			<field name="model">ixlms.letter.grade</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Grades" editable="bottom">
@@ -41,7 +41,7 @@
 		<record id="action_letter_grade" model="ir.actions.act_window">
 			<field name="name">Grades</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.letter.grade</field>
+			<field name="res_model">ixlms.letter.grade</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>

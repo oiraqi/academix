@@ -2,9 +2,9 @@
 <odoo>
         <data>
             <record id="view_school_form_quality" model="ir.ui.view">
-            <field name="name">a3.school.inherit.quality.view.form</field>
-            <field name="model">a3.school</field>
-            <field name="inherit_id" ref="a3catalog.view_school_form_catalog"/>
+            <field name="name">ix.school.inherit.quality.view.form</field>
+            <field name="model">ix.school</field>
+            <field name="inherit_id" ref="ixcatalog.view_school_form_catalog"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='level']" position="after">
                     <field name="accreditation_ids" widget="many2many_tags"/>

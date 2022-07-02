@@ -26,8 +26,8 @@ from odoo.exceptions import UserError
 
 
 class Room(models.Model):
-    _name = 'a3.room'
-    _inherit = 'a3.school.owned'
+    _name = 'ix.room'
+    _inherit = 'ix.school.owned'
     _description = 'Room'
     _order = 'building_id,number'
     _sql_constraints = [('number_blg_ukey', 'unique(number, building_id)', 'Room already exists')]
@@ -35,7 +35,7 @@ class Room(models.Model):
     name = fields.Char(string='Name & Building', compute='_compute_name', store=True)
     number = fields.Char(string='Number', required=True)
     capacity = fields.Integer(string='Capacity', required=True)    
-    building_id = fields.Many2one(comodel_name='a3.building', string='Building', required=True)    
+    building_id = fields.Many2one(comodel_name='ix.building', string='Building', required=True)    
     type = fields.Selection(string='Type', selection=[('classroom', 'Classroom'), ('office', 'Office'),
         ('lab', 'Lab'), ('general', 'General Purpose')], default='classroom')
     
@@ -60,7 +60,7 @@ class Room(models.Model):
     @api.model
     def get_from_name(self, name):
         building_name = name.split(' / ')[0]
-        building_id = self.env['a3.building'].search([('name', '=', building_name)])
+        building_id = self.env['ix.building'].search([('name', '=', building_name)])
         if not building_id:
             raise UserError('Unknown building / room')
         

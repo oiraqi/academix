@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="view_action_form" model="ir.ui.view">
-            <field name="name">a3performance.ts.action.form</field>
-            <field name="model">a3performance.ts.action</field>
+            <field name="name">ixperformance.ts.action.form</field>
+            <field name="model">ixperformance.ts.action</field>
             <field name="arch" type="xml">
                 <form string="Action">
                     <field name="locked" invisible="1"/>
@@ -27,11 +27,11 @@
                                     <field name="name"/>
                                     <field name="mimetype"/>
                                     <field name="file_size"/>
-                                    <button type="object" name="unlink" icon="fa-trash" groups="a3.group_faculty"/>
+                                    <button type="object" name="unlink" icon="fa-trash" groups="ix.group_faculty"/>
                                 </tree>
                             </field>
                         </group>
-                        <group col="4" groups="a3.group_faculty">
+                        <group col="4" groups="ix.group_faculty">
                             <field name="create_date"/>
                             <field name="write_date"/>
                         </group>
@@ -41,8 +41,8 @@
             </field>
         </record>
         <record id="view_action_tree" model="ir.ui.view">
-            <field name="name">a3performance.ts.action.tree</field>
-            <field name="model">a3performance.ts.action</field>
+            <field name="name">ixperformance.ts.action.tree</field>
+            <field name="model">ixperformance.ts.action</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Actions">
@@ -56,7 +56,7 @@
         <record id="action_action" model="ir.actions.act_window">
             <field name="name">Actions</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3performance.ts.action</field>
+            <field name="res_model">ixperformance.ts.action</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': 'year'}</field>

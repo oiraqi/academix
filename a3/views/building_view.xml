@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_building_form" model="ir.ui.view">
-			<field name="name">a3.building.form</field>
-			<field name="model">a3.building</field>
+			<field name="name">ix.building.form</field>
+			<field name="model">ix.building</field>
 			<field name="arch" type="xml">
 				<form string="Building">
 					<sheet>
@@ -37,8 +37,8 @@
 			</field>
 		</record>
 		<record id="view_building_tree" model="ir.ui.view">
-			<field name="name">a3.building.tree</field>
-			<field name="model">a3.building</field>
+			<field name="name">ix.building.tree</field>
+			<field name="model">ix.building</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Buildings">
@@ -55,7 +55,7 @@
 		<record id="action_building" model="ir.actions.act_window">
 			<field name="name">Buildings</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3.building</field>
+			<field name="res_model">ix.building</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': 'school_id'}</field>

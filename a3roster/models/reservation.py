@@ -5,8 +5,8 @@ from odoo.exceptions import ValidationError
 
 
 class Reservation(models.Model):
-	_name = 'a3roster.reservation'
-	_inherit = 'a3.calendarized'
+	_name = 'ixroster.reservation'
+	_inherit = 'ix.calendarized'
 	_description = 'Reservation'
 	_order = 'start_time desc,end_time'
 
@@ -25,7 +25,7 @@ class Reservation(models.Model):
 		return record
 
 	purpose = fields.Selection(string='Purpose', selection=[('makeup', 'Make-up'), ('presentation', 'Presentation'), ('meeting', 'Meeting'), ('event', 'Event'), ('other', 'Other')], default='makeup', required=True)	
-	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section')
+	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section')
 	description = fields.Char(string='Brief description')
 	room_min_capacity = fields.Selection(string='Minimum Capacity', selection=[
 		('5', '5'), ('10', '10'), ('15', '15'), ('20', '20'),
@@ -38,7 +38,7 @@ class Reservation(models.Model):
 	@api.constrains('room_id', 'start_time', 'end_time')
 	def check_conflict(self):
 		for rec in self:
-			if self.env['a3roster.reservation'].search_count([('room_id', '=', rec.room_id.id), ('start_time', '<', rec.end_time), ('end_time', '>', rec.start_time)]) > 1:
+			if self.env['ixroster.reservation'].search_count([('room_id', '=', rec.room_id.id), ('start_time', '<', rec.end_time), ('end_time', '>', rec.start_time)]) > 1:
 				raise ValidationError('Reservation conflict! Please select another room or change the timeslot.')
 	
 	def _make_reservation(self):
@@ -62,8 +62,8 @@ class Reservation(models.Model):
 		self.ensure_one()
 		candidate_rooms = []
 		if self.start_time and self.end_time:			
-			available_rooms = self.env['a3.room'].available_rooms(self.start_time, self.end_time)
-			candidate_rooms = self.env['a3.room'].search([('id', 'in', available_rooms),
+			available_rooms = self.env['ix.room'].available_rooms(self.start_time, self.end_time)
+			candidate_rooms = self.env['ix.room'].search([('id', 'in', available_rooms),
 				('capacity', '>=', self.room_min_capacity),
 				('type', '=', self.room_type)], order='capacity')
 			if not candidate_rooms:

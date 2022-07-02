@@ -25,7 +25,7 @@ from odoo import api, fields, models
 
 
 class Tag(models.Model):
-    _name = 'a3capint.tag'
+    _name = 'ixcapint.tag'
     _description = 'Project Keywords'
 
     name = fields.Char(string='Tag', required=True)

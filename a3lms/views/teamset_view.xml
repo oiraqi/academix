@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_teamset_form" model="ir.ui.view">
-			<field name="name">a3lms.teamset.form</field>
-			<field name="model">a3lms.teamset</field>
+			<field name="name">ixlms.teamset.form</field>
+			<field name="model">ixlms.teamset</field>
 			<field name="arch" type="xml">
 				<form string="Teamset">
 					<sheet>
@@ -22,8 +22,8 @@
 			</field>
 		</record>
 		<record id="view_teamset_tree" model="ir.ui.view">
-			<field name="name">a3lms.teamset.tree</field>
-			<field name="model">a3lms.teamset</field>
+			<field name="name">ixlms.teamset.tree</field>
+			<field name="model">ixlms.teamset</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Team Sets" editable="bottom">
@@ -37,7 +37,7 @@
 		<record id="action_teamset" model="ir.actions.act_window">
 			<field name="name">Team Sets</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.teamset</field>
+			<field name="res_model">ixlms.teamset</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>

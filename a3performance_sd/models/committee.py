@@ -24,9 +24,9 @@
 from odoo import models, fields
 
 class Committee(models.Model):
-    _name = 'a3performance.sd.committee'
+    _name = 'ixperformance.sd.committee'
 
     name = fields.Char('Name', required=True)
     scope = fields.Selection([('school', 'School'), ('university',
                             'University')], 'Scope', default='school', required=True)
-    school_id = fields.Many2one('a3.school', string='School')
+    school_id = fields.Many2one('ix.school', string='School')

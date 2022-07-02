@@ -25,12 +25,12 @@ from odoo import models, fields, api
 
 
 class Evaluation(models.Model):
-    _name = 'a3capint.evaluation'
-    _inherit = 'a3.faculty.owned'
+    _name = 'ixcapint.evaluation'
+    _inherit = 'ix.faculty.owned'
     _description = 'Project Evaluation'
 
-    project_id = fields.Many2one('a3capint.project', string='Project', required=True)
-    student_id = fields.Many2one('a3.student', related='project_id.student_id', store=True, readonly=True)
+    project_id = fields.Many2one('ixcapint.project', string='Project', required=True)
+    student_id = fields.Many2one('ix.student', related='project_id.student_id', store=True, readonly=True)
     
     supervisor = fields.Char(compute='_compute_supervisor', string='Supervisor?')
     

@@ -12,7 +12,7 @@ The base of all A3 apps
 """,
     'depends': ['web', 'mail', 'attachment_indexation', 'calendar'],
     'data': [
-        'security/a3_security.xml',
+        'security/ix_security.xml',
         'security/ir.model.access.csv',
         'views/course_view.xml',
         'views/discipline_view.xml',
@@ -25,7 +25,7 @@ The base of all A3 apps
         'views/building_view.xml',
         'views/room_view.xml',
         'views/session_view.xml',
-        'views/a3_menu.xml',
+        'views/ix_menu.xml',
         'data/schools.xml',
         'data/disciplines.xml',
         'data/sessions.xml',

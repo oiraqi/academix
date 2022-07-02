@@ -1,16 +1,16 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_a3catalog_course_ilo_user,access.a3catalog.course.ilo.user,model_a3catalog_course_ilo,base.group_user,1,0,0,0
-access_a3catalog_course_ilo_course_manager,access.a3catalog.course.ilo.course.manager,model_a3catalog_course_ilo,a3.group_course_manager,1,1,1,1
+access_ixcatalog_course_ilo_user,access.ixcatalog.course.ilo.user,model_ixcatalog_course_ilo,base.group_user,1,0,0,0
+access_ixcatalog_course_ilo_course_manager,access.ixcatalog.course.ilo.course.manager,model_ixcatalog_course_ilo,ix.group_course_manager,1,1,1,1
 
-access_a3catalog_prerequisite_user,access.a3catalog.prerequisite.user,model_a3catalog_prerequisite,base.group_user,1,0,0,0
-access_a3catalog_prerequisite_course_manager,access.a3catalog.prerequisite.course.manager,model_a3catalog_prerequisite,a3.group_course_manager,1,1,1,1
+access_ixcatalog_prerequisite_user,access.ixcatalog.prerequisite.user,model_ixcatalog_prerequisite,base.group_user,1,0,0,0
+access_ixcatalog_prerequisite_course_manager,access.ixcatalog.prerequisite.course.manager,model_ixcatalog_prerequisite,ix.group_course_manager,1,1,1,1
 
-access_a3catalog_corequisite_user,access.a3catalog.corequisite.user,model_a3catalog_corequisite,base.group_user,1,0,0,0
-access_a3catalog_corequisite_course_manager,access.a3catalog.corequisite.course.manager,model_a3catalog_corequisite,a3.group_course_manager,1,1,1,1
+access_ixcatalog_corequisite_user,access.ixcatalog.corequisite.user,model_ixcatalog_corequisite,base.group_user,1,0,0,0
+access_ixcatalog_corequisite_course_manager,access.ixcatalog.corequisite.course.manager,model_ixcatalog_corequisite,ix.group_course_manager,1,1,1,1
 
 
-access_a3catalog_program_user,access.a3catalog.program.user,model_a3catalog_program,base.group_user,1,0,0,0
-access_a3catalog_program_program_manager,access.a3catalog.program.program.manager,model_a3catalog_program,a3catalog.group_program_manager,1,1,1,1
+access_ixcatalog_program_user,access.ixcatalog.program.user,model_ixcatalog_program,base.group_user,1,0,0,0
+access_ixcatalog_program_program_manager,access.ixcatalog.program.program.manager,model_ixcatalog_program,ixcatalog.group_program_manager,1,1,1,1
 
-access_a3catalog_component_user,access.a3catalog.component.user,model_a3catalog_component,base.group_user,1,0,0,0
-access_a3catalog_component_program_manager,access.a3catalog.component.program_manager,model_a3catalog_component,a3catalog.group_program_manager,1,1,1,1
+access_ixcatalog_component_user,access.ixcatalog.component.user,model_ixcatalog_component,base.group_user,1,0,0,0
+access_ixcatalog_component_program_manager,access.ixcatalog.component.program_manager,model_ixcatalog_component,ixcatalog.group_program_manager,1,1,1,1

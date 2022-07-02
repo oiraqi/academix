@@ -25,13 +25,13 @@ from odoo import models, fields, api
 
 
 class Student(models.Model):
-    _inherit = 'a3.student'    
+    _inherit = 'ix.student'    
 
-    attendance_line_absent_ids = fields.One2many(comodel_name='a3lms.attendance.line', compute='_attendance_line_absent_ids', string='Missed Classes')
+    attendance_line_absent_ids = fields.One2many(comodel_name='ixlms.attendance.line', compute='_attendance_line_absent_ids', string='Missed Classes')
 
     def _attendance_line_absent_ids(self):
         for rec in self:
-            rec.attendance_line_absent_ids = self.env['a3lms.attendance.line'].search([
+            rec.attendance_line_absent_ids = self.env['ixlms.attendance.line'].search([
                 ('student_id', '=', rec.id), ('state', '=', 'absent')])
      
     

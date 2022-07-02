@@ -1,11 +1,11 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_a3performance_srank_user,access.a3performance.srank.user,model_a3performance_srank,base.group_user,1,0,0,0
-access_a3performance_srank_setup,access.a3performance.srank.setup,model_a3performance_srank,a3.group_setup,1,1,1,1
+access_ixperformance_srank_user,access.ixperformance.srank.user,model_ixperformance_srank,base.group_user,1,0,0,0
+access_ixperformance_srank_setup,access.ixperformance.srank.setup,model_ixperformance_srank,ix.group_setup,1,1,1,1
 
-access_a3performance_degree_user,access.a3performance.degree.user,model_a3performance_degree,base.group_user,1,0,0,0
-access_a3performance_degree_faculty,access.a3performance.degree.faculty,model_a3performance_degree,a3.group_faculty,1,1,1,1
+access_ixperformance_degree_user,access.ixperformance.degree.user,model_ixperformance_degree,base.group_user,1,0,0,0
+access_ixperformance_degree_faculty,access.ixperformance.degree.faculty,model_ixperformance_degree,ix.group_faculty,1,1,1,1
 
-access_a3performance_process_faculty,access.a3performance.process.faculty,model_a3performance_process,a3.group_faculty,1,1,1,0
-access_a3performance_process_committee_member,access.a3performance.process.committee_member,model_a3performance_process,a3performance.group_committee_member,1,1,0,0
-access_a3performance_process_dean,access.a3performance.process.dean,model_a3performance_process,a3.group_dean,1,1,0,0
-access_a3performance_process_vpaa,access.a3performance.process.vpaa,model_a3performance_process,a3.group_vpaa,1,1,0,0
+access_ixperformance_process_faculty,access.ixperformance.process.faculty,model_ixperformance_process,ix.group_faculty,1,1,1,0
+access_ixperformance_process_committee_member,access.ixperformance.process.committee_member,model_ixperformance_process,ixperformance.group_committee_member,1,1,0,0
+access_ixperformance_process_dean,access.ixperformance.process.dean,model_ixperformance_process,ix.group_dean,1,1,0,0
+access_ixperformance_process_vpaa,access.ixperformance.process.vpaa,model_ixperformance_process,ix.group_vpaa,1,1,0,0

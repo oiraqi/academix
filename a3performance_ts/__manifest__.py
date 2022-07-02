@@ -10,7 +10,7 @@
 The Teaching and Supervision module under Performance Management.
 ===================================================
 """,
-    'depends': ['a3performance', 'a3roster'],
+    'depends': ['ixperformance', 'ixroster'],
     'data': [
         #'security/performance_ts_security.xml',
         'security/ir.model.access.csv',

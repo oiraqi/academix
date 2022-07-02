@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="view_srank_form" model="ir.ui.view">
-            <field name="name">a3performance.srank.form</field>
-            <field name="model">a3performance.srank</field>
+            <field name="name">ixperformance.srank.form</field>
+            <field name="model">ixperformance.srank</field>
             <field name="arch" type="xml">
                 <form string="Subrank">
                     <sheet>
@@ -16,8 +16,8 @@
             </field>
         </record>
         <record id="view_srank_tree" model="ir.ui.view">
-            <field name="name">a3performance.srank.tree</field>
-            <field name="model">a3performance.srank</field>
+            <field name="name">ixperformance.srank.tree</field>
+            <field name="model">ixperformance.srank</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Sub ranks">
@@ -28,7 +28,7 @@
         <record id="action_srank_form" model="ir.actions.act_window">
             <field name="name">Ranks</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3performance.srank</field>
+            <field name="res_model">ixperformance.srank</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': 'rank'}</field>

@@ -27,7 +27,7 @@ from odoo.exceptions import ValidationError
 SEMESTERS = {'1': 'Spring', '2': 'Summer', '3': 'Fall'}
 
 class Term(models.Model):
-    _name = 'a3.term'
+    _name = 'ix.term'
     _description = 'Academic Term'
     _order = 'year,semester'
     _sql_constraints = [('term_ukey', 'unique(year, semester)', 'Term already exists')]

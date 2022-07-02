@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_reservation_form" model="ir.ui.view">
-			<field name="name">a3roster.reservation.form</field>
-			<field name="model">a3roster.reservation</field>
+			<field name="name">ixroster.reservation.form</field>
+			<field name="model">ixroster.reservation</field>
 			<field name="arch" type="xml">
 				<form string="Reservation">
 					<sheet>
@@ -48,8 +48,8 @@
 			</field>
 		</record>
 		<record id="view_reservation_tree" model="ir.ui.view">
-			<field name="name">a3roster.reservation.tree</field>
-			<field name="model">a3roster.reservation</field>
+			<field name="name">ixroster.reservation.tree</field>
+			<field name="model">ixroster.reservation</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Reservations">
@@ -65,7 +65,7 @@
 		<record id="action_reservation" model="ir.actions.act_window">
 			<field name="name">Reservations</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3roster.reservation</field>
+			<field name="res_model">ixroster.reservation</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>

@@ -2,328 +2,328 @@
 <odoo>
     <data>
 
-        <record id="a3_discipline_acc" model="a3.discipline">
+        <record id="ix_discipline_acc" model="ix.discipline">
             <field name="name">Accounting</field>
             <field name="code">ACC</field>
-            <field name="school_id" ref="a3_school_sba" />
+            <field name="school_id" ref="ix_school_sba" />
         </record>
 
-        <record id="a3_discipline_aer" model="a3.discipline">
+        <record id="ix_discipline_aer" model="ix.discipline">
             <field name="name">Aeronautics</field>
             <field name="code">AER</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_als" model="a3.discipline">
+        <record id="ix_discipline_als" model="ix.discipline">
             <field name="name">Academic Speaking, Listening, and Note Taking</field>
             <field name="code">ALS</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_ard" model="a3.discipline">
+        <record id="ix_discipline_ard" model="ix.discipline">
             <field name="name">Academic Reading</field>
             <field name="code">ARD</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_awg" model="a3.discipline">
+        <record id="ix_discipline_awg" model="ix.discipline">
             <field name="name">Academic Writing and Grammar</field>
             <field name="code">AWG</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_ara" model="a3.discipline">
+        <record id="ix_discipline_ara" model="ix.discipline">
             <field name="name">Arabic Studies</field>
             <field name="code">ARA</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_arb" model="a3.discipline">
+        <record id="ix_discipline_arb" model="ix.discipline">
             <field name="name">Arabic Studies</field>
             <field name="code">ARB</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_bio" model="a3.discipline">
+        <record id="ix_discipline_bio" model="ix.discipline">
             <field name="name">Biology</field>
             <field name="code">BIO</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_che" model="a3.discipline">
+        <record id="ix_discipline_che" model="ix.discipline">
             <field name="name">Chemistry</field>
             <field name="code">CHE</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_cip" model="a3.discipline">
+        <record id="ix_discipline_cip" model="ix.discipline">
             <field name="name">Community Involvement</field>
             <field name="code">CIP</field>
-            <field name="school_id" ref="a3_school_unv" />
+            <field name="school_id" ref="ix_school_unv" />
         </record>
 
-        <record id="a3_discipline_com" model="a3.discipline">
+        <record id="ix_discipline_com" model="ix.discipline">
             <field name="name">Communication</field>
             <field name="code">COM</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_csc" model="a3.discipline">
+        <record id="ix_discipline_csc" model="ix.discipline">
             <field name="name">Computer Science</field>
             <field name="code">CSC</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_eco" model="a3.discipline">
+        <record id="ix_discipline_eco" model="ix.discipline">
             <field name="name">Economics</field>
             <field name="code">ECO</field>
-            <field name="school_id" ref="a3_school_sba" />
+            <field name="school_id" ref="ix_school_sba" />
         </record>
 
-        <record id="a3_discipline_egr" model="a3.discipline">
+        <record id="ix_discipline_egr" model="ix.discipline">
             <field name="name">Engineering</field>
             <field name="code">EGR</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_eds" model="a3.discipline">
+        <record id="ix_discipline_eds" model="ix.discipline">
             <field name="name">Engineering and Design Support</field>
             <field name="code">EDS</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_eng" model="a3.discipline">
+        <record id="ix_discipline_eng" model="ix.discipline">
             <field name="name">English</field>
             <field name="code">ENG</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_env" model="a3.discipline">
+        <record id="ix_discipline_env" model="ix.discipline">
             <field name="name">Environmental Science</field>
             <field name="code">ENV</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_fas" model="a3.discipline">
+        <record id="ix_discipline_fas" model="ix.discipline">
             <field name="name">Foundations of Academic Success</field>
             <field name="code">FAS</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_fin" model="a3.discipline">
+        <record id="ix_discipline_fin" model="ix.discipline">
             <field name="name">Finance</field>
             <field name="code">FIN</field>
-            <field name="school_id" ref="a3_school_sba" />
+            <field name="school_id" ref="ix_school_sba" />
         </record>
 
-        <record id="a3_discipline_fre" model="a3.discipline">
+        <record id="ix_discipline_fre" model="ix.discipline">
             <field name="name">French</field>
             <field name="code">FRE</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_frn" model="a3.discipline">
+        <record id="ix_discipline_frn" model="ix.discipline">
             <field name="name">French</field>
             <field name="code">FRN</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_gac" model="a3.discipline">
+        <record id="ix_discipline_gac" model="ix.discipline">
             <field name="name">Grammar in Academic Context</field>
             <field name="code">GAC</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_gbu" model="a3.discipline">
+        <record id="ix_discipline_gbu" model="ix.discipline">
             <field name="name">General Business</field>
             <field name="code">GBU</field>
-            <field name="school_id" ref="a3_school_sba" />
+            <field name="school_id" ref="ix_school_sba" />
         </record>
 
-        <record id="a3_discipline_geo" model="a3.discipline">
+        <record id="ix_discipline_geo" model="ix.discipline">
             <field name="name">Geography</field>
             <field name="code">GEO</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_his" model="a3.discipline">
+        <record id="ix_discipline_his" model="ix.discipline">
             <field name="name">History</field>
             <field name="code">HIS</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_hrd" model="a3.discipline">
+        <record id="ix_discipline_hrd" model="ix.discipline">
             <field name="name">Human Resources Development</field>
             <field name="code">HRD</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_hum" model="a3.discipline">
+        <record id="ix_discipline_hum" model="ix.discipline">
             <field name="name">Humanities</field>
             <field name="code">HUM</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_ins" model="a3.discipline">
+        <record id="ix_discipline_ins" model="ix.discipline">
             <field name="name">International Studies</field>
             <field name="code">INS</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_int" model="a3.discipline">
+        <record id="ix_discipline_int" model="ix.discipline">
             <field name="name">Internship</field>
             <field name="code">INT</field>
-            <field name="school_id" ref="a3_school_unv" />
+            <field name="school_id" ref="ix_school_unv" />
         </record>
 
-        <record id="a3_discipline_lat" model="a3.discipline">
+        <record id="ix_discipline_lat" model="ix.discipline">
             <field name="name">Latin</field>
             <field name="code">LAT</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_lit" model="a3.discipline">
+        <record id="ix_discipline_lit" model="ix.discipline">
             <field name="name">Literature</field>
             <field name="code">LIT</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_mgt" model="a3.discipline">
+        <record id="ix_discipline_mgt" model="ix.discipline">
             <field name="name">Management</field>
             <field name="code">MGT</field>
-            <field name="school_id" ref="a3_school_sba" />
+            <field name="school_id" ref="ix_school_sba" />
         </record>
 
-        <record id="a3_discipline_mis" model="a3.discipline">
+        <record id="ix_discipline_mis" model="ix.discipline">
             <field name="name">Management Information Systems</field>
             <field name="code">MIS</field>
-            <field name="school_id" ref="a3_school_sba" />
+            <field name="school_id" ref="ix_school_sba" />
         </record>
 
-        <record id="a3_discipline_mle" model="a3.discipline">
+        <record id="ix_discipline_mle" model="ix.discipline">
             <field name="name">Manufacturing and Logistics Engineering</field>
             <field name="code">MLE</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_mkt" model="a3.discipline">
+        <record id="ix_discipline_mkt" model="ix.discipline">
             <field name="name">Marketing</field>
             <field name="code">MKT</field>
-            <field name="school_id" ref="a3_school_sba" />
+            <field name="school_id" ref="ix_school_sba" />
         </record>
 
-        <record id="a3_discipline_mth" model="a3.discipline">
+        <record id="ix_discipline_mth" model="ix.discipline">
             <field name="name">Mathematics</field>
             <field name="code">MTH</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_phi" model="a3.discipline">
+        <record id="ix_discipline_phi" model="ix.discipline">
             <field name="name">Philosophy</field>
             <field name="code">PHI</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_phy" model="a3.discipline">
+        <record id="ix_discipline_phy" model="ix.discipline">
             <field name="name">Physics</field>
             <field name="code">PHY</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_pln" model="a3.discipline">
+        <record id="ix_discipline_pln" model="ix.discipline">
             <field name="name">Territorial Planning</field>
             <field name="code">PLN</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_psc" model="a3.discipline">
+        <record id="ix_discipline_psc" model="ix.discipline">
             <field name="name">Political Science</field>
             <field name="code">PSC</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_pae" model="a3.discipline">
+        <record id="ix_discipline_pae" model="ix.discipline">
             <field name="name">Pre-Academic English</field>
             <field name="code">PAE</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_pawg" model="a3.discipline">
+        <record id="ix_discipline_pawg" model="ix.discipline">
             <field name="name">Pre-Academic Writing and Grammar</field>
             <field name="code">PAWG</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_pals" model="a3.discipline">
+        <record id="ix_discipline_pals" model="ix.discipline">
             <field name="name">Pre-Academic Listening and Speaking</field>
             <field name="code">PALS</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_pard" model="a3.discipline">
+        <record id="ix_discipline_pard" model="ix.discipline">
             <field name="name">Pre-Academic Reading</field>
             <field name="code">PARD</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_psy" model="a3.discipline">
+        <record id="ix_discipline_psy" model="ix.discipline">
             <field name="name">Psychology</field>
             <field name="code">PSY</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_res" model="a3.discipline">
+        <record id="ix_discipline_res" model="ix.discipline">
             <field name="name">Renewable Energy Sources</field>
             <field name="code">RES</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_sci" model="a3.discipline">
+        <record id="ix_discipline_sci" model="ix.discipline">
             <field name="name">Science</field>
             <field name="code">SCI</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_ssc" model="a3.discipline">
+        <record id="ix_discipline_ssc" model="ix.discipline">
             <field name="name">Social Sciences</field>
             <field name="code">SSC</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_soc" model="a3.discipline">
+        <record id="ix_discipline_soc" model="ix.discipline">
             <field name="name">Sociology</field>
             <field name="code">SOC</field>
-            <field name="school_id" ref="a3_school_shss" />
+            <field name="school_id" ref="ix_school_shss" />
         </record>
 
-        <record id="a3_discipline_spn" model="a3.discipline">
+        <record id="ix_discipline_spn" model="ix.discipline">
             <field name="name">Spanish</field>
             <field name="code">SPN</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_scm" model="a3.discipline">
+        <record id="ix_discipline_scm" model="ix.discipline">
             <field name="name">Supply Chain Management</field>
             <field name="code">SCM</field>
-            <field name="school_id" ref="a3_school_sba" />
+            <field name="school_id" ref="ix_school_sba" />
         </record>
 
-        <record id="a3_discipline_sta" model="a3.discipline">
+        <record id="ix_discipline_sta" model="ix.discipline">
             <field name="name">Statistics</field>
             <field name="code">STA</field>
-            <field name="school_id" ref="a3_school_sse" />
+            <field name="school_id" ref="ix_school_sse" />
         </record>
 
-        <record id="a3_discipline_tmz" model="a3.discipline">
+        <record id="ix_discipline_tmz" model="ix.discipline">
             <field name="name">Tamazight</field>
             <field name="code">TMZ</field>
-            <field name="school_id" ref="a3_school_lc" />
+            <field name="school_id" ref="ix_school_lc" />
         </record>
 
-        <record id="a3_discipline_urp" model="a3.discipline">
+        <record id="ix_discipline_urp" model="ix.discipline">
             <field name="name">Undergraduate Research Project</field>
             <field name="code">URP</field>
-            <field name="school_id" ref="a3_school_unv" />
+            <field name="school_id" ref="ix_school_unv" />
         </record>
 
     </data>

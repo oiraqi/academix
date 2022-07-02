@@ -25,15 +25,15 @@ from odoo import api, models, fields
 
 
 class Portfolio(models.Model):
-	_name = 'a3quality.portfolio'
+	_name = 'ixquality.portfolio'
 	_description = 'Portfolio'
-	_inherit = 'a3.faculty.activity'
+	_inherit = 'ix.faculty.activity'
 	_sql_constraints = [('section_ukey', 'unique(section_id)', 'A portfolio already exists for this section')]
 
 	name = fields.Char('Name', compute='_compute_name', store=True)
-	section_id = fields.Many2one('a3roster.section', 'Section', required=True)
-	course_id = fields.Many2one(comodel_name='a3.course', related='section_id.course_id', store=True)
-	school_id = fields.Many2one(comodel_name='a3.school', related='section_id.school_id', store=True)	
+	section_id = fields.Many2one('ixroster.section', 'Section', required=True)
+	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id', store=True)
+	school_id = fields.Many2one(comodel_name='ix.school', related='section_id.school_id', store=True)	
 
 	@api.onchange('section_id', 'faculty_id')
 	@api.depends('section_id', 'faculty_id')
@@ -51,7 +51,7 @@ class Portfolio(models.Model):
 	def _onchange_year_semester(self):
 		for rec in self:
 			if rec.year and rec.semester:
-				sections = self.env['a3roster.section'].search(
+				sections = self.env['ixroster.section'].search(
                     [('instructor_id.user_id', '=', self.env.user.id), ('year', '=', rec.year),
                     ('semester', '=', rec.semester)])
 				if sections:
@@ -59,10 +59,10 @@ class Portfolio(models.Model):
 				else:
 					rec.section_id = False
 
-	useful_assessment_technique_ids = fields.Many2many('a3lms.assessment.technique', 'a3quality_portfolio_assessment_technique_useful', 'portfolio_id', 'assessment_technique_id', 'Useful', required=True)
-	not_recommended_assessment_technique_ids = fields.Many2many('a3lms.assessment.technique', 'a3quality_portfolio_assessment_technique_nr', 'portfolio_id', 'assessment_technique_id', 'Not Recommended')
-	assessment_ids = fields.One2many(comodel_name='a3quality.assessment', inverse_name='portfolio_id', string='Assessment / Program')
-	action_ids = fields.One2many(comodel_name='a3quality.action', inverse_name='portfolio_id', string='Recommended Remedial Actions')	
+	useful_assessment_technique_ids = fields.Many2many('ixlms.assessment.technique', 'ixquality_portfolio_assessment_technique_useful', 'portfolio_id', 'assessment_technique_id', 'Useful', required=True)
+	not_recommended_assessment_technique_ids = fields.Many2many('ixlms.assessment.technique', 'ixquality_portfolio_assessment_technique_nr', 'portfolio_id', 'assessment_technique_id', 'Not Recommended')
+	assessment_ids = fields.One2many(comodel_name='ixquality.assessment', inverse_name='portfolio_id', string='Assessment / Program')
+	action_ids = fields.One2many(comodel_name='ixquality.action', inverse_name='portfolio_id', string='Recommended Remedial Actions')	
 	ilo_changes = fields.Html('Recommended Changes To Course ILOs')
 	ass_tech_modifications = fields.Html('Recommended Modifications To Assssment Techniques')
 	deviations = fields.Html('Significant Deviations in Course Content from Syllabus')	

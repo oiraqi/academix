@@ -2,13 +2,13 @@
 <odoo>
 	<data>
 		<record id="view_journal_form" model="ir.ui.view">
-			<field name="name">a3research.journal.form</field>
-			<field name="model">a3research.journal</field>
+			<field name="name">ixresearch.journal.form</field>
+			<field name="model">ixresearch.journal</field>
 			<field name="arch" type="xml">
 				<form string="Journal">
 					<header>
-						<button name="approve" states="proposed" string="Approve" type="object" class="oe_highlight" groups="a3.group_vpaa"/>
-						<button name="reject" states="proposed,approved" string="Reject" type="object" groups="a3.group_vpaa"/>
+						<button name="approve" states="proposed" string="Approve" type="object" class="oe_highlight" groups="ix.group_vpaa"/>
+						<button name="reject" states="proposed,approved" string="Reject" type="object" groups="ix.group_vpaa"/>
 						<field name="state" widget="statusbar" statusbar_visible="proposed,approved"/>
 					</header>
 					<sheet>
@@ -34,8 +34,8 @@
 			</field>
 		</record>
 		<record id="view_journal_tree" model="ir.ui.view">
-			<field name="name">a3research.journal.tree</field>
-			<field name="model">a3research.journal</field>
+			<field name="name">ixresearch.journal.tree</field>
+			<field name="model">ixresearch.journal</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Journals">
@@ -51,7 +51,7 @@
 		<record id="action_journal" model="ir.actions.act_window">
 			<field name="name">Journals</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3research.journal</field>
+			<field name="res_model">ixresearch.journal</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['state', 'tier']}</field>

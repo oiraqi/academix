@@ -2,43 +2,43 @@
 <odoo>
     <data noupdate="1">
     
-        <record id="a3lms_assessment_technique_hmw" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_hmw" model="ixlms.assessment.technique">
             <field name="name">Homework</field>
         </record>
-        <record id="a3lms_assessment_technique_exm" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_exm" model="ixlms.assessment.technique">
             <field name="name">Exams</field>
         </record>
-        <record id="a3lms_assessment_technique_quz" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_quz" model="ixlms.assessment.technique">
             <field name="name">Quizzes</field>
         </record>
-        <record id="a3lms_assessment_technique_prj" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_prj" model="ixlms.assessment.technique">
             <field name="name">Projects</field>
         </record>
-        <record id="a3lms_assessment_technique_opr" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_opr" model="ixlms.assessment.technique">
             <field name="name">Oral Presentations</field>
         </record>
-        <record id="a3lms_assessment_technique_wrp" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_wrp" model="ixlms.assessment.technique">
             <field name="name">Written Reports (other than projects)</field>
         </record>
-        <record id="a3lms_assessment_technique_sse" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_sse" model="ixlms.assessment.technique">
             <field name="name">Student Self-Evaluation</field>
         </record>
-        <record id="a3lms_assessment_technique_spe" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_spe" model="ixlms.assessment.technique">
             <field name="name">Student Peer Evaluation</field>
         </record>
-        <record id="a3lms_assessment_technique_cpf" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_cpf" model="ixlms.assessment.technique">
             <field name="name">Course Portfolios</field>
         </record>
-        <record id="a3lms_assessment_technique_csv" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_csv" model="ixlms.assessment.technique">
             <field name="name">Class Surveys</field>
         </record>
-        <record id="a3lms_assessment_technique_iob" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_iob" model="ixlms.assessment.technique">
             <field name="name">Instructor Observation</field>
         </record>
-        <record id="a3lms_assessment_technique_lfe" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_lfe" model="ixlms.assessment.technique">
             <field name="name">Lab Practical Final Exam</field>
         </record>
-        <record id="a3lms_assessment_technique_prt" model="a3lms.assessment.technique">
+        <record id="ixlms_assessment_technique_prt" model="ixlms.assessment.technique">
             <field name="name">Participation</field>
         </record>
     </data>

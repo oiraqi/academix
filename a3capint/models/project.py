@@ -35,16 +35,16 @@ TYPES = {   'CAP': 'Capstone',
 
 
 class Project(models.Model):
-    _name = 'a3capint.project'
-    _inherit = ['a3.school.activity', 'a3.calendarized', 'mail.thread']
+    _name = 'ixcapint.project'
+    _inherit = ['ix.school.activity', 'ix.calendarized', 'mail.thread']
     _description = 'A capstone, internship, combined, master project or thesis'
     _sql_constraints = [('student_year_semester_type_ukey', 'unique(student_id, year, semester, type)', 'Project already exists')]
 
     name = fields.Char('Title', required=True, readonly=True,
                        states={'draft': [('readonly', False)]})
 
-    student_id = fields.Many2one('a3.student', string='Student', required=True, readonly=True,
-                                 default=lambda self: self.env['a3.student'].search(
+    student_id = fields.Many2one('ix.student', string='Student', required=True, readonly=True,
+                                 default=lambda self: self.env['ix.student'].search(
                                      [('user_id', '=', self.env.user.id)]),
                                  states={'draft': [('readonly', False)]})
 
@@ -71,12 +71,12 @@ class Project(models.Model):
             else:
                 rec.code = ''
 
-    supervisor_id = fields.Many2one('a3.faculty', string='Supervisor', required=True,
-                                    default=lambda self: self.env['a3.faculty'].search(
+    supervisor_id = fields.Many2one('ix.faculty', string='Supervisor', required=True,
+                                    default=lambda self: self.env['ix.faculty'].search(
                                         [('user_id', '=', self.env.user.id)]),
                                     readonly=True, states={'draft': [('readonly', False)]})
 
-    cosupervisor_ids = fields.Many2many('a3.faculty', relation='a3capint_project_cosupervisor_rel', string='Co-supervisors',                                    
+    cosupervisor_ids = fields.Many2many('ix.faculty', relation='ixcapint_project_cosupervisor_rel', string='Co-supervisors',                                    
                                     readonly=True, states={'draft': [('readonly', False)]})
 
     @api.onchange('student_id', 'supervisor_id')
@@ -113,15 +113,15 @@ class Project(models.Model):
                                  readonly=True, states={'ongoing': [('readonly', False)], 'defense': [('readonly', False)]})
 
     tag_ids = fields.Many2many(
-        comodel_name='a3capint.tag', string='Keywords', required=True)
+        comodel_name='ixcapint.tag', string='Keywords', required=True)
 
-    internal_examiner_ids = fields.Many2many('a3.faculty', string='Internal Examiners',
+    internal_examiner_ids = fields.Many2many('ix.faculty', string='Internal Examiners',
                                 readonly=True, states={'ongoing': [('readonly', False)]})
 
     external_examiner_ids = fields.Many2many('res.partner', string='External Examiners',
                                            readonly=True, states={'ongoing': [('readonly', False)]})
 
-    evaluation_ids = fields.One2many('a3capint.evaluation', 'project_id', 'Evaluations',
+    evaluation_ids = fields.One2many('ixcapint.evaluation', 'project_id', 'Evaluations',
                                      readonly=True, states={'defense': [('readonly', False)]})
 
     final_report = fields.Binary(string='Final Report')

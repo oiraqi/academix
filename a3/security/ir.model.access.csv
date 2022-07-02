@@ -1,41 +1,41 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_a3_course_user,access.a3.course.user,model_a3_course,base.group_user,1,0,0,0
-access_a3_course_cousre_manager,access.a3.course.course.manager,model_a3_course,group_course_manager,1,1,1,0
+access_ix_course_user,access.ix.course.user,model_ix_course,base.group_user,1,0,0,0
+access_ix_course_cousre_manager,access.ix.course.course.manager,model_ix_course,group_course_manager,1,1,1,0
 
-access_a3_student_user,access.a3.student.user,model_a3_course,base.group_user,1,0,0,0
-access_a3_student_setup,access.a3.student.setup,model_a3_student,group_setup,1,1,1,0
-access_a3_student_faculty,access.a3.student.faculty,model_a3_student,group_faculty,1,1,1,0
-access_a3_student_coordinator,access.a3.student.coordinator,model_a3_student,group_coordinator,1,1,1,0
-access_a3_student_vpaa,access.a3.student.vpaa,model_a3_student,group_vpaa,1,1,0,0
+access_ix_student_user,access.ix.student.user,model_ix_course,base.group_user,1,0,0,0
+access_ix_student_setup,access.ix.student.setup,model_ix_student,group_setup,1,1,1,0
+access_ix_student_faculty,access.ix.student.faculty,model_ix_student,group_faculty,1,1,1,0
+access_ix_student_coordinator,access.ix.student.coordinator,model_ix_student,group_coordinator,1,1,1,0
+access_ix_student_vpaa,access.ix.student.vpaa,model_ix_student,group_vpaa,1,1,0,0
 
-access_a3_discipline_user,access.a3.discipline.user,model_a3_discipline,base.group_user,1,0,0,0
-access_a3_discipline_setup,access.a3.discipline.setup,model_a3_discipline,group_setup,1,1,1,0
-access_a3_discipline_faculty,access.a3.discipline.faculty,model_a3_discipline,group_faculty,1,1,1,0
-access_a3_discipline_coordinator,access.a3.discipline.coordinator,model_a3_discipline,group_coordinator,1,1,1,0
-access_a3_discipline_vpaa,access.a3.discipline.vpaa,model_a3_discipline,group_vpaa,1,1,0,0
+access_ix_discipline_user,access.ix.discipline.user,model_ix_discipline,base.group_user,1,0,0,0
+access_ix_discipline_setup,access.ix.discipline.setup,model_ix_discipline,group_setup,1,1,1,0
+access_ix_discipline_faculty,access.ix.discipline.faculty,model_ix_discipline,group_faculty,1,1,1,0
+access_ix_discipline_coordinator,access.ix.discipline.coordinator,model_ix_discipline,group_coordinator,1,1,1,0
+access_ix_discipline_vpaa,access.ix.discipline.vpaa,model_ix_discipline,group_vpaa,1,1,0,0
 
-access_a3_faculty_faculty,access.a3.faculty.faculty,model_a3_faculty,group_faculty,1,1,0,0
-access_a3_faculty_coordinator,access.a3.faculty.coordinator,model_a3_faculty,group_coordinator,1,1,1,0
-access_a3_faculty_vpaa,access.a3.faculty.vpaa,model_a3_faculty,group_vpaa,1,1,0,0
+access_ix_faculty_faculty,access.ix.faculty.faculty,model_ix_faculty,group_faculty,1,1,0,0
+access_ix_faculty_coordinator,access.ix.faculty.coordinator,model_ix_faculty,group_coordinator,1,1,1,0
+access_ix_faculty_vpaa,access.ix.faculty.vpaa,model_ix_faculty,group_vpaa,1,1,0,0
 
-access_a3_staff_setup,access.a3.staff.setup,model_a3_staff,group_setup,1,1,1,0
-access_a3_staff_dean,access.a3.staff.dean,model_a3_staff,group_dean,1,0,0,0
-access_a3_staff_vpaa,access.a3.staff.vpaa,model_a3_staff,group_vpaa,1,0,0,0
+access_ix_staff_setup,access.ix.staff.setup,model_ix_staff,group_setup,1,1,1,0
+access_ix_staff_dean,access.ix.staff.dean,model_ix_staff,group_dean,1,0,0,0
+access_ix_staff_vpaa,access.ix.staff.vpaa,model_ix_staff,group_vpaa,1,0,0,0
 
-access_a3_school_setup,access.a3.school.setup,model_a3_school,a3.group_setup,1,1,1,0
-access_a3_school_user,access.a3.school.user,model_a3_school,base.group_user,1,0,0,0
+access_ix_school_setup,access.ix.school.setup,model_ix_school,ix.group_setup,1,1,1,0
+access_ix_school_user,access.ix.school.user,model_ix_school,base.group_user,1,0,0,0
 
-access_a3_term_user,access.a3.term.user,model_a3_term,base.group_user,1,0,0,0
-access_a3_term_setup,access.a3.term.setup,model_a3_term,a3.group_setup,1,1,1,0
+access_ix_term_user,access.ix.term.user,model_ix_term,base.group_user,1,0,0,0
+access_ix_term_setup,access.ix.term.setup,model_ix_term,ix.group_setup,1,1,1,0
 
-access_calendar_event_setup,access.calendar.event.setup,model_calendar_event,a3.group_setup,1,1,1,1
+access_calendar_event_setup,access.calendar.event.setup,model_calendar_event,ix.group_setup,1,1,1,1
 
-access_a3_building_user,access.a3.building.user,model_a3_building,base.group_user,1,0,0,0
-access_a3_building_setup,access.a3.building.setup,model_a3_building,a3.group_setup,1,1,1,1
+access_ix_building_user,access.ix.building.user,model_ix_building,base.group_user,1,0,0,0
+access_ix_building_setup,access.ix.building.setup,model_ix_building,ix.group_setup,1,1,1,1
 
-access_a3_room_user,access.a3.room.user,model_a3_room,base.group_user,1,0,0,0
-access_a3_room_setup,access.a3.room.setup,model_a3_room,a3.group_setup,1,1,1,1
+access_ix_room_user,access.ix.room.user,model_ix_room,base.group_user,1,0,0,0
+access_ix_room_setup,access.ix.room.setup,model_ix_room,ix.group_setup,1,1,1,1
 
-access_a3_session_setup,access.a3.session.setup,model_a3_session,a3.group_setup,1,1,1,0
-access_a3_session_user,access.a3.session.user,model_a3_session,base.group_user,1,0,0,0
+access_ix_session_setup,access.ix.session.setup,model_ix_session,ix.group_setup,1,1,1,0
+access_ix_session_user,access.ix.session.user,model_ix_session,base.group_user,1,0,0,0
 

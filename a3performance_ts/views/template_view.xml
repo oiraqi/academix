@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="view_template_form" model="ir.ui.view">
-            <field name="name">a3performance.ts.template.form</field>
-            <field name="model">a3performance.ts.template</field>
+            <field name="name">ixperformance.ts.template.form</field>
+            <field name="model">ixperformance.ts.template</field>
             <field name="arch" type="xml">
                 <form string="template">
                     <field name="locked" invisible="1"/>
@@ -43,8 +43,8 @@
             </field>
         </record>
         <record id="view_template_tree" model="ir.ui.view">
-            <field name="name">a3performance.ts.template.tree</field>
-            <field name="model">a3performance.ts.template</field>
+            <field name="name">ixperformance.ts.template.tree</field>
+            <field name="model">ixperformance.ts.template</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="template">
@@ -56,7 +56,7 @@
         <record id="action_template_form" model="ir.actions.act_window">
             <field name="name">template</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3performance.ts.template</field>
+            <field name="res_model">ixperformance.ts.template</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': ['year', 'semester']}</field>

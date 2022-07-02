@@ -2,7 +2,7 @@
 ###############################################################################
 #
 #    Al Akhawayn University in Ifrane -- AUI
-#    Copyright (C) 2022-TODAY AUI(<http://www.a3ma>).
+#    Copyright (C) 2022-TODAY AUI(<http://www.ixma>).
 #
 #    Author: Omar Iraqi Houssaini | https://github.com/oiraqi
 #
@@ -25,8 +25,8 @@ from odoo import models, fields, api
 
 
 class TSGoal(models.Model):
-    _name='a3performance.ts.goal'
-    _inherit = 'a3performance.goal'
+    _name='ixperformance.ts.goal'
+    _inherit = 'ixperformance.goal'
     _description = 'A TS goal to set and achieve in a given evaluation process'
     _sql_constraints = [('process_id_kpi_ukey', 'unique(process_id,kpi)', 'Goal already set for this evaluation process')]
 

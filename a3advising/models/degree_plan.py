@@ -26,14 +26,14 @@ from odoo.exceptions import UserError
 
 
 class DegreePlan(models.Model):
-    _name = 'a3advising.degree.plan'
+    _name = 'ixadvising.degree.plan'
     _description = 'Student Degree Plan'
-    _inherit = ['a3.faculty.student.shared', 'a3.activity']
+    _inherit = ['ix.faculty.student.shared', 'ix.activity']
     _sql_constraints = [('student_ukey',
                          'unique(student_id)', 'A student can only have one degree plan')]
     
     name = fields.Char(related='student_id.name')
-    program_id = fields.Many2one('a3catalog.program', related='student_id.program_id')
+    program_id = fields.Many2one('ixcatalog.program', related='student_id.program_id')
     pace = fields.Selection(
         [('4', '4'), ('5', '5'), ('6', '6')], string='Pace', default='5', required=True)
     take_summer = fields.Selection(string='Take Summer', selection=[(
@@ -68,7 +68,7 @@ class DegreePlan(models.Model):
         elif semester == '3':
             offered_in_condition = ('offered_in_summer', '=', True)
         
-        candidate_course_ids = self.env['a3.course'].search([
+        candidate_course_ids = self.env['ix.course'].search([
             ('id', 'not in', planned_course_ids),
             ('id', 'in', program_course_ids),
             offered_in_condition], order='number')
@@ -77,7 +77,7 @@ class DegreePlan(models.Model):
             # Was it due to non offerings in this semester?
             # Let's check, and it is the case, let's move on
             # to the next one
-            return self.env['a3.course'].search_count([('id', 'not in', planned_course_ids),
+            return self.env['ix.course'].search_count([('id', 'not in', planned_course_ids),
             ('id', 'in', program_course_ids)]) > 0
 
         pace = ord(self.pace) - 48 if semester != '3' else 2
@@ -165,8 +165,8 @@ class DegreePlan(models.Model):
         else:
             year = str(iyear - 2001) + '/' + str(iyear - 2000)
         for course in courses:
-            if not self.env['a3advising.planned.course'].search([('course_id', '=', course.id), ('student_id', '=', self.student_id.id)]):
-                self.env['a3advising.planned.course'].create({
+            if not self.env['ixadvising.planned.course'].search([('course_id', '=', course.id), ('student_id', '=', self.student_id.id)]):
+                self.env['ixadvising.planned.course'].create({
                 'course_id': course.id,
                 'student_id': self.student_id.id,
                 'school_id': self.student_id.school_id.id,

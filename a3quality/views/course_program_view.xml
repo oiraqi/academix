@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="view_course_program_form" model="ir.ui.view">
-            <field name="name">a3quality.course.program.form</field>
-            <field name="model">a3quality.course.program</field>
+            <field name="name">ixquality.course.program.form</field>
+            <field name="model">ixquality.course.program</field>
             <field name="arch" type="xml">
                 <form string="Course/Program">
                     <sheet>
@@ -41,8 +41,8 @@
         </record>
 
         <record id="view_course_program_tree" model="ir.ui.view">
-            <field name="name">a3quality.course.program.tree</field>
-            <field name="model">a3quality.course.program</field>
+            <field name="name">ixquality.course.program.tree</field>
+            <field name="model">ixquality.course.program</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Course/Program Mappings">
@@ -54,7 +54,7 @@
         <record id="action_course_program" model="ir.actions.act_window">
             <field name="name">Outcome Mapping</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3quality.course.program</field>
+            <field name="res_model">ixquality.course.program</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': ['school_id', 'discipline_id', 'course_id']}</field>

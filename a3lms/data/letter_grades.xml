@@ -1,73 +1,73 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>    
-        <record id="a3lms_letter_grade_a_plus" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_a_plus" model="ixlms.letter.grade">
             <field name="name">A+</field>
             <field name="min" eval="97.0"/>
             <field name="max" eval="150.0"/>
             <field name="passing" eval="True"/>
         </record>
-        <record id="a3lms_letter_grade_a" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_a" model="ixlms.letter.grade">
             <field name="name">A</field>
             <field name="min" eval="93.0"/>
             <field name="max" eval="97.0"/>
             <field name="passing" eval="True"/>
         </record>
-        <record id="a3lms_letter_grade_a_minus" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_a_minus" model="ixlms.letter.grade">
             <field name="name">A-</field>
             <field name="min" eval="90.0"/>
             <field name="max" eval="93.0"/>
             <field name="passing" eval="True"/>
         </record>
-        <record id="a3lms_letter_grade_b_plus" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_b_plus" model="ixlms.letter.grade">
             <field name="name">B+</field>
             <field name="min" eval="87.0"/>
             <field name="max" eval="90.0"/>
             <field name="passing" eval="True"/>
         </record>
-        <record id="a3lms_letter_grade_b" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_b" model="ixlms.letter.grade">
             <field name="name">B</field>
             <field name="min" eval="83.0"/>
             <field name="max" eval="87.0"/>
             <field name="passing" eval="True"/>
         </record>
-        <record id="a3lms_letter_grade_b_minus" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_b_minus" model="ixlms.letter.grade">
             <field name="name">B-</field>
             <field name="min" eval="80.0"/>
             <field name="max" eval="83.0"/>
             <field name="passing" eval="True"/>
         </record>
-        <record id="a3lms_letter_grade_c_plus" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_c_plus" model="ixlms.letter.grade">
             <field name="name">C+</field>
             <field name="min" eval="77.0"/>
             <field name="max" eval="80.0"/>
             <field name="passing" eval="True"/>
         </record>
-        <record id="a3lms_letter_grade_c" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_c" model="ixlms.letter.grade">
             <field name="name">C</field>
             <field name="min" eval="73.0"/>
             <field name="max" eval="77.0"/>
             <field name="passing" eval="True"/>
         </record>
-        <record id="a3lms_letter_grade_b_minus" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_b_minus" model="ixlms.letter.grade">
             <field name="name">C-</field>
             <field name="min" eval="70.0"/>
             <field name="max" eval="73.0"/>
             <field name="passing" eval="True"/>
         </record>
-        <record id="a3lms_letter_grade_d_plus" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_d_plus" model="ixlms.letter.grade">
             <field name="name">D+</field>
             <field name="min" eval="67.0"/>
             <field name="max" eval="70.0"/>
             <field name="passing" eval="False"/>
         </record>
-        <record id="a3lms_letter_grade_d" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_d" model="ixlms.letter.grade">
             <field name="name">D</field>
             <field name="min" eval="60.0"/>
             <field name="max" eval="67.0"/>
             <field name="passing" eval="False"/>
         </record>        
-        <record id="a3lms_letter_grade_f" model="a3lms.letter.grade">
+        <record id="ixlms_letter_grade_f" model="ixlms.letter.grade">
             <field name="name">F</field>
             <field name="min" eval="0.0"/>
             <field name="max" eval="60.0"/>

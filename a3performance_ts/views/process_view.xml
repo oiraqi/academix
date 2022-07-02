@@ -2,12 +2,12 @@
 <odoo>
     <data>
         <record id="view_ts_process_form" model="ir.ui.view">
-            <field name="name">a3performance.ts.process.form</field>
-            <field name="model">a3performance.process</field>
-            <field name="inherit_id" ref="a3performance.view_process_form"/>
+            <field name="name">ixperformance.ts.process.form</field>
+            <field name="model">ixperformance.process</field>
+            <field name="inherit_id" ref="ixperformance.view_process_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='ts']" position="inside">
-                    <group col="4" string="TS Goals &#38; KPIs" groups="a3.group_faculty">
+                    <group col="4" string="TS Goals &#38; KPIs" groups="ix.group_faculty">
                         <field name="ts_goal_achievement" widget="badge" decoration-danger="ts_goal_progress &lt; 30" decoration-warning="ts_goal_progress &gt;= 30 and ts_goal_progress &lt; 60" decoration-info="ts_goal_progress &gt;= 60 and ts_goal_progress &lt; 100" decoration-success="ts_goal_progress &gt;= 100"/>
                         <field name="ts_goal_progress" widget="progressbar" decoration-danger="ts_goal_progress &lt; 30" decoration-warning="ts_goal_progress &gt;= 30 and ts_goal_progress &lt; 60" decoration-info="ts_goal_progress &gt;= 60 and ts_goal_progress &lt; 100" decoration-success="ts_goal_progress &gt;= 100"/>
                         <field name="ts_goal_ids" colspan="4">
@@ -36,24 +36,24 @@
                         <field name="ts_narrative" nolabel="1"/>
                     </group>
                     <group name="ts_committee_review" string="TS Committee Review"
-                        groups="a3performance.group_committee_member,a3.group_dean,a3.group_vpaa">
+                        groups="ixperformance.group_committee_member,ix.group_dean,ix.group_vpaa">
                         <field name="ts_committee_review" nolabel="1"/>
                     </group>
                     <group name="ts_dean_review" string="TS Dean Review"
-                        groups="a3.group_dean,a3.group_vpaa">
+                        groups="ix.group_dean,ix.group_vpaa">
                         <field name="ts_dean_review" nolabel="1"/>
                     </group>
                     <group name="ts_vpaa_review" string="TS VPAA Review"
-                        groups="a3.group_dean,a3.group_vpaa">
+                        groups="ix.group_dean,ix.group_vpaa">
                         <field name="ts_vpaa_review" nolabel="1"/>
                     </group>
                 </xpath>
             </field>
         </record>
         <record id="view_process_tree_ts" model="ir.ui.view">
-            <field name="name">a3performance.ts.process.tree</field>
-            <field name="model">a3performance.process</field>
-            <field name="inherit_id" ref="a3performance.view_process_tree"/>
+            <field name="name">ixperformance.ts.process.tree</field>
+            <field name="model">ixperformance.process</field>
+            <field name="inherit_id" ref="ixperformance.view_process_tree"/>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='type']" position="after">                    

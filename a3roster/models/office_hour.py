@@ -2,9 +2,9 @@ from odoo import models, fields
 
 
 class OfficeHour(models.Model):
-	_name = 'a3roster.office.hour'
+	_name = 'ixroster.office.hour'
 	_description = 'Office Hour'
-	_inherit = ['a3.faculty.owned', 'a3roster.scheduled']
+	_inherit = ['ix.faculty.owned', 'ixroster.scheduled']
 
 	name = fields.Char(related='timeslot')
 	

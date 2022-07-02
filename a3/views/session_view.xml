@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_session_form" model="ir.ui.view">
-			<field name="name">a3.session.form</field>
-			<field name="model">a3.session</field>
+			<field name="name">ix.session.form</field>
+			<field name="model">ix.session</field>
 			<field name="arch" type="xml">
 				<form string="Session">
 					<sheet>
@@ -23,8 +23,8 @@
 			</field>
 		</record>
 		<record id="view_session_tree" model="ir.ui.view">
-			<field name="name">a3.session.tree</field>
-			<field name="model">a3.session</field>
+			<field name="name">ix.session.tree</field>
+			<field name="model">ix.session</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Sessions" editable="bottom">
@@ -37,7 +37,7 @@
 		<record id="action_session" model="ir.actions.act_window">
 			<field name="name">Sessions</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3.session</field>
+			<field name="res_model">ix.session</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>

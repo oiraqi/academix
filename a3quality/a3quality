@@ -1,20 +1,20 @@
-oc -n a3quality.portfolio -v Portfolio -m n:Portfolios p:a3quality_root -g a3.group_faculty:1111 a3.group_coordinator:1000 a3.group_vpaa:1000
-oc -n a3quality.portfolio -f section_id:mo:a3roster.section:Section
-oc -n a3quality.portfolio -f useful_assessment_technique_ids:mm:a3quality.assessment.technique:Useful not_recommended_assessment_technique_ids:mm:a3quality.assessment.technique:Not
-oc -n a3quality.portfolio -f deviations:h:Deviation
+oc -n ixquality.portfolio -v Portfolio -m n:Portfolios p:ixquality_root -g ix.group_faculty:1111 ix.group_coordinator:1000 ix.group_vpaa:1000
+oc -n ixquality.portfolio -f section_id:mo:ixroster.section:Section
+oc -n ixquality.portfolio -f useful_assessment_technique_ids:mm:ixquality.assessment.technique:Useful not_recommended_assessment_technique_ids:mm:ixquality.assessment.technique:Not
+oc -n ixquality.portfolio -f deviations:h:Deviation
 
-oc -n a3quality.accreditation -v Accreditation -m n:Accreditation p:a3quality_root
+oc -n ixquality.accreditation -v Accreditation -m n:Accreditation p:ixquality_root
 
-oc -n a3quality.course.program -m n:ILO/SO Mapping p:a3quality_root
+oc -n ixquality.course.program -m n:ILO/SO Mapping p:ixquality_root
 
-oc -m i:a3quality_soc n:SO Coverage p:a3quality_root a:action_program_quality_soc
+oc -m i:ixquality_soc n:SO Coverage p:ixquality_root a:action_program_quality_soc
 
-oc -n a3quality.assessment.technique -v Assessment Technique -g a3quality.group_faculty:1000 a3quality.group_coordinator:1110 a3quality.group_vpaa:1000 a3quality.group_setup:1110 -m n:AssessmentTechniques p:a3quality_root
+oc -n ixquality.assessment.technique -v Assessment Technique -g ixquality.group_faculty:1000 ixquality.group_coordinator:1110 ixquality.group_vpaa:1000 ixquality.group_setup:1110 -m n:AssessmentTechniques p:ixquality_root
 
-oc -n a3quality.assessment -v Assessment -g a3.group_faculty:1111 a3.group_coordinator:1000 a3.group_vpaa:1000
-oc -n a3quality.assessment -f section_id:mo:a3roster.section:Section program_id:mo:a3catalog.program:Program nstudents:i:Students
+oc -n ixquality.assessment -v Assessment -g ix.group_faculty:1111 ix.group_coordinator:1000 ix.group_vpaa:1000
+oc -n ixquality.assessment -f section_id:mo:ixroster.section:Section program_id:mo:ixcatalog.program:Program nstudents:i:Students
 
-oc -n a3quality.assessment.line -g a3.group_faculty:1111 a3.group_coordinator:1000 a3.group_vpaa:1000
-oc -n a3quality.assessment.line -f assessment_id:mo:a3quality.assessment:Assessment ilo_id:mo:a3catalog.course.ilo:ILO so_ids:om:a3quality.student.outcome:SOs targetted:f:Targetted achieved:f:Achieved action_id:mo:a3quality.action:Action
+oc -n ixquality.assessment.line -g ix.group_faculty:1111 ix.group_coordinator:1000 ix.group_vpaa:1000
+oc -n ixquality.assessment.line -f assessment_id:mo:ixquality.assessment:Assessment ilo_id:mo:ixcatalog.course.ilo:ILO so_ids:om:ixquality.student.outcome:SOs targetted:f:Targetted achieved:f:Achieved action_id:mo:ixquality.action:Action
 
-oc -n a3quality.action -g a3.group_faculty:1111 a3.group_coordinator:1000 a3.group_vpaa:1000
+oc -n ixquality.action -g ix.group_faculty:1111 ix.group_coordinator:1000 ix.group_vpaa:1000

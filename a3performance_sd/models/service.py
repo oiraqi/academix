@@ -24,8 +24,8 @@
 from odoo import models, fields
 
 class Service(models.Model):
-    _name = 'a3performance.sd.service'
-    _inherit = 'a3performance.sd.activity'
+    _name = 'ixperformance.sd.service'
+    _inherit = 'ixperformance.sd.activity'
 
     type = fields.Selection([('ous', 'Other University Services'), ('s2p', 'Service to the Profession'),
                             ('s2c', 'Service to the Community outside the University')], 'Type', required=True)

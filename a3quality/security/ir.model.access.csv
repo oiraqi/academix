@@ -1,29 +1,29 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_a3quality_course_ilo_so_user,access.a3quality_course_ilo_so.user,model_a3quality_course_ilo_so,base.group_user,1,0,0,0
-access_a3quality_course_ilo_so_coordinator,access.a3quality_course_ilo_so.coordinator,model_a3quality_course_ilo_so,a3.group_coordinator,1,1,1,1
+access_ixquality_course_ilo_so_user,access.ixquality_course_ilo_so.user,model_ixquality_course_ilo_so,base.group_user,1,0,0,0
+access_ixquality_course_ilo_so_coordinator,access.ixquality_course_ilo_so.coordinator,model_ixquality_course_ilo_so,ix.group_coordinator,1,1,1,1
 
-access_a3quality_course_program_user,access.a3quality_course_program.user,model_a3quality_course_program,base.group_user,1,0,0,0
-access_a3quality_course_program_coordinator,access.a3quality_course_program.coordinator,model_a3quality_course_program,a3.group_coordinator,1,1,1,0
+access_ixquality_course_program_user,access.ixquality_course_program.user,model_ixquality_course_program,base.group_user,1,0,0,0
+access_ixquality_course_program_coordinator,access.ixquality_course_program.coordinator,model_ixquality_course_program,ix.group_coordinator,1,1,1,0
 
-access_a3quality_accreditation_user,access.a3quality_accreditation.user,model_a3quality_accreditation,base.group_user,1,0,0,0
-access_a3quality_accreditation_coordinator,access.a3quality_accreditation.coordinator,model_a3quality_accreditation,a3.group_coordinator,1,1,1,1
+access_ixquality_accreditation_user,access.ixquality_accreditation.user,model_ixquality_accreditation,base.group_user,1,0,0,0
+access_ixquality_accreditation_coordinator,access.ixquality_accreditation.coordinator,model_ixquality_accreditation,ix.group_coordinator,1,1,1,1
 
-access_a3quality_student_outcome_user,access.a3quality_student_outcome.user,model_a3quality_student_outcome,base.group_user,1,0,0,0
-access_a3quality_student_outcome_coordinator,access.a3quality_student_outcome.coordinator,model_a3quality_student_outcome,a3.group_coordinator,1,0,0,0
+access_ixquality_student_outcome_user,access.ixquality_student_outcome.user,model_ixquality_student_outcome,base.group_user,1,0,0,0
+access_ixquality_student_outcome_coordinator,access.ixquality_student_outcome.coordinator,model_ixquality_student_outcome,ix.group_coordinator,1,0,0,0
 
-access_a3quality_portfolio_faculty,access.a3quality.portfolio.faculty,model_a3quality_portfolio,a3.group_faculty,1,1,1,1
-access_a3quality_portfolio_coordinator,access.a3quality.portfolio.coordinator,model_a3quality_portfolio,a3.group_coordinator,1,0,0,0
-access_a3quality_portfolio_vpaa,access.a3quality.portfolio.vpaa,model_a3quality_portfolio,a3.group_vpaa,1,0,0,0
+access_ixquality_portfolio_faculty,access.ixquality.portfolio.faculty,model_ixquality_portfolio,ix.group_faculty,1,1,1,1
+access_ixquality_portfolio_coordinator,access.ixquality.portfolio.coordinator,model_ixquality_portfolio,ix.group_coordinator,1,0,0,0
+access_ixquality_portfolio_vpaa,access.ixquality.portfolio.vpaa,model_ixquality_portfolio,ix.group_vpaa,1,0,0,0
 
-access_a3quality_assessment_faculty,access.a3quality.assessment.faculty,model_a3quality_assessment,a3.group_faculty,1,1,1,1
-access_a3quality_assessment_coordinator,access.a3quality.assessment.coordinator,model_a3quality_assessment,a3.group_coordinator,1,0,0,0
-access_a3quality_assessment_vpaa,access.a3quality.assessment.vpaa,model_a3quality_assessment,a3.group_vpaa,1,0,0,0
+access_ixquality_assessment_faculty,access.ixquality.assessment.faculty,model_ixquality_assessment,ix.group_faculty,1,1,1,1
+access_ixquality_assessment_coordinator,access.ixquality.assessment.coordinator,model_ixquality_assessment,ix.group_coordinator,1,0,0,0
+access_ixquality_assessment_vpaa,access.ixquality.assessment.vpaa,model_ixquality_assessment,ix.group_vpaa,1,0,0,0
 
-access_a3quality_assessment_line_faculty,access.a3quality.assessment.line.faculty,model_a3quality_assessment_line,a3.group_faculty,1,1,1,1
-access_a3quality_assessment_line_coordinator,access.a3quality.assessment.line.coordinator,model_a3quality_assessment_line,a3.group_coordinator,1,0,0,0
-access_a3quality_assessment_line_vpaa,access.a3quality.assessment.line.vpaa,model_a3quality_assessment_line,a3.group_vpaa,1,0,0,0
+access_ixquality_assessment_line_faculty,access.ixquality.assessment.line.faculty,model_ixquality_assessment_line,ix.group_faculty,1,1,1,1
+access_ixquality_assessment_line_coordinator,access.ixquality.assessment.line.coordinator,model_ixquality_assessment_line,ix.group_coordinator,1,0,0,0
+access_ixquality_assessment_line_vpaa,access.ixquality.assessment.line.vpaa,model_ixquality_assessment_line,ix.group_vpaa,1,0,0,0
 
-access_a3quality_action_faculty,access.a3quality.action.faculty,model_a3quality_action,a3.group_faculty,1,1,1,1
-access_a3quality_action_coordinator,access.a3quality.action.coordinator,model_a3quality_action,a3.group_coordinator,1,0,0,0
-access_a3quality_action_vpaa,access.a3quality.action.vpaa,model_a3quality_action,a3.group_vpaa,1,0,0,0
+access_ixquality_action_faculty,access.ixquality.action.faculty,model_ixquality_action,ix.group_faculty,1,1,1,1
+access_ixquality_action_coordinator,access.ixquality.action.coordinator,model_ixquality_action,ix.group_coordinator,1,0,0,0
+access_ixquality_action_vpaa,access.ixquality.action.vpaa,model_ixquality_action,ix.group_vpaa,1,0,0,0
 

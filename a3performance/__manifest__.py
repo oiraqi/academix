@@ -10,7 +10,7 @@
 The Faculty Performance Management App.
 ===================================================
 """,
-    'depends': ['a3'],
+    'depends': ['ix'],
     'data': [
         'security/performance_security.xml',
         'security/ir.model.access.csv',

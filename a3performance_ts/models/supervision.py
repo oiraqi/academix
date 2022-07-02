@@ -25,11 +25,11 @@ from odoo import models, fields
 
 
 class Supervision(models.Model):
-    _name = 'a3performance.ts.supervision'
-    _inherit = 'a3.faculty.activity'
+    _name = 'ixperformance.ts.supervision'
+    _inherit = 'ix.faculty.activity'
 
     name = fields.Char('Title', required=True)
-    student_id = fields.Many2one('a3.student', string='Student', required=True)
+    student_id = fields.Many2one('ix.student', string='Student', required=True)
     type = fields.Selection([('capstone', 'Capstone'), ('internship',
                             'Internship'), ('combined', 'Combined')], 'Type',
                             default='capstone', required=True)

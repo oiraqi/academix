@@ -25,7 +25,7 @@ from odoo import api, fields, models
 
 
 class Prerequisite(models.Model):
-    _name = 'a3catalog.prerequisite'
+    _name = 'ixcatalog.prerequisite'
     _description = 'Course Prerequisite'
 
     name = fields.Char(string='Name', compute='_set_name')
@@ -41,6 +41,6 @@ class Prerequisite(models.Model):
                     name = '{ ' + ' or '.join([alternative.name for alternative in rec.alternative_ids]) + ' }'
             rec.name = name
     
-    course_id = fields.Many2one('a3.course', string='Course')
-    alternative_ids = fields.Many2many('a3.course', string='Prerequisite')
+    course_id = fields.Many2one('ix.course', string='Course')
+    alternative_ids = fields.Many2many('ix.course', string='Prerequisite')
     sequence = fields.Integer(default='1', required=True)

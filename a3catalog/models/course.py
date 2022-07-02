@@ -25,20 +25,20 @@ from odoo import models, fields, api
 
 
 class Course(models.Model):
-    _inherit = 'a3.course'
+    _inherit = 'ix.course'
 
     description = fields.Html(string='Description')
     sch = fields.Integer(compute='_compute_sch', string='SCH', store=True)    
     prerequisite_ids = fields.One2many(
-        'a3catalog.prerequisite', 'course_id', string='Prerequisites')
+        'ixcatalog.prerequisite', 'course_id', string='Prerequisites')
     corequisite_ids = fields.One2many(
-        'a3catalog.corequisite', inverse_name='course_id', string='Corequisites')
+        'ixcatalog.corequisite', inverse_name='course_id', string='Corequisites')
     prerequisite_for_ids = fields.One2many(
-        'a3.course', compute='_prerequisite_for_ids', string='Prerequisite For')
+        'ix.course', compute='_prerequisite_for_ids', string='Prerequisite For')
     corequisite_for_ids = fields.One2many(
-        'a3.course', compute='_corequisite_for_ids', string='Corequisite For')
+        'ix.course', compute='_corequisite_for_ids', string='Corequisite For')
     component_ids = fields.Many2many(
-        'a3catalog.component', 'a3catalog_component_course_rel', 'course_id', 'component_id', string='Components')
+        'ixcatalog.component', 'ixcatalog_component_course_rel', 'course_id', 'component_id', string='Components')
     req_class = fields.Selection(string='Required Classification', selection=[
                                  ('soph', 'Sophomore'), ('jun', 'Junior'), ('sen', 'Senior')])
     remarks = fields.Text(string='Remarks')
@@ -48,12 +48,12 @@ class Course(models.Model):
     offered_in_summer = fields.Boolean(
         string='Offered in Summer', default=False)
     is_internship = fields.Boolean(string='Internship', default=False)
-    ilo_ids = fields.One2many('a3catalog.course.ilo', 'course_id', string='ILOs')
+    ilo_ids = fields.One2many('ixcatalog.course.ilo', 'course_id', string='ILOs')
     syllabus = fields.Binary(string='Master Syllabus')
 
     def _corequisite_ids(self):
         for rec in self:
-            corequisites = self.env['a3catalog.corequisite'].search(
+            corequisites = self.env['ixcatalog.corequisite'].search(
                 [('course_id', '=', rec.id)])
             if not corequisites:
                 rec.corequisite_ids = False
@@ -62,7 +62,7 @@ class Course(models.Model):
 
     def _corequisite_for_ids(self):
         for rec in self:
-            corequisites = self.env['a3catalog.corequisite'].search(
+            corequisites = self.env['ixcatalog.corequisite'].search(
                 [('corequisite_id', '=', rec.id)])
             if not corequisites:
                 rec.corequisite_for_ids = False
@@ -71,7 +71,7 @@ class Course(models.Model):
 
     def _prerequisite_for_ids(self):
         for rec in self:
-            prerequisites = self.env['a3catalog.prerequisite'].search(
+            prerequisites = self.env['ixcatalog.prerequisite'].search(
                 [('alternative_ids', 'in', rec.id)])
             if not prerequisites:
                 rec.prerequisite_for_ids = False

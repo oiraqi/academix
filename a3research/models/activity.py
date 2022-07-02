@@ -24,8 +24,8 @@
 from odoo import models, fields
 
 class Activity(models.Model):
-    _name = 'a3research.activity'
-    _inherit = 'a3.faculty.activity'
+    _name = 'ixresearch.activity'
+    _inherit = 'ix.faculty.activity'
 
     name = fields.Char('Title', required=True)
     description = fields.Html('Description', required=True)

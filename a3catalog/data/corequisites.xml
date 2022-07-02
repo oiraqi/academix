@@ -2,57 +2,57 @@
 <odoo>
     <data>
     
-        <record id="corequisite_aer_3312_egr_3302" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_aer_3312"/>
-            <field name="corequisite_id" ref="a3_course_egr_3302"/>
+        <record id="corequisite_aer_3312_egr_3302" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_aer_3312"/>
+            <field name="corequisite_id" ref="ix_course_egr_3302"/>
         </record>
-        <record id="corequisite_csc_1401_mth_1304" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_csc_1401"/>
-            <field name="corequisite_id" ref="a3_course_mth_1304"/>
+        <record id="corequisite_csc_1401_mth_1304" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_csc_1401"/>
+            <field name="corequisite_id" ref="ix_course_mth_1304"/>
         </record>
-         <record id="corequisite_hrd_3401_hrd_2300" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_hrd_3401"/>
-            <field name="corequisite_id" ref="a3_course_hrd_2300"/>
+         <record id="corequisite_hrd_3401_hrd_2300" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_hrd_3401"/>
+            <field name="corequisite_id" ref="ix_course_hrd_2300"/>
         </record>
-         <record id="corequisite_cip_1002_cip_1001" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_cip_1002"/>
-            <field name="corequisite_id" ref="a3_course_cip_1001"/>
+         <record id="corequisite_cip_1002_cip_1001" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_cip_1002"/>
+            <field name="corequisite_id" ref="ix_course_cip_1001"/>
         </record>
-        <record id="corequisite_egr_2312_egr_3304" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_egr_2312"/>
-            <field name="corequisite_id" ref="a3_course_egr_3304"/>
+        <record id="corequisite_egr_2312_egr_3304" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_egr_2312"/>
+            <field name="corequisite_id" ref="ix_course_egr_3304"/>
         </record>
-        <record id="corequisite_egr_3304_egr_2312" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_egr_3304"/>
-            <field name="corequisite_id" ref="a3_course_egr_2312"/>
+        <record id="corequisite_egr_3304_egr_2312" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_egr_3304"/>
+            <field name="corequisite_id" ref="ix_course_egr_2312"/>
         </record>
-        <record id="corequisite_eng_1301_fas_0210" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_eng_1301"/>
-            <field name="corequisite_id" ref="a3_course_fas_0210"/>
+        <record id="corequisite_eng_1301_fas_0210" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_eng_1301"/>
+            <field name="corequisite_id" ref="ix_course_fas_0210"/>
         </record>
-        <record id="corequisite_hrd_4302_hrd_3303" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_hrd_4302"/>
-            <field name="corequisite_id" ref="a3_course_hrd_3303"/>
+        <record id="corequisite_hrd_4302_hrd_3303" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_hrd_4302"/>
+            <field name="corequisite_id" ref="ix_course_hrd_3303"/>
         </record>
-        <record id="corequisite_his_1301_fas_1220" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_his_1301"/>
-            <field name="corequisite_id" ref="a3_course_fas_1220"/>
+        <record id="corequisite_his_1301_fas_1220" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_his_1301"/>
+            <field name="corequisite_id" ref="ix_course_fas_1220"/>
         </record>
-        <record id="corequisite_hrd_4304_hrd_3304" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_hrd_4304"/>
-            <field name="corequisite_id" ref="a3_course_hrd_3304"/>
+        <record id="corequisite_hrd_4304_hrd_3304" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_hrd_4304"/>
+            <field name="corequisite_id" ref="ix_course_hrd_3304"/>
         </record>
-        <record id="corequisite_hrd_4306_hr_3304" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_hrd_4306"/>
-            <field name="corequisite_id" ref="a3_course_hrd_3304"/>
+        <record id="corequisite_hrd_4306_hr_3304" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_hrd_4306"/>
+            <field name="corequisite_id" ref="ix_course_hrd_3304"/>
         </record>
-        <record id="corequisite_soc_1301_fas_1220" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_soc_1301"/>
-            <field name="corequisite_id" ref="a3_course_fas_1220"/>
+        <record id="corequisite_soc_1301_fas_1220" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_soc_1301"/>
+            <field name="corequisite_id" ref="ix_course_fas_1220"/>
         </record>
-        <record id="corequisite_ssc_1310_fas_1220" model="a3catalog.corequisite">
-            <field name="course_id" ref="a3_course_ssc_1310"/>
-            <field name="corequisite_id" ref="a3_course_fas_1220"/>
+        <record id="corequisite_ssc_1310_fas_1220" model="ixcatalog.corequisite">
+            <field name="course_id" ref="ix_course_ssc_1310"/>
+            <field name="corequisite_id" ref="ix_course_fas_1220"/>
         </record>
 
     </data>

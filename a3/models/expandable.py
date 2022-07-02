@@ -2,7 +2,7 @@ from odoo import models
 
 
 class Expandable(models.AbstractModel):
-    _name = 'a3.expandable'
+    _name = 'ix.expandable'
     _description = 'Expandable Mixin'
 
     def _resolve_action(self, action_id, domain, context=False):

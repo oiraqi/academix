@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <!-- a3advising.degree.planning kanban view -->
+        <!-- ixadvising.degree.planning kanban view -->
         <record id="view_planned_course_kanban" model="ir.ui.view">
-            <field name="name">a3advising.planned.course.kanban</field>
-            <field name="model">a3advising.planned.course</field>
+            <field name="name">ixadvising.planned.course.kanban</field>
+            <field name="model">ixadvising.planned.course</field>
             <field name="arch" type="xml">
                 <kanban string="Planned Course" class="o_hr_employee_kanban">
                     <templates>
@@ -25,14 +25,14 @@
             </field>
         </record>
         <record id="view_planned_course_form" model="ir.ui.view">
-            <field name="name">a3advising.planned.course.form</field>
-            <field name="model">a3advising.planned.course</field>
+            <field name="name">ixadvising.planned.course.form</field>
+            <field name="model">ixadvising.planned.course</field>
             <field name="arch" type="xml">
                 <form string="Planned Course">
                     <header>
                         <button attrs="{'invisible': ['|', ('section_id', '=', False), ('enrollment_id', '!=', False)]}"
                             string="Pre-register" name="preregister" type="object" class="oe_highlight"
-                            groups="a3.group_student"/>
+                            groups="ix.group_student"/>
                         <field attrs="{'invisible': [('enrollment_id', '=', False)]}" name="state"
                             widget="statusbar" statusbar_visible="enrolled"/>
                     </header>
@@ -99,8 +99,8 @@
             </field>
         </record>
         <record id="view_planned_course_tree" model="ir.ui.view">
-            <field name="name">a3advising.planned.course.tree</field>
-            <field name="model">a3advising.planned.course</field>
+            <field name="name">ixadvising.planned.course.tree</field>
+            <field name="model">ixadvising.planned.course</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Planned Courses">
@@ -113,7 +113,7 @@
         <record id="action_planned_course" model="ir.actions.act_window">
             <field name="name">Degree Plan</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3advising.planned.course</field>
+            <field name="res_model">ixadvising.planned.course</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': ['term_id']}</field>

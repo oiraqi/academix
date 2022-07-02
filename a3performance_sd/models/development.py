@@ -24,7 +24,7 @@
 from odoo import models, fields
 
 class Development(models.Model):
-    _name = 'a3performance.sd.development'
-    _inherit = 'a3performance.sd.activity'
+    _name = 'ixperformance.sd.development'
+    _inherit = 'ixperformance.sd.activity'
 
     category = fields.Char('Category', required=True)

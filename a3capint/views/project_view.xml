@@ -3,14 +3,14 @@
     <data>
         <record id="project_view_form" model="ir.ui.view">
             <field name="name">project.view.form</field>
-            <field name="model">a3capint.project</field>
+            <field name="model">ixcapint.project</field>
             <field name="arch" type="xml">
                 <form string="Project">
                     <header>
-                        <button string="Approve" states="draft" name="supervisor_approve" type="object" class="oe_highlight" attrs="{'invisible': [('is_supervisor', '=', False)]}" groups="a3.group_faculty"/>
-                        <button string="Approve" states="supervisor" name="coordinator_approve" type="object" class="oe_highlight" groups="a3capint.group_capint_coordinator"/>
-                        <button string="Schedule for Defense" states="ongoing" name="schedule_defense" type="object" class="oe_highlight" groups="a3capint.group_capint_coordinator"/>
-                        <button string="Mark Completed" states="defense" name="mark_done" type="object" class="oe_highlight" groups="a3capint.group_capint_coordinator"/>
+                        <button string="Approve" states="draft" name="supervisor_approve" type="object" class="oe_highlight" attrs="{'invisible': [('is_supervisor', '=', False)]}" groups="ix.group_faculty"/>
+                        <button string="Approve" states="supervisor" name="coordinator_approve" type="object" class="oe_highlight" groups="ixcapint.group_capint_coordinator"/>
+                        <button string="Schedule for Defense" states="ongoing" name="schedule_defense" type="object" class="oe_highlight" groups="ixcapint.group_capint_coordinator"/>
+                        <button string="Mark Completed" states="defense" name="mark_done" type="object" class="oe_highlight" groups="ixcapint.group_capint_coordinator"/>
                         <field name="state" widget="statusbar" />
                         <field name="is_supervisor" invisible="1" />
                     </header>
@@ -67,7 +67,7 @@
                                 options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
                             <field name="external_examiner_ids" widget="many2many_tags"/>
                         </group>
-                        <group name="evaluation" groups="a3.group_faculty,a3capint.group_capint_coordinator" attrs="{'invisible': [('state', 'not in', ['defense', 'done'])]}">
+                        <group name="evaluation" groups="ix.group_faculty,ixcapint.group_capint_coordinator" attrs="{'invisible': [('state', 'not in', ['defense', 'done'])]}">
                             <field name="evaluation_ids">
                                 <tree>
                                     <field name="create_uid" string="Evaluator" />
@@ -91,10 +91,10 @@
             </field>
         </record>
 
-        <!-- a3capint.project inherit form view -->
+        <!-- ixcapint.project inherit form view -->
         <record id="project_view_form_no_create" model="ir.ui.view">
-            <field name="name">a3capint.project.inherit.view.form</field>
-            <field name="model">a3capint.project</field>
+            <field name="name">ixcapint.project.inherit.view.form</field>
+            <field name="model">ixcapint.project</field>
             <field name="inherit_id" ref="project_view_form"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
@@ -106,7 +106,7 @@
 
         <record id="project_view_tree" model="ir.ui.view">
             <field name="name">project.view.tree</field>
-            <field name="model">a3capint.project</field>
+            <field name="model">ixcapint.project</field>
             <field name="arch" type="xml">
                 <tree string="Projects">
                     <field name="name" />
@@ -123,10 +123,10 @@
             </field>
         </record>
 
-        <!-- a3capint.project inherit tree view -->
+        <!-- ixcapint.project inherit tree view -->
         <record id="project_view_tree_no_create" model="ir.ui.view">
-            <field name="name">a3capint.project.inherit.view.tree</field>
-            <field name="model">a3capint.project</field>
+            <field name="name">ixcapint.project.inherit.view.tree</field>
+            <field name="model">ixcapint.project</field>
             <field name="inherit_id" ref="project_view_tree"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
@@ -136,11 +136,11 @@
             </field>
         </record>
 
-        <!-- a3capint.project.proposals action window -->
+        <!-- ixcapint.project.proposals action window -->
         <record id="project_action_proposals" model="ir.actions.act_window">
             <field name="name">Proposals</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3capint.project</field>
+            <field name="res_model">ixcapint.project</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state', 'in', ['draft', 'supervisor'])]</field>
             <field name="help" type="html">
@@ -150,11 +150,11 @@
             </field>
         </record>
 
-        <!-- a3capint.project.ongoing action window -->
+        <!-- ixcapint.project.ongoing action window -->
         <record id="project_action_ongoing" model="ir.actions.act_window">
             <field name="name">Ongoing Projects</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3capint.project</field>
+            <field name="res_model">ixcapint.project</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state', '=', 'ongoing')]</field>
             <field name="help" type="html">
@@ -164,11 +164,11 @@
             </field>
         </record>
 
-        <!-- a3capint.project.defenses action window -->
+        <!-- ixcapint.project.defenses action window -->
         <record id="project_action_defenses" model="ir.actions.act_window">
             <field name="name">Defenses</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3capint.project</field>
+            <field name="res_model">ixcapint.project</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state', '=', 'defense')]</field>
             <field name="help" type="html">
@@ -178,11 +178,11 @@
             </field>
         </record>
 
-        <!-- a3capint.project.completed action window -->
+        <!-- ixcapint.project.completed action window -->
         <record id="project_action_completed" model="ir.actions.act_window">
             <field name="name">Completed Projects</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3capint.project</field>
+            <field name="res_model">ixcapint.project</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state', '=', 'done')]</field>
             <field name="help" type="html">

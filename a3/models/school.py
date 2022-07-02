@@ -25,15 +25,15 @@ from odoo import models, fields
 
 
 class School(models.Model):
-    _name = 'a3.school'
+    _name = 'ix.school'
     _order = 'code'
     _sql_constraints = [('code_ukey', 'unique(code)', 'School already exists')]
 
     name = fields.Char('Name', required=True)
     code = fields.Char('Code', required=True)
     mission = fields.Html(string='Mission')
-    dean_id = fields.Many2one('a3.staff', string='Dean')
-    discipline_ids = fields.One2many('a3.discipline', 'school_id', string='Disciplines')
-    building_ids = fields.One2many(comodel_name='a3.building', inverse_name='school_id', string='Buildings')
+    dean_id = fields.Many2one('ix.staff', string='Dean')
+    discipline_ids = fields.One2many('ix.discipline', 'school_id', string='Disciplines')
+    building_ids = fields.One2many(comodel_name='ix.building', inverse_name='school_id', string='Buildings')
     
     color = fields.Integer('Color')

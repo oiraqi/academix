@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <record id="view_faculty_form_roster_inherit" model="ir.ui.view">
-            <field name="name">a3.faculty.form.roster.inherit</field>
-            <field name="model">a3.faculty</field>
-            <field name="inherit_id" ref="a3.view_faculty_form" />
+            <field name="name">ix.faculty.form.roster.inherit</field>
+            <field name="model">ix.faculty</field>
+            <field name="inherit_id" ref="ix.view_faculty_form" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='phone']" position="after">                    
                     <field name="office_hour_ids" colspan="4" context="{'default_school_id': school_id}">
@@ -32,9 +32,9 @@
             </field>
         </record>
         <record id="view_faculty_tree_fe_inherit" model="ir.ui.view">
-            <field name="name">a3.faculty.tree.fe.inherit</field>
-            <field name="model">a3.faculty</field>
-            <field name="inherit_id" ref="a3.view_faculty_tree" />
+            <field name="name">ix.faculty.tree.fe.inherit</field>
+            <field name="model">ix.faculty</field>
+            <field name="inherit_id" ref="ix.view_faculty_tree" />
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="after">                    

@@ -24,8 +24,8 @@
 from odoo import models, fields
 
 class Book(models.Model):
-    _name = 'a3research.book'
-    _inherit = 'a3research.publication'
+    _name = 'ixresearch.book'
+    _inherit = 'ixresearch.publication'
 
     type = fields.Selection([('book', 'Book'), ('chapters', 'Chapter(s)')], 'Type', required=True)
     scope = fields.Selection([('nat', 'National'), ('int', 'International')], 'Scope', required=True)

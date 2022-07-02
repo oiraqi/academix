@@ -25,10 +25,10 @@ from odoo import models, fields
 
 
 class Degree(models.Model):
-    _name = 'a3performance.degree'
+    _name = 'ixperformance.degree'
 
     name = fields.Char('Title', required=True)
     year = fields.Integer('Year', required=True)
-    faculty_id = fields.Many2one('a3.faculty', string='Faculty', required=True)
+    faculty_id = fields.Many2one('ix.faculty', string='Faculty', required=True)
     sequence = fields.Integer(string='Sequence', default=1)
     

@@ -25,5 +25,5 @@ from odoo import models
 
 
 class FacultyActivity(models.AbstractModel):
-    _name = 'a3.faculty.activity'
-    _inherit = ['a3.activity', 'a3.faculty.owned']
+    _name = 'ix.faculty.activity'
+    _inherit = ['ix.activity', 'ix.faculty.owned']

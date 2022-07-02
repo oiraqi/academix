@@ -5,7 +5,7 @@ from odoo import models, fields, api
 
 
 class Textbook(models.Model):
-    _name = 'a3lms.textbook'
+    _name = 'ixlms.textbook'
     _sql_constraints = [('isbn_ukey', 'unique(isbn)',
                          ('A book with the same ISBN exists already!'))]    
     
@@ -16,7 +16,7 @@ class Textbook(models.Model):
     edition = fields.Char('Edition', required=True)
     description = fields.Text('Description')
     publisher = fields.Char('Publisher', required=True)
-    course_id = fields.Many2one('a3.course', 'Course', required=True)
+    course_id = fields.Many2one('ix.course', 'Course', required=True)
     
     @api.onchange('isbn')
     def onchange_isbn(self):

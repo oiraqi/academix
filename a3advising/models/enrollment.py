@@ -25,12 +25,12 @@ from odoo import fields, models
 
 
 class Enrollment(models.Model):
-    _inherit = 'a3roster.enrollment'
+    _inherit = 'ixroster.enrollment'
 
     advisor_id = fields.Many2one(related='student_id.advisor_id')
 
     def app_w_adv(self):
         # Don't trust the interface, perform the server-side check!
         # If someone is playing with us, drop silently
-        if self.env.ref('a3.group_faculty') in self.env.user.groups_id and self.student_id.advisor_id.user_id == self.env.user:
+        if self.env.ref('ix.group_faculty') in self.env.user.groups_id and self.student_id.advisor_id.user_id == self.env.user:
             self.wstate = 'wadv'

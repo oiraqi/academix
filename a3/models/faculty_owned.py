@@ -25,11 +25,11 @@ from odoo import models, fields, api
 
 
 class FacultyOwned(models.AbstractModel):
-    _name = 'a3.faculty.owned'
+    _name = 'ix.faculty.owned'
 
     faculty_id = fields.Many2one(
-        'a3.faculty', string='Faculty', default=lambda self: self.env['a3.faculty'].search(
+        'ix.faculty', string='Faculty', default=lambda self: self.env['ix.faculty'].search(
             [('user_id', '=', self.env.user.id)]), required=True)
-    school_id = fields.Many2one('a3.school', string='School', default=lambda self: self.env['a3.faculty'].search(
+    school_id = fields.Many2one('ix.school', string='School', default=lambda self: self.env['ix.faculty'].search(
             [('user_id', '=', self.env.user.id)]).school_id, required=True)
     locked = fields.Boolean('Locked', readonly=True, default=False)

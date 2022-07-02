@@ -2,14 +2,14 @@ from odoo import api, models, fields
 
 
 class Calendarized(models.AbstractModel):
-	_name = 'a3.calendarized'
+	_name = 'ix.calendarized'
 	_description = 'Calendarized'
 
 	event_id = fields.Many2one(comodel_name='calendar.event', string='Event')
 	start_time = fields.Datetime('Start Time')
 	end_time = fields.Datetime('End Time')
-	building_id = fields.Many2one(comodel_name='a3.building', string='Building')
-	room_id = fields.Many2one(comodel_name='a3.room', string='Room')
+	building_id = fields.Many2one(comodel_name='ix.building', string='Building')
+	room_id = fields.Many2one(comodel_name='ix.room', string='Room')
 	videocall_location = fields.Char(string='Conference URL')
 	
 

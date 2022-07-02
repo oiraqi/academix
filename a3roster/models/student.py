@@ -25,8 +25,8 @@ from odoo import fields, models
 
 
 class Student(models.Model):
-    _name = 'a3.student'
-    _inherit = ['a3.student', 'mail.thread']
+    _name = 'ix.student'
+    _inherit = ['ix.student', 'mail.thread']
 
-    program_id = fields.Many2one(comodel_name='a3catalog.program', string='Program', required=True, tracking=True)    
-    enrollment_ids = fields.One2many(comodel_name='a3roster.enrollment', inverse_name='student_id', string='Sections')
+    program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True, tracking=True)    
+    enrollment_ids = fields.One2many(comodel_name='ixroster.enrollment', inverse_name='student_id', string='Sections')

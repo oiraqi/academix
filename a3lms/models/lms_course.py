@@ -4,27 +4,27 @@ from odoo.exceptions import ValidationError
 
 
 class LmsCourse(models.Model):
-	_name = 'a3lms.course'
+	_name = 'ixlms.course'
 	_description = 'LMS Course'
-	_inherit = ['a3.activity', 'a3.expandable']
+	_inherit = ['ix.activity', 'ix.expandable']
 	_sql_constraints = [('section_ukey', 'unique(section_id)', 'LMS course already created!')]
 
-	section_id = fields.Many2one(comodel_name='a3roster.section', string='Section', required=True)	
+	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)	
 	name = fields.Char(related='section_id.name')	
-	course_id = fields.Many2one(comodel_name='a3.course', related='section_id.course_id')
-	prerequisite_ids = fields.One2many('a3catalog.prerequisite', related='course_id.prerequisite_ids')
-	corequisite_ids = fields.One2many('a3catalog.corequisite', related='course_id.corequisite_ids')
-	instructor_id = fields.Many2one(comodel_name='a3.faculty', related='section_id.instructor_id')
-	discipline_id = fields.Many2one(comodel_name='a3.discipline', related='section_id.discipline_id')
+	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id')
+	prerequisite_ids = fields.One2many('ixcatalog.prerequisite', related='course_id.prerequisite_ids')
+	corequisite_ids = fields.One2many('ixcatalog.corequisite', related='course_id.corequisite_ids')
+	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id')
+	discipline_id = fields.Many2one(comodel_name='ix.discipline', related='section_id.discipline_id')
 	timeslot = fields.Char(related='section_id.timeslot')	
-	room_id = fields.Many2one(comodel_name='a3.room', related='section_id.room_id')
-	student_ids = fields.One2many('a3.student', related='section_id.student_ids')
-	enrollment_ids = fields.One2many('a3roster.enrollment', related='section_id.enrollment_ids')
+	room_id = fields.Many2one(comodel_name='ix.room', related='section_id.room_id')
+	student_ids = fields.One2many('ix.student', related='section_id.student_ids')
+	enrollment_ids = fields.One2many('ixroster.enrollment', related='section_id.enrollment_ids')
 	nstudents = fields.Integer(related='section_id.nstudents')
 	description = fields.Html(related='course_id.description')
-	ilo_ids = fields.One2many('a3catalog.course.ilo', related='course_id.ilo_ids')
-	textbook_ids = fields.One2many(comodel_name='a3lms.textbook', related='course_id.textbook_ids')
-	office_hour_ids = fields.One2many(comodel_name='a3roster.office.hour', related='instructor_id.office_hour_ids')
+	ilo_ids = fields.One2many('ixcatalog.course.ilo', related='course_id.ilo_ids')
+	textbook_ids = fields.One2many(comodel_name='ixlms.textbook', related='course_id.textbook_ids')
+	office_hour_ids = fields.One2many(comodel_name='ixroster.office.hour', related='instructor_id.office_hour_ids')
 	grade_grouping = fields.Selection(string='Assessment Grouping', selection=[('module', 'Course Module'), ('technique', 'Assessment Technique'),], default='module', required=True)
 	grade_weighting = fields.Selection(string='Assessment Weighting', selection=[('percentage', 'Percentage'), ('points', 'Points'),], default='percentage', required=True)	
 	attendance_points = fields.Integer(string='Attendance Points', default=0)
@@ -57,23 +57,23 @@ class LmsCourse(models.Model):
 	penalty_per_absence = fields.Float(string='Penalty(%) / Absence', default=5.0)
 	zero_after_max_abs = fields.Boolean(string='Zero after Max Absences', default=False)	
 	max_absences = fields.Integer(string='Max Absences', default=5)
-	module_ids = fields.One2many(comodel_name='a3lms.module', inverse_name='course_id', string='Modules')
-	assessed_module_ids = fields.One2many(comodel_name='a3lms.module', compute='_assessed_module_ids', string='Modules')	
+	module_ids = fields.One2many(comodel_name='ixlms.module', inverse_name='course_id', string='Modules')
+	assessed_module_ids = fields.One2many(comodel_name='ixlms.module', compute='_assessed_module_ids', string='Modules')	
 
 	@api.onchange('assessment_ids')
 	def _assessed_module_ids(self):
 		for rec in self:
 			assessed_module_ids = [assessment.module_id.id for assessment in rec.assessment_ids]
-			rec.assessed_module_ids = self.env['a3lms.module'].search([('id', 'in', assessed_module_ids)])
+			rec.assessed_module_ids = self.env['ixlms.module'].search([('id', 'in', assessed_module_ids)])
 
-	technique_ids = fields.One2many(comodel_name='a3lms.weighted.technique', inverse_name='course_id', string='Techniques')	
-	assessment_ids = fields.One2many(comodel_name='a3lms.assessment', inverse_name='course_id', string='Assessments')
+	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', inverse_name='course_id', string='Techniques')	
+	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='course_id', string='Assessments')
 	nassessments = fields.Integer(string='Number of Assessments', compute='_assessment_ids')
 	nassessment_lines = fields.Integer(string='Number of Assessment Lines', compute='_assessment_ids')
-	used_technique_ids = fields.One2many(comodel_name='a3lms.assessment.technique', compute='_assessment_ids')
-	attendance_ids = fields.One2many(comodel_name='a3lms.attendance', inverse_name='course_id', string='Attendance Sheets')
+	used_technique_ids = fields.One2many(comodel_name='ixlms.assessment.technique', compute='_assessment_ids')
+	attendance_ids = fields.One2many(comodel_name='ixlms.attendance', inverse_name='course_id', string='Attendance Sheets')
 	nattendance_sheets = fields.Integer(string='Number of Attendance Sheets', compute='_attendance_ids')
-	teamset_ids = fields.One2many(comodel_name='a3lms.teamset', inverse_name='course_id', string='Team Sets')
+	teamset_ids = fields.One2many(comodel_name='ixlms.teamset', inverse_name='course_id', string='Team Sets')
 	nteamsets = fields.Integer(string='Number of Team Sets', compute='_nteamsets')
 
 	@api.onchange('teamset_ids')
@@ -84,7 +84,7 @@ class LmsCourse(models.Model):
 			else:
 				rec.nteamsets = 0
 	
-	chapter_ids = fields.One2many(comodel_name='a3lms.chapter', inverse_name='course_id', string="Chapters & Timeline")
+	chapter_ids = fields.One2many(comodel_name='ixlms.chapter', inverse_name='course_id', string="Chapters & Timeline")
 
 	def _attendance_ids(self):
 		for rec in self:
@@ -96,7 +96,7 @@ class LmsCourse(models.Model):
 			if rec.assessment_ids:
 				rec.used_technique_ids = [assessment.technique_id.id for assessment in rec.assessment_ids]
 				rec.nassessments = len(rec.assessment_ids)
-				rec.nassessment_lines = self.env['a3lms.assessment.line'].search_count([('course_id', '=', rec.id), ('student_id', 'in', rec.student_ids.ids)])
+				rec.nassessment_lines = self.env['ixlms.assessment.line'].search_count([('course_id', '=', rec.id), ('student_id', 'in', rec.student_ids.ids)])
 			else:
 				rec.used_technique_ids = False
 				rec.nassessments = 0
@@ -116,49 +116,49 @@ class LmsCourse(models.Model):
 	def get_students(self):
 		self.ensure_one()
 		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn'])]
-		return self._resolve_action('a3lms.action_enrollment', domain)
+		return self._resolve_action('ixlms.action_enrollment', domain)
 
 	def get_assessments(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
 		if self.grade_grouping == 'module' and self.grade_weighting == 'percentage':
-			return self._resolve_action('a3lms.action_assessment_module_percentage', domain)
+			return self._resolve_action('ixlms.action_assessment_module_percentage', domain)
 
 		if self.grade_grouping == 'module' and self.grade_weighting == 'points':
-			return self._resolve_action('a3lms.action_assessment_module_points', domain)
+			return self._resolve_action('ixlms.action_assessment_module_points', domain)
 		
 		if self.grade_grouping == 'technique' and self.grade_weighting == 'percentage':
-			return self._resolve_action('a3lms.action_assessment_technique_percentage', domain)
+			return self._resolve_action('ixlms.action_assessment_technique_percentage', domain)
 
 		if self.grade_grouping == 'technique' and self.grade_weighting == 'points':
-			return self._resolve_action('a3lms.action_assessment_technique_points', domain)
+			return self._resolve_action('ixlms.action_assessment_technique_points', domain)
 		
 
 	def get_grade_matrix(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id), ('student_id', 'in', self.student_ids.ids)]
 		if self.grade_grouping == 'module' and self.grade_weighting == 'percentage':
-			return self._resolve_action('a3lms.action_assessment_line_module_percentage', domain)
+			return self._resolve_action('ixlms.action_assessment_line_module_percentage', domain)
 
 		if self.grade_grouping == 'module' and self.grade_weighting == 'points':
-			return self._resolve_action('a3lms.action_assessment_line_module_points', domain)
+			return self._resolve_action('ixlms.action_assessment_line_module_points', domain)
 		
 		if self.grade_grouping == 'technique' and self.grade_weighting == 'percentage':
-			return self._resolve_action('a3lms.action_assessment_line_technique_percentage', domain)
+			return self._resolve_action('ixlms.action_assessment_line_technique_percentage', domain)
 
 		if self.grade_grouping == 'technique' and self.grade_weighting == 'points':
-			return self._resolve_action('a3lms.action_assessment_line_technique_points', domain)
+			return self._resolve_action('ixlms.action_assessment_line_technique_points', domain)
 
 	def get_attendance(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id}
-		return self._resolve_action('a3lms.action_attendance', domain, context)
+		return self._resolve_action('ixlms.action_attendance', domain, context)
 
 	def get_teamsets(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id}
-		return self._resolve_action('a3lms.action_teamset', domain, context)
+		return self._resolve_action('ixlms.action_teamset', domain, context)
 
 

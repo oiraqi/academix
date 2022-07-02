@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_attendance_line_form" model="ir.ui.view">
-			<field name="name">a3lms.attendance.line.form</field>
-			<field name="model">a3lms.attendance.line</field>
+			<field name="name">ixlms.attendance.line.form</field>
+			<field name="model">ixlms.attendance.line</field>
 			<field name="arch" type="xml">
 				<form string="AttendanceLine">
 					<sheet>
@@ -22,8 +22,8 @@
 			</field>
 		</record>
 		<record id="view_attendance_line_tree" model="ir.ui.view">
-			<field name="name">a3lms.attendance.line.tree</field>
-			<field name="model">a3lms.attendance.line</field>
+			<field name="name">ixlms.attendance.line.tree</field>
+			<field name="model">ixlms.attendance.line</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="AttendanceLines">
@@ -34,7 +34,7 @@
 		<record id="action_attendance_line" model="ir.actions.act_window">
 			<field name="name">AttendanceLines</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.attendance.line</field>
+			<field name="res_model">ixlms.attendance.line</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>

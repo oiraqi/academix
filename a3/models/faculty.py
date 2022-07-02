@@ -27,19 +27,19 @@ import string
 
 
 class Faculty(models.Model):
-    _name = 'a3.faculty'
+    _name = 'ix.faculty'
     _inherits = {'res.partner': 'partner_id'}
-    _inherit = 'a3.school.owned'
+    _inherit = 'ix.school.owned'
     _description = 'Faculty'
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
     user_id = fields.Many2one('res.users', string='User')
     hiring_date = fields.Date('Hiring Date')
-    discipline_ids = fields.Many2many('a3.discipline', 'a3_faculty_discipline_rel', 'faculty_id', 'discipline_id', 'Disciplines', required=True)
-    undergrad_managed_discipline_ids = fields.Many2many('a3.discipline', 'a3_discipline_undergrad_manager_rel', 'manager_id', 'discipline_id', 'Undergraduate Managed Disciplines')
-    grad_managed_discipline_ids = fields.Many2many('a3.discipline', 'a3_discipline_grad_manager_rel', 'manager_id', 'discipline_id', 'Graduate Managed Disciplines')    
-    room_id = fields.Many2one(comodel_name='a3.room', string='Office')    
-    course_ids = fields.Many2many('a3.course', 'a3_course_faculty_rel', 'instructor_id', 'course_id', string='Courses')
+    discipline_ids = fields.Many2many('ix.discipline', 'ix_faculty_discipline_rel', 'faculty_id', 'discipline_id', 'Disciplines', required=True)
+    undergrad_managed_discipline_ids = fields.Many2many('ix.discipline', 'ix_discipline_undergrad_manager_rel', 'manager_id', 'discipline_id', 'Undergraduate Managed Disciplines')
+    grad_managed_discipline_ids = fields.Many2many('ix.discipline', 'ix_discipline_grad_manager_rel', 'manager_id', 'discipline_id', 'Graduate Managed Disciplines')    
+    room_id = fields.Many2one(comodel_name='ix.room', string='Office')    
+    course_ids = fields.Many2many('ix.course', 'ix_course_faculty_rel', 'instructor_id', 'course_id', string='Courses')
 
     @api.model
     def create(self, vals):
@@ -47,7 +47,7 @@ class Faculty(models.Model):
         vals['name'] = string.capwords(vals['name'].strip())
         user = self.sudo().env['res.users'].search([('login', '=', vals['email'])])
         if user:
-            faculty = self.env['a3.faculty'].search([('user_id', '=', user.id)])
+            faculty = self.env['ix.faculty'].search([('user_id', '=', user.id)])
             if faculty:
                 raise UserError('Faculty already exists')
             
@@ -60,5 +60,5 @@ class Faculty(models.Model):
                 {'login': vals['email'], 'partner_id': faculty.partner_id.id})
             faculty.user_id = user
 
-        user.sudo().groups_id = [(4, self.env.ref('a3.group_faculty').id)]
+        user.sudo().groups_id = [(4, self.env.ref('ix.group_faculty').id)]
         return faculty

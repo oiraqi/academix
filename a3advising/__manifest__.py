@@ -11,7 +11,7 @@
         '',
     ],
     'depends': [
-        'a3roster',
+        'ixroster',
     ],
     'data': [
         'security/advising_security.xml',
@@ -24,8 +24,8 @@
     ],
     'assets': {
         'web.assets_backend': [
-            '/a3advising/static/src/js/raphael.min.js',
-            '/a3advising/static/src/js/dracula.min.js',
+            '/ixadvising/static/src/js/raphael.min.js',
+            '/ixadvising/static/src/js/dracula.min.js',
         ],
     },
     'installable': True,

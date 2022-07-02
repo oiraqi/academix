@@ -11,7 +11,7 @@
         '',
     ],
     'depends': [
-        'a3',
+        'ix',
     ],
     'data': [
         'security/catalog_security.xml',

@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_attendance_form" model="ir.ui.view">
-			<field name="name">a3lms.attendance.form</field>
-			<field name="model">a3lms.attendance</field>
+			<field name="name">ixlms.attendance.form</field>
+			<field name="model">ixlms.attendance</field>
 			<field name="arch" type="xml">
 				<form string="Attendance">
 					<sheet>
@@ -35,8 +35,8 @@
 			</field>
 		</record>
 		<record id="view_attendance_tree" model="ir.ui.view">
-			<field name="name">a3lms.attendance.tree</field>
-			<field name="model">a3lms.attendance</field>
+			<field name="name">ixlms.attendance.tree</field>
+			<field name="model">ixlms.attendance</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Attendances">
@@ -53,7 +53,7 @@
 		<record id="action_attendance" model="ir.actions.act_window">
 			<field name="name">Attendance Sheets</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.attendance</field>
+			<field name="res_model">ixlms.attendance</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
@@ -69,7 +69,7 @@
 		<record id="action_attendance_all" model="ir.actions.act_window">
 			<field name="name">Attendances</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.attendance</field>
+			<field name="res_model">ixlms.attendance</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['term_id', 'school_id', 'instructor_id']}</field>

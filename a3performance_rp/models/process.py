@@ -2,7 +2,7 @@
 ###############################################################################
 #
 #    Al Akhawayn University in Ifrane -- AUI
-#    Copyright (C) 2022-TODAY AUI(<http://www.a3ma>).
+#    Copyright (C) 2022-TODAY AUI(<http://www.ixma>).
 #
 #    Author: Omar Iraqi Houssaini | https://github.com/oiraqi
 #
@@ -25,9 +25,9 @@ from odoo import models, fields
 
 
 class Process(models.Model):
-    _inherit = 'a3performance.process'
+    _inherit = 'ixperformance.process'
 
-    rp_goal_ids = fields.One2many('a3performance.rp.goal', 'process_id', string='Goals')
+    rp_goal_ids = fields.One2many('ixperformance.rp.goal', 'process_id', string='Goals')
     rp_goal_progress = fields.Float('Goal Progress', compute='_rp_goal_progress')
     rp_goal_achievement = fields.Char('Goal Achievement', compute='_rp_goal_progress')
     
@@ -44,29 +44,29 @@ class Process(models.Model):
             rec.rp_goal_achievement = str(achieved_goal_count) + ' / ' + str(goal_count)
 
     research_activity_ids = fields.One2many(
-        'a3research.activity', string='Activities', compute='_research_activity_ids')
+        'ixresearch.activity', string='Activities', compute='_research_activity_ids')
     article_impact_ids = fields.One2many(
-        'a3research.article', string='Impact Factor', compute='_article_impact_ids')
+        'ixresearch.article', string='Impact Factor', compute='_article_impact_ids')
     article_indexed_ids = fields.One2many(
-        'a3research.article', string='Indexed', compute='_article_indexed_ids')
+        'ixresearch.article', string='Indexed', compute='_article_indexed_ids')
     article_non_indexed_ids = fields.One2many(
-        'a3research.article', string='Non Indexed', compute='_article_non_indexed_ids')
+        'ixresearch.article', string='Non Indexed', compute='_article_non_indexed_ids')
     book_ids = fields.One2many(
-        'a3research.book', string='Books / Monographs', compute='_book_ids')
+        'ixresearch.book', string='Books / Monographs', compute='_book_ids')
     paper_ids = fields.One2many(
-        'a3research.paper', string='Papers', compute='_paper_ids')
+        'ixresearch.paper', string='Papers', compute='_paper_ids')
     presentation_ids = fields.One2many(
-        'a3research.presentation', string='Presentations', compute='_presentation_ids')
+        'ixresearch.presentation', string='Presentations', compute='_presentation_ids')
     
     rp_narrative = fields.Html('Narrative',
         readonly=True, states={'faculty': [('readonly', False)]})
 
     rp_committee_review = fields.Html('Committee Review',
         readonly=True, states={'committee': [('readonly', False)]},
-        groups='a3performance.group_committee_member,a3.group_dean,a3.group_vpaa')
+        groups='ixperformance.group_committee_member,ix.group_dean,ix.group_vpaa')
     rp_dean_review = fields.Html('Dean Review',
         readonly=True, states={'dean': [('readonly', False)]},
-        groups='a3.group_dean,a3.group_vpaa')
+        groups='ix.group_dean,ix.group_vpaa')
     rp_vpaa_review = fields.Html('VPAA Review',
         readonly=True, states={'vpaa': [('readonly', False)]},
-        groups='a3.group_dean,a3.group_vpaa')
+        groups='ix.group_dean,ix.group_vpaa')

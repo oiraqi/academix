@@ -5,7 +5,7 @@ class Event(models.Model):
     _inherit = 'calendar.event'
 	
     
-    reservation_id = fields.Many2one(comodel_name='a3roster.reservation', string='Reservation')
+    reservation_id = fields.Many2one(comodel_name='ixroster.reservation', string='Reservation')
     
     @api.depends('start', 'stop', 'location')
     def update_reservation(self):
@@ -16,4 +16,4 @@ class Event(models.Model):
                 if rec.stop != rec.reservation_id.end_time:
                     rec.reservation_id.end_time = rec.stop
                 if rec.location != rec.reservation_id.room_id.name:
-                    rec.reservation_id.room_id = self.env['a3.room'].get_from_name(rec.location)
+                    rec.reservation_id.room_id = self.env['ix.room'].get_from_name(rec.location)

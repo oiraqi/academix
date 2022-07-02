@@ -2,27 +2,27 @@
 <odoo>
     <data noupdate="1">
 
-        <record id="a3_school_lc" model="a3.school">
+        <record id="ix_school_lc" model="ix.school">
             <field name="name">Language Center</field>
             <field name="code">LC</field>
         </record>
 
-        <record id="a3_school_sba" model="a3.school">
+        <record id="ix_school_sba" model="ix.school">
             <field name="name">School of Business Administration</field>
             <field name="code">SBA</field>            
         </record>
 
-        <record id="a3_school_shss" model="a3.school">
+        <record id="ix_school_shss" model="ix.school">
             <field name="name">School of Humanities and Social Sciences</field>
             <field name="code">SHSS</field>
         </record>
 
-        <record id="a3_school_sse" model="a3.school">
+        <record id="ix_school_sse" model="ix.school">
             <field name="name">School of Science and Engineering</field>
             <field name="code">SSE</field>
         </record>
 
-        <record id="a3_school_unv" model="a3.school">
+        <record id="ix_school_unv" model="ix.school">
             <field name="name">University-wise</field>
             <field name="code">UNV</field>
         </record>

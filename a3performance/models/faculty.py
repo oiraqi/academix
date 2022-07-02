@@ -25,10 +25,10 @@ from odoo import models, fields
 
 
 class Faculty(models.Model):
-    _inherit = 'a3.faculty'
+    _inherit = 'ix.faculty'
 
     rank = fields.Selection([('D', 'Lecturer'), ('C', 'Assistant Professor'), (
         'B', 'Associate Professor'), ('A', 'Full Professor')], 'Rank')
-    srank_id = fields.Many2one('a3performance.srank', string='Sub Rank')
+    srank_id = fields.Many2one('ixperformance.srank', string='Sub Rank')
     latest_evaluation_date = fields.Date('Latest Evaluation Date')
-    degree_ids = fields.One2many('a3performance.degree', 'faculty_id', string='Academic Degrees')
+    degree_ids = fields.One2many('ixperformance.degree', 'faculty_id', string='Academic Degrees')

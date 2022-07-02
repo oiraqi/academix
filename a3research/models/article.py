@@ -2,7 +2,7 @@
 ###############################################################################
 #
 #    Al Akhawayn University in Ifrane -- AUI
-#    Copyright (C) 2022-TODAY AUI(<http://www.a3.ma>).
+#    Copyright (C) 2022-TODAY AUI(<http://www.ix.ma>).
 #
 #    Author: Omar Iraqi Houssaini | https://github.com/oiraqi
 #
@@ -25,8 +25,8 @@ from odoo import models, fields
 
 
 class Article(models.Model):
-    _name = 'a3research.article'
-    _inherit = 'a3research.publication'
+    _name = 'ixresearch.article'
+    _inherit = 'ixresearch.publication'
 
-    journal_id = fields.Many2one('a3research.journal', 'Journal', required=True)
+    journal_id = fields.Many2one('ixresearch.journal', 'Journal', required=True)
     vpages = fields.Char('Volume and Pages')

@@ -2,7 +2,7 @@
 ###############################################################################
 #
 #    Al Akhawayn University in Ifrane -- AUI
-#    Copyright (C) 2022-TODAY AUI(<http://www.a3ma>).
+#    Copyright (C) 2022-TODAY AUI(<http://www.ixma>).
 #
 #    Author: Omar Iraqi Houssaini | https://github.com/oiraqi
 #
@@ -24,9 +24,9 @@
 from odoo import models, fields
 
 class Process(models.Model):
-    _inherit = 'a3performance.process'
+    _inherit = 'ixperformance.process'
 
-    sd_goal_ids = fields.One2many('a3performance.sd.goal', 'process_id', string='Goals')
+    sd_goal_ids = fields.One2many('ixperformance.sd.goal', 'process_id', string='Goals')
     sd_goal_progress = fields.Float('Goal Progress', compute='_sd_goal_progress')
     sd_goal_achievement = fields.Char('Goal Achievement', compute='_sd_goal_progress')
     
@@ -43,26 +43,26 @@ class Process(models.Model):
             rec.sd_goal_achievement = str(achieved_goal_count) + ' / ' + str(goal_count)
 
     committee_school_activity_ids = fields.One2many(
-        'a3performance.sd.activity', string='School Committees', compute='_committee_school_activity_ids')
+        'ixperformance.sd.activity', string='School Committees', compute='_committee_school_activity_ids')
     committee_university_activity_ids = fields.One2many(
-        'a3performance.sd.activity', string='University Committees', compute='_committee_university_activity_ids')
+        'ixperformance.sd.activity', string='University Committees', compute='_committee_university_activity_ids')
     development_ids = fields.One2many(
-        'a3performance.sd.development', string='Development', compute='_development_ids')
+        'ixperformance.sd.development', string='Development', compute='_development_ids')
     experience_ids = fields.One2many(
-        'a3performance.sd.experience', string='Experiences', compute='_experience_ids')
+        'ixperformance.sd.experience', string='Experiences', compute='_experience_ids')
     service_ids = fields.One2many(
-        'a3performance.sd.service', string='Services', compute='_service_ids')
+        'ixperformance.sd.service', string='Services', compute='_service_ids')
     
     sd_narrative = fields.Html('Narrative',
         readonly=True, states={'faculty': [('readonly', False)]})
 
     sd_committee_review = fields.Html('Committee Review',
         readonly=True, states={'committee': [('readonly', False)]},
-        groups='a3performance.group_committee_member,a3.group_dean,a3.group_vpaa')
+        groups='ixperformance.group_committee_member,ix.group_dean,ix.group_vpaa')
     sd_dean_review = fields.Html('Dean Review',
         readonly=True, states={'dean': [('readonly', False)]},
-        groups='a3.group_dean,a3.group_vpaa')
+        groups='ix.group_dean,ix.group_vpaa')
     sd_vpaa_review = fields.Html('VPAA Review',
         readonly=True, states={'vpaa': [('readonly', False)]},
-        groups='a3.group_dean,a3.group_vpaa')
+        groups='ix.group_dean,ix.group_vpaa')
 

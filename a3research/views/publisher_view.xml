@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_publisher_form" model="ir.ui.view">
-			<field name="name">a3research.publisher.form</field>
-			<field name="model">a3research.publisher</field>
+			<field name="name">ixresearch.publisher.form</field>
+			<field name="model">ixresearch.publisher</field>
 			<field name="arch" type="xml">
 				<form string="Publisher">
 					<sheet>
@@ -22,8 +22,8 @@
 			</field>
 		</record>
 		<record id="view_publisher_tree" model="ir.ui.view">
-			<field name="name">a3research.publisher.tree</field>
-			<field name="model">a3research.publisher</field>
+			<field name="name">ixresearch.publisher.tree</field>
+			<field name="model">ixresearch.publisher</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Publishers">
@@ -34,7 +34,7 @@
 		<record id="action_publisher" model="ir.actions.act_window">
 			<field name="name">Publishers</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3research.publisher</field>
+			<field name="res_model">ixresearch.publisher</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>

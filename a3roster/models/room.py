@@ -26,14 +26,14 @@ from odoo import fields, models, api
 
 WEEK_DAYS = ('monday', 'tuesday', 'wednesday', 'thursday', 'friday')
 class Room(models.Model):
-    _inherit = 'a3.room'
+    _inherit = 'ix.room'
 
-    section_ids = fields.One2many('a3roster.section', 'room_id', 'Sections', order_by='year desc,semester desc')
-    reservation_ids = fields.One2many(comodel_name='a3roster.reservation', inverse_name='room_id', string='Reservations')
+    section_ids = fields.One2many('ixroster.section', 'room_id', 'Sections', order_by='year desc,semester desc')
+    reservation_ids = fields.One2many(comodel_name='ixroster.reservation', inverse_name='room_id', string='Reservations')
 
     @api.model
     def available_rooms(self, start_time, end_time):
-        busy_rooms = self.env['a3roster.reservation'].search([('start_time', '<=', end_time), ('end_time', '>=', end_time)])
+        busy_rooms = self.env['ixroster.reservation'].search([('start_time', '<=', end_time), ('end_time', '>=', end_time)])
         busy_rooms = [room.id for room in busy_rooms]
         start_datetime = fields.Datetime.to_datetime(start_time)
         end_datetime = fields.Datetime.to_datetime(end_time)
@@ -43,7 +43,7 @@ class Room(models.Model):
         end_timeslot = end_datetime.hour + end_datetime.minute / 60
         if start_day == end_day:
             day = WEEK_DAYS[start_day]
-            sections = self.env['a3roster.section'].search([('room_id', 'not in', busy_rooms), (day, '=', True),
+            sections = self.env['ixroster.section'].search([('room_id', 'not in', busy_rooms), (day, '=', True),
                 ('start_timeslot', '<=', end_timeslot),
                 ('end_timeslot', '>=', start_timeslot)])
             for section in sections:
@@ -51,13 +51,13 @@ class Room(models.Model):
         elif end_day >= start_day + 1:
             first_day = WEEK_DAYS[start_day]
             last_day = WEEK_DAYS[end_day]
-            sections = self.env['a3roster.section'].search(['&', ('room_id', 'not in', busy_rooms), '|', '&', (first_day, '=', True),
+            sections = self.env['ixroster.section'].search(['&', ('room_id', 'not in', busy_rooms), '|', '&', (first_day, '=', True),
                 ('end_timeslot', '>=', start_timeslot), '&', (last_day, '=', True),
                 ('start_timeslot', '<=', end_timeslot)])
             busy_rooms = [section.room_id.id for section in sections]
             day = start_day + 1
             while day < last_day:
-                sections = self.env['a3roster.section'].search([(WEEK_DAYS[day], '=', True)])
+                sections = self.env['ixroster.section'].search([(WEEK_DAYS[day], '=', True)])
                 for section in sections:
                     busy_rooms.append(section.room_id.id)
                 day += 1

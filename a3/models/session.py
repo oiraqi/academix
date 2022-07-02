@@ -2,7 +2,7 @@ from odoo import models, fields
 
 
 class Session(models.Model):
-	_name = 'a3.session'
+	_name = 'ix.session'
 	_description = 'Session'
 	_sql_constraints = [('sequence_ukey', 'unique(sequence)', 'Sequence already exists')]
 

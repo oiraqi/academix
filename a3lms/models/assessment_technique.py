@@ -25,7 +25,7 @@ from odoo import models, fields
 
 
 class AssessmentTechnique(models.Model):
-	_name = 'a3lms.assessment.technique'
+	_name = 'ixlms.assessment.technique'
 	_description = 'Assessment Technique'
 	_order = 'sequence'
 

@@ -2,7 +2,7 @@ from odoo import models, fields
 
 
 class Faculty(models.Model):
-	_inherit = 'a3.faculty'
+	_inherit = 'ix.faculty'
 
-	managed_program_ids = fields.Many2many('a3catalog.program', 'a3catalog_program_a3_faculty', 'manager_id', 'program_id', string='Managed Programs')	
+	managed_program_ids = fields.Many2many('ixcatalog.program', 'ixcatalog_program_ix_faculty', 'manager_id', 'program_id', string='Managed Programs')	
 	

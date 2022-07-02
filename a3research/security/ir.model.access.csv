@@ -1,22 +1,22 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_a3research_publisher_user,access.a3research.publisher.user,model_a3research_publisher,base.group_user,1,0,0,0
-access_a3research_publisher_faculty,access.a3research.publisher.faculty,model_a3research_publisher,a3.group_faculty,1,1,1,1
+access_ixresearch_publisher_user,access.ixresearch.publisher.user,model_ixresearch_publisher,base.group_user,1,0,0,0
+access_ixresearch_publisher_faculty,access.ixresearch.publisher.faculty,model_ixresearch_publisher,ix.group_faculty,1,1,1,1
 
-access_a3research_journal_user,access.a3research.journal.user,model_a3research_journal,base.group_user,1,0,0,0
-access_a3research_journal_faculty,access.a3research.journal.faculty,model_a3research_journal,a3.group_faculty,1,1,1,0
+access_ixresearch_journal_user,access.ixresearch.journal.user,model_ixresearch_journal,base.group_user,1,0,0,0
+access_ixresearch_journal_faculty,access.ixresearch.journal.faculty,model_ixresearch_journal,ix.group_faculty,1,1,1,0
 
-access_a3research_article_user,access.a3research.article.user,model_a3research_article,base.group_user,1,0,0,0
-access_a3research_article_faculty,access.a3research.article.faculty,model_a3research_article,a3.group_faculty,1,1,1,1
+access_ixresearch_article_user,access.ixresearch.article.user,model_ixresearch_article,base.group_user,1,0,0,0
+access_ixresearch_article_faculty,access.ixresearch.article.faculty,model_ixresearch_article,ix.group_faculty,1,1,1,1
 
-access_a3research_book_user,access.a3research.book.user,model_a3research_book,base.group_user,1,0,0,0
-access_a3research_book_faculty,access.a3research.book.faculty,model_a3research_book,a3.group_faculty,1,1,1,1
+access_ixresearch_book_user,access.ixresearch.book.user,model_ixresearch_book,base.group_user,1,0,0,0
+access_ixresearch_book_faculty,access.ixresearch.book.faculty,model_ixresearch_book,ix.group_faculty,1,1,1,1
 
-access_a3research_presentation_user,access.a3research.presentation.user,model_a3research_presentation,base.group_user,1,0,0,0
-access_a3research_presentation_faculty,access.a3research.presentation.faculty,model_a3research_presentation,a3.group_faculty,1,1,1,1
+access_ixresearch_presentation_user,access.ixresearch.presentation.user,model_ixresearch_presentation,base.group_user,1,0,0,0
+access_ixresearch_presentation_faculty,access.ixresearch.presentation.faculty,model_ixresearch_presentation,ix.group_faculty,1,1,1,1
 
-access_a3research_paper_user,access.a3research.paper.user,model_a3research_paper,base.group_user,1,0,0,0
-access_a3research_paper_faculty,access.a3research.paper.faculty,model_a3research_paper,a3.group_faculty,1,1,1,1
+access_ixresearch_paper_user,access.ixresearch.paper.user,model_ixresearch_paper,base.group_user,1,0,0,0
+access_ixresearch_paper_faculty,access.ixresearch.paper.faculty,model_ixresearch_paper,ix.group_faculty,1,1,1,1
 
-access_a3research_activity_user,access.a3research.activity.user,model_a3research_activity,base.group_user,1,0,0,0
-access_a3research_activity_faculty,access.a3research.activity.faculty,model_a3research_activity,a3.group_faculty,1,1,1,1
+access_ixresearch_activity_user,access.ixresearch.activity.user,model_ixresearch_activity,base.group_user,1,0,0,0
+access_ixresearch_activity_faculty,access.ixresearch.activity.faculty,model_ixresearch_activity,ix.group_faculty,1,1,1,1
 

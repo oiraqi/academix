@@ -11,7 +11,7 @@
         '',
     ],
     'depends': [
-        'a3',
+        'ix',
     ],    
     'data': [
         'security/ir.model.access.csv',
@@ -22,7 +22,7 @@
         'views/presentation_view.xml',
         'views/paper_view.xml',
         'views/activity_view.xml',
-        'views/a3research_menu.xml',
+        'views/ixresearch_menu.xml',
     ],
     'installable': True,
     'auto_install': False,

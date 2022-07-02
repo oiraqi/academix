@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="view_degree_plan_form" model="ir.ui.view">
-            <field name="name">a3advising.degree.plan.form</field>
-            <field name="model">a3advising.degree.plan</field>
+            <field name="name">ixadvising.degree.plan.form</field>
+            <field name="model">ixadvising.degree.plan</field>
             <field name="arch" type="xml">
                 <form string="Degree Plan Wizard">                    
                     <header>
@@ -69,8 +69,8 @@
             </field>
         </record>
         <record id="view_degree_plan_tree" model="ir.ui.view">
-            <field name="name">a3advising.degree.plan.tree</field>
-            <field name="model">a3advising.degree.plan</field>
+            <field name="name">ixadvising.degree.plan.tree</field>
+            <field name="model">ixadvising.degree.plan</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Degree Plan Wizard">
@@ -86,7 +86,7 @@
         <record id="action_degree_plan" model="ir.actions.act_window">
             <field name="name">Degree Plan Wizard</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3advising.degree.plan</field>
+            <field name="res_model">ixadvising.degree.plan</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{}</field>

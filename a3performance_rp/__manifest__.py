@@ -10,7 +10,7 @@
 The Research and Publication module under Performance Management.
 ===================================================
 """,
-    'depends': ['a3performance', 'a3research'],
+    'depends': ['ixperformance', 'ixresearch'],
     'data': [
         #'security/fe_rp_security.xml',
         'security/ir.model.access.csv',

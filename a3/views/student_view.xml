@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="view_student_form" model="ir.ui.view">
-            <field name="name">a3.student.form</field>
-            <field name="model">a3.student</field>
+            <field name="name">ix.student.form</field>
+            <field name="model">ix.student</field>
             <field name="arch" type="xml">
                 <form string="student">
                     <sheet>
@@ -27,8 +27,8 @@
             </field>
         </record>
         <record id="view_student_tree" model="ir.ui.view">
-            <field name="name">a3.student.tree</field>
-            <field name="model">a3.student</field>
+            <field name="name">ix.student.tree</field>
+            <field name="model">ix.student</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="student">
@@ -40,7 +40,7 @@
         <record id="action_student" model="ir.actions.act_window">
             <field name="name">Students</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3.student</field>
+            <field name="res_model">ix.student</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': 'school_id'}</field>
@@ -55,14 +55,14 @@
         </record>
         <record id="action_student_my_form" model="ir.actions.server">
             <field name="name">student</field>
-            <field name="model_id" ref="model_a3_student"/>
+            <field name="model_id" ref="model_ix_student"/>
             <field name="state">code</field>
             <field name="code">
             	action = {
             		'type': 'ir.actions.act_window',
 			        'view_mode': 'form',
-			        'res_model': 'a3.student',
-                	'res_id': env['a3.student'].search([('user_id', '=', env.user.id)]).id,
+			        'res_model': 'ix.student',
+                	'res_id': env['ix.student'].search([('user_id', '=', env.user.id)]).id,
                 	'views': [(False, 'form')]
             	}
             </field>

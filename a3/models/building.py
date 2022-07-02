@@ -25,13 +25,13 @@ from odoo import fields, models, api
 
 
 class Building(models.Model):
-    _name = 'a3.building'
+    _name = 'ix.building'
     _description = 'Building'
-    _inherit = 'a3.school.owned'
+    _inherit = 'ix.school.owned'
     _sql_constraints = [('b=name_ukey', 'unique(name)', 'Building already exists')]
 
     name = fields.Char(string='Name', required=True)
-    room_ids = fields.One2many(comodel_name='a3.room', inverse_name='building_id', string='Rooms')
+    room_ids = fields.One2many(comodel_name='ix.room', inverse_name='building_id', string='Rooms')
     classrooms = fields.Integer(compute='_rooms', string='Classrooms', store=True)
     labs = fields.Integer(compute='_rooms', string='Labs', store=True)
     offices = fields.Integer(compute='_rooms', string='Offices', store=True)

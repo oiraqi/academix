@@ -25,7 +25,7 @@ from odoo import api, fields, models
 
 
 class ILO(models.Model):
-    _name = 'a3catalog.course.ilo'
+    _name = 'ixcatalog.course.ilo'
     _description = 'Course ILO'
     _order = 'sequence'
     _sql_constraints = [('sequence_course_ukey', 'unique(sequence, course_id)', 'Sequence must be unique')]
@@ -41,7 +41,7 @@ class ILO(models.Model):
     description = fields.Char(string='ILO', required=True)
     idx_description = fields.Char(string='ILO', compute='_idx_description')
     sequence = fields.Integer(string='Sequence', default=1)
-    course_id = fields.Many2one('a3.course', string='Course', required=True)
+    course_id = fields.Many2one('ix.course', string='Course', required=True)
 
     def _idx_description(self):
         for rec in self:

@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_team_membership_form" model="ir.ui.view">
-			<field name="name">a3lms.team.membership.form</field>
-			<field name="model">a3lms.team.membership</field>
+			<field name="name">ixlms.team.membership.form</field>
+			<field name="model">ixlms.team.membership</field>
 			<field name="arch" type="xml">
 				<form string="Membership">
 					<sheet>
@@ -22,8 +22,8 @@
 			</field>
 		</record>
 		<record id="view_team_membership_tree" model="ir.ui.view">
-			<field name="name">a3lms.team.membership.tree</field>
-			<field name="model">a3lms.team.membership</field>
+			<field name="name">ixlms.team.membership.tree</field>
+			<field name="model">ixlms.team.membership</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Teams">
@@ -34,7 +34,7 @@
 		<record id="action_team_membership" model="ir.actions.act_window">
 			<field name="name">Teams</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.team.membership</field>
+			<field name="res_model">ixlms.team.membership</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': 'team_id'}</field>

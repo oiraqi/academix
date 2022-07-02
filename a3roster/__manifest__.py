@@ -11,7 +11,7 @@
         '',
     ],
     'depends': [
-        'a3catalog'
+        'ixcatalog'
     ],
     'data': [
         'security/roster_security.xml',
@@ -22,7 +22,7 @@
         'views/reservation_view.xml',
         'views/faculty_view.xml',
         'views/student_view.xml',
-        'views/a3roster_menu.xml',
+        'views/ixroster_menu.xml',
         'data/standard_events.xml',
     ],
     'installable': True,

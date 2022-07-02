@@ -3,9 +3,9 @@
     <data>
 
         <record id="view_student_form_roster" model="ir.ui.view">
-            <field name="name">a3.student.inherit.view.form</field>
-            <field name="model">a3.student</field>
-            <field name="inherit_id" ref="a3.view_student_form"/>
+            <field name="name">ix.student.inherit.view.form</field>
+            <field name="model">ix.student</field>
+            <field name="inherit_id" ref="ix.view_student_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='info']" position="after">
                     <notebook>

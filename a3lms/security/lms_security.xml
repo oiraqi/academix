@@ -4,48 +4,48 @@
     
         <record id="faculty_lms_course_rule" model="ir.rule">
             <field name="name">Restrict access to own LMS courses</field>
-            <field name="model_id" ref="model_a3lms_course"/>
+            <field name="model_id" ref="model_ixlms_course"/>
             <field name="domain_force">[('section_id.instructor_id.user_id', '=', user.id)]</field>
-            <field name="groups" eval="[(4, ref('a3.group_faculty'))]"/>
+            <field name="groups" eval="[(4, ref('ix.group_faculty'))]"/>
         </record>
         <record id="student_lms_course_rule" model="ir.rule">
             <field name="name">Restrict access to own LMS courses</field>
-            <field name="model_id" ref="model_a3lms_course"/>
+            <field name="model_id" ref="model_ixlms_course"/>
             <field name="domain_force">[('section_id.student_ids', 'in', user.student_id.id)]</field>
-            <field name="groups" eval="[(4, ref('a3.group_student'))]"/>
+            <field name="groups" eval="[(4, ref('ix.group_student'))]"/>
         </record>
         <record id="faculty_assessment_rule" model="ir.rule">
             <field name="name">Restrict access to own Assessments</field>
-            <field name="model_id" ref="model_a3lms_assessment"/>
+            <field name="model_id" ref="model_ixlms_assessment"/>
             <field name="domain_force">[('create_uid', '=', user.id)]</field>
-            <field name="groups" eval="[(4, ref('a3.group_faculty'))]"/>
+            <field name="groups" eval="[(4, ref('ix.group_faculty'))]"/>
             <field name="perm_create" eval="False"/>
         </record>
         <record id="student_assessment_rule" model="ir.rule">
             <field name="name">Restrict access to Section Assessments</field>
-            <field name="model_id" ref="model_a3lms_assessment"/>
+            <field name="model_id" ref="model_ixlms_assessment"/>
             <field name="domain_force">[('course_id.student_ids', 'in', user.student_id.id)]</field>
-            <field name="groups" eval="[(4, ref('a3.group_student'))]"/>
+            <field name="groups" eval="[(4, ref('ix.group_student'))]"/>
         </record>
         <record id="faculty_attendance_rule" model="ir.rule">
             <field name="name">Restrict access to own Attendance</field>
-            <field name="model_id" ref="model_a3lms_attendance"/>
+            <field name="model_id" ref="model_ixlms_attendance"/>
             <field name="domain_force">[('create_uid', '=', user.id)]</field>
-            <field name="groups" eval="[(4, ref('a3.group_faculty'))]"/>
+            <field name="groups" eval="[(4, ref('ix.group_faculty'))]"/>
             <field name="perm_create" eval="False"/>
         </record>
         <record id="faculty_attendance_line_rule" model="ir.rule">
             <field name="name">Restrict access to own Attendance Lines or Advisee's Lines</field>
-            <field name="model_id" ref="model_a3lms_attendance_line"/>
+            <field name="model_id" ref="model_ixlms_attendance_line"/>
             <field name="domain_force">['|', ('attendance_id.create_uid', '=', user.id), ('student_id.advisor_id.user_id', '=', user.id)]</field>
-            <field name="groups" eval="[(4, ref('a3.group_faculty'))]"/>
+            <field name="groups" eval="[(4, ref('ix.group_faculty'))]"/>
             <field name="perm_create" eval="False"/>
         </record>
         <record id="student_attendance_line_rule" model="ir.rule">
             <field name="name">Restrict access to own Attendance Lines</field>
-            <field name="model_id" ref="model_a3lms_attendance_line"/>
+            <field name="model_id" ref="model_ixlms_attendance_line"/>
             <field name="domain_force">[('student_id', '=', user.student_id.id)]</field>
-            <field name="groups" eval="[(4, ref('a3.group_student'))]"/>
+            <field name="groups" eval="[(4, ref('ix.group_student'))]"/>
             <field name="perm_create" eval="False"/>
         </record>
     </data>

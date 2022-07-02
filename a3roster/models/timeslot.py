@@ -25,7 +25,7 @@ from odoo import fields, models, api
 
 
 class TimeSlot(models.Model):
-    _name = 'a3roster.timeslot'
+    _name = 'ixroster.timeslot'
     _description = 'Timeslot'
     _sql_constraints = [('timeslot_ukey', 'unique(start_time, end_time, days)', 'Time slot already defined!')]
 

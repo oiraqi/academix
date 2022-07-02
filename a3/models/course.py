@@ -27,7 +27,7 @@ import re
 
 
 class Course(models.Model):
-    _name = 'a3.course'
+    _name = 'ix.course'
     _sql_constraints = [
         ('code_ukey', 'unique(code)', 'Course already exists')]
     _order = 'code'
@@ -37,9 +37,9 @@ class Course(models.Model):
     code = fields.Char('Code', required=True)
     number = fields.Integer('Number', required=True)
     school_id = fields.Many2one(
-        'a3.school', compute='_compute_discipline_school', string='School', store=True)
+        'ix.school', compute='_compute_discipline_school', string='School', store=True)
     discipline_id = fields.Many2one(
-        'a3.discipline', compute='_compute_discipline_school', string='Discipline', store=True)
+        'ix.discipline', compute='_compute_discipline_school', string='Discipline', store=True)
 
     @api.model
     def create(self, vals):
@@ -69,7 +69,7 @@ class Course(models.Model):
     def _compute_discipline_school(self):
         for rec in self:
             if rec.code and len(rec.code) >= 3:
-                discipline_id = self.env['a3.discipline'].search(
+                discipline_id = self.env['ix.discipline'].search(
                     [('code', '=', rec.code.upper()[0:3])])
                 if discipline_id:
                     rec.discipline_id = discipline_id
@@ -88,7 +88,7 @@ class Course(models.Model):
         [('u', 'Undergraduate'), ('g', 'Graduate')], 'Level', default='u', required=True)
 
     instructor_ids = fields.Many2many(
-        'a3.faculty', 'a3_course_faculty_rel', 'course_id', 'instructor_id', string='Instructors')
+        'ix.faculty', 'ix_course_faculty_rel', 'course_id', 'instructor_id', string='Instructors')
 
     @api.constrains('code')
     def _check_code(self):

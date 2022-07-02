@@ -24,8 +24,8 @@
 from odoo import models, fields
 
 class Action(models.Model):
-    _name = 'a3performance.ts.action'
-    _inherit = 'a3.faculty.activity'
+    _name = 'ixperformance.ts.action'
+    _inherit = 'ix.faculty.activity'
 
     name = fields.Char('Title', required=True)
     description = fields.Html('Description', required=True)

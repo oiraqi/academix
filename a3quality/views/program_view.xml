@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <record id="view_program_form_quality" model="ir.ui.view">
-            <field name="name">a3catalog.program.inherit.quality.view.form</field>
-            <field name="model">a3catalog.program</field>
-            <field name="inherit_id" ref="a3catalog.view_program_form"/>
+            <field name="name">ixcatalog.program.inherit.quality.view.form</field>
+            <field name="model">ixcatalog.program</field>
+            <field name="inherit_id" ref="ixcatalog.view_program_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='sch']" position="after">                    
                     <field name="accreditation_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
@@ -23,8 +23,8 @@
             </field>
         </record>
         <record id="view_program_form_quality_soc" model="ir.ui.view">
-            <field name="name">a3catalog.program.inherit.quality.soc.view.form</field>
-            <field name="model">a3catalog.program</field>
+            <field name="name">ixcatalog.program.inherit.quality.soc.view.form</field>
+            <field name="model">ixcatalog.program</field>
             <field name="inherit_id" ref="view_program_form_quality"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
@@ -46,7 +46,7 @@
         <record id="action_program_quality_soc" model="ir.actions.act_window">
             <field name="name">Programs</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">a3catalog.program</field>
+            <field name="res_model">ixcatalog.program</field>
             <field name="view_mode">tree,form</field>
             <field name="context">{'group_by': ['school_id', 'level']}</field>
             <field name="help" type="html">
@@ -66,7 +66,7 @@
         <record id="action_program_tree_view_quality_soc" model="ir.actions.act_window.view">
 			<field name="sequence" eval="1"/>
 			<field name="view_mode">tree</field>
-			<field name="view_id" ref="a3catalog.view_program_tree"/>
+			<field name="view_id" ref="ixcatalog.view_program_tree"/>
 			<field name="act_window_id" ref="action_program_quality_soc"/>
 		</record>
     </data>

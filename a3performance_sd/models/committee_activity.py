@@ -24,11 +24,11 @@
 from odoo import models, fields
 
 class CommitteeActivity(models.Model):
-    _name = 'a3performance.sd.committee.activity'
-    _inherit = 'a3performance.sd.activity'
+    _name = 'ixperformance.sd.committee.activity'
+    _inherit = 'ixperformance.sd.activity'
     _description = 'Committee Activities'
 
-    committee_id = fields.Many2one('a3performance.sd.committee', string='Committee', required=True)
+    committee_id = fields.Many2one('ixperformance.sd.committee', string='Committee', required=True)
     role = fields.Selection([('chair', 'Chair'), ('member',
                             'Member')], 'Role', default='member', required=True)
     scope = fields.Selection(related='committee_id.scope', store=True)

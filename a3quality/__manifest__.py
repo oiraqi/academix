@@ -11,7 +11,7 @@
         '',
     ],
     'depends': [
-        'a3lms',
+        'ixlms',
     ],
     'data': [
         'security/ir.model.access.csv',
@@ -25,7 +25,7 @@
         'views/lms_assessment_view.xml',
         'views/lms_module_view.xml',
         "views/school_view.xml",
-        "views/a3quality_menu.xml",
+        "views/ixquality_menu.xml",
     ],
     'installable': True,
     'auto_install': False,

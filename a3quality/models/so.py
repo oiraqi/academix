@@ -25,7 +25,7 @@ from odoo import api, fields, models
 
 
 class StudentOutcome(models.Model):
-    _name = 'a3quality.student.outcome'
+    _name = 'ixquality.student.outcome'
     _description = 'Student Outcome'
     _order = 'sequence'
     _sql_constraints = [
@@ -42,18 +42,18 @@ class StudentOutcome(models.Model):
     description = fields.Text(string='SO', required=True)
     sequence = fields.Integer(string='Sequence', default=1)
     program_id = fields.Many2one(
-        comodel_name='a3catalog.program', string='Program', required=True)
+        comodel_name='ixcatalog.program', string='Program', required=True)
     introducing_course_ids = fields.One2many(
-        comodel_name='a3.course', compute='_introducing_cours_ids', string='Introduced')
+        comodel_name='ix.course', compute='_introducing_cours_ids', string='Introduced')
     reinforcing_course_ids = fields.One2many(
-        comodel_name='a3.course', compute='_reinforcing_course_ids', string='Reinforced')
+        comodel_name='ix.course', compute='_reinforcing_course_ids', string='Reinforced')
     emphasizing_course_ids = fields.One2many(
-        comodel_name='a3.course', compute='_emphasizing_course_ids', string='Emphasized')
+        comodel_name='ix.course', compute='_emphasizing_course_ids', string='Emphasized')
 
     @api.onchange('program_id')
     def _introducing_cours_ids(self):
         for rec in self:
-            records = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
+            records = self.env['ixquality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'introduce'), ('course_program_id.program_id', '=', rec.program_id.id)])
             if records:
                 rec.introducing_course_ids = [record.course_program_id.course_id.id for record in records]
@@ -63,7 +63,7 @@ class StudentOutcome(models.Model):
     @api.onchange('program_id')
     def _reinforcing_course_ids(self):
         for rec in self:
-            records = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
+            records = self.env['ixquality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'reinforce'), ('course_program_id.program_id', '=', rec.program_id.id)])
             if records:
                 rec.reinforcing_course_ids = [record.course_program_id.course_id.id for record in records]
@@ -73,7 +73,7 @@ class StudentOutcome(models.Model):
     @api.onchange('program_id')
     def _emphasizing_course_ids(self):
         for rec in self:
-            records = self.env['a3quality.course.ilo.so'].search([('so_id', '=', rec.id), (
+            records = self.env['ixquality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'emphasize'), ('course_program_id.program_id', '=', rec.program_id.id)])
             if records:
                 rec.emphasizing_course_ids = [record.course_program_id.course_id.id for record in records]

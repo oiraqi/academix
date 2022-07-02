@@ -1,16 +1,16 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_a3roster_section_user,access.a3roster.section.user,model_a3roster_section,base.group_user,1,0,0,0
-access_a3roster_section_registrar,access.a3roster.section.registrar,model_a3roster_section,a3roster.group_registrar,1,1,1,1
+access_ixroster_section_user,access.ixroster.section.user,model_ixroster_section,base.group_user,1,0,0,0
+access_ixroster_section_registrar,access.ixroster.section.registrar,model_ixroster_section,ixroster.group_registrar,1,1,1,1
 
-access_a3roster_reservation_user,access.a3roster.reservation.user,model_a3roster_reservation,base.group_user,1,0,0,0
-access_a3roster_reservation_faculty,access.a3roster.reservation.faculty,model_a3roster_reservation,a3.group_faculty,1,1,1,1
+access_ixroster_reservation_user,access.ixroster.reservation.user,model_ixroster_reservation,base.group_user,1,0,0,0
+access_ixroster_reservation_faculty,access.ixroster.reservation.faculty,model_ixroster_reservation,ix.group_faculty,1,1,1,1
 
-access_a3roster_enrollment_student,access.a3roster.enrollment.student,model_a3roster_enrollment,a3.group_student,1,1,1,0
-access_a3roster_enrollment_registrar,access.a3roster.enrollment.registrar,model_a3roster_enrollment,group_registrar,1,1,1,1
-access_a3roster_enrollment_faculty,access.a3roster.enrollment.faculty,model_a3roster_enrollment,a3.group_faculty,1,1,0,0
-access_a3roster_enrollment_coordinator,access.a3roster.enrollment.coordinator,model_a3roster_enrollment,a3.group_coordinator,1,0,0,0
-access_a3roster_enrollment_vpaa,access.a3roster.enrollment.vpaa,model_a3roster_enrollment,a3.group_vpaa,1,0,0,0
+access_ixroster_enrollment_student,access.ixroster.enrollment.student,model_ixroster_enrollment,ix.group_student,1,1,1,0
+access_ixroster_enrollment_registrar,access.ixroster.enrollment.registrar,model_ixroster_enrollment,group_registrar,1,1,1,1
+access_ixroster_enrollment_faculty,access.ixroster.enrollment.faculty,model_ixroster_enrollment,ix.group_faculty,1,1,0,0
+access_ixroster_enrollment_coordinator,access.ixroster.enrollment.coordinator,model_ixroster_enrollment,ix.group_coordinator,1,0,0,0
+access_ixroster_enrollment_vpaa,access.ixroster.enrollment.vpaa,model_ixroster_enrollment,ix.group_vpaa,1,0,0,0
 
-access_a3roster_office_hour_user,access.a3roster.office.hour.user,model_a3roster_office_hour,base.group_user,1,0,0,0
-access_a3roster_office_hour_faculty,access.a3roster.office.hour.faculty,model_a3roster_office_hour,a3.group_faculty,1,1,1,1
+access_ixroster_office_hour_user,access.ixroster.office.hour.user,model_ixroster_office_hour,base.group_user,1,0,0,0
+access_ixroster_office_hour_faculty,access.ixroster.office.hour.faculty,model_ixroster_office_hour,ix.group_faculty,1,1,1,1
 

@@ -27,10 +27,10 @@ import string
 
 
 class Staff(models.Model):
-    _name = 'a3.staff'
+    _name = 'ix.staff'
     _inherits = {'res.partner': 'partner_id'}
 
-    school_ids = fields.Many2many('a3.school', string='Schools')
+    school_ids = fields.Many2many('ix.school', string='Schools')
     partner_id = fields.Many2one(
         'res.partner', string='Partner', required=True)
     user_id = fields.Many2one('res.users', string='User')
@@ -47,7 +47,7 @@ class Staff(models.Model):
         user = self.sudo().env['res.users'].search(
             [('login', '=', vals['email'])])
         if user:
-            staff = self.env['a3.staff'].search([('user_id', '=', user.id)])
+            staff = self.env['ix.staff'].search([('user_id', '=', user.id)])
             if staff:
                 raise UserError('Faculty already exists')
 
@@ -61,18 +61,18 @@ class Staff(models.Model):
             staff.user_id = user
 
         group_ids = []
-        # group_ids.append(self.env.ref('a3.group_faculty').id)
+        # group_ids.append(self.env.ref('ix.group_faculty').id)
 
         if staff.is_setup:
-            group_ids.append((4, self.env.ref('a3.group_setup').id))
+            group_ids.append((4, self.env.ref('ix.group_setup').id))
         if staff.is_coordinator:
-            group_ids.append((4, self.env.ref('a3.group_coordinator').id))
+            group_ids.append((4, self.env.ref('ix.group_coordinator').id))
         if staff.is_dean:
-            group_ids.append((4, self.env.ref('a3.group_dean').id))
+            group_ids.append((4, self.env.ref('ix.group_dean').id))
         if staff.is_vpaa:
-            group_ids.append((4, self.env.ref('a3.group_vpaa').id))
+            group_ids.append((4, self.env.ref('ix.group_vpaa').id))
         if staff.is_president:
-            group_ids.append((4, self.env.ref('a3.group_president').id))
+            group_ids.append((4, self.env.ref('ix.group_president').id))
 
         if len(group_ids) > 0:
             user.sudo().groups_id = group_ids
@@ -85,15 +85,15 @@ class Staff(models.Model):
         for staff in self:
             group_ids = []
             if staff.is_setup:
-                group_ids.append(self.env.ref('a3.group_setup').id)
+                group_ids.append(self.env.ref('ix.group_setup').id)
             if staff.is_coordinator:
-                group_ids.append(self.env.ref('a3.group_coordinator').id)
+                group_ids.append(self.env.ref('ix.group_coordinator').id)
             if staff.is_dean:
-                group_ids.append(self.env.ref('a3.group_dean').id)
+                group_ids.append(self.env.ref('ix.group_dean').id)
             if staff.is_vpaa:
-                group_ids.append(self.env.ref('a3.group_vpaa').id)
+                group_ids.append(self.env.ref('ix.group_vpaa').id)
             if staff.is_president:
-                group_ids.append(self.env.ref('a3.group_president').id)
+                group_ids.append(self.env.ref('ix.group_president').id)
 
             staff.user_id.sudo().groups_id = [(6, 0, group_ids)]
 

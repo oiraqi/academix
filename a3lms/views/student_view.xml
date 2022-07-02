@@ -3,9 +3,9 @@
     <data>
 
         <record id="view_student_form_lms" model="ir.ui.view">
-            <field name="name">a3.student.inherit.view.form</field>
-            <field name="model">a3.student</field>
-            <field name="inherit_id" ref="a3roster.view_student_form_roster"/>
+            <field name="name">ix.student.inherit.view.form</field>
+            <field name="model">ix.student</field>
+            <field name="inherit_id" ref="ixroster.view_student_form_roster"/>
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='sections']" position="after">
                     <page name="attendance" string="Attendance">

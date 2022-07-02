@@ -1,9 +1,9 @@
 from odoo import models, fields, api
 
 class LmsModule(models.Model):
-    _inherit = 'a3lms.module'
+    _inherit = 'ixlms.module'
 
-    ilo_ids = fields.Many2many(comodel_name='a3catalog.course.ilo', compute='_ilo_ids', string='Covered ILOs')
+    ilo_ids = fields.Many2many(comodel_name='ixcatalog.course.ilo', compute='_ilo_ids', string='Covered ILOs')
 
     @api.onchange('chapter_ids')
     def _ilo_ids(self):

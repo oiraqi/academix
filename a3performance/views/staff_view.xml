@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <record id="view_staff_form_fe_inherit" model="ir.ui.view">
-            <field name="name">a3.staff.form.fe.inherit</field>
-            <field name="model">a3.staff</field>
-            <field name="inherit_id" ref="a3.view_staff_form" />
+            <field name="name">ix.staff.form.fe.inherit</field>
+            <field name="model">ix.staff</field>
+            <field name="inherit_id" ref="ix.view_staff_form" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='is_coordinator']" position="before">
                     <field name="is_committee_member"/>
@@ -13,9 +13,9 @@
             </field>
         </record>
         <record id="view_staff_tree_fe_inherit" model="ir.ui.view">
-            <field name="name">a3.staff.tree.fe.inherit</field>
-            <field name="model">a3.staff</field>
-            <field name="inherit_id" ref="a3.view_staff_tree" />
+            <field name="name">ix.staff.tree.fe.inherit</field>
+            <field name="model">ix.staff</field>
+            <field name="inherit_id" ref="ix.view_staff_tree" />
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='is_coordinator']" position="before">

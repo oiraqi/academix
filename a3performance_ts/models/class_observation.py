@@ -24,9 +24,9 @@
 from odoo import models, fields
 
 class ClassObservation(models.Model):
-    _name = 'a3performance.ts.class.observation'
-    _inherit = 'a3.faculty.activity'
+    _name = 'ixperformance.ts.class.observation'
+    _inherit = 'ix.faculty.activity'
 
-    course_id = fields.Many2one('a3.course', string='Course', required=True)
+    course_id = fields.Many2one('ix.course', string='Course', required=True)
     level = fields.Selection(related='course_id.level', readonly=True)
-    observer_id = fields.Many2one('a3.faculty', string='Class Observer', required=True)
+    observer_id = fields.Many2one('ix.faculty', string='Class Observer', required=True)

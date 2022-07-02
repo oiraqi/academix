@@ -25,8 +25,8 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 
 class Experience(models.Model):
-    _name = 'a3performance.sd.experience'
-    _inherit = 'a3.faculty.owned'
+    _name = 'ixperformance.sd.experience'
+    _inherit = 'ix.faculty.owned'
 
     company = fields.Char('Company', required=True)
     position = fields.Char('Position', required=True)

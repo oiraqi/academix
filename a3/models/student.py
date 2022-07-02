@@ -27,9 +27,9 @@ import string
 
 
 class Student(models.Model):
-    _name = 'a3.student'
+    _name = 'ix.student'
     _inherits = {'res.partner': 'partner_id'}
-    _inherit = 'a3.school.owned'
+    _inherit = 'ix.school.owned'
     _description = 'Student'
     _sql_constraints = [('sid_ukey', 'unique(sid)', 'Student ID already exists')]
 

@@ -25,7 +25,7 @@ from odoo import models, fields
 
 
 class Paper(models.Model):
-    _name = 'a3research.paper'
-    _inherit = 'a3research.presentation'
+    _name = 'ixresearch.paper'
+    _inherit = 'ixresearch.presentation'
 
     vpages = fields.Char('Volume and Pages')

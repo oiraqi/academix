@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_module_form" model="ir.ui.view">
-			<field name="name">a3lms.module.form</field>
-			<field name="model">a3lms.module</field>
+			<field name="name">ixlms.module.form</field>
+			<field name="model">ixlms.module</field>
 			<field name="arch" type="xml">
 				<form string="Module">
 					<sheet>
@@ -33,8 +33,8 @@
 			</field>
 		</record>
 		<record id="view_module_tree" model="ir.ui.view">
-			<field name="name">a3lms.module.tree</field>
-			<field name="model">a3lms.module</field>
+			<field name="name">ixlms.module.tree</field>
+			<field name="model">ixlms.module</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Modules">
@@ -46,7 +46,7 @@
 		<record id="action_module" model="ir.actions.act_window">
 			<field name="name">Modules</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">a3lms.module</field>
+			<field name="res_model">ixlms.module</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
