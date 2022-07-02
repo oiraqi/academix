@@ -22,7 +22,7 @@
         'views/presentation_view.xml',
         'views/paper_view.xml',
         'views/activity_view.xml',
-        'views/ixresearch_menu.xml',
+        'views/research_menu.xml',
     ],
     'installable': True,
     'auto_install': False,
