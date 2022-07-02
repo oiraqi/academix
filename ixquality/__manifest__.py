@@ -25,7 +25,7 @@
         'views/lms_assessment_view.xml',
         'views/lms_module_view.xml',
         "views/school_view.xml",
-        "views/ixquality_menu.xml",
+        "views/quality_menu.xml",
     ],
     'installable': True,
     'auto_install': False,
