@@ -63,3 +63,8 @@ class Faculty(models.Model):
 
         user.sudo().groups_id = [(4, self.env.ref('ix.group_faculty').id)]
         return faculty
+
+    @api.onchange('school_id')
+    def _onchange_school_id(self):
+        for rec in self:
+            rec.discipline_ids = False

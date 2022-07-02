@@ -21,7 +21,7 @@
 #
 ###############################################################################
 
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class Student(models.Model):
@@ -29,3 +29,8 @@ class Student(models.Model):
     _inherit = 'ix.student'
 
     program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True, tracking=True)
+
+    @api.onchange('school_id')
+    def _onchange_school_id(self):
+        for rec in self:
+            rec.program_id = False
