@@ -56,7 +56,7 @@
 									<group name="grading_config_percentage" attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" col="4">
 										<field name="graded"/>										
 										<field name="percentage" style="width: 15%"/>
-										<field name="max_grade" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
+										<field name="grade_scale" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
 										<field name="bonus" attrs="{'invisible': [('percentage', '=', 0)]}" style="width: 15%"/>
 										<field name="penalty_per_late_day" attrs="{'invisible': [('percentage', '=', 0)]}" style="width: 15%"/>
 										<field name="grade_weighting" invisible="1"/>
@@ -64,7 +64,7 @@
 									<group name="grading_config_points" attrs="{'invisible': [('grade_weighting', '!=', 'points')]}" col="4">
 										<field name="graded"/>										
 										<field name="points" style="width: 15%"/>
-										<field name="max_grade" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
+										<field name="grade_scale" attrs="{'invisible': [('graded', '=', False)]}" style="width: 15%"/>
 										<field name="bonus" attrs="{'invisible': [('points', '=', 0)]}" style="width: 15%"/>
 										<field name="penalty_per_late_day" attrs="{'invisible': [('points', '=', 0)]}" style="width: 15%"/>
 										<field name="grade_weighting" invisible="1"/>
