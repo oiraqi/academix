@@ -6,3 +6,4 @@ from . import program
 from . import school
 from . import component
 from . import faculty
+from . import student

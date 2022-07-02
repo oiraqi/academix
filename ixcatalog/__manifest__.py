@@ -20,6 +20,7 @@
         'views/program_view.xml',
         'views/component_view.xml',
         'views/school_view.xml',
+        'views/student_view.xml',
         'views/catalog_menu.xml',
         'data/ucourses.xml',
         'data/corequisites.xml',

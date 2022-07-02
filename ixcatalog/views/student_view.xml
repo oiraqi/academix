@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- ix.student inherit form view -->
+        <record id="view_student_form_catalog" model="ir.ui.view">
+            <field name="name">ix.student.inherit.view.form</field>
+            <field name="model">ix.student</field>
+            <field name="inherit_id" ref="ix.view_student_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='school_id']" position="after">
+                    <field name="program_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>                    
+                </xpath>                
+            </field>
+        </record>       
+
+        <record id="ix.action_student" model="ir.actions.act_window">
+            <field name="name">Students</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ix.student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'group_by': ['school_id', 'program_id']}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create a student
+                </p>
+                <p>
+                Once saved, you will have a button that will alow you to send a password initialization email.
+                </p>
+            </field>
+        </record>
+        
+    </data>
+
+</odoo>

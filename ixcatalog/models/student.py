@@ -25,6 +25,7 @@ from odoo import fields, models
 
 
 class Student(models.Model):
+    _name = 'ix.student'
     _inherit = 'ix.student'
 
-    advisor_id = fields.Many2one(comodel_name='ix.faculty', string='Advisor')    
+    program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True, tracking=True)
