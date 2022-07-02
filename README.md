@@ -14,5 +14,5 @@
 ## Academix Unique Strengths
 - The vision
 - The subject-matter expertise
-- The future-proof data model
-- The highly-productive, enterprise-grade technology stack
+- The data model
+- The technology stack
