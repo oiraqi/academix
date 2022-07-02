@@ -63,7 +63,7 @@ class Enrollment(models.Model):
         if lms_course_id.grade_grouping == 'technique' and lms_course_id.grade_weighting == 'points':
             return self._assessment_grade_technique_points(lms_course_id.technique_ids)
         
-        return 100
+        return 100, 90
 
     def _assessment_grade_module_percentage(self, module_ids):
         return 100, 90
