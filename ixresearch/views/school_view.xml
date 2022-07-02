@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- ix.school inherit form view -->
+        <record id="view_school_form_research" model="ir.ui.view">
+            <field name="name">ix.school.inherit.view.form</field>
+            <field name="model">ix.school</field>
+            <field name="inherit_id" ref="ix.view_school_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='academics']" position="after">
+                    <group name="research" string="Research Publications">
+                        <notebook>
+                            <page name="articles" string="Articles">
+                                <group>
+                                    <field name="article_ids" nolabel="1" colspan="4" readonly="1">
+                                        <tree>
+                                            <field name="date"/>
+                                            <field name="name"/>
+                                            <field name="faculty_id"/>
+                                            <field name="authors"/>
+                                            <field name="journal_id"/>
+                                            <field name="publisher_id"/>
+                                            <field name="isn"/>
+                                            <field name="doi"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page name="books" string="Books">
+                                <group>
+                                    <field name="book_ids" nolabel="1" colspan="4" readonly="1">
+                                        <tree>
+                                            <field name="date"/>
+                                            <field name="name"/>
+                                            <field name="faculty_id"/>
+                                            <field name="authors"/>
+                                            <field name="type"/>
+                                            <field name="scope"/>
+                                            <field name="publisher_id"/>
+                                            <field name="isn"/>
+                                            <field name="doi"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page name="papers" string="Papers">
+                                <group>
+                                    <field name="paper_ids" nolabel="1" colspan="4" readonly="1">
+                                        <tree>
+                                            <field name="date"/>
+                                            <field name="name"/>
+                                            <field name="faculty_id"/>
+                                            <field name="authors"/>                                            
+                                            <field name="publisher_id"/>
+                                            <field name="isn"/>
+                                            <field name="doi"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page name="presentations" string="Presentaions">
+                                <group>
+                                    <field name="presentation_ids" nolabel="1" colspan="4" readonly="1">
+                                        <tree>
+                                            <field name="date"/>
+                                            <field name="name"/>
+                                            <field name="faculty_id"/>
+                                            <field name="authors"/>
+                                            <field name="conference"/>
+                                            <field name="scope"/>
+                                            <field name="publisher_id"/>
+                                            <field name="isn"/>
+                                            <field name="doi"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>

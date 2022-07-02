@@ -6,3 +6,4 @@ from . import presentation
 from . import paper
 from . import publisher
 from . import journal
+from . import school
