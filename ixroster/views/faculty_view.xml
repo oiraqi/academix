@@ -21,19 +21,6 @@
                     </field>
                 </xpath>                
             </field>
-        </record>
-        <record id="view_faculty_tree_fe_inherit" model="ir.ui.view">
-            <field name="name">ix.faculty.tree.fe.inherit</field>
-            <field name="model">ix.faculty</field>
-            <field name="inherit_id" ref="ix.view_faculty_tree" />
-            <field eval="8" name="priority"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='name']" position="after">                    
-                    <field name="rank"/>
-                    <field name="srank_id"/>
-                    <field name="latest_evaluation_date"/>
-                </xpath>
-            </field>
-        </record>
+        </record>        
     </data>
 </odoo>
