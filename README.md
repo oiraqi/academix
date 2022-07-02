@@ -3,8 +3,8 @@
 ## The High-level Design Principles
 - Single Source of Truth
 - Infinite eXpansion
-- State of the Art Coverage
-- Ideal Uer Experience
+- Best-in-class Coverage
+- Ideal Uer eXperience
 
 ## The Unique Strengths
 - The vision
