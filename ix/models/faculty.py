@@ -22,7 +22,7 @@
 ###############################################################################
 
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError, UserError
+from odoo.exceptions import UserError
 import string
 
 
@@ -31,6 +31,7 @@ class Faculty(models.Model):
     _inherits = {'res.partner': 'partner_id'}
     _inherit = 'ix.school.owned'
     _description = 'Faculty'
+    _order = 'name'
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
     user_id = fields.Many2one('res.users', string='User')
