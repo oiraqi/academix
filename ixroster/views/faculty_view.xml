@@ -19,16 +19,7 @@
                             <field name="school_id" invisible="1"/>
                         </tree>
                     </field>
-                </xpath>
-                <xpath expr="//group[@name='academics']" position="inside">
-                        <field name="degree_ids" string="Degrees">
-                            <tree editable="bottom">
-                                <field name="sequence" widget="handle" />
-                                <field name="name"/>
-                                <field name="year" options="{'format': 0}"/>                                
-                            </tree>
-                        </field>                    
-                </xpath>
+                </xpath>                
             </field>
         </record>
         <record id="view_faculty_tree_fe_inherit" model="ir.ui.view">
