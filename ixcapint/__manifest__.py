@@ -3,7 +3,7 @@
 
 
 {
-    'name': 'A3 Projects',
+    'name': 'IX Projects',
     'version': '1.0',
     'category': 'Education',
     'description': """

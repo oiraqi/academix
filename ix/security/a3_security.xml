@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="module_category_ix" model="ir.module.category">
-            <field name="name">A3</field>
-            <field name="description">A3</field>
+            <field name="name">IX</field>
+            <field name="description">IX</field>
             <field name="sequence">10</field>
         </record>
         <record id="group_faculty" model="res.groups">

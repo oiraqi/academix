@@ -1,5 +1,5 @@
 {
-    'name': 'A3 Catalog',
+    'name': 'IX Catalog',
     'version': '1.0',
     'summary': 'Course and Program Catalog',
     'category': 'Education',

@@ -3,7 +3,7 @@
 
 
 {
-    'name': 'A3 Performance -- SD',
+    'name': 'IX Performance -- SD',
     'version': '1.0',
     'category': 'Hidden',
     'description': """

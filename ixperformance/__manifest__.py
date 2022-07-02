@@ -3,7 +3,7 @@
 
 
 {
-    'name': 'A3 Performance',
+    'name': 'IX Performance',
     'version': '1.0',
     'category': 'Hidden',
     'description': """

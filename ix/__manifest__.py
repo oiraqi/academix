@@ -3,11 +3,11 @@
 
 
 {
-    'name': 'A3 Base',
+    'name': 'IX Base',
     'version': '1.0',
     'category': 'Education',
     'description': """
-The base of all A3 apps
+The base of all IX apps
 ===================================================
 """,
     'depends': ['web', 'mail', 'attachment_indexation', 'calendar'],

@@ -1,5 +1,5 @@
 {
-    'name': 'A3 LMS',
+    'name': 'IX LMS',
     'version': '1.0',
     'summary': 'An Integrated LMS',
     'category': 'Education',

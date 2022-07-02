@@ -1,5 +1,5 @@
 {
-    'name': 'A3 Advising',
+    'name': 'IX Advising',
     'version': '1.0',
     'summary': 'Includes a Degree Planner for Students',
     'category': 'Education',

@@ -14,8 +14,52 @@ class Assessment(models.Model):
 	section_id = fields.Many2one(comodel_name='ixroster.section', string='course_id.section_id', store=True)
 	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
 	technique_id = fields.Many2one(comodel_name='ixlms.weighted.technique', string='Technique', required=True)
+	graded = fields.Boolean(string='Graded', default=True)
+	grade_weighting = fields.Selection(related='course_id.grade_weighting')
 	points = fields.Integer(string='Points', default=0)
-	percentage = fields.Float(string='%', default=0.0)	
+	percentage = fields.Float(string='%', default=0.0)
+	max_grade = fields.Integer(string='Grade', default=100)
+
+	@api.onchange('graded')
+	def _graded(self):
+		for rec in self:
+			if not rec.graded:
+				rec.points = 0
+				rec.percentage = 0.0
+				rec.max_grade = 0
+
+	@api.onchange('grade_weighting', 'points', 'percentage')
+	def _percentage_points_max_grade(self):
+		for rec in self:
+			if rec.grade_weighting == 'percentage':
+				if rec.percentage > 0:
+					rec.graded = True
+				rec.max_grade = 100
+			elif rec.grade_weighting == 'points':
+				if rec.points > 0:
+					rec.graded = True				
+					rec.max_grade = rec.points
+				elif rec.graded:
+					rec.max_grade = 100
+				
+
+	
+	@api.constrains('points')
+	def _check_points(self):
+		for rec in self:
+			if rec.points < 0:
+				raise ValidationError('The assessment points must be >= 0')
+
+	@api.constrains('percentage')
+	def _check_percentage(self):
+		for rec in self:
+			if rec.percentage < 0 or rec.percentage > 100:
+				raise ValidationError('The assessment % must be between 0 and 100%')
+
+			rec.course_id.check_sum_percentages()
+
+
+	
 	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', related='course_id.technique_ids')
 	module_ids = fields.One2many(comodel_name='ixlms.module', related='course_id.module_ids')
 
@@ -34,42 +78,7 @@ class Assessment(models.Model):
 	to_time = fields.Datetime(string='Until')
 
 	timeline_ids = fields.One2many(comodel_name='ixlms.assessment.timeline', inverse_name='assessment_id', string='Dedicated Timelines')
-	
-	graded = fields.Boolean(string='Graded', default=True)
-	
-	@api.onchange('graded')
-	def _graded(self):
-		for rec in self:
-			if not rec.graded:
-				rec.points = 0
-				rec.percentage = 0.0
-
-	@api.onchange('percentage')
-	def _percentage(self):
-		for rec in self:
-			rec.graded = rec.percentage > 0
-
-	@api.onchange('points')
-	def _points(self):
-		for rec in self:
-			rec.graded = rec.points > 0
-
-	@api.constrains('points')
-	def _check_points(self):
-		for rec in self:
-			if rec.points < 0:
-				raise ValidationError('The assessment points must be >= 0')
-
-	@api.constrains('percentage')
-	def _check_percentage(self):
-		for rec in self:
-			if rec.percentage < 0 or rec.percentage > 100:
-				raise ValidationError('The assessment % must be between 0 and 100%')
-
-			rec.course_id.check_sum_percentages()
-	
-	grade_weighting = fields.Selection(related='course_id.grade_weighting')
-	
+		
 	bonus = fields.Float(string='Class-wide Bonus (%)', default=0.0)
 
 	@api.constrains('bonus')

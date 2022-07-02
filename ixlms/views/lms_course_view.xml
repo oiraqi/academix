@@ -125,6 +125,7 @@
 											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>											
 											<field name="teamwork" widget="boolean_toggle"/>
 											<field name="due_time"/>
+											<field name="graded"/>
 											<field name="percentage" sum="%" string="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
 											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 											<field name="technique_ids" invisible="1"/>

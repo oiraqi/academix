@@ -1,5 +1,5 @@
 {
-    'name': 'A3 Quality Assurance',
+    'name': 'IX Quality Assurance',
     'version': '1.0',
     'summary': 'Supports auality assurance processes, including course portfolio management, as well as ILO and SO assessment.',
     'category': 'Liberal Arts Education',

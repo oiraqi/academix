@@ -1,5 +1,5 @@
 {
-    'name': 'A3 Research',
+    'name': 'IX Research',
     'version': '1.0',
     'summary': 'Manages and organizes rsearch production',
     'category': 'Education',

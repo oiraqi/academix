@@ -1,5 +1,5 @@
 {
-    'name': 'A3 Roster',
+    'name': 'IX Roster',
     'version': '1.0',
     'summary': 'Roster Manager',
     'category': 'Education',
