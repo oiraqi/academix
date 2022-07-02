@@ -51,7 +51,7 @@
 							</field>
 						</group>
 						<group name="grading" string="Grading">
-							<field name="graded" colspan="4"/>
+							<field name="graded"/>
 							<notebook attrs="{'invisible': [('graded', '=', False)]}">
 								<page string="Configuration" name="grading_config_percentage">
 									<group name="grading_config_percentage" attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" col="4">										
