@@ -1,2 +1,1 @@
-# Welcome To A3: The Agile Academic Apps
-A3 aims to be an *infinitely-expanding single source of truth* for North American Model Higher-Ed Institutions.
+# Welcome To Academix: The All-in-one Infinitely Expanding Single Source of Truth for Higher-Ed Institutions.
