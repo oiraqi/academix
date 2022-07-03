@@ -1,4 +1,4 @@
-# Welcome To Academix: The All-in-one and Ultimate ERP for Higher-Ed Institutions
+# Welcome To Academix: The Ultimate, All-in-one ERP for Higher-Ed Institutions
 *Dean*: Dear colleagues, please send me your published articles over the current year for the annual activity report. *Faculty*: Dear Dean, I have just submitted my faculty evaluation file. Please find it there. *Dean*: Yes, but that's a different process and system. Please send that information again.
 
 *Enrollment Services*: Dear Faculty, please verify that the list of students in your sections is correct. *Faculty*: Dear Enrollment Services, how/why could/would a list of students be incorrect? *Enrollment Services*: Because some recent updates in our Roster Management System may not have been replicated on our Learning Management System.
