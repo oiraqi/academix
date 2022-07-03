@@ -119,7 +119,8 @@
 									<field name="assessment_ids" colspan="4" nolabel="1">
 										<tree editable="bottom">
 											<field name="name" string="Assessment"/>
-											<field name="module_id" string="Course Module" domain="[('id', 'in', module_ids)]"/>
+											<field name="module_id" string="Course Module" context="{'default_course_id': course_id}"
+												domain="[('id', 'in', module_ids)]"/>
 											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]"/>
 											<field name="teamwork" widget="boolean_toggle"/>
 											<field name="due_time"/>
@@ -128,6 +129,7 @@
 											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 											<field name="technique_ids" invisible="1"/>
 											<field name="module_ids" invisible="1"/>
+											<field name="course_id" invisible="1"/>
 										</tree>
 									</field>									
 								</group>								
