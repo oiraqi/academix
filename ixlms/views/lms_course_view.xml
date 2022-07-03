@@ -105,7 +105,7 @@
 									<field name="grade_weighting" style="width: 50%" string="Weighted by"/>
 								</group>
 								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
-									<field name="assessed_module_ids" nolabel="1">
+									<field name="module_ids" nolabel="1" readonly="1">
 										<tree>											
 											<field name="name" string="Course Module"/>
 											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
