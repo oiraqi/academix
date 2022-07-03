@@ -26,7 +26,7 @@
 			<field name="model">ixlms.weighted.technique</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Techniques">
+				<tree string="Techniques" editable="bottom">
 					<field name="technique_id"/>
 					<field name="course_id" invisible="1"/>
 				</tree>
