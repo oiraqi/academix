@@ -13,6 +13,12 @@
 							</h1>
 						</div>
 						<div class="oe_button_box" name="button_box">
+							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-people-group">
+								<field name="nmodules" string="Modules" widget="statinfo"/>
+							</button>
+							<button name="get_techniques" type="object" class="oe_stat_button" icon="fa-people-group">
+								<field name="ntechniques" string="Assess. Techniques" widget="statinfo"/>
+							</button>
 							<button name="get_teamsets" type="object" class="oe_stat_button" icon="fa-people-group">
 								<field name="nteamsets" string="Teams" widget="statinfo"/>
 							</button>
@@ -59,7 +65,7 @@
 									</field>
 								</group>
 							</page>
-							<!--<page string="Course Content &#38; Organization" name="content" attrs="{'invisible': [('id', '=', False)]}">
+							<page string="Course Content &#38; Organization" name="content" attrs="{'invisible': [('id', '=', False)]}">
 								<group string="Course Modules" name="modules">
 									<field name="module_ids" nolabel="1">
 										<tree>
@@ -78,7 +84,7 @@
 										</tree>
 									</field>									
 								</group>
-							</page>-->
+							</page>
 							<page string="Textbooks" name="textbooks">
 								<group>
 									<field name="textbook_ids" nolabel="1">
@@ -100,7 +106,7 @@
 								</group>
 								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
 									<field name="assessed_module_ids" nolabel="1">
-										<tree editable="bottom">											
+										<tree>											
 											<field name="name" string="Course Module"/>
 											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
 											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
@@ -119,9 +125,10 @@
 									<field name="assessment_ids" colspan="4" nolabel="1">
 										<tree editable="bottom">
 											<field name="name" string="Assessment"/>
-											<field name="module_id" string="Course Module" context="{'default_course_id': course_id}"
+											<field name="module_id" string="Course Module"
+												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
 												domain="[('id', 'in', module_ids)]"/>
-											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]"/>
+											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>											
 											<field name="teamwork" widget="boolean_toggle"/>
 											<field name="due_time"/>
 											<field name="graded"/>
@@ -129,7 +136,6 @@
 											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 											<field name="technique_ids" invisible="1"/>
 											<field name="module_ids" invisible="1"/>
-											<field name="course_id" invisible="1"/>
 										</tree>
 									</field>									
 								</group>								

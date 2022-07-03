@@ -36,7 +36,7 @@ class LmsCourse(models.Model):
 			rec.assessed_module_ids = self.env['ixlms.module'].search([('id', 'in', assessed_module_ids)])
 
 	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', inverse_name='course_id', string='Techniques')	
-	
+
 	grade_grouping = fields.Selection(string='Assessment Grouping', selection=[('module', 'Course Module'), ('technique', 'Assessment Technique'),], default='module', required=True)
 	grade_weighting = fields.Selection(string='Assessment Weighting', selection=[('percentage', 'Percentage'), ('points', 'Points'),], default='percentage', required=True)	
 	attendance_points = fields.Integer(string='Attendance Points', default=0)
@@ -163,5 +163,17 @@ class LmsCourse(models.Model):
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id}
 		return self._resolve_action('ixlms.action_teamset', domain, context)
+
+	def get_modules(self):
+		self.ensure_one()
+		domain = [('course_id', '=', self.id)]
+		context = {'default_course_id': self.id}
+		return self._resolve_action('ixlms.action_module', domain, context)
+
+	def get_techniques(self):
+		self.ensure_one()
+		domain = [('course_id', '=', self.id)]
+		context = {'default_course_id': self.id}
+		return self._resolve_action('ixlms.action_assessment_technique', domain, context)
 
 
