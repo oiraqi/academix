@@ -70,14 +70,14 @@ class Assessment(models.Model):
 	teamwork = fields.Boolean(string='Teamwork', default=False)	
 	teamset_id = fields.Many2one(comodel_name='ixlms.teamset', string='Team Set')
 
-	timeline = fields.Selection(string='Timeline', selection=[('common', 'Common'), ('dedicated', 'Dedicated')], default='common', required=True)
-	
-
+	timeline = fields.Boolean(string='Common Timeline', default=True, required=True)
 	due_time = fields.Datetime(string='Due')
 	from_time = fields.Datetime(string='Open from')
 	to_time = fields.Datetime(string='Until')
 
-	timeline_ids = fields.One2many(comodel_name='ixlms.assessment.timeline', inverse_name='assessment_id', string='Dedicated Timelines')
+	timelines = fields.Boolean(string='Specific Timelines', default=False)
+
+	timeline_ids = fields.One2many(comodel_name='ixlms.assessment.timeline', inverse_name='assessment_id', string='Specific Timelines')
 		
 	bonus = fields.Float(string='Class-wide Bonus (%)', default=0.0)
 
