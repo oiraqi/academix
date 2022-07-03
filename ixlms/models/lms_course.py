@@ -27,7 +27,16 @@ class LmsCourse(models.Model):
 	office_hour_ids = fields.One2many(comodel_name='ixroster.office.hour', related='instructor_id.office_hour_ids')
 
 	module_ids = fields.One2many(comodel_name='ixlms.module', inverse_name='course_id', string='Modules')
-	assessed_module_ids = fields.One2many(comodel_name='ixlms.module', compute='_assessed_module_ids', string='Modules')	
+	nmodules = fields.Integer(string='Number of Modules', compute='_nmodules')
+	assessed_module_ids = fields.One2many(comodel_name='ixlms.module', compute='_assessed_module_ids', string='Modules')
+
+	@api.onchange('module_ids')
+	def _nmodules(self):
+		for rec in self:
+			if rec.module_ids:
+				rec.nmodules = len(rec.module_ids)
+			else:
+				rec.nmodules = 0
 
 	@api.onchange('assessment_ids')
 	def _assessed_module_ids(self):
@@ -35,7 +44,16 @@ class LmsCourse(models.Model):
 			assessed_module_ids = [assessment.module_id.id for assessment in rec.assessment_ids]
 			rec.assessed_module_ids = self.env['ixlms.module'].search([('id', 'in', assessed_module_ids)])
 
-	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', inverse_name='course_id', string='Techniques')	
+	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', inverse_name='course_id', string='Techniques')
+	ntechniques = fields.Integer(string='Number of Techniques', compute='_ntechniques')
+
+	@api.onchange('technique_ids')
+	def _ntechniques(self):
+		for rec in self:
+			if rec.technique_ids:
+				rec.ntechniques = len(rec.technique_ids)
+			else:
+				rec.ntechniques = 0
 
 	grade_grouping = fields.Selection(string='Assessment Grouping', selection=[('module', 'Course Module'), ('technique', 'Assessment Technique'),], default='module', required=True)
 	grade_weighting = fields.Selection(string='Assessment Weighting', selection=[('percentage', 'Percentage'), ('points', 'Points'),], default='percentage', required=True)	
