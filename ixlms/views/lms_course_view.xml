@@ -67,7 +67,7 @@
 							</page>
 							<page string="Course Content &#38; Organization" name="content" attrs="{'invisible': [('id', '=', False)]}">
 								<group string="Course Modules" name="modules">
-									<field name="module_ids" nolabel="1">
+									<field name="module_ids" nolabel="1" readonly="1">
 										<tree>
 											<field name="sequence" widget="handle"/>
 											<field name="name" string="Module"/>											
@@ -75,7 +75,7 @@
 									</field>
 								</group>
 								<group name="chapters" string="Course Chapters &#38; Timeline">
-									<field name="chapter_ids" nolabel="1" readonly="1">
+									<field name="chapter_ids" nolabel="1">
 										<tree>											
 											<field name="name"/>
 											<field name="module_id"/>
