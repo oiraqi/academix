@@ -25,6 +25,18 @@ class LmsCourse(models.Model):
 	ilo_ids = fields.One2many('ixcatalog.course.ilo', related='course_id.ilo_ids')
 	textbook_ids = fields.One2many(comodel_name='ixlms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='ixroster.office.hour', related='instructor_id.office_hour_ids')
+
+	module_ids = fields.One2many(comodel_name='ixlms.module', inverse_name='course_id', string='Modules')
+	assessed_module_ids = fields.One2many(comodel_name='ixlms.module', compute='_assessed_module_ids', string='Modules')	
+
+	@api.onchange('assessment_ids')
+	def _assessed_module_ids(self):
+		for rec in self:
+			assessed_module_ids = [assessment.module_id.id for assessment in rec.assessment_ids]
+			rec.assessed_module_ids = self.env['ixlms.module'].search([('id', 'in', assessed_module_ids)])
+
+	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', inverse_name='course_id', string='Techniques')	
+	
 	grade_grouping = fields.Selection(string='Assessment Grouping', selection=[('module', 'Course Module'), ('technique', 'Assessment Technique'),], default='module', required=True)
 	grade_weighting = fields.Selection(string='Assessment Weighting', selection=[('percentage', 'Percentage'), ('points', 'Points'),], default='percentage', required=True)	
 	attendance_points = fields.Integer(string='Attendance Points', default=0)
@@ -57,16 +69,7 @@ class LmsCourse(models.Model):
 	penalty_per_absence = fields.Float(string='Penalty(%) / Absence', default=5.0)
 	zero_after_max_abs = fields.Boolean(string='Zero after Max Absences', default=False)	
 	max_absences = fields.Integer(string='Max Absences', default=5)
-	module_ids = fields.One2many(comodel_name='ixlms.module', inverse_name='course_id', string='Modules')
-	assessed_module_ids = fields.One2many(comodel_name='ixlms.module', compute='_assessed_module_ids', string='Modules')	
-
-	@api.onchange('assessment_ids')
-	def _assessed_module_ids(self):
-		for rec in self:
-			assessed_module_ids = [assessment.module_id.id for assessment in rec.assessment_ids]
-			rec.assessed_module_ids = self.env['ixlms.module'].search([('id', 'in', assessed_module_ids)])
-
-	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', inverse_name='course_id', string='Techniques')	
+	
 	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='course_id', string='Assessments')
 	nassessments = fields.Integer(string='Number of Assessments', compute='_assessment_ids')
 	nassessment_lines = fields.Integer(string='Number of Assessment Lines', compute='_assessment_ids')
