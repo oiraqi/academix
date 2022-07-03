@@ -37,7 +37,7 @@
 			<field name="model">ixlms.module</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Modules">
+				<tree string="Modules" editable="bottom">
 					<field name="sequence" widget="handle"/>
 					<field name="name"/>
 				</tree>
