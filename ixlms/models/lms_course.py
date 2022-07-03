@@ -192,6 +192,6 @@ class LmsCourse(models.Model):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id}
-		return self._resolve_action('ixlms.action_assessment_technique', domain, context)
+		return self._resolve_action('ixlms.action_weighted_technique', domain, context)
 
 
