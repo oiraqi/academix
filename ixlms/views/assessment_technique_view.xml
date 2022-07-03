@@ -8,6 +8,7 @@
 				<form string="Assessment Technique">
 					<sheet>
 						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
+						<field name="course_id" invisible="1"/>
 						<group name="info" string="General Information" col="4">
 						
 						</group>

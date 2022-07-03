@@ -78,7 +78,7 @@
 									<field name="chapter_ids" nolabel="1">
 										<tree editable="bottom">											
 											<field name="name"/>
-											<field name="module_id"/>
+											<field name="module_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="start_date"/>
 											<field name="nsessions"/>											
 										</tree>
