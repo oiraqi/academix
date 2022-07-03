@@ -59,7 +59,7 @@
 									</field>
 								</group>
 							</page>
-							<page string="Course Content &#38; Organization" name="content" attrs="{'invisible': [('id', '=', False)]}">
+							<!--<page string="Course Content &#38; Organization" name="content" attrs="{'invisible': [('id', '=', False)]}">
 								<group string="Course Modules" name="modules">
 									<field name="module_ids" nolabel="1">
 										<tree>
@@ -78,7 +78,7 @@
 										</tree>
 									</field>									
 								</group>
-							</page>
+							</page>-->
 							<page string="Textbooks" name="textbooks">
 								<group>
 									<field name="textbook_ids" nolabel="1">
@@ -106,8 +106,8 @@
 											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 										</tree>
 									</field>
-									<field name="technique_ids" nolabel="1">
-										<tree editable="bottom">
+									<field name="technique_ids" nolabel="1" readonly="1">
+										<tree>
 											<field name="sequence" widget="handle"/>
 											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
@@ -119,10 +119,8 @@
 									<field name="assessment_ids" colspan="4" nolabel="1">
 										<tree editable="bottom">
 											<field name="name" string="Assessment"/>
-											<field name="module_id" string="Course Module"
-												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
-												domain="[('id', 'in', module_ids)]"/>
-											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>											
+											<field name="module_id" string="Course Module" domain="[('id', 'in', module_ids)]"/>
+											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]"/>
 											<field name="teamwork" widget="boolean_toggle"/>
 											<field name="due_time"/>
 											<field name="graded"/>
