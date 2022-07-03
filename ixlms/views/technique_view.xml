@@ -27,6 +27,7 @@
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Techniques" editable="bottom">
+					<field name="sequence" widget="handle"/>
 					<field name="technique_id"/>
 					<field name="course_id" invisible="1"/>
 				</tree>
