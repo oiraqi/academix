@@ -38,21 +38,18 @@
 							<field name="due_time" attrs="{'invisible': [('timeline', '=', False)]}"/>
 							<field name="from_time" attrs="{'invisible': [('timeline', '=', False)]}"/>
 							<field name="to_time" attrs="{'invisible': [('timeline', '=', False)]}"/>
-							<label for="timelines" label="Specific Timelines"/>
-							<div col="4">
-								<field name="timelines" colspan="4"/>
-								<field name="timeline_ids" attrs="{'invisible': [('timelines', '=', False)]}" colspan="4">
-									<tree editable="bottom">
-										<field name="targetted_student_ids" widget="many2many_tags" domain="[('id', 'in', student_ids)]" attrs="{'column_invisible': [('parent.teamwork', '=', True)]}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-										<field name="targetted_team_ids" widget="many2many_tags" domain="[('id', 'in', team_ids)]" attrs="{'column_invisible': [('parent.teamwork', '=', False)]}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-										<field name="due_time"/>
-										<field name="from_time"/>
-										<field name="to_time"/>
-										<field name="student_ids" invisible="1"/>
-										<field name="team_ids" invisible="1"/>
-									</tree>
-								</field>
-							</div>
+							<field name="timelines"/>
+							<field name="timeline_ids" string="" attrs="{'invisible': [('timelines', '=', False)]}" colspan="4">
+								<tree editable="bottom">
+									<field name="targetted_student_ids" widget="many2many_tags" domain="[('id', 'in', student_ids)]" attrs="{'column_invisible': [('parent.teamwork', '=', True)]}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="targetted_team_ids" widget="many2many_tags" domain="[('id', 'in', team_ids)]" attrs="{'column_invisible': [('parent.teamwork', '=', False)]}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="due_time"/>
+									<field name="from_time"/>
+									<field name="to_time"/>
+									<field name="student_ids" invisible="1"/>
+									<field name="team_ids" invisible="1"/>
+								</tree>
+							</field>
 						</group>
 						<group name="grading" string="Grading" col="4">
 							<field name="graded"/>
