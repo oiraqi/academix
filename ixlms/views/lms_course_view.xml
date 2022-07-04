@@ -24,6 +24,10 @@
 									<t t-if="record.room_id.raw_value">
 									<field name="room_id"/>
 									</t>
+									<field name="nstudents"/> Students<br/>
+									<field name="nmodules"/> Modules<br/>
+									<field name="nchannels"/> Channels<br/>
+									<field name="nassessments"/> Assessments<br/>
                                 </div>
                             </div>
                         </t>
