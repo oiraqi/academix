@@ -11,9 +11,9 @@
                         <t t-name="kanban-box">
                             <div class="oe_module_vignette oe_kanban_global_click">                                
                                 <div class="oe_module_desc">
-                                    <h2 class="o_kanban_record_title"><field name="name"/></h2>
-									<h4><field name="instructor_id"/></h4>
-									<h4><field name="room_id"/> / <field name="timeslot"/></h4>
+                                    <h2><field name="name"/></h2>
+									<field name="instructor_id"/>
+									<field name="room_id"/> / <field name="timeslot"/>
                                 </div>
                             </div>
                         </t>
