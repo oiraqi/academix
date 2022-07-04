@@ -10,7 +10,9 @@ class MailChannel(models.Model):
     def _cname(self):
         for rec in self:
             if rec.course_id and rec.course_id.name and rec.cname:
-                rec.name = rec.course_id.name + rec.cname
+                rec.name = rec.course_id.name
+                if rec.cname:
+                    rec.name += '-' + rec.cname
 
     def ix_channel_open(self):
         self.ensure_one()
