@@ -12,7 +12,7 @@
 					<field name="color"/>
 					<templates>
 						<t t-name="kanban-box">
-							<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
+							<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_semantic_html_override oe_kanban_card oe_kanban_global_click">
 								<div class="o_dropdown_kanban dropdown">
 									<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
 										<span class="fa fa-ellipsis-v"/>
