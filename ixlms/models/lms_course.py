@@ -10,7 +10,8 @@ class LmsCourse(models.Model):
 	_sql_constraints = [('section_ukey', 'unique(section_id)', 'LMS course already created!')]
 
 	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)	
-	name = fields.Char(related='section_id.name')	
+	name = fields.Char(related='section_id.name')
+	color = fields.Integer(string='Color Index')	
 	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id')
 	prerequisite_ids = fields.One2many('ixcatalog.prerequisite', related='course_id.prerequisite_ids')
 	corequisite_ids = fields.One2many('ixcatalog.corequisite', related='course_id.corequisite_ids')

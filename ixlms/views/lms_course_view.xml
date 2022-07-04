@@ -2,40 +2,62 @@
 <odoo>
 	<data>
 		<record id="view_lms_course_kanban" model="ir.ui.view">
-            <field name="name">ixlms.course.kanban</field>
-            <field name="model">ixlms.course</field>
-            <field name="priority" eval="10"/>
-            <field name="arch" type="xml">				
-                <kanban>
+			<field name="name">ixlms.course.kanban</field>
+			<field name="model">ixlms.course</field>
+			<field name="priority" eval="10"/>
+			<field name="arch" type="xml">
+				<kanban>
 					<field name="room_id"/>
-					<field name="timeslot"/>					
-                    <templates>                        
-                        <t t-name="kanban-box">
-                            <div class="oe_module_vignette oe_kanban_global_click">                                
-                                <div class="oe_module_desc">
-                                    <h1><field name="name"/></h1>
-									<field name="instructor_id"/><br/>
-									<t t-if="record.timeslot.raw_value">									
-									<field name="timeslot"/>
+					<field name="timeslot"/>
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_module_vignette oe_kanban_global_click">
+								<div class="o_dropdown_kanban dropdown">
+									<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+										<span class="fa fa-ellipsis-v"/>
+									</a>
+									<div class="dropdown-menu" role="menu">										
+										<ul class="oe_kanban_colorpicker" data-field="color"/>
+									</div>
+								</div>
+								<div class="oe_module_desc">
+									<h1>
+										<field name="name"/>
+									</h1>
+									<field name="instructor_id"/>
+									<br/>
+									<t t-if="record.timeslot.raw_value">
+										<field name="timeslot"/>
 									</t>
 									<t t-if="record.timeslot.raw_value and record.room_id.raw_value">
 									 / 
 									</t>
 									<t t-if="record.room_id.raw_value">
-									<field name="room_id"/>
+										<field name="room_id"/>
 									</t>
-									<br/><br/>
-									<field name="nstudents"/> <t t-if="record.nstudents.raw_value==1">Student</t><t t-else="">Students</t><br/>
-									<field name="nmodules"/> <t t-if="record.nmodules.raw_value==1">Module</t><t t-else="">Modules</t>, 
-									<field name="nchannels"/> <t t-if="record.nchannels.raw_value==1">Channel</t><t t-else="">Channels</t><br/>
-									<field name="nassessments"/> <t t-if="record.nassessments.raw_value==1">Assessment</t><t t-else="">Assessments</t>
-                                </div>
-                            </div>
-                        </t>
-                    </templates>
-                </kanban>
-            </field>
-        </record>
+									<br/>
+									<br/>
+									<field name="nstudents"/>
+									<t t-if="record.nstudents.raw_value==1">Student</t>
+									<t t-else="">Students</t>
+									<br/>
+									<field name="nmodules"/>
+									<t t-if="record.nmodules.raw_value==1">Module</t>
+									<t t-else="">Modules</t>, 
+									<field name="nchannels"/>
+									<t t-if="record.nchannels.raw_value==1">Channel</t>
+									<t t-else="">Channels</t>
+									<br/>
+									<field name="nassessments"/>
+									<t t-if="record.nassessments.raw_value==1">Assessment</t>
+									<t t-else="">Assessments</t>
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
 		<record id="view_lms_course_form" model="ir.ui.view">
 			<field name="name">ixlms.course.form</field>
 			<field name="model">ixlms.course</field>
@@ -85,7 +107,7 @@
 							<field name="timeslot" widget="badge"/>
 							<field name="room_id"/>
 							<field name="instructor_id"/>
-							<field name="office_hour_ids" widget="many2many_tags"/>							
+							<field name="office_hour_ids" widget="many2many_tags"/>
 						</group>
 						<notebook>
 							<page string="Course Description" name="description">
@@ -103,16 +125,16 @@
 									</field>
 								</group>
 							</page>
-							<page string="Course Content &#38; Organization" name="content" attrs="{'invisible': [('nmodules', '=', 0)]}">								
+							<page string="Course Content &#38; Organization" name="content" attrs="{'invisible': [('nmodules', '=', 0)]}">
 								<group name="chapters" string="Course Chapters &#38; Timeline">
 									<field name="chapter_ids" nolabel="1">
-										<tree editable="bottom">											
+										<tree editable="bottom">
 											<field name="name"/>
 											<field name="module_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="start_date"/>
-											<field name="nsessions"/>											
+											<field name="nsessions"/>
 										</tree>
-									</field>									
+									</field>
 								</group>
 							</page>
 							<page string="Textbooks" name="textbooks">
@@ -136,7 +158,7 @@
 								</group>
 								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
 									<field name="module_ids" nolabel="1" readonly="1">
-										<tree>											
+										<tree>
 											<field name="name" string="Course Module"/>
 											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
 											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
@@ -155,10 +177,8 @@
 									<field name="assessment_ids" colspan="4" nolabel="1">
 										<tree editable="bottom">
 											<field name="name" string="Assessment"/>
-											<field name="module_id" string="Course Module"
-												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
-												domain="[('id', 'in', module_ids)]"/>
-											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>											
+											<field name="module_id" string="Course Module" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('id', 'in', module_ids)]"/>
+											<field name="technique_id" string="Assessment Technique" domain="[('id', 'in', technique_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="teamwork" widget="boolean_toggle"/>
 											<field name="due_time"/>
 											<field name="graded"/>
@@ -167,8 +187,8 @@
 											<field name="technique_ids" invisible="1"/>
 											<field name="module_ids" invisible="1"/>
 										</tree>
-									</field>									
-								</group>								
+									</field>
+								</group>
 								<group string="Attendance" col="4">
 									<field name="attendance_points" string="Attendance Points" style="width: 10%" attrs="{'invisible': [('grade_weighting', '!=', 'points')]}" colspan="4"/>
 									<field name="attendance_percentage" string="Attendance %" style="width: 10%" attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" colspan="4"/>
@@ -189,8 +209,8 @@
 										<span attrs="{'invisible': [('zero_after_max_abs', '=', False)]}">Absences</span>
 									</div>
 									<field name="attendance_weight" invisible="1"/>
-								</group>								
-							</page>							
+								</group>
+							</page>
 							<page string="More Details" name="details">
 								<group name="details">
 									<field name="details" widget="html" nolabel="1"/>
