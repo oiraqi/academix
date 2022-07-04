@@ -222,7 +222,7 @@
 			<field name="name">Current Courses</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.course</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">kanban,tree,form</field>
 			<field name="domain">[('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d'))]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
