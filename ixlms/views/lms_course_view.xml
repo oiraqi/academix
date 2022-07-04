@@ -25,10 +25,10 @@
 									<field name="room_id"/>
 									</t>
 									<br/><br/>
-									<field name="nstudents"/> <t t-if="record.nstudents=='1'">Student</t><t t-else="">Students</t><br/>
-									<field name="nmodules"/> <t t-if="record.nmodules==1">Module</t><t t-else="">Modules</t>, 
-									<field name="nchannels"/> <t t-if="record.nchannels==1">Channel</t><t t-else="">Channels</t><br/>
-									<field name="nassessments"/> <t t-if="record.nassessments==1">Assessment</t><t t-else="">Assessments</t>
+									<field name="nstudents"/> <t t-if="record.nstudents.raw_value==1">Student</t><t t-else="">Students</t><br/>
+									<field name="nmodules"/> <t t-if="record.nmodules.raw_value==1">Module</t><t t-else="">Modules</t>, 
+									<field name="nchannels"/> <t t-if="record.nchannels.raw_value==1">Channel</t><t t-else="">Channels</t><br/>
+									<field name="nassessments"/> <t t-if="record.nassessments.raw_value==1">Assessment</t><t t-else="">Assessments</t>
                                 </div>
                             </div>
                         </t>
