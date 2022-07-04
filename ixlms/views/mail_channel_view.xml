@@ -7,6 +7,7 @@
             <field name="inherit_id" ref="mail.mail_channel_view_form"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='description']" position="replace"/>
                 <xpath expr="//page[@name='privacy']" position="replace">
                     <page string="Stream" name="stream">
                         <iframe style="width: 100%; height: 800px;" src="/chat/1/DkABJaU6Fu"/>
