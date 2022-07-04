@@ -6,7 +6,14 @@
             <field name="model">mail.channel</field>
             <field name="inherit_id" ref="mail.mail_channel_view_form"/>
             <field name="mode">primary</field>
-            <field name="arch" type="xml">                
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='name']" position="replace">
+                    <label for="cname" string="Channel Name"/>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="replace"/>
+                    #<field name="cname" class="oe_inline" default_focus="1" placeholder="e.g. general"/>
+                    <field name="name" invisible="1" readonly="0"/>
+                </xpath>
                 <xpath expr="//page[@name='privacy']" position="replace"/>
             </field>
         </record>
