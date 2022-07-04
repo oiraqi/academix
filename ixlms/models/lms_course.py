@@ -28,7 +28,7 @@ class LmsCourse(models.Model):
 	office_hour_ids = fields.One2many(comodel_name='ixroster.office.hour', related='instructor_id.office_hour_ids')
 
 	module_ids = fields.One2many(comodel_name='ixlms.module', inverse_name='course_id', string='Modules')
-	nmodules = fields.Integer(string='Number of Modules', compute='_nmodules')
+	nmodules = fields.Integer(string='Modules', compute='_nmodules')
 	assessed_module_ids = fields.One2many(comodel_name='ixlms.module', compute='_assessed_module_ids', string='Modules')
 
 	@api.onchange('module_ids')
@@ -46,7 +46,7 @@ class LmsCourse(models.Model):
 			rec.assessed_module_ids = self.env['ixlms.module'].search([('id', 'in', assessed_module_ids)])
 
 	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', inverse_name='course_id', string='Techniques')
-	ntechniques = fields.Integer(string='Number of Techniques', compute='_ntechniques')
+	ntechniques = fields.Integer(string='Techniques', compute='_ntechniques')
 
 	@api.onchange('technique_ids')
 	def _ntechniques(self):
@@ -90,13 +90,13 @@ class LmsCourse(models.Model):
 	max_absences = fields.Integer(string='Max Absences', default=5)
 	
 	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='course_id', string='Assessments')
-	nassessments = fields.Integer(string='Number of Assessments', compute='_assessment_ids')
+	nassessments = fields.Integer(string='Assessments', compute='_assessment_ids')
 	nassessment_lines = fields.Integer(string='Number of Assessment Lines', compute='_assessment_ids')
 	used_technique_ids = fields.One2many(comodel_name='ixlms.assessment.technique', compute='_assessment_ids')
 	attendance_ids = fields.One2many(comodel_name='ixlms.attendance', inverse_name='course_id', string='Attendance Sheets')
 	nattendance_sheets = fields.Integer(string='Number of Attendance Sheets', compute='_attendance_ids')
 	teamset_ids = fields.One2many(comodel_name='ixlms.teamset', inverse_name='course_id', string='Team Sets')
-	nteamsets = fields.Integer(string='Number of Team Sets', compute='_nteamsets')
+	nteamsets = fields.Integer(string='Team Sets', compute='_nteamsets')
 
 	@api.onchange('teamset_ids')
 	def _nteamsets(self):
@@ -127,7 +127,7 @@ class LmsCourse(models.Model):
 	details = fields.Html(string='More Details')
 
 	channel_ids = fields.One2many(comodel_name='mail.channel', inverse_name='course_id', string='Channels')
-	nchannels = fields.Integer(string='Number of Channels', compute='_nchannels')
+	nchannels = fields.Integer(string='Channels', compute='_nchannels')
 
 	def _nchannels(self):
 		for rec in self:
