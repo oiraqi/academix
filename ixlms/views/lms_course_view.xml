@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<data>
+		<record id="view_lms_course_kanban" model="ir.ui.view">
+            <field name="name">ixlms.course.kanban</field>
+            <field name="model">ixlms.course</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <kanban>                    
+                    <templates>                        
+                        <t t-name="kanban-box">
+                            <div class="oe_module_vignette oe_kanban_global_click">                                
+                                <div class="oe_module_desc">
+                                    <h2 class="o_kanban_record_title"><field name="name"/></h2>
+									<h4><field name="instructor_id"/></h4>
+									<h4><field name="room_id"/> / <field name="timeslot"/></h4>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
 		<record id="view_lms_course_form" model="ir.ui.view">
 			<field name="name">ixlms.course.form</field>
 			<field name="model">ixlms.course</field>
@@ -218,7 +238,7 @@
 			<field name="name">Past Courses</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.course</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">kanban,tree,form</field>
 			<field name="domain">[('term_id.end_date', '&lt;', datetime.date.today().strftime('%Y-%m-%d'))]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
@@ -231,15 +251,21 @@
 			</field>
 		</record>
 		<record id="action_lms_course_form_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="2"/>
+			<field name="sequence" eval="3"/>
 			<field name="view_mode">form</field>
 			<field name="view_id" ref="view_lms_course_form"/>
 			<field name="act_window_id" ref="action_lms_course"/>
 		</record>
 		<record id="action_lms_course_tree_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="1"/>
+			<field name="sequence" eval="2"/>
 			<field name="view_mode">tree</field>
 			<field name="view_id" ref="view_lms_course_tree"/>
+			<field name="act_window_id" ref="action_lms_course"/>
+		</record>
+		<record id="action_lms_course_kanban_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">kanban</field>
+			<field name="view_id" ref="view_lms_course_kanban"/>
 			<field name="act_window_id" ref="action_lms_course"/>
 		</record>
 	</data>
