@@ -8,11 +8,7 @@
             <field name="arch" type="xml">				
                 <kanban>
 					<field name="room_id"/>
-					<field name="timeslot"/>
-					<field name="nstudents"/>
-					<field name="nmodules"/>
-					<field name="nchannels"/>
-					<field name="nassessments"/>
+					<field name="timeslot"/>					
                     <templates>                        
                         <t t-name="kanban-box">
                             <div class="oe_module_vignette oe_kanban_global_click">                                
@@ -29,7 +25,7 @@
 									<field name="room_id"/>
 									</t>
 									<br/><br/>
-									<field name="nstudents"/> <t t-if="record.nstudents==1">Student</t><t t-else="">Students</t><br/>
+									<field name="nstudents"/> <t t-if="record.nstudents=='1'">Student</t><t t-else="">Students</t><br/>
 									<field name="nmodules"/> <t t-if="record.nmodules==1">Module</t><t t-else="">Modules</t>, 
 									<field name="nchannels"/> <t t-if="record.nchannels==1">Channel</t><t t-else="">Channels</t><br/>
 									<field name="nassessments"/> <t t-if="record.nassessments==1">Assessment</t><t t-else="">Assessments</t>
