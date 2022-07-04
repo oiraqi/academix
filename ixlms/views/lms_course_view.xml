@@ -6,14 +6,24 @@
             <field name="model">ixlms.course</field>
             <field name="priority" eval="10"/>
             <field name="arch" type="xml">
+				<field name="room_id"/>
+				<field name="timeslot"/>
                 <kanban>                    
                     <templates>                        
                         <t t-name="kanban-box">
                             <div class="oe_module_vignette oe_kanban_global_click">                                
                                 <div class="oe_module_desc">
                                     <h2><field name="name"/></h2>
-									<field name="instructor_id"/>
-									<field name="room_id"/> / <field name="timeslot"/>
+									<field name="instructor_id"/><br/>
+									<t t-if="record.timeslot.raw_value">
+									<field name="timeslot"/>
+									</t>
+									<t t-if="record.timeslot.raw_value and record.room_id.raw_value">
+									 / 
+									</t>
+									<t t-if="record.room_id.raw_value">
+									<field name="room_id"/>
+									</t>
                                 </div>
                             </div>
                         </t>
