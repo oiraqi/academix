@@ -10,7 +10,7 @@
                 <xpath expr="//label[@for='name']" position="replace">
                     <label for="cname" string="Channel Name"/>
                 </xpath>
-                <xpath expr="//field[@name='name']" position="replace"/>
+                <xpath expr="//field[@name='name']" position="replace">
                     #<field name="cname" class="oe_inline" default_focus="1" placeholder="e.g. general"/>
                     <field name="name" invisible="1" readonly="0"/>
                 </xpath>
