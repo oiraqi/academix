@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='privacy']" position="replace">
                     <page string="Stream" name="stream">
-                        <iframe style="width: 100%; height: 800px;" src="https://aui.academix.one/chat/1/DkABJaU6Fu"/>
+                        <iframe style="width: 100%; height: 800px;" src="/chat/1/DkABJaU6Fu"/>
                     </page>
                 </xpath>
             </field>
@@ -36,6 +36,12 @@
 			<field name="sequence" eval="2"/>
 			<field name="view_mode">form</field>
 			<field name="view_id" ref="view_mail_channel_form_lms"/>
+			<field name="act_window_id" ref="action_mail_channel"/>
+		</record>
+        <record id="action_mail_channel_kanban_lms_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">kanban</field>
+			<field name="view_id" ref="mail.mail_channel_view_kanban"/>
 			<field name="act_window_id" ref="action_mail_channel"/>
 		</record>
     </data>
