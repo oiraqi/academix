@@ -30,6 +30,7 @@
         'views/teamset_view.xml',
         'views/team_membership_view.xml',
         'views/technique_view.xml',
+        'views/mail_channel_view.xml',
         'views/lms_menu.xml',
     ],
     'installable': True,

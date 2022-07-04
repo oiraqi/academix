@@ -19,3 +19,4 @@ from . import team_membership
 from . import assessment_submission
 from . import assessment_timeline
 from . import resource
+from . import mail_channel

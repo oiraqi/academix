@@ -125,6 +125,13 @@ class LmsCourse(models.Model):
 	
 	details = fields.Html(string='More Details')
 
+	channel_ids = fields.One2many(comodel_name='mail.channel', inverse_name='course_id', string='Channels')
+	nchannels = fields.Integer(string='Number of Channels', compute='_nchannels')
+
+	def _nchannels(self):
+		for rec in self:
+			rec.nchannels = len(rec.channel_ids)
+
 	@api.constrains('grade_weighting', 'assessment_ids')
 	def check_sum_percentages(self):
 		for rec in self:
@@ -193,5 +200,11 @@ class LmsCourse(models.Model):
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id}
 		return self._resolve_action('ixlms.action_weighted_technique', domain, context)
+
+	def get_channels(self):
+		self.ensure_one()
+		domain = [('course_id', '=', self.id)]
+		context = {'default_course_id': self.id, 'default_public': 'private'}
+		return self._resolve_action('ixlms.action_mail_channel', domain, context)
 
 

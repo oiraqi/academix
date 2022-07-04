@@ -19,6 +19,9 @@
 							<button name="get_techniques" type="object" class="oe_stat_button" icon="fa-people-group">
 								<field name="ntechniques" string="Assess. Techniques" widget="statinfo"/>
 							</button>
+							<button name="get_channels" type="object" class="oe_stat_button" icon="fa-people-group">
+								<field name="nchannels" string="Channels" widget="statinfo"/>
+							</button>
 							<button name="get_teamsets" type="object" class="oe_stat_button" icon="fa-people-group">
 								<field name="nteamsets" string="Teams" widget="statinfo"/>
 							</button>
