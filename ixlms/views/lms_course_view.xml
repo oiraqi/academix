@@ -25,7 +25,7 @@
 									<field name="room_id"/>
 									</t>
 									<br/>
-									<field name="nstudents"/> Students, 
+									<field name="nstudents"/> Students<br/>
 									<field name="nmodules"/> Modules, 
 									<field name="nchannels"/> Channels, 
 									<field name="nassessments"/> Assessments
