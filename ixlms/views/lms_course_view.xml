@@ -21,7 +21,7 @@
 										<ul class="oe_kanban_colorpicker" data-field="color"/>
 									</div>
 								</div>
-								<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_module_desc">
+								<div class="oe_module_desc">
 									<h1>
 										<field name="name"/>
 									</h1>
@@ -235,6 +235,13 @@
 			<field name="arch" type="xml">
 				<tree string="Courses">
 					<field name="name"/>
+					<field name="instructor_id"/>
+					<field name="timeslot"/>
+					<field name="room_id"/>
+					<field name="nstudents"/>
+					<field name="nmodules"/>
+					<field name="nchannels"/>
+					<field name="nassessments"/>
 				</tree>
 			</field>
 		</record>
