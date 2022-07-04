@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='privacy']" position="replace">
                     <page string="Stream" name="stream">
-                        <iframe style="width: 100%" src="https://aui.academix.one/chat/1/DkABJaU6Fu"/>
+                        <iframe style="width: 100%; height: 100%;" src="https://aui.academix.one/chat/1/DkABJaU6Fu"/>
                     </page>
                 </xpath>
             </field>
