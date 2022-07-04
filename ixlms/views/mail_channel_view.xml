@@ -11,7 +11,7 @@
                 <xpath expr="//field[@name='description']" position="replace"/>
                 <xpath expr="//page[@name='privacy']" position="replace">
                     <page string="Stream" name="stream">
-                        <iframe style="width: 100%; height: 800px;" src="/chat/1/DkABJaU6Fu"/>
+                        <iframe style="width: 100%; height: 400px;" src="/chat/1/DkABJaU6Fu"/>
                     </page>
                 </xpath>
             </field>
