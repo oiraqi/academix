@@ -7,7 +7,6 @@
             <field name="inherit_id" ref="mail.mail_channel_view_form"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='name']" position="replace"/>
                 <xpath expr="//field[@name='image_128']" position="replace"/>
                 <xpath expr="//field[@name='description']" position="replace"/>
                 <xpath expr="//notebook" position="replace">
