@@ -9,6 +9,10 @@
                 <kanban>
 					<field name="room_id"/>
 					<field name="timeslot"/>
+					<field name="nstudents"/>
+					<field name="nmodules"/>
+					<field name="nchannels"/>
+					<field name="nassessments"/>
                     <templates>                        
                         <t t-name="kanban-box">
                             <div class="oe_module_vignette oe_kanban_global_click">                                
