@@ -65,7 +65,7 @@
 									</field>
 								</group>
 							</page>
-							<page string="Course Content &#38; Organization" name="content" attrs="{'invisible': [('id', '=', False)]}">								
+							<page string="Course Content &#38; Organization" name="content" attrs="{'invisible': [('nmodules', '=', 0)]}">								
 								<group name="chapters" string="Course Chapters &#38; Timeline">
 									<field name="chapter_ids" nolabel="1">
 										<tree editable="bottom">											
@@ -91,7 +91,7 @@
 									</field>
 								</group>
 							</page>
-							<page string="Assessment Structure" name="assessment" attrs="{'invisible': [('id', '=', False)]}">
+							<page string="Assessment Structure" name="assessment" attrs="{'invisible': ['|', ('nmodules', '=', 0), ('ntechniques', '=', 0)]}">
 								<group col="4" string="Assessment Grouping &#38; Weighting">
 									<field name="grade_grouping" style="width: 50%" string="Grouped by"/>
 									<field name="grade_weighting" style="width: 50%" string="Weighted by"/>
