@@ -78,6 +78,7 @@
 							<button name="get_teamsets" type="object" class="oe_stat_button" icon="fa-people-group">
 								<field name="nteamsets" string="Teams" widget="statinfo"/>
 							</button>
+							<br/>
 							<button name="get_attendance" type="object" class="oe_stat_button" icon="fa-calendar-check">
 								<field name="nattendance_sheets" string="Att. Sheets" widget="statinfo"/>
 							</button>
@@ -91,11 +92,9 @@
 								<field name="nstudents" string="Students" widget="statinfo"/>
 							</button>
 						</div>
-						<div class="oe_title">
 							<h1>
 								<field name="course_id"/>
 							</h1>
-						</div>
 						<group name="info" string="General Information" col="4">
 							<label for="semester" string="Semester &#38; Year"/>
 							<div>
