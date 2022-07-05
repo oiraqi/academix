@@ -22,13 +22,13 @@
 								<tree>
 									<field name="create_date"/>
 									<field name="write_date"/>
-									<field name="rgrade"/>
+									<field name="rgrade" avg="Average Grade"/>
 									<button string="Open" name="get_submission" type="object" class="oe_highlight"/>
 								</tree>
 							</field>
 						</group>
 						<group name="grade" string="Grade" col="4">
-							<field name="grade"/>
+							<field name="grade" style="width: 15%"/>
 							<field name="bonus"/>
 							<field name="penalty" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>							
 						</group>
