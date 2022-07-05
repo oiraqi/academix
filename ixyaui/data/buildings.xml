@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+        <record id="ix_building_1" model="ix.building">
+            <field name="name">Blg 1</field>
+            <field name="school_id" ref="ix_school_unv"/>
+        </record>
+        <record id="ix_building_2" model="ix.building">
+            <field name="name">Blg 2</field>
+            <field name="school_id" ref="ix_school_unv"/>
+        </record>
+        <record id="ix_building_3" model="ix.building">
+            <field name="name">Blg 3</field>
+            <field name="school_id" ref="ix_school_unv"/>
+        </record>
+        <record id="ix_building_4" model="ix.building">
+            <field name="name">Blg 4</field>
+            <field name="school_id" ref="ix_school_unv"/>
+        </record>
+        <record id="ix_building_5" model="ix.building">
+            <field name="name">Blg 5</field>
+            <field name="school_id" ref="ix_school_sse"/>
+        </record>
+        <record id="ix_building_6" model="ix.building">
+            <field name="name">Blg 6</field>
+            <field name="school_id" ref="ix_school_sse"/>
+        </record>
+        <record id="ix_building_7" model="ix.building">
+            <field name="name">Blg 7</field>
+            <field name="school_id" ref="ix_school_sse"/>
+        </record>
+    
+    </data>
+    
+</odoo>

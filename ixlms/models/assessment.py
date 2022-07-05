@@ -119,6 +119,13 @@ class Assessment(models.Model):
 
 	def get_assessment_lines(self):
 		self.ensure_one()
+		student_ids = [assessment_line.student_id.id for assessment_line in self.assessment_line_ids]
+		for student in self.course_id.student_ids:
+			if student.id not in student_ids:
+				self.env['ixlms.assessment.line'].create({
+					'assessment_id': self.id,
+					'student_id': student.id
+				})
 		domain = [('assessment_id', '=', self.id)]
 		return self._resolve_action('ixlms.action_assessment_line', domain)
 

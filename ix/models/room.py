@@ -37,7 +37,7 @@ class Room(models.Model):
     capacity = fields.Integer(string='Capacity', required=True)    
     building_id = fields.Many2one(comodel_name='ix.building', string='Building', required=True)    
     type = fields.Selection(string='Type', selection=[('classroom', 'Classroom'), ('office', 'Office'),
-        ('lab', 'Lab'), ('general', 'General Purpose')], default='classroom')
+        ('lab', 'Lab'), ('general', 'General Purpose')], default='classroom', required=True)
     
 
     @api.depends('number', 'building_id')
