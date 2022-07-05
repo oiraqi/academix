@@ -103,7 +103,7 @@ class Assessment(models.Model):
 
 	assessment_line_ids = fields.One2many(comodel_name='ixlms.assessment.line', inverse_name='assessment_id', string='Assessment Lines')
 	ngraded = fields.Char(string='Submissions', compute='_stats')
-	submission_ids = fields.One2many(comodel_name='ixlms.assessment.type', inverse_name='assessment_id', string='Submisions')	
+	submission_ids = fields.One2many(comodel_name='ixlms.assessment.submission', inverse_name='assessment_id', string='Submisions')	
 	nsubmissions = fields.Integer(string='Submissions', compute='_stats')
 	
 	max_grade = fields.Float(string='Max Grade', compute='_stats')
