@@ -64,12 +64,7 @@
 			<field name="model">ixlms.course</field>
 			<field name="arch" type="xml">
 				<form string="Course">
-					<sheet>
-						<div class="oe_title">
-							<h1>
-								<field name="course_id"/>
-							</h1>
-						</div>
+					<sheet>						
 						<div class="oe_button_box" name="button_box">
 							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-people-group">
 								<field name="nmodules" string="Modules" widget="statinfo"/>
@@ -95,6 +90,11 @@
 							<button name="get_students" type="object" class="oe_stat_button" icon="fa-users">
 								<field name="nstudents" string="Students" widget="statinfo"/>
 							</button>
+						</div>
+						<div class="oe_title">
+							<h1>
+								<field name="course_id"/>
+							</h1>
 						</div>
 						<group name="info" string="General Information" col="4">
 							<label for="semester" string="Semester &#38; Year"/>
