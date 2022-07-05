@@ -17,7 +17,7 @@
 									<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
 										<span class="fa fa-ellipsis-v"/>
 									</a>
-									<div class="dropdown-menu" role="menu">										
+									<div class="dropdown-menu" role="menu">
 										<ul class="oe_kanban_colorpicker" data-field="color"/>
 									</div>
 								</div>
@@ -64,7 +64,10 @@
 			<field name="model">ixlms.course</field>
 			<field name="arch" type="xml">
 				<form string="Course">
-					<sheet>						
+					<sheet>
+						<h1>
+							<field name="course_id"/>
+						</h1>
 						<div class="oe_button_box" name="button_box">
 							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-people-group">
 								<field name="nmodules" string="Modules" widget="statinfo"/>
@@ -91,9 +94,6 @@
 								<field name="nstudents" string="Students" widget="statinfo"/>
 							</button>
 						</div>
-							<h1>
-								<field name="course_id"/>
-							</h1>
 						<group name="info" string="General Information" col="4">
 							<label for="semester" string="Semester &#38; Year"/>
 							<div>
