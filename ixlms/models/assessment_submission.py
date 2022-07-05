@@ -35,6 +35,7 @@ class AssessmentSubmission(models.Model):
 	file = fields.Binary(string='File', tracking=True)
 	url = fields.Char(string='URL', tracking=True)
 	text = fields.Html(string='Text', tracking=True)
+	grade_scale = fields.Integer(string='Graded over', related='assessment_id.grade_scale')
 	
 	grade = fields.Float(string='Grade', group='ix.group_faculty')
 	#readonly grade
