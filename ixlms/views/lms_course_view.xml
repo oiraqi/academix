@@ -68,7 +68,6 @@
 						<h1>
 							<field name="course_id"/>
 						</h1>
-						<hr/>
 						<br/>
 						<div class="oe_button_box" name="button_box">
 							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-people-group">
