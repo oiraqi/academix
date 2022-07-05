@@ -10,18 +10,19 @@ class AssessmentSubmission(models.Model):
 	@api.model
 	def create(self, vals):
 		submission = super(AssessmentSubmission, self).create(vals)
-		assessment_line_id = self.env['ixlms.assessment.line'].search([('student_id.user_id', '=', submission.create_uid.id)])
+		assessment_line_id = self.env['ixlms.assessment.line'].search([('assessment_id', '=', submission.assessment_id.id), ('student_id.user_id', '=', submission.create_uid.id)])
 		assessment_lines = [assessment_line_id.id]
 		if submission.assessment_id.teamwork:
 			submitter = assessment_line_id.student_id
 			teams = self.env['ixlms.team'].search([('teamset_id', '=', submission.assessment_id.teamset_id.id),
 				('member_ids', 'in', submitter.id)])
 			if teams:
+				self.team_id = teams[0]
 				for member in teams[0]:
 					assessment_line_id = self.env['ixlms.assessment.line'].search([('student_id', '=', member.id)])
 					if assessment_line_id.id not in assessment_lines:
 						assessment_lines.append(assessment_line_id.id)
-		submission.assessment_line_ids = assessment_lines
+		submission.assessment_line_ids = [(0, 6, assessment_lines)]
 		return submission
 
 	assessment_id = fields.Many2one(comodel_name='ixlms.assessment', string='Assessment', required=True)

@@ -13,6 +13,10 @@
 							</h1>
 						</div>
 						<div class="oe_button_box" name="button_box" attrs="{'invisible': [('graded', '=', False)]}">
+							<button name="get_submissions" type="object" class="oe_stat_button" icon="fa-percent"
+								attrs="{'invisible': [('submission_type', '!=', online)]}">
+								<field name="nsubmissions" string="Graded" widget="statinfo"/>
+							</button>
 							<button name="get_assessment_lines" type="object" class="oe_stat_button" icon="fa-percent">
 								<field name="ngraded" string="Graded" widget="statinfo"/>
 							</button>
