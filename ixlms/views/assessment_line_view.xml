@@ -132,8 +132,7 @@
 			<field name="name">ixlms.assessment.line.view.graph</field>
 			<field name="model">ixlms.assessment.line</field>
 			<field name="arch" type="xml">
-				<graph string="Grade Distribution">
-					<field name="grade_range"/>					
+				<graph string="Grade Distribution">										
 				</graph>
 			</field>
 		</record>
@@ -223,7 +222,7 @@
 			<field name="res_model">ixlms.assessment.line</field>
 			<field name="view_mode">graph,tree,form</field>
 			<field name="domain">[]</field>
-			<field name="context">{'group_by': 'program_id'}</field>			
+			<field name="context">{'group_by': ['program_id', 'grade_range']}</field>			
 		</record>		
 		<record id="action_assessment_line_form_view" model="ir.actions.act_window.view">
 			<field name="sequence" eval="2"/>

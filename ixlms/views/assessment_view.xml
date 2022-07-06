@@ -72,7 +72,7 @@
 							</group>
 						</group>
 						<group name="stats" string="Statistics" attrs="{'invisible': [('graded', '=', False)]}" col="4">
-							<button string="Grade Distribution" name="get_grade_distribution" type="object"/>
+							<button icon="fa-bar-chart" string="Grade Distribution" name="get_grade_distribution" type="object"/>
 							<group colspan="4" col="4">
 								<field name="max_grade"/>
 								<field name="min_grade"/>

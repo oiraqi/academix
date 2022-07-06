@@ -39,7 +39,7 @@ class AssessmentLine(models.Model):
 	penalty = fields.Float('Penalty', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)	
 	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
-	grade_range = fields.Char(string='GradeRange', compute='_egrade', store=True)
+	grade_range = fields.Char(string='Grade Range', compute='_egrade', store=True)
 	wgrade = fields.Float(string='Weighted Grade', compute='_wgrade', store=True)
 	
 	max_grade = fields.Float(related='assessment_id.max_grade')
