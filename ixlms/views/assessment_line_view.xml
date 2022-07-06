@@ -131,7 +131,7 @@
 			<field name="model">ixlms.assessment.line</field>
 			<field name="arch" type="xml">
 				<graph string="Grade Distribution">
-					<field name="grade_range" type="measure" count=""/>
+					<field name="grade_range" type="measure" count="Count"/>
 				</graph>
 			</field>
 		</record>
