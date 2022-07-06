@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- ixlms.assessment.line inherit form view -->
+        <record id="view_lms_assessment_line_form_quality" model="ir.ui.view">
+            <field name="name">ixlms.assessment.line.inherit.quality.view.form</field>
+            <field name="model">ixlms.assessment.line</field>
+            <field name="inherit_id" ref="ixlms.view_assessment_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='grade']" position="after">
+                    <group name="assessed_ilos" string="ILO Assessment">
+                        <button string="Add Assessment Lines" name="create_assessed_ilos" type="object" class="oe_highlight"/>
+                        <field name="assessed_ilo_ids" create="false">
+                            <tree>
+                                <field name="ilo_id"/>
+                                <field name="acquisition_level_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                            </tree>
+                        </field>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

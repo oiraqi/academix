@@ -7,5 +7,6 @@
         <menuitem id="ixquality_portfolio_menu" name="Portfolios" action="action_portfolio" parent="ixquality_root_menu" sequence="40"/>
         <menuitem id="ixquality_course_program_menu" name="ILO/SO Mapping" action="action_course_program" parent="ixquality_root_menu" sequence="100"/>
         <menuitem id="ixquality_assessment_technique_menu" name="Assessment Techniques" action="ixlms.action_assessment_technique" parent="ixquality_root_menu" sequence="200"/>
+        <menuitem id="ixquality_acquisition_level_menu" name="Acquisition Levels" action="action_acquisition_level" parent="ixquality_root_menu" sequence="210"/>
     </data>    
 </odoo>

@@ -27,3 +27,9 @@ access_ixquality_action_faculty,access.ixquality.action.faculty,model_ixquality_
 access_ixquality_action_coordinator,access.ixquality.action.coordinator,model_ixquality_action,ix.group_coordinator,1,0,0,0
 access_ixquality_action_vpaa,access.ixquality.action.vpaa,model_ixquality_action,ix.group_vpaa,1,0,0,0
 
+access_ixquality_assessed_ilo_faculty,access.ixquality.assessed.ilo.faculty,model_ixquality_assessed_ilo,ix.group_faculty,1,1,1,1
+access_ixquality_assessed_ilo_user,access.ixquality.assessed.ilo.user,model_ixquality_assessed_ilo,base.group_user,1,0,0,0
+
+access_ixquality_acquisition_level_setup,access.ixquality.acquisition.level.setup,model_ixquality_acquisition_level,ix.group_setup,1,1,1,1
+access_ixquality_acquisition_level_user,access.ixquality.acquisition.level.user,model_ixquality_acquisition_level,base.group_user,1,0,0,0
+

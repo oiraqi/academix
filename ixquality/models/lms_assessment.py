@@ -9,4 +9,3 @@ class LmsAssessment(models.Model):
     good_performance = fields.Binary(string='Good Performance')
     avg_performance = fields.Binary(string='Avg. Performance')
     poor_performance = fields.Binary(string='Poor Performance')
-    
