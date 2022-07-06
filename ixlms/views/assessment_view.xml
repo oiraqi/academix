@@ -26,11 +26,13 @@
 							<field name="technique_id" readonly="1"/>
 							<field name="description" colspan="4"/>
 						</group>
-						<group name="submission_type" string="Submission Type" col="4">
+						<group name="submission" string="Submission" col="4">
 							<field name="submission_type" string="Type" required="1"/>
 							<field name="is_file_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 							<field name="is_url_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 							<field name="is_text_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
+							<field name="allowed_attempts"/>
+							<field name="attempt_grade_aggregation" attrs="{'invisible': [('allowed_attempts', '=', 1)], 'required': [('allowed_attemps', '&gt;', 1)]}"/>
 						</group>
 						<group name="teamwork" string="Teamwork" col="4">
 							<field name="teamwork"/>

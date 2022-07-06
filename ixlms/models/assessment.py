@@ -67,6 +67,8 @@ class Assessment(models.Model):
 	is_file_req = fields.Boolean(string='File Required', default=False)
 	is_url_req = fields.Boolean(string='URL Required', default=False)
 	is_text_req = fields.Boolean(string='Inline Text Required', default=False)
+	allowed_attempts = fields.Integer(string='allowed_attempts', required=True, default=1)
+	attempt_grade_aggregation = fields.Selection(string='Attempt Grade Aggregation', selection=[('avg', 'Average'), ('best', 'Best'), ('last', 'Last')], default='best')
 	teamwork = fields.Boolean(string='Teamwork', default=False)	
 	teamset_id = fields.Many2one(comodel_name='ixlms.teamset', string='Team Set')
 

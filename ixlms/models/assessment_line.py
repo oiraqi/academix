@@ -38,6 +38,7 @@ class AssessmentLine(models.Model):
 	submission_ids = fields.Many2many('ixlms.assessment.submission', 'ixlms_assessment_line_submission', 'assessment_line_id', 'submission_id', string='Submissions')
 	grade = fields.Float(string='Grade', default=0.0)
 	penalty = fields.Float('Penalty', compute='_penalty')
+	cancel_penalty = fields.Boolean(string='Count Penalty', default=False)	
 	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
 	wgrade = fields.Float(string='Weighted Grade', compute='_wgrade', store=True)
 	
@@ -46,11 +47,11 @@ class AssessmentLine(models.Model):
 	avg_grade = fields.Float(related='assessment_id.avg_grade')
 	
 
-	@api.depends('grade', 'bonus')
-	@api.onchange('grade', 'bonus')
+	@api.depends('grade', 'bonus', 'count_penalty')
+	@api.onchange('grade', 'bonus', 'count_penalty')
 	def _egrade(self):
 		for rec in self:
-			rec.egrade = rec.grade + rec.bonus - rec.penalty
+			rec.egrade = rec.grade + rec.bonus - (rec.cancel_penalty and 0 or rec.penalty)
 
 	def _penalty(self):
 		for rec in self:
