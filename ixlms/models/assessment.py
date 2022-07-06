@@ -144,3 +144,8 @@ class Assessment(models.Model):
 		domain = [('assessment_id', '=', self.id)]
 		context = {'default_assessment_id': self.id}
 		return self._resolve_action('ixlms.action_assessment_submission', domain, context)
+
+	def get_grade_distribution(self):
+		self.ensure_one()
+		domain = [('assessment_id', '=', self.id)]
+		return self._resolve_action('ixlms.action_assessment_line_dist', domain)

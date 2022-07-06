@@ -39,6 +39,7 @@ class AssessmentLine(models.Model):
 	penalty = fields.Float('Penalty', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)	
 	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
+	grade_range = fields.Char(string='GradeRange', compute='_egrade', store=True)
 	wgrade = fields.Float(string='Weighted Grade', compute='_wgrade', store=True)
 	
 	max_grade = fields.Float(related='assessment_id.max_grade')
@@ -51,6 +52,16 @@ class AssessmentLine(models.Model):
 	def _egrade(self):
 		for rec in self:
 			rec.egrade = rec.grade + rec.bonus - (rec.cancel_penalty and 0 or rec.penalty)
+			if rec.egrade >= 90:
+				rec.grade_range = '90%+'
+			elif rec.egrade >= 80:
+				rec.grade_range = '[80 - 90%['
+			elif rec.egrade >= 70:
+				rec.grade_range = '[70 - 80%['
+			elif rec.egrade >= 60:
+				rec.grade_range = '[60 - 70%['
+			else:
+				rec.grade_range = '[0 - 60%['
 
 	def _penalty(self):
 		for rec in self:
