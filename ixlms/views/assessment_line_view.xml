@@ -10,15 +10,9 @@
 						<h1><field name="name"/></h1>						
 						<div>
 						<h1><field name="egrade"/></h1>
-						</div>
-						<group name="info" string="General Information" col="4">
-							<field name="module_id"/>
-							<field name="technique_id"/>
-							<field name="submission_type"/>
-							<field name="x_to_time" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>							
-						</group>
-						<group name="submissions" string="Submissions" attrs="{'invisible': [('submission_type', '!=', 'online')]}">
-							<field name="submission_ids" readonly="1">
+						</div>						
+						<group name="submissions" string="Submission Attempts" attrs="{'invisible': [('submission_type', '!=', 'online')]}">
+							<field name="submission_ids" readonly="1" nolabel="1">
 								<tree>
 									<field name="create_date"/>
 									<field name="create_uid"/>

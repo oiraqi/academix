@@ -31,14 +31,13 @@ class AssessmentLine(models.Model):
 	assessment_percentage = fields.Float(related='assessment_id.percentage', store=True)
 	percentage = fields.Float(related='assessment_id.percentage', store=True)	
 	bonus = fields.Float(related='assessment_id.bonus', store=True)
-	x_to_time = fields.Datetime(string='Extended Deadline')
 	
 
 	submission_type = fields.Selection(related='assessment_id.submission_type')	
 	submission_ids = fields.Many2many('ixlms.assessment.submission', 'ixlms_assessment_line_submission', 'assessment_line_id', 'submission_id', string='Submissions')
 	grade = fields.Float(string='Grade', default=0.0)
 	penalty = fields.Float('Penalty', compute='_penalty')
-	cancel_penalty = fields.Boolean(string='Count Penalty', default=False)	
+	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)	
 	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
 	wgrade = fields.Float(string='Weighted Grade', compute='_wgrade', store=True)
 	
