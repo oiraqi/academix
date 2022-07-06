@@ -31,8 +31,9 @@
 							<field name="is_file_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 							<field name="is_url_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 							<field name="is_text_req" widget="boolean_toggle" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
-							<field name="allowed_attempts"/>
-							<field name="attempt_grade_aggregation" attrs="{'invisible': [('allowed_attempts', '=', 1)], 'required': [('allowed_attempts', '&gt;', 1)]}"/>
+							<field name="allowed_attempts" style="width: 15%"/>
+							<field name="attempt_grade_aggregation" widget="radio" options="{'horizontal': True}"
+								attrs="{'invisible': [('allowed_attempts', '=', 1)], 'required': [('allowed_attempts', '&gt;', 1)]}"/>
 						</group>
 						<group name="teamwork" string="Teamwork" col="4">
 							<field name="teamwork"/>
