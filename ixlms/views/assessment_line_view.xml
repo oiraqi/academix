@@ -12,6 +12,7 @@
 						<h1><field name="egrade"/></h1>
 						</div>
 						<field name="submission_type" invisible="1"/>
+						<field name="teamwork" invisible="1"/>
 						<group name="submissions" string="Submission Attempts" attrs="{'invisible': [('submission_type', '!=', 'online')]}">
 							<field name="submission_ids" readonly="1" nolabel="1">
 								<tree>
@@ -19,10 +20,10 @@
 									<field name="create_uid"/>
 									<field name="write_date"/>
 									<field name="write_uid"/>
-									<field name="team_id"/>
+									<field name="team_id" attrs="{'column_invisible': [('parent.teamwork', '=', False)]}"/>
 									<field name="assessment_line_ids" widget="many2many_tags"/>
 									<field name="rgrade" avg="Average Grade"/>
-									<button string="Open" name="get_submission" type="object" class="oe_highlight"/>
+									<button ico="fa-folder-open" name="get_submission" type="object" class="oe_highlight"/>
 								</tree>
 							</field>
 						</group>

@@ -32,8 +32,8 @@ class AssessmentLine(models.Model):
 	percentage = fields.Float(related='assessment_id.percentage', store=True)	
 	bonus = fields.Float(related='assessment_id.bonus', store=True)
 	
-
-	submission_type = fields.Selection(related='assessment_id.submission_type')	
+	submission_type = fields.Selection(related='assessment_id.submission_type')
+	teamwork = fields.Boolean(related='assessment_id.teamwork')
 	submission_ids = fields.Many2many('ixlms.assessment.submission', 'ixlms_assessment_line_submission', 'assessment_line_id', 'submission_id', string='Submissions')
 	grade = fields.Float(string='Grade', default=0.0)
 	penalty = fields.Float('Penalty', compute='_penalty')
