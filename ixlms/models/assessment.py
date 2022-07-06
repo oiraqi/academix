@@ -14,11 +14,11 @@ class Assessment(models.Model):
 	section_id = fields.Many2one(comodel_name='ixroster.section', string='course_id.section_id', store=True)
 	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
 	technique_id = fields.Many2one(comodel_name='ixlms.weighted.technique', string='Technique', required=True)
-	graded = fields.Boolean(string='Graded', default=True)
+	graded = fields.Boolean(string='Graded', required=True, default=True)
 	grade_weighting = fields.Selection(related='course_id.grade_weighting')
-	points = fields.Integer(string='Points', default=0)
-	percentage = fields.Float(string='%', default=0.0)
-	grade_scale = fields.Integer(string='Graded over', default=100)
+	points = fields.Integer(string='Points', required=True, default=0)
+	percentage = fields.Float(string='%', required=True, default=0.0)
+	grade_scale = fields.Integer(string='Graded over', required=True, default=100)
 
 	@api.onchange('graded')
 	def _graded(self):
@@ -63,13 +63,20 @@ class Assessment(models.Model):
 	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', related='course_id.technique_ids')
 	module_ids = fields.One2many(comodel_name='ixlms.module', related='course_id.module_ids')
 
-	submission_type = fields.Selection(string='Submission Type', selection=[('online', 'Online'), ('paper', 'Paper'), ('nosub', 'No Submission / Self-assessment')], default='online')
+	submission_type = fields.Selection(string='Submission Type', selection=[('online', 'Online'), ('paper', 'Paper'), ('nosub', 'No Submission / Self-assessment')], required=True, default='online')
 	is_file_req = fields.Boolean(string='File Required', default=False)
 	is_url_req = fields.Boolean(string='URL Required', default=False)
 	is_text_req = fields.Boolean(string='Inline Text Required', default=False)
 	allowed_attempts = fields.Integer(string='Allowed Attempts', required=True, default=1)
-	attempt_grade_aggregation = fields.Selection(string='Attempt Grade Aggregation', selection=[('avg', 'Average'), ('best', 'Best'), ('last', 'Last')], default='best')
-	teamwork = fields.Boolean(string='Teamwork', default=False)	
+	attempt_grade_aggregation = fields.Selection(string='Attempt Grade Aggregation', selection=[('avg', 'Average'), ('best', 'Best'), ('last', 'Last')], required=True, default='best')
+
+	@api.constrains('allowed_attempts')
+	def _check_allowed_attempts(self):
+		for rec in self:
+			if rec.allowed_attempts <= 0:
+				raise ValidationError('At least one submission attempt should be allowed!')
+
+	teamwork = fields.Boolean(string='Teamwork', required=True, default=False)
 	teamset_id = fields.Many2one(comodel_name='ixlms.teamset', string='Team Set')
 
 	timeline = fields.Boolean(string='Common Timeline', default=True, required=True)
@@ -81,7 +88,7 @@ class Assessment(models.Model):
 
 	timeline_ids = fields.One2many(comodel_name='ixlms.assessment.timeline', inverse_name='assessment_id', string='Specific Timelines')
 		
-	bonus = fields.Float(string='Class-wide Bonus (%)', default=0.0)
+	bonus = fields.Float(string='Class-wide Bonus (%)', required=True, default=0.0)
 
 	@api.constrains('bonus')
 	def _check_bonus(self):
