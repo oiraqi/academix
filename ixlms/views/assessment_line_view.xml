@@ -10,7 +10,8 @@
 						<h1><field name="name"/></h1>						
 						<div>
 						<h1><field name="egrade"/></h1>
-						</div>						
+						</div>
+						<field name="submission_type" invisible="1"/>
 						<group name="submissions" string="Submission Attempts" attrs="{'invisible': [('submission_type', '!=', 'online')]}">
 							<field name="submission_ids" readonly="1" nolabel="1">
 								<tree>
