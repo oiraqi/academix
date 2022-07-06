@@ -24,7 +24,7 @@
         "views/lms_course_view.xml",
         "views/acquisition_level_view.xml",
         "views/lms_assessment_view.xml",
-        "biews/lms_assessment_line_view.xml",
+        "views/lms_assessment_line_view.xml",
         'views/lms_module_view.xml',
         "views/school_view.xml",
         "views/quality_menu.xml",
