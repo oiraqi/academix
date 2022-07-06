@@ -6,10 +6,10 @@
 			<field name="model">ixquality.acquisition.level</field>
 			<field name="arch" type="xml">
 				<form string="Acquisition Level">
-					<sheet>
-						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
+					<sheet>						
 						<group name="info" string="General Information" col="4">
-						
+							<field name="name"/>
+							<field name="value"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
@@ -26,8 +26,9 @@
 			<field name="model">ixquality.acquisition.level</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Acquisition Levels">
+				<tree string="Acquisition Levels" editable="bottom">
 					<field name="name"/>
+					<field name="value"/>
 				</tree>
 			</field>
 		</record>
