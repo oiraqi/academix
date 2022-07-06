@@ -130,7 +130,8 @@
 			<field name="name">ixlms.assessment.line.view.graph</field>
 			<field name="model">ixlms.assessment.line</field>
 			<field name="arch" type="xml">
-				<graph string="Grade Distribution">										
+				<graph string="Grade Distribution">
+					<field name="grade_range" type="measure"/>
 				</graph>
 			</field>
 		</record>
