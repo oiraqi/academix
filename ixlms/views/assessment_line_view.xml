@@ -50,11 +50,9 @@
 			<field name="arch" type="xml">
 				<tree string="AssessmentLines" create="false">
 					<field name="name"/>
-					<field name="module_id" widget="badge"/>					
-					<field name="egrade"/>
-					<field name="max_grade"/>
-					<field name="min_grade"/>
-					<field name="avg_grade"/>
+					<field name="module_id" widget="badge"/>
+					<field name="technique_id" widget="badge"/>
+					<field name="egrade"/>					
 					<field name="wgrade"/>					
 				</tree>
 			</field>
@@ -140,9 +138,9 @@
 			<field name="name">Assessment Lines</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.assessment.line</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,graph,form</field>
 			<field name="domain">[]</field>
-			<field name="context">{}</field>
+			<field name="context">{'group_by': ['program_id']}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 				
@@ -156,7 +154,7 @@
 			<field name="name">Assessment Lines</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.assessment.line</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,graph,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['student_id', 'module_id']}</field>
 			<field name="help" type="html">
@@ -172,7 +170,7 @@
 			<field name="name">Assessment Lines</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.assessment.line</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,graph,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['student_id', 'module_id']}</field>
 			<field name="help" type="html">
@@ -188,7 +186,7 @@
 			<field name="name">Assessment Lines</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.assessment.line</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,graph,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['student_id', 'technique_id']}</field>
 			<field name="help" type="html">
@@ -204,7 +202,7 @@
 			<field name="name">Assessment Lines</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.assessment.line</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,graph,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': ['student_id', 'technique_id']}</field>
 			<field name="help" type="html">

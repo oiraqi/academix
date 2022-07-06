@@ -5,17 +5,9 @@ class AssessmentLine(models.Model):
 	_name = 'ixlms.assessment.line'
 	_description = 'AssessmentLine'
 	_inherit = 'ix.expandable'
-	_order = 'student_id'
+	_order = 'egrade desc'
 
-	name = fields.Char('Name', compute='_set_name', store=True)
-
-	@api.depends('assessment_id', 'student_id')
-	@api.onchange('assessment_id', 'student_id')
-	def _set_name(self):
-		for rec in self:
-			if rec.assessment_id and rec.student_id:
-				rec.name = rec.assessment_id.name + ' / ' + rec.student_id.name
-	
+	name = fields.Char('Name', related='student_id.name', store=True)
 	student_id = fields.Many2one(comodel_name='ix.student', string='Student', required=True)	
 	assessment_id = fields.Many2one(comodel_name='ixlms.assessment', string='Assessment', required=True)
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', related='student_id.program_id', store=True)	
@@ -71,7 +63,7 @@ class AssessmentLine(models.Model):
 	def _wgrade(self):
 		for rec in self:
 			if rec.grade_weighting == 'percentage':
-				rec.wgrade = rec.egrade * rec.percentage
+				rec.wgrade = rec.egrade * rec.percentage / 100
 			elif rec.grade_weighting == 'points':
 				rec.wgrade = (rec.egrade / 100) * rec.points
 
