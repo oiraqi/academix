@@ -70,13 +70,13 @@
 								<field name="bonus" attrs="{'invisible': [('points', '=', 0)]}" style="width: 15%"/>
 								<field name="grade_weighting" invisible="1"/>
 							</group>
-							<group name="stats" string="Statistics" attrs="{'invisible': [('graded', '=', False)]}" col="4">
-								<button string="Grade Distribution" name="get_grade_distribution" type="object"/>
-								<field name="max_grade"/>
-								<field name="min_grade"/>
-								<field name="avg_grade"/>
-								<field name="stdev"/>
-							</group>
+						</group>
+						<group name="stats" string="Statistics" attrs="{'invisible': [('graded', '=', False)]}" col="4">
+							<button string="Grade Distribution" name="get_grade_distribution" type="object"/>
+							<field name="max_grade"/>
+							<field name="min_grade"/>
+							<field name="avg_grade"/>
+							<field name="stdev"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>

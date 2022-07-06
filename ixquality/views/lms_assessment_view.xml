@@ -13,7 +13,7 @@
                             options="{'no_quick_create': True, 'no_create_edit': True}"/>
                         <field name="course_ilo_ids" invisible="1"/>                    
                 </xpath>
-                <xpath expr="//group[@name='grading']" position="after">                    
+                <xpath expr="//group[@name='stats']" position="after">                    
                     <group name="performance" string="Sample Student Performance" col="6">
                         <field name="good_performance"/>
                         <field name="avg_performance"/>
