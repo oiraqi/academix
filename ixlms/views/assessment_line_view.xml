@@ -52,8 +52,7 @@
 					<field name="name"/>
 					<field name="module_id" widget="badge"/>
 					<field name="technique_id" widget="badge"/>
-					<field name="egrade"/>					
-					<field name="wgrade"/>					
+					<field name="egrade" avg="Average"/>
 				</tree>
 			</field>
 		</record>
@@ -131,8 +130,6 @@
 			<field name="model">ixlms.assessment.line</field>
 			<field name="arch" type="xml">
 				<graph string="Grade Distribution">
-					<field name="program_id"/>
-					<field name="grade_range"/>
 				</graph>
 			</field>
 		</record>
@@ -142,7 +139,7 @@
 			<field name="res_model">ixlms.assessment.line</field>
 			<field name="view_mode">tree,graph,form</field>
 			<field name="domain">[]</field>
-			<field name="context">{'group_by': ['program_id']}</field>
+			<field name="context">{'group_by': ['program_id', 'grade_range']}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 				
