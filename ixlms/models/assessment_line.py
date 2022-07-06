@@ -47,8 +47,8 @@ class AssessmentLine(models.Model):
 	avg_grade = fields.Float(related='assessment_id.avg_grade')
 	
 
-	@api.depends('grade', 'bonus', 'count_penalty')
-	@api.onchange('grade', 'bonus', 'count_penalty')
+	@api.depends('grade', 'bonus', 'cancel_penalty')
+	@api.onchange('grade', 'bonus', 'cancel_penalty')
 	def _egrade(self):
 		for rec in self:
 			rec.egrade = rec.grade + rec.bonus - (rec.cancel_penalty and 0 or rec.penalty)
