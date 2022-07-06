@@ -67,8 +67,6 @@ class Assessment(models.Model):
 	is_file_req = fields.Boolean(string='File Required', default=False)
 	is_url_req = fields.Boolean(string='URL Required', default=False)
 	is_text_req = fields.Boolean(string='Inline Text Required', default=False)
-	allowed_attempts = fields.Integer(string='Allowed Attempts', required=True, default=1)
-	attempt_grade_aggregation = fields.Selection(string='Attempt Grade Aggregation', selection=[('avg', 'Average'), ('best', 'Best'), ('last', 'Last')], required=True, default='best')
 
 	@api.constrains('allowed_attempts')
 	def _check_allowed_attempts(self):

@@ -10,8 +10,8 @@
                 <xpath expr="//group[@name='grade']" position="after">
                     <group name="assessed_ilos" string="ILO Assessment" col="4">
                         <button string="Add Assessment Lines" name="create_assessed_ilos" type="object" class="oe_highlight"/>
-                        <field name="assessed_ilo_ids" colspan="4">
-                            <tree create="false">
+                        <field name="assessed_ilo_ids" colspan="4" nolabel="1">
+                            <tree create="false" editable="bottom">
                                 <field name="ilo_id"/>
                                 <field name="acquisition_level_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             </tree>
