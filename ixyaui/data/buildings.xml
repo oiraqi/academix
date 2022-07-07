@@ -1,36 +1,70 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-
+        <record id="ix_building_group_admin" model="ix.building.group">
+            <field name="name">Administrative</field>            
+        </record>
+        <record id="ix_building_group_academic" model="ix.building.group">
+            <field name="name">Academic</field>            
+        </record>
+        <record id="ix_building_group_service" model="ix.building.group">
+            <field name="name">Service</field>            
+        </record>
+        <record id="ix_building_group_student_life" model="ix.building.group">
+            <field name="name">Student Life</field>            
+        </record>
         <record id="ix_building_1" model="ix.building">
             <field name="name">Blg 1</field>
-            <field name="school_id" ref="ix_school_unv"/>
+            <field name="group_id" ref="ix_building_group_admin"/>
         </record>
         <record id="ix_building_2" model="ix.building">
             <field name="name">Blg 2</field>
-            <field name="school_id" ref="ix_school_unv"/>
+            <field name="group_id" ref="ix_building_group_admin"/>
         </record>
         <record id="ix_building_3" model="ix.building">
             <field name="name">Blg 3</field>
-            <field name="school_id" ref="ix_school_unv"/>
+            <field name="group_id" ref="ix_building_group_service"/>
         </record>
         <record id="ix_building_4" model="ix.building">
             <field name="name">Blg 4</field>
-            <field name="school_id" ref="ix_school_unv"/>
+            <field name="group_id" ref="ix_group_academic"/>
         </record>
         <record id="ix_building_5" model="ix.building">
             <field name="name">Blg 5</field>
-            <field name="school_id" ref="ix_school_sse"/>
+            <field name="group_id" ref="ix_group_academic"/>
         </record>
         <record id="ix_building_6" model="ix.building">
             <field name="name">Blg 6</field>
-            <field name="school_id" ref="ix_school_sse"/>
+            <field name="group_id" ref="ix_group_academic"/>
         </record>
         <record id="ix_building_7" model="ix.building">
             <field name="name">Blg 7</field>
-            <field name="school_id" ref="ix_school_sse"/>
+            <field name="group_id" ref="ix_group_academic"/>
         </record>
-    
+        <record id="ix_building_8" model="ix.building">
+            <field name="name">Blg 8</field>
+            <field name="group_id" ref="ix_group_academic"/>
+        </record>
+        <record id="ix_building_8b" model="ix.building">
+            <field name="name">Blg 8B</field>
+            <field name="group_id" ref="ix_group_academic"/>
+        </record>
+        <record id="ix_building_9" model="ix.building">
+            <field name="name">Blg 9</field>
+            <field name="group_id" ref="ix_group_service"/>
+        </record>
+        <record id="ix_building_10" model="ix.building">
+            <field name="name">Blg 10</field>
+            <field name="group_id" ref="ix_group_academic"/>
+        </record>
+        <record id="ix_building_11" model="ix.building">
+            <field name="name">Blg 11</field>
+            <field name="group_id" ref="ix_group_academic"/>
+        </record>
+        <record id="ix_building_12" model="ix.building">
+            <field name="name">Blg 12</field>
+            <field name="group_id" ref="ix_group_admin"/>
+        </record>    
     </data>
     
 </odoo>

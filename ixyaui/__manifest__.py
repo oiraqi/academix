@@ -14,6 +14,7 @@
         'ixlms',
     ],
     'data': [
+        'data/buildings.xml',
         'data/schools.xml',
         'data/disciplines.xml',
         'data/sessions.xml',
