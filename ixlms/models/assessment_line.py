@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class AssessmentLine(models.Model):
@@ -27,7 +28,14 @@ class AssessmentLine(models.Model):
 	submission_type = fields.Selection(related='assessment_id.submission_type')
 	teamwork = fields.Boolean(related='assessment_id.teamwork')
 	submission_ids = fields.Many2many('ixlms.assessment.submission', 'ixlms_assessment_line_submission', 'assessment_line_id', 'submission_id', string='Submissions')
-	grade = fields.Float(string='Assigned Grade', default=0.0)
+	grade = fields.Char(string='Assigned Grade', default='')
+
+	@api.constrains('grade')
+	def _check_grade(self):
+		for rec in self:
+			if rec.grade != '' and (not rec.grade.isnumeric() or float(rec.grade) < 0):
+				raise ValidationError('The grade must be a positive number')
+	
 	penalty = fields.Float('Penalty', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)
 	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
@@ -43,7 +51,15 @@ class AssessmentLine(models.Model):
 	@api.onchange('grade', 'bonus', 'cancel_penalty')
 	def _egrade(self):
 		for rec in self:
-			rec.egrade = rec.grade + rec.bonus - rec.penalty
+			if rec.grade == '':
+				rec.egrade = 0.0
+				rec.grade_range = 'Not graded yet'
+				return
+			
+			if not rec.grade.isnumeric() or float(rec.grade) < 0:
+				raise ValidationError('The grade must be a positive number')
+			
+			rec.egrade = float(rec.grade) + rec.bonus - rec.penalty
 			if rec.egrade >= 90:
 				rec.grade_range = '90%+'
 			elif rec.egrade >= 80:
