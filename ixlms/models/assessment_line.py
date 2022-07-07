@@ -70,7 +70,7 @@ class AssessmentLine(models.Model):
 			except TypeError:
 					raise ValidationError('The grade must be a (positive) number')
 			
-			pgrade = float(rec.grade) / rec.grade_scale * 100
+			pgrade = fields.Float.round(float(rec.grade) / rec.grade_scale * 100, 2)
 			rec.egrade = pgrade + rec.bonus - rec.penalty
 			rec.formatted_grade = f'{rec.grade} / {rec.grade_scale} ({pgrade}%)'
 			formatted_egrade = str(rec.egrade / 100 * rec.grade_scale) + ' / ' + str(rec.grade_scale) + ' - ' + str(rec.egrade) + '%'
