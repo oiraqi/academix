@@ -1,4 +1,5 @@
 # Welcome To Academix: The Ultimate ERP for Higher-Ed Institutions
+## Common User Stories
 *Faculty Evaluation Committee (FEC) Chair*: Dear colleagues, please don't forget to include all required evidence, e.g., student evaluation reports, in your faculty evaluation file. *Faculty*: Dear FEC Chair, all student evaluation reports are available on our course management portal. Also, for higher information integrity, it would be even better if you fetched them directly from there. *FEC Chair*: Dear colleague, unfortunately, we don't have access to those reports on the course management portal. And as you know, the faculty evaluation software is different and disconnected from course management.
 
 *Dean*: Dear colleagues, please send me your published articles over the current year for the annual activity report. *Faculty*: Dear Dean, I have just submitted my faculty evaluation file. Please find it there. *Dean*: Yes, but that's a different process and system. Please send that information again.
@@ -9,6 +10,7 @@
 
 *VPAA*: Dear colleagues, I am delighted to announce the launching of yet another software, dedicated to Quality Assurance. You will receive instructions explaining how to copy your sections from the LMS to the new Quality Assurance software.
 
+## The Problem
 We can have an endless stream of such stories. Do they sound familiar? Is your institution too using a plethora of disconnected software systems, causing information redundancy and anomalies?
 
 ## Academix High-level Design Principles
