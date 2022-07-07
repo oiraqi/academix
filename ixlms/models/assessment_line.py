@@ -40,14 +40,14 @@ class AssessmentLine(models.Model):
 			except TypeError:
 				raise ValidationError('Grade must be a (positive) number')
 	
-	grade_scale = fields.Integer(related='assessment_id.grade_scale', store=True)	
+	grade_scale = fields.Integer(related='assessment_id.grade_scale')	
 	penalty = fields.Float('Penalty (%)', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)
 	egrade = fields.Float(string='Effective Grade (%)', compute='_grade', store=True)
 	formatted_grade = fields.Char(string='Assigned Grade', compute='_grade')
 	formatted_egrade = fields.Char(string='Assigned Grade', compute='_grade')
 	grade_range = fields.Char(string='Grade Range', compute='_grade', store=True)
-	wgrade = fields.Float(string='Weighted Grade', compute='_wgrade', store=True)
+	wgrade = fields.Float(string='Weighted Grade', compute='_grade', store=True)
 	
 	max_grade = fields.Float(related='assessment_id.max_grade')
 	min_grade = fields.Float(related='assessment_id.min_grade')
@@ -98,5 +98,4 @@ class AssessmentLine(models.Model):
 				rec.penalty = 0.0
 			else:
 				rec.penalty = 5.0
-
 

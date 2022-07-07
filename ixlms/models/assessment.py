@@ -12,8 +12,11 @@ class Assessment(models.Model):
 		if 'grade_scale' in vals:
 			for rec in self:
 				for assessment_line in rec.assessment_line_ids:
-					if assessment_line.grade and assessment_line.grade.isnumeric():
-						assessment_line.grade = str((assessment_line.egrade - rec.bonus + assessment_line.penalty) * rec.grade_scale / 100)
+					try:
+						if assessment_line.grade and float(assessment_line.grade):
+							assessment_line.grade = str((assessment_line.egrade - rec.bonus + assessment_line.penalty) * rec.grade_scale / 100)
+					except TypeError:
+						continue
 		return outcome
 
 
