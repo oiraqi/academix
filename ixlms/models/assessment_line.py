@@ -20,10 +20,30 @@ class AssessmentLine(models.Model):
 	grade_grouping = fields.Selection(related='assessment_id.course_id.grade_grouping', store=True)
 	grade_weighting = fields.Selection(related='assessment_id.course_id.grade_weighting', store=True)
 	points = fields.Integer(related='assessment_id.points', store=True)
+	epoints = fields.Integer(string="Points", compute='_epoints', store=True)
+
+	@api.depends('grade', 'points')
+	def _epoints(self):
+		for rec in self:
+			if rec.grade:
+				rec.epoints = rec.points
+			else:
+				rec.epoints = 0.0
+
 	module_percentage = fields.Float(related='module_id.percentage', store=True)
 	technique_percentage = fields.Float(related='technique_id.percentage', store=True)
 	assessment_percentage = fields.Float(related='assessment_id.percentage', store=True)
-	percentage = fields.Float(related='assessment_id.percentage', store=True)	
+	percentage = fields.Float(related='assessment_id.percentage', store=True)
+	epercentage = fields.Float(string="%", compute='_epercentage', store=True)
+
+	@api.depends('grade', 'percentage')
+	def _epercentage(self):
+		for rec in self:
+			if rec.grade:
+				rec.epercentage = rec.percentage
+			else:
+				rec.epercentage = 0.0
+
 	bonus = fields.Float(related='assessment_id.bonus', store=True)
 	
 	submission_type = fields.Selection(related='assessment_id.submission_type')
@@ -45,7 +65,7 @@ class AssessmentLine(models.Model):
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)
 	egrade = fields.Float(string='Effective Grade (%)', compute='_grade', store=True)
 	formatted_grade = fields.Char(string='Assigned Grade', compute='_grade')
-	formatted_egrade = fields.Char(string='Assigned Grade', compute='_grade')
+	formatted_egrade = fields.Char(string='Grade', compute='_grade')
 	grade_range = fields.Char(string='Grade Range', compute='_grade', store=True)
 	wgrade = fields.Float(string='Weighted Grade', compute='_grade', store=True)
 	

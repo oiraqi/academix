@@ -69,7 +69,7 @@
 					<field name="name"/>
 					<field name="technique_id" widget="badge"/>					
 					<field name="formatted_egrade"/>	
-					<field name="percentage"/>
+					<field name="epercentage"/>
 					<field name="wgrade"/>
 				</tree>
 			</field>
@@ -83,7 +83,7 @@
 					<field name="name"/>
 					<field name="technique_id" widget="badge"/>					
 					<field name="formatted_egrade"/>
-					<field name="points"/>
+					<field name="epoints"/>
 					<field name="wgrade"/>
 				</tree>
 			</field>
@@ -97,7 +97,7 @@
 					<field name="name"/>
 					<field name="module_id" widget="badge"/>					
 					<field name="formatted_egrade"/>
-					<field name="percentage"/>
+					<field name="epercentage"/>
 					<field name="wgrade"/>
 				</tree>
 			</field>
@@ -111,7 +111,7 @@
 					<field name="name"/>
 					<field name="module_id" widget="badge"/>					
 					<field name="formatted_egrade"/>
-					<field name="points"/>
+					<field name="epoints"/>
 					<field name="wgrade"/>
 				</tree>
 			</field>
