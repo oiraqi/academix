@@ -34,7 +34,7 @@ class Assessment(models.Model):
 					return {
 						'warning': {
         					'title': 'Warning!',
-        					'message': 'Pay attention! You are trying to change the grade scale for this assessment, while grades have already been assigned.\nEither abort this change, or make sure to review all asigned grades (for this assessment).'
+        					'message': 'Pay attention! You are trying to change the grade scale for this assessment, while grades have already been assigned.\nEither abort this change, or make sure to review every assigned (for this assessment).'
 						}
 					}
 
