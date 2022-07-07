@@ -54,7 +54,6 @@
 				<tree string="AssessmentLines" create="false">
 					<field name="name"/>					
 					<field name="formatted_grade"/>
-					<field name="pgrade"/>
 					<field name="penalty"/>
 					<field name="bonus"/>
 					<field name="egrade" avg="Average"/>

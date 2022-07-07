@@ -43,7 +43,6 @@ class AssessmentLine(models.Model):
 	grade_scale = fields.Integer(related='assessment_id.grade_scale', store=True)	
 	penalty = fields.Float('Penalty (%)', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)
-	pgrade = fields.Float(string='Grade (%)', compute='_grade')
 	egrade = fields.Float(string='Effective Grade (%)', compute='_grade', store=True)
 	formatted_grade = fields.Char(string='Assigned Grade', compute='_grade')
 	formatted_egrade = fields.Char(string='Assigned Grade', compute='_grade')
@@ -60,7 +59,6 @@ class AssessmentLine(models.Model):
 	def _grade(self):
 		for rec in self:
 			if not rec.grade or rec.grade == '':
-				rec.pgrade = 0.0
 				rec.egrade = 0.0
 				rec.formatted_grade = 'Not graded yet'
 				rec.formatted_egrade = 'Not graded yet'
@@ -72,9 +70,9 @@ class AssessmentLine(models.Model):
 			except TypeError:
 					raise ValidationError('The grade must be a (positive) number')
 			
-			rec.pgrade = float(rec.grade) / rec.grade_scale * 100
-			rec.egrade = float(rec.grade) / rec.grade_scale * 100 + rec.bonus - rec.penalty
-			rec.formatted_grade = rec.grade + ' / ' + str(rec.grade_scale)
+			pgrade = float(rec.grade) / rec.grade_scale * 100
+			rec.egrade = pgrade + rec.bonus - rec.penalty			
+			rec.formatted_grade = f'{rec.grade} / {rec.grade_scale} ({pgrade}%)'
 			formatted_egrade = str(rec.egrade / 100 * rec.grade_scale) + ' / ' + str(rec.grade_scale)
 			if rec.grade_weighting == 'points':
 				formatted_egrade += ' - ' + str(rec.egrade / 100 * rec.points) + ' Pts.'
