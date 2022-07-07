@@ -43,7 +43,7 @@ class AssessmentLine(models.Model):
 	grade_scale = fields.Integer(related='assessment_id.grade_scale', store=True)	
 	penalty = fields.Float('Penalty (%)', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)
-	pgrade = fields.Float(string='Assigned Grade (%)', compute='_grade')
+	pgrade = fields.Float(string='Grade (%)', compute='_grade')
 	egrade = fields.Float(string='Effective Grade (%)', compute='_grade', store=True)
 	formatted_grade = fields.Char(string='Assigned Grade', compute='_grade')
 	formatted_egrade = fields.Char(string='Assigned Grade', compute='_grade')
@@ -75,7 +75,10 @@ class AssessmentLine(models.Model):
 			rec.pgrade = float(rec.grade) / rec.grade_scale * 100
 			rec.egrade = float(rec.grade) / rec.grade_scale * 100 + rec.bonus - rec.penalty
 			rec.formatted_grade = rec.grade + ' / ' + str(rec.grade_scale)
-			rec.formatted_egrade = str(rec.egrade / 100 * rec.grade_scale) + ' / ' + str(rec.grade_scale)
+			formatted_egrade = str(rec.egrade / 100 * rec.grade_scale) + ' / ' + str(rec.grade_scale)
+			if rec.weighted_grading == 'points':
+				formatted_egrade += ' - ' + str(rec.points) + ' Pts.'
+			rec.formatted_egrade = formatted_egrade
 			if rec.egrade >= 90:
 				rec.grade_range = '90%+'
 			elif rec.egrade >= 80:
