@@ -10,19 +10,19 @@
 						<h1>
 							<field name="name" default_focus="1" placeholder="Name..." style="width: 30%"/>
 						</h1>
-						<group name="owner_rooms" col="4">
-							<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True}" string="Owner"/>
+						<group name="rooms" col="4">
+							<field name="group_id" string="Group"/>
 							<field name="capacity"/>
 							<field name="classrooms"/>
 							<field name="labs"/>
 							<field name="offices"/>
 							<field name="general_rooms"/>
-							<field name="room_ids" colspan="4" context="{'default_school_id': school_id}">
+							<field name="room_ids" colspan="4" context="{'default_group_id': group_id}">
 								<tree editable="bottom">
 									<field name="number"/>
 									<field name="type"/>
 									<field name="capacity" sum="Total"/>
-									<field name="school_id" invisible="1"/>
+									<field name="group_id" invisible="1"/>
 								</tree>
 							</field>
 						</group>
@@ -48,7 +48,7 @@
 					<field name="offices"/>
 					<field name="general_rooms"/>
 					<field name="capacity"/>
-					<field name="school_id" invisible="1"/>
+					<field name="group_id" invisible="1"/>
 				</tree>
 			</field>
 		</record>
@@ -58,7 +58,7 @@
 			<field name="res_model">ix.building</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
-			<field name="context">{'group_by': 'school_id'}</field>
+			<field name="context">{'group_by': 'group_id'}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 

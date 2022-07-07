@@ -35,20 +35,7 @@
                                     </group>
                                 </page>
                             </notebook>
-                        </group>
-                        <group name="resources" string="Resources">
-                            <notebook>
-                                <page string="Buildings" name="buildings">
-                                    <group>
-                                        <field name="building_ids" nolabel="1">
-                                            <tree editable="bottom">
-                                                <field name="name"/>
-                                            </tree>
-                                        </field>
-                                    </group>
-                                </page>
-                            </notebook>
-                        </group>
+                        </group>                        
                     </sheet>
                 </form>
             </field>

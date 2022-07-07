@@ -26,16 +26,16 @@ from odoo.exceptions import UserError
 
 
 class Room(models.Model):
-    _name = 'ix.room'
-    _inherit = 'ix.school.owned'
+    _name = 'ix.room'    
     _description = 'Room'
     _order = 'building_id,number'
     _sql_constraints = [('number_blg_ukey', 'unique(number, building_id)', 'Room already exists')]
 
     name = fields.Char(string='Name & Building', compute='_compute_name', store=True)
-    number = fields.Char(string='Number', required=True)
+    number = fields.Char(string='Number', required=True)    
     capacity = fields.Integer(string='Capacity', required=True)    
-    building_id = fields.Many2one(comodel_name='ix.building', string='Building', required=True)    
+    building_id = fields.Many2one(comodel_name='ix.building', string='Building', required=True)
+    group_id = fields.Many2one(comodel_name='ix.building.group', string='Group', required=True)
     type = fields.Selection(string='Type', selection=[('classroom', 'Classroom'), ('office', 'Office'),
         ('lab', 'Lab'), ('general', 'General Purpose')], default='classroom', required=True)
     

@@ -39,3 +39,6 @@ access_ix_room_setup,access.ix.room.setup,model_ix_room,ix.group_setup,1,1,1,1
 access_ix_session_setup,access.ix.session.setup,model_ix_session,ix.group_setup,1,1,1,0
 access_ix_session_user,access.ix.session.user,model_ix_session,base.group_user,1,0,0,0
 
+access_ix_building_group_setup,access.ix.building.group.setup,model_ix_building_group,ix.group_setup,1,1,1,1
+access_ix_building_group_user,access.ix.building.group.user,model_ix_building_group,base.group_user,1,0,0,0
+

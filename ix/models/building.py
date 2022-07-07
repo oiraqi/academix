@@ -24,13 +24,21 @@
 from odoo import fields, models, api
 
 
+class BuildingGroup(models.Model):
+	_name = 'ix.building.group'
+	_description = 'BuildingGroup'
+
+	name = fields.Char('Name', required=True)
+	building_ids = fields.One2many(comodel_name='ix.building', inverse_name='group_id', string='Buildings')
+    
+
 class Building(models.Model):
     _name = 'ix.building'
     _description = 'Building'
-    _inherit = 'ix.school.owned'
     _sql_constraints = [('b=name_ukey', 'unique(name)', 'Building already exists')]
 
     name = fields.Char(string='Name', required=True)
+    group_id = fields.Many2one(comodel_name='ix.building.group', string='Group', required=True)
     room_ids = fields.One2many(comodel_name='ix.room', inverse_name='building_id', string='Rooms')
     classrooms = fields.Integer(compute='_rooms', string='Classrooms', store=True)
     labs = fields.Integer(compute='_rooms', string='Labs', store=True)
