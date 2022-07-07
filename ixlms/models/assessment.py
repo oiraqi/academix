@@ -58,7 +58,7 @@ class Assessment(models.Model):
 
 			rec.course_id.check_sum_percentages()
 
-	@api.depends('grade_scale')
+	@api.onchange('grade_scale')
 	def _update_assessment_line_grades(self):
 		for rec in self:
 			for assessment_line in rec.assessment_line_ids:
