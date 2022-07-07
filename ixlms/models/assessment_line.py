@@ -41,12 +41,13 @@ class AssessmentLine(models.Model):
 				raise ValidationError('Grade must be a (positive) number')
 	
 	grade_scale = fields.Integer(related='assessment_id.grade_scale', store=True)	
-	penalty = fields.Float('Penalty', compute='_penalty')
+	penalty = fields.Float('Penalty (%)', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)
-	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
-	formatted_grade = fields.Char(string='Assigned Grade', compute='_egrade')
-	formatted_egrade = fields.Char(string='Assigned Grade', compute='_egrade')
-	grade_range = fields.Char(string='Grade Range', compute='_egrade', store=True)
+	pgrade = fields.Float(string='Assigned Grade (%)', compute='_grade')
+	egrade = fields.Float(string='Effective Grade (%)', compute='_grade', store=True)
+	formatted_grade = fields.Char(string='Assigned Grade', compute='_grade')
+	formatted_egrade = fields.Char(string='Assigned Grade', compute='_grade')
+	grade_range = fields.Char(string='Grade Range', compute='_grade', store=True)
 	wgrade = fields.Float(string='Weighted Grade', compute='_wgrade', store=True)
 	
 	max_grade = fields.Float(related='assessment_id.max_grade')
@@ -56,9 +57,10 @@ class AssessmentLine(models.Model):
 
 	@api.depends('grade', 'bonus', 'cancel_penalty')
 	@api.onchange('grade', 'bonus', 'cancel_penalty')
-	def _egrade(self):
+	def _grade(self):
 		for rec in self:
 			if not rec.grade or rec.grade == '':
+				rec.pgrade = 0.0
 				rec.egrade = 0.0
 				rec.formatted_grade = 'Not graded yet'
 				rec.formatted_egrade = 'Not graded yet'
@@ -70,9 +72,10 @@ class AssessmentLine(models.Model):
 			except TypeError:
 					raise ValidationError('The grade must be a (positive) number')
 			
+			rec.pgrade = float(rec.grade) / rec.grade_scale * 100
 			rec.egrade = float(rec.grade) / rec.grade_scale * 100 + rec.bonus - rec.penalty
 			rec.formatted_grade = rec.grade + ' / ' + str(rec.grade_scale)
-			rec.formatted_egrade = str(rec.egrade) + ' / ' + str(rec.grade_scale)
+			rec.formatted_egrade = str(rec.egrade / 100 * rec.grade_scale) + ' / ' + str(rec.grade_scale)
 			if rec.egrade >= 90:
 				rec.grade_range = '90%+'
 			elif rec.egrade >= 80:
