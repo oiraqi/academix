@@ -22,10 +22,7 @@
 ###############################################################################
 
 from odoo import models, fields
-from odoo.exceptions import ValidationError
 
-
-PASSING_GRADES = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-']
 
 class Enrollment(models.Model):
     _inherit = 'ixroster.enrollment'
@@ -48,8 +45,7 @@ class Enrollment(models.Model):
                 rec.overall_grade = (rec.assessment_grade * assessment_weight + rec.attendance_grade * lms_course_id.attendance_weight) / (assessment_weight + lms_course_id.attendance_weight)
             else:
                 rec.overall_grade = rec.assessment_grade
-            rec.letter_grade = 'A'
-            rec.passed = rec.letter_grade in PASSING_GRADES
+            rec.letter_grade, rec.passed = self.env['ixlms.letter.grade'].evaluate(rec.overall_grade)            
 
     def _assessment_grade(self, lms_course_id):
         if lms_course_id.grade_weighting == 'percentage':
