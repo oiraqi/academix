@@ -7,6 +7,16 @@ class Assessment(models.Model):
 	_inherit = 'ix.expandable'
 	_order = 'due_time,module_id'
 
+	def write(self, vals):
+		outcome = super(Assessment, self).write(vals)
+		if 'grade_scale' in vals:
+			for rec in self:
+				for assessment_line in rec.assessment_line_ids:
+					if assessment_line.grade and assessment_line.grade.isnumeric():
+						assessment_line.grade = str((assessment_line.egrade - rec.bonus + assessment_line.penalty) * rec.grade_scale / 100)
+		return outcome
+
+
 	name = fields.Char('Name', required=True)
 	description = fields.Html(string='Description')
 	
