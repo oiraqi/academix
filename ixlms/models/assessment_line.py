@@ -71,8 +71,8 @@ class AssessmentLine(models.Model):
 					raise ValidationError('The grade must be a (positive) number')
 			
 			rec.egrade = float(rec.grade) / rec.grade_scale * 100 + rec.bonus - rec.penalty
-			rec.formatted_grade = rec.grade + '/' + str(rec.grade_scale)
-			rec.formatted_egrade = str(rec.egrade) + '/' + str(rec.grade_scale)
+			rec.formatted_grade = rec.grade + ' / ' + str(rec.grade_scale)
+			rec.formatted_egrade = str(rec.egrade) + ' / ' + str(rec.grade_scale)
 			if rec.egrade >= 90:
 				rec.grade_range = '90%+'
 			elif rec.egrade >= 80:
