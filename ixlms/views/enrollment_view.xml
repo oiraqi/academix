@@ -76,7 +76,7 @@
             <field name="model">ixroster.enrollment</field>
             <field name="arch" type="xml">
                 <graph string="Students">
-                    <field name="overall_grade" type="measure"/>                    
+                    <field name="program_id"/>
                 </graph>
             </field>
         </record>
