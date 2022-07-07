@@ -34,7 +34,7 @@ class AssessmentLine(models.Model):
 	def _check_grade(self):
 		for rec in self:
 			if rec.grade != '' and (not rec.grade.isnumeric() or float(rec.grade) < 0):
-				raise ValidationError('The grade must be a positive number')
+				raise ValidationError(f'The grade must be a positive number: {rec.grade}')
 	
 	grade_scale = fields.Integer(related='assessment_id.grade_scale', store=True)	
 	penalty = fields.Float('Penalty', compute='_penalty')
