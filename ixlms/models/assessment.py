@@ -34,11 +34,9 @@ class Assessment(models.Model):
 					return {
 						'warning': {
         					'title': 'Warning!',
-        					'message': 'The warning text'
+        					'message': 'Pay attention! You are trying to change the grade scale for this assessment, while grades have already been assigned. Either abort this change, or make sure to review all asigned grades (for this assessment).'
 						}
 					}
-				
-					#raise ValidationError('Pay attention! You are trying to change the grade scale for this assessment, while grades have already been assigned. If you insist, please start by deleting all asigned grades (for this assessment). Till then, this change will be aborted.')
 
 	@api.onchange('graded')
 	def _graded(self):
