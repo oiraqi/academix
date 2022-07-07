@@ -6,6 +6,7 @@ class LetterGrade(models.Model):
 	_name = 'ixlms.letter.grade'
 	_description = 'LetterGrade'
 	_order = 'min desc'
+	_sql_constraints = [('name_ukey', 'unique(name)', 'Name already exists')]
 
 	name = fields.Char('Name', required=True)
 	min = fields.Float(string='Min Grade (Included)', required=True)
