@@ -1,5 +1,5 @@
 <odoo>
 	<data>
-		<menuitem id="ix_building_group_menu" name="BuildingGroups" action="action_building_group" sequence="50"/>
+		
 	</data>
 </odoo>
