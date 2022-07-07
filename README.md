@@ -7,6 +7,8 @@
 
 *Student*: Dear Advisor, I would like to stop by to get my course pre-registration form signed. *Advisor*: OK, but did you prepare/update your degree plan? *Student*: I have submitted it last semester as an Excel file. It hasn't changed since. *Advisor*: I can't find it, please send it again. Also, remind me about the program you're enrolled in and your minor, as well as your overall performance so far.
 
+*VPAA*: Dear colleagues, I am delighted to announce the launching of yet another software, dedicated to Quality Assurance. You will receive instructions explaining how to copy your sections from the LMS to the new Quality Assurance software.
+
 ## Academix High-level Design Principles
 - Single Source of Truth
 - Infinite eXpansion
