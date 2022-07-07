@@ -48,8 +48,8 @@ class AssessmentLine(models.Model):
 	avg_grade = fields.Float(related='assessment_id.avg_grade')
 	
 
-	@api.depends('grade', 'grade_scale', 'bonus', 'cancel_penalty')
-	@api.onchange('grade', 'grade_scale', 'bonus', 'cancel_penalty')
+	@api.depends('grade', 'bonus', 'cancel_penalty')
+	@api.onchange('grade', 'bonus', 'cancel_penalty')
 	def _egrade(self):
 		for rec in self:
 			if not rec.grade or rec.grade == '':
