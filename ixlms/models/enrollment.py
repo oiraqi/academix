@@ -53,7 +53,7 @@ class Enrollment(models.Model):
     def _assessment_grade(self, lms_course_id):
         if lms_course_id.grade_weighting == 'percentage':
             sum_epercentage, sum_wgrade = 0.0, 0.0
-            for assessment_line in lms_course_id.assessment_line_ids:
+            for assessment_line in self.assessment_line_ids:
                 if assessment_line.epercentage > 0:
                     sum_epercentage += assessment_line.epercentage
                     sum_wgrade += assessment_line.wgrade
@@ -63,7 +63,7 @@ class Enrollment(models.Model):
         
         if lms_course_id.grade_weighting == 'points':
             sum_epoints, sum_wgrade = 0.0, 0.0
-            for assessment_line in lms_course_id.assessment_line_ids:
+            for assessment_line in self.assessment_line_ids:
                 if assessment_line.sum_epoints > 0:
                     sum_epoints += assessment_line.epoints
                     sum_wgrade += assessment_line.wgrade
