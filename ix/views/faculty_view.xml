@@ -20,7 +20,7 @@
                             <field name="email" widget="email" required="1"/>
                             <label for="room_id" string="Office &#38; Phone"/>
                             <div name="office_phone">
-                                <field name="room_id" domain="[('school_id', '=', school_id), ('type', '=', 'office')]" options="{'no_quick_create': True, 'no_create_edit': True}" style="width: 50%"/>
+                                <field name="room_id" domain="[('type', '=', 'office')]" options="{'no_quick_create': True, 'no_create_edit': True}" style="width: 50%"/>
                                 <field name="phone" style="width: 50%"/>
                             </div>
                         </group>
