@@ -36,7 +36,14 @@ class AssessmentLine(models.Model):
 			if rec.grade != '' and (not rec.grade.isnumeric() or float(rec.grade) < 0):
 				raise ValidationError('The grade must be a positive number')
 	
-	grade_scale = fields.Integer(related='assessment_id.grade_scale')
+	grade_scale = fields.Integer(related='assessment_id.grade_scale', store=True)
+
+	@api.depends('grade_scale')
+	def _update_grade(self):
+		for rec in self:
+			if rec.grade and rec.grade.isnumeric():
+				rec.grade = str((rec.egrade - rec.bonus + rec.penalty) * rec.grade_scale / 100)
+	
 	penalty = fields.Float('Penalty', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)
 	egrade = fields.Float(string='Grade', compute='_egrade', store=True)

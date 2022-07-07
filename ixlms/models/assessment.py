@@ -57,15 +57,6 @@ class Assessment(models.Model):
 				raise ValidationError('The assessment % must be between 0 and 100%')
 
 			rec.course_id.check_sum_percentages()
-
-	@api.onchange('grade_scale')
-	def _update_assessment_line_grades(self):
-		for rec in self:
-			for assessment_line in rec.assessment_line_ids:
-				if assessment_line.grade and assessment_line.grade.isnumeric():
-					assessment_line.grade = str((assessment_line.egrade - rec.bonus + assessment_line.penalty) * rec.grade_scale / 100)
-
-
 	
 	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', related='course_id.technique_ids')
 	module_ids = fields.One2many(comodel_name='ixlms.module', related='course_id.module_ids')
