@@ -40,7 +40,7 @@ class AssessmentLine(models.Model):
 			except TypeError:
 				raise ValidationError('Grade must be a (positive) number')
 	
-	grade_scale = fields.Integer(related='assessment_id.grade_scale')	
+	grade_scale = fields.Integer(related='assessment_id.grade_scale', store=True)	
 	penalty = fields.Float('Penalty (%)', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)
 	egrade = fields.Float(string='Effective Grade (%)', compute='_grade', store=True)
@@ -54,8 +54,8 @@ class AssessmentLine(models.Model):
 	avg_grade = fields.Float(related='assessment_id.avg_grade')
 	
 
-	@api.depends('grade', 'bonus')
-	@api.onchange('grade', 'bonus')
+	@api.depends('grade', 'bonus', 'grade_scale', 'grade_weighting', 'percentage', 'points')
+	@api.onchange('grade')
 	def _grade(self):
 		for rec in self:
 			if not rec.grade or rec.grade == '':
@@ -74,8 +74,11 @@ class AssessmentLine(models.Model):
 			rec.egrade = pgrade + rec.bonus - rec.penalty
 			rec.formatted_grade = f'{rec.grade} / {rec.grade_scale} ({pgrade}%)'
 			formatted_egrade = str(rec.egrade / 100 * rec.grade_scale) + ' / ' + str(rec.grade_scale) + ' - ' + str(rec.egrade) + '%'
-			if rec.grade_weighting == 'points':				
-				formatted_egrade += ' - ' + str(rec.wgrade) + ' Pts.'				
+			if rec.grade_weighting == 'percentage':
+				rec.wgrade = rec.egrade * rec.percentage / 100
+			elif rec.grade_weighting == 'points':
+				rec.wgrade = rec.egrade / 100 * rec.points
+				formatted_egrade += ' - ' + str(rec.wgrade) + ' Pts.'
 			rec.formatted_egrade = formatted_egrade
 			if rec.egrade >= 90:
 				rec.grade_range = '90%+'
@@ -96,22 +99,4 @@ class AssessmentLine(models.Model):
 			else:
 				rec.penalty = 5.0
 
-	@api.depends('grade_weighting', 'percentage', 'points')
-	@api.onchange('grade_weighting', 'percentage', 'points')
-	def _grade(self):
-		for rec in self:
-			if not rec.grade or rec.grade == '':		
-				return
-			try:
-				if float(rec.grade) < 0:
-					raise ValidationError('The grade must be a positive number')
-			except TypeError:
-					raise ValidationError('The grade must be a (positive) number')
-			
-			pgrade = float(rec.grade) / rec.grade_scale * 100
-			rec.egrade = pgrade + rec.bonus - rec.penalty
-
-			if rec.grade_weighting == 'percentage':			
-				rec.wgrade = rec.egrade * rec.percentage / 100
-			elif rec.grade_weighting == 'points':
-				rec.wgrade = rec.egrade / 100 * rec.points
+	

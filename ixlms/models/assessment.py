@@ -7,19 +7,6 @@ class Assessment(models.Model):
 	_inherit = 'ix.expandable'
 	_order = 'due_time,module_id'
 
-	def write(self, vals):
-		outcome = super(Assessment, self).write(vals)
-		if 'grade_scale' in vals:
-			for rec in self:
-				for assessment_line in rec.assessment_line_ids:
-					try:
-						if assessment_line.grade and float(assessment_line.grade):
-							assessment_line.grade = str((assessment_line.egrade - rec.bonus + assessment_line.penalty) * rec.grade_scale / 100)
-					except TypeError:
-						continue
-		return outcome
-
-
 	name = fields.Char('Name', required=True)
 	description = fields.Html(string='Description')
 	
@@ -37,7 +24,14 @@ class Assessment(models.Model):
 	def _check_grade_scale(self):
 		for rec in self:
 			if rec.grade_scale <= 0:
-				raise ValidationError('Grade scale must strictly positive!')
+				raise ValidationError('Grade scale must be strictly positive!')
+
+	@api.onchange('grade_scale')
+	def _grade_scale_changed_warning(self):
+		for rec in self:
+			for assessment_line in rec.assessment_line_ids:
+				if assessment_line.grade:
+					raise ValidationError('Pay attention! You are changing the grade scale for this assessment while grades have already been assigned. Either abort this change, or make sure to review the assigned grades.')
 
 	@api.onchange('graded')
 	def _graded(self):
