@@ -58,6 +58,13 @@ class Assessment(models.Model):
 
 			rec.course_id.check_sum_percentages()
 
+	@api.depends('grade_scale')
+	def _update_assessment_line_grades(self):
+		for rec in self:
+			for assessment_line in rec.assessment_line_ids:
+				if assessment_line.grade and assessment_line.grade.isnumeric():
+					rec.grade = str(rec.egrade - rec.bonus + rec.penalty)
+
 
 	
 	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', related='course_id.technique_ids')
