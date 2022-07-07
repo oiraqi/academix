@@ -63,7 +63,7 @@ class Assessment(models.Model):
 		for rec in self:
 			for assessment_line in rec.assessment_line_ids:
 				if assessment_line.grade and assessment_line.grade.isnumeric():
-					assessment_line.grade = str((assessment_line.egrade - rec.bonus + rec.penalty) * rec.grade_scale / 100)
+					assessment_line.grade = str((assessment_line.egrade - rec.bonus + assessment_line.penalty) * rec.grade_scale / 100)
 
 
 	
