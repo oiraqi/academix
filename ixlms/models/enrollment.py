@@ -54,7 +54,9 @@ class Enrollment(models.Model):
     def _assessment_grade(self, lms_course_id):
         if lms_course_id.grade_weighting == 'percentage':
             sum_epercentage, sum_wgrade = 0.0, 0.0
-            raise ValidationError(len(self.assessment_line_ids))
+            assessment_line_ids = self.env['ixlms.assessment.line'].search([
+                ('section_id', '=', self.section_id.id), ('student_id', '=', self.student_id.id)])
+            raise ValidationError(len(assessment_line_ids))
             for assessment_line in self.assessment_line_ids:
                 if assessment_line.epercentage > 0:
                     sum_epercentage += assessment_line.epercentage
