@@ -13,7 +13,7 @@
 ## The Opportunity
 We can have an endless stream of such stories. Let alone accounting, payroll, HR, puchasing, inventory, etc. Do they sound familiar? Does your institution too use a plethora of disconnected software systems, causing information redundancy and inconsistency? Along with all these systems, does your institution still have most of its processes paper-based? Are you fed-up with this situation?
 
-Do you dream of one ultimate system that replaces them all? A single source of truth where information is never entered twice, while being omnipresent?
+Do you dream of one ultimate system that replaces them all? A single source of truth where information is never entered twice, while being readily available anytime, anywhere?
 
 ## Academix High-level Design Principles
 - Single Source of Truth
