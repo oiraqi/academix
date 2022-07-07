@@ -103,5 +103,6 @@ class AssessmentLine(models.Model):
 			if rec.grade_weighting == 'percentage':
 				rec.wgrade = rec.egrade * rec.percentage / 100
 			elif rec.grade_weighting == 'points':
-				rec.wgrade = (rec.egrade / 100) * rec.points
+				raise ValidationError(f'egrade: {rec.egrade}, points: {rec.points}')
+				#rec.wgrade = (rec.egrade / 100) * rec.points
 
