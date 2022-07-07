@@ -15,6 +15,8 @@ We can have an endless stream of such stories. Let alone accounting, payroll, HR
 
 Do you dream of one ultimate system that replaces them all? A single source of truth where information is never entered twice, while being readily available anytime, anywhere?
 
+Welcome To Academix: The Ultimate, All-in-one ERP for Higher-Ed Institutions!
+
 ## Academix High-level Design Principles
 - Single Source of Truth
 - Infinite eXpansion
