@@ -27,43 +27,43 @@
         </record>
         <record id="ix_building_4" model="ix.building">
             <field name="name">Blg 4</field>
-            <field name="group_id" ref="ix_group_academic"/>
+            <field name="group_id" ref="ix_building_group_academic"/>
         </record>
         <record id="ix_building_5" model="ix.building">
             <field name="name">Blg 5</field>
-            <field name="group_id" ref="ix_group_academic"/>
+            <field name="group_id" ref="ix_building_group_academic"/>
         </record>
         <record id="ix_building_6" model="ix.building">
             <field name="name">Blg 6</field>
-            <field name="group_id" ref="ix_group_academic"/>
+            <field name="group_id" ref="ix_building_group_academic"/>
         </record>
         <record id="ix_building_7" model="ix.building">
             <field name="name">Blg 7</field>
-            <field name="group_id" ref="ix_group_academic"/>
+            <field name="group_id" ref="ix_building_group_academic"/>
         </record>
         <record id="ix_building_8" model="ix.building">
             <field name="name">Blg 8</field>
-            <field name="group_id" ref="ix_group_academic"/>
+            <field name="group_id" ref="ix_building_group_academic"/>
         </record>
         <record id="ix_building_8b" model="ix.building">
             <field name="name">Blg 8B</field>
-            <field name="group_id" ref="ix_group_academic"/>
+            <field name="group_id" ref="ix_building_group_academic"/>
         </record>
         <record id="ix_building_9" model="ix.building">
             <field name="name">Blg 9</field>
-            <field name="group_id" ref="ix_group_service"/>
+            <field name="group_id" ref="ix_building_group_service"/>
         </record>
         <record id="ix_building_10" model="ix.building">
             <field name="name">Blg 10</field>
-            <field name="group_id" ref="ix_group_academic"/>
+            <field name="group_id" ref="ix_building_group_academic"/>
         </record>
         <record id="ix_building_11" model="ix.building">
             <field name="name">Blg 11</field>
-            <field name="group_id" ref="ix_group_academic"/>
+            <field name="group_id" ref="ix_building_group_academic"/>
         </record>
         <record id="ix_building_12" model="ix.building">
             <field name="name">Blg 12</field>
-            <field name="group_id" ref="ix_group_admin"/>
+            <field name="group_id" ref="ix_building_group_admin"/>
         </record>    
     </data>
     
