@@ -31,7 +31,7 @@ class Assessment(models.Model):
 		for rec in self:
 			for assessment_line in rec.assessment_line_ids:
 				if assessment_line.grade:
-					raise ValidationError('Pay attention! You are changing the grade scale for this assessment while grades have already been assigned. Either abort this change, or make sure to review the assigned grades.')
+					raise ValidationError('Pay attention! You are trying to change the grade scale for this assessment while grades have already been assigned. If you insist, please start by deleting all asigned grades (for this assessment). Till then, this change will be aborted.')
 
 	@api.onchange('graded')
 	def _graded(self):
