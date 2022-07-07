@@ -21,7 +21,8 @@
 #
 ###############################################################################
 
-from odoo import models, fields, api
+from odoo import models, fields
+from odoo.exceptions import ValidationError
 
 
 PASSING_GRADES = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-']
@@ -57,9 +58,10 @@ class Enrollment(models.Model):
                 if assessment_line.epercentage > 0:
                     sum_epercentage += assessment_line.epercentage
                     sum_wgrade += assessment_line.wgrade
-            if sum_epercentage > 0:
-                return fields.Float.round(sum_wgrade / sum_epercentage * 100, 2), sum_epercentage
-            return 0.0, 0.0
+            raise ValidationError(sum_epercentage)
+            #if sum_epercentage > 0:
+            #    return fields.Float.round(sum_wgrade / sum_epercentage * 100, 2), sum_epercentage
+            #return 0.0, 0.0
         
         if lms_course_id.grade_weighting == 'points':
             sum_epoints, sum_wgrade = 0.0, 0.0
