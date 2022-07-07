@@ -52,7 +52,7 @@ class AssessmentLine(models.Model):
 	@api.onchange('grade', 'grade_scale', 'bonus', 'cancel_penalty')
 	def _egrade(self):
 		for rec in self:
-			if rec.grade == '':
+			if not rec.grade or rec.grade == '':
 				rec.egrade = 0.0
 				rec.grade_range = 'Not graded yet'
 				return
