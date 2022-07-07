@@ -77,7 +77,7 @@ class AssessmentLine(models.Model):
 			rec.formatted_grade = rec.grade + ' / ' + str(rec.grade_scale)
 			formatted_egrade = str(rec.egrade / 100 * rec.grade_scale) + ' / ' + str(rec.grade_scale)
 			if rec.grade_weighting == 'points':
-				formatted_egrade += ' - ' + str(rec.wgrade) + ' Pts.'
+				formatted_egrade += ' - ' + str(rec.egrade / 100 * rec.points) + ' Pts.'
 			rec.formatted_egrade = formatted_egrade
 			if rec.egrade >= 90:
 				rec.grade_range = '90%+'
@@ -103,6 +103,5 @@ class AssessmentLine(models.Model):
 			if rec.grade_weighting == 'percentage':
 				rec.wgrade = rec.egrade * rec.percentage / 100
 			elif rec.grade_weighting == 'points':
-				raise ValidationError(f'egrade: {rec.egrade}, points: {rec.points}')
-				#rec.wgrade = (rec.egrade / 100) * rec.points
+				rec.wgrade = rec.egrade / 100 * rec.points
 
