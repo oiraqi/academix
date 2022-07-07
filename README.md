@@ -9,6 +9,8 @@
 
 *VPAA*: Dear colleagues, I am delighted to announce the launching of yet another software, dedicated to Quality Assurance. You will receive instructions explaining how to copy your sections from the LMS to the new Quality Assurance software.
 
+We can have an endless stream of such stories. Do they sound familiar? Is your institution too using a plethora of disconnected software systems, causing information redundancy and anomalies?
+
 ## Academix High-level Design Principles
 - Single Source of Truth
 - Infinite eXpansion
