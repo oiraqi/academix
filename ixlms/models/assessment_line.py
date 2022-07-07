@@ -57,7 +57,7 @@ class AssessmentLine(models.Model):
 				rec.grade_range = 'Not graded yet'
 				return
 			
-			if not rec.grade.isnumeric() or float(rec.grade) < 0:
+			if float(rec.grade) < 0:
 				raise ValidationError('The grade must be a positive number')
 			
 			rec.egrade = float(rec.grade) / rec.grade_scale * 100 + rec.bonus - rec.penalty
