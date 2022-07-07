@@ -67,12 +67,9 @@
 			<field name="arch" type="xml">
 				<tree string="AssessmentLines" create="false">
 					<field name="name"/>
-					<field name="technique_id" widget="badge"/>
-					<field name="percentage" sum="Total %"/>
-					<field name="egrade"/>					
-					<field name="max_grade"/>
-					<field name="min_grade"/>
-					<field name="avg_grade"/>
+					<field name="technique_id" widget="badge"/>					
+					<field name="formatted_egrade"/>	
+					<field name="percentage"/>
 					<field name="wgrade"/>
 				</tree>
 			</field>
@@ -84,12 +81,9 @@
 			<field name="arch" type="xml">
 				<tree string="AssessmentLines" create="false">
 					<field name="name"/>
-					<field name="technique_id" widget="badge"/>
-					<field name="points" sum="Total Points"/>
-					<field name="egrade"/>					
-					<field name="max_grade"/>
-					<field name="min_grade"/>
-					<field name="avg_grade"/>
+					<field name="technique_id" widget="badge"/>					
+					<field name="formatted_egrade"/>
+					<field name="points"/>
 					<field name="wgrade"/>
 				</tree>
 			</field>
@@ -101,12 +95,9 @@
 			<field name="arch" type="xml">
 				<tree string="AssessmentLines" create="false">
 					<field name="name"/>
-					<field name="module_id" widget="badge"/>
-					<field name="percentage" sum="Total %"/>
-					<field name="egrade"/>					
-					<field name="max_grade"/>
-					<field name="min_grade"/>
-					<field name="avg_grade"/>
+					<field name="module_id" widget="badge"/>					
+					<field name="formatted_egrade"/>
+					<field name="percentage"/>
 					<field name="wgrade"/>
 				</tree>
 			</field>
@@ -118,12 +109,9 @@
 			<field name="arch" type="xml">
 				<tree string="AssessmentLines" create="false">
 					<field name="name"/>
-					<field name="module_id" widget="badge"/>
-					<field name="points" sum="Total Points"/>
-					<field name="egrade"/>					
-					<field name="max_grade"/>
-					<field name="min_grade"/>
-					<field name="avg_grade"/>
+					<field name="module_id" widget="badge"/>					
+					<field name="formatted_egrade"/>
+					<field name="points"/>
 					<field name="wgrade"/>
 				</tree>
 			</field>
