@@ -3,6 +3,8 @@
 
 *Enrollment Services*: Dear Faculty, please verify that the list of students in your sections is correct. *Faculty*: Dear Enrollment Services, how/why could/would a list of students be incorrect? *Enrollment Services*: Because some recent updates in our Roster Management System may not have been replicated on our Learning Management System.
 
+*Student*: Dear Advisor, I would like to stop by to get my course pre-registration form signed. *Advisor*: OK, but did you prepare/update your degree plan? *Student*: I have submitted last semester as an Excel file. It hasn't changed since. *Advisor*: Please send it again, I can't find it.
+
 ## Academix High-level Design Principles
 - Single Source of Truth
 - Infinite eXpansion
