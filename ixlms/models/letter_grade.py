@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 
 class LetterGrade(models.Model):
@@ -12,6 +12,16 @@ class LetterGrade(models.Model):
 	min = fields.Float(string='Min Grade (Included)', required=True)
 	max = fields.Float(string='Max Grade (Excluded)', required=True)
 	passing = fields.Boolean(string='Passing Grade', default=True, required=True)
+
+	@api.constrains('min', 'max')
+	def _check_min_max(self):
+		for rec in self:
+			if rec.min < 0:
+				raise ValidationError('Min must be positive')
+			if rec.max <= 0:
+				raise ValidationError('Max must be strictly positive')
+			if rec.max <= rec.min:
+				raise ValidationError('Min must be (strictly) smaller than Max')
 	
 
 	@api.model
