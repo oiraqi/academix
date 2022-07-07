@@ -33,6 +33,12 @@ class Assessment(models.Model):
 	percentage = fields.Float(string='%', required=True, default=0.0)
 	grade_scale = fields.Integer(string='Graded over', required=True, default=100)
 
+	@api.constrains('grade_scale')
+	def _check_grade_scale(self):
+		for rec in self:
+			if rec.grade_scale <= 0:
+				raise ValidationError('Grade scale must strictly positive!')
+
 	@api.onchange('graded')
 	def _graded(self):
 		for rec in self:
