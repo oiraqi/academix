@@ -51,8 +51,7 @@
 				<tree string="AssessmentLines" create="false">
 					<field name="name"/>					
 					<field name="grade"/>
-					<field name="penalty"/>
-					<field name="cancel_penalty" string="Penalty Cancelled"/>
+					<field name="penalty"/>					
 					<field name="bonus"/>
 					<field name="egrade" avg="Average"/>
 				</tree>

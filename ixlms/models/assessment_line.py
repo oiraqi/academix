@@ -43,7 +43,7 @@ class AssessmentLine(models.Model):
 	@api.onchange('grade', 'bonus', 'cancel_penalty')
 	def _egrade(self):
 		for rec in self:
-			rec.egrade = rec.grade + rec.bonus - (rec.cancel_penalty and 0 or rec.penalty)
+			rec.egrade = rec.grade + rec.bonus - rec.penalty
 			if rec.egrade >= 90:
 				rec.grade_range = '90%+'
 			elif rec.egrade >= 80:
@@ -57,7 +57,10 @@ class AssessmentLine(models.Model):
 
 	def _penalty(self):
 		for rec in self:
-			rec.penalty = 0.0
+			if rec.cancel_penalty:
+				rec.penalty = 0.0
+			else:
+				rec.penalty = 5.0
 
 	@api.depends('egrade', 'grade_weighting', 'percentage', 'points')
 	def _wgrade(self):
