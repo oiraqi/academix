@@ -28,18 +28,23 @@ class AssessmentLine(models.Model):
 	submission_type = fields.Selection(related='assessment_id.submission_type')
 	teamwork = fields.Boolean(related='assessment_id.teamwork')
 	submission_ids = fields.Many2many('ixlms.assessment.submission', 'ixlms_assessment_line_submission', 'assessment_line_id', 'submission_id', string='Submissions')
-	grade = fields.Char(string='Assigned Grade', default='')
+	grade = fields.Char(string='Assigned Grade', default='')	
 
 	@api.constrains('grade')
 	def _check_grade(self):
 		for rec in self:
-			if rec.grade and float(rec.grade) < 0:
-				raise ValidationError(f'Grade must be a positive number: {rec.grade}')
+			try:
+				if rec.grade and float(rec.grade) < 0:
+					raise ValidationError('Grade must be a positive number')
+			except TypeError:
+				raise ValidationError('Grade must be a (positive) number')
 	
 	grade_scale = fields.Integer(related='assessment_id.grade_scale', store=True)	
 	penalty = fields.Float('Penalty', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)
 	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
+	formatted_grade = fields.Char(string='Assigned Grade', compute='_egrade')
+	formatted_egrade = fields.Char(string='Assigned Grade', compute='_egrade')
 	grade_range = fields.Char(string='Grade Range', compute='_egrade', store=True)
 	wgrade = fields.Float(string='Weighted Grade', compute='_wgrade', store=True)
 	
@@ -56,11 +61,15 @@ class AssessmentLine(models.Model):
 				rec.egrade = 0.0
 				rec.grade_range = 'Not graded yet'
 				return
-			
-			if float(rec.grade) < 0:
-				raise ValidationError('The grade must be a positive number')
+			try:
+				if float(rec.grade) < 0:
+					raise ValidationError('The grade must be a positive number')
+			except TypeError:
+					raise ValidationError('The grade must be a (positive) number')
 			
 			rec.egrade = float(rec.grade) / rec.grade_scale * 100 + rec.bonus - rec.penalty
+			rec.formatted_grade = rec.grade + '/' + str(rec.grade_scale)
+			rec.formatted_egrade = str(rec.egrade) + '/' + str(rec.grade_scale)
 			if rec.egrade >= 90:
 				rec.grade_range = '90%+'
 			elif rec.egrade >= 80:

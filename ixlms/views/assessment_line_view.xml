@@ -9,7 +9,7 @@
 					<sheet>
 						<h1><field name="name"/></h1>						
 						<div>
-						<h1><field name="egrade"/></h1>
+						<h1><field name="formatted_grade"/></h1>
 						</div>
 						<field name="submission_type" invisible="1"/>
 						<field name="teamwork" invisible="1"/>
@@ -53,7 +53,7 @@
 			<field name="arch" type="xml">
 				<tree string="AssessmentLines" create="false">
 					<field name="name"/>					
-					<field name="grade"/>
+					<field name="formatted_grade"/>
 					<field name="penalty"/>					
 					<field name="bonus"/>
 					<field name="egrade" avg="Average"/>
