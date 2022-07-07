@@ -36,6 +36,7 @@ class AssessmentLine(models.Model):
 			if rec.grade != '' and (not rec.grade.isnumeric() or float(rec.grade) < 0):
 				raise ValidationError('The grade must be a positive number')
 	
+	grade_scale = fields.Integer(related='assessment_id.grade_scale')
 	penalty = fields.Float('Penalty', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)
 	egrade = fields.Float(string='Grade', compute='_egrade', store=True)
@@ -47,8 +48,8 @@ class AssessmentLine(models.Model):
 	avg_grade = fields.Float(related='assessment_id.avg_grade')
 	
 
-	@api.depends('grade', 'bonus', 'cancel_penalty')
-	@api.onchange('grade', 'bonus', 'cancel_penalty')
+	@api.depends('grade', 'grade_scale', 'bonus', 'cancel_penalty')
+	@api.onchange('grade', 'grade_scale', 'bonus', 'cancel_penalty')
 	def _egrade(self):
 		for rec in self:
 			if rec.grade == '':
@@ -59,7 +60,7 @@ class AssessmentLine(models.Model):
 			if not rec.grade.isnumeric() or float(rec.grade) < 0:
 				raise ValidationError('The grade must be a positive number')
 			
-			rec.egrade = float(rec.grade) + rec.bonus - rec.penalty
+			rec.egrade = float(rec.grade) / rec.grade_scale * 100 + rec.bonus - rec.penalty
 			if rec.egrade >= 90:
 				rec.grade_range = '90%+'
 			elif rec.egrade >= 80:
