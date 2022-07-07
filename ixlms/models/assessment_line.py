@@ -73,9 +73,8 @@ class AssessmentLine(models.Model):
 			pgrade = float(rec.grade) / rec.grade_scale * 100
 			rec.egrade = pgrade + rec.bonus - rec.penalty			
 			rec.formatted_grade = f'{rec.grade} / {rec.grade_scale} ({pgrade}%)'
-			formatted_egrade = str(rec.egrade / 100 * rec.grade_scale) + ' / ' + str(rec.grade_scale)
-			if rec.grade_weighting == 'percentage':
-				formatted_egrade += ' - ' + str(rec.egrade) + '%'
+			formatted_egrade = str(rec.egrade / 100 * rec.grade_scale) + ' / ' + str(rec.grade_scale) + ' - ' + str(rec.egrade) + '%'
+			if rec.grade_weighting == 'percentage':			
 				rec.wgrade = rec.egrade * rec.percentage / 100
 			elif rec.grade_weighting == 'points':
 				rec.wgrade = rec.egrade / 100 * rec.points

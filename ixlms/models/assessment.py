@@ -94,7 +94,7 @@ class Assessment(models.Model):
 
 	timeline_ids = fields.One2many(comodel_name='ixlms.assessment.timeline', inverse_name='assessment_id', string='Specific Timelines')
 		
-	bonus = fields.Float(string='Class-wide Bonus (%)', required=True, default=0.0)
+	bonus = fields.Float(string='Class-wide Bonus (%)', default=0.0)
 
 	@api.constrains('bonus')
 	def _check_bonus(self):
