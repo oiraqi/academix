@@ -59,6 +59,8 @@ class AssessmentLine(models.Model):
 		for rec in self:
 			if not rec.grade or rec.grade == '':
 				rec.egrade = 0.0
+				rec.formatted_grade = 'Not graded yet'
+				rec.formatted_egrade = 'Not graded yet'
 				rec.grade_range = 'Not graded yet'
 				return
 			try:
