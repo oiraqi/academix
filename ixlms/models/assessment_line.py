@@ -54,8 +54,8 @@ class AssessmentLine(models.Model):
 	avg_grade = fields.Float(related='assessment_id.avg_grade')
 	
 
-	@api.depends('grade', 'bonus', 'cancel_penalty')
-	@api.onchange('grade', 'bonus', 'cancel_penalty')
+	@api.depends('grade', 'bonus', 'cancel_penalty', 'grade_weighting', 'percentage', 'points')
+	@api.onchange('grade', 'bonus', 'cancel_penalty', 'grade_weighting', 'percentage', 'points')
 	def _grade(self):
 		for rec in self:
 			if not rec.grade or rec.grade == '':
@@ -74,8 +74,12 @@ class AssessmentLine(models.Model):
 			rec.egrade = pgrade + rec.bonus - rec.penalty			
 			rec.formatted_grade = f'{rec.grade} / {rec.grade_scale} ({pgrade}%)'
 			formatted_egrade = str(rec.egrade / 100 * rec.grade_scale) + ' / ' + str(rec.grade_scale)
-			if rec.grade_weighting == 'points':
-				formatted_egrade += ' - ' + str(rec.egrade / 100 * rec.points) + ' Pts.'
+			if rec.grade_weighting == 'percentage':
+				formatted_egrade += ' - ' + str(rec.egrade) + '%'
+				rec.wgrade = rec.egrade * rec.percentage / 100
+			elif rec.grade_weighting == 'points':
+				rec.wgrade = rec.egrade / 100 * rec.points
+				formatted_egrade += ' - ' + str(rec.wgrade) + ' Pts.'				
 			rec.formatted_egrade = formatted_egrade
 			if rec.egrade >= 90:
 				rec.grade_range = '90%+'
@@ -87,6 +91,7 @@ class AssessmentLine(models.Model):
 				rec.grade_range = '[60 - 70%['
 			else:
 				rec.grade_range = '[0 - 60%['
+			
 
 	def _penalty(self):
 		for rec in self:
@@ -95,11 +100,4 @@ class AssessmentLine(models.Model):
 			else:
 				rec.penalty = 5.0
 
-	@api.depends('egrade', 'grade_weighting', 'percentage', 'points')
-	def _wgrade(self):
-		for rec in self:
-			if rec.grade_weighting == 'percentage':
-				rec.wgrade = rec.egrade * rec.percentage / 100
-			elif rec.grade_weighting == 'points':
-				rec.wgrade = rec.egrade / 100 * rec.points
 
