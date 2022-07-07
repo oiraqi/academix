@@ -9,7 +9,7 @@
 					<sheet>
 						<h1><field name="name"/></h1>						
 						<div>
-						<h1><field name="formatted_grade"/></h1>
+						<h1><field name="formatted_egrade"/></h1>
 						</div>
 						<field name="submission_type" invisible="1"/>
 						<field name="teamwork" invisible="1"/>

@@ -7,6 +7,7 @@ class AssessmentLine(models.Model):
 	_description = 'AssessmentLine'
 	_inherit = 'ix.expandable'
 	_order = 'egrade desc'
+	_sql_constraints = [('student_assessment_ukey', 'unique(student_id, assessment_id)', 'Assessment line already exists')]
 
 	name = fields.Char('Name', related='student_id.name', store=True)
 	student_id = fields.Many2one(comodel_name='ix.student', string='Student', required=True)	
