@@ -24,7 +24,7 @@ Do you dream of one ultimate system that replaces them all? A single source of t
   - Zero redundancy
 
 ## Academix Unique Strengths
-- The vision
-- The subject-matter expertise
-- The data model
-- The technology stack
+- The Vision
+- The Subject-matter Expertise
+- The Data Model
+- The Technology Stack
