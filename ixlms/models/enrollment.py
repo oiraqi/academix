@@ -51,31 +51,27 @@ class Enrollment(models.Model):
             rec.passed = rec.letter_grade in PASSING_GRADES
 
     def _assessment_grade(self, lms_course_id):
-        if lms_course_id.grade_grouping == 'module' and lms_course_id.grade_weighting == 'percentage':
-            return self._assessment_grade_module_percentage(lms_course_id.module_ids)
+        if lms_course_id.grade_weighting == 'percentage':
+            sum_epercentage, sum_wgrade = 0.0, 0.0
+            for assessment_line in lms_course_id.assessment_line_ids:
+                if assessment_line.epercentage > 0:
+                    sum_epercentage += assessment_line.epercentage
+                    sum_wgrade += assessment_line.wgrade
+            if sum_epercentage > 0:
+                return fields.Float.round(sum_wgrade / sum_epercentage * 100, 2), sum_epercentage
+            return 0.0, 0.0
         
-        if lms_course_id.grade_grouping == 'module' and lms_course_id.grade_weighting == 'points':
-            return self._assessment_grade_module_points(lms_course_id.module_ids)
+        if lms_course_id.grade_weighting == 'points':
+            sum_epoints, sum_wgrade = 0.0, 0.0
+            for assessment_line in lms_course_id.assessment_line_ids:
+                if assessment_line.sum_epoints > 0:
+                    sum_epoints += assessment_line.epoints
+                    sum_wgrade += assessment_line.wgrade
+            if sum_epoints > 0:
+                return fields.Float.round(sum_wgrade / sum_epoints * 100, 2), sum_epoints
+            return 0.0, 0.0       
         
-        if lms_course_id.grade_grouping == 'technique' and lms_course_id.grade_weighting == 'percentage':
-            return self._assessment_grade_technique_percentage(lms_course_id.technique_ids)
-        
-        if lms_course_id.grade_grouping == 'technique' and lms_course_id.grade_weighting == 'points':
-            return self._assessment_grade_technique_points(lms_course_id.technique_ids)
-        
-        return 100, 90
-
-    def _assessment_grade_module_percentage(self, module_ids):
-        return 100, 90
-
-    def _assessment_grade_module_points(self, module_ids):
-        return 100, 90
-
-    def _assessment_grade_technique_percentage(self, technique_ids):
-        return 100, 90
-    
-    def _assessment_grade_technique_points(self, technique_ids):
-        return 100, 90
+        return 0.0, 0.0    
 
     def _attendance(self):
         for rec in self:
