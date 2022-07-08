@@ -18,7 +18,7 @@ Do you dream of one ultimate system that replaces them all? A single source of t
 Welcome To Academix: The Ultimate, All-in-one ERP for Higher-Ed Institutions!
 
 ## Academix Vision
-To become the N°1 choice of higher-ed institutions for holistic, integrated academic, administrative, and financial management.
+To become the N°1 choice of higher-ed institutions for holistic and integrated academic, administrative, and financial management.
 
 ## Academix High-level Design Principles
 - Single Source of Truth
