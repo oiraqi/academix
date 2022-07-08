@@ -99,8 +99,7 @@
             <field name="arch" type="xml">
                 <tree string="Planned Courses">
                     <field name="course_id"/>
-                    <field name="semester"/>
-                    <field name="year"/>
+                    <field name="term_id"/>
                 </tree>
             </field>
         </record>
