@@ -10,7 +10,7 @@
 
 *VPAA*: Dear colleagues, I am delighted to announce the launching of yet another software, dedicated to Quality Assurance. You will receive instructions explaining how to copy your sections from the LMS to the new Quality Assurance software, as well as how to export some material to include in your course portfolios.
 
-## The Opportunity
+## Opportunity
 We can have an endless stream of such stories. Let alone accounting, payroll, HR, puchasing, inventory, etc. Do they sound familiar? Does your institution too use a plethora of disconnected software systems, causing information redundancy and inconsistency? Along with all these systems, does your institution still have most of its processes paper-based? Are you fed-up with this situation?
 
 Do you dream of one ultimate system that replaces them all? A single source of truth where information is never entered twice, while being readily available anytime, anywhere?
