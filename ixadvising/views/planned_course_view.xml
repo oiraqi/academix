@@ -13,9 +13,7 @@
                                 <div name="details" class="oe_kanban_details">
                                     <a type="open">
                                         <field name="name" />
-                                    </a>
-                                    <field name="semester" invisible="1"/>
-                                    <field name="year" invisible="1"/>
+                                    </a>                                    
                                     <field name="term_id" invisible="1"/>
                                 </div>
                             </div>
@@ -46,11 +44,7 @@
                             <notebook>
                                 <page string="Planning" name="course_planning">
                                     <group name="course_planning" col="4">
-                                        <label for="semester" string="Semester &#38; Year"/>
-                                        <div>
-                                            <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 70%"/>
-                                            <field name="year" style="width: 30%"/>
-                                        </div>
+                                        <field name="term_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                                         <field name="student_id" readonly="1"/>
                                         <field name="section_id" attrs="{'readonly': [('enrollment_id', '!=', False)]}" domain="[('course_id', '=', course_id), ('term_id', '=', term_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                                         <field name="timeslot"/>
