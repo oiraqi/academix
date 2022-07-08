@@ -74,7 +74,7 @@
                     <field name="program_id"/>
                     <field name="term_id" string="Starting Term"/>                    
                     <field name="pace"/>
-                    <field name="take_summer"/>
+                    <field name="session_ids" widget="many2many_tags"/>
                 </tree>
             </field>
         </record>
