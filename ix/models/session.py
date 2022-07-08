@@ -10,7 +10,8 @@ class Session(models.Model):
 	name = fields.Char('Name', required=True)
 	code = fields.Char(string='Code', required=True)
 	sequence = fields.Integer(string='Sequence', required=True)
-	max_ncourses = fields.Integer(string='Max Number of Courses', required=True)	
+	max_ncourses = fields.Integer(string='Max Number of Courses', required=True)
+	max_ncredits = fields.Integer(string='Max Number of Credits', required=True)
 	
 	@api.model
 	def get_first_session(self):

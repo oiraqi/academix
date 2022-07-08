@@ -46,14 +46,21 @@ class PlannedCourse(models.Model):
     # passed = fields.Boolean(related='enrollment_id.passed')
 
     @api.constrains('term_id')
-    def _check_max_credits(self):
+    def _check_max_credits_courses(self):
         for rec in self:
             records = self.env['ixadvising.planned.course'].search(
                 [('term_id', '=', rec.term_id.id)])
             if records:
+                if len(records) > rec.student_id.max_ncourses:
+                    raise ValidationError(f'Max allowed number of courses for student ({rec.student_id.max_ncourses}) exceeded!')
+                if len(records) > rec.term_id.session_id.max_ncourses:
+                    raise ValidationError(f'Max allowed number of courses for session ({rec.term_id.session_id.max_ncourses}) exceeded!')
+
                 sum_credits = sum([record.course_id.sch for record in records])
-                if sum_credits > 18:# To do: should depend on student credit limit / semester
-                    raise ValidationError('Max allowed number of credits (18) exceeded!')
+                if sum_credits > rec.student_id.max_ncredits:
+                    raise ValidationError(f'Max allowed number of credits for student ({rec.student_id.max_ncredits}) exceeded!')
+                if sum_credits > rec.term_id.session_id.max_ncredits:
+                    raise ValidationError(f'Max allowed number of credits for session ({rec.term_id.session_id.max_ncredits}) exceeded!')
             
     @api.constrains('term_id')
     def _check_prerequisites(self):# Incomplete
