@@ -80,7 +80,7 @@ class Term(models.Model):
     start_date = fields.Date(string='Start Date')
     end_date = fields.Date(string='End Date')    
 
-    @api.depends('year', 'semester')
+    @api.depends('year', 'session_id')
     def _compute_name_code(self):
         for rec in self:
             if rec.year and rec.session_id:
