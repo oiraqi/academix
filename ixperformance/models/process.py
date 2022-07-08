@@ -25,43 +25,12 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 from datetime import date
 
-SEMESTERS = {'1': 'SP', '3': 'FA'}
-
 class Process(models.Model):
     _name = 'ixperformance.process'
     _description = 'Evaluation Process'
     _inherit = ['ix.faculty.owned', 'mail.thread']
-    _order = 'from_year,from_semester'
-    _sql_constraints = [('from_to_ukey', 'unique(from_year, to_year, from_semester, to_semester)', 'An evaluation process for the selected period already exists')]
-
-    @api.model
-    def _from_year_selection(self):
-        current_year = date.today().year
-        year = current_year - 5
-        year_list = []
-        while year <= current_year:
-            year_list.append((str(year), str(year)))
-            year += 1
-        return year_list
-    @api.model
-    def _to_year_selection(self):
-        current_year = date.today().year
-        year = current_year
-        year_list = []
-        while year <= current_year + 5:
-            year_list.append((str(year), str(year)))
-            year += 1
-        return year_list
-
-    @api.model
-    def _latest_evaluation_year_selection(self):
-        current_year = date.today().year
-        year = current_year - 3
-        year_list = []
-        while year <= current_year:
-            year_list.append((str(year), str(year)))
-            year += 1
-        return year_list
+    _order = 'from_year,from_sequence'
+    _sql_constraints = [('from_to_ukey', 'unique(from_term_id, to_term_id)', 'An evaluation process for the selected period already exists')]
 
     name = fields.Char('Evaluation Process', compute='_set_name', store=True)
     hiring_date = fields.Date(related='faculty_id.hiring_date')
@@ -91,23 +60,19 @@ class Process(models.Model):
     type = fields.Selection(
         [('srank', 'Sub-Rank'), ('rank', 'Rank')], 'Evaluation Type', default='srank', required=True,
         readonly=True, states={'faculty': [('readonly', False)]})
-    from_year = fields.Selection(_from_year_selection, 'From Year', required=True,
-                               readonly=True, states={'faculty': [('readonly', False)]},
-                               default=lambda self: str(date.today().year))
-    from_semester = fields.Selection(
-        [('1', 'Spring'), ('3', 'Fall')], 'From', default='1', required=True,
-        readonly=True, states={'faculty': [('readonly', False)]})
-    to_year = fields.Selection(_to_year_selection, 'To Year', required=True,
-                             readonly=True, states={'faculty': [('readonly', False)]})
-    to_semester = fields.Selection(
-        [('1', 'Spring'), ('3', 'Fall')], 'To', default='1', required=True,
-        readonly=True, states={'faculty': [('readonly', False)]})
+    from_term_id = fields.One2many('ix.term', 'From Term', required=True,
+                               readonly=True, states={'faculty': [('readonly', False)]})
+    from_year = fields.Integer(related='from_term_id.year', store=True)
+    from_sequence = fields.Integer(related='from_term_id.session_id.sequence', store=True)
+    
+    to_term_id = fields.One2many('ix.term', 'To Term', required=True,
+                               readonly=True, states={'faculty': [('readonly', False)]})
     period = fields.Char('Period under Evaluation', compute='_set_name')
     previous_process_id = fields.Many2one('ixperformance.process', string='Previous Evaluation', compute='_previous_process_id')
 
     def _previous_process_id(self):
         for rec in self:
-            records = self.env['ixperformance.process'].search([('faculty_id.user_id', '=', self.env.user.id), ('state', '=', 'done')], order='from_year desc,from_semester desc')
+            records = self.env['ixperformance.process'].search([('faculty_id.user_id', '=', self.env.user.id), ('state', '=', 'done')], order='from_year desc,from_sequence desc')
             if records:
                 rec.previous_process_id = records[0]
             else:
@@ -117,48 +82,26 @@ class Process(models.Model):
                                   readonly=True, states={'faculty': [('readonly', False)]})
 
      
-    @api.constrains('from_year', 'from_semester', 'to_year', 'to_semester')
+    @api.constrains('from_term_id', 'to_term_id')
     def _check_period(self):
         for rec in self:
-            if rec.from_year > rec.to_year or (rec.from_year == rec.to_year and rec.from_semester > rec.to_semester):
+            if rec.from_term_id.year > rec.to_term_id.year or (rec.from_term_id.year == rec.to_term_id.year and rec.from_term_id.sequence > rec.to_term_id.sequence):
                 raise UserError(
-                    'From Year/Semester should be before To Year/Semester')
+                    'From Term should be before To Term')
 
-    @api.depends('from_year', 'to_year', 'from_semester', 'to_semester')
-    @api.onchange('from_year', 'to_year', 'from_semester', 'to_semester')
+    @api.depends('from_term_id', 'to_term_id')
+    @api.onchange('from_term_id', 'to_term_id')
     def _set_name(self):
         for rec in self:
-            if rec.from_year and rec.from_semester and rec.to_year and rec.to_semester:
-                rec.period = SEMESTERS[rec.from_semester] + str(int(rec.from_year) - 2000) + '-' + SEMESTERS[rec.to_semester] + str(int(rec.to_year) - 2000)
+            if rec.from_term_id and rec.to_term_id:
+                rec.period = rec.from_term_id.code + '-' + rec.to_term_id.code
                 rec.name = rec.period + '-' + 'Eval'
                 if rec.faculty_id:
                     rec.name += ' - ' + rec.faculty_id.name
             else:
                 rec.period = ''
-                rec.name = ''
+                rec.name = ''    
     
-    @api.onchange('from_year', 'type')
-    def _update_to_year(self):
-        for rec in self:
-            if rec.type == 'srank':
-                if int(rec.from_year) + 1 >= date.today().year:
-                    rec.to_year = str(int(rec.from_year) + 1)
-                else:
-                    rec.to_year = str(date.today().year)
-            else:
-                if int(rec.from_year) + 5 >= date.today().year:
-                    rec.to_year = str(int(rec.from_year) + 5)
-                else:
-                    rec.to_year = str(date.today().year)
-    
-    @api.onchange('from_semester')
-    def _update_to_semester(self):
-        for rec in self:
-            if rec.from_semester == '1':
-                rec.to_semester = '3'
-            elif rec.from_semester == '3':
-                rec.to_semester = '1'
-
     # Committee section
     committee_state_datetime = fields.Datetime()    
     committee_recommendation = fields.Selection(

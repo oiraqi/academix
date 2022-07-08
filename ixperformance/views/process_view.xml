@@ -42,13 +42,8 @@
                             <field name="rank" style="width: 75%"/>
                             <field name="srank_id" domain="[('rank', '=', rank)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" style="width: 15%"/>
                             <field name="type" widget="radio" options="{'horizontal': true}"/>
-                            <label for="from_semester" string="Evaluation Period"/>
-                            <div class="o_address_format">
-                                <field name="from_semester" widget="radio" options="{'horizontal': true}" style="width: 50%"/>
-                                <field name="from_year" style="width: 25%"/>
-                                <field name="to_semester" widget="radio" options="{'horizontal': true}" style="width: 50%"/>
-                                <field name="to_year" style="width: 25%"/>
-                            </div>                            
+                            <field name="from_term_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                            <field name="to_term_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="previous_process_id"/>
                         </group>
                         <notebook>
