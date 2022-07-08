@@ -36,8 +36,7 @@ class DegreePlan(models.Model):
     program_id = fields.Many2one('ixcatalog.program', related='student_id.program_id')
     pace = fields.Selection(
         [('4', '4'), ('5', '5'), ('6', '6')], string='Pace', default='5', required=True)
-    take_summer = fields.Selection(string='Take Summer', selection=[(
-        'never', 'Never'), ('half', '1 / 2'), ('always', 'Always')], default='half')
+    session_ids = fields.Many2many(comodel_name='ix.session', string='Sessions', required=True)
 
     def generate(self):
         self.ensure_one()
@@ -47,31 +46,16 @@ class DegreePlan(models.Model):
             for course in component.course_ids:
                 program_course_ids.append(course.id)
 
-        semester = self.semester
-        iyear = self.term_id.year
+        term_id = self.term_id        
 
-        while self._plan_for_semester(planned_course_ids, program_course_ids, semester, iyear):
-            if semester == '1':
-                iyear = iyear + 1
-                semester = '2'
-            elif semester == '2':
-                semester = '3'
-            else:
-                semester = '1'
+        while self._plan_for_semester(planned_course_ids, program_course_ids, term_id):
+            term_id = term_id.get_or_create_next()
 
-    def _plan_for_semester(self, planned_course_ids, program_course_ids, semester, iyear):
-        offered_in_condition = ()
-        if semester == '1':
-            offered_in_condition = ('offered_in_fall', '=', True)
-        elif semester == '2':
-            offered_in_condition = ('offered_in_spring', '=', True)
-        elif semester == '3':
-            offered_in_condition = ('offered_in_summer', '=', True)
-        
+    def _plan_for_semester(self, planned_course_ids, program_course_ids, term_id):       
         candidate_course_ids = self.env['ix.course'].search([
             ('id', 'not in', planned_course_ids),
             ('id', 'in', program_course_ids),
-            offered_in_condition], order='number')
+            ('session_ids', 'in', term_id.session_id.id)], order='number')
 
         if not candidate_course_ids:
             # Was it due to non offerings in this semester?
@@ -80,7 +64,9 @@ class DegreePlan(models.Model):
             return self.env['ix.course'].search_count([('id', 'not in', planned_course_ids),
             ('id', 'in', program_course_ids)]) > 0
 
-        pace = ord(self.pace) - 48 if semester != '3' else 2
+        pace = ord(self.pace) - 48
+        if pace > term_id.session_id.max_ncourses:
+            pace = term_id.session_id.max_ncourses
         
         temp_planned_course_ids = []
         temp_planned_co_course_ids = []
@@ -110,8 +96,8 @@ class DegreePlan(models.Model):
                 if len(temp_planned_course_ids) + len(temp_planned_co_course_ids) == pace: # Don't mislead for else
                     # Pace reached, we're done for this semester
                     # Plan retained courses and leave
-                    self._plan_courses(temp_planned_co_course_ids, semester, iyear, planned_course_ids)
-                    self._plan_courses(temp_planned_course_ids, semester, iyear, planned_course_ids)
+                    self._plan_courses(temp_planned_co_course_ids, term_id, planned_course_ids)
+                    self._plan_courses(temp_planned_course_ids, term_id, planned_course_ids)
                     return True
             
             # Go back to corequisites, missed earlier in
@@ -140,8 +126,8 @@ class DegreePlan(models.Model):
                 if len(temp_planned_course_ids) + len(temp_planned_co_course_ids) == pace: # Don't mislead for else
                     # Pace reached, we're done for this semester
                     # Plan retained courses and leave
-                    self._plan_courses(temp_planned_co_course_ids, semester, iyear, planned_course_ids)
-                    self._plan_courses(temp_planned_course_ids, semester, iyear, planned_course_ids)
+                    self._plan_courses(temp_planned_co_course_ids, term_id, planned_course_ids)
+                    self._plan_courses(temp_planned_course_ids, term_id, planned_course_ids)
                     return True
                 
             if unsatisfied_prerequisite_of_corequisite:
@@ -151,27 +137,22 @@ class DegreePlan(models.Model):
             if len(temp_planned_course_ids) + len(temp_planned_co_course_ids) == pace:                
                 # Pace reached, we're done for this semester
                 # Plan retained courses and leave
-                self._plan_courses(temp_planned_co_course_ids, semester, iyear, planned_course_ids)
-                self._plan_courses(temp_planned_course_ids, semester, iyear, planned_course_ids)
+                self._plan_courses(temp_planned_co_course_ids, term_id, planned_course_ids)
+                self._plan_courses(temp_planned_course_ids, term_id, planned_course_ids)
                 return True
         
-        self._plan_courses(temp_planned_co_course_ids, semester, iyear, planned_course_ids)
-        self._plan_courses(temp_planned_course_ids, semester, iyear, planned_course_ids)
+        self._plan_courses(temp_planned_co_course_ids, term_id, planned_course_ids)
+        self._plan_courses(temp_planned_course_ids, term_id, planned_course_ids)
         return True
 
-    def _plan_courses(self, courses, semester, iyear, planned_course_ids):
-        if semester == '1':
-            year = str(iyear - 2000) + '/' + str(iyear - 1999)
-        else:
-            year = str(iyear - 2001) + '/' + str(iyear - 2000)
+    def _plan_courses(self, courses, term_id, planned_course_ids):        
         for course in courses:
             if not self.env['ixadvising.planned.course'].search([('course_id', '=', course.id), ('student_id', '=', self.student_id.id)]):
                 self.env['ixadvising.planned.course'].create({
                 'course_id': course.id,
                 'student_id': self.student_id.id,
                 'school_id': self.student_id.school_id.id,
-                'semester': semester,
-                'year': year,                
+                'term_id': term_id.id,       
                 })
                 planned_course_ids.append(course.id)
 

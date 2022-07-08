@@ -8,15 +8,8 @@
             <field name="inherit_id" ref="ix.view_course_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='level']" position="after">
-                    <label for="offered_in_fall" string="Offered in"/>
-                    <div>
-                        <span>Fall</span><![CDATA[&nbsp;]]>
-                        <field name="offered_in_fall"/>
-                        <span>Spring</span><![CDATA[&nbsp;]]>
-                        <field name="offered_in_spring"/>
-                        <span>Summer</span><![CDATA[&nbsp;]]>
-                        <field name="offered_in_summer"/>
-                    </div>                    
+                    <field name="session_ids" widget="many2many_tags"
+                        options="{'no_quick_create': True, 'no_create_edit': True}"/>
                 </xpath>
                 <xpath expr="//field[@name='instructor_ids']" position="after">
                     <field name="req_class" widget='radio' options="{'horizontal': true}"/>

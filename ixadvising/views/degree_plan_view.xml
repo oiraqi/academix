@@ -20,13 +20,9 @@
                             <field name="school_id" />
                         </group>
                         <group name="info" string="Initial Parameters" col="4">
-                            <label for="semester" string="Starting"/>
-                            <div>
-                                <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 70%"/>
-                                <field name="year" style="width: 30%"/>
-                            </div>
+                            <field name="term_id" string="Starting Term" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="pace" title="Number of courses per regular semester" widget="radio" options="{'horizontal': True}"/>
-                            <field name="take_summer" widget="radio" options="{'horizontal': True}"/>
+                            <field name="session_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                         </group>
                         <div id="canvas"></div>
                         <script type="text/javascript">
@@ -76,8 +72,7 @@
                 <tree string="Degree Plan Wizard">
                     <field name="student_id"/>
                     <field name="program_id"/>
-                    <field name="semester" string="Starting Semester"/>
-                    <field name="year" string="Starting Year"/>
+                    <field name="term_id" string="Starting Term"/>                    
                     <field name="pace"/>
                     <field name="take_summer"/>
                 </tree>

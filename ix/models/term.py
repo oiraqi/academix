@@ -24,20 +24,29 @@
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
-SEMESTERS = {'1': 'Spring', '2': 'Summer', '3': 'Fall'}
-
 class Term(models.Model):
     _name = 'ix.term'
     _description = 'Academic Term'
-    _order = 'year,semester'
-    _sql_constraints = [('term_ukey', 'unique(year, semester)', 'Term already exists')]
+    _order = 'year,sequence'
+    _sql_constraints = [('term_ukey', 'unique(year, session_id)', 'Term already exists')]
 
     @api.model
-    def get_or_create(self, year, semester):
-        records = self.search([('year', '=', year), ('semester', '=', semester)])
+    def get_or_create(self, year, session_id):
+        records = self.search([('year', '=', year), ('session_id', '=', session_id)])
         if records:
             return records[0]
-        return self.create({'year': year, 'semester': semester})
+        return self.sudo().create({'year': year, 'session_id': session_id})
+
+    def get_or_create_next(self):
+        self.ensure_one()
+        next_session = self.session_id.get_next()
+        if next_session:
+            return self.env['ix.term'].get_or_create(self.year, next_session.id)
+        
+        first_session = self.env['iw.session'].get_first_session()
+        return self.env['ix.term'].get_or_create(self.year + 1, first_session.id)
+
+
 
     @api.model
     def get_from_date(self, day):
@@ -55,16 +64,26 @@ class Term(models.Model):
                 if self.env[self._name].search_count([('end_date', '>=', rec.start_date), ('start_date', '<=', rec.end_date)]) > 1:
                     raise ValidationError('Terms are not allowed to overlap!')
 
-    name = fields.Char(string='Term', compute='_compute_name', store=True)
+    @api.constrains('year')
+    def _check_year(self):
+        for rec in self:
+            if rec.year < 2000:
+                raise ValidationError('Year must be >= 2000')
+
+    name = fields.Char(string='Term', compute='_compute_name_code', store=True)
+    code = fields.Char(string='Term', compute='_compute_name_code', store=True)
     year = fields.Integer(string='Year', required=True)
-    semester = fields.Selection(
-        [('1', 'Spring'), ('2', 'Summer'), ('3', 'Fall')], 'Semester', required=True)
+    session_id = fields.Many2one(comodel_name='ix.session', string='Session', required=True)
+    sequence = fields.Integer(related='session_id.sequence', store=True)
+    
+    
     start_date = fields.Date(string='Start Date')
     end_date = fields.Date(string='End Date')    
 
     @api.depends('year', 'semester')
-    def _compute_name(self):
+    def _compute_name_code(self):
         for rec in self:
-            if rec.year and rec.semester:
-                rec.name = SEMESTERS[rec.semester] + ' ' + str(rec.year)
+            if rec.year and rec.session_id:
+                rec.name = rec.session_id.name + ' ' + str(rec.year)
+                rec.code = rec.session_id.code + str(rec.year - 2000)
     

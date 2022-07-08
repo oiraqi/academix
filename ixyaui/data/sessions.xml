@@ -6,16 +6,17 @@
             <field name="name">Spring</field>
             <field name="code">SP</field>
             <field name="sequence" eval="1"/>
+            <field name="max_ncourses" eval="6"/>
         </record>
         <record id="ix_session_su" model="ix.session">
             <field name="name">Summer</field>
             <field name="code">SU</field>
-            <field name="sequence" eval="2"/>
+            <field name="max_ncourses" eval="2"/>
         </record>
         <record id="ix_session_fa" model="ix.session">
             <field name="name">Fall</field>
             <field name="code">FA</field>
-            <field name="sequence" eval="3"/>
+            <field name="max_ncourses" eval="6"/>
         </record>
     
     </data>

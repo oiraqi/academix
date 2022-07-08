@@ -42,11 +42,7 @@ class Course(models.Model):
     req_class = fields.Selection(string='Required Classification', selection=[
                                  ('soph', 'Sophomore'), ('jun', 'Junior'), ('sen', 'Senior')])
     remarks = fields.Text(string='Remarks')
-    offered_in_fall = fields.Boolean(string='Offered in Fall', default=True)
-    offered_in_spring = fields.Boolean(
-        string='Offered in Spring', default=True)
-    offered_in_summer = fields.Boolean(
-        string='Offered in Summer', default=False)
+    session_ids = fields.Many2many(comodel_name='ix.session', string='Offered in')    
     is_internship = fields.Boolean(string='Internship', default=False)
     ilo_ids = fields.One2many('ixcatalog.course.ilo', 'course_id', string='ILOs')
     syllabus = fields.Binary(string='Master Syllabus')

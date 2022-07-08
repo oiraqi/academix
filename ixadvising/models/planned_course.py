@@ -59,7 +59,7 @@ class PlannedCourse(models.Model):
     def _check_prerequisites(self):# Incomplete
         for rec in self:
             records = self.env['ixadvising.planned.course'].search(
-                ['|', ('year', '<', rec.year), '&', ('year', '=', rec.year), ('semester', '<', rec.semester)]
+                ['|', ('year', '<', rec.year), '&', ('year', '=', rec.year), ('sequence', '<', rec.sequence)]
             )
             planned_courses = [record.course_id.id for record in records]
             prerequisites = rec.course_id.prerequisite_ids
