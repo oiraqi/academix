@@ -28,16 +28,16 @@ class Section(models.Model):
     _name = 'ixroster.section'
     _description = 'Course Section'
     _inherit = ['ix.school.activity', 'ix.calendarized', 'ixroster.scheduled']
-    _order = 'year desc,semester desc,course_id,number'
-    _sql_constraints = [('section_ukey', 'unique(year, semester, course_id, number)', 'Section already exists')]
+    _order = 'year desc,sequence desc,course_id,number'
+    _sql_constraints = [('section_ukey', 'unique(term_id, course_id, number)', 'Section already exists')]
 
     name = fields.Char(compute='_compute_name', string='Name', store=True)
     
-    @api.depends('course_id', 'number', 'year', 'semester')
-    @api.onchange('course_id', 'number', 'year', 'semester')
+    @api.depends('course_id', 'number', 'term_id')
+    @api.onchange('course_id', 'number', 'term_id')
     def _compute_name(self):
         for rec in self:
-            if rec.course_id and rec.number and rec.year and rec.semester:
+            if rec.course_id and rec.number and rec.term_id:
                 rec.name = rec.prefix + rec.course_id.code.replace(' ', '') + rec.number
             else:
                 rec.name = ''

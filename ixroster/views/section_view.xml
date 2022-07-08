@@ -16,11 +16,7 @@
                             <field name="discipline_id" domain="[('school_id', '=', school_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="course_id" domain="[('discipline_id', '=', discipline_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="number"/>
-                            <label for="semester" string="Semester &#38; Year"/>
-                            <div>
-                                <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 65%"/>
-                                <field name="year" style="width: 35%"/>
-                            </div>
+                            <field name="term_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="instructor_id" domain="[('discipline_ids', 'in', discipline_id)]"
                                 options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                             <label for="nstudents" string="Enrolled Students"/>
