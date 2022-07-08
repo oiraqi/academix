@@ -142,7 +142,7 @@
 			</field>
 		</record>
 		<record id="action_assessment_line_module_percentage" model="ir.actions.act_window">
-			<field name="name">Assessment Lines</field>
+			<field name="name">Grade Matrix</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.assessment.line</field>
 			<field name="view_mode">tree,graph,form</field>
@@ -158,7 +158,7 @@
 			</field>
 		</record>
 		<record id="action_assessment_line_module_points" model="ir.actions.act_window">
-			<field name="name">Assessment Lines</field>
+			<field name="name">Grade Matrix</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.assessment.line</field>
 			<field name="view_mode">tree,graph,form</field>
@@ -174,7 +174,7 @@
 			</field>
 		</record>
 		<record id="action_assessment_line_technique_percentage" model="ir.actions.act_window">
-			<field name="name">Assessment Lines</field>
+			<field name="name">Grade Matrix</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.assessment.line</field>
 			<field name="view_mode">tree,graph,form</field>
@@ -190,7 +190,7 @@
 			</field>
 		</record>
 		<record id="action_assessment_line_technique_points" model="ir.actions.act_window">
-			<field name="name">Assessment Lines</field>
+			<field name="name">Grade Matrix</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.assessment.line</field>
 			<field name="view_mode">tree,graph,form</field>
