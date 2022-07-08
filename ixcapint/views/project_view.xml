@@ -24,11 +24,7 @@
                             </h2>
                         </div>
                         <group string="Project Information" col="4">
-                            <label for="semester" string="Semester &#38; Year"/>
-                            <div>
-                                <field name="semester" widget="radio" options="{'horizontal': True}" style="width: 65%" />
-                                <field name="year" style="width: 35%" />
-                            </div>
+                            <field name="term_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="type" />
                             <field name="student_id" context="{'default_school_id': school_id}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
                             <field name="tag_ids" widget="many2many_tags" />

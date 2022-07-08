@@ -25,7 +25,6 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 
-SEMESTERS = {'1': 'FA', '2': 'SP', '3': 'SU'}
 TYPES = {   'CAP': 'Capstone',
             'INT': 'Internship',
             'CMB': 'Combined',
@@ -33,12 +32,11 @@ TYPES = {   'CAP': 'Capstone',
             'MT': 'Master Thesis',
         }
 
-
 class Project(models.Model):
     _name = 'ixcapint.project'
     _inherit = ['ix.school.activity', 'ix.calendarized', 'mail.thread']
     _description = 'A capstone, internship, combined, master project or thesis'
-    _sql_constraints = [('student_year_semester_type_ukey', 'unique(student_id, year, semester, type)', 'Project already exists')]
+    _sql_constraints = [('student_term_type_ukey', 'unique(student_id, term_id, type)', 'Project already exists')]
 
     name = fields.Char('Title', required=True, readonly=True,
                        states={'draft': [('readonly', False)]})
@@ -62,8 +60,8 @@ class Project(models.Model):
         project.message_subscribe([project.student_id.partner_id.id, project.supervisor_id.partner_id.id])
         return project
 
-    @api.onchange('year', 'semester', 'type')
-    @api.depends('year', 'semester', 'type')
+    @api.onchange('term_id', 'type')
+    @api.depends('term_id', 'type')
     def _compute_code(self):
         for rec in self:
             if rec.state != 'draft':
