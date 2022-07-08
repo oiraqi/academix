@@ -47,13 +47,12 @@ class Portfolio(models.Model):
 				rec.name = ''
 
 	
-	@api.onchange('year', 'semester')
-	def _onchange_year_semester(self):
+	@api.onchange('term_id')
+	def _onchange_term_id(self):
 		for rec in self:
-			if rec.year and rec.semester:
+			if rec.term_id:
 				sections = self.env['ixroster.section'].search(
-                    [('instructor_id.user_id', '=', self.env.user.id), ('year', '=', rec.year),
-                    ('semester', '=', rec.semester)])
+                    [('instructor_id.user_id', '=', self.env.user.id), ('term_id', '=', rec.term_id.id)])
 				if sections:
 					rec.section_id = sections[0]
 				else:

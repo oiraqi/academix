@@ -14,12 +14,8 @@
 							<field name="course_id"/>
 						</h2>
 						<group name="info" string="Section Information" col="4">
-							<label for="semester" string="Semester &#38; Year"/>
-							<div>
-								<field name="semester" widget='radio' options="{'horizontal': true}" style="width: 65%"/>
-								<field name="year" style="width: 35%"/>
-							</div>
-							<field name="section_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('instructor_id.user_id', '=', uid), ('year', '=', year), ('semester', '=', semester)]"/>
+							<field name="term_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+							<field name="section_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('instructor_id.user_id', '=', uid), ('term_id', '=', term_id)]"/>
 							<field name="school_id" invisible="1"/>
 							<field name="course_id" invisible="1"/>
 						</group>

@@ -28,7 +28,7 @@ WEEK_DAYS = ('monday', 'tuesday', 'wednesday', 'thursday', 'friday')
 class Room(models.Model):
     _inherit = 'ix.room'
 
-    section_ids = fields.One2many('ixroster.section', 'room_id', 'Sections', order_by='year desc,semester desc')
+    section_ids = fields.One2many('ixroster.section', 'room_id', 'Sections', order_by='term_id desc')
     reservation_ids = fields.One2many(comodel_name='ixroster.reservation', inverse_name='room_id', string='Reservations')
 
     @api.model
