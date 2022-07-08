@@ -8,7 +8,7 @@
 				<form string="Term">
 					<sheet>
 						<h1>
-							<field name="name"/>
+							<field name="name"/> - <field name="code"/>
 						</h1>
 						<group name="info" string="General Information" col="4">
 							<field name="year" widget="char"/>
