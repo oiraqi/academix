@@ -81,7 +81,7 @@
 							<field name="course_id"/>
 						</h1>
 						<br/>
-						<div class="oe_button_box" name="button_box2">
+						<div class="oe_button_box" name="button_box2" style="width: 50%">
 							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-puzzle-piece">
 								<field name="nmodules" string="Modules" widget="statinfo"/>
 							</button>
@@ -91,9 +91,9 @@
 							<button name="get_channels" type="object" class="oe_stat_button" icon="fa-comments">
 								<field name="nchannels" string="Channels" widget="statinfo"/>
 							</button>
-							<button name="get_teamsets" type="object" class="oe_stat_button" icon="fa-slideshare">
+							<!--<button name="get_teamsets" type="object" class="oe_stat_button" icon="fa-slideshare">
 								<field name="nteamsets" string="Teams" widget="statinfo"/>
-							</button>
+							</button>-->
 							<button name="get_resources" type="object" class="oe_stat_button" icon="fa-slideshare">
 								<field name="nresources" string="Resources" widget="statinfo"/>
 							</button>
