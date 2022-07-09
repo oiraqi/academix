@@ -5,6 +5,7 @@ class Attendance(models.Model):
 	_name = 'ixlms.attendance'
 	_description = 'Attendance'
 	_order = 'day'
+	_sql_constraints = [('section_day_ukey', 'unique(section_id, day)', 'Attendance sheet already exists')]
 
 	name = fields.Char('Name', compute='_set_name')
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='Course', required=True)
@@ -42,7 +43,7 @@ class Attendance(models.Model):
 	def _set_name(self):
 		for rec in self:
 			if rec.course_id and rec.day:
-				rec.name = 'Attendance / ' + rec.course_id.name + ' / ' + rec.day
+				rec.name = 'Attendance / ' + rec.course_id.name + ' / ' + fields.Date.to_string(rec.day)
 			else:
 				rec.name = ''
 
