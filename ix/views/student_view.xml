@@ -17,11 +17,21 @@
                                 <field name="sid" placeholder="Student ID" style="width: 25%"/>
                             </h2>
                         </div>
-                        <group name="info" string="General Information" col="4">
-                            <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-                            <field name="email" widget="email" required="1"/>                            
-                            <field name="attendance_mode" widget="radio" options="{'horizontal': True}"/>
-                        </group>
+                        <notebook>
+                            <page string="General Information" name="info">
+                                <group col="4">
+                                    <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                    <field name="email" widget="email" required="1"/>
+                                    <field name="attendance_mode" widget="radio" options="{'horizontal': True}"/>
+                                </group>
+                            </page>
+                            <page string="Academic Information" name="academics">
+                                <group col="4">
+                                    <field name="max_ncourses"/>
+                                    <field name="max_ncredits"/>
+                                </group>
+                            </page>
+                        </notebook>                        
                     </sheet>
                 </form>
             </field>
@@ -33,6 +43,8 @@
             <field name="arch" type="xml">
                 <tree string="student">
                     <field name="name"/>
+                    <field name="sid"/>
+                    <field name="email"/>
                     <field name="attendance_mode" widget="badge"/>
                 </tree>
             </field>

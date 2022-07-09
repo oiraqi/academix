@@ -36,7 +36,6 @@ class DegreePlan(models.Model):
     pace = fields.Selection(
         [('4', '4'), ('5', '5'), ('6', '6')], string='Pace', default='5', required=True)
     session_ids = fields.Many2many(comodel_name='ix.session', string='Sessions', required=True)
-    generated = fields.Boolean(default=False)
     
 
     def get_degree_plan(self):
@@ -47,7 +46,7 @@ class DegreePlan(models.Model):
         return self._expand_to('ixadvising.action_planned_course', domain, context)
 
     def _generate(self):
-        if self.generated:
+        if self.env['ixadvising.planned.course'].search([('student_id', '=', self.student_id.id)]):
             return
         
         planned_course_ids = []
