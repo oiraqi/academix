@@ -28,7 +28,7 @@ from odoo.exceptions import UserError
 class DegreePlan(models.Model):
     _name = 'ixadvising.degree.plan'
     _description = 'Student Degree Plan'
-    _inherit = ['ix.faculty.student.shared', 'ix.activity']
+    _inherit = ['ix.student.owned', 'ix.activity']
     _sql_constraints = [('student_ukey',
                          'unique(student_id)', 'A student can only have one degree plan')]
     

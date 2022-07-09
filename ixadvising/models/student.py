@@ -27,4 +27,4 @@ from odoo import fields, models
 class Student(models.Model):
     _inherit = 'ix.student'
 
-    advisor_id = fields.Many2one(comodel_name='ix.faculty', string='Advisor')    
+    advisor_id = fields.Many2one(comodel_name='ix.faculty', string='Advisor')
