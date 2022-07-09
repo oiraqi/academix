@@ -44,7 +44,7 @@ class DegreePlan(models.Model):
         self._generate()
         domain = [('student_id', '=', self.student_id.id)]
         context = {'default_student_id': self.student_id.id}
-        return self._expand_to('action_planned_course', domain, context)
+        return self._expand_to('ixadvising.action_planned_course', domain, context)
 
     def _generate(self):
         if self.generated:
