@@ -12,6 +12,7 @@
     ],
     'depends': [
         'ixroster',
+        'ixdms',
     ],
     'data': [
         'security/lms_security.xml',

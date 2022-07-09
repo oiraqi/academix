@@ -133,6 +133,13 @@ class LmsCourse(models.Model):
 		for rec in self:
 			rec.nchannels = len(rec.channel_ids)
 
+	resource_ids = fields.One2many(comodel_name='ixlms.resource', inverse_name='course_id', string='Resources')
+	nresources = fields.Integer(string='Resources', compute='_nresources')
+
+	def _nresources(self):
+		for rec in self:
+			rec.nresources = len(rec.resource_ids)
+
 	@api.constrains('grade_weighting', 'assessment_ids')
 	def check_sum_percentages(self):
 		for rec in self:
@@ -207,5 +214,11 @@ class LmsCourse(models.Model):
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id, 'default_public': 'private'}
 		return self._expand_to('ixlms.action_mail_channel', domain, context)
+
+	def get_resources(self):
+		self.ensure_one()
+		domain = [('course_id', '=', self.id)]
+		context = {'default_course_id': self.id}
+		return self._expand_to('ixlms.action_resource', domain, context)
 
 

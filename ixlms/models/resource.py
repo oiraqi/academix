@@ -5,9 +5,10 @@ class Resource(models.Model):
 	_name = 'ixlms.resource'
 	_description = 'Resource'
 
-	name = fields.Char('Name', required=True)
+	name = fields.Char(related='document_id.name')
+	chapter_id = fields.Many2one(comodel_name='ixlms.chapter', string='Chapter', required=True)
 	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
-	file = fields.Binary(string='File')
-	url = fields.Char(string='URL')	
+	document_id = fields.Many2one(comodel_name='ixdms.document', string='Document')
+	
 	
