@@ -10,5 +10,7 @@ class Document(models.Model):
 	name = fields.Char('Name', required=True)
 	file = fields.Binary(string='File')
 	url = fields.Char(string='URL')
-	folder_id = fields.Many2one(comodel_name='ixdms.folder', string='Folder', required=True)	
+	folder_id = fields.Many2one(comodel_name='ixdms.folder', string='Folder', required=True)
+	favorite = fields.Boolean(string='Favorite', default=False)
+		
 	
