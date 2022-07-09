@@ -29,6 +29,7 @@ class Student(models.Model):
     _inherit = 'ix.student'
 
     program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True, tracking=True)
+    program_sch = fields.Integer(related='program_id.sch', string='Total Credits')    
 
     @api.onchange('school_id')
     def _onchange_school_id(self):

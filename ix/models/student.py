@@ -29,12 +29,12 @@ import string
 class Student(models.Model):
     _name = 'ix.student'
     _inherits = {'res.partner': 'partner_id'}
-    _inherit = 'ix.school.owned'
+    _inherit = ['ix.school.owned', 'mail.thread']
     _description = 'Student'
     _sql_constraints = [('sid_ukey', 'unique(sid)', 'Student ID already exists')]
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
-    sid = fields.Char(string='ID', required=True)    
-    attendance_mode = fields.Selection(string='Attendance Mode', selection=[('f2f', 'Face To Face'), ('online', 'Online'),], default='f2f', required=True)
-    max_ncourses = fields.Integer(string='Max Number of Courses / Semester', default=6, required=True)
-    max_ncredits = fields.Integer(string='Max Number of Credits / Semester', default=18, required=True)
+    sid = fields.Char(string='ID', required=True)
+    attendance_mode = fields.Selection(string='Attendance Mode', selection=[('f2f', 'Face To Face'), ('online', 'Online'),], default='f2f', required=True, tracking=True)
+    max_ncourses = fields.Integer(string='Max Number of Courses / Semester', default=6, required=True, tracking=True)
+    max_ncredits = fields.Integer(string='Max Number of Credits / Semester', default=18, required=True, tracking=True)

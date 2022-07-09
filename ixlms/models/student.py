@@ -28,6 +28,17 @@ class Student(models.Model):
     _inherit = 'ix.student'    
 
     attendance_line_absent_ids = fields.One2many(comodel_name='ixlms.attendance.line', compute='_attendance_line_absent_ids', string='Missed Classes')
+    earned_sch = fields.Integer(compute='_sch', string='Earned Credits')
+    remaining_sch = fields.Integer(compute='_sch', string='Remaining Credits')
+
+    def _sch(self):
+        for rec in self:
+            earned_sch = 0
+            for enrollment in rec.enrollment_ids:
+                if enrollment.state == 'completed' and enrollment.passed:
+                    earned_sch += enrollment.course_id.sch
+            rec.earned_sch = earned_sch
+            rec.remaining_sch = rec.program_sch - earned_sch
 
     def _attendance_line_absent_ids(self):
         for rec in self:

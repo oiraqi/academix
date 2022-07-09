@@ -27,12 +27,16 @@
                             </page>
                             <page string="Academic Information" name="academics">
                                 <group col="4">
-                                    <field name="max_ncourses" options="{'type': 'number', 'step': 1, 'format': 0}" style="width: 20%"/>
-                                    <field name="max_ncredits" options="{'type': 'number', 'step': 1, 'format': 0}" style="width: 20%"/>
+                                    <field name="max_ncourses" options="{'type': 'number', 'step': 1, 'format': 0}" style="width: 30%"/>
+                                    <field name="max_ncredits" options="{'type': 'number', 'step': 1, 'format': 0}" style="width: 30%"/>
                                 </group>
                             </page>
                         </notebook>                        
                     </sheet>
+                    <div class="oe_chatter" groups="ix.group_coordinator,ix.group_vpaa">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>

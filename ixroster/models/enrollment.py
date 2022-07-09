@@ -38,7 +38,7 @@ class Enrollment(models.Model):
     section_id = fields.Many2one(
         comodel_name='ixroster.section', string='Section', required=True)
     state = fields.Selection(string='State', selection=[('created', 'Created'), ('enrolled', 'Enrolled'),
-                                                        ('dropped', 'Dropped'), ('withdrawn', 'Withdrawn')], default='created', required=True, tracking=True)
+                                                        ('dropped', 'Dropped'), ('withdrawn', 'Withdrawn'), ('completed', 'Completed')], default='created', required=True, tracking=True)
     dstate = fields.Selection(string='Drop State', selection=[(
         'draft', 'Draft'), ('confirmed', 'Confirmed')], default='draft')
     dtriggered = fields.Boolean(default=False)
