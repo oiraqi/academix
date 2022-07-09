@@ -91,12 +91,9 @@
 							<button name="get_channels" type="object" class="oe_stat_button" icon="fa-comments">
 								<field name="nchannels" string="Channels" widget="statinfo"/>
 							</button>							
-							<button name="get_resources" type="object" class="oe_stat_button" icon="fa-slideshare">
+							<button name="get_resources" type="object" class="oe_stat_button" icon="fa-file">
 								<field name="nresources" string="Resources" widget="statinfo"/>
-							</button>
-							<button name="get_students" type="object" class="oe_stat_button" icon="fa-users">
-								<field name="nstudents" string="Students" widget="statinfo"/>
-							</button>
+							</button>							
 							<button name="get_attendance" type="object" class="oe_stat_button" icon="fa-calendar-check-o">
 								<field name="nattendance_sheets" string="Att. Sheets" widget="statinfo"/>
 							</button>
@@ -105,6 +102,9 @@
 							</button>
 							<button name="get_grade_matrix" type="object" class="oe_stat_button" icon="fa-percent">
 								<field name="nassessment_lines" string="Grade Matrix" widget="statinfo"/>
+							</button>
+							<button name="get_students" type="object" class="oe_stat_button" icon="fa-users">
+								<field name="nstudents" string="Students" widget="statinfo"/>
 							</button>
 						</div>
 						<group name="info" string="General Information" col="4">
