@@ -5,7 +5,8 @@ class AttendanceLine(models.Model):
 	_name = 'ixlms.attendance.line'
 	_description = 'AttendanceLine'
 
-	student_id = fields.Many2one(comodel_name='ix.student', string='Student', required=True)
+	name = fields.Char(related='student_id.name')	
+	student_id = fields.Many2one(comodel_name='ix.student', string='Student', required=True)	
 	attendance_id = fields.Many2one(comodel_name='ixlms.attendance', string='Attendance', required=True)
 	section_id = fields.Many2one(comodel_name='ixroster.section', related='attendance_id.section_id', store=True)	
 	state = fields.Selection(string='State', selection=[('present', 'Present'), ('absent', 'Absent'), ('late', 'Late')], default='present', required=True)
