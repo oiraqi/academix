@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="ixroster.view_student_form_roster"/>
             <field name="arch" type="xml">
                 <xpath expr="//div" position="after">                    
-                    <field name="progress" widget="percentpie"/>                    
+                    <h3><field name="progress" widget="percentpie"/></h3>
                 </xpath>
                 <xpath expr="//field[@name='program_sch']" position="after">
                     <label for="earned_sch" string="Eanred / Remaining"/>
