@@ -52,6 +52,22 @@
 				</p>
 			</field>
 		</record>
+		<record id="action_document_fav" model="ir.actions.act_window">
+			<field name="name">Documents</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ixdms.document</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('favorite', '=', '1')]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>
 		<record id="action_document_form_view" model="ir.actions.act_window.view">
 			<field name="sequence" eval="2"/>
 			<field name="view_mode">form</field>

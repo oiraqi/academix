@@ -11,6 +11,6 @@ class Document(models.Model):
 	file = fields.Binary(string='File')
 	url = fields.Char(string='URL')
 	folder_id = fields.Many2one(comodel_name='ixdms.folder', string='Folder', required=True)
-	favorite = fields.Selection(string='Favorite', selection=[('0', '0'), ('1', '1'),], default='0')	
+	favorite = fields.Selection(string='Favorite', selection=[('0', '-'), ('1', 'Favorite'),], default='0')	
 		
 	

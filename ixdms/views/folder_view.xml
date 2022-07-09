@@ -16,6 +16,7 @@
 									<field name="file" widget="binary"/>
 									<field name="url" widget="url"/>
 									<field name="favorite" widget="priority"/>
+									<field name="folder_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 								</tree>
 							</field>
 						</group>
