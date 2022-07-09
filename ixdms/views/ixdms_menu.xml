@@ -1,6 +1,6 @@
 <odoo>
 	<data>
-		<menuitem id="ixdms_root_menu" name="DMS" sequence="15"/>
+		<menuitem id="ixdms_root_menu" name="DMS" sequence="30"/>
 		<menuitem id="ixdms_folder_menu" name="Folders" action="action_folder" sequence="50" parent="ixdms_root_menu"/>
 	</data>
 </odoo>
