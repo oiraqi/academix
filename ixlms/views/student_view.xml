@@ -7,7 +7,7 @@
             <field name="model">ix.student</field>
             <field name="inherit_id" ref="ixroster.view_student_form_roster"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='program_sch']" position="before">
+                <xpath expr="//field[@name='program_sch']" position="after">
                     <label for="earned_sch" string="Eanred / Remaining Credits"/>
                     <div>
                         <field name="earned_sch"/> / <field name="remaining_sch"/>
