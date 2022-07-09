@@ -15,7 +15,7 @@
 									<field name="name"/>
 									<field name="file" widget="binary"/>
 									<field name="url" widget="url"/>
-									<field name="favorite" widget="priority"/>
+									<field name="favorite"/>
 								</tree>
 							</field>
 						</group>
