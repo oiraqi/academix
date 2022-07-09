@@ -39,7 +39,7 @@
 			<field name="model">ixlms.attendance</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Attendances">
+				<tree string="Attendance Sheets">
 					<field name="name"/>
 					<field name="npresent"/>
 					<field name="nabsent"/>
@@ -67,7 +67,7 @@
 			</field>
 		</record>
 		<record id="action_attendance_all" model="ir.actions.act_window">
-			<field name="name">Attendances</field>
+			<field name="name">Attendance Sheets</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.attendance</field>
 			<field name="view_mode">tree,form</field>

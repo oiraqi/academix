@@ -24,6 +24,7 @@
 									<field name="name"/>
 									<field name="nfolders"/>
 									<field name="ndocuments"/>
+									<button icon="fa-folder-open" name="open" type="object"/>
 								</tree>
 							</field>
 						</group>
@@ -44,6 +45,8 @@
 			<field name="arch" type="xml">
 				<tree string="Folders">
 					<field name="name"/>
+					<field name="nfolders"/>
+					<field name="ndocuments"/>
 				</tree>
 			</field>
 		</record>
@@ -53,6 +56,22 @@
 			<field name="res_model">ixdms.folder</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[('parent_id', '=', False)]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+				
+				</p>
+				<p>
+				
+				</p>
+			</field>
+		</record>
+		<record id="action_folder_open" model="ir.actions.act_window">
+			<field name="name">Folders</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ixdms.folder</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">

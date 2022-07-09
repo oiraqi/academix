@@ -4,6 +4,7 @@ from odoo import models, fields
 class Folder(models.Model):
 	_name = 'ixdms.folder'
 	_description = 'Folder'
+	_inherit = 'ix.expandable'
 
 	name = fields.Char('Name', required=True)
 	parent_id = fields.Many2one(comodel_name='ixdms.folder', string='Parent')
@@ -20,6 +21,11 @@ class Folder(models.Model):
 	def _ndocuments(self):
 		for rec in self:
 			rec.ndocuments = len(rec.document_ids)
+
+	def open(self):
+		self.ensure_one()
+		domain = [('id', '=', self.id)]
+		return self._expand_to('ixdms.action_folder_open', domain)
 	
 	
 	
