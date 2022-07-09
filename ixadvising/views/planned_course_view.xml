@@ -107,7 +107,7 @@
             <field name="name">Degree Plan</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ixadvising.planned.course</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': ['term_id']}</field>
             <field name="help" type="html">

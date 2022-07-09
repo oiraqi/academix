@@ -28,7 +28,7 @@ from odoo.exceptions import UserError
 class DegreePlan(models.Model):
     _name = 'ixadvising.degree.plan'
     _description = 'Student Degree Plan'
-    _inherit = ['ix.student.owned', 'ix.activity']
+    _inherit = ['ix.student.owned', 'ix.activity', 'ix.expandable']
     _sql_constraints = [('student_ukey',
                          'unique(student_id)', 'A student can only have one degree plan')]
     
@@ -36,9 +36,20 @@ class DegreePlan(models.Model):
     pace = fields.Selection(
         [('4', '4'), ('5', '5'), ('6', '6')], string='Pace', default='5', required=True)
     session_ids = fields.Many2many(comodel_name='ix.session', string='Sessions', required=True)
+    generated = fields.Boolean(default=False)
+    
 
-    def generate(self):
+    def get_degree_plan(self):
         self.ensure_one()
+        self._generate()
+        domain = [('student_id', '=', self.student_id.id)]
+        context = {'default_student_id': self.student_id.id}
+        return self._expand_to('action_planned_course', domain, context)
+
+    def _generate(self):
+        if self.generated:
+            return
+        
         planned_course_ids = []
         program_course_ids = []
         for component in self.program_id.component_ids:
@@ -49,6 +60,7 @@ class DegreePlan(models.Model):
 
         while self._plan_for_semester(planned_course_ids, program_course_ids, term_id):
             term_id = term_id.get_or_create_next()
+        self.generated = True
 
     def _plan_for_semester(self, planned_course_ids, program_course_ids, term_id):       
         candidate_course_ids = self.env['ix.course'].search([

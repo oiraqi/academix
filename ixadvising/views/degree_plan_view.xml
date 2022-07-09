@@ -6,14 +6,14 @@
             <field name="model">ixadvising.degree.plan</field>
             <field name="arch" type="xml">
                 <form string="Degree Plan Wizard">                    
-                    <header>
-                        <button string="Generate" name="generate" type="object" class="oe_highlight"/>
-                    </header>
                     <sheet>
                         <b>Student</b>
                         <h1>
-                            <field name="student_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="student_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                         </h1>
+                        <div class="oe_button_box" name="button_box" attrs="{'invisible': [('id', '=', False)]}">
+                            <button name="get_degree_plan" string="Degree Plan" type="object" class="oe_stat_button" icon="fa-list-ol"/>
+                        </div>
                         <group name="info" string="General Information" col="4">
                             <field name="school_id" />
                             <field name="program_id"/>
