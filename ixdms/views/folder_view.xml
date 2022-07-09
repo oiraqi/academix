@@ -7,7 +7,17 @@
 			<field name="arch" type="xml">
 				<form string="Folder">
 					<sheet>
+						<b>Folder</b>
 						<h1><field name="name" default_focus="1" placeholder="Name..." style="width: 50%"/></h1>
+						<group name="documents" string="Documents" col="4">
+							<field name="document_ids" nolabel="1">
+								<tree editable="bottom">
+									<field name="name"/>
+									<field name="file"/>
+									<field name="url"/>
+								</tree>
+							</field>
+						</group>
 						<group name="sub-folders" string="Sub-Folders" col="4">
 							<field name="folder_ids" nolabel="1">
 								<tree editable="bottom">
@@ -15,7 +25,7 @@
 									<field name="nfolders"/>
 									<field name="ndocuments"/>
 								</tree>
-							</field>						
+							</field>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
