@@ -107,6 +107,12 @@ class LmsCourse(models.Model):
 				rec.nteamsets = 0
 	
 	chapter_ids = fields.One2many(comodel_name='ixlms.chapter', inverse_name='course_id', string="Chapters & Timeline")
+	nchapters = fields.Integer(string='Chapters', compute='_nchapters')
+
+	def _nchapters(self):
+		for rec in self:
+			rec.nchapters = len(rec.chapter_ids)
+	
 
 	def _attendance_ids(self):
 		for rec in self:

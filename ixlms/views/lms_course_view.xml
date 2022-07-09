@@ -38,13 +38,22 @@
 									</t>
 									<br/>
 									<br/>
+									<div groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
 									<field name="nstudents"/>
 									<t t-if="record.nstudents.raw_value==1">Student</t>
 									<t t-else="">Students</t>
 									<br/>
+									</div>
 									<field name="nmodules"/>
 									<t t-if="record.nmodules.raw_value==1">Module</t>
 									<t t-else="">Modules</t>, 
+									<field name="nchapters"/>
+									<t t-if="record.nchapters.raw_value==1">Chapter</t>
+									<t t-else="">Chapters</t>, 
+									<field name="nresources"/>
+									<t t-if="record.nresources.raw_value==1">Resource</t>
+									<t t-else="">Resources</t>
+									<br/>
 									<field name="nchannels"/>
 									<t t-if="record.nchannels.raw_value==1">Channel</t>
 									<t t-else="">Channels</t>
