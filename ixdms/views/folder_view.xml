@@ -7,9 +7,15 @@
 			<field name="arch" type="xml">
 				<form string="Folder">
 					<sheet>
-						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
-						<group name="info" string="General Information" col="4">
-						
+						<h1><field name="name" default_focus="1" placeholder="Name..." style="width: 50%"/></h1>
+						<group name="sub-folders" string="Sub-Folders" col="4">
+							<field name="folder_ids" nolabel="1">
+								<tree editable="bottom">
+									<field name="name"/>
+									<field name="nfolders"/>
+									<field name="ndocuments"/>
+								</tree>
+							</field>						
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
