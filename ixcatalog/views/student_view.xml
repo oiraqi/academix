@@ -7,9 +7,6 @@
             <field name="model">ix.student</field>
             <field name="inherit_id" ref="ix.view_student_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='max_ncourses']" position="before">
-                    <field name="program_sch"/>
-                </xpath>
                 <xpath expr="//field[@name='school_id']" position="after">
                     <field name="program_id" domain="[('school_id', '=', school_id)]"
                         options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>                    
