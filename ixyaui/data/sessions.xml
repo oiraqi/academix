@@ -12,7 +12,7 @@
         <record id="ix_session_sp" model="ix.session">
             <field name="name">Spring</field>
             <field name="code">SP</field>
-            <field name="sequence" eval="2"/>
+            <field name="sequence" eval="20"/>
             <field name="max_ncourses" eval="6"/>
             <field name="max_ncredits" eval="18"/>
         </record>
@@ -26,7 +26,7 @@
         <record id="ix_session_su" model="ix.session">
             <field name="name">Summer</field>
             <field name="code">SU</field>
-            <field name="sequence" eval="4"/>
+            <field name="sequence" eval="40"/>
             <field name="max_ncourses" eval="2"/>
             <field name="max_ncredits" eval="7"/>
         </record>
@@ -40,7 +40,7 @@
         <record id="ix_session_fa" model="ix.session">
             <field name="name">Fall</field>
             <field name="code">FA</field>
-            <field name="sequence" eval="6"/>
+            <field name="sequence" eval="60"/>
             <field name="max_ncourses" eval="6"/>
             <field name="max_ncredits" eval="18"/>
         </record> 
