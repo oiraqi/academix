@@ -36,5 +36,5 @@ class Student(models.Model):
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
     sid = fields.Char(string='ID', required=True)    
     attendance_mode = fields.Selection(string='Attendance Mode', selection=[('f2f', 'Face To Face'), ('online', 'Online'),], default='f2f', required=True)
-    max_ncourses = fields.Integer(string='Max Number of Courses', default=6, required=True)
-    max_ncredits = fields.Integer(string='Max Number of Credits', default=18, required=True)
+    max_ncourses = fields.Integer(string='Max Number of Courses / Semester', default=6, required=True)
+    max_ncredits = fields.Integer(string='Max Number of Credits / Semester', default=18, required=True)
