@@ -9,14 +9,14 @@ class Folder(models.Model):
 	name = fields.Char('Name', required=True)
 	parent_id = fields.Many2one(comodel_name='ixdms.folder', string='Parent')
 	folder_ids = fields.One2many(comodel_name='ixdms.folder', inverse_name='parent_id', string='Sub-Folders')
-	nfolders = fields.Integer(string='Number of Subfolders', compute='_nfolders')
+	nfolders = fields.Integer(string='Sub-Folders', compute='_nfolders')
 
 	def _nfolders(self):
 		for rec in self:
 			rec.nfolders = len(rec.folder_ids)
 
 	document_ids = fields.One2many(comodel_name='ixdms.document', inverse_name='folder_id', string='Documents')
-	ndocuments = fields.Integer(string='Number of Documents', compute='_ndocuments')
+	ndocuments = fields.Integer(string='Documents', compute='_ndocuments')
 
 	def _ndocuments(self):
 		for rec in self:
@@ -25,7 +25,7 @@ class Folder(models.Model):
 	def open(self):
 		self.ensure_one()
 		domain = [('id', '=', self.id)]
-		return self._expand_to('ixdms.action_folder_open', domain)
+		return self._expand_to('ixdms.action_folder_open', domain, False, self.id)
 	
 	
 	
