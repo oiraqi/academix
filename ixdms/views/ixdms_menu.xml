@@ -2,6 +2,6 @@
 	<data>
 		<menuitem id="ixdms_root_menu" name="DMS" sequence="30"/>
 		<menuitem id="ixdms_folder_menu" name="Folders &#38; Documents" action="action_folder" sequence="20" parent="ixdms_root_menu"/>
-		<menuitem id="ixdms_folder_menu" name="Favorite Documents" action="action_document_fav" sequence="40" parent="ixdms_root_menu"/>
+		<menuitem id="ixdms_fav_doc_menu" name="Favorite Documents" action="action_document_fav" sequence="40" parent="ixdms_root_menu"/>
 	</data>
 </odoo>
