@@ -11,7 +11,7 @@
         '',
     ],
     'depends': [
-        'ixroster',
+        'ixlms',
     ],
     'data': [
         'security/advising_security.xml',

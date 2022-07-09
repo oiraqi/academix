@@ -36,6 +36,7 @@ class DegreePlan(models.Model):
     pace = fields.Selection(
         [('4', '4'), ('5', '5'), ('6', '6')], string='Pace', default='5', required=True)
     session_ids = fields.Many2many(comodel_name='ix.session', string='Sessions', required=True)
+    progress = fields.Float(related='student_id.progress')    
     
 
     def get_degree_plan(self):
