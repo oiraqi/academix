@@ -10,7 +10,7 @@
                 <xpath expr="//field[@name='max_ncourses']" position="before">
                     <label for="earned_sch" string="Earned Credits"/>
                     <div>
-                    <field name="earned_sch"/><field name="progress" widget="progressbar"/>
+                    <field name="earned_sch" style="width: 15%"/> / <field name="program_sch" style="width: 15%"/><field name="progress" widget="progressbar" style="width: 65%"/>
                     </div>
                     <field name="on_probation"/>
                 </xpath>
