@@ -29,7 +29,7 @@ class Corequisite(models.Model):
     _description = 'Course Corequisite'
     _sql_constraints = [('course_corequisite_ukey', 'unique(course_id, corequisite_id)', 'The same corequisite has been added several times!')]
 
-    name = fields.Char(string='corequisite_id.name')
+    name = fields.Char(related='corequisite_id.name')
     course_id = fields.Many2one('ix.course', string='Course', required=True)
     corequisite_id = fields.Many2one('ix.course', string='Corequisite', required=True)
     sequence = fields.Integer(default='1', required=True)
