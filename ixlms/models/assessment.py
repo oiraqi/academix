@@ -161,7 +161,3 @@ class Assessment(models.Model):
 		context = {'default_assessment_id': self.id}
 		return self._expand_to('ixlms.action_assessment_submission', domain, context)
 
-	def get_grade_distribution(self):
-		self.ensure_one()
-		domain = [('assessment_id', '=', self.id)]
-		return self._expand_to('ixlms.action_assessment_line_dist', domain)

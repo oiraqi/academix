@@ -23,7 +23,7 @@
 								<field name="grade" groups="ix.group_faculty" style="width: 15%"/>								
 								<field name="rgrade" groups="ix.group_student" style="width: 15%"/>
 								 / 
-								<field name="grade_scale"/>
+								<field name="grade_scale" style="width: 15%"/>
 							</div>
 						</group>
 						<group name="log" string="Log" col="4">
