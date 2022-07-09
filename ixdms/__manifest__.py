@@ -15,6 +15,7 @@
     ],
     'data': [
         'views/folder_view.xml',
+        'views/document_view.xml',
         'views/ixdms_menu.xml'
     ],
     'installable': True,
