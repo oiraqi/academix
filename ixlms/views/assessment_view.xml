@@ -22,8 +22,10 @@
 						</div>
 						<group name="info" string="Genral Information" col="4">
 							<field name="module_id" readonly="1"/>
-							<field name="technique_id" readonly="1"/>
-							<field name="description" colspan="4"/>
+							<field name="technique_id" readonly="1"/>							
+						</group>
+						<group name="desc" string="Description">
+							<field name="description" nolabel="1"/>
 						</group>
 						<group name="submission" string="Submission" col="4">
 							<field name="submission_type" string="Type" required="1"/>

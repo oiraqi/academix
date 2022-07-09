@@ -7,14 +7,14 @@
             <field name="model">ixlms.assessment</field>
             <field name="inherit_id" ref="ixlms.view_assessment_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='description']" position="after">                    
+                <xpath expr="//field[@name='technique_id']" position="after">                    
                         <field name="ilo_ids" domain="[('id', 'in', course_ilo_ids)]"
                             widget="many2many_tags"
                             options="{'no_quick_create': True, 'no_create_edit': True}"/>
                         <field name="course_ilo_ids" invisible="1"/>                    
                 </xpath>
                 <xpath expr="//group[@name='stats']" position="after">                    
-                    <group name="performance" string="Sample Student Performance" col="6">
+                    <group name="performance" string="Sample Student Performance" col="6" groups="ix.group_faculty,ix.group_dean,ix.group_vpaa">
                         <field name="good_performance"/>
                         <field name="avg_performance"/>
                         <field name="poor_performance"/>
