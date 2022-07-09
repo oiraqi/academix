@@ -5,7 +5,7 @@
             <field name="number">107</field>
             <field name="building_id" ref="ix_building_Bb"/>
             <field name="group_id" ref='ix_building_group_academic'/>
-            <field name="type"/>classroom</field>
+            <field name="type">classroom</field>
             <field name="capacity" eval="20"/>
         </record>    
     </data>
