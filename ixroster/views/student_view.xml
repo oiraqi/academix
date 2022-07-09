@@ -5,7 +5,7 @@
         <record id="view_student_form_roster" model="ir.ui.view">
             <field name="name">ix.student.inherit.view.form</field>
             <field name="model">ix.student</field>
-            <field name="inherit_id" ref="ix.view_student_form"/>
+            <field name="inherit_id" ref="ixcatalog.view_student_form_catalog"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook[@name='info']" position="after">
                     <notebook>
