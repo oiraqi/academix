@@ -30,6 +30,8 @@ class Student(models.Model):
     attendance_line_absent_ids = fields.One2many(comodel_name='ixlms.attendance.line', compute='_attendance_line_absent_ids', string='Missed Classes')
     earned_sch = fields.Integer(compute='_sch', string='Earned Credits')
     remaining_sch = fields.Integer(compute='_sch', string='Remaining Credits')
+    progress_sch = fields.Float(string='Progress', compute='_sch')
+    
 
     def _sch(self):
         for rec in self:
@@ -39,6 +41,10 @@ class Student(models.Model):
                     earned_sch += enrollment.course_id.sch
             rec.earned_sch = earned_sch
             rec.remaining_sch = rec.program_sch - earned_sch
+            if rec.program_sch == 0:
+                rec.progress = 0
+            else:
+                rec.progress = float(rec.earned_sch) * 100 / rec.program_sch
 
     def _attendance_line_absent_ids(self):
         for rec in self:
