@@ -17,8 +17,8 @@
                                 <field name="sid" placeholder="Student ID" style="width: 25%"/>
                             </h2>
                         </div>
-                        <notebook>
-                            <page string="General Information" name="info">
+                        <notebook name="info">
+                            <page string="General Information" name="general">
                                 <group col="4">
                                     <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                                     <field name="email" widget="email" required="1"/>

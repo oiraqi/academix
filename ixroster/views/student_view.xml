@@ -7,7 +7,7 @@
             <field name="model">ix.student</field>
             <field name="inherit_id" ref="ix.view_student_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//group[@name='info']" position="after">
+                <xpath expr="//notebook[@name='info']" position="after">
                     <notebook>
                         <page name="sections" string="Sections">
                             <field name="enrollment_ids" nolabel="1" readonly="1">
