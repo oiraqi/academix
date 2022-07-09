@@ -3,7 +3,7 @@
     <data>
     
         <record id="ix_session_psp" model="ix.session">
-            <field name="name">Pre&#8211;Spring Intersession</field>
+            <field name="name">PreSpring Intersession</field>
             <field name="code">PSP</field>
             <field name="sequence" eval="1"/>
             <field name="max_ncourses" eval="1"/>
