@@ -31,8 +31,8 @@
 					<field name="sequence" widget="handle"/>
 					<field name="name"/>
 					<field name="code"/>
-					<field name="max_ncourses"/>
-					<field name="max_ncredits"/>
+					<field name="max_ncourses" options="{'type': 'number', 'step': 1, 'format': 0}"/>
+					<field name="max_ncredits"options="{'type': 'number', 'step': 1, 'format': 0}"/>
 				</tree>
 			</field>
 		</record>
