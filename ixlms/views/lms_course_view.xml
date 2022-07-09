@@ -60,8 +60,8 @@
 									<field name="ntechniques"/>
 									<t t-if="record.ntechniques.raw_value==1">Technique</t>
 									<t t-else="">Techniques</t>
-									<field name="nchannels"/>
 									<br/>
+									<field name="nchannels"/>									
 									<t t-if="record.nchannels.raw_value==1">Channel</t>
 									<t t-else="">Channels</t>									
 								</div>
