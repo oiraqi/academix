@@ -31,7 +31,7 @@ class Student(models.Model):
     earned_sch = fields.Integer(compute='_sch', string='Earned Credits')
     remaining_sch = fields.Integer(compute='_sch', string='Remaining Credits')
     progress = fields.Float(string='Progress Towards Degree', compute='_sch')
-    on_probation = fields.Boolean(string='On Probation', default=False)    
+    on_probation = fields.Boolean(string='On Probation', default=False, tracking=True)    
     
 
     def _sch(self):
