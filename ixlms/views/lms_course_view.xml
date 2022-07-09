@@ -81,7 +81,7 @@
 							<field name="course_id"/>
 						</h1>
 						<br/>
-						<div class="oe_button_box" name="button_box">
+						<div class="oe_button_box" name="button_box2">
 							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-puzzle-piece">
 								<field name="nmodules" string="Modules" widget="statinfo"/>
 							</button>
@@ -97,6 +97,8 @@
 							<button name="get_resources" type="object" class="oe_stat_button" icon="fa-slideshare">
 								<field name="nresources" string="Resources" widget="statinfo"/>
 							</button>
+						</div>
+						<div class="oe_button_box" name="button_box1">
 							<button name="get_attendance" type="object" class="oe_stat_button" icon="fa-calendar-check-o">
 								<field name="nattendance_sheets" string="Att. Sheets" widget="statinfo"/>
 							</button>
@@ -144,6 +146,7 @@
 											<field name="module_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="start_date"/>
 											<field name="nsessions"/>
+											<field name="nresources"/>
 										</tree>
 									</field>
 								</group>
