@@ -14,7 +14,8 @@
                     <field name="course_ilo_ids" invisible="1"/>
                 </xpath>                
                 <xpath expr="//field[@name='chapter_ids']/tree/field[@name='module_id']" position="after">
-                    <field name="ilo_ids" widget="many2many_tags"/>
+                    <field name="ilo_ids" widget="many2many_tags"
+                        options="{'no_quick_create': True, 'no_create_edit': True}"/>
                 </xpath>
             </field>
         </record>

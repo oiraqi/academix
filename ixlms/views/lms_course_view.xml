@@ -70,7 +70,7 @@
 						</h1>
 						<br/>
 						<div class="oe_button_box" name="button_box">
-							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-people-group">
+							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-puzzle-piece">
 								<field name="nmodules" string="Modules" widget="statinfo"/>
 							</button>
 							<button name="get_techniques" type="object" class="oe_stat_button" icon="fa-pencil-square-o">
