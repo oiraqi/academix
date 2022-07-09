@@ -32,7 +32,7 @@
 					<field name="name"/>
 					<field name="code"/>
 					<field name="max_ncourses" options="{'type': 'number', 'step': 1, 'format': 0}"/>
-					<field name="max_ncredits"options="{'type': 'number', 'step': 1, 'format': 0}"/>
+					<field name="max_ncredits" options="{'type': 'number', 'step': 1, 'format': 0}"/>
 				</tree>
 			</field>
 		</record>
