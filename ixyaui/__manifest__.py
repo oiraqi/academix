@@ -15,6 +15,7 @@
     ],
     'data': [
         'data/buildings.xml',
+        'data/rooms.xml',
         'data/schools.xml',
         'data/disciplines.xml',
         'data/sessions.xml',

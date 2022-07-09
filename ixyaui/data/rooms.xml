@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="ix_room_107" model="ix.room">
+            <field name="name">107</field>
+            <field name="building_id" ref="ix_building_Bb"/>
+        </record>    
+    </data>
+    
+</odoo>
