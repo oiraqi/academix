@@ -7,9 +7,11 @@
 			<field name="arch" type="xml">
 				<form string="Document">
 					<sheet>
-						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
+						<h1><field name="name" default_focus="1" placeholder="Document Name..."/></h1>
 						<group name="info" string="General Information" col="4">
-						
+							<field name="file"/>
+							<field name="url"/>
+							<field name="folder_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
