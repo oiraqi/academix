@@ -72,7 +72,7 @@ class Term(models.Model):
 
     name = fields.Char(string='Term', compute='_compute_name_code', store=True)
     code = fields.Char(string='Term', compute='_compute_name_code', store=True)
-    year = fields.Integer(string='Year', required=True)
+    year = fields.Integer(string='Year', required=True, default=lambda self: fields.Date.today().year)
     session_id = fields.Many2one(comodel_name='ix.session', string='Session', required=True)
     sequence = fields.Integer(related='session_id.sequence', store=True)
     

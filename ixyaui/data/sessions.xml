@@ -17,7 +17,7 @@
             <field name="max_ncredits" eval="18"/>
         </record>
         <record id="ix_session_psu" model="ix.session">
-            <field name="name">Pre&#8211;Summer Intersession</field>
+            <field name="name">Pre-Summer Intersession</field>
             <field name="code">PSU</field>
             <field name="sequence" eval="3"/>
             <field name="max_ncourses" eval="1"/>
@@ -31,7 +31,7 @@
             <field name="max_ncredits" eval="7"/>
         </record>
         <record id="ix_session_pfa" model="ix.session">
-            <field name="name">Pre&#8211;Fall Intersession</field>
+            <field name="name">Pre-Fall Intersession</field>
             <field name="code">PFA</field>
             <field name="sequence" eval="5"/>
             <field name="max_ncourses" eval="1"/>

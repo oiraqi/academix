@@ -32,6 +32,7 @@
 					<field name="name"/>
 					<field name="code"/>
 					<field name="max_ncourses"/>
+					<field name="max_ncredits"/>
 				</tree>
 			</field>
 		</record>
