@@ -23,7 +23,7 @@
 									<field name="team_id" attrs="{'column_invisible': [('parent.teamwork', '=', False)]}"/>
 									<field name="assessment_line_ids" widget="many2many_tags" attrs="{'column_invisible': [('parent.teamwork', '=', False)]}"/>
 									<field name="rgrade" avg="Average Grade"/>
-									<button ico="fa-folder-open" name="get_submission" type="object" class="oe_highlight"/>
+									<button icon="fa-folder-open" name="get_submission" type="object" class="oe_highlight"/>
 								</tree>
 							</field>
 						</group>
