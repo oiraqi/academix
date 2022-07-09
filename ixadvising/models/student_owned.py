@@ -25,10 +25,6 @@ from odoo import models, fields
 
 
 class StudentOwned(models.AbstractModel):
-    _name = 'ix.student.owned'
+    _inherit = 'ix.student.owned'
 
-    student_id = fields.Many2one(
-        'ix.student', string='Student', default=lambda self: self.env['ix.student'].search(
-            [('user_id', '=', self.env.user.id)]), required=True)
-    school_id = fields.Many2one('ix.school', related='student_id.school_id', store=True, required=True)
-    locked = fields.Boolean('Locked', readonly=True, default=False)
+    program_id = fields.Many2one('ixcatalog.program', related='student_id.program_id')

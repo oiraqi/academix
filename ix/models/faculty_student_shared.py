@@ -26,18 +26,11 @@ from odoo import models, fields
 
 class FacultyStudentShared(models.AbstractModel):
     _name = 'ix.faculty.student.shared'
+    _inherit = 'ix.student.owned'
     _description = 'A resource accessible by both a student and a faculty'
 
     faculty_id = fields.Many2one(
         'ix.faculty', string='Faculty', default=lambda self: self.env['ix.faculty'].search(
             [('user_id', '=', self.env.user.id)]))
-
-    student_id = fields.Many2one(
-        'ix.student', string='Student', default=lambda self: self.env['ix.student'].search(
-            [('user_id', '=', self.env.user.id)]))
-
-    school_id = fields.Many2one('ix.school', string='School', default=lambda self: self.env['ix.faculty'].search(
-            [('user_id', '=', self.env.user.id)]).school_id or self.env['ix.student'].search(
-            [('user_id', '=', self.env.user.id)]).school_id, required=True)
     
     locked = fields.Boolean('Locked', readonly=True, default=False)

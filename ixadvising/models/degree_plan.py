@@ -33,7 +33,6 @@ class DegreePlan(models.Model):
                          'unique(student_id)', 'A student can only have one degree plan')]
     
     name = fields.Char(related='student_id.name')
-    program_id = fields.Many2one('ixcatalog.program', related='student_id.program_id')
     pace = fields.Selection(
         [('4', '4'), ('5', '5'), ('6', '6')], string='Pace', default='5', required=True)
     session_ids = fields.Many2many(comodel_name='ix.session', string='Sessions', required=True)
