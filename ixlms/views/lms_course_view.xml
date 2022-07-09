@@ -57,7 +57,11 @@
 									<field name="nassessments"/>
 									<t t-if="record.nassessments.raw_value==1">Assessment</t>
 									<t t-else="">Assessments</t>, 
+									<field name="ntechniques"/>
+									<t t-if="record.ntechniques.raw_value==1">Technique</t>
+									<t t-else="">Techniques</t>
 									<field name="nchannels"/>
+									<br/>
 									<t t-if="record.nchannels.raw_value==1">Channel</t>
 									<t t-else="">Channels</t>									
 								</div>
