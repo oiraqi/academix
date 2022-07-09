@@ -54,13 +54,12 @@
 									<t t-if="record.nresources.raw_value==1">Resource</t>
 									<t t-else="">Resources</t>
 									<br/>
-									<field name="nchannels"/>
-									<t t-if="record.nchannels.raw_value==1">Channel</t>
-									<t t-else="">Channels</t>
-									<br/>
 									<field name="nassessments"/>
 									<t t-if="record.nassessments.raw_value==1">Assessment</t>
-									<t t-else="">Assessments</t>
+									<t t-else="">Assessments</t>, 
+									<field name="nchannels"/>
+									<t t-if="record.nchannels.raw_value==1">Channel</t>
+									<t t-else="">Channels</t>									
 								</div>
 							</div>
 						</t>
