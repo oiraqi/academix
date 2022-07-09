@@ -7,9 +7,12 @@
 			<field name="arch" type="xml">
 				<form string="Resource">
 					<sheet>
-						<h1><field name="name" default_focus="1" placeholder="Name..."/></h1>
+						<h1><field name="name"/></h1>
 						<group name="info" string="General Information" col="4">
-						
+							<field name="document_id"/>
+							<field name="module_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+							<field name="chapter_id" domain="[('module_id', '=', module_id)]"
+								options="{'no_quick_create': True, 'no_create_edit': True}"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
@@ -28,6 +31,8 @@
 			<field name="arch" type="xml">
 				<tree string="Resources">
 					<field name="name"/>
+					<field name="file"/>
+					<field name="url"/>
 				</tree>
 			</field>
 		</record>
@@ -37,7 +42,7 @@
 			<field name="res_model">ixlms.resource</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
-			<field name="context">{}</field>
+			<field name="context">{'group_by': ['module_id', 'chapter_id']}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 				
