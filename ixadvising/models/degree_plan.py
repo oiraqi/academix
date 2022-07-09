@@ -60,7 +60,6 @@ class DegreePlan(models.Model):
 
         while self._plan_for_semester(planned_course_ids, program_course_ids, term_id):
             term_id = term_id.get_or_create_next()
-        self.generated = True
 
     def _plan_for_semester(self, planned_course_ids, program_course_ids, term_id):       
         candidate_course_ids = self.env['ix.course'].search([

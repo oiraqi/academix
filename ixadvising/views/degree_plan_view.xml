@@ -11,9 +11,9 @@
                         <h1>
                             <field name="student_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                         </h1>
-                        <h3>
+                        <h4>
                             <field name="progress" widget="percentpie"/>
-                        </h3>
+                        </h4>
                         <div class="oe_button_box" name="button_box" attrs="{'invisible': [('id', '=', False)]}">
                             <button name="get_degree_plan" string="Degree Plan" type="object" class="oe_stat_button" icon="fa-list-ol"/>
                         </div>
