@@ -7,10 +7,14 @@
             <field name="model">ix.student</field>
             <field name="inherit_id" ref="ixroster.view_student_form_roster"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='program_sch']" position="after">
-                    <field name="earned_sch"/>
-                    <field name="remaining_sch"/>
+                <xpath expr="//field[@name='code']" position="after">
                     <field name="progress" widget="percentpie"/>
+                </xpath>
+                <xpath expr="//field[@name='program_sch']" position="before">
+                    <label for="earned_sch" string="Eanred / Remaining"/>
+                    <div>
+                        <field name="earned_sch"/> / <field name="remaining_sch"/>
+                    </div>
                 </xpath>
                 <xpath expr="//page[@name='sections']" position="after">
                     <page name="attendance" string="Attendance">

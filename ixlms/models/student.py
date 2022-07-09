@@ -30,7 +30,7 @@ class Student(models.Model):
     attendance_line_absent_ids = fields.One2many(comodel_name='ixlms.attendance.line', compute='_attendance_line_absent_ids', string='Missed Classes')
     earned_sch = fields.Integer(compute='_sch', string='Earned Credits')
     remaining_sch = fields.Integer(compute='_sch', string='Remaining Credits')
-    progress = fields.Float(string='Progress', compute='_sch')
+    progress = fields.Float(string='Progress Towards Degree', compute='_sch')
     
 
     def _sch(self):
