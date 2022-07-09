@@ -10,7 +10,7 @@ class Folder(models.Model):
 	folder_ids = fields.One2many(comodel_name='ixdms.folder', inverse_name='parent_id', string='Sub-Folders')
 	nfolders = fields.Integer(string='Number of Subfolders', compute='_nfolders')
 
-	def _folders(self):
+	def _nfolders(self):
 		for rec in self:
 			rec.nfolders = len(rec.folder_ids)
 
