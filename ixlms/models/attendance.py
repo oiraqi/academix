@@ -12,7 +12,7 @@ class Attendance(models.Model):
 	section_id = fields.Many2one(comodel_name='ixroster.section', related='course_id.section_id', store=True)
 	term_id = fields.Many2one(comodel_name='ix.term', related='course_id.section_id.term_id', store=True)
 	school_id = fields.Many2one(comodel_name='ix.school', related='course_id.section_id.school_id', store=True)
-	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='course_id.section_id.instructor_id')
+	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='course_id.section_id.instructor_id', store=True)
 	day = fields.Date(string='Date', required=True, default= lambda self: fields.Date.today())
 	attendance_line_ids = fields.One2many(comodel_name='ixlms.attendance.line', inverse_name='attendance_id', string='Attendance Lines')
 	npresent = fields.Integer(string='Present Students', compute='_stats')
