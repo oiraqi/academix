@@ -218,7 +218,7 @@ class LmsCourse(models.Model):
 	def get_resources(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
-		context = {'default_course_id': self.id}
+		context = {'default_course_id': self.id, 'group_by': ['module_id', 'chapter_id']}
 		return self._expand_to('ixlms.action_resource', domain, context)
 
 

@@ -46,7 +46,7 @@
 			<field name="res_model">ixlms.resource</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
-			<field name="context">{'group_by': ['module_id', 'chapter_id']}</field>
+			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 				
