@@ -30,5 +30,5 @@ class StudentOwned(models.AbstractModel):
     student_id = fields.Many2one(
         'ix.student', string='Student', default=lambda self: self.env['ix.student'].search(
             [('user_id', '=', self.env.user.id)]), required=True)
-    school_id = fields.Many2one('ix.school', related='student_id.school_id', store=True, required=True)
+    school_id = fields.Many2one('ix.school', related='student_id.school_id', store=True)
     locked = fields.Boolean('Locked', readonly=True, default=False)
