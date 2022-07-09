@@ -16,7 +16,7 @@
                         <field name="earned_sch"/> / <field name="remaining_sch"/>
                     </div>
                 </xpath>
-                <xpath expr="//field['room_id']" position="after">
+                <xpath expr="//field[@name='room_id']" position="after">
                     <field name="attendance_rate"/>                    
                     <field name="overall_grade"/>
                 </xpath>
