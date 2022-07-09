@@ -13,8 +13,8 @@
 							<field name="document_ids" nolabel="1">
 								<tree editable="bottom">
 									<field name="name"/>
-									<field name="file"/>
-									<field name="url"/>
+									<field name="file" widget="binary"/>
+									<field name="url" widget="url"/>
 								</tree>
 							</field>
 						</group>
