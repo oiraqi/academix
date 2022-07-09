@@ -15,5 +15,5 @@ class Teamset(models.Model):
 		self.ensure_one()
 		domain = [('teamset_id', '=', self.id)]
 		context = {'default_teamset_id': self.id}
-		return self._resolve_action('ixlms.action_team_membership', domain, context)
+		return self._expand_to('ixlms.action_team_membership', domain, context)
 	

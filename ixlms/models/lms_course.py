@@ -145,67 +145,67 @@ class LmsCourse(models.Model):
 	def get_students(self):
 		self.ensure_one()
 		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn'])]
-		return self._resolve_action('ixlms.action_enrollment', domain)
+		return self._expand_to('ixlms.action_enrollment', domain)
 
 	def get_assessments(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
 		if self.grade_grouping == 'module' and self.grade_weighting == 'percentage':
-			return self._resolve_action('ixlms.action_assessment_module_percentage', domain)
+			return self._expand_to('ixlms.action_assessment_module_percentage', domain)
 
 		if self.grade_grouping == 'module' and self.grade_weighting == 'points':
-			return self._resolve_action('ixlms.action_assessment_module_points', domain)
+			return self._expand_to('ixlms.action_assessment_module_points', domain)
 		
 		if self.grade_grouping == 'technique' and self.grade_weighting == 'percentage':
-			return self._resolve_action('ixlms.action_assessment_technique_percentage', domain)
+			return self._expand_to('ixlms.action_assessment_technique_percentage', domain)
 
 		if self.grade_grouping == 'technique' and self.grade_weighting == 'points':
-			return self._resolve_action('ixlms.action_assessment_technique_points', domain)
+			return self._expand_to('ixlms.action_assessment_technique_points', domain)
 		
 
 	def get_grade_matrix(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id), ('student_id', 'in', self.student_ids.ids)]
 		if self.grade_grouping == 'module' and self.grade_weighting == 'percentage':
-			return self._resolve_action('ixlms.action_assessment_line_module_percentage', domain)
+			return self._expand_to('ixlms.action_assessment_line_module_percentage', domain)
 
 		if self.grade_grouping == 'module' and self.grade_weighting == 'points':
-			return self._resolve_action('ixlms.action_assessment_line_module_points', domain)
+			return self._expand_to('ixlms.action_assessment_line_module_points', domain)
 		
 		if self.grade_grouping == 'technique' and self.grade_weighting == 'percentage':
-			return self._resolve_action('ixlms.action_assessment_line_technique_percentage', domain)
+			return self._expand_to('ixlms.action_assessment_line_technique_percentage', domain)
 
 		if self.grade_grouping == 'technique' and self.grade_weighting == 'points':
-			return self._resolve_action('ixlms.action_assessment_line_technique_points', domain)
+			return self._expand_to('ixlms.action_assessment_line_technique_points', domain)
 
 	def get_attendance(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id}
-		return self._resolve_action('ixlms.action_attendance', domain, context)
+		return self._expand_to('ixlms.action_attendance', domain, context)
 
 	def get_teamsets(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id}
-		return self._resolve_action('ixlms.action_teamset', domain, context)
+		return self._expand_to('ixlms.action_teamset', domain, context)
 
 	def get_modules(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id}
-		return self._resolve_action('ixlms.action_module', domain, context)
+		return self._expand_to('ixlms.action_module', domain, context)
 
 	def get_techniques(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id}
-		return self._resolve_action('ixlms.action_weighted_technique', domain, context)
+		return self._expand_to('ixlms.action_weighted_technique', domain, context)
 
 	def get_channels(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
 		context = {'default_course_id': self.id, 'default_public': 'private'}
-		return self._resolve_action('ixlms.action_mail_channel', domain, context)
+		return self._expand_to('ixlms.action_mail_channel', domain, context)
 
 

@@ -48,4 +48,4 @@ class AssessmentSubmission(models.Model):
 	def get_submission(self):
 		self.ensure_one()
 		domain = [('id', '=', self.id)]
-		return self._resolve_action('ixlms.action_assessment_submission', domain)
+		return self._expand_to('ixlms.action_assessment_submission', domain)

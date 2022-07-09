@@ -153,15 +153,15 @@ class Assessment(models.Model):
 					'student_id': student.id
 				})
 		domain = [('assessment_id', '=', self.id)]
-		return self._resolve_action('ixlms.action_assessment_line', domain)
+		return self._expand_to('ixlms.action_assessment_line', domain)
 
 	def get_submissions(self):
 		self.ensure_one()
 		domain = [('assessment_id', '=', self.id)]
 		context = {'default_assessment_id': self.id}
-		return self._resolve_action('ixlms.action_assessment_submission', domain, context)
+		return self._expand_to('ixlms.action_assessment_submission', domain, context)
 
 	def get_grade_distribution(self):
 		self.ensure_one()
 		domain = [('assessment_id', '=', self.id)]
-		return self._resolve_action('ixlms.action_assessment_line_dist', domain)
+		return self._expand_to('ixlms.action_assessment_line_dist', domain)
