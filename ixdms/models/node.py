@@ -11,6 +11,12 @@ class Node(models.Model):
 	type = fields.Selection(string='Type', selection=[('1', 'Folder'), ('2', 'Document')], default='2', required=True)
 	color = fields.Integer(string='Color')	
 	tag_ids = fields.Many2many(comodel_name='ixdms.tag', string='Tags')
+	ntags = fields.Integer(compute='_ntags')
+
+	def _ntags(self):
+		for rec in self:
+			rec.ntags = len(rec.tag_ids)
+	
 	file = fields.Binary(string='File')
 	url = fields.Char(string='URL')
 	parent_id = fields.Many2one(comodel_name='ixdms.node', string='Parent')

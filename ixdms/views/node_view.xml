@@ -20,7 +20,7 @@
 										<field name="type"/>
 										<field name="nfolders"/>
 										<field name="ndocuments"/>
-										<field name="tag_ids"/>
+										<field name="ntags"/>
 										<templates>
 											<t t-name="kanban-box">
 												<div>
@@ -37,7 +37,7 @@
 														</b>
 														<br/>
 														<t t-if="record.type.raw_value == '2'">
-															<t t-if="len(record.tag_ids) &gt; 0">
+															<t t-if="record.ntags.raw_value &gt; 0">
 																<field name="tag_ids" widget="many2many_tags"/>
 															</t>
 															<t t-else="">
@@ -137,7 +137,7 @@
 					<field name="type"/>
 					<field name="nfolders"/>
 					<field name="ndocuments"/>
-					<field name="tag_ids"/>
+					<field name="ntags"/>
 					<templates>
 						<t t-name="kanban-box">
 							<div t-attf-class="oe_kanban_global_click">
@@ -154,7 +154,7 @@
 									</b>
 									<br/>
 									<t t-if="record.type.raw_value == '2'">
-										<t t-if="record.tag_ids">
+										<t t-if="record.ntags.raw_value &gt; 0">
 											<field name="tag_ids" widget="many2many_tags"/>
 										</t>
 										<t t-else="">
