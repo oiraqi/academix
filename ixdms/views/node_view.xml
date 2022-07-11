@@ -16,12 +16,12 @@
 						<notebook>
 							<page string="Content" name="folder" attrs="{'invisible': [('type', '!=', '1')]}">
 								<group name="folder">
-									<field name="child_ids" mode="kanban" nolabel="1" context="{'default_parent_id': active_id}">
+									<field name="child_ids" mode="kanban" nolabel="1" context="{'default_parent_id': id}">
 										<kanban>
 											<field name="type"/>
 											<templates>
 												<t t-name="kanban-box">
-													<div t-attf-class="oe_kanban_global_click">
+													<div>
 														<div name="content" class="oe_kanban_details">
 															<t t-if="record.type.raw_value == '1'">
 																<img t-att-src="'/ixdms/static/img/folder.png'"/>
