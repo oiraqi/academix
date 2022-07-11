@@ -23,7 +23,7 @@
 			<field name="model">ixdms.tag</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Tags">
+				<tree string="Tags" editable="bottom">
 					<field name="name"/>
 					<field name="create_uid"/>
 					<field name="create_date"/>
