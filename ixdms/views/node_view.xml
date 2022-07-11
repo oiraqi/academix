@@ -80,13 +80,14 @@
 										<ul class="oe_kanban_colorpicker" data-field="color"/>
 									</div>
 								</div>
-								<t t-if="record.type.raw_value == '1'">
-									<img t-att-src="'/ixdms/static/img/folder.png'" width="32" class="oe_module_icon"/>
-								</t>
-								<t t-if="record.type.raw_value == '2'">
-									<img t-att-src="'/ixdms/static/img/document.png'" width="32" class="oe_module_icon"/>
-								</t>								
 								<div name="content" class="oe_kanban_details">
+									<t t-if="record.type.raw_value == '1'">
+										<img t-att-src="'/ixdms/static/img/folder.png'"/>
+									</t>
+									<t t-if="record.type.raw_value == '2'">
+										<img t-att-src="'/ixdms/static/img/document.png'"/>
+									</t>
+									<br/>
 									<b>
 										<field name="name"/>
 									</b>
