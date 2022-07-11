@@ -6,6 +6,7 @@ class Node(models.Model):
 	_description = 'Node'
 	_inherit = ['mail.thread', 'ix.expandable']
 	_order = 'type,name'
+	_sql_constraints = [('name_type_parent_ukey', 'unique(name, type, parent_id)', 'Duplicate name!')]
 
 	name = fields.Char('Name', required=True)
 	type = fields.Selection(string='Type', selection=[('1', 'Folder'), ('2', 'Document')], default='2', required=True)
@@ -46,16 +47,19 @@ class Node(models.Model):
 	read_group_ids = fields.Many2many(comodel_name='res.groups', relation='ixdms_read_node_groups_rel', string='Read Access Groups')
 	write_group_ids = fields.Many2many(comodel_name='res.groups', relation='ixdms_write_node_groups_rel', string='Write Access Groups')
 
-	rshared = fields.Boolean(compute='_rshared')
-	wshared = fields.Boolean(compute='_wshared')
+	shared = fields.Boolean(compute='_shared')	
 
-	def _rshared(self):
+	def _shared(self):
 		for rec in self:
-			rec.rshared = len(rec.read_user_ids) > 0 or len(rec.read_group_ids) > 0
+			rec.shared = rec._rec_shared()
+			
+	def _rec_shared(self):
+		if len(self.read_user_ids) > 0 or len(self.read_group_ids) > 0:
+			return True
+		if not self.parent_id:
+			return False
+		return self.parent_id._rec_shared()
 	
-	def _wshared(self):
-		for rec in self:
-			rec.wshared = len(rec.write_user_ids) > 0 or len(rec.write_group_ids) > 0
 
 	def open(self):
 		self.ensure_one()
