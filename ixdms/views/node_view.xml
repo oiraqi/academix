@@ -101,6 +101,14 @@
 									</b>
 									<br/>
 									<field name="tag_ids" widget="many2many_tags"/>
+									<div name="sticks">
+										<span t-attf-class="label #{'label-warning'}" title="Sub-folders">
+											<field name="nfolders"/>
+										</span>
+										<span t-attf-class="label #{'label-warning'}" title="Documents">
+											<field name="ndocuments"/>
+										</span>
+									</div>
 								</div>
 							</div>
 						</t>
