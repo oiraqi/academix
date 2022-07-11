@@ -27,7 +27,9 @@
 												<div>
 													<a href="#" string="Open" name="open" type="object">
 														<div t-if="record.shared.raw_value == true" name="shared" class="oe_kanban_top_right">
-															<span t-attf-class="pull-right text-right"><field name="shared"/></span>
+															<span t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/share.png'"/>
+															</span>
 														</div>
 														<div name="content" class="oe_kanban_details">
 															<t t-if="record.type.raw_value == '1'">
@@ -145,10 +147,16 @@
 					<field name="nfolders"/>
 					<field name="ndocuments"/>
 					<field name="ntags"/>
+					<field name="shared"/>
 					<templates>
 						<t t-name="kanban-box">
 							<div>
 								<a href="#" string="Open" name="open" type="object">
+									<div t-if="record.shared.raw_value == true" name="shared" class="oe_kanban_top_right">
+										<span t-attf-class="pull-right text-right">
+											<img t-att-src="'/ixdms/static/img/share.png'"/>
+										</span>
+									</div>
 									<div name="content" class="oe_kanban_details">
 										<t t-if="record.type.raw_value == '1'">
 											<img t-att-src="'/ixdms/static/img/folder.png'"/>
