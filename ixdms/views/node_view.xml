@@ -13,11 +13,13 @@
 						<h1>
 							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%"/>
 						</h1>
-						<group name="document" string="General Information" col="4" attrs="{'invisible': [('type', '!=', 'document')]}">
-							<field name="file" widget="binary"/>
-							<field name="url" widget="url"/>
+						<group name="metadata" string="Meta-Data" col="4">							
 							<field name="parent_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 							<field name="tag_ids" widget="many2many_tags"/>
+						</group>
+						<group name="document" string="File &#38; URL" col="4" attrs="{'invisible': [('type', '!=', 'document')]}">
+							<field name="file" widget="binary"/>
+							<field name="url" widget="url"/>
 						</group>
 						<group name="folder" string="Content" col="4" attrs="{'invisible': [('type', '!=', 'folder')]}">
 							<field name="child_ids" mode="kanban" nolabel="1" context="{'default_parent_id': active_id}">
@@ -40,6 +42,8 @@
 													<b>
 														<field name="name"/>
 													</b>
+													<br/>
+													<field name="tag_ids" widget="many2many_tags"/>
 												</div>
 											</div>
 										</t>
@@ -66,7 +70,7 @@
 					<field name="color"/>
 					<templates>
 						<t t-name="kanban-box">
-							<div t-att-class="oe_kanban_global_click">
+							<div t-att-class="#{kanban_color(record.color.raw_value)}">
 								<div class="o_dropdown_kanban dropdown">
 									<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
 										<span class="fa fa-ellipsis-v"/>
@@ -75,12 +79,14 @@
 										<ul class="oe_kanban_colorpicker" data-field="color"/>
 									</div>
 								</div>
-								<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_details">
+								<div t-attf-class="oe_kanban_details">
 									<field name="type"/>
 									<br/>
 									<b>
 										<field name="name"/>
 									</b>
+									<br/>
+									<field name="tag_ids" widget="many2many_tags"/>
 								</div>
 							</div>
 						</t>

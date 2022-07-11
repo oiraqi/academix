@@ -4,6 +4,7 @@ from odoo import models, fields
 class Node(models.Model):
 	_name = 'ixdms.node'
 	_description = 'Node'
+	_order = 'type,name'
 
 	name = fields.Char('Name', required=True)
 	type = fields.Selection(string='Type', selection=[('document', 'Document'), ('folder', 'Folder')], default='document', required=True)
