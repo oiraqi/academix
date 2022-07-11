@@ -203,10 +203,8 @@
 										<t t-else="">
 																Empty
 										</t>
-									</div>
-									<div name="action" class="oe_kanban_bottom_right">
-										<button string="Open" name="open" type="object"/>
-									</div>
+									</div>									
+									<button string="Open" name="open" type="object" class="pull-right text-right oe_highlight"/>									
 								</div>
 							</div>
 						</t>
