@@ -36,7 +36,7 @@
 															<field name="name"/>
 														</b>
 														<br/>
-														Owner: <field name="create_uid"/>
+														<i><field name="create_uid"/></i>
 														<br/>
 														<t t-if="record.type.raw_value == '2'">
 															<t t-if="record.ntags.raw_value &gt; 0">
@@ -155,7 +155,7 @@
 										<field name="name"/>
 									</b>
 									<br/>
-									Owner: <field name="create_uid"/>
+									<i><field name="create_uid"/></i>
 									<br/>
 									<t t-if="record.type.raw_value == '2'">
 										<t t-if="record.ntags.raw_value &gt; 0">
@@ -205,7 +205,7 @@
 										</t>
 									</div>
 									<div name="action" class="oe_kanban_bottom_right">
-										<button string="Open" name="open" type="object" class="pull-right text-right oe_highlight"/>
+										<button string="Open" name="open" type="object"/>
 									</div>
 								</div>
 							</div>
