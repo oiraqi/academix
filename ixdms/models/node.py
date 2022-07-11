@@ -47,18 +47,67 @@ class Node(models.Model):
 	read_group_ids = fields.Many2many(comodel_name='res.groups', relation='ixdms_read_node_groups_rel', string='Read Access Groups')
 	write_group_ids = fields.Many2many(comodel_name='res.groups', relation='ixdms_write_node_groups_rel', string='Write Access Groups')
 
-	shared = fields.Boolean(compute='_shared')	
+	implied_read_user_ids = fields.Many2many(comodel_name='res.users', compute='_implied', string='Implied Read Access Users')
+	implied_write_user_ids = fields.Many2many(comodel_name='res.users', compute='_implied', string='Implied Write Access Users')
+	implied_read_group_ids = fields.Many2many(comodel_name='res.groups', compute='_implied', string='Implied Read Access Groups')
+	implied_write_group_ids = fields.Many2many(comodel_name='res.groups', compute='_implied', string='Implied Write Access Groups')
+	shared = fields.Boolean(compute='_implied')
 
-	def _shared(self):
+	def _implied(self):
 		for rec in self:
-			rec.shared = rec._rec_shared()
+			implied_read_user_ids = []
+			implied_write_user_ids = []
+			implied_read_group_ids = []
+			implied_write_group_ids = []
+			shared = False
 			
-	def _rec_shared(self):
-		if len(self.read_user_ids) > 0 or len(self.read_group_ids) > 0 or len(self.write_user_ids) > 0 or len(self.write_group_ids) > 0:
-			return True
+			rec._rec_implied(implied_read_user_ids, implied_write_user_ids, implied_read_group_ids, implied_write_group_ids)
+
+			if len(implied_read_user_ids) > 0:
+				rec.implied_read_user_ids = implied_read_user_ids
+				shared = True
+			else:
+				rec.implied_read_user_ids = False
+			if len(implied_write_user_ids) > 0:
+				rec.implied_write_user_ids = implied_write_user_ids
+				shared = True
+			else:
+				rec.implied_write_user_ids = False
+			if len(implied_read_group_ids) > 0:
+				rec.implied_read_group_ids = implied_read_group_ids
+				shared = True
+			else:
+				rec.implied_read_group_ids = False
+			if len(implied_write_group_ids) > 0:
+				rec.implied_write_group_ids = implied_write_group_ids
+				shared = True
+			else:
+				rec.implied_write_group_ids = False
+
+			rec.shared = shared or len(rec.read_user_ids) > 0 or len(rec.read_group_ids) > 0 or len(rec.write_user_ids) > 0 or len(rec.write_group_ids) > 0
+
+			
+	def _rec_implied(self, implied_read_user_ids, implied_write_user_ids, implied_read_group_ids, implied_write_group_ids):
 		if not self.parent_id:
-			return False
-		return self.parent_id._rec_shared()
+			return
+
+		for read_user in self.parent_id.read_user_ids:
+			if read_user.id not in implied_read_user_ids:
+				implied_read_user_ids.append(read_user.id)
+		
+		for write_user in self.parent_id.write_user_ids:
+			if write_user.id not in implied_write_user_ids:
+				implied_write_user_ids.append(write_user.id)
+
+		for read_group in self.parent_id.read_group_ids:
+			if read_group.id not in implied_read_group_ids:
+				implied_read_group_ids.append(read_group.id)
+		
+		for write_group in self.parent_id.write_group_ids:
+			if write_group.id not in implied_write_group_ids:
+				implied_write_group_ids.append(write_group.id)
+		
+		return self.parent_id._rec_implied(implied_read_user_ids, implied_write_user_ids, implied_read_group_ids, implied_write_group_ids)
 	
 
 	def open(self):

@@ -115,11 +115,21 @@
 								</group>
 							</page>
 							<page string="Sharing Options" name="share">
-								<group name="share" col="4">
-									<field name="read_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-									<field name="write_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-									<field name="read_group_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-									<field name="write_group_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+								<group name="read" string="Read Access" col="4">
+									<field name="read_user_ids" widget="many2many_tags" string="Users"
+										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="implied_read_user_ids" widget="many2many_tags" string="Implied Users"/>
+									<field name="read_group_ids" widget="many2many_tags" string="Groups"
+										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="implied_read_group_ids" widget="many2many_tags" string="Implied Groups"/>							
+								</group>
+								<group name="write" string="Write Access" col="4">									
+									<field name="write_user_ids" widget="many2many_tags" string="Users"
+										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="implied_write_user_ids" widget="many2many_tags" string="Implied Users"/>
+									<field name="write_group_ids" widget="many2many_tags" string="Groups"
+										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="implied_write_group_ids" widget="many2many_tags" string="Implied Groups"/>
 								</group>
 							</page>
 						</notebook>
