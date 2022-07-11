@@ -42,6 +42,8 @@
 													<b>
 														<field name="name"/>
 													</b>
+													<br/>
+													<field name="tag_ids" widget="many2many_tags"/>
 												</div>
 											</div>
 										</t>
@@ -83,6 +85,8 @@
 									<b>
 										<field name="name"/>
 									</b>
+									<br/>
+									<field name="tag_ids" widget="many2many_tags"/>
 								</div>
 							</div>
 						</t>
