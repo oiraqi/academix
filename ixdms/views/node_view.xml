@@ -24,12 +24,16 @@
 										<field name="ndocuments"/>
 										<field name="ntags"/>
 										<field name="shared"/>
+										<field name="message_is_follower"/>
 										<templates>
 											<t t-name="kanban-box">
 												<div>
 													<a href="#" string="Open" name="open" type="object">
-														<div t-if="record.shared.raw_value == true" name="shared" class="oe_kanban_top_right">
-															<span t-attf-class="pull-right text-right">
+														<div name="fav_shared" class="oe_kanban_top_right">
+															<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/fav.png'"/>
+															</span>
+															<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
 																<img t-att-src="'/ixdms/static/img/share.png'"/>
 															</span>
 														</div>
@@ -160,14 +164,18 @@
 					<field name="ndocuments"/>
 					<field name="ntags"/>
 					<field name="shared"/>
+					<field name="message_is_follower"/>
 					<templates>
 						<t t-name="kanban-box">
 							<div>
 								<a href="#" string="Open" name="open" type="object">
-									<div t-if="record.shared.raw_value == true" name="shared" class="oe_kanban_top_right">
-										<span t-attf-class="pull-right text-right">
-											<img t-att-src="'/ixdms/static/img/share.png'"/>
+									<div name="fav_shared" class="oe_kanban_top_right">
+										<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
+											<img t-att-src="'/ixdms/static/img/fav.png'"/>
 										</span>
+										<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
+											<img t-att-src="'/ixdms/static/img/share.png'"/>
+										</span>										
 									</div>
 									<div name="content" class="oe_kanban_details">
 										<t t-if="record.type.raw_value == '1'">
@@ -272,7 +280,7 @@
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
-			<field name="domain">[('create_uid', '!=', uid), ('implied_read_user_ids', 'in', uid)]</field>
+			<field name="domain">[('create_uid', '!=', uid), ('read_user_ids', 'in', uid), ('implied_read_user_ids', 'not in', uid)]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
