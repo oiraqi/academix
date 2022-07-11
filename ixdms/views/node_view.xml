@@ -71,7 +71,7 @@
 					<field name="type"/>
 					<templates>
 						<t t-name="kanban-box">
-							<div t-att-class="oe_kanban_global_click">
+							<div t-att-class="oe_kanban_global_click" t-attf-style="background-color: #{record.color.raw_value};">
 								<div class="o_dropdown_kanban dropdown">
 									<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
 										<span class="fa fa-ellipsis-v"/>
@@ -81,10 +81,10 @@
 									</div>
 								</div>
 								<t t-if="record.type.raw_value == '1'">
-									<img t-att-src="'/ixdms/static/img/folder.png'" class="oe_module_icon"/>
+									<img t-att-src="'/ixdms/static/img/folder.png'" width="32px" height="32px" class="oe_module_icon"/>
 								</t>
 								<t t-if="record.type.raw_value == '2'">
-									<img t-att-src="'/ixdms/static/img/document.png'" class="oe_module_icon"/>
+									<img t-att-src="'/ixdms/static/img/document.png'" width="32px" height="32px" class="oe_module_icon"/>
 								</t>								
 								<div name="content" class="oe_kanban_details">
 									<b>
