@@ -36,6 +36,8 @@
 															<field name="name"/>
 														</b>
 														<br/>
+														Owner: <field name="create_uid"/>
+														<br/>
 														<t t-if="record.type.raw_value == '2'">
 															<t t-if="record.ntags.raw_value &gt; 0">
 																<field name="tag_ids" widget="many2many_tags"/>
@@ -152,6 +154,8 @@
 									<b>
 										<field name="name"/>
 									</b>
+									<br/>
+									Owner: <field name="create_uid"/>
 									<br/>
 									<t t-if="record.type.raw_value == '2'">
 										<t t-if="record.ntags.raw_value &gt; 0">
