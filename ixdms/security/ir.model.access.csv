@@ -1,7 +1,3 @@
-access_ixdms_folder_user,access.ixdms.folder.user,model_ixdms_folder,ix.group_user,1,1,1,1
-
-access_ixdms_document_user,access.ixdms.document.user,model_ixdms_document,ix.group_user,1,1,1,1
-
 access_ixdms_node_user,access.ixdms.node.user,model_ixdms_node,ix.group_user,1,1,1,1
 
 access_ixdms_tag_user,access.ixdms.tag.user,model_ixdms_tag,ix.group_user,1,1,1,1

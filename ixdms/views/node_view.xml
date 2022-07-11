@@ -110,7 +110,7 @@
 										</span>
 									</div>
 									<div name="action" class="oe_kanban_bottom_right">
-										<button icon="fa-folder-open" name="open" type="object" class="oe_highlight"/>
+										<button t-attf-class="pull-right text-right" string="Open" name="open" type="object" class="oe_highlight"/>
 									</div>
 								</div>
 							</div>
