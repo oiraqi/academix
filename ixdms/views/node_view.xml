@@ -21,23 +21,31 @@
 											<field name="color"/>
 											<templates>
 												<t t-name="kanban-box">
-													<div t-att-class="oe_kanban_global_click">
-														<div class="o_dropdown_kanban dropdown">
-															<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
-																<span class="fa fa-ellipsis-v"/>
-															</a>
-															<div class="dropdown-menu" role="menu">
-																<ul class="oe_kanban_colorpicker" data-field="color"/>
-															</div>
-														</div>
-														<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_details">
-															<field name="type"/>
+													<div t-attf-class="oe_kanban_global_click">
+														<div name="content" class="oe_kanban_details">
+															<t t-if="record.type.raw_value == '1'">
+																<img t-att-src="'/ixdms/static/img/folder.png'"/>
+															</t>
+															<t t-if="record.type.raw_value == '2'">
+																<img t-att-src="'/ixdms/static/img/document.png'"/>
+															</t>
 															<br/>
 															<b>
 																<field name="name"/>
 															</b>
 															<br/>
 															<field name="tag_ids" widget="many2many_tags"/>
+															<div name="sticks">
+																<span t-attf-class="o_form_label #{'label-warning'}" title="Sub-folders">
+																	<field name="nfolders"/>
+																</span>
+																<span style="color: green;" title="Documents" class="o_form_label">
+																	<field name="ndocuments"/>
+																</span>
+															</div>
+															<div name="action" class="oe_kanban_bottom_right">
+																<button t-attf-class="pull-right text-right" string="Open" name="open" type="object" class="oe_highlight"/>
+															</div>
 														</div>
 													</div>
 												</t>
@@ -87,15 +95,7 @@
 					<field name="type"/>
 					<templates>
 						<t t-name="kanban-box">
-							<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_module_vignette oe_kanban_global_click">
-								<div class="o_dropdown_kanban dropdown">
-									<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
-										<span class="fa fa-ellipsis-v"/>
-									</a>
-									<div class="dropdown-menu" role="menu">
-										<ul class="oe_kanban_colorpicker" data-field="color"/>
-									</div>
-								</div>
+							<div t-attf-class="oe_kanban_global_click">
 								<div name="content" class="oe_kanban_details">
 									<t t-if="record.type.raw_value == '1'">
 										<img t-att-src="'/ixdms/static/img/folder.png'"/>
