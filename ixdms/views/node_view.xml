@@ -10,6 +10,7 @@
 						<h1>
 							<field name="name" default_focus="1" placeholder="Name..."/>
 						</h1>
+						<field name="type" invisible="1"/>
 						<group name="document" string="General Information" col="4" attrs="{'invisible': [('type', '!=', 'document')]}">
 							<field name="file" widget="binary"/>
 							<field name="url" widget="url"/>
