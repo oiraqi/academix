@@ -42,13 +42,15 @@
 																1 Sub-folder, 
 																</t>
 																<t t-else="">
-																	<field name="nfolders"/> Subfolders, 
+																	<field name="nfolders"/>
+ Subfolders, 
 																</t>
 																<t t-if="record.ndocuments.raw_value == 1">
 																1 Document 
 																</t>
 																<t t-else="">
-																	<field name="ndocuments"/> Documents
+																	<field name="ndocuments"/>
+ Documents
 																</t>
 															</t>
 															<t t-elif="record.nfolders.raw_value &gt; 0">
@@ -56,7 +58,8 @@
 																1 Sub-folder
 																</t>
 																<t t-else="">
-																	<field name="nfolders"/> Subfolders
+																	<field name="nfolders"/>
+ Subfolders
 																</t>
 															</t>
 															<t t-elif="record.ndocuments.raw_value &gt; 0">
@@ -64,7 +67,8 @@
 																1 Document
 																</t>
 																<t t-else="">
-																	<field name="ndocuments"/> Documents
+																	<field name="ndocuments"/>
+ Documents
 																</t>
 															</t>
 															<t t-else="">
@@ -88,10 +92,8 @@
 								</group>
 							</page>
 							<page string="Meta-Data" name="metadata">
-								<group name="metadata" col="4">									
-									<field name="parent_id" domain="[('type', '=', '1')]"
-										attrs="{'invisible': [('id', '=', False)]}"
-										options="{'no_quick_create': True, 'no_create_edit': True}"/>
+								<group name="metadata" col="4">
+									<field name="parent_id" domain="[('type', '=', '1')]" attrs="{'invisible': [('id', '=', False)]}" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 									<field name="tag_ids" widget="many2many_tags" attrs="{'invisible': [('type', '!=', '2')]}"/>
 								</group>
 							</page>
@@ -99,8 +101,7 @@
 								<group name="share" col="4">
 									<field name="read_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="write_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-									<field name="read_group_ids"
-										widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="read_group_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="write_group_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 								</group>
 							</page>
@@ -124,9 +125,10 @@
 			<field name="name">ixdms.node.kanban</field>
 			<field name="model">ixdms.node</field>
 			<field name="arch" type="xml">
-				<kanban string="Folders &#38; Documents">
-					<field name="color"/>
+				<kanban string="Folders &#38; Documents">					
 					<field name="type"/>
+					<field name="nfolders"/>
+					<field name="ndocuments"/>
 					<templates>
 						<t t-name="kanban-box">
 							<div t-attf-class="oe_kanban_global_click">
@@ -144,12 +146,43 @@
 									<br/>
 									<field name="tag_ids" widget="many2many_tags"/>
 									<div name="sticks" attrs="{'invisible': [('type', '!=', '1')]}">
-										<span t-attf-class="o_form_label #{'label-warning'}" title="Sub-folders">
-											<field name="nfolders"/>
-										</span>
-										<span style="color: green;" title="Documents" class="o_form_label">
-											<field name="ndocuments"/>
-										</span>
+										<t t-if="record.nfolders.raw_value &gt; 0 and record.ndocuments.raw_value &gt; 0">
+											<t t-if="record.nfolders.raw_value == 1">
+																1 Sub-folder, 
+											</t>
+											<t t-else="">
+												<field name="nfolders"/>
+ Subfolders, 
+											</t>
+											<t t-if="record.ndocuments.raw_value == 1">
+																1 Document 
+											</t>
+											<t t-else="">
+												<field name="ndocuments"/>
+ Documents
+											</t>
+										</t>
+										<t t-elif="record.nfolders.raw_value &gt; 0">
+											<t t-if="record.nfolders.raw_value == 1">
+																1 Sub-folder
+											</t>
+											<t t-else="">
+												<field name="nfolders"/>
+ Subfolders
+											</t>
+										</t>
+										<t t-elif="record.ndocuments.raw_value &gt; 0">
+											<t t-if="record.ndocuments.raw_value == 1">
+																1 Document
+											</t>
+											<t t-else="">
+												<field name="ndocuments"/>
+ Documents
+											</t>
+										</t>
+										<t t-else="">
+																Empty
+										</t>
 									</div>
 									<div name="action" class="oe_kanban_bottom_right">
 										<button string="Open" name="open" type="object" class="pull-right text-right oe_highlight"/>
