@@ -54,4 +54,5 @@ class Node(models.Model):
 	def open(self):
 		self.ensure_one()
 		domain = [('id', '=', self.id)]
-		return self._expand_to('ixdms.action_node_open', domain, False, self.id)
+		context = {'default_parent_id': self.id}
+		return self._expand_to('ixdms.action_node_open', domain, context, self.id)
