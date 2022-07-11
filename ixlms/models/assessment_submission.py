@@ -37,7 +37,7 @@ class AssessmentSubmission(models.Model):
 	text = fields.Html(string='Text', tracking=True)
 	grade_scale = fields.Integer(string='Graded over', related='assessment_id.grade_scale')
 	
-	grade = fields.Float(string='Grade', group='ix.group_faculty')
+	grade = fields.Float(string='Grade', groups='ix.group_faculty')
 	#readonly grade
 	rgrade = fields.Float(string='Grade', compute='_rgrade')
 	
