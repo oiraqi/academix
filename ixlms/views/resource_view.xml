@@ -12,7 +12,7 @@
 							<field name="module_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 							<field name="chapter_id" domain="[('module_id', '=', module_id)]"
 								options="{'no_quick_create': True, 'no_create_edit': True}"/>
-							<field name="document_id" groups="ix.group_faculty" colspan="4"/>
+							<field name="document_id" groups="ix.group_faculty" domain="[('type', '=', '2')]" colspan="4"/>
 							<field name="file" widget="binary"/>
 							<field name="url" widget="url"/>
 						</group>

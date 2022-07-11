@@ -105,9 +105,9 @@
 										<span t-attf-class="label #{'label-warning'}" title="Sub-folders">
 											<field name="nfolders"/>
 										</span>
-										<span t-attf-class="label #{'label-warning'}" title="Documents">
+										<label style="color: green;" title="Documents">
 											<field name="ndocuments"/>
-										</span>
+										</label>
 									</div>
 									<div name="action" class="oe_kanban_bottom_right">
 										<button icon="fa-folder-open" name="open" type="object" class="oe_highlight"/>
