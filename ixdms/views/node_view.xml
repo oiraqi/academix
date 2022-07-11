@@ -7,10 +7,12 @@
 			<field name="arch" type="xml">
 				<form string="Node">
 					<sheet>
-						<b><field name="type" attrs="{'readonly': [('id', '!=', False)]}"/></b>
+						<b>
+							<field name="type" attrs="{'readonly': [('id', '!=', False)]}" style="width: 15%"/>
+						</b>
 						<h1>
-							<field name="name" default_focus="1" placeholder="Name..."/>
-						</h1>						
+							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%"/>
+						</h1>
 						<group name="document" string="General Information" col="4" attrs="{'invisible': [('type', '!=', 'document')]}">
 							<field name="file" widget="binary"/>
 							<field name="url" widget="url"/>
@@ -25,6 +27,7 @@
 											<div t-att-class="oe_kanban_global_click">
 												<div class="oe_kanban_details">
 													<field name="name"/>
+													<field name="type"/>
 												</div>
 											</div>
 										</t>
@@ -42,6 +45,25 @@
 				</form>
 			</field>
 		</record>
+		<!-- ixdms.node kanban view -->
+		<record id="view_node_kanban" model="ir.ui.view">
+			<field name="name">ixdms.node.kanban</field>
+			<field name="model">ixdms.node</field>
+			<field name="arch" type="xml">
+				<kanban string="Folders &#38; Documents">
+					<templates>
+						<t t-name="kanban-box">
+							<div t-att-class="oe_kanban_global_click">
+								<div class="oe_kanban_details">
+									<field name="name"/>
+									<field name="type"/>
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
 		<record id="view_node_tree" model="ir.ui.view">
 			<field name="name">ixdms.node.tree</field>
 			<field name="model">ixdms.node</field>
@@ -56,7 +78,7 @@
 			<field name="name">Nodes</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixdms.node</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">kanban,tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
@@ -69,15 +91,21 @@
 			</field>
 		</record>
 		<record id="action_node_form_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="2"/>
+			<field name="sequence" eval="3"/>
 			<field name="view_mode">form</field>
 			<field name="view_id" ref="view_node_form"/>
 			<field name="act_window_id" ref="action_node"/>
 		</record>
 		<record id="action_node_tree_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="1"/>
+			<field name="sequence" eval="2"/>
 			<field name="view_mode">tree</field>
 			<field name="view_id" ref="view_node_tree"/>
+			<field name="act_window_id" ref="action_node"/>
+		</record>
+		<record id="action_node_kanban_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">kanban</field>
+			<field name="view_id" ref="view_node_kanban"/>
 			<field name="act_window_id" ref="action_node"/>
 		</record>
 	</data>

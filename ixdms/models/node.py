@@ -6,7 +6,7 @@ class Node(models.Model):
 	_description = 'Node'
 
 	name = fields.Char('Name', required=True)
-	type = fields.Selection(string='Type', selection=[('document', 'Document'), ('folder', 'Folder')], default='folder')	
+	type = fields.Selection(string='Type', selection=[('document', 'Document'), ('folder', 'Folder')], default='document', required=True)	
 	tag_ids = fields.Many2many(comodel_name='ixdms.tag', string='Tags')
 	file = fields.Binary(string='File')
 	url = fields.Char(string='URL')
