@@ -81,10 +81,10 @@
 									</div>
 								</div>
 								<t t-if="record.type.raw_value == '1'">
-									<img t-att-src="'/ixdms/static/img/folder.png'" width="32" height="32" class="oe_module_icon"/>
+									<img t-att-src="'/ixdms/static/img/folder.png'" class="oe_module_icon"/>
 								</t>
 								<t t-if="record.type.raw_value == '2'">
-									<img t-att-src="'/ixdms/static/img/document.png'" width="32" height="32" class="oe_module_icon"/>
+									<img t-att-src="'/ixdms/static/img/document.png'" class="oe_module_icon"/>
 								</t>								
 								<div name="content" class="oe_kanban_details">
 									<b>
