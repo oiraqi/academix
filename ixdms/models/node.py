@@ -54,7 +54,7 @@ class Node(models.Model):
 			rec.shared = rec._rec_shared()
 			
 	def _rec_shared(self):
-		if len(self.read_user_ids) > 0 or len(self.read_group_ids) > 0:
+		if len(self.read_user_ids) > 0 or len(self.read_group_ids) > 0 or len(self.write_user_ids) > 0 or len(self.write_group_ids) > 0:
 			return True
 		if not self.parent_id:
 			return False
