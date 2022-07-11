@@ -142,8 +142,9 @@
 					<field name="ntags"/>
 					<templates>
 						<t t-name="kanban-box">
-							<div t-attf-class="oe_kanban_global_click">
+							<div>
 								<div name="content" class="oe_kanban_details">
+								<a href="#" string="Open" name="open" type="object">
 									<t t-if="record.type.raw_value == '1'">
 										<img t-att-src="'/ixdms/static/img/folder.png'"/>
 									</t>
@@ -204,11 +205,7 @@
 																Empty
 										</t>
 									</div>
-									<a type="button" class="pull-right text-right oe_highlight">
-										<button string="Open" name="open" type="object">
-											<span>Open</span>
-										</button>
-									</a>									
+								</a>									
 								</div>
 							</div>
 						</t>
