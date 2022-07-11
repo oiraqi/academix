@@ -35,8 +35,11 @@
 													</div>
 												</div>
 												<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_details">
-													<field name="type"/><br/>
-													<b><field name="name"/></b>
+													<field name="type"/>
+													<br/>
+													<b>
+														<field name="name"/>
+													</b>
 												</div>
 											</div>
 										</t>
@@ -60,12 +63,24 @@
 			<field name="model">ixdms.node</field>
 			<field name="arch" type="xml">
 				<kanban string="Folders &#38; Documents">
+					<field name="color"/>
 					<templates>
 						<t t-name="kanban-box">
 							<div t-att-class="oe_kanban_global_click">
-								<div class="oe_kanban_details">
-									<field name="name"/>
+								<div class="o_dropdown_kanban dropdown">
+									<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+										<span class="fa fa-ellipsis-v"/>
+									</a>
+									<div class="dropdown-menu" role="menu">
+										<ul class="oe_kanban_colorpicker" data-field="color"/>
+									</div>
+								</div>
+								<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_details">
 									<field name="type"/>
+									<br/>
+									<b>
+										<field name="name"/>
+									</b>
 								</div>
 							</div>
 						</t>
