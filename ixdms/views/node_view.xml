@@ -13,48 +13,56 @@
 						<h1>
 							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%"/>
 						</h1>
-						<group name="metadata" string="Meta-Data" col="4">
-							<field name="parent_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-							<field name="tag_ids" widget="many2many_tags"/>
-							<field name="read_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-							<field name="write_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-							<field name="read_group_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-							<field name="write_group_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-						</group>
-						<group name="document" string="File &#38; URL" col="4" attrs="{'invisible': [('type', '!=', '2')]}">
-							<field name="file" widget="binary"/>
-							<field name="url" widget="url"/>
-						</group>
-						<group name="folder" string="Content" col="4" attrs="{'invisible': [('type', '!=', '1')]}">
-							<field name="child_ids" mode="kanban" nolabel="1" context="{'default_parent_id': active_id}">
-								<kanban>
-									<field name="color"/>
-									<templates>
-										<t t-name="kanban-box">
-											<div t-att-class="oe_kanban_global_click">
-												<div class="o_dropdown_kanban dropdown">
-													<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
-														<span class="fa fa-ellipsis-v"/>
-													</a>
-													<div class="dropdown-menu" role="menu">
-														<ul class="oe_kanban_colorpicker" data-field="color"/>
+						<notebook>
+							<page string="Content" name="folder" attrs="{'invisible': [('type', '!=', '1')]}">
+								<group name="folder">
+									<field name="child_ids" mode="kanban" nolabel="1" context="{'default_parent_id': active_id}">
+										<kanban>
+											<field name="color"/>
+											<templates>
+												<t t-name="kanban-box">
+													<div t-att-class="oe_kanban_global_click">
+														<div class="o_dropdown_kanban dropdown">
+															<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+																<span class="fa fa-ellipsis-v"/>
+															</a>
+															<div class="dropdown-menu" role="menu">
+																<ul class="oe_kanban_colorpicker" data-field="color"/>
+															</div>
+														</div>
+														<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_details">
+															<field name="type"/>
+															<br/>
+															<b>
+																<field name="name"/>
+															</b>
+															<br/>
+															<field name="tag_ids" widget="many2many_tags"/>
+														</div>
 													</div>
-												</div>
-												<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_details">
-													<field name="type"/>
-													<br/>
-													<b>
-														<field name="name"/>
-													</b>
-													<br/>
-													<field name="tag_ids" widget="many2many_tags"/>
-												</div>
-											</div>
-										</t>
-									</templates>
-								</kanban>
-							</field>
-						</group>
+												</t>
+											</templates>
+										</kanban>
+									</field>
+								</group>
+							</page>
+							<page string="File &#38; URL" name="document" attrs="{'invisible': [('type', '!=', '2')]}">
+								<group name="document" col="4">
+									<field name="file" widget="binary"/>
+									<field name="url" widget="url"/>
+								</group>
+							</page>
+							<page string="Configuration" name="config">
+								<group name="config" col="4">
+									<field name="parent_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+									<field name="tag_ids" widget="many2many_tags"/>
+									<field name="read_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="write_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="read_group_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="write_group_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+								</group>
+							</page>
+						</notebook>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
 							<field name="create_date"/>
@@ -135,7 +143,7 @@
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
-			<field name="domain">[]</field>
+			<field name="domain">[('parent_id', '=', False), ('create_uid', '=', uid)]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
