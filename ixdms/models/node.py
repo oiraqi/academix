@@ -35,10 +35,10 @@ class Node(models.Model):
 		for rec in self:
 			rec.ndocuments = len(rec.document_ids)
 
-	read_user_ids = fields.Many2many(comodel_name='res.users', string='Read Access Users')
-	write_user_ids = fields.Many2many(comodel_name='res.users', string='Write Access Users')
-	read_group_ids = fields.Many2many(comodel_name='res.group', string='Read Access Groups')
-	write_group_ids = fields.Many2many(comodel_name='res.group', string='Write Access Groups')
+	read_user_ids = fields.Many2many(comodel_name='res.users', relation='ixdms_read_node_user_rel', string='Read Access Users')
+	write_user_ids = fields.Many2many(comodel_name='res.users', relation='ixdms_write_node_user_rel', string='Write Access Users')
+	read_group_ids = fields.Many2many(comodel_name='res.group', relation='ixdms_read_node_group_rel', string='Read Access Groups')
+	write_group_ids = fields.Many2many(comodel_name='res.group', relation='ixdms_write_node_group_rel', string='Write Access Groups')
 
 	rshared = fields.Boolean(compute='_rshared')
 	wshared = fields.Boolean(compute='_wshared')
