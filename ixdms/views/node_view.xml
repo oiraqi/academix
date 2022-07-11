@@ -24,71 +24,72 @@
 										<templates>
 											<t t-name="kanban-box">
 												<div>
-													<div name="content" class="oe_kanban_details">
-														<t t-if="record.type.raw_value == '1'">
-															<img t-att-src="'/ixdms/static/img/folder.png'"/>
-														</t>
-														<t t-if="record.type.raw_value == '2'">
-															<img t-att-src="'/ixdms/static/img/document.png'"/>
-														</t>
-														<br/>
-														<b>
-															<field name="name"/>
-														</b>
-														<br/>
-														<i><field name="create_uid"/></i>
-														<br/>
-														<t t-if="record.type.raw_value == '2'">
-															<t t-if="record.ntags.raw_value &gt; 0">
-																<field name="tag_ids" widget="many2many_tags"/>
+													<a href="#" string="Open" name="open" type="object">
+														<div name="content" class="oe_kanban_details">
+															<t t-if="record.type.raw_value == '1'">
+																<img t-att-src="'/ixdms/static/img/folder.png'"/>
 															</t>
-															<t t-else="">
+															<t t-if="record.type.raw_value == '2'">
+																<img t-att-src="'/ixdms/static/img/document.png'"/>
+															</t>
+															<br/>
+															<b>
+																<field name="name"/>
+															</b>
+															<br/>
+															<i>
+																<field name="create_uid"/>
+															</i>
+															<br/>
+															<t t-if="record.type.raw_value == '2'">
+																<t t-if="record.ntags.raw_value &gt; 0">
+																	<field name="tag_ids" widget="many2many_tags"/>
+																</t>
+																<t t-else="">
 																No Tags
+																</t>
 															</t>
-														</t>
-														<div name="sticks" t-if="record.type.raw_value == '1'">
-															<t t-if="record.nfolders.raw_value &gt; 0 and record.ndocuments.raw_value &gt; 0">
-																<t t-if="record.nfolders.raw_value == 1">
+															<div name="sticks" t-if="record.type.raw_value == '1'">
+																<t t-if="record.nfolders.raw_value &gt; 0 and record.ndocuments.raw_value &gt; 0">
+																	<t t-if="record.nfolders.raw_value == 1">
 																1 Sub-folder, 
-																</t>
-																<t t-else="">
-																	<field name="nfolders"/>
+																	</t>
+																	<t t-else="">
+																		<field name="nfolders"/>
  Subfolders, 
-																</t>
-																<t t-if="record.ndocuments.raw_value == 1">
+																	</t>
+																	<t t-if="record.ndocuments.raw_value == 1">
 																1 Document 
-																</t>
-																<t t-else="">
-																	<field name="ndocuments"/>
+																	</t>
+																	<t t-else="">
+																		<field name="ndocuments"/>
  Documents
+																	</t>
 																</t>
-															</t>
-															<t t-elif="record.nfolders.raw_value &gt; 0">
-																<t t-if="record.nfolders.raw_value == 1">
+																<t t-elif="record.nfolders.raw_value &gt; 0">
+																	<t t-if="record.nfolders.raw_value == 1">
 																1 Sub-folder
-																</t>
-																<t t-else="">
-																	<field name="nfolders"/>
+																	</t>
+																	<t t-else="">
+																		<field name="nfolders"/>
  Subfolders
+																	</t>
 																</t>
-															</t>
-															<t t-elif="record.ndocuments.raw_value &gt; 0">
-																<t t-if="record.ndocuments.raw_value == 1">
+																<t t-elif="record.ndocuments.raw_value &gt; 0">
+																	<t t-if="record.ndocuments.raw_value == 1">
 																1 Document
+																	</t>
+																	<t t-else="">
+																		<field name="ndocuments"/>
+ Documents
+																	</t>
 																</t>
 																<t t-else="">
-																	<field name="ndocuments"/>
- Documents
-																</t>
-															</t>
-															<t t-else="">
 																Empty
-															</t>
+																</t>
+															</div>
 														</div>
-														<div name="action" class="oe_kanban_bottom_right">
-															<button string="Open" name="open" type="object" class="pull-right text-right oe_highlight"/>
-														</div>
-													</div>
+													</a>
 												</div>
 											</t>
 										</templates>
@@ -143,70 +144,72 @@
 					<templates>
 						<t t-name="kanban-box">
 							<div>
-								<div name="content" class="oe_kanban_details">
 								<a href="#" string="Open" name="open" type="object">
-									<t t-if="record.type.raw_value == '1'">
-										<img t-att-src="'/ixdms/static/img/folder.png'"/>
-									</t>
-									<t t-if="record.type.raw_value == '2'">
-										<img t-att-src="'/ixdms/static/img/document.png'"/>
-									</t>
-									<br/>
-									<b>
-										<field name="name"/>
-									</b>
-									<br/>
-									<i><field name="create_uid"/></i>
-									<br/>
-									<t t-if="record.type.raw_value == '2'">
-										<t t-if="record.ntags.raw_value &gt; 0">
-											<field name="tag_ids" widget="many2many_tags"/>
+									<div name="content" class="oe_kanban_details">
+										<t t-if="record.type.raw_value == '1'">
+											<img t-att-src="'/ixdms/static/img/folder.png'"/>
 										</t>
-										<t t-else="">
+										<t t-if="record.type.raw_value == '2'">
+											<img t-att-src="'/ixdms/static/img/document.png'"/>
+										</t>
+										<br/>
+										<b>
+											<field name="name"/>
+										</b>
+										<br/>
+										<i>
+											<field name="create_uid"/>
+										</i>
+										<br/>
+										<t t-if="record.type.raw_value == '2'">
+											<t t-if="record.ntags.raw_value &gt; 0">
+												<field name="tag_ids" widget="many2many_tags"/>
+											</t>
+											<t t-else="">
 											No Tags
+											</t>
 										</t>
-									</t>
-									<div name="sticks" attrs="{'invisible': [('type', '!=', '1')]}">
-										<t t-if="record.nfolders.raw_value &gt; 0 and record.ndocuments.raw_value &gt; 0">
-											<t t-if="record.nfolders.raw_value == 1">
+										<div name="sticks" attrs="{'invisible': [('type', '!=', '1')]}">
+											<t t-if="record.nfolders.raw_value &gt; 0 and record.ndocuments.raw_value &gt; 0">
+												<t t-if="record.nfolders.raw_value == 1">
 																1 Sub-folder, 
-											</t>
-											<t t-else="">
-												<field name="nfolders"/>
+												</t>
+												<t t-else="">
+													<field name="nfolders"/>
  Subfolders, 
-											</t>
-											<t t-if="record.ndocuments.raw_value == 1">
+												</t>
+												<t t-if="record.ndocuments.raw_value == 1">
 																1 Document 
-											</t>
-											<t t-else="">
-												<field name="ndocuments"/>
+												</t>
+												<t t-else="">
+													<field name="ndocuments"/>
  Documents
+												</t>
 											</t>
-										</t>
-										<t t-elif="record.nfolders.raw_value &gt; 0">
-											<t t-if="record.nfolders.raw_value == 1">
+											<t t-elif="record.nfolders.raw_value &gt; 0">
+												<t t-if="record.nfolders.raw_value == 1">
 																1 Sub-folder
-											</t>
-											<t t-else="">
-												<field name="nfolders"/>
+												</t>
+												<t t-else="">
+													<field name="nfolders"/>
  Subfolders
+												</t>
 											</t>
-										</t>
-										<t t-elif="record.ndocuments.raw_value &gt; 0">
-											<t t-if="record.ndocuments.raw_value == 1">
+											<t t-elif="record.ndocuments.raw_value &gt; 0">
+												<t t-if="record.ndocuments.raw_value == 1">
 																1 Document
+												</t>
+												<t t-else="">
+													<field name="ndocuments"/>
+ Documents
+												</t>
 											</t>
 											<t t-else="">
-												<field name="ndocuments"/>
- Documents
-											</t>
-										</t>
-										<t t-else="">
 																Empty
-										</t>
+											</t>
+										</div>
 									</div>
-								</a>									
-								</div>
+								</a>
 							</div>
 						</t>
 					</templates>
