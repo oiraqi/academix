@@ -10,10 +10,8 @@
 						<b>
 							<field name="type" attrs="{'readonly': [('id', '!=', False)]}" style="width: 15%"/>
 						</b>
-						<field name="shared" invisible="1"/>
-						<div attrs="{'invisible': [('shared', '=', False)]}">
-							<img t-att-src="'/ixdms/static/img/share.png'"/>						
-						</div>
+						<field name="shared" invisible="1"/>						
+						<img attrs="{'invisible': [('shared', '=', False)]}" src="/ixdms/static/img/share.png"/>						
 						<h1>
 							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%"/>
 						</h1>
