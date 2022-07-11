@@ -7,10 +7,10 @@
 			<field name="arch" type="xml">
 				<form string="Node">
 					<sheet>
+						<b><field name="type" attrs="{'readonly': [('id', '!=', False)]}"/></b>
 						<h1>
 							<field name="name" default_focus="1" placeholder="Name..."/>
-						</h1>
-						<field name="type" invisible="1"/>
+						</h1>						
 						<group name="document" string="General Information" col="4" attrs="{'invisible': [('type', '!=', 'document')]}">
 							<field name="file" widget="binary"/>
 							<field name="url" widget="url"/>
@@ -18,7 +18,7 @@
 							<field name="tag_ids" widget="many2many_tags"/>
 						</group>
 						<group name="folder" string="Content" col="4" attrs="{'invisible': [('type', '!=', 'folder')]}">
-							<field name="child_ids" mode="kanban" context="{'default_parent_id': active_id}">
+							<field name="child_ids" mode="kanban" nolabel="1" context="{'default_parent_id': active_id}">
 								<kanban>
 									<templates>
 										<t t-name="kanban-box">
