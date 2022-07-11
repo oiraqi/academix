@@ -59,7 +59,7 @@
 																	<field name="nfolders"/> Subfolders
 																</t>
 															</t>
-															<t t-else="record.ndocuments.raw_value &gt; 0">
+															<t t-elif="record.ndocuments.raw_value &gt; 0">
 																<t t-if="record.ndocuments.raw_value == 1">
 																1 Document
 																</t>
