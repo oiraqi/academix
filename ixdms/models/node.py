@@ -37,8 +37,8 @@ class Node(models.Model):
 
 	read_user_ids = fields.Many2many(comodel_name='res.users', relation='ixdms_read_node_user_rel', string='Read Access Users')
 	write_user_ids = fields.Many2many(comodel_name='res.users', relation='ixdms_write_node_user_rel', string='Write Access Users')
-	read_group_ids = fields.Many2many(comodel_name='res.groups', relation='ixdms_read_node_group_rel', string='Read Access Groups')
-	write_group_ids = fields.Many2many(comodel_name='res.groups', relation='ixdms_write_node_group_rel', string='Write Access Groups')
+	read_group_ids = fields.Many2many(comodel_name='res.groups', relation='ixdms_read_node_groups_rel', string='Read Access Groups')
+	write_group_ids = fields.Many2many(comodel_name='res.groups', relation='ixdms_write_node_groups_rel', string='Write Access Groups')
 
 	rshared = fields.Boolean(compute='_rshared')
 	wshared = fields.Boolean(compute='_wshared')
