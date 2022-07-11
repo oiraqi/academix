@@ -15,44 +15,42 @@
 						</h1>
 						<notebook>
 							<page string="Content" name="folder" attrs="{'invisible': [('type', '!=', '1')]}">
-								<group name="folder">
-									<field name="child_ids" mode="kanban" nolabel="1" context="{'default_parent_id': id}">
-										<kanban>
-											<field name="type"/>
-											<templates>
-												<t t-name="kanban-box">
-													<div>
-														<div name="content" class="oe_kanban_details">
-															<t t-if="record.type.raw_value == '1'">
-																<img t-att-src="'/ixdms/static/img/folder.png'"/>
-															</t>
-															<t t-if="record.type.raw_value == '2'">
-																<img t-att-src="'/ixdms/static/img/document.png'"/>
-															</t>
-															<br/>
-															<b>
-																<field name="name"/>
-															</b>
-															<br/>
-															<field name="tag_ids" widget="many2many_tags"/>
-															<div name="sticks">
-																<span t-attf-class="o_form_label #{'label-warning'}" title="Sub-folders">
-																	<field name="nfolders"/>
-																</span>
-																<span style="color: green;" title="Documents" class="o_form_label">
-																	<field name="ndocuments"/>
-																</span>
-															</div>
-															<div name="action" class="oe_kanban_bottom_right">
-																<button t-attf-class="pull-right text-right" string="Open" name="open" type="object" class="oe_highlight"/>
-															</div>
+								<field name="child_ids" mode="kanban" context="{'default_parent_id': active_id}">
+									<kanban>
+										<field name="type"/>
+										<templates>
+											<t t-name="kanban-box">
+												<div>
+													<div name="content" class="oe_kanban_details">
+														<t t-if="record.type.raw_value == '1'">
+															<img t-att-src="'/ixdms/static/img/folder.png'"/>
+														</t>
+														<t t-if="record.type.raw_value == '2'">
+															<img t-att-src="'/ixdms/static/img/document.png'"/>
+														</t>
+														<br/>
+														<b>
+															<field name="name"/>
+														</b>
+														<br/>
+														<field name="tag_ids" widget="many2many_tags"/>
+														<div name="sticks">
+															<span t-attf-class="o_form_label #{'label-warning'}" title="Sub-folders">
+																<field name="nfolders"/>
+															</span>
+															<span style="color: green;" title="Documents" class="o_form_label">
+																<field name="ndocuments"/>
+															</span>
+														</div>
+														<div name="action" class="oe_kanban_bottom_right">
+															<button t-attf-class="pull-right text-right" string="Open" name="open" type="object" class="oe_highlight"/>
 														</div>
 													</div>
-												</t>
-											</templates>
-										</kanban>
-									</field>
-								</group>
+												</div>
+											</t>
+										</templates>
+									</kanban>
+								</field>
 							</page>
 							<page string="File &#38; URL" name="document" attrs="{'invisible': [('type', '!=', '2')]}">
 								<group name="document" col="4">
@@ -60,10 +58,14 @@
 									<field name="url" widget="url"/>
 								</group>
 							</page>
-							<page string="Configuration" name="config">
-								<group name="config" col="4">
-									<field name="parent_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+							<page string="Meta-Data" name="metadata">
+								<group name="metadata" col="4">
+									<field name="parent_id" domain="[('type', '=', '1')]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 									<field name="tag_ids" widget="many2many_tags"/>
+								</group>
+							</page>
+							<page string="Sharing Options" name="share">
+								<group name="share" col="4">
 									<field name="read_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="write_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="read_group_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
