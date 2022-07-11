@@ -22,12 +22,21 @@
 						<group name="folder" string="Content" col="4" attrs="{'invisible': [('type', '!=', 'folder')]}">
 							<field name="child_ids" mode="kanban" nolabel="1" context="{'default_parent_id': active_id}">
 								<kanban>
+									<field name="color"/>
 									<templates>
 										<t t-name="kanban-box">
 											<div t-att-class="oe_kanban_global_click">
-												<div class="oe_kanban_details">
-													<field name="name"/>
-													<field name="type"/>
+												<div class="o_dropdown_kanban dropdown">
+													<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+														<span class="fa fa-ellipsis-v"/>
+													</a>
+													<div class="dropdown-menu" role="menu">
+														<ul class="oe_kanban_colorpicker" data-field="color"/>
+													</div>
+												</div>
+												<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_details">
+													<field name="type"/><br/>
+													<b><field name="name"/></b>
 												</div>
 											</div>
 										</t>
@@ -71,6 +80,7 @@
 			<field name="arch" type="xml">
 				<tree string="Nodes">
 					<field name="name"/>
+					<field name="type"/>
 				</tree>
 			</field>
 		</record>
