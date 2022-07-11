@@ -21,14 +21,14 @@ class Node(models.Model):
 		for rec in self:
 			rec.nchildren = len(rec.child_ids)
 
-	folder_ids = fields.One2many(comodel_name='ixdms.folder', inverse_name='parent_id', domain=[('type', '=', '1')], string='Sub-Folders')
+	folder_ids = fields.One2many(comodel_name='ixdms.node', inverse_name='parent_id', domain=[('type', '=', '1')], string='Sub-Folders')
 	nfolders = fields.Integer(string='Sub-Folders', compute='_nfolders')
 
 	def _nfolders(self):
 		for rec in self:
 			rec.nfolders = len(rec.folder_ids)
 
-	document_ids = fields.One2many(comodel_name='ixdms.document', inverse_name='folder_id', domain=[('type', '=', '2')], string='Documents')
+	document_ids = fields.One2many(comodel_name='ixdms.node', inverse_name='parent_id', domain=[('type', '=', '2')], string='Documents')
 	ndocuments = fields.Integer(string='Documents', compute='_ndocuments')
 
 	def _ndocuments(self):
