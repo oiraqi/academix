@@ -2,7 +2,7 @@ from odoo import models, fields
 
 
 class Node(models.Model):
-	_name = 'ixmds.node'
+	_name = 'ixdms.node'
 	_description = 'Node'
 
 	name = fields.Char('Name', required=True)
@@ -11,19 +11,12 @@ class Node(models.Model):
 	file = fields.Binary(string='File')
 	url = fields.Char(string='URL')
 	parent_id = fields.Many2one(comodel_name='ixdms.node', string='Parent')
-	folder_ids = fields.One2many(comodel_name='ixdms.node', inverse_name='parent_id', domain=[('type', '=', 'folder')], string='Sub-Folders')
-	nfolders = fields.Integer(string='Sub-Folders', compute='_nfolders')
+	child_ids = fields.One2many(comodel_name='ixdms.node', inverse_name='parent_id', string='Content')
+	nchildren = fields.Integer(string='Sub-Folders', compute='_nchildren')
 
-	def _nfolders(self):
+	def _nchildren(self):
 		for rec in self:
-			rec.nfolders = len(rec.folder_ids)
-
-	document_ids = fields.One2many(comodel_name='ixdms.node', inverse_name='parent_id', domain=[('type', '=', 'document')], string='Documents')
-	ndocuments = fields.Integer(string='Documents', compute='_ndocuments')
-
-	def _ndocuments(self):
-		for rec in self:
-			rec.ndocuments = len(rec.document_ids)
+			rec.nchildren = len(rec.child_ids)
 
 	def open(self):
 		self.ensure_one()

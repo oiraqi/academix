@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_node_form" model="ir.ui.view">
-			<field name="name">ixmds.node.form</field>
-			<field name="model">ixmds.node</field>
+			<field name="name">ixdms.node.form</field>
+			<field name="model">ixdms.node</field>
 			<field name="arch" type="xml">
 				<form string="Node">
 					<sheet>
@@ -14,19 +14,22 @@
 							<field name="file" widget="binary"/>
 							<field name="url" widget="url"/>
 							<field name="folder_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+							<field name="tag_ids" widget="many2many_tags"/>
 						</group>
 						<group name="folder" string="Content" col="4" attrs="{'invisible': [('type', '!=', 'folder')]}">
-							<kanban>
-								<templates>
-									<t t-name="kanban-box">										
-										<div t-att-class="oe_kanban_global_click">
-											<div class="oe_kanban_details">
-												<field name="name"/>												
+							<field name="child_ids" mode="kanban" context="{'default_parent_id': active_id}">
+								<kanban>
+									<templates>
+										<t t-name="kanban-box">
+											<div t-att-class="oe_kanban_global_click">
+												<div class="oe_kanban_details">
+													<field name="name"/>
+												</div>
 											</div>
-										</div>
-									</t>
-								</templates>
-							</kanban>
+										</t>
+									</templates>
+								</kanban>
+							</field>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
@@ -39,8 +42,8 @@
 			</field>
 		</record>
 		<record id="view_node_tree" model="ir.ui.view">
-			<field name="name">ixmds.node.tree</field>
-			<field name="model">ixmds.node</field>
+			<field name="name">ixdms.node.tree</field>
+			<field name="model">ixdms.node</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Nodes">
@@ -51,7 +54,7 @@
 		<record id="action_node" model="ir.actions.act_window">
 			<field name="name">Nodes</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">ixmds.node</field>
+			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
