@@ -20,6 +20,7 @@
 										<field name="type"/>
 										<field name="nfolders"/>
 										<field name="ndocuments"/>
+										<field name="tag_ids"/>
 										<templates>
 											<t t-name="kanban-box">
 												<div>
@@ -35,7 +36,14 @@
 															<field name="name"/>
 														</b>
 														<br/>
-														<field name="tag_ids" widget="many2many_tags" attrs="{'invisible': [('type', '!=', '2')]}"/>
+														<t t-if="record.type.raw_value == '2'">
+															<t t-if="record.tag_ids">
+																<field name="tag_ids" widget="many2many_tags"/>
+															</t>
+															<t t-else="">
+																No Tags
+															</t>
+														</t>
 														<div name="sticks" attrs="{'invisible': [('type', '!=', '1')]}">
 															<t t-if="record.nfolders.raw_value &gt; 0 and record.ndocuments.raw_value &gt; 0">
 																<t t-if="record.nfolders.raw_value == 1">
