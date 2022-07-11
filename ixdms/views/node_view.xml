@@ -102,10 +102,10 @@
 									<br/>
 									<field name="tag_ids" widget="many2many_tags"/>
 									<div name="sticks">
-										<span t-attf-class="label #{'label-warning'}" title="Sub-folders">
+										<span t-attf-class="o_form_label #{'label-warning'}" title="Sub-folders">
 											<field name="nfolders"/>
 										</span>
-										<label style="color: green;" title="Documents">
+										<label style="color: green;" title="Documents" class="o_form_label">
 											<field name="ndocuments"/>
 										</label>
 									</div>
