@@ -34,7 +34,7 @@
 														</b>
 														<br/>
 														<field name="tag_ids" widget="many2many_tags"/>
-														<div name="sticks">
+														<div name="sticks" attrs="{'invisible': [('type', '!=', '1')]}">
 															<span t-attf-class="o_form_label #{'label-warning'}" title="Sub-folders">
 																<field name="nfolders"/>
 															</span>
@@ -43,7 +43,7 @@
 															</span>
 														</div>
 														<div name="action" class="oe_kanban_bottom_right">
-															<button t-attf-class="pull-right text-right" string="Open" name="open" type="object" class="oe_highlight"/>
+															<button string="Open" name="open" type="object" class="pull-right text-right oe_highlight"/>
 														</div>
 													</div>
 												</div>
@@ -68,7 +68,8 @@
 								<group name="share" col="4">
 									<field name="read_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="write_user_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-									<field name="read_group_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="read_group_ids" domain="[('category_id', '=', )]"
+										widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="write_group_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 								</group>
 							</page>
@@ -111,7 +112,7 @@
 									</b>
 									<br/>
 									<field name="tag_ids" widget="many2many_tags"/>
-									<div name="sticks">
+									<div name="sticks" attrs="{'invisible': [('type', '!=', '1')]}">
 										<span t-attf-class="o_form_label #{'label-warning'}" title="Sub-folders">
 											<field name="nfolders"/>
 										</span>
@@ -120,7 +121,7 @@
 										</span>
 									</div>
 									<div name="action" class="oe_kanban_bottom_right">
-										<button t-attf-class="pull-right text-right" string="Open" name="open" type="object" class="oe_highlight"/>
+										<button string="Open" name="open" type="object" class="pull-right text-right oe_highlight"/>
 									</div>
 								</div>
 							</div>
