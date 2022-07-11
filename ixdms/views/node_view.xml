@@ -204,7 +204,7 @@
 																Empty
 										</t>
 									</div>									
-									<button string="Open" name="open" type="object" class="pull-right text-right oe_highlight"/>									
+									<button string="Open" style="width: 60px; height: 30px;" name="open" type="object" class="pull-right text-right oe_highlight"/>									
 								</div>
 							</div>
 						</t>
