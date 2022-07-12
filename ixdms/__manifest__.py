@@ -14,6 +14,7 @@
         'ix',
     ],
     'data': [
+        'security/ir.model.access.csv',
         'views/node_view.xml',
         'views/tag_view.xml',
         'views/ixdms_menu.xml'

@@ -108,7 +108,6 @@ class Node(models.Model):
 				implied_write_group_ids.append(write_group.id)
 		
 		return self.parent_id._rec_implied(implied_read_user_ids, implied_write_user_ids, implied_read_group_ids, implied_write_group_ids)
-	
 
 	def open(self):
 		self.ensure_one()
