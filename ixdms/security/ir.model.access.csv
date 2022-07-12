@@ -1,4 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ixdms_node_user,access.ixdms.node.user,model_ixdms_node,ix.group_user,1,1,1,1
-
 access_ixdms_tag_user,access.ixdms.tag.user,model_ixdms_tag,ix.group_user,1,1,1,1
 
