@@ -1,4 +1,5 @@
 from odoo import models, fields
+from odoo.exceptions import AccessError
 
 
 class Node(models.Model):
@@ -124,7 +125,10 @@ class Node(models.Model):
 			rec.is_implied = is_implied
 			
 	def _rec_implied(self, implied_read_user_ids, implied_write_user_ids, implied_student_share_ids, implied_faculty_share_ids):
-		if not self.parent_id:
+		try:
+			if not self.parent_id:
+				return
+		except AccessError:
 			return
 
 		for read_user in self.parent_id.read_user_ids:
