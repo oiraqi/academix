@@ -11,7 +11,7 @@
         '',
     ],
     'depends': [
-        'ix',
+        'ixcatalog',
     ],
     'data': [
         'security/ir.model.access.csv',

@@ -44,13 +44,16 @@ class Node(models.Model):
 
 	read_user_ids = fields.Many2many(comodel_name='res.users', relation='ixdms_read_node_user_rel', string='Read Access Users')
 	write_user_ids = fields.Many2many(comodel_name='res.users', relation='ixdms_write_node_user_rel', string='Write Access Users')
-	read_group_ids = fields.Many2many(comodel_name='res.groups', relation='ixdms_read_node_groups_rel', string='Read Access Groups')
-	write_group_ids = fields.Many2many(comodel_name='res.groups', relation='ixdms_write_node_groups_rel', string='Write Access Groups')
+	
+	student_share_ids = fields.One2many(comodel_name='ixdms.student.share', inverse_name='node_id', string='Student Shares')
+	faculty_share_ids = fields.One2many(comodel_name='ixdms.faculty.share', inverse_name='node_id', string='Faculty Shares')
 
 	implied_read_user_ids = fields.Many2many(comodel_name='res.users', compute='_implied', string='Implied Read Access Users')
 	implied_write_user_ids = fields.Many2many(comodel_name='res.users', compute='_implied', string='Implied Write Access Users')
-	implied_read_group_ids = fields.Many2many(comodel_name='res.groups', compute='_implied', string='Implied Read Access Groups')
-	implied_write_group_ids = fields.Many2many(comodel_name='res.groups', compute='_implied', string='Implied Write Access Groups')
+	
+	implied_student_share_ids = fields.Many2many(comodel_name='ixdms.student.share', compute='_implied', string='Implied Student Shares')
+	implied_faculty_share_ids = fields.Many2many(comodel_name='ixdms.faculty.share', compute='_implied', string='Implied Faculty Shares')
+	
 	shared = fields.Boolean(compute='_implied')
 	write_allowed = fields.Boolean(compute='_implied')
 
@@ -58,11 +61,11 @@ class Node(models.Model):
 		for rec in self:
 			implied_read_user_ids = []
 			implied_write_user_ids = []
-			implied_read_group_ids = []
-			implied_write_group_ids = []
+			implied_student_share_ids = []
+			implied_faculty_share_ids = []
 			shared = False
 			
-			rec._rec_implied(implied_read_user_ids, implied_write_user_ids, implied_read_group_ids, implied_write_group_ids)
+			rec._rec_implied(implied_read_user_ids, implied_write_user_ids, implied_student_share_ids, implied_faculty_share_ids)
 
 			if len(implied_read_user_ids) > 0:
 				rec.implied_read_user_ids = implied_read_user_ids
@@ -74,31 +77,22 @@ class Node(models.Model):
 				shared = True
 			else:
 				rec.implied_write_user_ids = False
-			if len(implied_read_group_ids) > 0:
-				rec.implied_read_group_ids = implied_read_group_ids
+			if len(implied_student_share_ids) > 0:
+				rec.implied_student_share_ids = implied_student_share_ids
 				shared = True
 			else:
-				rec.implied_read_group_ids = False
-			if len(implied_write_group_ids) > 0:
-				rec.implied_write_group_ids = implied_write_group_ids
+				rec.implied_student_share_ids = False
+			if len(implied_faculty_share_ids) > 0:
+				rec.implied_faculty_share_ids = implied_faculty_share_ids
 				shared = True
 			else:
-				rec.implied_write_group_ids = False
+				rec.implied_faculty_share_ids = False
 
-			rec.shared = shared or len(rec.read_user_ids) > 0 or len(rec.read_group_ids) > 0 or len(rec.write_user_ids) > 0 or len(rec.write_group_ids) > 0
-			write_allowed = self.env.user == rec.create_uid or self.env.user in rec.write_user_ids or self.env.user in rec.implied_write_user_ids
-			if write_allowed:
-				rec.write_allowed = True
-			else:
-				for group in self.env.user.groups_id:
-					if group in rec.write_group_ids or group in rec.implied_write_group_ids:
-						write_allowed = True
-						break
-				rec.write_allowed = write_allowed
-
-
+			rec.shared = shared or len(rec.read_user_ids) > 0 or len(rec.write_user_ids) > 0 or len(rec.student_share_ids) > 0 or len(rec.faculty_share_ids) > 0
+			rec.write_allowed = self.env.user == rec.create_uid or self.env.user in rec.write_user_ids or self.env.user in rec.implied_write_user_ids
 			
-	def _rec_implied(self, implied_read_user_ids, implied_write_user_ids, implied_read_group_ids, implied_write_group_ids):
+			
+	def _rec_implied(self, implied_read_user_ids, implied_write_user_ids, implied_student_share_ids, implied_faculty_share_ids):
 		if not self.parent_id:
 			return
 
@@ -110,15 +104,15 @@ class Node(models.Model):
 			if write_user.id not in implied_write_user_ids:
 				implied_write_user_ids.append(write_user.id)
 
-		for read_group in self.parent_id.read_group_ids:
-			if read_group.id not in implied_read_group_ids:
-				implied_read_group_ids.append(read_group.id)
+		for student_share in self.parent_id.implied_student_share_ids:
+			if student_share.id not in implied_student_share_ids:
+				implied_student_share_ids.append(student_share.id)
 		
-		for write_group in self.parent_id.write_group_ids:
-			if write_group.id not in implied_write_group_ids:
-				implied_write_group_ids.append(write_group.id)
+		for faculty_share in self.parent_id.implied_faculty_share_ids:
+			if faculty_share.id not in implied_faculty_share_ids:
+				implied_faculty_share_ids.append(faculty_share.id)
 		
-		return self.parent_id._rec_implied(implied_read_user_ids, implied_write_user_ids, implied_read_group_ids, implied_write_group_ids)
+		return self.parent_id._rec_implied(implied_read_user_ids, implied_write_user_ids, implied_student_share_ids, implied_faculty_share_ids)
 
 	def open(self):
 		self.ensure_one()

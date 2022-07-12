@@ -134,17 +134,37 @@
 									<field name="read_user_ids" widget="many2many_tags" string="Users"
 										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="implied_read_user_ids" widget="many2many_tags" string="Implied Users"/>
-									<field name="read_group_ids" widget="many2many_tags" string="Groups"
-										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-									<field name="implied_read_group_ids" widget="many2many_tags" string="Implied Groups"/>							
+									<field name="student_share_ids">
+										<tree editable="bottom">
+											<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="program_id" domain="[('school_id', '=', school_id)]"
+												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										</tree>
+									</field>
+									<field name="implied_student_share_ids">
+										<tree>
+											<field name="school_id"/>
+											<field name="program_id"/>
+										</tree>
+									</field>
+									<field name="faculty_share_ids">
+										<tree editable="bottom">
+											<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="discipline_id" domain="[('school_id', '=', school_id)]"
+												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										</tree>
+									</field>
+									<field name="implied_faculty_share_ids">
+										<tree>
+											<field name="school_id"/>
+											<field name="faculty_id"/>
+										</tree>
+									</field>
 								</group>
-								<group name="write" string="Write Access" col="4">									
+								<group name="write" string="Write Access" col="4">
 									<field name="write_user_ids" widget="many2many_tags" string="Users"
 										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-									<field name="implied_write_user_ids" widget="many2many_tags" string="Implied Users"/>
-									<field name="write_group_ids" widget="many2many_tags" string="Groups"
-										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-									<field name="implied_write_group_ids" widget="many2many_tags" string="Implied Groups"/>
+									<field name="implied_write_user_ids" widget="many2many_tags" string="Implied Users"/>									
 								</group>
 							</page>
 						</notebook>
@@ -289,7 +309,7 @@
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
-			<field name="domain">[('create_uid', '!=', uid), ('read_user_ids', 'in', uid), ('implied_read_user_ids', 'not in', uid)]</field>
+			<field name="domain">[('create_uid', '!=', uid), ('implied_user_ids', 'not in', uid)]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
