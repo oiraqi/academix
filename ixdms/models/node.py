@@ -43,6 +43,12 @@ class Node(models.Model):
 		for rec in self:
 			rec.ndocuments = len(rec.document_ids)
 
+	is_owner = fields.Boolean(compute='_is_owner')
+
+	def _is_owner(self):
+		for rec in self:
+			rec.is_owner = rec.create_uid == self.env.user
+	
 	read_user_ids = fields.Many2many(comodel_name='res.users', relation='ixdms_read_node_user_rel', string='Read Access Users')
 	write_user_ids = fields.Many2many(comodel_name='res.users', relation='ixdms_write_node_user_rel', string='Write Access Users')
 	

@@ -10,12 +10,14 @@
 						<b>
 							<field name="type" attrs="{'readonly': [('id', '!=', False)]}" style="width: 15%"/>
 						</b>
+						<field name="is_owner" invisible="1"/>
 						<field name="shared" invisible="1"/>
 						<field name="message_is_follower" invisible="1"/>
 						<img attrs="{'invisible': [('message_is_follower', '=', False)]}" src="/ixdms/static/img/fav.png"/>
 						<img attrs="{'invisible': [('shared', '=', False)]}" src="/ixdms/static/img/share.png"/>
 						<h1>
-							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%"/>
+							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%"
+								attrs="{'readonly': [('is_owner', '=', False)]}"/>
 						</h1>
 						<notebook>
 							<page string="Content" name="folder" attrs="{'invisible': [('type', '!=', '1')]}">
@@ -123,13 +125,15 @@
 									<field name="url" widget="url"/>
 								</group>
 							</page>
-							<page string="Meta-Data" name="metadata">
+							<page string="Meta-Data" name="metadata" attrs="{'invisible': [('is_owner', '=', False)]}">
 								<group name="metadata" col="4">
-									<field name="parent_id" domain="[('type', '=', '1')]" attrs="{'invisible': [('id', '=', False)]}" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+									<field name="parent_id" domain="[('type', '=', '1')]"
+										attrs="{'invisible': [('id', '=', False)]}"
+										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="tag_ids" widget="many2many_tags" attrs="{'invisible': [('type', '!=', '2')]}"/>
 								</group>
 							</page>
-							<page string="Sharing Options" name="share">
+							<page string="Sharing Options" name="share" attrs="{'invisible': [('is_owner', '=', False)]}">
 								<notebook>
 									<page string="Read Acess" name="read">
 										<group name="read" col="4">
@@ -194,15 +198,6 @@
 				</form>
 			</field>
 		</record>
-		<record id="view_node_form_shared" model="ir.ui.view">
-            <field name="name">ixdms.node.inherit.shared.view.form</field>
-            <field name="model">ixdms.node</field>
-            <field name="inherit_id" ref="view_node_form"/>
-			<field name="mode">primary</field>
-            <field name="arch" type="xml">                
-                <xpath expr="//field[@name='parent_id']" position="replace"/>                    
-            </field>
-        </record>
 		<!-- ixdms.node kanban view -->
 		<record id="view_node_kanban" model="ir.ui.view">
 			<field name="name">ixdms.node.kanban</field>
@@ -362,24 +357,6 @@
 			<field name="view_mode">form</field>
 			<field name="view_id" ref="view_node_form"/>
 			<field name="act_window_id" ref="action_node_my"/>
-		</record>
-		<record id="action_node_form_shared_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="3"/>
-			<field name="view_mode">form</field>
-			<field name="view_id" ref="view_node_form_shared"/>
-			<field name="act_window_id" ref="action_node_shared_with_me"/>
-		</record>
-		<record id="action_node_tree_shared_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="2"/>
-			<field name="view_mode">tree</field>
-			<field name="view_id" ref="view_node_tree"/>
-			<field name="act_window_id" ref="action_node_shared_with_me"/>
-		</record>
-		<record id="action_node_kanban_shared_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="1"/>
-			<field name="view_mode">kanban</field>
-			<field name="view_id" ref="view_node_kanban"/>
-			<field name="act_window_id" ref="action_node_shared_with_me"/>
 		</record>
 		<record id="action_node_tree_view" model="ir.actions.act_window.view">
 			<field name="sequence" eval="2"/>
