@@ -86,7 +86,16 @@ class Node(models.Model):
 				rec.implied_write_group_ids = False
 
 			rec.shared = shared or len(rec.read_user_ids) > 0 or len(rec.read_group_ids) > 0 or len(rec.write_user_ids) > 0 or len(rec.write_group_ids) > 0
-			rec.write_allowed = self.env.user == rec.create_uid or self.env.user in rec.write_user_ids or self.env.user in rec.implied_write_user_ids or self.env.user in rec.write_group_ids or self.env.user in rec.implied_write_group_ids
+			write_allowed = self.env.user == rec.create_uid or self.env.user in rec.write_user_ids or self.env.user in rec.implied_write_user_ids
+			if write_allowed:
+				rec.write_allowed = True
+			else:
+				for group in self.env.user.groups_id:
+					if group in rec.write_group_ids or group in rec.implied_write_group_ids:
+						write_allowed = True
+						break
+				rec.write_allowed = write_allowed
+
 
 			
 	def _rec_implied(self, implied_read_user_ids, implied_write_user_ids, implied_read_group_ids, implied_write_group_ids):
