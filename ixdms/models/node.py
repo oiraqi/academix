@@ -56,6 +56,8 @@ class Node(models.Model):
 	
 	shared = fields.Boolean(compute='_implied')
 	write_allowed = fields.Boolean(compute='_implied')
+	is_implied = fields.Boolean(compute='_implied')
+	
 
 	def _implied(self):
 		for rec in self:
@@ -90,7 +92,34 @@ class Node(models.Model):
 
 			rec.shared = shared or len(rec.read_user_ids) > 0 or len(rec.write_user_ids) > 0 or len(rec.student_share_ids) > 0 or len(rec.faculty_share_ids) > 0
 			rec.write_allowed = self.env.user == rec.create_uid or self.env.user in rec.write_user_ids or self.env.user in rec.implied_write_user_ids
-			
+			user_id = self.env.user.id
+			is_implied = user_id in implied_read_user_ids or user_id in implied_write_user_ids
+			if is_implied:
+				rec.is_implied = True
+			elif self.env.ref('ix.group_student') in self.env.user.groups_id:
+				student = self.env.user.student_id
+				for student_share in rec.implied_student_share_ids:
+					if student.school_id == student_share.school_id:
+						if student_share.program_id:
+							if student_share.program_id == student.program_id:
+								rec.is_implied = True
+								break
+						else:
+							rec.is_implied = True
+							break
+			elif self.env.ref('ix.group_faculty') in self.env.user.groups_id:
+				faculty = self.env.user.faculty_id
+				for faculty_share in rec.implied_faculty_share_ids:
+					if faculty.school_id == faculty_share.school_id:
+						if faculty_share.discipline_id:
+							if faculty_share.discipline_id == faculty.discipline_id:
+								rec.is_implied = True
+								break
+						else:
+							rec.is_implied = True
+							break
+			else:
+				rec.is_implied = False
 			
 	def _rec_implied(self, implied_read_user_ids, implied_write_user_ids, implied_student_share_ids, implied_faculty_share_ids):
 		if not self.parent_id:

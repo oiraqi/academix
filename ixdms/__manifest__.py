@@ -14,6 +14,7 @@
         'ixcatalog',
     ],
     'data': [
+        'security/dms_security.xml'
         'security/ir.model.access.csv',
         'views/node_view.xml',
         'views/tag_view.xml',

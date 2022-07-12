@@ -136,7 +136,7 @@
 											<field name="read_user_ids" widget="many2many_tags" string="Users" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="implied_read_user_ids" widget="many2many_tags" string="Implied Users"/>
 										</group>
-										<notebook>
+										<notebook groups="ix.group_coordinator,ix.group_vpaa">
 											<page string="Students" name="students">
 												<group>
 													<field name="student_share_ids" colspan="4">
@@ -321,7 +321,7 @@
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
-			<field name="domain">[('create_uid', '!=', uid), ('implied_user_ids', 'not in', uid)]</field>
+			<field name="domain">[('create_uid', '!=', uid), ('is_implied', '=', False)]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
