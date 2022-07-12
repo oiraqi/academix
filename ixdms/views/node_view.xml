@@ -315,13 +315,13 @@
 
 				</p>
 			</field>
-		</record>
+		</record>		
 		<record id="action_node_shared_with_me" model="ir.actions.act_window">
 			<field name="name">Nodes</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
-			<field name="domain">[('create_uid', '!=', uid), ('is_implied', '=', False)]</field>
+			<field name="domain">[('create_uid', '!=', uid), '|', ('read_user_ids', 'in', uid), ('write_user_ids', 'in', uid)]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
