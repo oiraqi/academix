@@ -157,7 +157,7 @@
 									<field name="implied_faculty_share_ids">
 										<tree>
 											<field name="school_id"/>
-											<field name="faculty_id"/>
+											<field name="discipline_id"/>
 										</tree>
 									</field>
 								</group>
