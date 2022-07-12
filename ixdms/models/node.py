@@ -125,12 +125,14 @@ class Node(models.Model):
 			rec.is_implied = is_implied
 			
 	def _rec_implied(self, implied_read_user_ids, implied_write_user_ids, implied_student_share_ids, implied_faculty_share_ids):
+		if not self.parent_id:
+			return		
+
 		try:
-			if not self.parent_id:
-				return
+			self.parent_id.read_user_ids
 		except AccessError:
 			return
-
+		
 		for read_user in self.parent_id.read_user_ids:
 			if read_user.id not in implied_read_user_ids:
 				implied_read_user_ids.append(read_user.id)
