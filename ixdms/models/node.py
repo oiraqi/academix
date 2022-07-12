@@ -96,16 +96,18 @@ class Node(models.Model):
 			is_implied = user_id in implied_read_user_ids or user_id in implied_write_user_ids
 			if is_implied:
 				rec.is_implied = True
-			elif self.env.ref('ix.group_student') in self.env.user.groups_id:
+				continue
+			
+			if self.env.ref('ix.group_student') in self.env.user.groups_id:
 				student = self.env.user.student_id
 				for student_share in rec.implied_student_share_ids:
 					if student.school_id == student_share.school_id:
 						if student_share.program_id:
 							if student_share.program_id == student.program_id:
-								rec.is_implied = True
+								is_implied = True
 								break
 						else:
-							rec.is_implied = True
+							is_implied = True
 							break
 			elif self.env.ref('ix.group_faculty') in self.env.user.groups_id:
 				faculty = self.env.user.faculty_id
@@ -113,13 +115,13 @@ class Node(models.Model):
 					if faculty.school_id == faculty_share.school_id:
 						if faculty_share.discipline_id:
 							if faculty_share.discipline_id == faculty.discipline_id:
-								rec.is_implied = True
+								is_implied = True
 								break
 						else:
-							rec.is_implied = True
+							is_implied = True
 							break
-			else:
-				rec.is_implied = False
+			
+			rec.is_implied = is_implied
 			
 	def _rec_implied(self, implied_read_user_ids, implied_write_user_ids, implied_student_share_ids, implied_faculty_share_ids):
 		if not self.parent_id:
