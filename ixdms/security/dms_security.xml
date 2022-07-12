@@ -22,7 +22,7 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
-        <record id="user_read_dms_node_rule" model="ir.rule">
+        <record id="user_delete_dms_node_rule" model="ir.rule">
             <field name="name">Restrict read access to nodes</field>
             <field name="model_id" ref="model_ixdms_node"/>
             <field name="domain_force">[('create_uid', '=', user.id)]</field>
