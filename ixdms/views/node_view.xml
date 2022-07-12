@@ -32,7 +32,7 @@
 											<t t-name="kanban-box">
 												<div>
 													<a href="#" string="Open" name="open" type="object">
-														<div name="fav_shared" class="oe_kanban_top_right">															
+														<div name="fav_shared" class="oe_kanban_top_right">
 															<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
 																<img t-att-src="'/ixdms/static/img/share.png'"/>
 															</span>
@@ -130,42 +130,54 @@
 								</group>
 							</page>
 							<page string="Sharing Options" name="share">
-								<group name="read" string="Read Access" col="4">
-									<field name="read_user_ids" widget="many2many_tags" string="Users"
-										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-									<field name="implied_read_user_ids" widget="many2many_tags" string="Implied Users"/>
-									<field name="student_share_ids" colspan="4">
-										<tree editable="bottom">
-											<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-											<field name="program_id" domain="[('school_id', '=', school_id)]"
-												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-										</tree>
-									</field>
-									<field name="implied_student_share_ids" colspan="4">
-										<tree>
-											<field name="school_id"/>
-											<field name="program_id"/>
-										</tree>
-									</field>
-									<field name="faculty_share_ids" colspan="4">
-										<tree editable="bottom">
-											<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-											<field name="discipline_id" domain="[('school_id', '=', school_id)]"
-												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-										</tree>
-									</field>
-									<field name="implied_faculty_share_ids" colspan="4">
-										<tree>
-											<field name="school_id"/>
-											<field name="discipline_id"/>
-										</tree>
-									</field>
-								</group>
-								<group name="write" string="Write Access" col="4">
-									<field name="write_user_ids" widget="many2many_tags" string="Users"
-										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-									<field name="implied_write_user_ids" widget="many2many_tags" string="Implied Users"/>									
-								</group>
+								<notebook>
+									<page string="Read Acess" name="read">
+										<group name="read" col="4">
+											<field name="read_user_ids" widget="many2many_tags" string="Users" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="implied_read_user_ids" widget="many2many_tags" string="Implied Users"/>
+										</group>
+										<notebook>
+											<page string="Students" name="students">
+												<group>
+													<field name="student_share_ids" colspan="4">
+														<tree editable="bottom">
+															<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+															<field name="program_id" domain="[('school_id', '=', school_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+														</tree>
+													</field>
+													<field name="implied_student_share_ids" colspan="4">
+														<tree>
+															<field name="school_id"/>
+															<field name="program_id"/>
+														</tree>
+													</field>
+												</group>
+											</page>
+											<page string="Faculty" name="faculty">
+												<group>
+													<field name="faculty_share_ids" colspan="4">
+														<tree editable="bottom">
+															<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+															<field name="discipline_id" domain="[('school_id', '=', school_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+														</tree>
+													</field>
+													<field name="implied_faculty_share_ids" colspan="4">
+														<tree>
+															<field name="school_id"/>
+															<field name="discipline_id"/>
+														</tree>
+													</field>
+												</group>
+											</page>
+										</notebook>
+									</page>
+									<page string="Write Access" name="write">
+										<group name="write" string="Write Access" col="4">
+											<field name="write_user_ids" widget="many2many_tags" string="Users" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="implied_write_user_ids" widget="many2many_tags" string="Implied Users"/>
+										</group>
+									</page>
+								</notebook>
 							</page>
 						</notebook>
 						<group name="log" string="Log" col="4">
@@ -198,7 +210,7 @@
 						<t t-name="kanban-box">
 							<div>
 								<a href="#" string="Open" name="open" type="object">
-									<div name="fav_shared" class="oe_kanban_top_right">										
+									<div name="fav_shared" class="oe_kanban_top_right">
 										<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
 											<img t-att-src="'/ixdms/static/img/share.png'"/>
 										</span>
