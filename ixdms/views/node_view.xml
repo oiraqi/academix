@@ -27,6 +27,7 @@
 										<field name="ntags"/>
 										<field name="shared"/>
 										<field name="message_is_follower"/>
+										<field name="write_allowed"/>
 										<templates>
 											<t t-name="kanban-box">
 												<div>
@@ -37,6 +38,12 @@
 															</span>
 															<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
 																<img t-att-src="'/ixdms/static/img/fav.png'"/>
+															</span>
+															<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/w.png'"/>
+															</span>
+															<span t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/r.png'"/>
 															</span>
 														</div>
 														<div name="content" class="oe_kanban_details">

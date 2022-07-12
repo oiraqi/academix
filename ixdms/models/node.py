@@ -52,6 +52,7 @@ class Node(models.Model):
 	implied_read_group_ids = fields.Many2many(comodel_name='res.groups', compute='_implied', string='Implied Read Access Groups')
 	implied_write_group_ids = fields.Many2many(comodel_name='res.groups', compute='_implied', string='Implied Write Access Groups')
 	shared = fields.Boolean(compute='_implied')
+	write_allowed = fields.Boolean(compute='_implied')
 
 	def _implied(self):
 		for rec in self:
@@ -85,6 +86,7 @@ class Node(models.Model):
 				rec.implied_write_group_ids = False
 
 			rec.shared = shared or len(rec.read_user_ids) > 0 or len(rec.read_group_ids) > 0 or len(rec.write_user_ids) > 0 or len(rec.write_group_ids) > 0
+			rec.write_allowed = self.env.user == rec.create_uid or self.env.user in rec.write_user_ids or self.env.user in rec.implied_write_user_ids or self.env.user in rec.write_group_ids or self.env.user in rec.implied_write_group_ids
 
 			
 	def _rec_implied(self, implied_read_user_ids, implied_write_user_ids, implied_read_group_ids, implied_write_group_ids):
