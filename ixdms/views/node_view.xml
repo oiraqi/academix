@@ -23,7 +23,7 @@
 								attrs="{'readonly': [('is_owner', '=', False)]}"/>
 						</h1>
 						<div attrs="{'invisible': [('type', '!=', '2')]}">
-							Tags: <field name="tag_ids" widget="many2many_tags"/>
+							<field name="tag_ids" widget="many2many_tags" placeholder="Tags..."/>
 						</div>
 						<notebook>
 							<page string="Content" name="folder" attrs="{'invisible': [('type', '!=', '1')]}">
