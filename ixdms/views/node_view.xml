@@ -13,12 +13,18 @@
 						<field name="is_owner" invisible="1"/>
 						<field name="shared" invisible="1"/>
 						<field name="message_is_follower" invisible="1"/>
-						<img attrs="{'invisible': [('message_is_follower', '=', False)]}" src="/ixdms/static/img/fav.png"/>
-						<img attrs="{'invisible': [('shared', '=', False)]}" src="/ixdms/static/img/share.png"/>
+						<field name="write_allowed" invisible="1"/>
+						<img attrs="{'invisible': [('message_is_follower', '=', False)]}" src="/ixdms/static/img/fav.png" alt="You are following this node"/>
+						<img attrs="{'invisible': [('shared', '=', False)]}" src="/ixdms/static/img/share.png" alt="This node is shared"/>
+						<img attrs="{'invisible': [('write_allowed', '=', False)]}" src="/ixdms/static/img/w.png" alt="You have write access to this node"/>
+						<img src="/ixdms/static/img/r.png" alt="You have read access to this node"/>						
 						<h1>
 							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%"
 								attrs="{'readonly': [('is_owner', '=', False)]}"/>
 						</h1>
+						<div attrs="{'invisible': [('type', '!=', '2')]}">
+							Tags: <field name="tag_ids" widget="many2many_tags"/>
+						</div>
 						<notebook>
 							<page string="Content" name="folder" attrs="{'invisible': [('type', '!=', '1')]}">
 								<field name="child_ids" mode="kanban" context="{'default_parent_id': active_id}">
@@ -36,16 +42,16 @@
 													<a href="#" string="Open" name="open" type="object">
 														<div name="fav_shared" class="oe_kanban_top_right">
 															<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/share.png'"/>
+																<img t-att-src="'/ixdms/static/img/share.png'" alt="This node is shared"/>
 															</span>
 															<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/fav.png'"/>
+																<img t-att-src="'/ixdms/static/img/fav.png'" alt="You are following this node"/>
 															</span>
 															<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/w.png'"/>
+																<img t-att-src="'/ixdms/static/img/w.png'" alt="You have write access to this node"/>
 															</span>
 															<span t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/r.png'"/>
+																<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
 															</span>
 														</div>
 														<div name="content" class="oe_kanban_details">
@@ -119,18 +125,18 @@
 									</kanban>
 								</field>
 							</page>
-							<page string="File &#38; URL" name="document" attrs="{'invisible': [('type', '!=', '2')]}">
+							<page string="Content" name="document" attrs="{'invisible': [('type', '!=', '2')]}">
 								<group name="document" col="4">
 									<field name="file" widget="binary"/>
 									<field name="url" widget="url"/>
+									<field name="text" widget="html" colspan="4"/>
 								</group>
 							</page>
 							<page string="Meta-Data" name="metadata" attrs="{'invisible': [('is_owner', '=', False)]}">
 								<group name="metadata" col="4">
 									<field name="parent_id" domain="[('type', '=', '1')]"
 										attrs="{'invisible': [('id', '=', False)]}"
-										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-									<field name="tag_ids" widget="many2many_tags" attrs="{'invisible': [('type', '!=', '2')]}"/>
+										options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>									
 								</group>
 							</page>
 							<page string="Sharing Options" name="share" attrs="{'invisible': [('is_owner', '=', False)]}">

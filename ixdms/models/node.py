@@ -21,6 +21,7 @@ class Node(models.Model):
 	
 	file = fields.Binary(string='File')
 	url = fields.Char(string='URL')
+	text = fields.Html(string='Text')	
 	parent_id = fields.Many2one(comodel_name='ixdms.node', string='Parent')
 	child_ids = fields.One2many(comodel_name='ixdms.node', inverse_name='parent_id', string='Content')
 	nchildren = fields.Integer(string='Sub-Folders', compute='_nchildren')
