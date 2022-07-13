@@ -14,10 +14,10 @@
 						<field name="shared" invisible="1"/>
 						<field name="message_is_follower" invisible="1"/>
 						<field name="write_allowed" invisible="1"/>
-						<img attrs="{'invisible': [('message_is_follower', '=', False)]}" src="/ixdms/static/img/fav.png" alt="You are following this node"/>
-						<img attrs="{'invisible': [('shared', '=', False)]}" src="/ixdms/static/img/share.png" alt="This node is shared"/>
 						<img src="/ixdms/static/img/r.png" alt="You have read access to this node"/>
-						<img attrs="{'invisible': [('write_allowed', '=', False)]}" src="/ixdms/static/img/w.png" alt="You have write access to this node"/>						
+						<img attrs="{'invisible': [('write_allowed', '=', False)]}" src="/ixdms/static/img/w.png" alt="You have write access to this node"/>
+						<img attrs="{'invisible': [('message_is_follower', '=', False)]}" src="/ixdms/static/img/fav.png" alt="You are following this node"/>
+						<img attrs="{'invisible': [('shared', '=', False)]}" src="/ixdms/static/img/share.png" alt="This node is shared"/>						
 						<h1>
 							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%"
 								attrs="{'readonly': [('is_owner', '=', False)]}"/>
