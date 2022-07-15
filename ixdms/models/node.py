@@ -117,10 +117,10 @@ class Node(models.Model):
                         [('discipline_ids', 'in', share.discipline_id.id)])
 
                 for faculty in faculties:
-                    if faculty.user_id not in users:
-                        users.append(faculty.user_id)
+                    if faculty.user_id.id not in users:
+                        users.append(faculty.user_id.id)
             if len(users) > 0:
-                rec.faculty_user_ids = [(0, 6, users)]
+                rec.faculty_user_ids = [(6, 0, users)]
             else:
                 rec.faculty_user_ids = False
 

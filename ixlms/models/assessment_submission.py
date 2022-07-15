@@ -22,7 +22,7 @@ class AssessmentSubmission(models.Model):
 					assessment_line_id = self.env['ixlms.assessment.line'].search([('student_id', '=', member.id)])
 					if assessment_line_id.id not in assessment_lines:
 						assessment_lines.append(assessment_line_id.id)
-		submission.assessment_line_ids = [(0, 6, assessment_lines)]
+		submission.assessment_line_ids = [(6, 0, assessment_lines)]
 		return submission
 
 	assessment_id = fields.Many2one(comodel_name='ixlms.assessment', string='Assessment', required=True)
