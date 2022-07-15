@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields
 from odoo.exceptions import AccessError
 
 
@@ -82,8 +82,8 @@ class Node(models.Model):
 
     student_user_ids = fields.One2many(
         comodel_name='res.users', compute='_student_user_ids')
-    faculty_user_ids = fields.Many2many(
-        comodel_name='res.users', relation='ixdms_faculty_user_node_rel', compute='_faculty_user_ids', store=True)
+    faculty_user_ids = fields.One2many(
+        comodel_name='res.users', compute='_faculty_user_ids')
 
     def _student_user_ids(self):
         for rec in self:
@@ -104,7 +104,6 @@ class Node(models.Model):
             else:
                 rec.student_user_ids = False
 
-    @api.depends('faculty_share_ids')
     def _faculty_user_ids(self):
         for rec in self:
             users = []
@@ -120,7 +119,7 @@ class Node(models.Model):
                     if faculty.user_id.id not in users:
                         users.append(faculty.user_id.id)
             if len(users) > 0:
-                rec.faculty_user_ids = [(6, 0, users)]
+                rec.faculty_user_ids = users
             else:
                 rec.faculty_user_ids = False
 
