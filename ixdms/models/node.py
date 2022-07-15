@@ -61,6 +61,40 @@ class Node(models.Model):
 	
 	implied_student_share_ids = fields.Many2many(comodel_name='ixdms.student.share', compute='_implied', string='Implied Student Shares')
 	implied_faculty_share_ids = fields.Many2many(comodel_name='ixdms.faculty.share', compute='_implied', string='Implied Faculty Shares')
+
+	student_school_ids = fields.One2many(comodel_name='ix.school', compute='_student_school_ids', string='School(s)')
+	program_ids = fields.One2many(comodel_name='ixcatalog.program', compute='_student_school_ids', string='Program(s)')
+	faculty_school_ids = fields.One2many(comodel_name='ix.school', compute='_faculty_school_ids', string='School(s)')
+
+	def _student_school_ids(self):
+		for rec in self:
+			schools = []
+			programs = []
+			for share in rec.student_share_ids:
+				if not share.program_id:
+					schools.append(share.school_id.id)
+				else:
+					programs.append(share.program_id.id)
+			if len(schools) > 0:
+				rec.student_school_ids = schools
+			else:
+				rec.student_school_ids = False
+			if len(programs) > 0:
+				rec.program_ids = programs
+			else:
+				rec.program_ids = False
+
+	def _faculty_school_ids(self):
+		for rec in self:
+			schools = []
+			for share in rec.faculty_share_ids:
+				if not share.discipline_id:
+					schools.append(share.school_id.id)
+			if len(schools) > 0:
+				rec.faculty_school_ids = schools
+			else:
+				rec.faculty_school_ids = False
+	
 	
 	shared = fields.Boolean(compute='_implied')
 	write_allowed = fields.Boolean(compute='_implied')
