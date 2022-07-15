@@ -309,7 +309,7 @@
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
-			<field name="domain">[('parent_id', '=', False), ('create_uid', '=', uid)]</field>
+			<field name="domain">[('create_uid', '=', uid), 	('parent_id', '=', False)]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
@@ -326,6 +326,22 @@
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
 			<field name="domain">[('create_uid', '!=', uid), '|', ('read_user_ids', 'in', uid), ('write_user_ids', 'in', uid)]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+
+				</p>
+				<p>
+
+				</p>
+			</field>
+		</record>
+		<record id="action_node_student_shares" model="ir.actions.act_window">
+			<field name="name">Student Shares</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">ixdms.node</field>
+			<field name="view_mode">kanban,tree,form</field>
+			<field name="domain">['|', ('school_ids', 'in', uid.student_id.school_id), ('program_ids', 'in', uid.student_id.program_id)]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">

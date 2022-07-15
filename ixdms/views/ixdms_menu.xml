@@ -3,6 +3,7 @@
 		<menuitem id="ixdms_root_menu" name="DMS" sequence="30"/>
 		<menuitem id="ixdms_node_my_menu" name="My" action="action_node_my" parent="ixdms_root_menu" sequence="10"/>
 		<menuitem id="ixdms_node_shared_with_me_menu" name="Shared with Me" action="action_node_shared_with_me" parent="ixdms_root_menu" sequence="20"/>
+		<menuitem id="ixdms_node_student_shares_menu" name="Student Shares" action="action_node_student_shares" parent="ixdms_root_menu" sequence="30" groups="ix.group_student"/>
 		<menuitem id="ixdms_tag_menu" name="Tags" action="action_tag" parent="ixdms_root_menu" sequence="50"/>
 	</data>
 </odoo>
