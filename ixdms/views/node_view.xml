@@ -25,8 +25,8 @@
 						<div attrs="{'invisible': [('type', '!=', '2')]}">
 							<field name="tag_ids" widget="many2many_tags" placeholder="Tags..."/>
 						</div>
-						<group string="Content" name="folder" attrs="{'invisible': [('type', '!=', '1')]}">
-							<field name="child_ids" mode="kanban" context="{'default_parent_id': active_id}">
+						<group name="folder" attrs="{'invisible': [('type', '!=', '1')]}">
+							<field name="child_ids" nolabel="1" mode="kanban" context="{'default_parent_id': active_id}">
 								<kanban>
 									<field name="type"/>
 									<field name="nfolders"/>
@@ -124,12 +124,10 @@
 								</kanban>
 							</field>
 						</group>
-						<group string="Content" name="document" attrs="{'invisible': [('type', '!=', '2')]}">
-							<group name="document" col="4">
-								<field name="file" widget="binary"/>
-								<field name="url" widget="url"/>
-								<field name="text" widget="html" colspan="4"/>
-							</group>
+						<group name="document" attrs="{'invisible': [('type', '!=', '2')]}" col="4">
+							<field name="file" widget="binary"/>
+							<field name="url" widget="url"/>
+							<field name="text" widget="html" colspan="4"/>
 						</group>
 						<group string="Sharing Options" name="share" attrs="{'invisible': [('is_owner', '=', False)]}">
 							<notebook>
