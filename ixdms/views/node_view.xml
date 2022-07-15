@@ -360,12 +360,11 @@
             <field name="state">code</field>
             <field name="code">
 				shares = env['ixdms.faculty.share'].search([('school_id', '=', env.user.faculty_id.school_id.id)])
-				nodes = [share.node_id.id for share in shares]
             	action = {
             		'type': 'ir.actions.act_window',
 			        'view_mode': 'kanban,tree,form',
 			        'res_model': 'ixdms.node',
-                	'domain': [('id', 'in', nodes)]
+                	'domain': [('id', 'in', [share.node_id.id for share in shares])]
             	}
             </field>
         </record>		
