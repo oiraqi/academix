@@ -26,7 +26,7 @@
 							<field name="tag_ids" widget="many2many_tags" placeholder="Tags..."/>
 						</div>
 						<group string="Content" name="folder" attrs="{'invisible': [('type', '!=', '1')]}">
-							<field name="child_ids" nolabel="1" mode="kanban" readonly="1" context="{'default_parent_id': active_id}">
+							<field name="child_ids" nolabel="1" mode="kanban" context="{'default_parent_id': active_id}">
 								<kanban>
 									<field name="type"/>
 									<field name="nfolders"/>
