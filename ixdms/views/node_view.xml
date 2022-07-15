@@ -8,7 +8,7 @@
 				<form string="Node">
 					<sheet>
 						<b>
-							<field name="type" attrs="{'readonly': [('id', '!=', False)]}" style="width: 15%"/>
+							<field name="type" attrs="{'readonly': [('id', '!=', False)]}" style="width: 10%"/>
 						</b>
 						<field name="parent_id" invisible="1"/>
 						<field name="is_owner" invisible="1"/>
@@ -21,7 +21,7 @@
 						<img attrs="{'invisible': [('shared', '=', False)]}" src="/ixdms/static/img/share.png" alt="This node is shared"/>						
 						<h1>
 							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%"
-								attrs="{'readonly': [('is_owner', '=', False)]}"/>
+								attrs="{'readonly': [('id', '!=', False), ('is_owner', '=', False)]}"/>
 						</h1>
 						<div attrs="{'invisible': [('type', '!=', '2')]}">
 							<field name="tag_ids" widget="many2many_tags" placeholder="Tags..."/>
