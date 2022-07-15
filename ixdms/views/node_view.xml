@@ -18,10 +18,9 @@
 						<img src="/ixdms/static/img/r.png" alt="You have read access to this node"/>
 						<img attrs="{'invisible': [('write_allowed', '=', False)]}" src="/ixdms/static/img/w.png" alt="You have write access to this node"/>
 						<img attrs="{'invisible': [('message_is_follower', '=', False)]}" src="/ixdms/static/img/fav.png" alt="You are following this node"/>
-						<img attrs="{'invisible': [('shared', '=', False)]}" src="/ixdms/static/img/share.png" alt="This node is shared"/>						
+						<img attrs="{'invisible': [('shared', '=', False)]}" src="/ixdms/static/img/share.png" alt="This node is shared"/>
 						<h1>
-							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%"
-								attrs="{'readonly': [('id', '!=', False), ('is_owner', '=', False)]}"/>
+							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%" attrs="{'readonly': [('id', '!=', False), ('is_owner', '=', False)]}"/>
 						</h1>
 						<div attrs="{'invisible': [('type', '!=', '2')]}">
 							<field name="tag_ids" widget="many2many_tags" placeholder="Tags..."/>
@@ -132,7 +131,7 @@
 									<field name="url" widget="url"/>
 									<field name="text" widget="html" colspan="4"/>
 								</group>
-							</page>							
+							</page>
 							<page string="Sharing Options" name="share" attrs="{'invisible': [('is_owner', '=', False)]}">
 								<notebook>
 									<page string="Read Acess" name="read">
@@ -210,6 +209,7 @@
 					<field name="ntags"/>
 					<field name="shared"/>
 					<field name="message_is_follower"/>
+					<field name="write_allowed"/>
 					<templates>
 						<t t-name="kanban-box">
 							<div>
@@ -220,6 +220,12 @@
 										</span>
 										<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
 											<img t-att-src="'/ixdms/static/img/fav.png'"/>
+										</span>
+										<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
+											<img t-att-src="'/ixdms/static/img/w.png'" alt="You have write access to this node"/>
+										</span>
+										<span t-attf-class="pull-right text-right">
+											<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
 										</span>
 									</div>
 									<div name="content" class="oe_kanban_details">
@@ -319,7 +325,7 @@
 
 				</p>
 			</field>
-		</record>		
+		</record>
 		<record id="action_node_shared_with_me" model="ir.actions.act_window">
 			<field name="name">Nodes</field>
 			<field name="type">ir.actions.act_window</field>
