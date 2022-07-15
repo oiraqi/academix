@@ -214,11 +214,11 @@ class Node(models.Model):
             if write_user.id not in implied_write_user_ids:
                 implied_write_user_ids.append(write_user.id)
 
-        for student_share in self.parent_id.implied_student_share_ids:
+        for student_share in self.parent_id.student_share_ids:
             if student_share.id not in implied_student_share_ids:
                 implied_student_share_ids.append(student_share.id)
 
-        for faculty_share in self.parent_id.implied_faculty_share_ids:
+        for faculty_share in self.parent_id.faculty_share_ids:
             if faculty_share.id not in implied_faculty_share_ids:
                 implied_faculty_share_ids.append(faculty_share.id)
 
