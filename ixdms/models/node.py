@@ -62,38 +62,43 @@ class Node(models.Model):
 	implied_student_share_ids = fields.Many2many(comodel_name='ixdms.student.share', compute='_implied', string='Implied Student Shares')
 	implied_faculty_share_ids = fields.Many2many(comodel_name='ixdms.faculty.share', compute='_implied', string='Implied Faculty Shares')
 
-	student_school_ids = fields.One2many(comodel_name='ix.school', compute='_student_school_ids', string='School(s)')
-	program_ids = fields.One2many(comodel_name='ixcatalog.program', compute='_student_school_ids', string='Program(s)')
-	faculty_school_ids = fields.One2many(comodel_name='ix.school', compute='_faculty_school_ids', string='School(s)')
+	student_user_ids = fields.One2many(comodel_name='res.users', compute='_student_user_ids')
+	faculty_user_ids = fields.One2many(comodel_name='res.users', compute='_faculty_user_ids')	
 
-	def _student_school_ids(self):
+	def _student_user_ids(self):
 		for rec in self:
-			schools = []
-			programs = []
+			users = []
 			for share in rec.student_share_ids:
 				if not share.program_id:
-					schools.append(share.school_id.id)
+					students = self.env['ix.faculty'].search([('school_id', '=', share.school_id.id)])					
 				else:
-					programs.append(share.program_id.id)
-			if len(schools) > 0:
-				rec.student_school_ids = schools
+					students = self.env['ix.faculty'].search([('program_id', '=', share.program_id.id)])
+				
+				for student in students:
+					if student.user_id.id not in users:
+						users.append(student.user_id.id)
+			if len(users) > 0:
+				rec.student_user_ids = users
 			else:
-				rec.student_school_ids = False
-			if len(programs) > 0:
-				rec.program_ids = programs
-			else:
-				rec.program_ids = False
-
-	def _faculty_school_ids(self):
+				rec.student_user_ids = False
+	
+	
+	def _faculty_user_ids(self):
 		for rec in self:
-			schools = []
+			users = []
 			for share in rec.faculty_share_ids:
 				if not share.discipline_id:
-					schools.append(share.school_id.id)
-			if len(schools) > 0:
-				rec.faculty_school_ids = schools
+					faculties = self.env['ix.faculty'].search([('school_id', '=', share.school_id.id)])					
+				else:
+					faculties = self.env['ix.faculty'].search([('discipline_ids', 'in', share.discipline_id.id)])
+				
+				for faculty in faculties:
+					if faculty.user_id.id not in users:
+						users.append(faculty.user_id.id)
+			if len(users) > 0:
+				rec.faculty_user_ids = users
 			else:
-				rec.faculty_school_ids = False
+				rec.faculty_user_ids = False
 	
 	
 	shared = fields.Boolean(compute='_implied')
