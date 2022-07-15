@@ -155,7 +155,7 @@ class Node(models.Model):
                 shared = True
                 for share in rec.implied_student_share_ids:
                     if not share.program_id:
-                        students = self.en['ix.student'].search([('school_id', '=', share.school_id.id)])
+                        students = self.env['ix.student'].search([('school_id', '=', share.school_id.id)])
                     else:
                         students = self.en['ix.student'].search([('program_id', '=', share.program_id.id)])
                     for student in students:
@@ -173,7 +173,7 @@ class Node(models.Model):
                 shared = True
                 for share in rec.implied_faculty_share_ids:
                     if not share.discipline_id:
-                        faculties = self.en['ix.faculty'].search([('school_id', '=', share.school_id.id)])
+                        faculties = self.env['ix.faculty'].search([('school_id', '=', share.school_id.id)])
                     else:
                         faculties = self.en['ix.faculty'].search([('discipline_ids', 'in', share.discipline_id.id)])
                     for faculty in faculties:
