@@ -15,7 +15,7 @@
         <record id="user_read_dms_node_rule" model="ir.rule">
             <field name="name">Restrict read access to nodes</field>
             <field name="model_id" ref="model_ixdms_node"/>
-            <field name="domain_force">['|', ('create_uid', '=', user.id), '|', ('read_user_ids', 'in', user.id), '|', ('write_user_ids', 'in', user.id), ('is_implied', '=', True)]</field>
+            <field name="domain_force">['|', ('create_uid', '=', user.id), '|', ('read_user_ids', 'in', user.id), '|', ('write_user_ids', 'in', user.id), ('faculty_user_ids', 'in', user.id)]</field>
             <field name="groups" eval="[(4, ref('ix.group_user'))]"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_write" eval="False"/>
