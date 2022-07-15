@@ -359,8 +359,8 @@
             <field name="model_id" ref="model_ixdms_node"/>
             <field name="state">code</field>
             <field name="code">
-			    shares = env['ixdms.faculty.share'].search([('school_id', '=', env.user.faculty_id.school_id.id)])
-			    nodes = [share.node_id.id for share in shares]
+                shares = env['ixdms.faculty.share'].search([('school_id', '=', env.user.faculty_id.school_id.id)])
+                nodes = [share.node_id.id for share in shares]
                 action = {
             		'type': 'ir.actions.act_window',
 			    	'view_mode': 'kanban,tree,form',
