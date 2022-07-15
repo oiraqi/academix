@@ -153,7 +153,7 @@ class Node(models.Model):
             if len(implied_student_share_ids) > 0:
                 rec.implied_student_share_ids = implied_student_share_ids
                 shared = True
-                for share in implied_student_share_ids:
+                for share in rec.implied_student_share_ids:
                     if not share.program_id:
                         students = self.en['ix.student'].search([('school_id', '=', share.school_id.id)])
                     else:
@@ -171,7 +171,7 @@ class Node(models.Model):
             if len(implied_faculty_share_ids) > 0:
                 rec.implied_faculty_share_ids = implied_faculty_share_ids
                 shared = True
-                for share in implied_faculty_share_ids:
+                for share in rec.implied_faculty_share_ids:
                     if not share.discipline_id:
                         faculties = self.en['ix.faculty'].search([('school_id', '=', share.school_id.id)])
                     else:
