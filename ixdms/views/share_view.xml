@@ -43,17 +43,7 @@
 					</notebook>
 				</xpath>
 			</field>
-		</record>
-		<record id="view_share_tree" model="ir.ui.view">
-			<field name="name">ixdms.share.tree</field>
-			<field name="model">ixdms.share</field>
-			<field eval="8" name="priority"/>
-			<field name="arch" type="xml">
-				<tree string="Shares">
-					<field name="name"/>
-				</tree>
-			</field>
-		</record>
+		</record>		
 		<record id="action_share" model="ir.actions.server">
 			<field name="name">Shares</field>
 			<field name="model_id" ref="model_ixdms_node"/>
@@ -72,7 +62,7 @@ action = {
 	'name': 'Faculty Shares',
 	'type': 'ir.actions.act_window',
 	'view_mode': 'kanban,tree,form',
-	'res_model': 'ixdms.share',
+	'res_model': 'ixdms.node',
 	'domain': [('id', 'in', share_ids)]
 }
 			</field>
