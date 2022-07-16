@@ -32,7 +32,7 @@
             <field name="perm_write" eval="False"/>
         </record>
 
-        <record id="student_read_dms_share_rule" model="ir.rule">
+        <!--<record id="student_read_dms_share_rule" model="ir.rule">
             <field name="name">Restrict read access to shares</field>
             <field name="model_id" ref="model_ixdms_share"/>
             <field name="domain_force">['|', ('student_user_ids', 'in', user.id), ('implied_student_user_ids', 'in', user.id)]</field>
@@ -44,7 +44,7 @@
             <field name="model_id" ref="model_ixdms_share"/>
             <field name="domain_force">['|', ('faculty_user_ids', 'in', user.id), ('implied_faculty_user_ids', 'in', user.id)]</field>
             <field name="groups" eval="[(4, ref('ix.group_faculty'))]"/>
-        </record>
-        
+        </record>-->
+
     </data>
 </odoo>
