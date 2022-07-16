@@ -17,6 +17,8 @@
         'security/dms_security.xml',
         'security/ir.model.access.csv',
         'views/node_view.xml',
+        'views/personal_view.xml',
+        'views/share_view.xml',
         'views/tag_view.xml',
         'views/ixdms_menu.xml'
     ],

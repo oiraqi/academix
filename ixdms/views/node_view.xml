@@ -15,6 +15,7 @@
 						<field name="shared" invisible="1"/>
 						<field name="message_is_follower" invisible="1"/>
 						<field name="write_allowed" invisible="1"/>
+						<field name="scope" invisible="1"/>
 						<img src="/ixdms/static/img/r.png" alt="You have read access to this node"/>
 						<img attrs="{'invisible': [('write_allowed', '=', False)]}" src="/ixdms/static/img/w.png" alt="You have write access to this node"/>
 						<img attrs="{'invisible': [('message_is_follower', '=', False)]}" src="/ixdms/static/img/fav.png" alt="You are following this node"/>
@@ -128,57 +129,7 @@
 							<field name="file" widget="binary"/>
 							<field name="url" widget="url"/>
 							<field name="text" widget="html" colspan="4"/>
-						</group>
-						<group string="Sharing Options" name="share" attrs="{'invisible': [('is_owner', '=', False)]}">
-							<notebook>
-								<page string="Read Acess" name="read">
-									<group name="read" col="4">
-										<field name="read_user_ids" widget="many2many_tags" string="Users" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-										<field name="implied_read_user_ids" widget="many2many_tags" string="Implied Users"/>
-									</group>
-									<notebook groups="ix.group_coordinator,ix.group_vpaa">
-										<page string="Students" name="students">
-											<group>
-												<field name="student_share_ids" colspan="4">
-													<tree editable="bottom">
-														<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-														<field name="program_id" domain="[('school_id', '=', school_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-													</tree>
-												</field>
-												<field name="implied_student_share_ids" colspan="4">
-													<tree>
-														<field name="school_id"/>
-														<field name="program_id"/>
-													</tree>
-												</field>
-											</group>
-										</page>
-										<page string="Faculty" name="faculty">
-											<group>
-												<field name="faculty_share_ids" colspan="4">
-													<tree editable="bottom">
-														<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-														<field name="discipline_id" domain="[('school_id', '=', school_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-													</tree>
-												</field>
-												<field name="implied_faculty_share_ids" colspan="4">
-													<tree>
-														<field name="school_id"/>
-														<field name="discipline_id"/>
-													</tree>
-												</field>
-											</group>
-										</page>
-									</notebook>
-								</page>
-								<page string="Write Access" name="write">
-									<group name="write" string="Write Access" col="4">
-										<field name="write_user_ids" widget="many2many_tags" string="Users" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-										<field name="implied_write_user_ids" widget="many2many_tags" string="Implied Users"/>
-									</group>
-								</page>
-							</notebook>
-						</group>
+						</group>						
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
 							<field name="create_date"/>
@@ -369,7 +320,7 @@ action = {
 	'domain': [('id', 'in', nodes)]
 }
             </field>
-        </record>		
+        </record>
 		<record id="action_node_open" model="ir.actions.act_window">
 			<field name="name">Nodes</field>
 			<field name="type">ir.actions.act_window</field>

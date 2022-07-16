@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="view_share_form" model="ir.ui.view">
+			<field name="name">ixdms.share.form</field>
+			<field name="model">ixdms.node</field>
+			<field name="inherit_id" ref="view_node_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//group[@name='document']" position="after">
+					<notebook groups="ix.group_coordinator,ix.group_vpaa" attrs="{'invisible': [('scope', '!=', 'share')]}">
+						<page string="Students" name="students">
+							<group>
+								<field name="student_share_ids" colspan="4">
+									<tree editable="bottom">
+										<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="program_id" domain="[('school_id', '=', school_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									</tree>
+								</field>
+								<field name="implied_student_share_ids" colspan="4">
+									<tree>
+										<field name="school_id"/>
+										<field name="program_id"/>
+									</tree>
+								</field>
+							</group>
+						</page>
+						<page string="Faculty" name="faculty">
+							<group>
+								<field name="faculty_share_ids" colspan="4">
+									<tree editable="bottom">
+										<field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<field name="discipline_id" domain="[('school_id', '=', school_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									</tree>
+								</field>
+								<field name="implied_faculty_share_ids" colspan="4">
+									<tree>
+										<field name="school_id"/>
+										<field name="discipline_id"/>
+									</tree>
+								</field>
+							</group>
+						</page>
+					</notebook>
+				</xpath>
+			</field>
+		</record>
+		<record id="view_share_tree" model="ir.ui.view">
+			<field name="name">ixdms.share.tree</field>
+			<field name="model">ixdms.share</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Shares">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="action_share" model="ir.actions.server">
+			<field name="name">Shares</field>
+			<field name="model_id" ref="model_ixdms_node"/>
+			<field name="state">code</field>
+			<field name="code">
+if env.ref('ix.group_student') in env.user.groups_id:
+	shares = env['ixdms.student.share'].search(['|', ('program_id', '=', env.user.student_id.program_id.id), '&#38;&#38;', ('school_id', '=', env.user.student_id.school_id.id), ('program_id', '=', False)])
+elif env.ref('ix.group_faculty') in env.user.groups_id:
+	shares = env['ixdms.faculty.share'].search(['|', ('discipline_id', 'in', env.user.faculty_id.discipline_ids), '&#38;&#38;', ('school_id', '=', env.user.faculty_id.school_id.id)])
+elif env.ref('ix.group_coordinator') in env.user.groups_id or env.ref('ix.group_vpaa') in env.user.groups_id:
+	shares = env['ixdms.faculty.share'].search([])
+else:
+	shares = []
+share_ids = [share.share_id.id for share in shares]
+action = {
+	'name': 'Faculty Shares',
+	'type': 'ir.actions.act_window',
+	'view_mode': 'kanban,tree,form',
+	'res_model': 'ixdms.share',
+	'domain': [('id', 'in', share_ids)]
+}
+			</field>
+		</record>
+		<record id="action_share_form_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="2"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="view_share_form"/>
+			<field name="act_window_id" ref="action_share"/>
+		</record>
+		<record id="action_share_tree_view" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="view_share_tree"/>
+			<field name="act_window_id" ref="action_share"/>
+		</record>
+	</data>
+</odoo>
