@@ -59,11 +59,12 @@ else:
 	shares = []
 share_ids = [share.share_id.id for share in shares]
 action = {
-	'name': 'Faculty Shares',
+	'name': 'Academic Resources',
 	'type': 'ir.actions.act_window',
 	'view_mode': 'kanban,tree,form',
 	'res_model': 'ixdms.node',
-	'domain': [('id', 'in', share_ids)]
+	'domain': [('id', 'in', share_ids)],
+	'context': {'default_scope': 'share'}
 }
 			</field>
 		</record>
