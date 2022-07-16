@@ -67,17 +67,5 @@ action = {
 }
 			</field>
 		</record>
-		<record id="action_share_form_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="2"/>
-			<field name="view_mode">form</field>
-			<field name="view_id" ref="view_share_form"/>
-			<field name="act_window_id" ref="action_share"/>
-		</record>
-		<record id="action_share_tree_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="1"/>
-			<field name="view_mode">tree</field>
-			<field name="view_id" ref="view_share_tree"/>
-			<field name="act_window_id" ref="action_share"/>
-		</record>
 	</data>
 </odoo>
