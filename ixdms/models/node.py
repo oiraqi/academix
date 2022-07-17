@@ -26,7 +26,8 @@ class Node(models.Model):
     name = fields.Char('Name', required=True)
     type = fields.Selection(string='Type', selection=[(
         '1', 'Folder'), ('2', 'Document')], default='2', required=True)
-    scope = fields.Selection(string='Scope', selection=[('my', 'My'), ('share', 'Share'), ('workspace', 'Workspace')], default="my", required=True)    
+    scope = fields.Selection(string='Scope', selection=[('my', 'My'), ('share', 'Share'), ('workspace', 'Workspace')], default="my", required=True)
+    active = fields.Boolean(default=True)
     tag_ids = fields.Many2many(comodel_name='ixdms.tag', string='Tags')
     ntags = fields.Integer(compute='_ntags')
 

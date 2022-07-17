@@ -35,6 +35,9 @@ class Faculty(models.Model):
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
     user_id = fields.Many2one('res.users', string='User')
+    gender = fields.Selection(string='Gender', selection=[('f', 'Female'), ('m', 'Male')], required=True, default='f')
+    country_of_origin_id = fields.Many2one(comodel_name='res.country', string='Country of Origin', required=True)
+    nationality_id = fields.Many2one(comodel_name='res.country', string='Nationality', required=True)
     hiring_date = fields.Date('Hiring Date')
     discipline_ids = fields.Many2many('ix.discipline', 'ix_faculty_discipline_rel', 'faculty_id', 'discipline_id', 'Disciplines', required=True)
     undergrad_managed_discipline_ids = fields.Many2many('ix.discipline', 'ix_discipline_undergrad_manager_rel', 'manager_id', 'discipline_id', 'Undergraduate Managed Disciplines')
