@@ -11,7 +11,16 @@ class Node(models.Model):
     @api.model
     def create(self, vals):        
         if self.search([('name', '=', vals['name']), ('type', '=', vals['type']), ('scope', '=', vals['scope']), ('parent_id', '=', vals['parent_id'])]):
-            raise AccessError('Duplicate name!')
+            if vals['scope'] == 'workspace' and not vals['parent_id']:
+                message = 'Another workspace with the same name already exists!'
+            elif vals['type'] == '1' and not vals['parent_id']:
+                message = 'Another fodler with the same name already exists!'
+            elif vals['type'] == '1':
+                message = 'Another fodler with the same name and location already exists!'
+            else:
+                message = 'Another document with the same name and location already exists!'
+            raise AccessError(message)
+        
         return super(Node, self).create(vals)
 
     name = fields.Char('Name', required=True)

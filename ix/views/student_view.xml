@@ -51,11 +51,21 @@
                 </tree>
             </field>
         </record>
+        <!-- ix.student graph view -->
+        <record id="view_student_graph" model="ir.ui.view">
+            <field name="name">ix.student.graph</field>
+            <field name="model">ix.student</field>
+            <field name="arch" type="xml">
+                <graph string="Student Distribution">                    
+                    
+                </graph>
+            </field>
+        </record>
         <record id="action_student" model="ir.actions.act_window">
             <field name="name">Students</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ix.student</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,graph,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': 'school_id'}</field>
             <field name="help" type="html">
@@ -82,15 +92,21 @@
             </field>
         </record>
         <record id="action_student_form_view" model="ir.actions.act_window.view">
-            <field name="sequence" eval="2"/>
+            <field name="sequence" eval="3"/>
             <field name="view_mode">form</field>
             <field name="view_id" ref="view_student_form"/>
             <field name="act_window_id" ref="action_student"/>
         </record>
         <record id="action_student_tree_view" model="ir.actions.act_window.view">
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="2"/>
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_student_tree"/>
+            <field name="act_window_id" ref="action_student"/>
+        </record>
+        <record id="action_student_graph_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_student_graph"/>
             <field name="act_window_id" ref="action_student"/>
         </record>
     </data>
