@@ -48,11 +48,19 @@
                 </tree>
             </field>
         </record>
+        <record id="view_faculty_graph" model="ir.ui.view">
+            <field name="name">ix.faculty.graph</field>
+            <field name="model">ix.faculty</field>
+            <field name="arch" type="xml">
+                <graph string="Faculty Distribution">                    
+                </graph>
+            </field>
+        </record>
         <record id="action_faculty" model="ir.actions.act_window">
             <field name="name">Faculty</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ix.faculty</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,graph,form</field>
             <field name="domain">[]</field>
             <field name="context">{'group_by': 'school_id'}</field>
             <field name="help" type="html">
@@ -79,7 +87,7 @@
             </field>
         </record>
         <record id="action_faculty_form_view" model="ir.actions.act_window.view">
-            <field name="sequence" eval="2"/>
+            <field name="sequence" eval="3"/>
             <field name="view_mode">form</field>
             <field name="view_id" ref="view_faculty_form"/>
             <field name="act_window_id" ref="action_faculty"/>
@@ -88,6 +96,12 @@
             <field name="sequence" eval="1"/>
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_faculty_tree"/>
+            <field name="act_window_id" ref="action_faculty"/>
+        </record>
+        <record id="action_faculty_graph_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_faculty_graph"/>
             <field name="act_window_id" ref="action_faculty"/>
         </record>
     </data>
