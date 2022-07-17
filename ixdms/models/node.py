@@ -10,6 +10,7 @@ class Node(models.Model):
 
     @api.model
     def create(self, vals):
+        raise AccessError(vals)
         if self.env['ixdms.node'].search([('name', '=', vals['name']), ('type', '=', vals['type']), ('scope', '=', vals['scope']), ('parent_id', '=', vals['parent_id'])]):
             raise AccessError('Duplicate name!')
         return super(Node, self).create(vals)
