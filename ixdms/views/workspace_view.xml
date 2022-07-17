@@ -10,7 +10,7 @@
 					<field name="workspace_id" invisible="1"/>
 				</xpath>
 				<xpath expr="//group[@name='document']" position="after">
-					<group name="access" string="Access Rights" attrs="{'invisible': ['|', ('is_owner', '=', False), ('scope', '!=', 'my')]}" col="4">
+					<group name="waccess" string="Access Rights" attrs="{'invisible': ['|', ('is_owner', '=', False), ('scope', '!=', 'workspace')]}" col="4">
 						<field name="admin_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" colspan="4" style="width: 50%"/>
 						<field name="read_user_ids" widget="many2many_tags" string="Read" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 						<field name="implied_read_user_ids" widget="many2many_tags" string="Implied Read"/>
@@ -22,7 +22,7 @@
 		</record>
 		
 		<record id="action_workspace" model="ir.actions.act_window">
-			<field name="name">My</field>
+			<field name="name">Workspaces</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>

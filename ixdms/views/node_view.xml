@@ -281,24 +281,6 @@
 
 				</p>
 			</field>
-		</record>
-		<record id="action_node_form_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="3"/>
-			<field name="view_mode">form</field>
-			<field name="view_id" ref="view_node_form"/>
-			<field name="act_window_id" ref="action_node_my"/>
-		</record>
-		<record id="action_node_tree_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="2"/>
-			<field name="view_mode">tree</field>
-			<field name="view_id" ref="view_node_tree"/>
-			<field name="act_window_id" ref="action_node_my"/>
-		</record>
-		<record id="action_node_kanban_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="1"/>
-			<field name="view_mode">kanban</field>
-			<field name="view_id" ref="view_node_kanban"/>
-			<field name="act_window_id" ref="action_node_my"/>
-		</record>
+		</record>		
 	</data>
 </odoo>
