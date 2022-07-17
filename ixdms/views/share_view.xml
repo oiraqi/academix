@@ -59,7 +59,7 @@ else:
 	shares = []
 share_ids = [share.share_id.id for share in shares]
 action = {
-	'name': 'Academic Resources',
+	'name': 'Academic Documents',
 	'type': 'ir.actions.act_window',
 	'view_mode': 'kanban,tree,form',
 	'res_model': 'ixdms.node',

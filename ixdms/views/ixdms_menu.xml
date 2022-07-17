@@ -1,9 +1,9 @@
 <odoo>
 	<data>
 		<menuitem id="ixdms_root_menu" name="DMS" sequence="30"/>
-		<menuitem id="ixdms_personal_menu" name="My" action="action_personal" parent="ixdms_root_menu" sequence="10"/>
-		<menuitem id="ixdms_personal_shared_with_me_menu" name="Shared with Me" action="action_personal_shared_with_me" parent="ixdms_root_menu" sequence="20"/>
-		<menuitem id="ixdms_shares_menu" name="Academic Resources" action="action_share" parent="ixdms_root_menu" sequence="30" groups="ix.group_student,ix.group_faculty,ix.group_coordinator,ix.group_vpaa"/>		
+		<menuitem id="ixdms_my_menu" name="My" action="action_my" parent="ixdms_root_menu" sequence="10"/>
+		<menuitem id="ixdms_shared_with_me_menu" name="Shared with Me" action="action_shared_with_me" parent="ixdms_root_menu" sequence="20"/>
+		<menuitem id="ixdms_shares_menu" name="Academic Documents" action="action_share" parent="ixdms_root_menu" sequence="30" groups="ix.group_student,ix.group_faculty,ix.group_coordinator,ix.group_vpaa"/>		
 		<menuitem id="ixdms_tag_menu" name="Tags" action="action_tag" parent="ixdms_root_menu" sequence="50"/>
 	</data>
 </odoo>
