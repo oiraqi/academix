@@ -19,6 +19,7 @@
         'views/node_view.xml',
         'views/my_view.xml',
         'views/share_view.xml',
+        'views/workspace_view.xml',
         'views/tag_view.xml',
         'views/ixdms_menu.xml'
     ],
