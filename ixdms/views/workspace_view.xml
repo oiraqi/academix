@@ -6,6 +6,9 @@
 			<field name="model">ixdms.node</field>
 			<field name="inherit_id" ref="view_node_form"/>
 			<field name="arch" type="xml">
+				<xpath expr="//field[@name='type']" position="replace">
+					<field name="type" attrs="{'readonly': ['|', ('id', '!=', False), '&#38;', ('scope', '=', 'workspace'), ('parent_id', '=', False)]}" style="width: 10%"/>
+				</xpath>
 				<xpath expr="//field[@name='scope']" position="after">
 					<field name="workspace_id" invisible="1"/>
 				</xpath>
@@ -27,7 +30,7 @@
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
 			<field name="domain">[('scope', '=', 'workspace'), '|', ('create_uid', '=', uid), '|', ('admin_ids', 'in', uid), '|', ('read_user_ids', 'in', uid), ('write_user_ids', 'in', uid)]</field>
-			<field name="context">{'default_scope': 'workspace'}</field>
+			<field name="context">{'default_scope': 'workspace', 'default_type': '1'}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 
