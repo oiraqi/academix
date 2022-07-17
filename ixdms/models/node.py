@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 from odoo.exceptions import AccessError
 
 
@@ -7,8 +7,12 @@ class Node(models.Model):
     _description = 'Node'
     _inherit = ['mail.thread', 'ix.expandable']
     _order = 'type,name'
-    _sql_constraints = [
-        ('name_type_parent_ukey', 'unique(name, type, parent_id)', 'Duplicate name!')]
+
+    @api.model
+    def create(self, vals):
+        if self.search([('name', '=', vals['name']), ('type', '=', vals['type']), ('scope', '=', vals['scope']), ('parent_id', '=', vals['parent_id'])]):
+            raise AccessError('Duplicate name!')
+        return super(Node, self).create(vals)
 
     name = fields.Char('Name', required=True)
     type = fields.Selection(string='Type', selection=[(
