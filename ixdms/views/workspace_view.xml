@@ -7,7 +7,7 @@
 			<field name="inherit_id" ref="view_node_form"/>
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='type']" position="replace">
-					<field name="type" attrs="{'readonly': ['|', ('id', '!=', False), '&#38;', ('scope', '=', 'workspace'), ('parent_id', '=', False)]}" style="width: 10%"/>
+					<field name="type" attrs="{'readonly': [('id', '!=', False)], 'invisible': [('id', '=', False), ('scope', '=', 'workspace'), ('parent_id', '=', False)]}" style="width: 10%"/>
 				</xpath>
 				<xpath expr="//field[@name='scope']" position="after">
 					<field name="workspace_id" invisible="1"/>
