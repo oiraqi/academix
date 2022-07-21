@@ -78,17 +78,17 @@
 															<t t-elif="record.type.raw_value == '2'">
 																<img t-att-src="'/ixdms/static/img/document.png'"/>
 															</t>
-															<span t-if="record.shared.raw_value == true">
-																<img t-att-src="'/ixdms/static/img/share.png'" alt="This node is shared"/>
-															</span>
-															<span t-if="record.message_is_follower.raw_value == true">
-																<img t-att-src="'/ixdms/static/img/fav.png'" alt="You are following this node"/>
+															<span>
+																<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
 															</span>
 															<span t-if="record.write_allowed.raw_value == true">
 																<img t-att-src="'/ixdms/static/img/w.png'" alt="You have write access to this node"/>
 															</span>
-															<span t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
+															<span t-if="record.message_is_follower.raw_value == true">
+																<img t-att-src="'/ixdms/static/img/fav.png'" alt="You are following this node"/>
+															</span>
+															<span t-if="record.shared.raw_value == true">
+																<img t-att-src="'/ixdms/static/img/share.png'" alt="This node is shared"/>
 															</span>
 														</t>
 														<t t-else="">
@@ -98,18 +98,18 @@
 															<t t-elif="record.type.raw_value == '2'">
 																<img t-att-src="'/ixdms/static/img/document-inactive.png'"/>
 															</t>
-															<span t-if="record.shared.raw_value == true">
-																<img t-att-src="'/ixdms/static/img/share-inactive.png'" alt="This node is shared"/>
-															</span>
-															<span t-if="record.message_is_follower.raw_value == true">
-																<img t-att-src="'/ixdms/static/img/fav-inactive.png'" alt="You are following this node"/>
+															<span>
+																<img t-att-src="'/ixdms/static/img/r-inactive.png'" alt="You have read access to this node"/>
 															</span>
 															<span t-if="record.write_allowed.raw_value == true">
 																<img t-att-src="'/ixdms/static/img/w-inactive.png'" alt="You have write access to this node"/>
 															</span>
-															<span t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/r-inactive.png'" alt="You have read access to this node"/>
+															<span t-if="record.message_is_follower.raw_value == true">
+																<img t-att-src="'/ixdms/static/img/fav-inactive.png'" alt="You are following this node"/>
 															</span>
+															<span t-if="record.shared.raw_value == true">
+																<img t-att-src="'/ixdms/static/img/share-inactive.png'" alt="This node is shared"/>
+															</span>															
 														</t>
 														<br/>
 														<b>
@@ -352,7 +352,7 @@
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
 			<field name="domain">['&#38;', ('create_uid', '=', uid), '&#38;', ('active', '=', False), '&#38;', ('scheduled_for_shredding', '=', False), '|', ('parent_id', '=', False), ('parent_id.active', '=', True)]</field>
-			<field name="context">{}</field>
+			<field name="context">{create: False}</field>
 		</record>
 		<record id="action_scheduled_for_shredding" model="ir.actions.act_window">
 			<field name="name">Shredder</field>
