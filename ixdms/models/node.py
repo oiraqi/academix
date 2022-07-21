@@ -29,18 +29,18 @@ class Node(models.Model):
     scope = fields.Selection(string='Scope', selection=[('my', 'My'), ('share', 'Share'), ('workspace', 'Workspace')], default="my", required=True)
     active = fields.Boolean(default=True)    
     
-    def toggle_active(self):
-        self.ensure_one()
-        if self.active:
-            for child in self.child_ids:
-                child.toggle_active()
-            self.active = False
-        else:
-            if self.parent_id and not self.parent_id.active:
-                raise UserError('You can\'t unarchive a folder or a document whose parent is archived!')
-            self.active = True
-            for child in self.child_ids:
-                child.toggle_active()
+    def deactivate(self):
+        self.ensure_one()        
+        for child in self.child_ids:
+            child.deactivate()
+        self.active = False
+    
+    def activate(self):
+        if self.parent_id and not self.parent_id.active:
+            raise UserError('You can\'t unarchive a folder or a document whose parent is archived!')
+        self.active = True
+        for child in self.child_ids:
+            child.activate()
 
     scheduled_for_shredding = fields.Boolean(default=False)
 
