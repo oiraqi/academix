@@ -7,7 +7,6 @@ class Node(models.Model):
     _description = 'Node'
     _inherit = ['mail.thread', 'ix.expandable']
     _order = 'type,name'
-    _cut = ''
     
     @api.constrains('name', 'parent_id', 'type', 'scope')
     def _check(self):        
@@ -179,11 +178,20 @@ class Node(models.Model):
     
     def cut(self):
         self.ensure_one()
-        Node._cut = self.id
+        rec = self.env['ixdms.clipboard'].search([('create_uid', '=', self.env.user.id)])
+        if rec:
+            rec.node_id = self
+            rec.operation = 'cut'
+        else:
+            self.env['ixdms.clipboard'].create({'node_id': self.id, 'operation': 'cut'})
     
     def paste(self):
         self.ensure_one()
-        if Node._cut:
-            rec = self.env['ixdms.node'].browse(Node._cut)
-            rec.parent_id = self
+        rec = self.env['ixdms.clipboard'].search([('create_uid', '=', self.env.user.id)])
+        if rec and rec.operation == 'cut':
+            walker = self
+            while walker and walker != rec:                
+                walker = walker.parent
+            if not walker:
+                rec.parent_id = self
     

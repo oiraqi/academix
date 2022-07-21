@@ -6,9 +6,8 @@
 			<field name="model">ixdms.node</field>
 			<field name="arch" type="xml">
 				<form string="Node">
-					<header attrs="{'invisible': [('id', '=', False)]}">
-						<button attrs="{'invisible': [('active', '=', False)]}" string="Cut" name="cut" type="object" class="oe_highlight"/>
-						<button attrs="{'invisible': ['|', ('active', '=', False), ('type', '!=', '1')]}" string="Paste Here" name="paste" type="object" class="oe_highlight"/>
+					<header attrs="{'invisible': [('id', '=', False)]}">						
+						<button attrs="{'invisible': ['|', ('active', '=', False), ('type', '!=', '1')]}" string="Paste" name="paste" type="object" class="oe_highlight"/>
 						<button attrs="{'invisible': [('active', '=', False)]}" string="Move To Trash" name="deactivate" type="object"/>
 						<button attrs="{'invisible': ['|', ('active', '=', True), ('scheduled_for_shredding', '=', True)]}" string="Restore" name="activate" type="object" class="oe_highlight"/>
 						<button attrs="{'invisible': ['|', ('active', '=', True), ('scheduled_for_shredding', '=', True)]}" string="Move To Shredder" name="schedule_for_shredding" type="object"/>
@@ -60,9 +59,8 @@
 													</a>
 													<div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 														<t t-if="record.active.raw_value == true">
-															<a name="move_up" type="object" role="menuitem" class="dropdown-item">Move UP</a>
 															<a name="cut" type="object" role="menuitem" class="dropdown-item">Cut</a>
-															<a t-if="record.type.raw_value == '1'" name="paste" type="object" role="menuitem" class="dropdown-item">Paste Here</a>
+															<a name="move_up" type="object" role="menuitem" class="dropdown-item">Move UP</a>																														
 															<a name="deactivate" type="object" role="menuitem" class="dropdown-item">Move To Trash</a>
 														</t>
 														<t t-elif="record.scheduled_for_shredding.raw_value == false">
@@ -223,8 +221,7 @@
 									</a>
 									<div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 										<t t-if="record.active.raw_value == true">
-											<a name="cut" type="object" role="menuitem" class="dropdown-item">Cut</a>
-											<a t-if="record.type.raw_value == '1'" name="paste" type="object" role="menuitem" class="dropdown-item">Paste Here</a>
+											<a name="cut" type="object" role="menuitem" class="dropdown-item">Cut</a>											
 											<a name="deactivate" type="object" role="menuitem" class="dropdown-item">Move To Trash</a>
 										</t>
 										<t t-elif="record.scheduled_for_shredding.raw_value == false">

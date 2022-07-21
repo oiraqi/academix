@@ -10,3 +10,5 @@ access_ixdms_faculty_share_coordinator,access.ixdms.faculty.share.coordinator,mo
 access_ixdms_faculty_share_vpaa,access.ixdms.faculty.share.vpaa,model_ixdms_faculty_share,ix.group_vpaa,1,1,1,1
 access_ixdms_faculty_share_user,access.ixdms.faculty.share.user,model_ixdms_faculty_share,ix.group_user,1,0,0,0
 
+access_ixdms_clipboard_user,access.ixdms.clipboard.user,model_ixdms_clipboard,ix.group_user,1,1,1,1
+
