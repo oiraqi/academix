@@ -27,7 +27,7 @@ class Node(models.Model):
     type = fields.Selection(string='Type', selection=[(
         '1', 'Folder'), ('2', 'Document')], default='2', required=True)
     scope = fields.Selection(string='Scope', selection=[('my', 'My'), ('share', 'Share'), ('workspace', 'Workspace')], default="my", required=True)
-    active = fields.Boolean(default=True)    
+    active = fields.Boolean(default=True, tracking=True)    
     
     def deactivate(self):
         self.ensure_one()        
@@ -42,7 +42,7 @@ class Node(models.Model):
         for child in self.child_ids:
             child.activate()
 
-    scheduled_for_shredding = fields.Boolean(default=False)
+    scheduled_for_shredding = fields.Boolean(default=False, tracking=True)
 
     def schedule_for_shredding(self):
         self.ensure_one()

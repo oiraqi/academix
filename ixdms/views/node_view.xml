@@ -6,7 +6,7 @@
 			<field name="model">ixdms.node</field>
 			<field name="arch" type="xml">
 				<form string="Node">
-					<header>
+					<header attrs="{'invisible': [('id', '=', False)]}">
 						<button attrs="{'invisible': [('active', '=', False)]}" string="Move To Trash" name="deactivate" type="object"/>
 						<button attrs="{'invisible': ['|', ('active', '=', True), ('scheduled_for_shredding', '=', True)]}" string="Restore" name="activate" type="object" class="oe_highlight"/>
 						<button attrs="{'invisible': ['|', ('active', '=', True), ('scheduled_for_shredding', '=', True)]}" string="Move To Shredder" name="schedule_for_shredding" type="object"/>
@@ -199,9 +199,27 @@
 					<field name="message_is_follower"/>
 					<field name="write_allowed"/>
 					<field name="active"/>
+					<field name="scheduled_for_shredding"/>
 					<templates>
 						<t t-name="kanban-box">
 							<div>
+								<div class="o_dropdown_kanban dropdown" tabindex="-1">
+									<a class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" role="button" aria-label="Dropdown menu" title="Dropdown menu">
+										<span class="fa fa-ellipsis-v"/>
+									</a>
+									<div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+										<t t-if="record.active.raw_value == true">
+											<a type="object" role="menuitem" class="dropdown-item">Move To Trash</a>
+										</t>
+										<t t-elif="record.scheduled_for_shredding.raw_value == false">
+											<a name="activate" type="object" role="menuitem" class="dropdown-item">Restore</a>
+											<a name="schedule_for_shredding" type="object" role="menuitem" class="dropdown-item">Move To Shredder</a>
+										</t>
+										<t t-else="">
+											<a name="rescue" type="object" role="menuitem" class="dropdown-item">Rescue</a>
+										</t>
+									</div>
+								</div>
 								<a href="#" string="Open" name="open" type="object">
 									<t t-if="record.active.raw_value == true">
 										<div name="fav_shared" class="oe_kanban_top_right">
