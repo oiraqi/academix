@@ -220,10 +220,9 @@
 										</t>
 									</div>
 								</div>
-								<![CDATA[&nbsp;]]>
 								<a href="#" string="Open" name="open" type="object">
 									<t t-if="record.active.raw_value == true">
-										<div name="fav_shared" class="oe_kanban_top_right">
+										<div name="fav_shared" class="oe_kanban_bottom_right">
 											<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
 												<img t-att-src="'/ixdms/static/img/share.png'"/>
 											</span>
@@ -239,7 +238,7 @@
 										</div>
 									</t>
 									<t t-else="">
-										<div name="fav_shared" class="oe_kanban_top_right">
+										<div name="fav_shared" class="oe_kanban_bottom_right">
 											<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
 												<img t-att-src="'/ixdms/static/img/share-inactive.png'"/>
 											</span>
