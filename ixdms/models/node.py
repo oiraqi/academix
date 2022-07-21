@@ -179,10 +179,11 @@ class Node(models.Model):
     
     def cut(self):
         self.ensure_one()
-        Node._cut = self
+        Node._cut = self.id
     
     def paste(self):
         self.ensure_one()
         if Node._cut:
-            Node._cut.parent_id = self
+            rec = self.env['ixdms.node'].browse(Node._cut)
+            rec.parent_id = self
     
