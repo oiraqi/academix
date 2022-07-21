@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-from odoo.exceptions import AccessError
+from odoo.exceptions import AccessError, UserError
 
 
 class Node(models.Model):
@@ -27,7 +27,40 @@ class Node(models.Model):
     type = fields.Selection(string='Type', selection=[(
         '1', 'Folder'), ('2', 'Document')], default='2', required=True)
     scope = fields.Selection(string='Scope', selection=[('my', 'My'), ('share', 'Share'), ('workspace', 'Workspace')], default="my", required=True)
-    active = fields.Boolean(default=True)
+    active = fields.Boolean(default=True)    
+    
+    def toggle_active(self):
+        self.ensure_one()
+        if self.active:
+            for child in self.child_ids:
+                child.toggle_active()
+            self.active = False
+        else:
+            if self.parent_id and not self.parent_id.active:
+                raise UserError('You can\'t unarchive a folder or a document whose parent is archived!')
+            self.active = True
+            for child in self.child_ids:
+                child.toggle_active()
+
+    scheduled_for_shredding = fields.Boolean(default=False)
+
+    def schedule_for_shredding(self):
+        self.ensure_one()
+        if self.active:
+            raise UserError('Can\'t schedule an active folder or document for shredding')
+        for child in self.child_ids:
+            child.schedule_for_shredding()
+        self.scheduled_for_shredding = True
+
+    def rescue(self):
+        self.ensure_one()
+        if self.parent_id and self.parent_id.scheduled_for_shredding:
+            raise UserError('You can\'t rescue a folder or a document whose parent is scheduled for shredding!')
+        self.scheduled_for_shredding = False
+        for child in self.child_ids:
+            child.rescue()
+
+
     tag_ids = fields.Many2many(comodel_name='ixdms.tag', string='Tags')
     ntags = fields.Integer(compute='_ntags')
 

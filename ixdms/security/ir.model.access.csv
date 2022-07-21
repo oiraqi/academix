@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ixdms_node_user,access.ixdms.node.user,model_ixdms_node,ix.group_user,1,1,1,1
-access_ixdms_tag_user,access.ixdms.tag.user,model_ixdms_tag,ix.group_user,1,1,1,1
+access_ixdms_node_user,access.ixdms.node.user,model_ixdms_node,ix.group_user,1,1,1,0
+access_ixdms_tag_user,access.ixdms.tag.user,model_ixdms_tag,ix.group_user,1,1,1,0
 
 access_ixdms_student_share_coordinator,access.ixdms.student.share.coordinator,model_ixdms_student_share,ix.group_coordinator,1,1,1,1
 access_ixdms_student_share_vpaa,access.ixdms.student.share.vpaa,model_ixdms_student_share,ix.group_vpaa,1,1,1,1

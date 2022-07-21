@@ -7,5 +7,6 @@
 		<menuitem id="ixdms_workspace_menu" name="Workspaces" action="action_workspace" parent="ixdms_root_menu" sequence="40"/>
 		<menuitem id="ixdms_tag_menu" name="Tags" action="action_tag" parent="ixdms_root_menu" sequence="50"/>
 		<menuitem id="ixdms_trash_menu" name="Trash" action="action_trash" parent="ixdms_root_menu" sequence="100"/>
+		<menuitem id="ixdms_shredder_menu" name="Shredder" action="action_scheduled_for_shredding" parent="ixdms_root_menu" sequence="150"/>		
 	</data>
 </odoo>
