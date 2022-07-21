@@ -3,9 +3,8 @@ from odoo import models, fields
 
 class Share(models.Model):
 	_inherit = 'ixdms.node'
-	_description = 'Share'
-
-
+	
+	
 	student_share_ids = fields.One2many(
         comodel_name='ixdms.student.share', inverse_name='share_id', string='Student Shares')
 	faculty_share_ids = fields.One2many(

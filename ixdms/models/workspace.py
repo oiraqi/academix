@@ -3,7 +3,6 @@ from odoo import models, fields
 
 class Workspace(models.Model):
     _inherit = 'ixdms.node'
-    _description = 'Workspace'
 
     workspace_id = fields.Many2one(comodel_name='ixdms.node', string='Workspace', compute='_workspace_id')
     admin_ids = fields.Many2many(
