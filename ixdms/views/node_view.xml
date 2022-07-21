@@ -222,32 +222,40 @@
 								</div>
 								<a href="#" string="Open" name="open" type="object">
 									<t t-if="record.active.raw_value == true">
-										<div name="fav_shared" class="oe_kanban_footer_right">
+										<div name="fav_shared" class="oe_kanban_top_right">
+											<![CDATA[&nbsp;]]>
 											<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
 												<img t-att-src="'/ixdms/static/img/share.png'"/>
 											</span>
+											<![CDATA[&nbsp;]]>
 											<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
 												<img t-att-src="'/ixdms/static/img/fav.png'"/>
 											</span>
+											<![CDATA[&nbsp;]]>
 											<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
 												<img t-att-src="'/ixdms/static/img/w.png'" alt="You have write access to this node"/>
 											</span>
+											<![CDATA[&nbsp;]]>
 											<span t-attf-class="pull-right text-right">
 												<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
 											</span>
 										</div>
 									</t>
 									<t t-else="">
-										<div name="fav_shared" class="oe_kanban_footer_right">
+										<div name="fav_shared" class="oe_kanban_top_right">
+											<![CDATA[&nbsp;]]>
 											<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
 												<img t-att-src="'/ixdms/static/img/share-inactive.png'"/>
 											</span>
+											<![CDATA[&nbsp;]]>
 											<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
 												<img t-att-src="'/ixdms/static/img/fav-inactive.png'"/>
 											</span>
+											<![CDATA[&nbsp;]]>
 											<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
 												<img t-att-src="'/ixdms/static/img/w-inactive.png'" alt="You have write access to this node"/>
 											</span>
+											<![CDATA[&nbsp;]]>
 											<span t-attf-class="pull-right text-right">
 												<img t-att-src="'/ixdms/static/img/r-inactive.png'" alt="You have read access to this node"/>
 											</span>
