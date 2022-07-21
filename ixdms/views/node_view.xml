@@ -52,39 +52,24 @@
 									<templates>
 										<t t-name="kanban-box">
 											<div>
-												<a href="#" string="Open" name="open" type="object">
-													<t t-if="record.active.raw_value == true">
-														<div name="fav_shared" class="oe_kanban_top_right">
-															<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/share.png'" alt="This node is shared"/>
-															</span>
-															<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/fav.png'" alt="You are following this node"/>
-															</span>
-															<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/w.png'" alt="You have write access to this node"/>
-															</span>
-															<span t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
-															</span>
-														</div>
-													</t>
-													<t t-else="">
-														<div name="fav_shared" class="oe_kanban_top_right">
-															<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/share-inactive.png'" alt="This node is shared"/>
-															</span>
-															<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/fav-inactive.png'" alt="You are following this node"/>
-															</span>
-															<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/w-inactive.png'" alt="You have write access to this node"/>
-															</span>
-															<span t-attf-class="pull-right text-right">
-																<img t-att-src="'/ixdms/static/img/r-inactive.png'" alt="You have read access to this node"/>
-															</span>
-														</div>
-													</t>
+												<div class="o_dropdown_kanban dropdown" tabindex="-1">
+													<a class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" role="button" aria-label="Dropdown menu" title="Dropdown menu">
+														<span class="fa fa-ellipsis-v"/>
+													</a>
+													<div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+														<t t-if="record.active.raw_value == true">
+															<a name="deactivate" type="object" role="menuitem" class="dropdown-item">Move To Trash</a>
+														</t>
+														<t t-elif="record.scheduled_for_shredding.raw_value == false">
+															<a name="activate" type="object" role="menuitem" class="dropdown-item">Restore</a>
+															<a name="schedule_for_shredding" type="object" role="menuitem" class="dropdown-item">Move To Shredder</a>
+														</t>
+														<t t-else="">
+															<a name="rescue" type="object" role="menuitem" class="dropdown-item">Rescue</a>
+														</t>
+													</div>
+												</div>
+												<a href="#" string="Open" name="open" type="object">													
 													<div name="content" class="oe_kanban_details">
 														<t t-if="record.active.raw_value == true">
 															<t t-if="record.type.raw_value == '1'">
@@ -93,6 +78,18 @@
 															<t t-elif="record.type.raw_value == '2'">
 																<img t-att-src="'/ixdms/static/img/document.png'"/>
 															</t>
+															<span t-if="record.shared.raw_value == true">
+																<img t-att-src="'/ixdms/static/img/share.png'" alt="This node is shared"/>
+															</span>
+															<span t-if="record.message_is_follower.raw_value == true">
+																<img t-att-src="'/ixdms/static/img/fav.png'" alt="You are following this node"/>
+															</span>
+															<span t-if="record.write_allowed.raw_value == true">
+																<img t-att-src="'/ixdms/static/img/w.png'" alt="You have write access to this node"/>
+															</span>
+															<span t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
+															</span>
 														</t>
 														<t t-else="">
 															<t t-if="record.type.raw_value == '1'">
@@ -101,6 +98,18 @@
 															<t t-elif="record.type.raw_value == '2'">
 																<img t-att-src="'/ixdms/static/img/document-inactive.png'"/>
 															</t>
+															<span t-if="record.shared.raw_value == true">
+																<img t-att-src="'/ixdms/static/img/share-inactive.png'" alt="This node is shared"/>
+															</span>
+															<span t-if="record.message_is_follower.raw_value == true">
+																<img t-att-src="'/ixdms/static/img/fav-inactive.png'" alt="You are following this node"/>
+															</span>
+															<span t-if="record.write_allowed.raw_value == true">
+																<img t-att-src="'/ixdms/static/img/w-inactive.png'" alt="You have write access to this node"/>
+															</span>
+															<span t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/r-inactive.png'" alt="You have read access to this node"/>
+															</span>
 														</t>
 														<br/>
 														<b>
@@ -220,7 +229,7 @@
 										</t>
 									</div>
 								</div>
-								<a href="#" string="Open" name="open" type="object">									
+								<a href="#" string="Open" name="open" type="object">
 									<div name="content" class="oe_kanban_details">
 										<t t-if="record.active.raw_value == true">
 											<t t-if="record.type.raw_value == '1'">
@@ -240,7 +249,7 @@
 											</span>
 											<span t-if="record.shared.raw_value == true">
 												<img t-att-src="'/ixdms/static/img/share.png'"/>
-											</span>											
+											</span>
 										</t>
 										<t t-else="">
 											<t t-if="record.type.raw_value == '1'">
@@ -260,7 +269,7 @@
 											</span>
 											<span t-if="record.shared.raw_value == true">
 												<img t-att-src="'/ixdms/static/img/share-inactive.png'"/>
-											</span>											
+											</span>
 										</t>
 										<br/>
 										<b>
