@@ -209,7 +209,7 @@
 									</a>
 									<div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 										<t t-if="record.active.raw_value == true">
-											<a type="object" role="menuitem" class="dropdown-item">Move To Trash</a>
+											<a name="deactivate" type="object" role="menuitem" class="dropdown-item">Move To Trash</a>
 										</t>
 										<t t-elif="record.scheduled_for_shredding.raw_value == false">
 											<a name="activate" type="object" role="menuitem" class="dropdown-item">Restore</a>
