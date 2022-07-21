@@ -11,7 +11,7 @@
                     <field name="session_ids" widget="many2many_tags"
                         options="{'no_quick_create': True, 'no_create_edit': True}"/>
                 </xpath>
-                <xpath expr="//field[@name='instructor_ids']" position="after">
+                <xpath expr="//field[@name='level']" position="after">
                     <field name="req_class" widget='radio' options="{'horizontal': true}"/>
                     <field name="remarks" colspan="4"/>
                 </xpath>
