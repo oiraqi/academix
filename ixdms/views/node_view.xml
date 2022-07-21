@@ -24,8 +24,8 @@
 						<field name="active" invisible="1"/>
 						<field name="scheduled_for_shredding" invisible="1"/>
 						<field name="scope" invisible="1"/>
-						<img attrs="{'invisible': [('active', '=', True)]}" src="/ixdms/static/img/r.png" alt="You have read access to this node"/>
-						<img attrs="{'invisible': [('active', '=', False)]}" src="/ixdms/static/img/r-inactive.png" alt="You have read access to this node"/>
+						<img attrs="{'invisible': [('active', '=', False)]}" src="/ixdms/static/img/r.png" alt="You have read access to this node"/>
+						<img attrs="{'invisible': [('active', '=', True)]}" src="/ixdms/static/img/r-inactive.png" alt="You have read access to this node"/>
 						<img attrs="{'invisible': ['|', ('write_allowed', '=', False), ('active', '=', False)]}" src="/ixdms/static/img/w.png" alt="You have write access to this node"/>
 						<img attrs="{'invisible': ['|', ('write_allowed', '=', False), ('active', '=', True)]}" src="/ixdms/static/img/w-inactive.png" alt="You have write access to this node"/>
 						<img attrs="{'invisible': ['|', ('message_is_follower', '=', False), ('active', '=', False)]}" src="/ixdms/static/img/fav.png" alt="You are following this node"/>
@@ -332,7 +332,7 @@
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
-			<field name="domain">['&#38;', ('create_uid', '=', uid), '&#38;', ('active', '=', False), '|', ('parent_id', '=', False), ('parent_id.active', '=', True)]</field>
+			<field name="domain">['&#38;', ('create_uid', '=', uid), '&#38;', ('active', '=', False), '&#38;', ('scheduled_for_shredding', '=', False), '|', ('parent_id', '=', False), ('parent_id.active', '=', True)]</field>
 			<field name="context">{}</field>
 		</record>
 		<record id="action_scheduled_for_shredding" model="ir.actions.act_window">
@@ -340,7 +340,7 @@
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
-			<field name="domain">['&#38;', ('create_uid', '=', uid), '&#38;', ('scheduled_for_shredding', '=', True), '|', ('parent_id', '=', False), ('parent_id.scheduled_for_shredding', '=', False)]</field>
+			<field name="domain">['&#38;', ('create_uid', '=', uid), '&#38;', ('scheduled_for_shredding', '=', True), '&#38;', ('active', '=', False), '|', ('parent_id', '=', False), ('parent_id.scheduled_for_shredding', '=', False)]</field>
 			<field name="context">{}</field>
 		</record>
 		<record id="action_node_open" model="ir.actions.act_window">
