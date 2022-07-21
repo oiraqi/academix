@@ -8,7 +8,9 @@
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='name']" position="after">
 					<div class="oe_button_box" name="button_box" attrs="{'invisible': [('scope', '!=', 'workspace')]}">
-							<button name="get_channel" type="object" class="oe_stat_button" icon="fa-comments"/>
+						<button name="get_channel" type="object" class="oe_stat_button" icon="fa-comments">
+							<span>Channel</span>
+						</button>
 					</div>
 				</xpath>
 				<xpath expr="//field[@name='type']" position="replace">
