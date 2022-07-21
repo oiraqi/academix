@@ -6,6 +6,11 @@
 			<field name="model">ixdms.node</field>
 			<field name="inherit_id" ref="view_node_form"/>
 			<field name="arch" type="xml">
+				<xpath expr="//field[@name='name']" position="after">
+					<div class="oe_button_box" name="button_box" attrs="{'invisible': [('scope', '!=', 'workspace')]}">
+							<button name="get_channel" type="object" class="oe_stat_button" icon="fa-comments"/>
+					</div>
+				</xpath>
 				<xpath expr="//field[@name='type']" position="replace">
 					<field name="type" attrs="{'readonly': [('id', '!=', False)], 'invisible': [('id', '=', False), ('scope', '=', 'workspace'), ('parent_id', '=', False)]}" style="width: 10%"/>
 				</xpath>

@@ -202,4 +202,16 @@ class Node(models.Model):
         
         rec.node_id.parent_id = self
         rec.processed = True
+
+    channel_id = fields.Many2one(comodel_name='mail.channel', string='Channel')
+
+    def get_channel(self):
+        self.ensure_one()
+        if not self.channel_id:
+            self.channel_id = self.sudo().env['mail.channel'].create({'name': self.name, 'public': 'private'})
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'new',
+            'url': f'/chat/{self.channel_id.id}/{self.channel_id.uuid}',
+        }
     
