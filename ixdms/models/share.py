@@ -71,7 +71,7 @@ class Share(models.Model):
 			implied_student_user_ids = []
 			implied_faculty_user_ids = []
 
-			rec._rec_implied(implied_student_share_ids, implied_faculty_share_ids)
+			rec._rec_implied_share(implied_student_share_ids, implied_faculty_share_ids)
 
 			if len(implied_student_share_ids) > 0:
 				rec.implied_student_share_ids = implied_student_share_ids
@@ -112,7 +112,7 @@ class Share(models.Model):
 				rec.implied_faculty_user_ids = False
 
 
-	def _rec_implied(self, implied_student_share_ids, implied_faculty_share_ids):
+	def _rec_implied_share(self, implied_student_share_ids, implied_faculty_share_ids):
 		sself = self.sudo()
 		if not sself.parent_id:
 			return
@@ -125,4 +125,4 @@ class Share(models.Model):
 			if faculty_share.id not in implied_faculty_share_ids:
 				implied_faculty_share_ids.append(faculty_share.id)
 
-		return sself.parent_id._rec_implied(implied_student_share_ids, implied_faculty_share_ids)
+		return sself.parent_id._rec_implied_share(implied_student_share_ids, implied_faculty_share_ids)

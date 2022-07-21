@@ -190,7 +190,7 @@ class Node(models.Model):
         rec = self.env['ixdms.clipboard'].search([('create_uid', '=', self.env.user.id)])
         if rec and rec.operation == 'cut':
             walker = self
-            while walker and walker.id != rec.id:
+            while walker and walker.id != rec.node_id.id:
                 walker = walker.parent_id
             if not walker:
                 rec.node_id.parent_id = self
