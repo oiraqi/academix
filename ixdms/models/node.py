@@ -27,7 +27,12 @@ class Node(models.Model):
         outcome = super(Node, self).write(vals)
         if 'name' in vals or 'parent_id' in vals:
             for rec in self:
-                if self.search_count([('name', '=', rec.name), ('type', '=', rec.type), ('scope', '=', rec.scope), ('parent_id', '=', rec.parent_id)]) > 1:
+                criteria = [('name', '=', rec.name), ('type', '=', rec.type), ('scope', '=', rec.scope)]
+                if rec.parent_id:
+                    criteria.append(('parent_id', '=', rec.parent_id.id))
+                else:
+                    criteria.append(('parent_id', '=', False))
+                if self.search_count(criteria) > 1:
                     if rec.scope == 'workspace' and not rec.parent_id:
                         message = 'Another workspace with the same name already exists!'
                     elif rec.type == '1' and not rec.parent_id:
