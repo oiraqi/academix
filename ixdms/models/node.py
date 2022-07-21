@@ -21,7 +21,24 @@ class Node(models.Model):
                 message = 'Another document with the same name and location already exists!'
             raise AccessError(message)
         
-        return super(Node, self).create(vals)
+        return super(Node, self).create(vals)@api.model
+    
+    def write(self, vals):
+        outcome = super(Node, self).write(vals)
+        if 'name' in vals or 'parent_id' in vals:
+            for rec in self:
+                if self.search_count([('name', '=', rec.name), ('type', '=', rec.type), ('scope', '=', rec.scope), ('parent_id', '=', rec.parent_id)]) > 1:
+                    if rec.scope == 'workspace' and not rec.parent_id:
+                        message = 'Another workspace with the same name already exists!'
+                    elif rec.type == '1' and not rec.parent_id:
+                        message = 'Another fodler with the same name already exists!'
+                    elif rec.type == '1':
+                        message = 'Another fodler with the same name and location already exists!'
+                    else:
+                        message = 'Another document with the same name and location already exists!'
+                    raise AccessError(message)
+        
+        return outcome
 
     name = fields.Char('Name', required=True)
     type = fields.Selection(string='Type', selection=[(
@@ -162,12 +179,12 @@ class Node(models.Model):
     def open(self):
         self.ensure_one()
         domain = [('id', '=', self.id)]
-        context = {'default_scope': self.scope, 'default_parent_id': self.id}
+        context = {'default_parent_id': self.id}        
         if self.type == '2':
             context.update({'create': False})
         return self._expand_to('ixdms.action_node_open', domain, context, self.id)
 
     def move_up(self):
         self.ensure_one()
-        if self.parent_id:
+        if self.parent_id and self.parent_id.scope != 'workspace':
             self.parent_id = self.parent_id.parent_id
