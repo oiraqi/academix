@@ -220,6 +220,7 @@
 										</t>
 									</div>
 								</div>
+								<![CDATA[&nbsp;]]>
 								<a href="#" string="Open" name="open" type="object">
 									<t t-if="record.active.raw_value == true">
 										<div name="fav_shared" class="oe_kanban_top_right">
