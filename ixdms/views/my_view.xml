@@ -39,7 +39,7 @@
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
 			<field name="domain">['&#38;', ('create_uid', '!=', uid), '&#38;', ('scope', '=', 'my'), '|', ('read_user_ids', 'in', uid), ('write_user_ids', 'in', uid)]</field>
-			<field name="context">{}</field>
+			<field name="context">{'create': False}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 
