@@ -8,5 +8,5 @@ class Clipboard(models.Model):
 
 	node_id = fields.Many2one(comodel_name='ixdms.node', string='Node', required=True)
 	operation = fields.Selection(string='Operation', selection=[('copy', 'Copy'), ('cut', 'Cut')], required=True)
-	
+	processed = fields.Boolean(default=False)	
 	

@@ -27,7 +27,7 @@ class Node(models.Model):
                     message = 'Another document with the same name and location already exists!'
                 raise AccessError(message)
 
-    name = fields.Char('Name', required=True)
+    name = fields.Char('Name', required=True, copy=False)
     type = fields.Selection(string='Type', selection=[(
         '1', 'Folder'), ('2', 'Document')], default='2', required=True)
     scope = fields.Selection(string='Scope', selection=[('my', 'My'), ('share', 'Share'), ('workspace', 'Workspace')], default="my", required=True)
@@ -180,18 +180,47 @@ class Node(models.Model):
         self.ensure_one()
         rec = self.env['ixdms.clipboard'].search([('create_uid', '=', self.env.user.id)])
         if rec:
-            rec.node_id = self
-            rec.operation = 'cut'
+            rec.write({
+                'node_id': self.id,
+                'operation': 'cut',
+                'processed': False
+            })
         else:
             self.env['ixdms.clipboard'].create({'node_id': self.id, 'operation': 'cut'})
+
+    def ccopy(self):
+        self.ensure_one()
+        rec = self.env['ixdms.clipboard'].search([('create_uid', '=', self.env.user.id)])
+        if rec:
+            rec.write({
+                'node_id': self.id,
+                'operation': 'copy',
+                'processed': False
+            })
+        else:
+            self.env['ixdms.clipboard'].create({'node_id': self.id, 'operation': 'copy'})
+
+    def rcopy(self, parent):
+        new = self.copy()
+        new.parent_id = parent
+        for child in self.child_ids:
+            child.rcopy(new)
     
     def paste(self):
         self.ensure_one()
-        rec = self.env['ixdms.clipboard'].search([('create_uid', '=', self.env.user.id)])
-        if rec and rec.operation == 'cut':
+        rec = self.env['ixdms.clipboard'].search([('create_uid', '=', self.env.user.id), ('processed', '=', False)])
+        if rec:
             walker = self
             while walker and walker.id != rec.node_id.id:
                 walker = walker.parent_id
-            if not walker:
-                rec.node_id.parent_id = self
+            if walker:
+                return
+        
+        if rec.operation == 'cut':
+            rec.node_id.parent_id = self
+            rec.processed = True
+        elif rec.operation == 'copy':
+            rec.node_id.rcopy(self)
+            rec.processed = True
+            
     
