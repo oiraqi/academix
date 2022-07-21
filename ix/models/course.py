@@ -87,9 +87,6 @@ class Course(models.Model):
     level = fields.Selection(
         [('u', 'Undergraduate'), ('g', 'Graduate')], 'Level', default='u', required=True)
 
-    instructor_ids = fields.Many2many(
-        'ix.faculty', 'ix_course_faculty_rel', 'course_id', 'instructor_id', string='Instructors')
-
     @api.constrains('code')
     def _check_code(self):
         for rec in self:

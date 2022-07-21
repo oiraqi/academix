@@ -6,6 +6,12 @@
 			<field name="model">ixdms.node</field>
 			<field name="arch" type="xml">
 				<form string="Node">
+					<header>
+						<button attrs="{'invisible': [('active', '=', False)]}" string="Move To Trash" name="deactivate" type="object"/>
+						<button attrs="{'invisible': ['|', ('active', '=', True), ('scheduled_for_shredding', '=', True)]}" string="Restore" name="activate" type="object" class="oe_highlight"/>
+						<button attrs="{'invisible': ['|', ('active', '=', True), ('scheduled_for_shredding', '=', True)]}" string="Move To Shredder" name="schedule_for_shredding" type="object"/>
+						<button attrs="{'invisible': [('scheduled_for_shredding', '=', False)]}" string="Rescue" name="rescue" type="object" class="oe_highlight"/>
+					</header>
 					<sheet>
 						<b>
 							<field name="type" attrs="{'readonly': [('id', '!=', False)]}" style="width: 10%"/>
@@ -15,12 +21,17 @@
 						<field name="shared" invisible="1"/>
 						<field name="message_is_follower" invisible="1"/>
 						<field name="write_allowed" invisible="1"/>
-						<field name="scheduled_for_shredding"/>
+						<field name="active" invisible="1"/>
+						<field name="scheduled_for_shredding" invisible="1"/>
 						<field name="scope" invisible="1"/>
-						<img src="/ixdms/static/img/r.png" alt="You have read access to this node"/>
-						<img attrs="{'invisible': [('write_allowed', '=', False)]}" src="/ixdms/static/img/w.png" alt="You have write access to this node"/>
-						<img attrs="{'invisible': [('message_is_follower', '=', False)]}" src="/ixdms/static/img/fav.png" alt="You are following this node"/>
-						<img attrs="{'invisible': [('shared', '=', False)]}" src="/ixdms/static/img/share.png" alt="This node is shared"/>
+						<img attrs="{'invisible': [('active', '=', True)]}" src="/ixdms/static/img/r.png" alt="You have read access to this node"/>
+						<img attrs="{'invisible': [('active', '=', False)]}" src="/ixdms/static/img/r-inactive.png" alt="You have read access to this node"/>
+						<img attrs="{'invisible': ['|', ('write_allowed', '=', False), ('active', '=', False)]}" src="/ixdms/static/img/w.png" alt="You have write access to this node"/>
+						<img attrs="{'invisible': ['|', ('write_allowed', '=', False), ('active', '=', True)]}" src="/ixdms/static/img/w-inactive.png" alt="You have write access to this node"/>
+						<img attrs="{'invisible': ['|', ('message_is_follower', '=', False), ('active', '=', False)]}" src="/ixdms/static/img/fav.png" alt="You are following this node"/>
+						<img attrs="{'invisible': ['|', ('message_is_follower', '=', False), ('active', '=', True)]}" src="/ixdms/static/img/fav-inactive.png" alt="You are following this node"/>
+						<img attrs="{'invisible': ['|', ('shared', '=', False), ('active', '=', False)]}" src="/ixdms/static/img/share.png" alt="This node is shared"/>
+						<img attrs="{'invisible': ['|', ('shared', '=', False), ('active', '=', True)]}" src="/ixdms/static/img/share-inactive.png" alt="This node is shared"/>
 						<h1>
 							<field name="name" default_focus="1" placeholder="Name..." style="width: 50%" attrs="{'readonly': [('id', '!=', False), ('is_owner', '=', False)]}"/>
 						</h1>
@@ -28,8 +39,7 @@
 							<field name="tag_ids" widget="many2many_tags" placeholder="Tags..."/>
 						</div>
 						<group string="Content" name="folder" attrs="{'invisible': [('type', '!=', '1')]}">
-							<field name="child_ids" nolabel="1" attrs="{'readonly': [('is_owner', '=', False)]}" mode="kanban"
-								context="{'default_parent_id': active_id, 'default_scope': scope}">
+							<field name="child_ids" nolabel="1" attrs="{'readonly': [('is_owner', '=', False)]}" mode="kanban" context="{'default_parent_id': active_id, 'default_scope': scope}">
 								<kanban>
 									<field name="type"/>
 									<field name="nfolders"/>
@@ -38,30 +48,59 @@
 									<field name="shared"/>
 									<field name="message_is_follower"/>
 									<field name="write_allowed"/>
+									<field name="active"/>
 									<templates>
 										<t t-name="kanban-box">
 											<div>
 												<a href="#" string="Open" name="open" type="object">
-													<div name="fav_shared" class="oe_kanban_top_right">
-														<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
-															<img t-att-src="'/ixdms/static/img/share.png'" alt="This node is shared"/>
-														</span>
-														<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
-															<img t-att-src="'/ixdms/static/img/fav.png'" alt="You are following this node"/>
-														</span>
-														<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
-															<img t-att-src="'/ixdms/static/img/w.png'" alt="You have write access to this node"/>
-														</span>
-														<span t-attf-class="pull-right text-right">
-															<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
-														</span>
-													</div>
+													<t t-if="record.active.raw_value == true">
+														<div name="fav_shared" class="oe_kanban_top_right">
+															<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/share.png'" alt="This node is shared"/>
+															</span>
+															<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/fav.png'" alt="You are following this node"/>
+															</span>
+															<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/w.png'" alt="You have write access to this node"/>
+															</span>
+															<span t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
+															</span>
+														</div>
+													</t>
+													<t t-else="">
+														<div name="fav_shared" class="oe_kanban_top_right">
+															<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/share-inactive.png'" alt="This node is shared"/>
+															</span>
+															<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/fav-inactive.png'" alt="You are following this node"/>
+															</span>
+															<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/w-inactive.png'" alt="You have write access to this node"/>
+															</span>
+															<span t-attf-class="pull-right text-right">
+																<img t-att-src="'/ixdms/static/img/r-inactive.png'" alt="You have read access to this node"/>
+															</span>
+														</div>
+													</t>
 													<div name="content" class="oe_kanban_details">
-														<t t-if="record.type.raw_value == '1'">
-															<img t-att-src="'/ixdms/static/img/folder.png'"/>
+														<t t-if="record.active.raw_value == true">
+															<t t-if="record.type.raw_value == '1'">
+																<img t-att-src="'/ixdms/static/img/folder.png'"/>
+															</t>
+															<t t-elif="record.type.raw_value == '2'">
+																<img t-att-src="'/ixdms/static/img/document.png'"/>
+															</t>
 														</t>
-														<t t-if="record.type.raw_value == '2'">
-															<img t-att-src="'/ixdms/static/img/document.png'"/>
+														<t t-else="">
+															<t t-if="record.type.raw_value == '1'">
+																<img t-att-src="'/ixdms/static/img/folder-inactive.png'"/>
+															</t>
+															<t t-elif="record.type.raw_value == '2'">
+																<img t-att-src="'/ixdms/static/img/document-inactive.png'"/>
+															</t>
 														</t>
 														<br/>
 														<b>
@@ -131,7 +170,7 @@
 							<field name="file" widget="binary"/>
 							<field name="url" widget="url"/>
 							<field name="text" widget="html" colspan="4"/>
-						</group>						
+						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
 							<field name="create_date"/>
@@ -159,30 +198,59 @@
 					<field name="shared"/>
 					<field name="message_is_follower"/>
 					<field name="write_allowed"/>
+					<field name="active"/>
 					<templates>
 						<t t-name="kanban-box">
 							<div>
 								<a href="#" string="Open" name="open" type="object">
-									<div name="fav_shared" class="oe_kanban_top_right">
-										<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
-											<img t-att-src="'/ixdms/static/img/share.png'"/>
-										</span>
-										<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
-											<img t-att-src="'/ixdms/static/img/fav.png'"/>
-										</span>
-										<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
-											<img t-att-src="'/ixdms/static/img/w.png'" alt="You have write access to this node"/>
-										</span>
-										<span t-attf-class="pull-right text-right">
-											<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
-										</span>
-									</div>
+									<t t-if="record.active.raw_value == true">
+										<div name="fav_shared" class="oe_kanban_top_right">
+											<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
+												<img t-att-src="'/ixdms/static/img/share.png'"/>
+											</span>
+											<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
+												<img t-att-src="'/ixdms/static/img/fav.png'"/>
+											</span>
+											<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
+												<img t-att-src="'/ixdms/static/img/w.png'" alt="You have write access to this node"/>
+											</span>
+											<span t-attf-class="pull-right text-right">
+												<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
+											</span>
+										</div>
+									</t>
+									<t t-else="">
+										<div name="fav_shared" class="oe_kanban_top_right">
+											<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
+												<img t-att-src="'/ixdms/static/img/share-inactive.png'"/>
+											</span>
+											<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
+												<img t-att-src="'/ixdms/static/img/fav-inactive.png'"/>
+											</span>
+											<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
+												<img t-att-src="'/ixdms/static/img/w-inactive.png'" alt="You have write access to this node"/>
+											</span>
+											<span t-attf-class="pull-right text-right">
+												<img t-att-src="'/ixdms/static/img/r-inactive.png'" alt="You have read access to this node"/>
+											</span>
+										</div>
+									</t>
 									<div name="content" class="oe_kanban_details">
-										<t t-if="record.type.raw_value == '1'">
-											<img t-att-src="'/ixdms/static/img/folder.png'"/>
+										<t t-if="record.active.raw_value == true">
+											<t t-if="record.type.raw_value == '1'">
+												<img t-att-src="'/ixdms/static/img/folder.png'"/>
+											</t>
+											<t t-if="record.type.raw_value == '2'">
+												<img t-att-src="'/ixdms/static/img/document.png'"/>
+											</t>
 										</t>
-										<t t-if="record.type.raw_value == '2'">
-											<img t-att-src="'/ixdms/static/img/document.png'"/>
+										<t t-else="">
+											<t t-if="record.type.raw_value == '1'">
+												<img t-att-src="'/ixdms/static/img/folder-inactive.png'"/>
+											</t>
+											<t t-if="record.type.raw_value == '2'">
+												<img t-att-src="'/ixdms/static/img/document-inactive.png'"/>
+											</t>
 										</t>
 										<br/>
 										<b>
@@ -265,7 +333,7 @@
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
 			<field name="domain">['&#38;', ('create_uid', '=', uid), '&#38;', ('active', '=', False), '|', ('parent_id', '=', False), ('parent_id.active', '=', True)]</field>
-			<field name="context">{}</field>			
+			<field name="context">{}</field>
 		</record>
 		<record id="action_scheduled_for_shredding" model="ir.actions.act_window">
 			<field name="name">Shredder</field>
@@ -273,8 +341,8 @@
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
 			<field name="domain">['&#38;', ('create_uid', '=', uid), '&#38;', ('scheduled_for_shredding', '=', True), '|', ('parent_id', '=', False), ('parent_id.scheduled_for_shredding', '=', False)]</field>
-			<field name="context">{}</field>			
-		</record>		
+			<field name="context">{}</field>
+		</record>
 		<record id="action_node_open" model="ir.actions.act_window">
 			<field name="name">Nodes</field>
 			<field name="type">ir.actions.act_window</field>
@@ -290,6 +358,6 @@
 
 				</p>
 			</field>
-		</record>		
+		</record>
 	</data>
 </odoo>
