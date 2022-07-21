@@ -191,7 +191,7 @@ class Node(models.Model):
         if rec and rec.operation == 'cut':
             walker = self
             while walker and walker != rec:                
-                walker = walker.parent
+                walker = walker.parent_id
             if not walker:
                 rec.parent_id = self
     
