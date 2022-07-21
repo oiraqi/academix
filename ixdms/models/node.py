@@ -167,3 +167,8 @@ class Node(models.Model):
         elif self.type == '2':
             context = {'create': False}
         return self._expand_to('ixdms.action_node_open', domain, context, self.id)
+
+    def move_up(self):
+        self.ensure_one()
+        if self.parent_id:
+            self.parent_id = self.parent_id.parent_id
