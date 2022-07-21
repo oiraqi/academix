@@ -193,5 +193,5 @@ class Node(models.Model):
             while walker and walker != rec:                
                 walker = walker.parent_id
             if not walker:
-                rec.parent_id = self
+                rec.node_id.parent_id = self
     
