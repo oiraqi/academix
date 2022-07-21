@@ -352,7 +352,7 @@
 			<field name="res_model">ixdms.node</field>
 			<field name="view_mode">kanban,tree,form</field>
 			<field name="domain">['&#38;', ('create_uid', '=', uid), '&#38;', ('active', '=', False), '&#38;', ('scheduled_for_shredding', '=', False), '|', ('parent_id', '=', False), ('parent_id.active', '=', True)]</field>
-			<field name="context">{create: False}</field>
+			<field name="context">{'create': False}</field>
 		</record>
 		<record id="action_scheduled_for_shredding" model="ir.actions.act_window">
 			<field name="name">Shredder</field>
