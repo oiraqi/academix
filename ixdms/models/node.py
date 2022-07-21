@@ -7,43 +7,25 @@ class Node(models.Model):
     _description = 'Node'
     _inherit = ['mail.thread', 'ix.expandable']
     _order = 'type,name'
-
-    @api.model
-    def create(self, vals):        
-        if self.search([('name', '=', vals['name']), ('type', '=', vals['type']), ('scope', '=', vals['scope']), ('parent_id', '=', vals['parent_id'])]):
-            if vals['scope'] == 'workspace' and not vals['parent_id']:
-                message = 'Another workspace with the same name already exists!'
-            elif vals['type'] == '1' and not vals['parent_id']:
-                message = 'Another fodler with the same name already exists!'
-            elif vals['type'] == '1':
-                message = 'Another fodler with the same name and location already exists!'
-            else:
-                message = 'Another document with the same name and location already exists!'
-            raise AccessError(message)
-        
-        return super(Node, self).create(vals)@api.model
     
-    def write(self, vals):
-        outcome = super(Node, self).write(vals)
-        if 'name' in vals or 'parent_id' in vals:
-            for rec in self:
-                criteria = [('name', '=', rec.name), ('type', '=', rec.type), ('scope', '=', rec.scope)]
-                if rec.parent_id:
-                    criteria.append(('parent_id', '=', rec.parent_id.id))
+    @api.constrains('name', 'parent_id', 'type', 'scope')
+    def _check(self):        
+        for rec in self:
+            criteria = [('name', '=', rec.name), ('type', '=', rec.type), ('scope', '=', rec.scope)]
+            if rec.parent_id:
+                criteria.append(('parent_id', '=', rec.parent_id.id))
+            else:
+                criteria.append(('parent_id', '=', False))
+            if self.search_count(criteria) > 1:
+                if rec.scope == 'workspace' and not rec.parent_id:
+                    message = 'Another workspace with the same name already exists!'
+                elif rec.type == '1' and not rec.parent_id:
+                    message = 'Another fodler with the same name already exists!'
+                elif rec.type == '1':
+                    message = 'Another fodler with the same name and location already exists!'
                 else:
-                    criteria.append(('parent_id', '=', False))
-                if self.search_count(criteria) > 1:
-                    if rec.scope == 'workspace' and not rec.parent_id:
-                        message = 'Another workspace with the same name already exists!'
-                    elif rec.type == '1' and not rec.parent_id:
-                        message = 'Another fodler with the same name already exists!'
-                    elif rec.type == '1':
-                        message = 'Another fodler with the same name and location already exists!'
-                    else:
-                        message = 'Another document with the same name and location already exists!'
-                    raise AccessError(message)
-        
-        return outcome
+                    message = 'Another document with the same name and location already exists!'
+                raise AccessError(message)
 
     name = fields.Char('Name', required=True)
     type = fields.Selection(string='Type', selection=[(
