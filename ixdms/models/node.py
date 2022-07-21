@@ -7,6 +7,7 @@ class Node(models.Model):
     _description = 'Node'
     _inherit = ['mail.thread', 'ix.expandable']
     _order = 'type,name'
+    _cut = ''
     
     @api.constrains('name', 'parent_id', 'type', 'scope')
     def _check(self):        
@@ -173,5 +174,15 @@ class Node(models.Model):
 
     def move_up(self):
         self.ensure_one()
-        if self.parent_id and self.parent_id.scope != 'workspace':
+        if self.parent_id and self.parent_id.scope not in ['share', 'workspace']:
             self.parent_id = self.parent_id.parent_id
+    
+    def cut(self):
+        self.ensure_one()
+        Node._cut = self
+    
+    def paste(self):
+        self.ensure_one()
+        if Node._cut:
+            Node._cut.parent_id = self
+    

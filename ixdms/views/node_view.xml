@@ -59,6 +59,8 @@
 													<div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 														<t t-if="record.active.raw_value == true">
 															<a name="move_up" type="object" role="menuitem" class="dropdown-item">Move UP</a>
+															<a name="cut" type="object" role="menuitem" class="dropdown-item">Cut</a>
+															<a name="paste" type="object" role="menuitem" class="dropdown-item">Paste</a>
 															<a name="deactivate" type="object" role="menuitem" class="dropdown-item">Move To Trash</a>
 														</t>
 														<t t-elif="record.scheduled_for_shredding.raw_value == false">
@@ -219,6 +221,8 @@
 									</a>
 									<div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 										<t t-if="record.active.raw_value == true">
+											<a name="cut" type="object" role="menuitem" class="dropdown-item">Cut</a>
+											<a name="paste" type="object" role="menuitem" class="dropdown-item">Paste</a>
 											<a name="deactivate" type="object" role="menuitem" class="dropdown-item">Move To Trash</a>
 										</t>
 										<t t-elif="record.scheduled_for_shredding.raw_value == false">
