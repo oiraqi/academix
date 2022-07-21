@@ -229,16 +229,16 @@
 											<t t-if="record.type.raw_value == '2'">
 												<img t-att-src="'/ixdms/static/img/document.png'"/>
 											</t>
-											<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
+											<span t-if="record.shared.raw_value == true">
 												<img t-att-src="'/ixdms/static/img/share.png'"/>
 											</span>
-											<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
+											<span t-if="record.message_is_follower.raw_value == true">
 												<img t-att-src="'/ixdms/static/img/fav.png'"/>
 											</span>
-											<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
+											<span t-if="record.write_allowed.raw_value == true">
 												<img t-att-src="'/ixdms/static/img/w.png'" alt="You have write access to this node"/>
 											</span>
-											<span t-attf-class="pull-right text-right">
+											<span>
 												<img t-att-src="'/ixdms/static/img/r.png'" alt="You have read access to this node"/>
 											</span>
 										</t>
@@ -249,16 +249,16 @@
 											<t t-if="record.type.raw_value == '2'">
 												<img t-att-src="'/ixdms/static/img/document-inactive.png'"/>
 											</t>
-											<span t-if="record.shared.raw_value == true" t-attf-class="pull-right text-right">
+											<span t-if="record.shared.raw_value == true">
 												<img t-att-src="'/ixdms/static/img/share-inactive.png'"/>
 											</span>
-											<span t-if="record.message_is_follower.raw_value == true" t-attf-class="pull-right text-right">
+											<span t-if="record.message_is_follower.raw_value == true">
 												<img t-att-src="'/ixdms/static/img/fav-inactive.png'"/>
 											</span>
-											<span t-if="record.write_allowed.raw_value == true" t-attf-class="pull-right text-right">
+											<span t-if="record.write_allowed.raw_value == true">
 												<img t-att-src="'/ixdms/static/img/w-inactive.png'" alt="You have write access to this node"/>
 											</span>
-											<span t-attf-class="pull-right text-right">
+											<span>
 												<img t-att-src="'/ixdms/static/img/r-inactive.png'" alt="You have read access to this node"/>
 											</span>
 										</t>
