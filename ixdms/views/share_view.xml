@@ -49,22 +49,27 @@
 			<field name="model_id" ref="model_ixdms_node"/>
 			<field name="state">code</field>
 			<field name="code">
+create = False
 if env.ref('ix.group_student') in env.user.groups_id:
 	shares = env['ixdms.student.share'].search(['|', ('program_id', '=', env.user.student_id.program_id.id), '&#38;', ('school_id', '=', env.user.student_id.school_id.id), ('program_id', '=', False)])
 elif env.ref('ix.group_faculty') in env.user.groups_id:
 	shares = env['ixdms.faculty.share'].search(['|', ('discipline_id', 'in', env.user.faculty_id.discipline_ids.ids), '&#38;', ('school_id', '=', env.user.faculty_id.school_id.id), ('discipline_id', '=', False)])
 elif env.ref('ix.group_coordinator') in env.user.groups_id or env.ref('ix.group_vpaa') in env.user.groups_id:
 	shares = env['ixdms.faculty.share'].search([])
+	create = True
 else:
 	shares = []
 share_ids = [share.share_id.id for share in shares]
+context = {'default_scope': 'share'}
+if not create:
+	context.update({'create': False})
 action = {
 	'name': 'Academic Documents',
 	'type': 'ir.actions.act_window',
 	'view_mode': 'kanban,tree,form',
 	'res_model': 'ixdms.node',
 	'domain': [('id', 'in', share_ids)],
-	'context': {'default_scope': 'share'}
+	'context': context
 }
 			</field>
 		</record>
