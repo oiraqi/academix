@@ -52,7 +52,7 @@
 if env.ref('ix.group_student') in env.user.groups_id:
 	shares = env['ixdms.student.share'].search(['|', ('program_id', '=', env.user.student_id.program_id.id), '&#38;', ('school_id', '=', env.user.student_id.school_id.id), ('program_id', '=', False)])
 elif env.ref('ix.group_faculty') in env.user.groups_id:
-	shares = env['ixdms.faculty.share'].search(['|', ('discipline_id', 'in', env.user.faculty_id.discipline_ids), '&#38;', ('school_id', '=', env.user.faculty_id.school_id.id), ('discipline_id', '=', False)])
+	shares = env['ixdms.faculty.share'].search(['|', ('discipline_id', 'in', env.user.faculty_id.discipline_ids.ids), '&#38;', ('school_id', '=', env.user.faculty_id.school_id.id), ('discipline_id', '=', False)])
 elif env.ref('ix.group_coordinator') in env.user.groups_id or env.ref('ix.group_vpaa') in env.user.groups_id:
 	shares = env['ixdms.faculty.share'].search([])
 else:
