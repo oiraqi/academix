@@ -9,11 +9,12 @@ class Chapter(models.Model):
 	name = fields.Char('Name', required=True)
 	sequence = fields.Integer(string='Sequence')	
 	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
-	course_id = fields.Many2one(comodel_name='ixlms.course', related='module_id.course_id', store=True)
+	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
 	start_date = fields.Date(string='Start Date')
 	nsessions = fields.Integer(string='Sessions')
 	resource_ids = fields.One2many(comodel_name='ixlms.resource', inverse_name='chapter_id', string='Resources')
 	nresources = fields.Integer(string='Resources', compute='_nresources')
+	module_ids = fields.One2many(comodel_name='ixlms.module', related='course_id.module_ids')
 
 	def _nresources(self):
 		for rec in self:

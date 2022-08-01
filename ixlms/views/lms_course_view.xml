@@ -138,10 +138,12 @@
 									<field name="chapter_ids" nolabel="1">
 										<tree editable="bottom">
 											<field name="name"/>
-											<field name="module_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="module_id" domain="[('id', 'in', module_ids)]"
+												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="start_date"/>
 											<field name="nsessions"/>
 											<field name="nresources"/>
+											<field name="module_ids" invisible="1"/>
 										</tree>
 									</field>
 								</group>
