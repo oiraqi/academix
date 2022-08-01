@@ -86,7 +86,7 @@
             <field name="res_model">ixroster.enrollment</field>
             <field name="view_mode">tree,graph,form</field>
             <field name="domain">[]</field>
-            <field name="context">{'group_by': 'program_id'}</field>
+            <field name="context">{'group_by': 'program_id', 'create': False, 'edit': False}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
 

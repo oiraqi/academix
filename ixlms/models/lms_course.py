@@ -157,9 +157,8 @@ class LmsCourse(models.Model):
 		
 	def get_students(self):
 		self.ensure_one()
-		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn'])]
-		context = {'create': False, 'edit': False}
-		return self._expand_to('ixlms.action_enrollment', domain, context)
+		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn'])]		
+		return self._expand_to('ixlms.action_enrollment', domain)
 
 	def get_assessments(self):
 		self.ensure_one()
