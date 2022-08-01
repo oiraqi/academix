@@ -137,7 +137,7 @@
 								<group name="chapters" string="Course Chapters &#38; Timeline">
 									<field name="chapter_ids" nolabel="1">
 										<tree editable="bottom">
-											<field name="sequence" widget="handle"/>
+											<field name="sequence"/>
 											<field name="name"/>
 											<field name="module_id" domain="[('id', 'in', module_ids)]"
 												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
