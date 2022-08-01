@@ -142,8 +142,7 @@
 											<field name="module_id" domain="[('id', 'in', module_ids)]"
 												options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 											<field name="start_date"/>
-											<field name="nsessions"/>
-											<field name="nresources"/>
+											<field name="nsessions"/>											
 											<field name="module_ids" invisible="1"/>
 										</tree>
 									</field>
