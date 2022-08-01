@@ -23,13 +23,13 @@
                                     <tree editable="bottom">
                                         <field name="sequence" widget="handle"/>
                                         <field name="alternative_ids" string="Prerequisite - alternatives if any (OR relation) are shown in the same cell"
-                                            widget="many2many_tags"/>
+                                            widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                                     </tree>
                                 </field>
                                 <field name="corequisite_ids" nolabel="1">
                                     <tree editable="bottom">
                                         <field name="sequence" widget="handle"/>
-                                        <field name="corequisite_id"/>
+                                        <field name="corequisite_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                                     </tree>
                                 </field>
                             </group>

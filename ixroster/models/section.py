@@ -52,7 +52,7 @@ class Section(models.Model):
     instructor_id = fields.Many2one(comodel_name='ix.faculty', string='Instructor')
     
     syllabus = fields.Binary(string='Syllabus')
-    capacity = fields.Integer(string='Capacity', default=24, required=True)    
+    capacity = fields.Integer(string='Capacity', default=30, required=True)    
     student_ids = fields.One2many('ix.student', compute='_active_enrollment_ids', string='Students')
     active_enrollment_ids = fields.One2many('ixroster.enrollment', compute='_active_enrollment_ids', string='Dropped Students')
     dropped_enrollment_ids = fields.One2many('ixroster.enrollment', compute='_dropped_enrollment_ids', string='Dropped Students')

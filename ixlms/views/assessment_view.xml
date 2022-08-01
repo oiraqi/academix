@@ -94,7 +94,7 @@
 			<field name="model">ixlms.assessment</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Assessments">
+				<tree string="Assessments" create="false">
 					<field name="name"/>
 					<field name="module_id"/>
 					<field name="technique_id" widget="badge"/>
@@ -111,7 +111,7 @@
 			<field name="model">ixlms.assessment</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Assessments">
+				<tree string="Assessments" create="false">
 					<field name="name"/>
 					<field name="technique_id" widget="badge"/>
 					<field name="from_time"/>
@@ -131,7 +131,7 @@
 			<field name="model">ixlms.assessment</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Assessments">
+				<tree string="Assessments" create="false">
 					<field name="name"/>
 					<field name="technique_id" widget="badge"/>
 					<field name="from_time"/>
@@ -152,7 +152,7 @@
 			<field name="model">ixlms.assessment</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Assessments">
+				<tree string="Assessments" create="false">
 					<field name="name"/>
 					<field name="module_id" widget="badge"/>
 					<field name="from_time"/>
@@ -172,7 +172,7 @@
 			<field name="model">ixlms.assessment</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="Assessments">
+				<tree string="Assessments" create="false">
 					<field name="name"/>
 					<field name="module_id" widget="badge"/>
 					<field name="submission_type"/>

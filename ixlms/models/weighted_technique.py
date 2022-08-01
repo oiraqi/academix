@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class WeightedTechnique(models.Model):
 	_name = 'ixlms.weighted.technique'
 	_description = 'Weighted Technique'
-	_sql_constraints = [('technique_ukey', 'unique(technique_id)', 'Assessment techniques: Remove duplicates!')]
+	_sql_constraints = [('course_technique_ukey', 'unique(course_id, technique_id)', 'Assessment techniques: Remove duplicates!')]
 
 	technique_id = fields.Many2one(comodel_name='ixlms.assessment.technique', string='Assessment Technique', required=True)
 	name = fields.Char(related='technique_id.name')
