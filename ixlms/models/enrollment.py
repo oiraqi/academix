@@ -55,7 +55,7 @@ class Enrollment(models.Model):
             sum_epercentage, sum_wgrade = 0.0, 0.0            
             for assessment_line in self.assessment_line_ids:
                 if assessment_line.epercentage > 0:
-                    sum_epercentage += assessment_line.epercentage
+                    sum_epercentage += assessment_line.percentage
                     sum_wgrade += assessment_line.wgrade
             raise ValidationError(sum_epercentage)
             if sum_epercentage > 0:
