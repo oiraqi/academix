@@ -6,7 +6,7 @@ class AssessmentLine(models.Model):
 	_name = 'ixlms.assessment.line'
 	_description = 'AssessmentLine'
 	_inherit = 'ix.expandable'
-	_order = 'student_id'
+	_order = 'student_id,assessment_id'
 	_sql_constraints = [('student_assessment_ukey', 'unique(student_id, assessment_id)', 'Assessment line already exists')]
 
 	name = fields.Char('Name', related='student_id.name', store=True)
