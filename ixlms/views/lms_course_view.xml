@@ -167,24 +167,7 @@
 									<field name="grade_grouping" style="width: 50%" string="Grouped by"/>
 									<field name="grade_weighting" style="width: 50%" string="Weighted by"/>
 								</group>
-								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
-									<field name="module_ids" nolabel="1" readonly="1">
-										<tree>
-											<field name="name" string="Course Module"/>
-											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
-											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
-										</tree>
-									</field>
-									<field name="technique_ids" nolabel="1" readonly="1">
-										<tree>
-											<field name="sequence" widget="handle"/>
-											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
-											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
-										</tree>
-									</field>
-								</group>
-								<group string="Assessments">
+								<group string="Assessments" groups="ix.group_faculty">
 									<field name="assessment_ids" colspan="4" nolabel="1">
 										<tree editable="bottom">
 											<field name="name" string="Assessment"/>
@@ -201,6 +184,23 @@
 										</tree>
 									</field>
 								</group>
+								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
+									<field name="module_ids" nolabel="1" readonly="1">
+										<tree>
+											<field name="name" string="Course Module"/>
+											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
+											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
+										</tree>
+									</field>
+									<field name="technique_ids" nolabel="1" readonly="1">
+										<tree>
+											<field name="sequence" widget="handle"/>
+											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
+											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
+										</tree>
+									</field>
+								</group>								
 								<group string="Attendance" col="4">
 									<field name="attendance_points" string="Attendance Points" style="width: 10%" attrs="{'invisible': [('grade_weighting', '!=', 'points')]}" colspan="4"/>
 									<field name="attendance_percentage" string="Attendance %" style="width: 10%" attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" colspan="4"/>

@@ -117,6 +117,6 @@ class AssessmentLine(models.Model):
 			if rec.cancel_penalty:
 				rec.penalty = 0.0
 			else:
-				rec.penalty = 5.0
+				rec.penalty = 0.0
 
 	

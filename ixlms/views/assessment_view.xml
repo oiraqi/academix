@@ -57,7 +57,7 @@
 							</field>
 						</group>
 						<group name="grading" string="Grading" col="4">
-							<field name="graded"/>
+							<field name="graded" nolabel="0"/>
 							<group name="grading_config_percentage" attrs="{'invisible': ['|', ('graded', '=', False), ('grade_weighting', '!=', 'percentage')]}" colspan="4" col="4">
 								<field name="percentage" style="width: 15%"/>
 								<field name="grade_scale" style="width: 15%"/>
