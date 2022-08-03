@@ -42,7 +42,7 @@ class Enrollment(models.Model):
     def _grade(self):
         for rec in self:
             lms_course_id = rec.section_id.lms_course_id
-            rec.assessment_grade, assessment_weight = rec._assessment_grade(lms_course_id)
+            rec.assessment_grade, assessment_weight = rec._assessment_grade(lms_course_id)[0]
             if lms_course_id.attendance_weight > 0:
                 rec.overall_grade = (rec.assessment_grade * assessment_weight + rec.attendance_grade * lms_course_id.attendance_weight) / (assessment_weight + lms_course_id.attendance_weight)
             else:
