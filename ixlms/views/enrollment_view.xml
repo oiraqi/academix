@@ -27,8 +27,7 @@
                                 <field name="nabsences"/>
                                 <field name="attendance_line_absent_ids" nolabel="1" colspan="4">
                                     <tree>
-                                        <field name="day"/>
-                                        <field name="excused"/>
+                                        <field name="day"/>                                        
                                     </tree>
                                 </field>
                             </group>

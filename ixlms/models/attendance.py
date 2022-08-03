@@ -15,28 +15,33 @@ class Attendance(models.Model):
 	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='course_id.section_id.instructor_id', store=True)
 	day = fields.Date(string='Date', required=True, default= lambda self: fields.Date.today())
 	attendance_line_ids = fields.One2many(comodel_name='ixlms.attendance.line', inverse_name='attendance_id', string='Attendance Lines')
-	npresent = fields.Integer(string='Present Students', compute='_stats')
-	nabsent = fields.Integer(string='Absent Students', compute='_stats')
-	nlate = fields.Integer(string='Late Students', compute='_stats')
+	npresent = fields.Integer(string='Present', compute='_stats')
+	nabsent = fields.Integer(string='Absent - Unexcused', compute='_stats')
+	nabsentx = fields.Integer(string='Absent - Excused', compute='_stats')
+	nlate = fields.Integer(string='Late', compute='_stats')
 	
 	@api.onchange('attendance_line_ids')
 	def _stats(self):
 		for rec in self:
 			if rec.attendance_line_ids:
-				npresent = nabsent = nlate = 0
+				npresent = nabsent = nabsentx = nlate = 0
 				for line in rec.attendance_line_ids:
 					if line.state == 'present':
 						npresent += 1
 					elif line.state == 'absent':
 						nabsent += 1
+					elif line.state == 'absentx':
+						nabsentx += 1
 					elif line.state == 'late':
 						nlate += 1
 				rec.npresent = npresent
 				rec.nabsent = nabsent
+				rec.nabsentx = nabsentx
 				rec.nlate = nlate
 			else:
 				rec.npresent = 0
 				rec.nabsent = 0
+				rec.nabsentx = 0
 				rec.nlate = 0
 	
 	

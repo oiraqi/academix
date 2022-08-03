@@ -23,8 +23,7 @@
                         <field name="attendance_line_absent_ids" nolabel="1">
                             <tree>
                                 <field name="day"/>
-                                <field name="section_id"/>
-                                <field name="excused"/>
+                                <field name="section_id"/>                                
                             </tree>
                         </field>
                     </page>
