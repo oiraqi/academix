@@ -43,8 +43,7 @@ class Enrollment(models.Model):
     def _grade(self):
         for rec in self:
             lms_course_id = rec.section_id.lms_course_id
-            rec.assessment_grade, assessment_weight = rec._assessment_grade(lms_course_id)
-            raise ValidationError(rec.assessment_grade)
+            rec.assessment_grade, assessment_weight = rec._assessment_grade(lms_course_id)            
             if lms_course_id.attendance_weight > 0:
                 rec.overall_grade = (rec.assessment_grade * assessment_weight + rec.attendance_grade * lms_course_id.attendance_weight) / (assessment_weight + lms_course_id.attendance_weight)
             else:
@@ -57,7 +56,8 @@ class Enrollment(models.Model):
             for assessment_line in self.assessment_line_ids:
                 if assessment_line.epercentage > 0:
                     sum_epercentage += assessment_line.epercentage
-                    sum_wgrade += assessment_line.wgrade            
+                    sum_wgrade += assessment_line.wgrade
+            raise ValidationError(sum_epercentage)
             if sum_epercentage > 0:
                 return fields.Float.round(sum_wgrade * 100 / sum_epercentage, 2), sum_epercentage
             return 0.0, 0.0
