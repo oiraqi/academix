@@ -49,7 +49,7 @@
             <field name="max" eval="77.0"/>
             <field name="passing" eval="True"/>
         </record>
-        <record id="ixlms_letter_grade_b_minus" model="ixlms.letter.grade">
+        <record id="ixlms_letter_grade_c_minus" model="ixlms.letter.grade">
             <field name="name">C-</field>
             <field name="min" eval="70.0"/>
             <field name="max" eval="73.0"/>
