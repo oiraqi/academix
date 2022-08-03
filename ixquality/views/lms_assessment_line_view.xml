@@ -7,13 +7,12 @@
             <field name="model">ixlms.assessment.line</field>
             <field name="inherit_id" ref="ixlms.view_assessment_line_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//group[@name='grade']" position="after">
+                <xpath expr="//group[@name='submissions']" position="after">
                     <group name="assessed_ilos" string="ILO Assessment" col="4">
                         <button string="Add Assessment Lines" name="create_assessed_ilos" type="object"/>
                         <field name="assessed_ilo_ids" colspan="4" nolabel="1">
                             <tree create="false" editable="bottom">                                
                                 <field name="ilo_idx_description"/>
-                                <!--<field name="acquisition_level_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>-->
                                 <field name="acquisition_level" widget="priority"/>
                                 <field name="ilo_id" invisible="1"/>
                             </tree>
