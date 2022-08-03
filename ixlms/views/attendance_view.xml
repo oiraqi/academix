@@ -20,7 +20,9 @@
 						</group>
 						<group name="lines" string="Attendance Lines">
 							<field name="attendance_line_ids" nolabel="1">
-								<tree editable="bottom" create="false" delete="false">
+								<tree editable="bottom" create="false" delete="false"
+									decoration-danger="state=='absent'" decoration-warning="state=='late'"
+									decoration-muted="state=='absentx'">
 									<field name="name"/>
 									<field name="state"/>									
 									<field name="student_id" invisible="1"/>
