@@ -94,7 +94,7 @@
 							<button name="get_resources" type="object" class="oe_stat_button" icon="fa-file">
 								<field name="nresources" string="Resources" widget="statinfo"/>
 							</button>							
-							<button name="get_attendance" type="object" class="oe_stat_button" icon="fa-calendar-check-o">
+							<button name="get_attendance" type="object" class="oe_stat_button" icon="fa-calendar-check-o" groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
 								<field name="nattendance_sheets" string="Att. Sheets" widget="statinfo"/>
 							</button>
 							<button name="get_assessments" type="object" class="oe_stat_button" icon="fa-edit">
@@ -103,8 +103,11 @@
 							<button name="get_grade_matrix" type="object" class="oe_stat_button" icon="fa-percent">
 								<field name="nassessment_lines" string="Grade Matrix" widget="statinfo"/>
 							</button>
-							<button name="get_students" type="object" class="oe_stat_button" icon="fa-users">
+							<button name="get_students" type="object" class="oe_stat_button" icon="fa-users" groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
 								<field name="nstudents" string="Students" widget="statinfo"/>
+							</button>
+							<button name="get_my" type="object" class="oe_stat_button" icon="fa-user" groups="ix.group_student">
+								<span>My</span>
 							</button>
 						</div>
 						<group name="info" string="General Information" col="4">
