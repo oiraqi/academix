@@ -13,6 +13,15 @@
 						</div>
 						<field name="submission_type" invisible="1"/>
 						<field name="teamwork" invisible="1"/>
+						<group name="grade" col="4">
+							<label for="grade" string="Grade"/>
+							<div>
+							<field name="grade" style="width: 15%"/> / <field name="grade_scale"/>
+							</div>
+							<field name="bonus"/>
+							<field name="penalty" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
+							<field name="cancel_penalty"/>
+						</group>
 						<group name="submissions" string="Submission Attempts" attrs="{'invisible': [('submission_type', '!=', 'online')]}">
 							<field name="submission_ids" readonly="1" nolabel="1">
 								<tree>
@@ -26,16 +35,7 @@
 									<button icon="fa-folder-open" name="get_submission" type="object" class="oe_highlight"/>
 								</tree>
 							</field>
-						</group>
-						<group name="grade" col="4">
-							<label for="grade" string="Grade"/>
-							<div>
-							<field name="grade" style="width: 15%"/> / <field name="grade_scale"/>
-							</div>
-							<field name="bonus"/>
-							<field name="penalty" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
-							<field name="cancel_penalty"/>
-						</group>
+						</group>						
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
 							<field name="create_date"/>
