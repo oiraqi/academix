@@ -29,5 +29,5 @@ class LetterGrade(models.Model):
 		letter_grade = self.search([('min', '<=', grade), ('max', '>', grade)])
 		if letter_grade:
 			return letter_grade.name, letter_grade.passing
-		
+		return 'S', True
 		raise UserError('Strange grade!')
