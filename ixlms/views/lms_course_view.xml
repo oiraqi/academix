@@ -188,14 +188,15 @@
 									<field name="module_ids" nolabel="1" readonly="1">
 										<tree>
 											<field name="name" string="Course Module"/>
+											<field name="nassessments"/>
 											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
 											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 										</tree>
 									</field>
 									<field name="technique_ids" nolabel="1" readonly="1">
-										<tree>
-											<field name="sequence" widget="handle"/>
-											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+										<tree>											
+											<field name="technique_id"/>
+											<field name="nassessments"/>
 											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
 											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 										</tree>

@@ -12,6 +12,7 @@ class Module(models.Model):
 	percentage = fields.Float(string='%', compute='_percentage')
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
 	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='module_id', string='Assessments')
+	nassessments = fields.Integer(string='# of Assessments', compute='_nassessments')
 	chapter_ids = fields.One2many(comodel_name='ixlms.chapter', inverse_name='module_id', string='Chapters & Timeline')
 
 	@api.onchange('assessment_ids')
@@ -29,3 +30,8 @@ class Module(models.Model):
 				rec.percentage = sum([assessment.percentage for assessment in rec.assessment_ids])
 			else:
 				rec.percentage = 0
+
+	@api.onchange('assessment_ids')
+	def _nassessments(self):
+		for rec in self:
+			rec.nassessments = len(rec.assessment_ids)
