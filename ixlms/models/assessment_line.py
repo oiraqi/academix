@@ -6,7 +6,7 @@ class AssessmentLine(models.Model):
 	_name = 'ixlms.assessment.line'
 	_description = 'AssessmentLine'
 	_inherit = 'ix.expandable'
-	_order = 'egrade desc'
+	_order = 'student_id'
 	_sql_constraints = [('student_assessment_ukey', 'unique(student_id, assessment_id)', 'Assessment line already exists')]
 
 	name = fields.Char('Name', related='student_id.name', store=True)
@@ -101,7 +101,7 @@ class AssessmentLine(models.Model):
 				formatted_egrade += ' - ' + str(rec.wgrade) + ' Pts.'
 			rec.formatted_egrade = formatted_egrade
 			if rec.egrade >= 90:
-				rec.grade_range = '90%+'
+				rec.grade_range = '[90 - 100%+]'
 			elif rec.egrade >= 80:
 				rec.grade_range = '[80 - 90%['
 			elif rec.egrade >= 70:
