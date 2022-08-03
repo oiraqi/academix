@@ -28,9 +28,11 @@ class Enrollment(models.Model):
     _inherit = 'ixroster.enrollment'
 
     assessment_line_ids = fields.One2many(comodel_name='ixlms.assessment.line', compute='_assessment_line_ids', string='Assessments')
-    attendance_line_absent_ids = fields.One2many(comodel_name='ixlms.attendance.line', compute='_attendance', string='Absences')
+    attendance_line_absent_late_ids = fields.One2many(comodel_name='ixlms.attendance.line', compute='_attendance', string='Absences')
     attendance_rate = fields.Float(string='Attendance Rate (%)', compute='_attendance')
-    nabsences = fields.Integer(string='Absenses', compute='_attendance')    
+    nabsences = fields.Integer(string='Absenses', compute='_attendance')
+    nxabsences = fields.Integer(string='Absenses', compute='_attendance')
+    nlates = fields.Integer(string='Absenses', compute='_attendance')
     attendance_grade = fields.Float(string='Attendance Grade', compute='_attendance')
     assessment_grade = fields.Float(string='Assessment Grade', compute='_grade')
     overall_grade = fields.Float(string='Overall Grade (%)', compute='_grade')
@@ -72,10 +74,18 @@ class Enrollment(models.Model):
 
     def _attendance(self):
         for rec in self:
-            rec.attendance_line_absent_ids = self.env['ixlms.attendance.line'].search([
+            rec.attendance_line_absent_late_ids = self.env['ixlms.attendance.line'].search([
+                ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id),
+                ('state', 'in', ['absent', 'absentx', 'late'])])
+            rec.nabsences = self.env['ixlms.attendance.line'].search_count([
                 ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id),
                 ('state', '=', 'absent')])
-            rec.nabsences = len(rec.attendance_line_absent_ids)
+            rec.nxabsences = self.env['ixlms.attendance.line'].search_count([
+                ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id),
+                ('state', '=', 'absentx')])
+            rec.nlates = self.env['ixlms.attendance.line'].search_count([
+                ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id),
+                ('state', '=', 'late')])
             all_attendance_count = self.env['ixlms.attendance.line'].search_count([
                 ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id)])
             if all_attendance_count != 0:
