@@ -57,7 +57,7 @@ class Enrollment(models.Model):
                     sum_epercentage += assessment_line.epercentage
                     sum_wgrade += assessment_line.wgrade            
             if sum_epercentage > 0:
-                return fields.Float.round((sum_wgrade / sum_epercentage) * 100, 2), sum_epercentage
+                return fields.Float.round(sum_wgrade * 100 / sum_epercentage, 2), sum_epercentage
             return 0.0, 0.0
         
         if lms_course_id.grade_weighting == 'points':
