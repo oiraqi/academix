@@ -140,7 +140,7 @@ class Assessment(models.Model):
 			rec.min_grade = 0
 			rec.avg_grade = 50
 			rec.stdev = 10
-			rec.ngraded = '12/15'
+			rec.ngraded = '' + str(len(rec.assessment_line_ids.filtered(lambda r: r.grade and r.grade != ''))) + '/' + str(len(rec.assessment_line_ids)) 
 			rec.nsubmissions = len(rec.submission_ids)
 
 	def get_assessment_lines(self):
