@@ -19,7 +19,7 @@
 							<field name="attendance_line_ids" nolabel="1">
 								<tree editable="bottom" create="false" delete="false">
 									<field name="name"/>
-									<field name="state" widget="radio" options="{'horizontal': True}"/>
+									<field name="state"/>
 									<field name="excused"/>
 									<field name="student_id" invisible="1"/>
 								</tree>
