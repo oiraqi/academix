@@ -8,9 +8,9 @@
 				<form string="Attendance">
 					<sheet>
 						<h1><field name="name"/></h1>
-						<group name="date" col="4">
-							<field name="day" colspan="2"/>
-							<field name="course_id" invisible="1"/>
+						<field name="course_id" invisible="1"/>
+						<group name="date">
+							<field name="day" style="width: 25%"/>
 						</group>
 						<group name="info" col="4">							
 							<field name="npresent"/>
@@ -46,9 +46,10 @@
 			<field name="arch" type="xml">
 				<tree string="Attendance Sheets">
 					<field name="name"/>
-					<field name="npresent"/>
+					<field name="npresent"/>					
 					<field name="nabsent"/>
-					<field name="nlate"/>
+					<field name="nlate"/>				
+					<field name="nabsentx"/>
 					<field name="term_id" invisible="1"/>
 					<field name="school_id" invisible="1"/>
 					<field name="instructor_id" invisible="1"/>

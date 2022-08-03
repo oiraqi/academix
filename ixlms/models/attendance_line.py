@@ -4,6 +4,7 @@ from odoo import models, fields
 class AttendanceLine(models.Model):
 	_name = 'ixlms.attendance.line'
 	_description = 'AttendanceLine'
+	_order = 'student_id'
 
 	name = fields.Char(related='student_id.name')	
 	student_id = fields.Many2one(comodel_name='ix.student', string='Student', required=True)	
