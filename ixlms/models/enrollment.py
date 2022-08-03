@@ -79,7 +79,7 @@ class Enrollment(models.Model):
             all_attendance_count = self.env['ixlms.attendance.line'].search_count([
                 ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id)])
             if all_attendance_count != 0:
-                rec.attendance_rate = rec.nabsences * 100 / all_attendance_count
+                rec.attendance_rate = 100 - rec.nabsences * 100 / all_attendance_count
             else:
                 rec.attendance_rate = 100
             lms_course_id = rec.section_id.lms_course_id
