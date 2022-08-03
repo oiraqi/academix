@@ -31,6 +31,7 @@ class Student(models.Model):
     _inherits = {'res.partner': 'partner_id'}
     _inherit = ['ix.school.owned', 'mail.thread']
     _description = 'Student'
+    _order = 'name'
     _sql_constraints = [('sid_ukey', 'unique(sid)', 'Student ID already exists')]
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
