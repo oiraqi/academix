@@ -54,7 +54,7 @@ class Enrollment(models.Model):
         if lms_course_id.grade_weighting == 'percentage':
             sum_epercentage, sum_wgrade = 0.0, 0.0            
             for assessment_line in self.assessment_line_ids:
-                if assessment_line.epercentage > 0:
+                if assessment_line.percentage > 0:
                     sum_epercentage += assessment_line.percentage
                     sum_wgrade += assessment_line.wgrade
             raise ValidationError(sum_epercentage)
