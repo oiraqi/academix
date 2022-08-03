@@ -7,7 +7,7 @@
             <field name="model">ixlms.course</field>
             <field name="inherit_id" ref="ixlms.view_lms_course_form"/>
             <field name="arch" type="xml">                
-                <xpath expr="//field[@name='assessment_ids']/tree/field[@name='due_time']" position="before">                    
+                <xpath expr="//field[@name='assessment_ids']/tree/field[@name='graded']" position="before">                    
                     <field name="ilo_ids"
                         domain="[('id', 'in', course_ilo_ids)]"
                         widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
