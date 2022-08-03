@@ -54,9 +54,8 @@ class Enrollment(models.Model):
         if lms_course_id.grade_weighting == 'percentage':
             sum_epercentage, sum_wgrade = 0.0, 0.0            
             for assessment_line in self.assessment_line_ids:
-                raise ValidationError('Hi')
-                if assessment_line.percentage > 0:
-                    sum_epercentage += assessment_line.percentage
+                if assessment_line.epercentage > 0:
+                    sum_epercentage += assessment_line.epercentage
                     sum_wgrade += assessment_line.wgrade            
             if sum_epercentage > 0:
                 return fields.Float.round(sum_wgrade * 100 / sum_epercentage, 2), sum_epercentage

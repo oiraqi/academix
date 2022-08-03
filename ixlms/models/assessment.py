@@ -11,7 +11,7 @@ class Assessment(models.Model):
 	description = fields.Html(string='Description')
 	
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
-	section_id = fields.Many2one(comodel_name='ixroster.section', string='course_id.section_id', store=True)
+	section_id = fields.Many2one(comodel_name='ixroster.section', related='course_id.section_id', store=True)
 	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
 	technique_id = fields.Many2one(comodel_name='ixlms.weighted.technique', string='Technique', required=True)
 	graded = fields.Boolean(string='Graded', required=True, default=True)
