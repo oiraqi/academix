@@ -39,10 +39,10 @@
                             <group>
                                 <field name="assessment_line_ids" nolabel="1">
                                     <tree>
-                                        <field name="name"/>
+                                        <field name="assessment_id"/>
                                         <field name="module_id"/>
                                         <field name="technique_id" widget="badge"/>
-                                        <field name="egrade"/>
+                                        <field name="egrade" string="Grade (%)"/>
                                     </tree>
                                 </field>
                             </group>
