@@ -170,7 +170,7 @@
 									<field name="grade_grouping" style="width: 50%" string="Grouped by"/>
 									<field name="grade_weighting" style="width: 50%" string="Weighted by"/>
 								</group>
-								<group string="Assessments" groups="ix.group_faculty">
+								<!--<group string="Assessments" groups="ix.group_faculty">
 									<field name="assessment_ids" colspan="4" nolabel="1">
 										<tree editable="bottom">
 											<field name="name" string="Assessment"/>
@@ -184,7 +184,7 @@
 											<field name="section_id" invisible="1"/>
 										</tree>
 									</field>
-								</group>
+								</group>-->
 								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
 									<field name="module_ids" nolabel="1" readonly="1">
 										<tree>
