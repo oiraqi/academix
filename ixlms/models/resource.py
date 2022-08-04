@@ -6,7 +6,8 @@ class Resource(models.Model):
 	_description = 'Resource'
 
 	name = fields.Char('Name', required=True)	
-	content = fields.Html(string='Content', required=True)
+	file = fields.Binary(string='File')
+	url = fields.Char(string='URL')	
 	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
 	
 	
