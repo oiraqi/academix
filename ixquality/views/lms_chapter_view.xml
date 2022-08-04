@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- ixlms.chapter inherit form view -->
+        <record id="view_lms_chapter_form_quality" model="ir.ui.view">
+            <field name="name">ixlms.chapter.inherit.quality.view.form</field>
+            <field name="model">ixlms.chapter</field>
+            <field name="inherit_id" ref="ixlms.view_lms_chapter_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='module_id']" position="after">
+                    <field name="ilo_ids" widget="many2many_tags"
+                        domain="[('id', 'in', chapter_ilo_ids)]"
+                        options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                    <field name="chapter_ilo_ids" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+        <!-- ixlms.chapter inherit tree view -->
+        <record id="view_lms_chapter_tree_quality" model="ir.ui.view">
+            <field name="name">ixlms.chapter.inherit.quality.view.tree</field>
+            <field name="model">ixlms.chapter</field>
+            <field name="inherit_id" ref="ixlms.view_lms_chapter_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="ilo_ids" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
