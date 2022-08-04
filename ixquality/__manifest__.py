@@ -1,5 +1,5 @@
 {
-    'name': 'IX Quality Assurance',
+    'name': 'IX QMS',
     'version': '1.0',
     'summary': 'Supports auality assurance processes, including course portfolio management, as well as ILO and SO assessment.',
     'category': 'Liberal Arts Education',
