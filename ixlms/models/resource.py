@@ -7,8 +7,8 @@ class Resource(models.Model):
 
 	name = fields.Char('Name', required=True)
 	chapter_id = fields.Many2one(comodel_name='ixlms.chapter', string='Chapter', required=True)
-	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
-	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
+	module_id = fields.Many2one(comodel_name='ixlms.module', related='chapter_id.module_id', store=True)
+	course_id = fields.Many2one(comodel_name='ixlms.course', related='chapter_id.module_id.course_id', required=True)
 	content = fields.Html(string='Content', required=True)
 	
 	
