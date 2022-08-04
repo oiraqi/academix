@@ -227,10 +227,10 @@ class LmsCourse(models.Model):
 		context = {'default_course_id': self.id, 'default_public': 'private'}
 		return self._expand_to('ixlms.action_mail_channel', domain, context)
 
-	def get_resources(self):
+	def get_chapters(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
-		context = {'default_course_id': self.id, 'group_by': ['module_id', 'chapter_id']}
-		return self._expand_to('ixlms.action_resource', domain, context)
+		context = {'default_course_id': self.id, 'group_by': 'module_id'}
+		return self._expand_to('ixlms.action_chapter', domain, context)
 
 

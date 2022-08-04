@@ -82,17 +82,17 @@
 						</h1>
 						<br/>
 						<div class="oe_button_box" name="button_box">
-							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-puzzle-piece">
+							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-puzzle-piece" groups="ix.group_faculty">
 								<field name="nmodules" string="Modules" widget="statinfo"/>
 							</button>
-							<button name="get_techniques" type="object" class="oe_stat_button" icon="fa-pencil-square-o">
+							<button name="get_techniques" type="object" class="oe_stat_button" icon="fa-pencil-square-o" groups="ix.group_faculty">
 								<field name="ntechniques" string="Assess. Techniques" widget="statinfo"/>
 							</button>
 							<button name="get_channels" type="object" class="oe_stat_button" icon="fa-comments">
 								<field name="nchannels" string="Channels" widget="statinfo"/>
 							</button>							
-							<button name="get_resources" type="object" class="oe_stat_button" icon="fa-file">
-								<field name="nresources" string="Resources" widget="statinfo"/>
+							<button name="get_chapters" type="object" class="oe_stat_button" icon="fa-file">
+								<field name="nchapters" string="Chapters" widget="statinfo"/>
 							</button>							
 							<button name="get_attendance" type="object" class="oe_stat_button" icon="fa-calendar-check-o" groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
 								<field name="nattendance_sheets" string="Att. Sheets" widget="statinfo"/>
