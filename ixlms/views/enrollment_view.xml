@@ -57,7 +57,7 @@
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Entollments" decoration-danger="passed == False"
-                    decoration-info="overall_grade &gt;= 90">
+                    decoration-info="overall_grade &gt;= 90" decoration-success="overall_grade &gt;= 80 and overall_grade &lt; 90">
                     <field name="student_id"/>
                     <field name="sid"/>
                     <field name="attendance_mode" widget="badge"/>
