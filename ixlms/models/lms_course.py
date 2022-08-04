@@ -169,17 +169,22 @@ class LmsCourse(models.Model):
 	def get_assessments(self):
 		self.ensure_one()
 		domain = [('course_id', '=', self.id)]
+		context = {'default_course_id': self.id}
 		if self.grade_grouping == 'module' and self.grade_weighting == 'percentage':
-			return self._expand_to('ixlms.action_assessment_module_percentage', domain)
+			context.update({'group_by': 'module_id'})
+			return self._expand_to('ixlms.action_assessment_module_percentage', domain, context)
 
 		if self.grade_grouping == 'module' and self.grade_weighting == 'points':
-			return self._expand_to('ixlms.action_assessment_module_points', domain)
+			context.update({'group_by': 'module_id'})
+			return self._expand_to('ixlms.action_assessment_module_points', domain, context)
 		
 		if self.grade_grouping == 'technique' and self.grade_weighting == 'percentage':
-			return self._expand_to('ixlms.action_assessment_technique_percentage', domain)
+			context.update({'group_by': 'technique_id'})
+			return self._expand_to('ixlms.action_assessment_technique_percentage', domain, context)
 
 		if self.grade_grouping == 'technique' and self.grade_weighting == 'points':
-			return self._expand_to('ixlms.action_assessment_technique_points', domain)
+			context.update({'group_by': 'technique_id'})
+			return self._expand_to('ixlms.action_assessment_technique_points', domain, context)
 		
 
 	def get_grade_matrix(self):

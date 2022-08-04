@@ -21,8 +21,9 @@
 							</button>
 						</div>
 						<group name="info" string="Genral Information" col="4">
-							<field name="module_id" readonly="1"/>
-							<field name="technique_id" readonly="1"/>							
+							<field name="module_id"/>
+							<field name="technique_id"/>
+							<field name="course_id" invisible="1"/>
 						</group>
 						<group name="desc" string="Description">
 							<field name="description" nolabel="1"/>
@@ -35,8 +36,7 @@
 						</group>
 						<group name="teamwork" string="Teamwork" col="4">
 							<field name="teamwork"/>
-							<field name="teamset_id" attrs="{'invisible': [('teamwork', '=', False)], 'required': [('teamwork', '=', True)]}" domain="[('course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-							<field name="course_id" invisible="1"/>
+							<field name="teamset_id" attrs="{'invisible': [('teamwork', '=', False)], 'required': [('teamwork', '=', True)]}" domain="[('course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>							
 						</group>
 						<group name="timeline" string="Timeline(s)" col="4">
 							<field name="timeline"/>
