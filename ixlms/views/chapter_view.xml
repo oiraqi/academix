@@ -16,7 +16,7 @@
 						</group>
 						<group name="resources" string="Resources">
 							<field name="resource_ids" nolabel="1">
-								<tree editable="bottom">
+								<tree>
 									<field name="name"/>
 									<field name="content"/>									
 								</tree>

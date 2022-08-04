@@ -13,7 +13,7 @@ class Chapter(models.Model):
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
 	start_date = fields.Date(string='Start Date')
 	nsessions = fields.Integer(string='Sessions')
-	resource_ids = fields.One2many(comodel_name='ixlms.resource', inverse_name='chapter_id', string='Resources')
+	resource_ids = fields.Many2many(comodel_name='ixlms.resource', string='Resources')
 	nresources = fields.Integer(string='Resources', compute='_nresources')
 	module_ids = fields.One2many(comodel_name='ixlms.module', related='course_id.module_ids')
 
