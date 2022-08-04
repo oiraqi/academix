@@ -136,7 +136,7 @@
 									</field>
 								</group>
 							</page>
-							<page string="Course Content &#38; Organization" name="content" attrs="{'invisible': [('nmodules', '=', 0)]}">
+							<!--<page string="Course Content &#38; Organization" name="content" attrs="{'invisible': [('nmodules', '=', 0)]}">
 								<group name="chapters" string="Course Chapters &#38; Timeline">
 									<field name="chapter_ids" nolabel="1">
 										<tree editable="bottom">
@@ -150,7 +150,7 @@
 										</tree>
 									</field>
 								</group>
-							</page>
+							</page>-->
 							<page string="Textbooks" name="textbooks">
 								<group>
 									<field name="textbook_ids" nolabel="1">
