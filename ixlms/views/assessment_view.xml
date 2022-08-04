@@ -12,7 +12,7 @@
 								<field name="name" default_focus="1" placeholder="Name..."/>
 							</h1>
 						</div>
-						<div class="oe_button_box" name="button_box" attrs="{'invisible': [('graded', '=', False)]}">							
+						<div class="oe_button_box" name="button_box" attrs="{'invisible': ['|', ('id', '=', 'False'), ('graded', '=', False)]}">							
 							<button name="get_submissions" type="object" class="oe_stat_button" icon="fa-check-circle" attrs="{'invisible': [('submission_type', '!=', 'online')]}">
 								<field name="nsubmissions" string="Submissions" widget="statinfo"/>
 							</button>
@@ -21,8 +21,8 @@
 							</button>
 						</div>
 						<group name="info" string="Genral Information" col="4">
-							<field name="module_id"/>
-							<field name="technique_id"/>
+							<field name="module_id" domain="[('course_id', '=', course_id)]"/>
+							<field name="technique_id" domain="[('course_id', '=', course_id)]"/>
 							<field name="course_id" invisible="1"/>
 						</group>
 						<group name="desc" string="Description">
