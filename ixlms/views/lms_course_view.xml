@@ -81,7 +81,7 @@
 							<field name="course_id"/>
 						</h1>
 						<br/>
-						<div class="oe_button_box" name="button_box">
+						<div class="oe_button_box" name="button_box" attrs="{'invisible': [('id', '=', False)]}">
 							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-puzzle-piece" groups="ix.group_faculty">
 								<field name="nmodules" string="Modules" widget="statinfo"/>
 							</button>
