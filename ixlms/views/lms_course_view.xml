@@ -100,9 +100,9 @@
 							<button name="get_assessments" type="object" class="oe_stat_button" icon="fa-edit">
 								<field name="nassessments" string="Assessments" widget="statinfo"/>
 							</button>
-							<button name="get_grade_matrix" type="object" class="oe_stat_button" icon="fa-percent">
+							<!--<button name="get_grade_matrix" type="object" class="oe_stat_button" icon="fa-percent">
 								<field name="nassessment_lines" string="Grade Matrix" widget="statinfo"/>
-							</button>
+							</button>-->
 							<button name="get_students" type="object" class="oe_stat_button" icon="fa-users" groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
 								<field name="nstudents" string="Students" widget="statinfo"/>
 							</button>
