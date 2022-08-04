@@ -10,7 +10,9 @@
                 <xpath expr="//field[@name='module_id']" position="after">
                     <field name="ilo_ids" widget="many2many_tags"
                         domain="[('id', 'in', course_ilo_ids)]"
-                        options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                        options="{'no_quick_create': True, 'no_create_edit': True}"/>                    
+                </xpath>
+                <xpath expr="//group[@name='info']" position="after">                    
                     <field name="course_ilo_ids" invisible="1"/>
                 </xpath>
             </field>
