@@ -56,7 +56,7 @@
             <field name="model">ixroster.enrollment</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
-                <tree string="Entollments">
+                <tree string="Entollments" decoration-danger="passed == False">
                     <field name="student_id"/>
                     <field name="sid"/>
                     <field name="attendance_mode" widget="badge"/>
@@ -69,6 +69,7 @@
                     <field name="overall_grade" string="Overall Grade (%)"/>
                     <field name="letter_grade" widget="badge"/>
                     <field name="program_id" invisible="1"/>
+                    <field name="passed" invisible="1"/>
                 </tree>
             </field>
         </record>
