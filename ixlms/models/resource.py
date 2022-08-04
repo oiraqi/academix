@@ -5,7 +5,7 @@ class Resource(models.Model):
 	_name = 'ixlms.resource'
 	_description = 'Resource'
 
-	name = fields.Char(related='document_id.name')
+	name = fields.Char('Name', required=True)
 	chapter_id = fields.Many2one(comodel_name='ixlms.chapter', string='Chapter', required=True)
 	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
