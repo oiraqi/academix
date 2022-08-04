@@ -7,5 +7,7 @@ class Resource(models.Model):
 
 	name = fields.Char('Name', required=True)	
 	content = fields.Html(string='Content', required=True)
+	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
+	
 	
 	

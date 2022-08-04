@@ -10,6 +10,7 @@
 						<h1><field name="name"/></h1>
 						<group name="content" string="Content" col="4">							
 							<field name="content" nolabel="1"/>
+							<field name="course_id" invisible="1"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>

@@ -11,6 +11,7 @@ class Chapter(models.Model):
 	sequence = fields.Integer('Ch.', required=True)
 	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
+	ccourse_id = fields.Many2one(comodel_name='ix.course', related='course_id.course_id')
 	start_date = fields.Date(string='Start Date')
 	nsessions = fields.Integer(string='Sessions')
 	resource_ids = fields.Many2many(comodel_name='ixlms.resource', string='Resources')
