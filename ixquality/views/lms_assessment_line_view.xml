@@ -12,9 +12,8 @@
                         <button string="Add Assessment Lines" name="create_assessed_ilos" type="object"/>
                         <field name="assessed_ilo_ids" colspan="4" nolabel="1">
                             <tree create="false" editable="bottom">                                
-                                <field name="ilo_idx_description"/>
-                                <field name="acquisition_level" widget="priority"/>
-                                <field name="ilo_id" invisible="1"/>
+                                <field name="ilo_id"/>
+                                <field name="acquisition_level" widget="priority"/>                                
                             </tree>
                         </field>
                     </group>
