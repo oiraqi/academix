@@ -5,7 +5,7 @@
         <record id="view_lms_chapter_form_quality" model="ir.ui.view">
             <field name="name">ixlms.chapter.inherit.quality.view.form</field>
             <field name="model">ixlms.chapter</field>
-            <field name="inherit_id" ref="ixlms.view_lms_chapter_form"/>
+            <field name="inherit_id" ref="ixlms.view_chapter_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='module_id']" position="after">
                     <field name="ilo_ids" widget="many2many_tags"
@@ -19,7 +19,7 @@
         <record id="view_lms_chapter_tree_quality" model="ir.ui.view">
             <field name="name">ixlms.chapter.inherit.quality.view.tree</field>
             <field name="model">ixlms.chapter</field>
-            <field name="inherit_id" ref="ixlms.view_lms_chapter_tree"/>
+            <field name="inherit_id" ref="ixlms.view_chapter_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="ilo_ids" widget="many2many_tags"/>
