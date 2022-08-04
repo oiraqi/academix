@@ -49,10 +49,7 @@
 									<t t-else="">Modules</t>, 
 									<field name="nchapters"/>
 									<t t-if="record.nchapters.raw_value==1">Chapter</t>
-									<t t-else="">Chapters</t>, 
-									<field name="nresources"/>
-									<t t-if="record.nresources.raw_value==1">Resource</t>
-									<t t-else="">Resources</t>
+									<t t-else="">Chapters</t>									
 									<br/>
 									<field name="nassessments"/>
 									<t t-if="record.nassessments.raw_value==1">Assessment</t>
