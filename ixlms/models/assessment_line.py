@@ -63,7 +63,7 @@ class AssessmentLine(models.Model):
 	grade_scale = fields.Integer(related='assessment_id.grade_scale', store=True)	
 	penalty = fields.Float('Penalty (%)', compute='_penalty')
 	cancel_penalty = fields.Boolean(string='Cancel Penalty', default=False)
-	egrade = fields.Float(string='Effective Grade (%)', compute='_grade', store=True)
+	egrade = fields.Float(string='Effective Grade (%)', compute='_grade', store=True, group_operator='avg')
 	formatted_grade = fields.Char(string='Assigned Grade', compute='_grade')
 	formatted_egrade = fields.Char(string='Grade', compute='_grade')
 	grade_range = fields.Char(string='Grade Range', compute='_grade', store=True)
