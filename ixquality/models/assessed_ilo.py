@@ -10,6 +10,6 @@ class AssessedIlo(models.Model):
 	assessment_line_id = fields.Many2one(comodel_name='ixlms.assessment.line', string='LMS Assessment Line', required=True)
 	acquisition_level_id = fields.Many2one(comodel_name='ixquality.acquisition.level', string='Acquisition Level')
 	acquisition_level = fields.Selection(string='Acquisition Level', selection=[
-		('2', '40%+'), ('3', '60%+'), ('4', '80%+'), ('5', 'Fully Acquired')])	
+		('0', 'Not acquired'), ('3', '60%+'), ('4', '80%+'), ('5', 'Fully Acquired')])	
 	ilo_idx_description = fields.Char(related='ilo_id.idx_description')
 		

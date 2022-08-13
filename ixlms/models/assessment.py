@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+import math
 
 class Assessment(models.Model):
 	_name = 'ixlms.assessment'
@@ -136,10 +137,25 @@ class Assessment(models.Model):
 
 	def _stats(self):
 		for rec in self:
-			rec.max_grade = 100
-			rec.min_grade = 0
-			rec.avg_grade = 50
-			rec.stdev = 10
+			min_grade, max_grade, s, s2, count = 100, 0, 0, 0, 0
+			for assessment_line in rec.assessment_line_ids:
+				if assessment_line.grade and assessment_line.grade != '':
+					if assessment_line.egrade < min_grade:
+						min_grade = assessment_line.egrade
+					if assessment_line.egrade > max_grade:
+						max_grade = assessment_line.egrade
+					s += assessment_line.egrade
+					s2 += assessment_line.egrade * assessment_line.egrade
+					count += 1
+			
+			rec.max_grade = max_grade
+			rec.min_grade = min_grade
+			if count > 0:
+				rec.avg_grade = s / count
+				rec.stdev = math.sqrt(s2 / count - rec.avg_grade * rec.avg_grade)
+			else:
+				rec.avg_grade = 0
+				rec.stdev = 0
 			rec.ngraded = '' + str(len(rec.assessment_line_ids.filtered(lambda r: r.grade and r.grade != ''))) + '/' + str(len(rec.assessment_line_ids)) 
 			rec.nsubmissions = len(rec.submission_ids)
 
