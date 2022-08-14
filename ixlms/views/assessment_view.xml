@@ -75,8 +75,7 @@
 								<field name="bonus" attrs="{'invisible': [('points', '=', 0)]}" style="width: 15%"/>
 								<field name="grade_weighting" invisible="1"/>
 							</group>
-						</group>
-						<field name="program_ids" invisible="1"/>
+						</group>						
 						<group name="stats" string="Statistics" attrs="{'invisible': [('graded', '=', False)]}" col="4">
 							<field name="max_grade"/>
 							<field name="min_grade"/>
@@ -84,11 +83,12 @@
 							<field name="stdev"/>
 							<field name="assessment_program_ids" colspan="4">
 								<tree editable="bottom">
-									<field name="program_id" domain="[('id', 'in', parent.program_ids)]"/>
+									<field name="program_id" domain="[('id', 'in', program_ids)]"/>
 									<field name="min_grade"/>
 									<field name="max_grade"/>
 									<field name="avg_grade"/>
 									<field name="stdev"/>
+									<field name="program_ids" invisible="1"/>
 								</tree>
 							</field>
 						</group>
