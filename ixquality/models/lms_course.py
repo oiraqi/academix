@@ -28,5 +28,5 @@ class LmsCourse(models.Model):
 
     ilo_program_ids = fields.One2many('ixquality.lms.course.ilo.program', inverse_name='course_id')
     acquisition_level = fields.Selection(string='Acquisition Level', selection=[
-		('0', 'Not acquired'), ('3', '60%+'), ('4', '80%+'), ('5', 'Fully Acquired')], default='4')
+		('3', '60%+'), ('4', '80%+'), ('5', 'Fully Acquired')], default='4', required=True)
     
