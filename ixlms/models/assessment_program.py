@@ -7,7 +7,7 @@ class AssessmentProgram(models.Model):
 	_description = 'AssessmentProgram'
 	_sql_constraints = [('assessment_program_ukey', 'unique(assessment_id, program_id)', 'Assessment/Program line already exists')]
 
-	assessment_id = fields.Many2one(comodel_name='ixlms.assesment', string='Assessment', required=True)
+	assessment_id = fields.Many2one(comodel_name='ixlms.assessment', string='Assessment', required=True)
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True)
 	max_grade = fields.Float(string='Max Grade', compute='_stats')
 	min_grade = fields.Float(string='Min Grade', compute='_stats')
