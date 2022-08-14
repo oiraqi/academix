@@ -161,6 +161,20 @@ class LmsCourse(models.Model):
 		for rec in self:
 			rec.nchannels = len(rec.channel_ids)
 
+	program_ids = fields.One2many(comodel_name='ixcatalog.program', compute='_program_ids')
+
+	def _program_ids(self):
+		for rec in self:
+			program_ids = []
+			for student in rec.student_ids:
+				if student.program_id.id not in program_ids:
+					program_ids.append(student.program_id.id)
+			if len(program_ids) > 0:
+				rec.program_ids = program_ids
+			else:
+				rec.program_ids = False
+	
+
 	@api.constrains('grade_weighting', 'assessment_ids')
 	def check_sum_percentages(self):
 		for rec in self:
