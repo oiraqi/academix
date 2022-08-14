@@ -83,12 +83,11 @@
 							<field name="stdev"/>
 							<field name="assessment_program_ids" colspan="4">
 								<tree editable="bottom">
-									<field name="program_id" domain="[('id', 'in', program_ids)]"/>
+									<field name="program_id"/>
 									<field name="min_grade"/>
 									<field name="max_grade"/>
 									<field name="avg_grade"/>
 									<field name="stdev"/>
-									<field name="program_ids" invisible="1"/>
 								</tree>
 							</field>
 						</group>
