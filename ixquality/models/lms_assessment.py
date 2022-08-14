@@ -9,3 +9,8 @@ class LmsAssessment(models.Model):
     good_performance = fields.Binary(string='Good Performance')
     avg_performance = fields.Binary(string='Avg. Performance')
     poor_performance = fields.Binary(string='Poor Performance')
+
+    def get_ilo_achievement(self):
+        self.ensure_one()
+        domain = [('assessment_id', '=', self.id)]        
+        return self._expand_to('ixquality.action_assessed_ilo', domain)

@@ -5,7 +5,7 @@ import math
 class AssessmentProgram(models.Model):
 	_name = 'ixlms.assessment.program'
 	_description = 'AssessmentProgram'
-	_sql_constraints = [('assessment_program_ukey', 'unique(assessment_id, program_id)', 'Assessment/Program line already exists')]
+	_sql_constraints = [('assessment_program_ukey', 'unique(assessment_id, program_id)', 'Duplicate Assessment/Program lines')]
 
 	assessment_id = fields.Many2one(comodel_name='ixlms.assessment', string='Assessment', required=True)
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True)

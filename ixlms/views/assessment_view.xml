@@ -78,8 +78,8 @@
 						</group>
 						<field name="program_ids" invisible="1"/>
 						<group name="stats" string="Statistics" attrs="{'invisible': [('graded', '=', False)]}" col="4">
-							<field name="max_grade"/>
 							<field name="min_grade"/>
+							<field name="max_grade"/>
 							<field name="avg_grade"/>
 							<field name="stdev"/>
 							<field name="assessment_program_ids" colspan="4">
