@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="ixlms.view_assessment_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='get_assessment_lines']" position="after">
-                    <button name="get_ilo_achievement" type="object" class="oe_stat_button" icon="fa-percent">
+                    <button name="get_ilo_achievement" type="object" class="oe_stat_button" icon="fa-arrow-trend-up">
                         <span>ILO Achievement</span>
                     </button>
                 </xpath>
