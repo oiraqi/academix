@@ -14,3 +14,4 @@ from . import lms_module
 from . import lms_chapter
 from . import assessed_ilo
 from . import acquisition_level
+from . import lms_course_ilo_program

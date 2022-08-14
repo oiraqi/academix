@@ -33,3 +33,7 @@ access_ixquality_assessed_ilo_user,access.ixquality.assessed.ilo.user,model_ixqu
 access_ixquality_acquisition_level_setup,access.ixquality.acquisition.level.setup,model_ixquality_acquisition_level,ix.group_setup,1,1,1,1
 access_ixquality_acquisition_level_user,access.ixquality.acquisition.level.user,model_ixquality_acquisition_level,base.group_user,1,0,0,0
 
+access_ixquality_lms_course_ilo_program_faculty,access.ixquality.lms.course.ilo.program.faculty,model_ixquality_lms_course_ilo_program,ix.group_faculty,1,1,1,1
+access_ixquality_lms_course_ilo_program_coordinator,access.ixquality.lms.course.ilo.program.coordinator,model_ixquality_lms_course_ilo_program,ix.group_coordinator,1,0,0,0
+access_ixquality_lms_course_ilo_program_vpaa,access.ixquality.lms.course.ilo.program.vpaa,model_ixquality_lms_course_ilo_program,ix.group_vpaa,1,0,0,0
+
