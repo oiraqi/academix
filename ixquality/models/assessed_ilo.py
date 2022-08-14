@@ -9,7 +9,7 @@ class AssessedIlo(models.Model):
 	ilo_id = fields.Many2one(comodel_name='ixcatalog.course.ilo', string='Course ILO', required=True)
 	assessment_line_id = fields.Many2one(comodel_name='ixlms.assessment.line', string='LMS Assessment Line', required=True)
 	assessment_id = fields.Many2one(comodel_name='ixlms.assessment', related='assessment_line_id.assessment_id')
-	program_id = fields.Many2one(comodel_name='ixcatalog.program', related='assessment_line_id.student_id.program_id')
+	program_id = fields.Many2one(comodel_name='ixcatalog.program', related='assessment_line_id.student_id.program_id', store=True)
 	student_id = fields.Many2one(comodel_name='ix.student', related='assessment_line_id.student_id')
 	acquisition_level_id = fields.Many2one(comodel_name='ixquality.acquisition.level', string='Acquisition Level')
 	acquisition_level = fields.Selection(string='Acquisition Level', selection=[
