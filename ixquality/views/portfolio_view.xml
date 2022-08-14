@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_portfolio_form" model="ir.ui.view">
-			<field name="name">ixquality.portfolio.form</field>
-			<field name="model">ixquality.portfolio</field>
+			<field name="name">ixqms.portfolio.form</field>
+			<field name="model">ixqms.portfolio</field>
 			<field name="arch" type="xml">
 				<form string="Portfolio">
 					<sheet>
@@ -75,8 +75,8 @@
 			</field>
 		</record>
 		<record id="view_portfolio_tree" model="ir.ui.view">
-			<field name="name">ixquality.portfolio.tree</field>
-			<field name="model">ixquality.portfolio</field>
+			<field name="name">ixqms.portfolio.tree</field>
+			<field name="model">ixqms.portfolio</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Portfolios">
@@ -87,7 +87,7 @@
 		<record id="action_portfolio" model="ir.actions.act_window">
 			<field name="name">Portfolios</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">ixquality.portfolio</field>
+			<field name="res_model">ixqms.portfolio</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>

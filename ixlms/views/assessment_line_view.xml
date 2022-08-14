@@ -56,7 +56,7 @@
 					<field name="formatted_grade"/>
 					<field name="penalty"/>
 					<field name="bonus"/>
-					<field name="egrade" avg="Average"/>
+					<field name="egrade"/>
 				</tree>
 			</field>
 		</record>

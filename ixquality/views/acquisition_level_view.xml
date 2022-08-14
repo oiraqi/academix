@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_acquisition_level_form" model="ir.ui.view">
-			<field name="name">ixquality.acquisition.level.form</field>
-			<field name="model">ixquality.acquisition.level</field>
+			<field name="name">ixqms.acquisition.level.form</field>
+			<field name="model">ixqms.acquisition.level</field>
 			<field name="arch" type="xml">
 				<form string="Acquisition Level">
 					<sheet>						
@@ -22,8 +22,8 @@
 			</field>
 		</record>
 		<record id="view_acquisition_level_tree" model="ir.ui.view">
-			<field name="name">ixquality.acquisition.level.tree</field>
-			<field name="model">ixquality.acquisition.level</field>
+			<field name="name">ixqms.acquisition.level.tree</field>
+			<field name="model">ixqms.acquisition.level</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Acquisition Levels" editable="bottom">
@@ -35,7 +35,7 @@
 		<record id="action_acquisition_level" model="ir.actions.act_window">
 			<field name="name">Acquisition Levels</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">ixquality.acquisition.level</field>
+			<field name="res_model">ixqms.acquisition.level</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>

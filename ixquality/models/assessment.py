@@ -26,12 +26,12 @@ from odoo.exceptions import UserError
 
 
 class Assessment(models.Model):
-	_name = 'ixquality.assessment'
+	_name = 'ixqms.assessment'
 	_description = 'Course Assessment'
 	_inherit = 'ix.school.owned'
-	_sql_constraints = [('ixquality_assessment_portfolio_program_ukey', 'unique(portfolio_id, program_id)', 'Duplicate assessment of the same program in the same portfolio!')]
+	_sql_constraints = [('ixqms_assessment_portfolio_program_ukey', 'unique(portfolio_id, program_id)', 'Duplicate assessment of the same program in the same portfolio!')]
 
-	portfolio_id = fields.Many2one('ixquality.portfolio', 'Portfolio', required=True)
+	portfolio_id = fields.Many2one('ixqms.portfolio', 'Portfolio', required=True)
 	program_id = fields.Many2one('ixcatalog.program', 'Program', required=True)
 	nstudents = fields.Integer('Student Population', compute='_nstudents', store=True, required=True)
 
@@ -69,7 +69,7 @@ class Assessment(models.Model):
 			
 			rec.used_assessment_technique_ids = used_assessment_technique_ids
 
-	assessment_line_ids = fields.One2many(comodel_name='ixquality.assessment.line', inverse_name='assessment_id', string='Assessment Lines')
+	assessment_line_ids = fields.One2many(comodel_name='ixqms.assessment.line', inverse_name='assessment_id', string='Assessment Lines')
 
 	@api.onchange('program_id')
 	def _onchange_program_id(self):
@@ -79,12 +79,12 @@ class Assessment(models.Model):
 	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
 	section_id = fields.Many2one('ixroster.section', related='portfolio_id.section_id')
 	faculty_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id', store=True)
-	ilo_so_ids = fields.One2many(comodel_name='ixquality.course.ilo.so', compute='_ilo_so_ids', string='ILO/SO Mapping')
-	assessed_so_ids = fields.One2many(comodel_name='ixquality.student.outcome', compute='_ilo_so_ids', string='Covered/Assessed SOs')
+	ilo_so_ids = fields.One2many(comodel_name='ixqms.course.ilo.so', compute='_ilo_so_ids', string='ILO/SO Mapping')
+	assessed_so_ids = fields.One2many(comodel_name='ixqms.student.outcome', compute='_ilo_so_ids', string='Covered/Assessed SOs')
 	
 	def _ilo_so_ids(self):
 		for rec in self:
-			records = self.env['ixquality.course.ilo.so'].search([('course_id', '=', rec.course_id.id), ('program_id', '=', rec.program_id.id)])
+			records = self.env['ixqms.course.ilo.so'].search([('course_id', '=', rec.course_id.id), ('program_id', '=', rec.program_id.id)])
 			if not records:
 				rec.ilo_so_ids = False
 				rec.assessed_so_ids = False

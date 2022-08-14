@@ -25,9 +25,9 @@ from odoo import api, fields, models
 
 
 class Accreditation(models.Model):
-    _name = 'ixquality.accreditation'
+    _name = 'ixqms.accreditation'
     _description = 'Accreditation'
     _inherit = 'ix.school.owned'
 
     name = fields.Char(string='Name', required=True)
-    program_ids = fields.Many2many('ixcatalog.program', 'ixquality_program_accreditation_rel', 'accreditation_id', 'program_id', 'Accredited Programs')
+    program_ids = fields.Many2many('ixcatalog.program', 'ixqms_program_accreditation_rel', 'accreditation_id', 'program_id', 'Accredited Programs')

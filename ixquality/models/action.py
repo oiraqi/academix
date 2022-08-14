@@ -25,14 +25,14 @@ from odoo import api, models, fields
 
 
 class Action(models.Model):
-	_name = 'ixquality.action'
+	_name = 'ixqms.action'
 	_inherit = 'mail.thread'
 	_description = 'Action'
 
 	name = fields.Char('Title', required=True)
 	description = fields.Html(string='Description', required=True)	
-	portfolio_id = fields.Many2one(comodel_name='ixquality.portfolio', string='Portfolio')
-	assessment_line_id = fields.Many2one(comodel_name='ixquality.assessment.line', string='Assessment Line')
+	portfolio_id = fields.Many2one(comodel_name='ixqms.portfolio', string='Portfolio')
+	assessment_line_id = fields.Many2one(comodel_name='ixqms.assessment.line', string='Assessment Line')
 	ilo_id = fields.Many2one(comodel_name='ixcatalog.course.ilo', string='ILO')
 	assessment_criteria = fields.Text(string='Assessment Criteria')
 	assessment_methodology = fields.Text(string='Assessment Methodology')

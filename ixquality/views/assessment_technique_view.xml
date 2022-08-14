@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_assessment_technique_form" model="ir.ui.view">
-			<field name="name">ixquality.assessment.technique.form</field>
-			<field name="model">ixquality.assessment.technique</field>
+			<field name="name">ixqms.assessment.technique.form</field>
+			<field name="model">ixqms.assessment.technique</field>
 			<field name="arch" type="xml">
 				<form string="Assessment Technique">
 					<sheet>
@@ -22,8 +22,8 @@
 			</field>
 		</record>
 		<record id="view_assessment_technique_tree" model="ir.ui.view">
-			<field name="name">ixquality.assessment.technique.tree</field>
-			<field name="model">ixquality.assessment.technique</field>
+			<field name="name">ixqms.assessment.technique.tree</field>
+			<field name="model">ixqms.assessment.technique</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Assessment Techniques">
@@ -34,7 +34,7 @@
 		<record id="action_assessment_technique" model="ir.actions.act_window">
 			<field name="name">Assessment Techniques</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">ixquality.assessment.technique</field>
+			<field name="res_model">ixqms.assessment.technique</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
