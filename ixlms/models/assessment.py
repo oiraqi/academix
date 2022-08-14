@@ -159,6 +159,22 @@ class Assessment(models.Model):
 			rec.ngraded = '' + str(len(rec.assessment_line_ids.filtered(lambda r: r.grade and r.grade != ''))) + '/' + str(len(rec.assessment_line_ids)) 
 			rec.nsubmissions = len(rec.submission_ids)
 
+	assessment_program_ids = fields.One2many(comodel_name='ixlms.assessment.program', inverse_name='assessment_id', string='By Program')
+	program_ids = fields.One2many(comodel_name='ixcatalog.program', compute='_program_ids')
+
+	def _program_ids(self):
+		for rec in self:
+			program_ids = []
+			for assessment_line in rec.assessment_line_ids:
+				if assessment_line.student_id.program_id.id not in program_ids:
+					program_ids.append(assessment_line.student_id.program_id.id)
+
+			if len(program_ids) > 0:
+				rec.program_ids = program_ids
+			else:
+				rec.program_ids = False
+	
+
 	def get_assessment_lines(self):
 		self.ensure_one()
 		student_ids = [assessment_line.student_id.id for assessment_line in self.assessment_line_ids]
