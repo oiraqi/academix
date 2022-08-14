@@ -33,7 +33,7 @@ class LmsCourseIloProgram(models.Model):
 	ilo_id = fields.Many2one(comodel_name='ixcatalog.course.ilo', string='Course ILO', required=True)
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True)
 	acquisition_level = fields.Selection(string='Acquisition Level', selection=[
-		('0', 'Not acquired'), ('3', '60%+'), ('4', '80%+'), ('5', 'Fully Acquired')], default='4')
+		('0', 'Not acquired'), ('3', '60%+'), ('4', '80%+'), ('5', 'Fully Acquired')], default='4', required=True)
 	percentage = fields.Float(string='%', compute='_percentage')
 
 	def _percentage(self):

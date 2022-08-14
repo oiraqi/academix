@@ -11,8 +11,9 @@
                     <group>
                         <field name="ilo_program_ids" nolabel="1">
                             <tree editable="bottom">
-                                <field name="ilo_id"/>
-                                <field name="program_id"/>
+                                <field name="ilo_id" domain="[('course_id', '=', parent.course_id)]"
+                                    options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                                <field name="program_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                                 <field name="acquisition_level"/>
                                 <field name="percentage"/>
                             </tree>
