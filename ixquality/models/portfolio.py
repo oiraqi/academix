@@ -25,7 +25,7 @@ from odoo import api, models, fields
 
 
 class Portfolio(models.Model):
-	_name = 'ixqms.portfolio'
+	_name = 'ixquality.portfolio'
 	_description = 'Portfolio'
 	_inherit = 'ix.faculty.activity'
 	_sql_constraints = [('section_ukey', 'unique(section_id)', 'A portfolio already exists for this section')]
@@ -58,10 +58,10 @@ class Portfolio(models.Model):
 				else:
 					rec.section_id = False
 
-	useful_assessment_technique_ids = fields.Many2many('ixlms.assessment.technique', 'ixqms_portfolio_assessment_technique_useful', 'portfolio_id', 'assessment_technique_id', 'Useful', required=True)
-	not_recommended_assessment_technique_ids = fields.Many2many('ixlms.assessment.technique', 'ixqms_portfolio_assessment_technique_nr', 'portfolio_id', 'assessment_technique_id', 'Not Recommended')
-	assessment_ids = fields.One2many(comodel_name='ixqms.assessment', inverse_name='portfolio_id', string='Assessment / Program')
-	action_ids = fields.One2many(comodel_name='ixqms.action', inverse_name='portfolio_id', string='Recommended Remedial Actions')	
+	useful_assessment_technique_ids = fields.Many2many('ixlms.assessment.technique', 'ixquality_portfolio_assessment_technique_useful', 'portfolio_id', 'assessment_technique_id', 'Useful', required=True)
+	not_recommended_assessment_technique_ids = fields.Many2many('ixlms.assessment.technique', 'ixquality_portfolio_assessment_technique_nr', 'portfolio_id', 'assessment_technique_id', 'Not Recommended')
+	assessment_ids = fields.One2many(comodel_name='ixquality.assessment', inverse_name='portfolio_id', string='Assessment / Program')
+	action_ids = fields.One2many(comodel_name='ixquality.action', inverse_name='portfolio_id', string='Recommended Remedial Actions')	
 	ilo_changes = fields.Html('Recommended Changes To Course ILOs')
 	ass_tech_modifications = fields.Html('Recommended Modifications To Assssment Techniques')
 	deviations = fields.Html('Significant Deviations in Course Content from Syllabus')	

@@ -25,18 +25,18 @@ from odoo import api, fields, models
 
 
 class CourseProgram(models.Model):
-    _name = 'ixqms.course.program'
+    _name = 'ixquality.course.program'
     _description = 'Course Program Mapping'
     _sql_constraints = [('course_program_ukey', 'unique(course_id, program_id)', 'Course/Program mapping already exists')]
 
     course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
     program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True)
-    ilo_so_ids = fields.One2many(comodel_name='ixqms.course.ilo.so', inverse_name='course_program_id', string='ILO/SO Mapping')
+    ilo_so_ids = fields.One2many(comodel_name='ixquality.course.ilo.so', inverse_name='course_program_id', string='ILO/SO Mapping')
     discipline_id = fields.Many2one(comodel_name='ix.discipline', related='course_id.discipline_id', store=True)
     school_id = fields.Many2one(comodel_name='ix.school', related='course_id.school_id', store=True)
     ilo_ids = fields.One2many('ixcatalog.course.ilo', related='course_id.ilo_ids', string="Course ILOs")
-    so_ids = fields.One2many('ixqms.student.outcome', related='program_id.so_ids', string="Program SOs")
-    covered_so_ids = fields.One2many(comodel_name='ixqms.student.outcome', compute='_covered_so_ids', string='Covered/Assessed SOs')
+    so_ids = fields.One2many('ixquality.student.outcome', related='program_id.so_ids', string="Program SOs")
+    covered_so_ids = fields.One2many(comodel_name='ixquality.student.outcome', compute='_covered_so_ids', string='Covered/Assessed SOs')
 
     def _covered_so_ids(self):
         for rec in self:

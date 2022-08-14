@@ -25,13 +25,13 @@ from odoo import api, fields, models
 
 
 class CourseIloSO(models.Model):
-    _name = 'ixqms.course.ilo.so'
+    _name = 'ixquality.course.ilo.so'
     _description = 'Course ILO & SO Mapping'
-    _sql_constraints = [('ixqms_ilo_so_course_program_so_ukey', 'unique(course_program_id, ilo_id, so_id)', 'Mapping already exists')]
+    _sql_constraints = [('ixquality_ilo_so_course_program_so_ukey', 'unique(course_program_id, ilo_id, so_id)', 'Mapping already exists')]
 
     ilo_id = fields.Many2one(comodel_name='ixcatalog.course.ilo', string='ILO', required=True)
-    so_id = fields.Many2one(comodel_name='ixqms.student.outcome', string='SO', required=True)
-    course_program_id = fields.Many2one(comodel_name='ixqms.course.program', string='Course/Program', required=True)    
+    so_id = fields.Many2one(comodel_name='ixquality.student.outcome', string='SO', required=True)
+    course_program_id = fields.Many2one(comodel_name='ixquality.course.program', string='Course/Program', required=True)    
     level = fields.Selection(string='Level', selection=[('introduce', 'Introduce'), ('reinforce', 'Reinforce'), ('emphasize', 'Emphasize')], default='introduce', required=True)
     course_id = fields.Many2one(comodel_name='ix.course', related='course_program_id.course_id', store=True)
     program_id = fields.Many2one(comodel_name='ixcatalog.program', related='course_program_id.program_id', store=True)

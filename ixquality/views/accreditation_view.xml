@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="view_accreditation_form" model="ir.ui.view">
-            <field name="name">ixqms.accreditation.form</field>
-            <field name="model">ixqms.accreditation</field>
+            <field name="name">ixquality.accreditation.form</field>
+            <field name="model">ixquality.accreditation</field>
             <field name="arch" type="xml">
                 <form string="Accreditation">
                     <sheet>
@@ -29,8 +29,8 @@
             </field>
         </record>
         <record id="view_accreditation_tree" model="ir.ui.view">
-            <field name="name">ixqms.accreditation.tree</field>
-            <field name="model">ixqms.accreditation</field>
+            <field name="name">ixquality.accreditation.tree</field>
+            <field name="model">ixquality.accreditation</field>
             <field eval="8" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Accreditations" editable="bottom">
@@ -43,7 +43,7 @@
         <record id="action_accreditation" model="ir.actions.act_window">
             <field name="name">Accreditations</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">ixqms.accreditation</field>
+            <field name="res_model">ixquality.accreditation</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="context">{}</field>

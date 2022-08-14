@@ -27,8 +27,8 @@ from odoo import models, fields, api
 class Program(models.Model):
     _inherit = 'ixcatalog.program'
 
-    so_ids = fields.One2many(comodel_name='ixqms.student.outcome', inverse_name='program_id', string='Student Outcomes')
-    accreditation_ids = fields.Many2many('ixqms.accreditation', 'ixqms_program_accreditation_rel', 'program_id', 'accreditation_id', 'Accreditation')
-    course_program_ids = fields.One2many(comodel_name='ixqms.course.program', inverse_name='program_id', string='Assessed Courses')
-    soc_ids = fields.One2many(comodel_name='ixqms.student.outcome', related='so_ids')
+    so_ids = fields.One2many(comodel_name='ixquality.student.outcome', inverse_name='program_id', string='Student Outcomes')
+    accreditation_ids = fields.Many2many('ixquality.accreditation', 'ixquality_program_accreditation_rel', 'program_id', 'accreditation_id', 'Accreditation')
+    course_program_ids = fields.One2many(comodel_name='ixquality.course.program', inverse_name='program_id', string='Assessed Courses')
+    soc_ids = fields.One2many(comodel_name='ixquality.student.outcome', related='so_ids')
     

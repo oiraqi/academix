@@ -1,35 +1,35 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ixqms_course_ilo_so_user,access.ixqms_course_ilo_so.user,model_ixqms_course_ilo_so,base.group_user,1,0,0,0
-access_ixqms_course_ilo_so_coordinator,access.ixqms_course_ilo_so.coordinator,model_ixqms_course_ilo_so,ix.group_coordinator,1,1,1,1
+access_ixquality_course_ilo_so_user,access.ixquality_course_ilo_so.user,model_ixquality_course_ilo_so,base.group_user,1,0,0,0
+access_ixquality_course_ilo_so_coordinator,access.ixquality_course_ilo_so.coordinator,model_ixquality_course_ilo_so,ix.group_coordinator,1,1,1,1
 
-access_ixqms_course_program_user,access.ixqms_course_program.user,model_ixqms_course_program,base.group_user,1,0,0,0
-access_ixqms_course_program_coordinator,access.ixqms_course_program.coordinator,model_ixqms_course_program,ix.group_coordinator,1,1,1,0
+access_ixquality_course_program_user,access.ixquality_course_program.user,model_ixquality_course_program,base.group_user,1,0,0,0
+access_ixquality_course_program_coordinator,access.ixquality_course_program.coordinator,model_ixquality_course_program,ix.group_coordinator,1,1,1,0
 
-access_ixqms_accreditation_user,access.ixqms_accreditation.user,model_ixqms_accreditation,base.group_user,1,0,0,0
-access_ixqms_accreditation_coordinator,access.ixqms_accreditation.coordinator,model_ixqms_accreditation,ix.group_coordinator,1,1,1,1
+access_ixquality_accreditation_user,access.ixquality_accreditation.user,model_ixquality_accreditation,base.group_user,1,0,0,0
+access_ixquality_accreditation_coordinator,access.ixquality_accreditation.coordinator,model_ixquality_accreditation,ix.group_coordinator,1,1,1,1
 
-access_ixqms_student_outcome_user,access.ixqms_student_outcome.user,model_ixqms_student_outcome,base.group_user,1,0,0,0
-access_ixqms_student_outcome_coordinator,access.ixqms_student_outcome.coordinator,model_ixqms_student_outcome,ix.group_coordinator,1,0,0,0
+access_ixquality_student_outcome_user,access.ixquality_student_outcome.user,model_ixquality_student_outcome,base.group_user,1,0,0,0
+access_ixquality_student_outcome_coordinator,access.ixquality_student_outcome.coordinator,model_ixquality_student_outcome,ix.group_coordinator,1,0,0,0
 
-access_ixqms_portfolio_faculty,access.ixqms.portfolio.faculty,model_ixqms_portfolio,ix.group_faculty,1,1,1,1
-access_ixqms_portfolio_coordinator,access.ixqms.portfolio.coordinator,model_ixqms_portfolio,ix.group_coordinator,1,0,0,0
-access_ixqms_portfolio_vpaa,access.ixqms.portfolio.vpaa,model_ixqms_portfolio,ix.group_vpaa,1,0,0,0
+access_ixquality_portfolio_faculty,access.ixquality.portfolio.faculty,model_ixquality_portfolio,ix.group_faculty,1,1,1,1
+access_ixquality_portfolio_coordinator,access.ixquality.portfolio.coordinator,model_ixquality_portfolio,ix.group_coordinator,1,0,0,0
+access_ixquality_portfolio_vpaa,access.ixquality.portfolio.vpaa,model_ixquality_portfolio,ix.group_vpaa,1,0,0,0
 
-access_ixqms_assessment_faculty,access.ixqms.assessment.faculty,model_ixqms_assessment,ix.group_faculty,1,1,1,1
-access_ixqms_assessment_coordinator,access.ixqms.assessment.coordinator,model_ixqms_assessment,ix.group_coordinator,1,0,0,0
-access_ixqms_assessment_vpaa,access.ixqms.assessment.vpaa,model_ixqms_assessment,ix.group_vpaa,1,0,0,0
+access_ixquality_assessment_faculty,access.ixquality.assessment.faculty,model_ixquality_assessment,ix.group_faculty,1,1,1,1
+access_ixquality_assessment_coordinator,access.ixquality.assessment.coordinator,model_ixquality_assessment,ix.group_coordinator,1,0,0,0
+access_ixquality_assessment_vpaa,access.ixquality.assessment.vpaa,model_ixquality_assessment,ix.group_vpaa,1,0,0,0
 
-access_ixqms_assessment_line_faculty,access.ixqms.assessment.line.faculty,model_ixqms_assessment_line,ix.group_faculty,1,1,1,1
-access_ixqms_assessment_line_coordinator,access.ixqms.assessment.line.coordinator,model_ixqms_assessment_line,ix.group_coordinator,1,0,0,0
-access_ixqms_assessment_line_vpaa,access.ixqms.assessment.line.vpaa,model_ixqms_assessment_line,ix.group_vpaa,1,0,0,0
+access_ixquality_assessment_line_faculty,access.ixquality.assessment.line.faculty,model_ixquality_assessment_line,ix.group_faculty,1,1,1,1
+access_ixquality_assessment_line_coordinator,access.ixquality.assessment.line.coordinator,model_ixquality_assessment_line,ix.group_coordinator,1,0,0,0
+access_ixquality_assessment_line_vpaa,access.ixquality.assessment.line.vpaa,model_ixquality_assessment_line,ix.group_vpaa,1,0,0,0
 
-access_ixqms_action_faculty,access.ixqms.action.faculty,model_ixqms_action,ix.group_faculty,1,1,1,1
-access_ixqms_action_coordinator,access.ixqms.action.coordinator,model_ixqms_action,ix.group_coordinator,1,0,0,0
-access_ixqms_action_vpaa,access.ixqms.action.vpaa,model_ixqms_action,ix.group_vpaa,1,0,0,0
+access_ixquality_action_faculty,access.ixquality.action.faculty,model_ixquality_action,ix.group_faculty,1,1,1,1
+access_ixquality_action_coordinator,access.ixquality.action.coordinator,model_ixquality_action,ix.group_coordinator,1,0,0,0
+access_ixquality_action_vpaa,access.ixquality.action.vpaa,model_ixquality_action,ix.group_vpaa,1,0,0,0
 
-access_ixqms_assessed_ilo_faculty,access.ixqms.assessed.ilo.faculty,model_ixqms_assessed_ilo,ix.group_faculty,1,1,1,1
-access_ixqms_assessed_ilo_user,access.ixqms.assessed.ilo.user,model_ixqms_assessed_ilo,base.group_user,1,0,0,0
+access_ixquality_assessed_ilo_faculty,access.ixquality.assessed.ilo.faculty,model_ixquality_assessed_ilo,ix.group_faculty,1,1,1,1
+access_ixquality_assessed_ilo_user,access.ixquality.assessed.ilo.user,model_ixquality_assessed_ilo,base.group_user,1,0,0,0
 
-access_ixqms_acquisition_level_setup,access.ixqms.acquisition.level.setup,model_ixqms_acquisition_level,ix.group_setup,1,1,1,1
-access_ixqms_acquisition_level_user,access.ixqms.acquisition.level.user,model_ixqms_acquisition_level,base.group_user,1,0,0,0
+access_ixquality_acquisition_level_setup,access.ixquality.acquisition.level.setup,model_ixquality_acquisition_level,ix.group_setup,1,1,1,1
+access_ixquality_acquisition_level_user,access.ixquality.acquisition.level.user,model_ixquality_acquisition_level,base.group_user,1,0,0,0
 
