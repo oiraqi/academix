@@ -41,15 +41,15 @@ class LmsCourseIloProgram(models.Model):
 			assessed_ilos = self.env['ixquality.assessed.ilo'].search([('course_id', '=', rec.course_id.id), ('ilo_id', '=', rec.ilo_id.id)])
 			for assessed_ilo in assessed_ilos:
 				if str(assessed_ilo.student_id) in s:
-					s[str(assessed_ilo.student_id)] += int(assessed_ilo.course_id.acquisition_level)
+					s[str(assessed_ilo.student_id)] += int(assessed_ilo.acquisition_level)
 					c[str(assessed_ilo.student_id)] += 1
 				else:
-					s[str(assessed_ilo.student_id)] = int(assessed_ilo.course_id.acquisition_level)
+					s[str(assessed_ilo.student_id)] = int(assessed_ilo.acquisition_level)
 					c[str(assessed_ilo.student_id)] = 1
 
 			if len(s) > 0:
 				for t in s:
-					if s[t]/c[t] >= int(rec.acquisition_level):
+					if s[t]/c[t] >= int(rec.course_id.acquisition_level):
 						a += 1
 					rec.percentage = 100 * a / len(s)
 			else:
