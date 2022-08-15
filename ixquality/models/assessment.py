@@ -47,9 +47,7 @@ class Assessment(models.Model):
 						nstudents += 1
 			rec.nstudents = nstudents
 
-	kpi = fields.Selection(string='Minimum ILO Acquisition %', selection=[
-		('70', '70'), ('75', '75'), ('80', '80'),
-		('85', '85'), ('90', '90'), ('95', '95'), ('100', '100')], default='80', required=True)
+	acquisition_level = fields.Selection(related='portfolio_id.lms_course_id.acquisition_level')
 	used_assessment_technique_ids = fields.Many2many(comodel_name='ixlms.assessment.technique', compute='_uat_ids')
 
 	@api.onchange('portfolio_id')
