@@ -37,7 +37,7 @@ class AssessmentLine(models.Model):
 	so_ids = fields.One2many('ixquality.student.outcome', compute='_so_ids', string='SOs')
 	assessment_technique_ids = fields.One2many(comodel_name='ixlms.assessment.technique', compute='_assessment_technique_ids')
 
-	@api.onchange('assessment_id')
+	@api.onchange('assessment_id', 'ilo_id')
 	def _assessment_technique_ids(self):
 		for rec in self:
 			technique_ids = []
