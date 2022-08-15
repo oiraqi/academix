@@ -34,7 +34,8 @@ class Portfolio(models.Model):
 	lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)	
 	section_id = fields.Many2one('ixroster.section', related='lms_course_id.section_id', store=True)
 	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id', store=True)
-	school_id = fields.Many2one(comodel_name='ix.school', related='section_id.school_id', store=True)	
+	school_id = fields.Many2one(comodel_name='ix.school', related='section_id.school_id', store=True)
+	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', related='lms_course_id.technique_ids')
 
 	@api.onchange('section_id', 'faculty_id')
 	@api.depends('section_id', 'faculty_id')
@@ -59,8 +60,8 @@ class Portfolio(models.Model):
 				else:
 					rec.lms_course_id = False
 
-	useful_assessment_technique_ids = fields.Many2many('ixlms.assessment.technique', 'ixquality_portfolio_assessment_technique_useful', 'portfolio_id', 'assessment_technique_id', 'Useful', required=True)
-	not_recommended_assessment_technique_ids = fields.Many2many('ixlms.assessment.technique', 'ixquality_portfolio_assessment_technique_nr', 'portfolio_id', 'assessment_technique_id', 'Not Recommended')
+	useful_assessment_technique_ids = fields.Many2many('ixlms.weighted.technique', 'ixquality_portfolio_assessment_technique_useful', 'portfolio_id', 'assessment_technique_id', 'Useful', required=True)
+	not_recommended_assessment_technique_ids = fields.Many2many('ixlms.weighted.technique', 'ixquality_portfolio_assessment_technique_nr', 'portfolio_id', 'assessment_technique_id', 'Not Recommended')
 	assessment_ids = fields.One2many(comodel_name='ixquality.assessment', inverse_name='portfolio_id', string='Assessment / Program')
 	action_ids = fields.One2many(comodel_name='ixquality.action', inverse_name='portfolio_id', string='Recommended Remedial Actions')	
 	ilo_changes = fields.Html('Recommended Changes To Course ILOs')
