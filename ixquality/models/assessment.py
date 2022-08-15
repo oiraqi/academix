@@ -55,7 +55,7 @@ class Assessment(models.Model):
 		for rec in self:
 			if not rec.portfolio_id or \
 				(not rec.portfolio_id.useful_assessment_technique_ids and \
-					not rec.not_recommended_assessment_technique_ids):
+					not rec.portfolio_id.not_recommended_assessment_technique_ids):
 				rec.used_assessment_technique_ids = False
 				continue
 			

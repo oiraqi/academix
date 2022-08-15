@@ -8,7 +8,8 @@
             <field name="inherit_id" ref="ixlms.view_lms_course_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='ilos']" position="after">
-                    <group col="4" groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
+                    <group name="ilo_achievement" col="4" attrs="{'invisible': [('id', '=', False)]}"
+                        groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
                         <field name="acquisition_level" style="width: 20%"/>                        
                         <field name="ilo_program_ids" nolabel="1" colspan="4">
                             <tree editable="bottom">

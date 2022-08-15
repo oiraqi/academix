@@ -21,12 +21,24 @@
 #
 ###############################################################################
 
-from odoo import models, fields
+from odoo import models, fields, api
 
 class LmsCourse(models.Model):
     _inherit = 'ixlms.course'
 
+    @api.model
+    def create(self, vals):
+        course = super(LmsCourse, self).create(vals)
+        for ilo in course.ilo_ids:
+            for program in course.program_ids:
+                self.env['ixquality.lms.course.ilo.program'].create({
+                    'course_id': course.id,
+                    'ilo_id': ilo.id,
+                    'program_id': program.id
+                })
+        return course
+
     ilo_program_ids = fields.One2many('ixquality.lms.course.ilo.program', inverse_name='course_id')
-    acquisition_level = fields.Selection(string='Targetted Acquisition Level', selection=[
+    acquisition_level = fields.Selection(string='Targetted Acquisition Level (TAL)', selection=[
 		('3', '60%+'), ('4', '80%+'), ('5', 'Fully Acquired')], default='4', required=True)
     
