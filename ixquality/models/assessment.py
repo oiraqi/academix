@@ -91,4 +91,8 @@ class Assessment(models.Model):
 				rec.assessed_so_ids = False
 				continue
 			rec.ilo_so_ids = [record.id for record in records]
-			rec.assessed_so_ids = [record.so_id.id for record in records]
+			assessed_so_ids = []
+			for record in records:
+				if record.so_id.id not in assessed_so_ids:
+					assessed_so_ids.append(record.so_id.id)
+			rec.assessed_so_ids = assessed_so_ids

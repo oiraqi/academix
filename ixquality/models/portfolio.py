@@ -63,7 +63,7 @@ class Portfolio(models.Model):
 	assessment_ids = fields.One2many(comodel_name='ixquality.assessment', inverse_name='portfolio_id', string='Assessment / Program')
 	action_ids = fields.One2many(comodel_name='ixquality.action', inverse_name='portfolio_id', string='Recommended Remedial Actions')	
 	ilo_changes = fields.Html('Recommended Changes To Course ILOs')
-	ass_tech_modifications = fields.Html('Recommended Modifications To Assssment Techniques')
+	ass_tech_modifications = fields.Html('Recommended Modifications To Assessment Techniques')
 	deviations = fields.Html('Significant Deviations in Course Content from Syllabus')	
 	grade_matrix = fields.Binary(string='Grade Matrix')
 	good_performance = fields.Binary(string='Good Performance Samples (1 zip)')

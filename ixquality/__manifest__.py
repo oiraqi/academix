@@ -22,6 +22,7 @@
         "views/program_view.xml",
         "views/assessment_view.xml",
         "views/assessed_ilo_view.xml",
+        "views/action_view.xml",
         "views/lms_chapter_view.xml",
         "views/lms_course_view.xml",
         "views/acquisition_level_view.xml",
