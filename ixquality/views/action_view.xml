@@ -9,11 +9,11 @@
 					<header>
 						<button string="Mark as Implemented" attrs="{'invisible': [('state', '!=', 'planned')]}" name="mark_implemented" type="object" class="oe_highlight" groups="ix.group_faculty"/>
 						<button string="Mark as Assessed" attrs="{'invisible': [('state', '!=', 'implemented')]}" name="mark_assessed" type="object" class="oe_highlight" groups="ix.group_faculty"/>
-						<field name="state" widget="statusbar"/>
+						<field name="state" widget="statusbar" attrs="{'invisible': [('id', '=', False)]}"/>
 					</header>
 					<sheet>
-						<h1><field name="name" default_focus="1" placeholder="Title..."/></h1>
-						<group name="info">
+						<h1><field name="name" default_focus="1" placeholder="Title..." style="width: 75%"/></h1>
+						<group name="info">							
 							<field name="description"/>
 							<field name="assessment_criteria"/>
 							<field name="assessment_methodology"/>

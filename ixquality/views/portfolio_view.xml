@@ -9,13 +9,11 @@
 					<sheet>
 						<h1>
 							<field name="name"/>
-						</h1>
-						<h2>
-							<field name="course_id"/>
-						</h2>
+						</h1>						
 						<group name="info" string="Section Information" col="4">
 							<field name="term_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-							<field name="section_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" domain="[('instructor_id.user_id', '=', uid), ('term_id', '=', term_id)]"/>
+							<field name="lms_course_id" options="{'no_quick_create': True, 'no_create_edit': True}" domain="[('instructor_id.user_id', '=', uid), ('term_id', '=', term_id)]"/>
+							<field name="section_id" invisible="1"/>
 							<field name="school_id" invisible="1"/>
 							<field name="course_id" invisible="1"/>
 						</group>

@@ -37,7 +37,7 @@ class LmsCourse(models.Model):
 	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id')
 	prerequisite_ids = fields.One2many('ixcatalog.prerequisite', related='course_id.prerequisite_ids')
 	corequisite_ids = fields.One2many('ixcatalog.corequisite', related='course_id.corequisite_ids')
-	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id')
+	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id', store=True)
 	discipline_id = fields.Many2one(comodel_name='ix.discipline', related='section_id.discipline_id')
 	timeslot = fields.Char(related='section_id.timeslot')	
 	room_id = fields.Many2one(comodel_name='ix.room', related='section_id.room_id')

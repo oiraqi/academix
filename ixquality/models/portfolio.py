@@ -31,7 +31,8 @@ class Portfolio(models.Model):
 	_sql_constraints = [('section_ukey', 'unique(section_id)', 'A portfolio already exists for this section')]
 
 	name = fields.Char('Name', compute='_compute_name', store=True)
-	section_id = fields.Many2one('ixroster.section', 'Section', required=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)	
+	section_id = fields.Many2one('ixroster.section', related='lms_course_id.section_id', store=True)
 	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id', store=True)
 	school_id = fields.Many2one(comodel_name='ix.school', related='section_id.school_id', store=True)	
 
@@ -51,12 +52,12 @@ class Portfolio(models.Model):
 	def _onchange_term_id(self):
 		for rec in self:
 			if rec.term_id:
-				sections = self.env['ixroster.section'].search(
+				lms_courses = self.env['ixlms.course'].search(
                     [('instructor_id.user_id', '=', self.env.user.id), ('term_id', '=', rec.term_id.id)])
-				if sections:
-					rec.section_id = sections[0]
+				if lms_courses:
+					rec.lms_course_id = lms_courses[0]
 				else:
-					rec.section_id = False
+					rec.lms_course_id = False
 
 	useful_assessment_technique_ids = fields.Many2many('ixlms.assessment.technique', 'ixquality_portfolio_assessment_technique_useful', 'portfolio_id', 'assessment_technique_id', 'Useful', required=True)
 	not_recommended_assessment_technique_ids = fields.Many2many('ixlms.assessment.technique', 'ixquality_portfolio_assessment_technique_nr', 'portfolio_id', 'assessment_technique_id', 'Not Recommended')
