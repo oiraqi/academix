@@ -14,13 +14,25 @@
                         <field name="email"/>
                     </group>
                     <group name="student_performance" string="Student Performance" col="4">
-                        <field name="attendance_grade" widget="percentpie" nolabel="1"/>
                         <field name="assessment_grade" widget="percentpie" nolabel="1"/>
+                        <field name="attendance_grade" widget="percentpie" nolabel="1"/>                        
                         <field name="overall_grade" widget="percentpie" nolabel="1"/>
                         <field name="letter_grade" nolabel="1"
                             widget="badge" style="font-weight: bold"/>
                     </group>
-                    <notebook>
+                    <notebook>                        
+                        <page string="Assessment" name="assessment">
+                            <group>
+                                <field name="assessment_line_ids" nolabel="1">
+                                    <tree>
+                                        <field name="assessment_id"/>
+                                        <field name="module_id"/>
+                                        <field name="technique_id" widget="badge"/>
+                                        <field name="egrade" string="Grade (%)"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
                         <page string="Attendance" name="attendance" col="4">
                             <group col="4">
                                 <field name="attendance_rate"/>
@@ -31,18 +43,6 @@
                                     <tree>
                                         <field name="day"/>
                                         <field name="state"/>
-                                    </tree>
-                                </field>
-                            </group>
-                        </page>
-                        <page string="Assessment" name="assessment">
-                            <group>
-                                <field name="assessment_line_ids" nolabel="1">
-                                    <tree>
-                                        <field name="assessment_id"/>
-                                        <field name="module_id"/>
-                                        <field name="technique_id" widget="badge"/>
-                                        <field name="egrade" string="Grade (%)"/>
                                     </tree>
                                 </field>
                             </group>

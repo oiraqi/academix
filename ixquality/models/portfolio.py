@@ -38,6 +38,7 @@ class Portfolio(models.Model):
 	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', related='lms_course_id.technique_ids')
 	lms_assessment_ids = fields.One2many(comodel_name='ixlms.assessment', compute='_assessment_ids')
 
+	@api.onchange('lms_course_id')
 	def _assessment_ids(self):
 		for rec in self:
 			assessment_ids = []

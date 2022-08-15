@@ -29,7 +29,7 @@
 								<group name="samples" col="6">
 									<field name="lms_assessment_ids" nolabel="1">
 										<tree>
-											<field name="name"/>
+											<field name="name" string="Assessment"/>
 											<field name="good_performance"/>
 											<field name="avg_performance"/>
 											<field name="poor_performance"/>
