@@ -35,8 +35,22 @@ class AssessmentLine(models.Model):
 	faculty_id = fields.Many2one(comodel_name='ix.faculty', related='assessment_id.faculty_id', store=True)	
 	ilo_id = fields.Many2one('ixcatalog.course.ilo', 'ILO', required=True)
 	so_ids = fields.One2many('ixquality.student.outcome', compute='_so_ids', string='SOs')
-	assessment_technique_ids = fields.Many2many(comodel_name='ixlms.assessment.technique', string='Techniques', required=True)
-	used_assessment_technique_ids = fields.Many2many(comodel_name='ixlms.assessment.technique', related='assessment_id.used_assessment_technique_ids')
+	assessment_technique_ids = fields.One2many(comodel_name='ixlms.assessment.technique', compute='_assessment_technique_ids')
+
+	@api.onchange('assessment_id')
+	def _assessment_technique_ids(self):
+		for rec in self:
+			technique_ids = []
+			for assessment in rec.assessment_id.portfolio_id.lms_course_id.assessment_ids:
+				if rec.ilo_id in assessment.ilo_ids and assessment.technique_id.technique_id.id not in technique_ids:
+					technique_ids.append(assessment.technique_id.technique_id.id)
+			if len(technique_ids) > 0:
+				rec.assessment_technique_ids = technique_ids
+			else:
+				rec.assessment_technique_ids = False
+					
+
+
 	targetted = fields.Selection(string='Targetted', selection=[
 		('70', '70'), ('75', '75'), ('80', '80'),
 		('85', '85'), ('90', '90'), ('95', '95'), ('100', '100')], default='80', required=True)
