@@ -28,13 +28,13 @@
 							<page string="Student Assessment Samples" name="samples">
 								<group name="samples" col="6">
 									<field name="lms_assessment_ids" nolabel="1">
-										<tree>
+										<tree editable="bottom">
 											<field name="name" string="Assessment"/>
-											<field name="good_performance"/>
-											<field name="avg_performance"/>
-											<field name="poor_performance"/>
+											<field name="good_performance" widget="binary"/>
+											<field name="avg_performance" widget="binary"/>
+											<field name="poor_performance" widget="binary"/>
 										</tree>
-									</field>									
+									</field>							
 								</group>
 							</page>
 						</notebook>
