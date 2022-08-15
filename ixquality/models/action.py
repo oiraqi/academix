@@ -49,3 +49,12 @@ class Action(models.Model):
 	state = fields.Selection([
         ('planned', 'Planned'), ('implemented', 'Implemented'),
         ('assessed', 'Assessed')], string='State', default='planned', required=True, tracking=True)
+
+	
+	def mark_implemented(self):
+		self.ensure_one()
+		self.state = 'implemented'
+
+	def mark_assessed(self):
+		self.ensure_one()
+		self.state = 'assessed'
