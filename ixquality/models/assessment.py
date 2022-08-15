@@ -33,7 +33,7 @@ class Assessment(models.Model):
 
 	portfolio_id = fields.Many2one('ixquality.portfolio', 'Portfolio', required=True)
 	program_id = fields.Many2one('ixcatalog.program', 'Program', required=True)
-	nstudents = fields.Integer('Student Population', compute='_nstudents', store=True, required=True)
+	nstudents = fields.Integer('Student Population', compute='_nstudents', store=True)
 
 	@api.depends('portfolio_id', 'program_id')
 	def _nstudents(self):
@@ -89,5 +89,5 @@ class Assessment(models.Model):
 				rec.ilo_so_ids = False
 				rec.assessed_so_ids = False
 				continue
-			rec.ilo_so_ids = records
+			rec.ilo_so_ids = [record.id for record in records]
 			rec.assessed_so_ids = [record.so_id.id for record in records]
