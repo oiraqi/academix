@@ -34,6 +34,8 @@ class Assessment(models.Model):
 	portfolio_id = fields.Many2one('ixquality.portfolio', 'Portfolio', required=True)
 	program_id = fields.Many2one('ixcatalog.program', 'Program', required=True)
 	nstudents = fields.Integer('Student Population', compute='_nstudents', store=True)
+	program_ids = fields.One2many(comodel_name='ixcatalog.program', related='portfolio_id.lms_course_id.program_ids')
+	
 
 	@api.depends('portfolio_id', 'program_id')
 	def _nstudents(self):

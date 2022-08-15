@@ -41,7 +41,7 @@
 						<group name="assessment" string="Assessment per Program and Student Population">
 							<field name="assessment_ids" nolabel="1" context="{'default_school_id': school_id, 'default_course_id': course_id}">
 								<tree>
-									<field name="program_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="program_id"/>
 									<field name="nstudents"/>
 									<field name="assessed_so_ids" widget="many2many_tags"/>
 									<field name="course_id" invisible="1"/>
