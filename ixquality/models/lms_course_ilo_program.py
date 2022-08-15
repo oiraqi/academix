@@ -38,7 +38,7 @@ class LmsCourseIloProgram(models.Model):
 	def _percentage(self):
 		for rec in self:
 			s, c, a = {}, {}, 0
-			assessed_ilos = self.env['ixquality.assessed.ilo'].search([('course_id', '=', rec.course_id.id), ('ilo_id', '=', rec.ilo_id.id)])
+			assessed_ilos = self.env['ixquality.assessed.ilo'].search([('course_id', '=', rec.course_id.id), ('program_id', '=', rec.program_id.id), ('ilo_id', '=', rec.ilo_id.id)])
 			for assessed_ilo in assessed_ilos:
 				if str(assessed_ilo.student_id) in s:
 					s[str(assessed_ilo.student_id)] += int(assessed_ilo.acquisition_level)
