@@ -22,7 +22,6 @@
 ###############################################################################
 
 from odoo import api, models, fields
-from odoo.exceptions import UserError
 
 
 class AssessmentLine(models.Model):
@@ -54,13 +53,16 @@ class AssessmentLine(models.Model):
 	targetted = fields.Selection(string='Targetted', selection=[
 		('70', '70'), ('75', '75'), ('80', '80'),
 		('85', '85'), ('90', '90'), ('95', '95'), ('100', '100')], default='80', required=True)
-	achieved = fields.Float('Achieved', required=True)
+	achieved = fields.Float('Achieved', compute='achieved')
 
-	@api.constrains('achieved')
+	@api.onchange('assessment_id', 'ilo_id')
 	def _achieved(self):
 		for rec in self:
-			if rec.achieved < 0 or rec.achieved > 100:
-				raise UserError('Achieved must be between 0 and 100')
+			result = self.env['ixquality.lms.course.ilo.program'].search([('course_id', '=', rec.assessment_id.portfolio_id.lms_course_id.id), ('program_id', '=', rec.assessment_id.program_id.id), ('ilo_id', '=', rec.ilo_id.id)])
+			if result:
+				rec.achieved = result.percentage
+			else:
+				rec.achieved = 0
 
 	action_id = fields.Many2one('ixquality.action', 'Action')
 
