@@ -36,7 +36,7 @@ class Portfolio(models.Model):
 	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id', store=True)
 	school_id = fields.Many2one(comodel_name='ix.school', related='section_id.school_id', store=True)
 	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', related='lms_course_id.technique_ids')
-	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', compute='_assessment_ids')
+	lms_assessment_ids = fields.One2many(comodel_name='ixlms.assessment', compute='_assessment_ids')
 
 	def _assessment_ids(self):
 		for rec in self:
@@ -45,9 +45,9 @@ class Portfolio(models.Model):
 				if assessment.good_performance or assessment.avg_performance or assessment.poor_performance:
 					assessment_ids.append(assessment.id)
 			if len(assessment_ids) > 0:
-				rec.assessment_ids = assessment_ids
+				rec.lms_assessment_ids = assessment_ids
 			else:
-				rec.assessment_ids = False
+				rec.lms_assessment_ids = False
 
 	@api.onchange('section_id', 'faculty_id')
 	@api.depends('section_id', 'faculty_id')

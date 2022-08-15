@@ -27,7 +27,7 @@
 							</page>
 							<page string="Student Assessment Samples" name="samples">
 								<group name="samples" col="6">
-									<field name="assessment_ids" nolabel="1">
+									<field name="lms_assessment_ids" nolabel="1">
 										<tree>
 											<field name="name"/>
 											<field name="good_performance"/>
