@@ -25,12 +25,16 @@
 									<field name="not_recommended_assessment_technique_ids" domain="[('id', 'in', technique_ids), ('id', 'not in', useful_assessment_technique_ids)]" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 								</group>
 							</page>
-							<page string="Student Grades and Assessment Samples" name="grades_copies">
-								<group name="grades_copies" col="6">
-									<field name="grade_matrix" colspan="6"/>
-									<field name="good_performance"/>
-									<field name="avg_performance"/>
-									<field name="poor_performance"/>
+							<page string="Student Assessment Samples" name="samples">
+								<group name="samples" col="6">
+									<field name="assessment_ids" nolabel="1">
+										<tree>
+											<field name="name"/>
+											<field name="good_performance"/>
+											<field name="avg_performance"/>
+											<field name="poor_performance"/>
+										</tree>
+									</field>									
 								</group>
 							</page>
 						</notebook>
