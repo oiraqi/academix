@@ -82,6 +82,7 @@ class Assessment(models.Model):
 	ilo_so_ids = fields.One2many(comodel_name='ixquality.course.ilo.so', compute='_ilo_so_ids', string='ILO/SO Mapping')
 	assessed_so_ids = fields.One2many(comodel_name='ixquality.student.outcome', compute='_ilo_so_ids', string='Covered/Assessed SOs')
 	
+	@api.onchange('course_id', 'program_id')
 	def _ilo_so_ids(self):
 		for rec in self:
 			records = self.env['ixquality.course.ilo.so'].search([('course_id', '=', rec.course_id.id), ('program_id', '=', rec.program_id.id)])
