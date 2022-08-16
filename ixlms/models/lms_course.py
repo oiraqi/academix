@@ -50,6 +50,13 @@ class LmsCourse(models.Model):
 	textbook_ids = fields.One2many(comodel_name='ixlms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='ixroster.office.hour', related='instructor_id.office_hour_ids')
 
+	institution_id = fields.Many2one(comodel_name='res.company', compute='_institution_id')
+
+	def _institution_id(self):
+		for rec in self:
+			rec.institution_id = self.env['res.company'].search()[0]
+	
+
 	module_ids = fields.One2many(comodel_name='ixlms.module', inverse_name='course_id', string='Modules')
 	nmodules = fields.Integer(string='Modules', compute='_nmodules')
 	assessed_module_ids = fields.One2many(comodel_name='ixlms.module', compute='_assessed_module_ids', string='Modules')

@@ -16,18 +16,18 @@
             <t t-call="web.external_layout">
                 <div class="page">
                     <h1 style="border-bottom: 1px solid black; margin-bottom: 10px; padding: 15px; background-color: #D0D0D0;" align="center">
+                        <b><span t-field="o.institution_id.name" /></b>
+                        <br/>
                         <b><span t-field="o.school_id.name" /></b>
-                        <br/>
-                        <span t-field="o.course_id.name" />
-                        <br/>
-                        <span t-field="o.term_id.name" />
-                        <br/>
-                        <span t-field="o.name" />
+                        <br/><br/>
+                        <b><span t-field="o.course_id.name" /></b>
+                        <br/>                        
+                        <b><span t-field="o.name" /></b>
                     </h1>
                     <br/>
-                    <h2><b>Course Description</b></h2>
+                    <h2 style="border-bottom: 1px solid black;"><b>Course Description</b></h2>
                     <span t-raw="o.description" />
-                    <h2><b>Course ILOs</b></h2>
+                    <h2 style="border-bottom: 1px solid black;"><b>Course ILOs</b></h2>
                     <p>Students successfully passing the course will be able to:</p>
                     <ol>
                         <t t-foreach="o.ilo_ids" t-as="ilo">
@@ -36,7 +36,7 @@
                             </li>
                         </t>
                     </ol>
-                    <h2><b>Additional Information</b></h2>
+                    <h2 style="border-bottom: 1px solid black;"><b>Additional Information</b></h2>
                     <span t-raw="o.details" />
                 </div>
             </t>
