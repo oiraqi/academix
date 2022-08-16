@@ -14,4 +14,4 @@ access_ixroster_enrollment_vpaa,access.ixroster.enrollment.vpaa,model_ixroster_e
 access_ixroster_office_hour_user,access.ixroster.office.hour.user,model_ixroster_office_hour,base.group_user,1,0,0,0
 access_ixroster_office_hour_faculty,access.ixroster.office.hour.faculty,model_ixroster_office_hour,ix.group_faculty,1,1,1,1
 
-access_ix_term_registrar,access.ix.term.registrar,model_ix_term,ixroster.group_registrar,1,1,1,0
+access_ix_term_registrar,access.ix.term.registrar,ix.model_ix_term,ixroster.group_registrar,1,1,1,0
