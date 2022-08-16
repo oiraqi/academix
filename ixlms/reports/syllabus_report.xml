@@ -103,7 +103,7 @@
                     <t t-foreach="o.module_ids" t-as="module">
                     <h4><b><span t-field="module.name" /></b></h4>
                     <table style="border: 1px solid black; width: 100%; font-size: 100%; border-collapse: collapse;">
-                        <tr style="border: 1px solid black;">                            
+                        <tr style="border: 1px solid black; background-color: #D0D0D0;">                            
                             <th style="border: 1px solid black; text-align: center; width: 5%;">Ch.</th>
                             <th style="border: 1px solid black; text-align: center; width: 50%;">Name</th>
                             <th style="border: 1px solid black; text-align: center; width: 15%;">Covered ILOs</th>
@@ -124,6 +124,24 @@
                     </table>
                     <br/>
                     </t>
+                    <h2 style="border-bottom: 1px solid black;">
+                        <b>Assessment</b>
+                    </h2>
+                    <table style="border: 1px solid black; width: 100%; font-size: 100%; border-collapse: collapse;">
+                        <tr style="border: 1px solid black; background-color: #D0D0D0;">                            
+                            <th style="border: 1px solid black; text-align: center;">Assessment Technique</th>
+                            <th style="border: 1px solid black; text-align: center;"># of Assessments</th>
+                            <th style="border: 1px solid black; text-align: center;">%</th>                            
+                        </tr>
+                        <t t-foreach="o.technique_ids" t-as="technique">                        
+                        <tr>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="technique.name" /></td>
+                            <td style="border: 1px solid black; text-align: left; padding: 5px;"><span t-field="technique.nassessments" /></td>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="technique.percentage" /></td>
+                        </tr>
+                        </t>
+                    </table>
+                    <br/>
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Additional Information</b>
                     </h2>
