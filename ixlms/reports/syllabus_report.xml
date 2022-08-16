@@ -5,7 +5,7 @@
         <report id="ixlms_syllabus_reports" model="ixlms.course" string="Syllabus" report_type="qweb-pdf" name="ixlms.report_syllabus" file="ixlms.report_syllabus" attachment="'Syllabus.pdf'" />
 
         <template id="report_syllabus">
-            <t t-call="report.html_container">
+            <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-call="ixlms.report_syllabus_document"/>
                 </t>
@@ -13,7 +13,7 @@
         </template>
 
         <template id="report_syllabus_document">
-            <t t-call="report.external_layout">
+            <t t-call="web.external_layout">
                 <div class="page">
                     <h1 style="border-bottom: 1px solid black; margin-bottom: 10px; padding: 15px; background-color: #D0D0D0;" align="center">
                         <span t-field="o.school_id.name" />
