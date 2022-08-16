@@ -10,7 +10,7 @@
 		<menuitem id="planning_reservation_menu" name="Reservations" action="ixroster.action_reservation" parent="planning_root_menu" sequence="50"/>		
 		<menuitem id="planning_building_menu" name="Buildings" action="ix.action_building" parent="planning_root_menu" sequence="120"/>
 		<menuitem id="planning_room_menu" name="Rooms" action="ix.action_room" parent="planning_root_menu" sequence="140"/>
-		<menuitem id="planning_term_menu" name="Terms" parent="planning_root_menu" action="ix.action_term" sequence="160" groups="ixroster.group_registrar"/>
+		<menuitem id="planning_term_menu" name="Terms" parent="planning_root_menu" action="ix.action_term" sequence="160"/>
 		<menuitem id="planning_session_menu" name="Sessions" parent="planning_root_menu" action="ix.action_session" sequence="180" groups="ix.group_setup"/>
 	</data>
 </odoo>

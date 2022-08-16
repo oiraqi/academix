@@ -25,7 +25,7 @@ access_ix_staff_vpaa,access.ix.staff.vpaa,model_ix_staff,group_vpaa,1,0,0,0
 access_ix_school_setup,access.ix.school.setup,model_ix_school,ix.group_setup,1,1,1,0
 access_ix_school_user,access.ix.school.user,model_ix_school,base.group_user,1,0,0,0
 
-access_ix_term_user,access.ix.term.user,model_ix_term,base.group_user,1,0,0,0
+access_ix_term_user,access.ix.term.user,model_ix_term,ix.group_user,1,0,0,0
 access_ix_term_setup,access.ix.term.setup,model_ix_term,ix.group_setup,1,1,1,0
 
 access_calendar_event_setup,access.calendar.event.setup,model_calendar_event,ix.group_setup,1,1,1,1
