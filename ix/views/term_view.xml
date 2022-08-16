@@ -16,13 +16,14 @@
 							<field name="start_date"/>
 							<field name="end_date"/>
 						</group>
-						<group name="events" string="Events &#38; Important Dates">
-							<field name="event_ids">
+						<group name="events" string="Important Dates">
+							<field name="event_ids" nolabel="1">
 								<tree editable="bottom">
-									<field name="meta"/>
-									<field name="name"/>
-									<field name="start"/>
-									<field name="stop"/>
+									<field name="meta"/>									
+									<field name="start_date"/>
+									<field name="stop_date"/>
+									<field name="name" invisible="1"/>
+									<field name="all_day" invisible="1"/>
 								</tree>
 							</field>
 						</group>
