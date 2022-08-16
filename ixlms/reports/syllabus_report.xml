@@ -151,8 +151,8 @@
                         </tr>
                     </table>
                     <br/>
-                    <t t-if="o.attendance.percentage &gt; 0">
-                    <b>Attendance %: </b><span t-field="o.attendance.percentage" />    
+                    <t t-if="o.attendance_percentage &gt; 0">
+                    <b>Attendance %: </b><span t-field="o.attendance_percentage" />    
                     </t>                    
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Additional Information</b>
