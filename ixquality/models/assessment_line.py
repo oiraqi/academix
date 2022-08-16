@@ -53,7 +53,7 @@ class AssessmentLine(models.Model):
 	targetted = fields.Selection(string='Targetted', selection=[
 		('70', '70'), ('75', '75'), ('80', '80'),
 		('85', '85'), ('90', '90'), ('95', '95'), ('100', '100')], default='80', required=True)
-	achieved = fields.Float('Achieved', compute='achieved')
+	achieved = fields.Float('Achieved', compute='_achieved')
 
 	@api.onchange('assessment_id', 'ilo_id')
 	def _achieved(self):
