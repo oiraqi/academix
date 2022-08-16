@@ -131,8 +131,7 @@
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Assessment</b>
                     </h2>
-                    <br/>
-                    <table style="border: 1px solid black; width: 100%; font-size: 100%; border-collapse: collapse;">
+                    <table style="margin-top: 5px; border: 1px solid black; width: 100%; font-size: 100%; border-collapse: collapse;">
                         <tr style="border: 1px solid black; background-color: #D0D0D0;">                            
                             <th style="border: 1px solid black; text-align: center;">Assessment Technique</th>
                             <th style="border: 1px solid black; text-align: center;"># of Assessments</th>
@@ -145,6 +144,11 @@
                             <td style="border: 1px solid black; text-align: center;"><span t-field="technique.percentage" /></td>
                         </tr>
                         </t>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td style="border: 1px solid black; text-align: center;"><b>90.0</b></td>
+                        </tr>
                     </table>
                     <br/>
                     <h2 style="border-bottom: 1px solid black;">
