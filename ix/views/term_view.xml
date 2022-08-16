@@ -16,6 +16,16 @@
 							<field name="start_date"/>
 							<field name="end_date"/>
 						</group>
+						<group name="events" string="Events &#38; Important Dates">
+							<field name="event_ids">
+								<tree editable="bottom">
+									<field name="meta"/>
+									<field name="name"/>
+									<field name="start"/>
+									<field name="stop"/>
+								</tree>
+							</field>
+						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
 							<field name="create_date"/>

@@ -22,7 +22,6 @@
 ###############################################################################
 
 from odoo import models, fields, api
-from datetime import date
 
 
 class Activity(models.AbstractModel):

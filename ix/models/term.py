@@ -43,10 +43,8 @@ class Term(models.Model):
         if next_session:
             return self.env['ix.term'].get_or_create(self.year, next_session.id)
         
-        first_session = self.env['iw.session'].get_first_session()
+        first_session = self.env['ix.session'].get_first_session()
         return self.env['ix.term'].get_or_create(self.year + 1, first_session.id)
-
-
 
     @api.model
     def get_from_date(self, day):
@@ -74,11 +72,11 @@ class Term(models.Model):
     code = fields.Char(string='Term', compute='_compute_name_code', store=True)
     year = fields.Integer(string='Year', required=True, default=lambda self: fields.Date.today().year)
     session_id = fields.Many2one(comodel_name='ix.session', string='Session', required=True)
-    sequence = fields.Integer(related='session_id.sequence', store=True)
-    
-    
+    sequence = fields.Integer(related='session_id.sequence', store=True)    
     start_date = fields.Date(string='Start Date')
-    end_date = fields.Date(string='End Date')    
+    end_date = fields.Date(string='End Date')
+    event_ids = fields.One2many(comodel_name='calendar.event', inverse_name='term_id', string='Events & Important Dates')
+    
 
     @api.depends('year', 'session_id')
     def _compute_name_code(self):
