@@ -129,6 +129,9 @@
                     <br/>
                     </t>
                     <h2 style="border-bottom: 1px solid black;">
+                        <b>Textbooks</b>
+                    </h2>
+                    <h2 style="border-bottom: 1px solid black;">
                         <b>Assessment</b>
                     </h2>
                     <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
@@ -146,14 +149,18 @@
                         </t>
                         <tr>
                             <td></td>
-                            <td></td>
+                            <td style="border: 1px solid black; text-align: center;"><b>Total</b></td>
                             <td style="border: 1px solid black; text-align: center;"><b>90.0</b></td>
                         </tr>
+                        <t t-if="o.attendance_percentage &gt; 0">
+                        <tr>
+                            <td></td>
+                            <td style="border: 1px solid black; text-align: center;"><b>Attendance</b></td>
+                            <td style="border: 1px solid black; text-align: center;"><b><span t-field="o.attendance_percentage" /></b></td>
+                        </tr>
+                        </t>
                     </table>
                     <br/>
-                    <t t-if="o.attendance_percentage &gt; 0">
-                    <b>Attendance %: </b><span t-field="o.attendance_percentage" />    
-                    </t>                    
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Additional Information</b>
                     </h2>
