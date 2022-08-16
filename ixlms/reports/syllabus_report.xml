@@ -25,6 +25,15 @@
                         <b><span t-field="o.name" /></b>
                     </h1>
                     <br/>
+                    <h2 style="border-bottom: 1px solid black;"><b>General Information</b></h2>
+                    <table style="border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
+						<tr style="border: none;">
+                            <td style="width: 15%"><b>Prerequisites</b></td>
+                            <td style="width: 35%">...</td>
+                            <td style="width: 15%"><b>Corequisites</b></td>
+                            <td style="width: 35%">...</td>
+                        </tr>
+                    <br/>
                     <h2 style="border-bottom: 1px solid black;"><b>Course Description</b></h2>
                     <span t-raw="o.description" />
                     <h2 style="border-bottom: 1px solid black;"><b>Course ILOs</b></h2>
