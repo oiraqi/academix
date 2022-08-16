@@ -113,11 +113,11 @@
                         <t t-foreach="o.chapter_ids" t-as="chapter">
                         <t t-if="chapter.module_id == module">
                         <tr>
-                            <td><span t-field="chapter.sequence" /></td>
-                            <td><span t-field="chapter.name" /></td>
-                            <td>...</td>
-                            <td><span t-field="chapter.start_date" /></td>
-                            <td><span t-field="chapter.nsessions" /></td>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="chapter.sequence" /></td>
+                            <td style="border: 1px solid black; text-align: left;"><span t-field="chapter.name" /></td>
+                            <td style="border: 1px solid black; text-align: center;">...</td>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="chapter.start_date" /></td>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="chapter.nsessions" /></td>
                         </tr>
                         </t>
                         </t>
