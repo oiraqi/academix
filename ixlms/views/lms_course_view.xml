@@ -204,7 +204,7 @@
 									</field>
 								</group>
 							</page>
-							<page string="More Details" name="details">
+							<page string="Additional Information" name="details">
 								<group name="details">
 									<field name="details" widget="html" nolabel="1"/>
 								</group>
@@ -275,7 +275,7 @@
 			<field name="res_model">ixlms.course</field>
 			<field name="view_mode">kanban,tree,form</field>
 			<field name="domain">[('term_id.end_date', '&lt;', datetime.date.today().strftime('%Y-%m-%d'))]</field>
-			<field name="context">{'group_by': 'term_id'}</field>
+			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
 

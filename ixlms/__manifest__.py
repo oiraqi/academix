@@ -35,6 +35,7 @@
         'views/chapter_view.xml',
         'views/resource_view.xml',
         'views/lms_menu.xml',
+        'reports/syllabus_report.xml',
     ],
     'installable': True,
     'auto_install': False,
