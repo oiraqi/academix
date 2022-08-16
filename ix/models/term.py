@@ -75,7 +75,7 @@ class Term(models.Model):
     sequence = fields.Integer(related='session_id.sequence', store=True)    
     start_date = fields.Date(string='Start Date')
     end_date = fields.Date(string='End Date')
-    event_ids = fields.One2many(comodel_name='calendar.event', inverse_name='term_id', string='Events & Important Dates')
+    event_ids = fields.One2many(comodel_name='calendar.event', inverse_name='term_id', string='Events & Important Dates', order='start_date')
     
 
     @api.depends('year', 'session_id')
