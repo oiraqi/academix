@@ -6,10 +6,10 @@
 			<field name="model">ixquality.action</field>
 			<field name="arch" type="xml">
 				<form string="Action">
-					<header>
+					<header attrs="{'invisible': [('id', '=', False)]}">
 						<button string="Mark as Implemented" attrs="{'invisible': [('state', '!=', 'planned')]}" name="mark_implemented" type="object" class="oe_highlight" groups="ix.group_faculty"/>
 						<button string="Mark as Assessed" attrs="{'invisible': [('state', '!=', 'implemented')]}" name="mark_assessed" type="object" class="oe_highlight" groups="ix.group_faculty"/>
-						<field name="state" widget="statusbar" attrs="{'invisible': [('id', '=', False)]}"/>
+						<field name="state" widget="statusbar"/>
 					</header>
 					<sheet>
 						<h1><field name="name" default_focus="1" placeholder="Title..." style="width: 75%"/></h1>

@@ -22,8 +22,8 @@
 									<field name="ilo_id" domain="[('course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 									<field name="so_ids" widget="many2many_tags"/>
 									<field name="assessment_technique_ids" widget="many2many_tags"/>
-									<field name="achieved" string="Achieved*"/>
-									<field name="targetted" string="Targetted*"/>
+									<field name="achieved" string="Achieved (%)*"/>
+									<field name="targetted" string="Targetted (%)*"/>
 									<field name="action_id" domain="[('state', '=', 'planned'), ('ilo_id', '=', ilo_id)]"
 										context="{'default_ilo_id': ilo_id, 'default_portfolio_id': parent.portfolio_id}"/>
 									<field name="course_id" invisible="1"/>
