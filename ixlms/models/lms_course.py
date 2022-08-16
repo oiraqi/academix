@@ -43,7 +43,7 @@ class LmsCourse(models.Model):
 
 	def _requisites(self):
 		for rec in self:
-			prerequisites = ''
+			prerequisites = 'None'
 			if rec.prerequisite_ids:
 				if len(rec.prerequisite_ids) == 1:
 					prerequisites = rec.prerequisite_ids[0].name
@@ -51,7 +51,7 @@ class LmsCourse(models.Model):
 					prerequisites = ', '.join([prerequisite.name for prerequisite in rec.prerequisite_ids])
 			rec.prerequisites = prerequisites
 			
-			corequisites = ''
+			corequisites = 'None'
 			if rec.corequisite_ids:
 				if len(rec.corequisite_ids) == 1:
 					corequisites = rec.corequisite_ids[0].name
