@@ -28,22 +28,22 @@
                     <h2 style="border-bottom: 1px solid black;"><b>General Information</b></h2>
                     <table style="border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
 						<tr style="border: none;">
-                            <td style="width: 15%"><b>Prerequisites</b></td>
-                            <td style="width: 35%"><span t-field="o.prerequisites" /></td>
-                            <td style="width: 15%"><b>Corequisites</b></td>
-                            <td style="width: 35%"><span t-field="o.corequisites" /></td>
+                            <td style="width: 10%"><b>Prerequisites:</b></td>
+                            <td style="width: 40%"><span t-field="o.prerequisites" /></td>
+                            <td style="width: 10%"><b>Corequisites:</b></td>
+                            <td style="width: 40%"><span t-field="o.corequisites" /></td>
                         </tr>
                         <tr style="border: none;">
-                            <td style="width: 15%"><b>Timeslot</b></td>
-                            <td style="width: 35%"><span t-field="o.timeslot" /></td>
-                            <td style="width: 15%"><b>Room</b></td>
-                            <td style="width: 35%"><span t-field="o.room_id.name" /></td>
+                            <td style="width: 10%"><b>Timeslot:</b></td>
+                            <td style="width: 40%"><span t-field="o.timeslot" /></td>
+                            <td style="width: 10%"><b>Room:</b></td>
+                            <td style="width: 40%"><span t-field="o.room_id.name" /></td>
                         </tr>
                         <tr style="border: none;">
-                            <td style="width: 15%"><b>Instructor</b></td>
-                            <td style="width: 35%"><span t-field="o.instructor_id.name" /></td>
-                            <td style="width: 15%"><b>Office Hours</b></td>
-                            <td style="width: 35%"><span t-field="o.office_hours" /></td>
+                            <td style="width: 10%"><b>Instructor:</b></td>
+                            <td style="width: 40%"><span t-field="o.instructor_id.name" /></td>
+                            <td style="width: 10%"><b>Office Hours:</b></td>
+                            <td style="width: 40%"><span t-field="o.office_hours" /></td>
                         </tr>
                     </table>
                     <br/>
