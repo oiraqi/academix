@@ -31,6 +31,7 @@ class Event(models.Model):
 	_name = 'calendar.event'
 	_inherit = ['calendar.event', 'ix.activity']
 	_description = 'Event'
+	_sql_constraints = [('term_meta_ukey', 'unique(term_id, meta)', 'Duplicate events!')]
 
 	allday = fields.Boolean('All Day', default=True)
 	meta = fields.Selection(string='Type', selection=META_EVENTS)
