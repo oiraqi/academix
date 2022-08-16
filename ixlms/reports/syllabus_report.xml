@@ -131,7 +131,7 @@
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Assessment</b>
                     </h2>
-                    <table style="margin-top: 5px; border: 1px solid black; width: 100%; font-size: 100%; border-collapse: collapse;">
+                    <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
                         <tr style="border: 1px solid black; background-color: #D0D0D0;">                            
                             <th style="border: 1px solid black; text-align: center;">Assessment Technique</th>
                             <th style="border: 1px solid black; text-align: center;"># of Assessments</th>
@@ -151,6 +151,9 @@
                         </tr>
                     </table>
                     <br/>
+                    <t t-if="o.attendance.percentage &gt; 0">
+                    <b>Attendance %: </b><span t-field="o.attendance.percentage" />    
+                    </t>                    
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Additional Information</b>
                     </h2>
