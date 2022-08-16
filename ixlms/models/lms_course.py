@@ -38,6 +38,27 @@ class LmsCourse(models.Model):
 	school_id = fields.Many2one(comodel_name='ix.school', related='section_id.school_id', store=True)	
 	prerequisite_ids = fields.One2many('ixcatalog.prerequisite', related='course_id.prerequisite_ids')
 	corequisite_ids = fields.One2many('ixcatalog.corequisite', related='course_id.corequisite_ids')
+	prerequisites = fields.Char(compute='_requisites')
+	corequisites = fields.Char(compute='_requisites')
+
+	def _requisites(self):
+		for rec in self:
+			prerequisites = ''
+			if rec.prerequisite_ids:
+				if len(rec.prerequisite_ids) == 1:
+					prerequisites = rec.prerequisite_ids[0].name
+				else:
+					prerequisites = ', '.join([prerequisite.name for prerequisite in rec.prerequisite_ids])
+			rec.prerequisites = prerequisites
+			
+			corequisites = ''
+			if rec.corequisite_ids:
+				if len(rec.corequisite_ids) == 1:
+					corequisites = rec.corequisite_ids[0].name
+				else:
+					corequisites = ', '.join([corequisite.name for corequisite in rec.corequisite_ids])
+			rec.corequisites = corequisites
+
 	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id', store=True)
 	discipline_id = fields.Many2one(comodel_name='ix.discipline', related='section_id.discipline_id')
 	timeslot = fields.Char(related='section_id.timeslot')	
@@ -49,6 +70,18 @@ class LmsCourse(models.Model):
 	ilo_ids = fields.One2many('ixcatalog.course.ilo', related='course_id.ilo_ids')
 	textbook_ids = fields.One2many(comodel_name='ixlms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='ixroster.office.hour', related='instructor_id.office_hour_ids')
+	office_hours = fields.Char(compute='_office_hours')
+
+	def _office_hours(self):
+		for rec in self:
+			office_hours = ''
+			if rec.office_hour_ids:
+				if len(rec.office_hour_ids) == 1:
+					office_hours = rec.office_hour_ids[0].name
+				else:
+					office_hours = ', '.join([office_hour.name for office_hour in rec.office_hour_ids])
+			rec.office_hours = office_hours
+	
 
 	institution_id = fields.Many2one(comodel_name='res.company', compute='_institution_id')
 
