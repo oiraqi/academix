@@ -23,7 +23,7 @@
         'data/assessment_techniques.xml',
         'data/letter_grades.xml',
         'data/standard_events.xml',
-        'data/sranks.xml',
+        #'data/sranks.xml',
     ],
     'installable': True,
     'auto_install': False,
