@@ -13,19 +13,19 @@
         </template>
 
         <template id="report_syllabus_document">
-            <t t-call="web.external_layout">
-                <div class="page">
-                    <h1 style="border-bottom: 1px solid black; margin-bottom: 10px; padding: 15px; background-color: #D0D0D0;" align="center">
+            <div class="page">
+                <h1 style="border-bottom: 1px solid black; margin-bottom: 10px; padding: 15px; background-color: #D0D0D0;" align="center">
+                    <b>
                         <span t-field="o.school_id.name" />
-                        <br/>
-                        <span t-field="o.course_id.name" />
-                        <br/>
-                        <span t-field="o.term_id.name" />
-                        <br/>
-                        <span t-field="o.name" />
-                    </h1>
-                </div>
-            </t>
+                    </b>
+                    <br/>
+                    <span t-field="o.course_id.name" />
+                    <br/>
+                    <span t-field="o.term_id.name" />
+                    <br/>
+                    <span t-field="o.name" />
+                </h1>
+            </div>
         </template>
     </data>
 </odoo>
