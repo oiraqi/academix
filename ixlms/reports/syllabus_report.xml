@@ -42,15 +42,17 @@
                             <td style="width: 12%">
                                 <b>Prerequisites:</b>
                             </td>
-                            <td style="width: 38%">
+                            <td colspan="3">
                                 <span t-field="o.prerequisites" />
                             </td>
+                        </tr>
+                        <tr>
                             <td style="width: 12%">
                                 <b>Corequisites:</b>
                             </td>
-                            <td style="width: 38%">
+                            <td colspan="3">
                                 <span t-field="o.corequisites" />
-                            </td>
+                            </td>                            
                         </tr>
                         <tr style="border: none;">
                             <td style="width: 12%">
@@ -70,13 +72,15 @@
                             <td style="width: 12%">
                                 <b>Instructor:</b>
                             </td>
-                            <td style="width: 38%">
+                            <td colspan="3">
                                 <span t-field="o.instructor_id.name" />
                             </td>
+                        </tr>
+                        <tr>
                             <td style="width: 12%">
                                 <b>Office Hours:</b>
                             </td>
-                            <td style="width: 38%">
+                            <td colspan="3">
                                 <span t-field="o.office_hours" />
                             </td>
                         </tr>
@@ -127,6 +131,7 @@
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Assessment</b>
                     </h2>
+                    <br/>
                     <table style="border: 1px solid black; width: 100%; font-size: 100%; border-collapse: collapse;">
                         <tr style="border: 1px solid black; background-color: #D0D0D0;">                            
                             <th style="border: 1px solid black; text-align: center;">Assessment Technique</th>
@@ -136,7 +141,7 @@
                         <t t-foreach="o.technique_ids" t-as="technique">                        
                         <tr>
                             <td style="border: 1px solid black; text-align: center;"><span t-field="technique.name" /></td>
-                            <td style="border: 1px solid black; text-align: left; padding: 5px;"><span t-field="technique.nassessments" /></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="technique.nassessments" /></td>
                             <td style="border: 1px solid black; text-align: center;"><span t-field="technique.percentage" /></td>
                         </tr>
                         </t>
