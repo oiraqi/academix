@@ -54,7 +54,7 @@ class LmsCourse(models.Model):
 
 	def _institution_id(self):
 		for rec in self:
-			rec.institution_id = self.env['res.company'].search()[0]
+			rec.institution_id = self.env['res.company'].search([])[0]
 	
 
 	module_ids = fields.One2many(comodel_name='ixlms.module', inverse_name='course_id', string='Modules')
