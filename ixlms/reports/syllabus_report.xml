@@ -101,7 +101,7 @@
                         <b>Course Content and Timeline</b>
                     </h2>
                     <t t-foreach="o.module_ids" t-as="module">
-                    <h3>Module <span t-field="module.sequence" />: <span t-field="module.name" /></h3>
+                    <h3><b><span t-field="module.name" /></b></h3>
                     <table style="border: 1px solid black; width: 100%; font-size: 100%; border-collapse: collapse;">
                         <tr style="border: 1px solid black;">                            
                             <th style="border: 1px solid black; text-align: center; width: 5%;">Ch.</th>
@@ -111,6 +111,7 @@
                             <th style="border: 1px solid black; text-align: center; width: 10%;">Sessions</th>
                         </tr>
                         <t t-foreach="o.chapter_ids" t-as="chapter">
+                        <t t-if="chapter.module_id == module">
                         <tr>
                             <td><span t-field="chapter.sequence" /></td>
                             <td><span t-field="chapter.name" /></td>
@@ -118,6 +119,7 @@
                             <td><span t-field="chapter.start_date" /></td>
                             <td><span t-field="chapter.nsessions" /></td>
                         </tr>
+                        </t>
                         </t>
                     </table>
                     <br/>
