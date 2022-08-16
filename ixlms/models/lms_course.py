@@ -35,6 +35,7 @@ class LmsCourse(models.Model):
 	name = fields.Char(related='section_id.name')
 	color = fields.Integer(string='Color Index')	
 	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id')
+	school_id = fields.Many2one(comodel_name='ix.school', related='section_id.school_id', store=True)	
 	prerequisite_ids = fields.One2many('ixcatalog.prerequisite', related='course_id.prerequisite_ids')
 	corequisite_ids = fields.One2many('ixcatalog.corequisite', related='course_id.corequisite_ids')
 	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id', store=True)
