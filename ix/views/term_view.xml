@@ -15,7 +15,7 @@
 							<field name="session_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 							<field name="start_date"/>
 							<field name="end_date"/>						
-							<field name="event_ids">
+							<field name="event_ids" colspan="4">
 								<tree editable="bottom">
 									<field name="meta" string="Standard Event"/>									
 									<field name="start_date"/>
