@@ -16,7 +16,7 @@
 							<field name="start_date"/>
 							<field name="end_date"/>						
 							<field name="event_ids" colspan="4">
-								<tree editable="bottom">
+								<tree editable="bottom" default_order="start_date">
 									<field name="meta" string="Standard Event"/>									
 									<field name="start_date"/>
 									<field name="stop_date"/>
