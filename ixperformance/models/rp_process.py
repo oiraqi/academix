@@ -24,7 +24,7 @@
 from odoo import models, fields
 
 
-class Process(models.Model):
+class RPProcess(models.Model):
     _inherit = 'ixperformance.process'
 
     rp_goal_ids = fields.One2many('ixperformance.rp.goal', 'process_id', string='Goals')

@@ -25,7 +25,7 @@ from odoo import models, fields
 
 
 class RPGoal(models.Model):
-    _name='ixperformance.rp.goal'
+    _name = 'ixperformance.rp.goal'
     _inherit = 'ixperformance.goal'
     _description = 'An RP goal to set and achieve in a given evaluation process'
     _sql_constraints = [('process_id_kpi_ukey', 'unique(process_id,kpi)', 'Goal already set for this evaluation process')]

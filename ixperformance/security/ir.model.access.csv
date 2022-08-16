@@ -9,3 +9,5 @@ access_ixperformance_process_faculty,access.ixperformance.process.faculty,model_
 access_ixperformance_process_committee_member,access.ixperformance.process.committee_member,model_ixperformance_process,ixperformance.group_committee_member,1,1,0,0
 access_ixperformance_process_dean,access.ixperformance.process.dean,model_ixperformance_process,ix.group_dean,1,1,0,0
 access_ixperformance_process_vpaa,access.ixperformance.process.vpaa,model_ixperformance_process,ix.group_vpaa,1,1,0,0
+
+access_ixperformance_rp_goal_faculty,access.ixperformance.rp.goal.faculty,model_ixperformance_rp_goal,ix.group_faculty,1,1,1,1

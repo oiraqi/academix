@@ -8,5 +8,7 @@
     <menuitem id="menu_performance_settings" name="Settings" parent="menu_performance_root" sequence="1000" groups="ix.group_setup"/>
     
     <menuitem id="menu_performance_ranks" name="Ranks" parent="menu_performance_settings" sequence="10" action="action_srank_form"/>
+
+    <menuitem id="menu_performance_rp" name="Research &#38; Publication" parent="menu_performance_root" sequence="40" groups="ix.group_faculty"/>
     
 </odoo>
