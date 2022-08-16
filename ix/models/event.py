@@ -22,9 +22,10 @@
 ###############################################################################
 
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 
-META_EVENTS = [('add_drop', 'Add/Drop'), ('w', 'Last day to drop a course with W'), ('grade_submission', 'Grade Submission')]
+META_EVENTS = [('add_drop', 'Add/Drop'), ('w', 'Last day to drop with W'), ('grade_submission', 'Grade Submission')]
 
 class Event(models.Model):
 	_name = 'calendar.event'
@@ -42,6 +43,18 @@ class Event(models.Model):
 					if meta_event[0] == rec.meta:
 						rec.name = meta_event[1]
 						return
+
+	@api.constrains('start_date', 'term_id')
+	def _check_start_date_against_term(self):
+		for rec in self:
+			if rec.start_date < rec.term_id.start_date:
+				raise UserError('Event must start after the corresponding term start date')
+
+	@api.constrains('end_date', 'term_id')
+	def _check_end_date_against_term(self):
+		for rec in self:
+			if rec.stop_date > rec.term_id.start_date:
+				raise UserError('Event must end before the corresponding term end date')
 			
 	
 	
