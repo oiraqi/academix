@@ -23,7 +23,7 @@
 									<field name="start_date"/>
 									<field name="stop_date"/>
 									<field name="name" invisible="1"/>
-									<field name="all_day" invisible="1"/>
+									<field name="allday" invisible="1"/>
 								</tree>
 							</field>
 						</group>
