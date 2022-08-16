@@ -22,7 +22,7 @@
 ###############################################################################
 
 from odoo import api, fields, models
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 class Term(models.Model):
     _name = 'ix.term'
@@ -61,6 +61,11 @@ class Term(models.Model):
             if rec.start_date and rec.end_date:
                 if self.env[self._name].search_count([('end_date', '>=', rec.start_date), ('start_date', '<=', rec.end_date)]) > 1:
                     raise ValidationError('Terms are not allowed to overlap!')
+            for event in rec.event_ids:
+                if event.start_date < rec.start_date:
+                    raise UserError('An event scheduled for this term starts before the term!')
+                if event.stop_date > rec.end_date:
+                    raise UserError('An event scheduled for this term ends after the term!')
 
     @api.constrains('year')
     def _check_year(self):
