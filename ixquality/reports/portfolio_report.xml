@@ -33,7 +33,7 @@
                             <span t-field="o.name" />
                         </b>
                     </h1>
-                    <br/>                    
+                    <br/>
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Course Description</b>
                     </h2>
@@ -51,26 +51,30 @@
                     </ol>
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Used Assessment Techniques</b>
-                    </h2>                    
+                    </h2>
                     <table style="border: 1px solid black; width: 100%; font-size: 100%; border-collapse: collapse;">
-                        <tr style="border: 1px solid black; background-color: #D0D0D0;">                            
+                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
                             <th style="border: 1px solid black; text-align: center;">Assessment Technique</th>
-                            <th style="border: 1px solid black; text-align: center;">Provided Useful Data</th>                            
-                            <th style="border: 1px solid black; text-align: center;">Not Recommended</th>                            
+                            <th style="border: 1px solid black; text-align: center;">Provided Useful Data</th>
+                            <th style="border: 1px solid black; text-align: center;">Not Recommended</th>
                         </tr>
-                        <t t-foreach="o.useful_assessment_technique_ids" t-as="uat">                        
-                        <tr>
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="uat.technique_id.name" /></td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;">X</td>
-                            <td style="border: 1px solid black; text-align: center;"></td>     
-                        </tr>                        
+                        <t t-foreach="o.useful_assessment_technique_ids" t-as="uat">
+                            <tr>
+                                <td style="border: 1px solid black; text-align: center;">
+                                    <span t-field="uat.technique_id.name" />
+                                </td>
+                                <td style="border: 1px solid black; text-align: center; padding: 5px;">X</td>
+                                <td style="border: 1px solid black; text-align: center;"></td>
+                            </tr>
                         </t>
-                        <t t-foreach="o.not_recommended_assessment_technique_ids" t-as="nrat">                        
-                        <tr>
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="nrat.technique_id.name" /></td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"></td>
-                            <td style="border: 1px solid black; text-align: center;">X</td>                   
-                        </tr>                        
+                        <t t-foreach="o.not_recommended_assessment_technique_ids" t-as="nrat">
+                            <tr>
+                                <td style="border: 1px solid black; text-align: center;">
+                                    <span t-field="nrat.technique_id.name" />
+                                </td>
+                                <td style="border: 1px solid black; text-align: center; padding: 5px;"></td>
+                                <td style="border: 1px solid black; text-align: center;">X</td>
+                            </tr>
                         </t>
                     </table>
                     <br/>
@@ -78,134 +82,205 @@
                         <b>Assessment per Program and Student Population</b>
                     </h2>
                     <t t-foreach="o.assessment_ids" t-as="assessment">
-                    <table style="border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
-                        <tr style="border: none;">
-                            <td style="width: 10%">
-                                <h4><b><i>Program:</i></b></h4>
-                            </td>
-                            <td style="width: 65%">
-                                <h4><i><span t-field="assessment.program_id.name" /></i></h4>
-                            </td>
-                            <td style="width: 20%">
-                                <h4><b><i>Student Population:</i></b></h4>
-                            </td>
-                            <td style="width: 5%">
-                                <h4><i><span t-field="assessment.nstudents" /></i></h4>
-                            </td>
-                        </tr>
-                    </table>                    
-                    <b>Course ILO / Program SO Mapping</b>
-                    <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
-                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
-                            <th style="border: 1px solid black; text-align: center;">SO</th>
-                            <th style="border: 1px solid black; text-align: center;">ILO</th>
-                            <th style="border: 1px solid black; text-align: center;">Level</th>                            
-                        </tr>
-                        <t t-foreach="assessment.ilo_so_ids" t-as="ilo_so">
-                        <tr>
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="ilo_so.so_id.name" /></td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="ilo_so.ilo_id.name" /></td>
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="ilo_so.level" /></td>                            
-                        </tr>
-                        </t>
-                    </table>
+                        <table style="border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
+                            <tr style="border: none;">
+                                <td style="width: 10%">
+                                    <h4>
+                                        <b>
+                                            <i>Program:</i>
+                                        </b>
+                                    </h4>
+                                </td>
+                                <td style="width: 65%">
+                                    <h4>
+                                        <i>
+                                            <span t-field="assessment.program_id.name" />
+                                        </i>
+                                    </h4>
+                                </td>
+                                <td style="width: 20%">
+                                    <h4>
+                                        <b>
+                                            <i>Student Population:</i>
+                                        </b>
+                                    </h4>
+                                </td>
+                                <td style="width: 5%">
+                                    <h4>
+                                        <i>
+                                            <span t-field="assessment.nstudents" />
+                                        </i>
+                                    </h4>
+                                </td>
+                            </tr>
+                        </table>
+                        <b>Course ILO / Program SO Mapping</b>
+                        <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
+                            <tr style="border: 1px solid black; background-color: #D0D0D0;">
+                                <th style="border: 1px solid black; text-align: center;">SO</th>
+                                <th style="border: 1px solid black; text-align: center;">ILO</th>
+                                <th style="border: 1px solid black; text-align: center;">Level</th>
+                            </tr>
+                            <t t-foreach="assessment.ilo_so_ids" t-as="ilo_so">
+                                <tr>
+                                    <td style="border: 1px solid black; text-align: center;">
+                                        <span t-field="ilo_so.so_id.name" />
+                                    </td>
+                                    <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                        <span t-field="ilo_so.ilo_id.name" />
+                                    </td>
+                                    <td style="border: 1px solid black; text-align: center;">
+                                        <span t-field="ilo_so.level" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                        <br/>
+                        <b>ILO Achievement</b>
+                        <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
+                            <tr style="border: 1px solid black; background-color: #D0D0D0;">
+                                <th style="border: 1px solid black; text-align: center;">ILO</th>
+                                <th style="border: 1px solid black; text-align: center;">SOs</th>
+                                <th style="border: 1px solid black; text-align: center;">Assessment Techniques</th>
+                                <th style="border: 1px solid black; text-align: center;">Achieved (%)*</th>
+                                <th style="border: 1px solid black; text-align: center;">Targetted (%)*</th>
+                            </tr>
+                            <t t-foreach="assessment.assessment_line_ids" t-as="assessment_line">
+                                <tr>
+                                    <td style="border: 1px solid black; text-align: center;">
+                                        <span t-field="assessment_line.ilo_id.name" />
+                                    </td>
+                                    <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                        <span t-field="assessment_line.sos" />
+                                    </td>
+                                    <td style="border: 1px solid black; text-align: center;">
+                                        <span t-field="assessment_line.assessment_techniques" />
+                                    </td>
+                                    <td style="border: 1px solid black; text-align: center;">
+                                        <span t-field="assessment_line.achieved" />
+                                    </td>
+                                    <td style="border: 1px solid black; text-align: center;">
+                                        <span t-field="assessment_line.targetted" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    (*):  % of students who achieved the minimum ILO acquisition % (<span t-field="o.lms_course_id.acquisition_level" />
+)
                     <br/>
-                    <b>ILO Achievement</b>
-                    <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
-                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
-                            <th style="border: 1px solid black; text-align: center;">ILO</th>
-                            <th style="border: 1px solid black; text-align: center;">SOs</th>
-                            <th style="border: 1px solid black; text-align: center;">Assessment Techniques</th>
-                            <th style="border: 1px solid black; text-align: center;">Achieved (%)*</th>
-                            <th style="border: 1px solid black; text-align: center;">Targetted (%)*</th>
-                        </tr>
-                        <t t-foreach="assessment.assessment_line_ids" t-as="assessment_line">
+                    <br/>
+                </t>
+                <h2 style="border-bottom: 1px solid black;">
+                    <b>Recommended Remedial Actions</b>
+                </h2>
+                <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
+                    <tr style="border: 1px solid black; background-color: #D0D0D0;">
+                        <th style="border: 1px solid black; text-align: center;">Title</th>
+                        <th style="border: 1px solid black; text-align: center; padding-left: 5px; padding-right: 5px;">ILO</th>
+                        <th style="border: 1px solid black; text-align: center;">Description</th>
+                        <th style="border: 1px solid black; text-align: center;">Assessment Criteria</th>
+                        <th style="border: 1px solid black; text-align: center;">Assessment Methodology</th>
+                    </tr>
+                    <t t-foreach="o.action_ids" t-as="action">
                         <tr>
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="assessment_line.ilo_id.name" /></td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="assessment_line.sos" /></td>
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="assessment_line.assessment_techniques" /></td>
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="assessment_line.achieved" /></td>
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="assessment_line.targetted" /></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                <span t-field="action.name" />
+                            </td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                <span t-field="action.ilo_id.name" />
+                            </td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                <span t-field="action.description" />
+                            </td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                <span t-field="action.assessment_criteria" />
+                            </td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                <span t-field="action.assessment_methodology" />
+                            </td>
                         </tr>
-                        </t>
-                    </table>
-                    (*):  % of students who achieved the minimum ILO acquisition % (<span t-field="o.lms_course_id.acquisition_level" />)
-                    <br/><br/>
                     </t>
-                    <h2 style="border-bottom: 1px solid black;">
-                        <b>Recommended Remedial Actions</b>
-                    </h2>
-                    <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
-                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
-                            <th style="border: 1px solid black; text-align: center;">Title</th>
-                            <th style="border: 1px solid black; text-align: center; padding-left: 5px; padding-right: 5px;">ILO</th>                            
-                            <th style="border: 1px solid black; text-align: center;">Description</th>
-                            <th style="border: 1px solid black; text-align: center;">Assessment Criteria</th>
-                            <th style="border: 1px solid black; text-align: center;">Assessment Methodology</th>
-                        </tr>
-                        <t t-foreach="o.action_ids" t-as="action">
-                        <tr>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="action.name" /></td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="action.ilo_id.name" /></td>                            
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="action.description" /></td>                            
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="action.assessment_criteria" /></td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="action.assessment_methodology" /></td>
-                        </tr>
-                        </t>                        
-                    </table>
-                    <br/>
-                    <h2 style="border-bottom: 1px solid black;">
-                        <b>Recommended Changes To Course ILOs</b>
-                    </h2>
-                    <span t-raw="o.ilo_changes" />                    
-                    <h2 style="border-bottom: 1px solid black;">
-                        <b>Recommended Modifications To Assssment Techniques</b>
-                    </h2>
-                    <span t-raw="o.ass_tech_modifications" />                    
-                    <h2 style="border-bottom: 1px solid black;">
-                        <b>Significant Deviations in Course Content from Syllabus</b>
-                    </h2>
-                    <span t-raw="o.deviations" />
-                    <h2 style="border-bottom: 1px solid black;">
-                        <b>Grade Matrix</b>
-                    </h2>
-                    <table style="margin-top: 10px; border: none; width: 100%; font-size: 70%; border-collapse: collapse;">
-                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
-                            <t t-foreach="o.lms_course_id.assessment_ids" t-as="assessment">
-                                <t t-if="assessment.graded">
-                                    <th style="border: 1px solid black; text-align: center;"><span t-field="assessment.name" /> (%)</th>    
-                                </t>
-                            </t>                            
-                            <th style="border: 1px solid black; text-align: center;">Assessment Avg. Grade (%)</th>
-                            <t t-if="o.lms_course_id.attendance_percentage &gt; 0">
-                            <th style="border: 1px solid black; text-align: center;">Attendance Grade (%)</th>    
-                            </t>                            
-                            <th style="border: 1px solid black; text-align: center;">Overall Grade (%)</th>
-                            <th style="border: 1px solid black; text-align: center;">Letter Grade</th>
-                        </tr>                        
-                    </table>
-                    <br/>
-                    <h2 style="border-bottom: 1px solid black;">
-                        <b>Student Assessment Samples (Accessible Online)</b>
-                    </h2>
-                    <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
-                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
-                            <th style="border: 1px solid black; text-align: center;">Assessment</th>
-                            <th style="border: 1px solid black; text-align: center;">Good Performance</th>                            
-                            <th style="border: 1px solid black; text-align: center;">Average Performance</th>
-                            <th style="border: 1px solid black; text-align: center;">Poor Performance</th>                            
-                        </tr>
-                        <t t-foreach="o.lms_assessment_ids" t-as="lms_assessment">
-                        <tr>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="lms_assessment.name" /></td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><t t-if="lms_assessment.good_performance">X</t></td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><t t-if="lms_assessment.avg_performance">X</t></td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><t t-if="lms_assessment.poor_performance">X</t></td>
-                        </tr>
+                </table>
+                <br/>
+                <h2 style="border-bottom: 1px solid black;">
+                    <b>Recommended Changes To Course ILOs</b>
+                </h2>
+                <span t-raw="o.ilo_changes" />
+                <h2 style="border-bottom: 1px solid black;">
+                    <b>Recommended Modifications To Assssment Techniques</b>
+                </h2>
+                <span t-raw="o.ass_tech_modifications" />
+                <h2 style="border-bottom: 1px solid black;">
+                    <b>Significant Deviations in Course Content from Syllabus</b>
+                </h2>
+                <span t-raw="o.deviations" />
+                <h2 style="border-bottom: 1px solid black;">
+                    <b>Grade Matrix</b>
+                </h2>
+                <table style="margin-top: 10px; border: none; width: 100%; font-size: 60%; border-collapse: collapse;">
+                    <tr style="border: 1px solid black; background-color: #D0D0D0;">
+                        <t t-foreach="o.lms_course_id.assessment_ids" t-as="assessment">
+                            <t t-if="assessment.graded">
+                                <th style="border: 1px solid black; text-align: center;">
+                                    <span t-field="assessment.name" />
+ (%)</th>
+                            </t>
                         </t>
-                    </table>
-                </div>
-            </t>
-        </template>
-    </data>
+                        <th style="border: 1px solid black; text-align: center;">Assessment Avg. (%)</th>
+                        <t t-if="o.lms_course_id.attendance_percentage &gt; 0">
+                            <th style="border: 1px solid black; text-align: center;">Attendance (%)</th>
+                        </t>
+                        <th style="border: 1px solid black; text-align: center;">Overall Grade (%)</th>
+                        <th style="border: 1px solid black; text-align: center;">Letter Grade</th>
+                    </tr>
+                    <t t-foreach="o.lms_course_id.enrollment_ids" t-as="enrollment">
+                        <t t-if="enrollment.state in ['enrolled', 'withdrawn']">
+                            <tr>
+                                <t t-foreach="o.lms_course_id.assessment_ids" t-as="assessment">
+                                    <t t-if="assessment.graded">
+                                        <th style="border: 1px solid black; text-align: center;">80.0</th>
+                                    </t>
+                                </t>
+                                <th style="border: 1px solid black; text-align: center;">80.0</th>
+                                <t t-if="o.lms_course_id.attendance_percentage &gt; 0">
+                                    <th style="border: 1px solid black; text-align: center;">80.0</th>
+                                </t>
+                                <th style="border: 1px solid black; text-align: center;">80.0</th>
+                                <th style="border: 1px solid black; text-align: center;">B-</th>
+                            </tr>
+                        </t>
+                    </t>
+                </table>
+                <br/>
+                <h2 style="border-bottom: 1px solid black;">
+                    <b>Student Assessment Samples (Accessible Online)</b>
+                </h2>
+                <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
+                    <tr style="border: 1px solid black; background-color: #D0D0D0;">
+                        <th style="border: 1px solid black; text-align: center;">Assessment</th>
+                        <th style="border: 1px solid black; text-align: center;">Good Performance</th>
+                        <th style="border: 1px solid black; text-align: center;">Average Performance</th>
+                        <th style="border: 1px solid black; text-align: center;">Poor Performance</th>
+                    </tr>
+                    <t t-foreach="o.lms_assessment_ids" t-as="lms_assessment">
+                        <tr>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                <span t-field="lms_assessment.name" />
+                            </td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                <t t-if="lms_assessment.good_performance">X</t>
+                            </td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                <t t-if="lms_assessment.avg_performance">X</t>
+                            </td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                <t t-if="lms_assessment.poor_performance">X</t>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+            </div>
+        </t>
+    </template>
+</data>
 </odoo>
