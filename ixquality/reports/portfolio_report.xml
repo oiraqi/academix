@@ -129,8 +129,8 @@
                         </tr>
                         </t>
                     </table>
-                    (*):  % of students who achieved the minimum ILO acquisition % (<span t-field="o.lms_course_id.acquisition_level" />%)
-                    <br/>
+                    (*):  % of students who achieved the minimum ILO acquisition % (<span t-field="o.lms_course_id.acquisition_level" />)
+                    <br/><br/>
                     </t>
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Recommended Remedial Actions</b>
