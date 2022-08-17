@@ -45,7 +45,7 @@ class Enrollment(models.Model):
             lms_course_id = rec.section_id.lms_course_id
             rec.assessment_grade, assessment_weight = rec._assessment_grade(lms_course_id)            
             if lms_course_id.attendance_weight > 0:
-                rec.overall_grade = (rec.assessment_grade * assessment_weight + rec.attendance_grade * lms_course_id.attendance_weight) / (assessment_weight + lms_course_id.attendance_weight)
+                rec.overall_grade = fields.Float.round((rec.assessment_grade * assessment_weight + rec.attendance_grade * lms_course_id.attendance_weight) / (assessment_weight + lms_course_id.attendance_weight), 2)
             else:
                 rec.overall_grade = rec.assessment_grade
             rec.letter_grade, rec.passed = self.env['ixlms.letter.grade'].evaluate(rec.overall_grade)            
@@ -90,7 +90,7 @@ class Enrollment(models.Model):
             all_attendance_count = self.env['ixlms.attendance.line'].search_count([
                 ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id)])
             if all_attendance_count != 0:
-                rec.attendance_rate = 100 - rec.nabsences * 100 / all_attendance_count
+                rec.attendance_rate = fields.Float.round(100 - rec.nabsences * 100 / all_attendance_count, 2)
             else:
                 rec.attendance_rate = 100
             lms_course_id = rec.section_id.lms_course_id
