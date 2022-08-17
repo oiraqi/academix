@@ -109,8 +109,7 @@
                     <table style="border: 1px solid black; width: 100%; font-size: 100%; border-collapse: collapse;">
                         <tr style="border: 1px solid black; background-color: #D0D0D0;">                            
                             <th style="border: 1px solid black; text-align: center; width: 5%;">Ch.</th>
-                            <th style="border: 1px solid black; text-align: center; width: 50%;">Name</th>
-                            <th style="border: 1px solid black; text-align: center; width: 15%;">Covered ILOs</th>
+                            <th style="border: 1px solid black; text-align: center; width: 65%;">Name</th>                            
                             <th style="border: 1px solid black; text-align: center; width: 20%;">Start Date</th>
                             <th style="border: 1px solid black; text-align: center; width: 10%;">Sessions</th>
                         </tr>
@@ -118,8 +117,7 @@
                         <t t-if="chapter.module_id == module">
                         <tr>
                             <td style="border: 1px solid black; text-align: center;"><span t-field="chapter.sequence" /></td>
-                            <td style="border: 1px solid black; text-align: left; padding: 5px;"><span t-field="chapter.name" /></td>
-                            <td style="border: 1px solid black; text-align: center;">...</td>
+                            <td style="border: 1px solid black; text-align: left; padding: 5px;"><span t-field="chapter.name" /></td>                            
                             <td style="border: 1px solid black; text-align: center;"><span t-field="chapter.start_date" /></td>
                             <td style="border: 1px solid black; text-align: center;"><span t-field="chapter.nsessions" /></td>
                         </tr>
@@ -148,7 +146,8 @@
                             <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.edition" /></td>
                         </tr>
                         </t>
-                    </table>                            
+                    </table>
+                    <br/>
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Assessment</b>
                     </h2>
