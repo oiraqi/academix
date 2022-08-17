@@ -83,19 +83,18 @@
                             <td style="width: 10%">
                                 <h4><b><i>Program:</i></b></h4>
                             </td>
-                            <td style="width: 70%">
+                            <td style="width: 65%">
                                 <h4><i><span t-field="assessment.program_id.name" /></i></h4>
                             </td>
-                            <td style="width: 15%">
+                            <td style="width: 20%">
                                 <h4><b><i>Student Population:</i></b></h4>
                             </td>
                             <td style="width: 5%">
                                 <h4><i><span t-field="assessment.nstudents" /></i></h4>
                             </td>
                         </tr>
-                    </table>
-                    <br/>
-                    <h4>Course ILO / Program SO Mapping</h4>
+                    </table>                    
+                    <h4><b>Course ILO / Program SO Mapping</b></h4>
                     <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
                         <tr style="border: 1px solid black; background-color: #D0D0D0;">
                             <th style="border: 1px solid black; text-align: center;">SO</th>
@@ -110,6 +109,7 @@
                         </tr>
                         </t>
                     </table>
+                    <h4><b>ILO Achievement by Students</b></h4>
                     <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
                         <tr style="border: 1px solid black; background-color: #D0D0D0;">
                             <th style="border: 1px solid black; text-align: center;">ILO</th>
