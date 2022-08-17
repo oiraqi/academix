@@ -129,7 +129,7 @@
                         </tr>
                         </t>
                     </table>
-                    (*):  % of students who achieved the minimum ILO acquisition % (<span t-field="o.acquisition_level" />%)
+                    (*):  % of students who achieved the minimum ILO acquisition % (<span t-field="o.lms_course_id.acquisition_level" />%)
                     <br/>
                     </t>
                     <h2 style="border-bottom: 1px solid black;">
