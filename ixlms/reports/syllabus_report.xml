@@ -142,10 +142,10 @@
                         <t t-foreach="o.textbook_ids" t-as="textbook">
                         <tr>
                             <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.name" /></td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="textbook.isbn" /></td>                            
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.authors" />
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.publisher" />
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.edition" />
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="textbook.isbn" /></td>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.authors" /></td>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.publisher" /></td>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.edition" /></td>
                         </tr>
                         </t>
                     </table>                            
