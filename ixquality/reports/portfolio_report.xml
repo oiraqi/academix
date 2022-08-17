@@ -110,14 +110,14 @@
                         </t>
                     </table>
                     <br/>
-                    <b>ILO Achievement by Students</b>
+                    <b>ILO Achievement</b>
                     <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
                         <tr style="border: 1px solid black; background-color: #D0D0D0;">
                             <th style="border: 1px solid black; text-align: center;">ILO</th>
                             <th style="border: 1px solid black; text-align: center;">SOs</th>
                             <th style="border: 1px solid black; text-align: center;">Assessment Techniques</th>
-                            <th style="border: 1px solid black; text-align: center;">Achieved (%)</th>
-                            <th style="border: 1px solid black; text-align: center;">Targetted (%)</th>
+                            <th style="border: 1px solid black; text-align: center;">Achieved (%)*</th>
+                            <th style="border: 1px solid black; text-align: center;">Targetted (%)*</th>
                         </tr>
                         <t t-foreach="assessment.assessment_line_ids" t-as="assessment_line">
                         <tr>
@@ -129,8 +129,9 @@
                         </tr>
                         </t>
                     </table>
+                    (*):  % of students who achieved the minimum ILO acquisition % (<span t-field="o.acquisition_level" />%)
                     <br/>
-                    </t>                    
+                    </t>
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Recommended Remedial Actions</b>
                     </h2>
