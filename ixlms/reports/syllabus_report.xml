@@ -131,11 +131,29 @@
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Textbooks</b>
                     </h2>
+                    <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
+                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
+                            <th style="border: 1px solid black; text-align: center;">Title</th>
+                            <th style="border: 1px solid black; text-align: center;">ISBN</th>
+                            <th style="border: 1px solid black; text-align: center;">Author(s)</th>
+                            <th style="border: 1px solid black; text-align: center;">Publisher</th>
+                            <th style="border: 1px solid black; text-align: center;">Edition</th>
+                        </tr>
+                        <t t-foreach="o.textbook_ids" t-as="textbook">
+                        <tr>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.name" /></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="textbook.isbn" /></td>                            
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.authors" />
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.publisher" />
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.edition" />
+                        </tr>
+                        </t>
+                    </table>                            
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Assessment</b>
                     </h2>
                     <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
-                        <tr style="border: 1px solid black; background-color: #D0D0D0;">                            
+                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
                             <th style="border: 1px solid black; text-align: center;">Assessment Technique</th>
                             <th style="border: 1px solid black; text-align: center;"># of Assessments</th>
                             <t t-if="o.grade_weighting == 'percentage'">
@@ -145,7 +163,7 @@
                             <th style="border: 1px solid black; text-align: center;">Points</th>
                             </t>
                         </tr>
-                        <t t-foreach="o.technique_ids" t-as="technique">                        
+                        <t t-foreach="o.technique_ids" t-as="technique">
                         <tr>
                             <td style="border: 1px solid black; text-align: center;"><span t-field="technique.name" /></td>
                             <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="technique.nassessments" /></td>
@@ -170,6 +188,7 @@
                         </tr>
                         </t>
                     </table>
+                    <br/>
                     <t t-if="o.attendance_percentage &gt; 0">
                     <p>
                     <b>Attendance Grading: </b>
