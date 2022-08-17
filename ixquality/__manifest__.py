@@ -31,6 +31,7 @@
         'views/lms_module_view.xml',
         "views/school_view.xml",
         "views/quality_menu.xml",
+        "reports/portfolio_report.xml",
     ],
     'installable': True,
     'auto_install': False,

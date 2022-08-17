@@ -34,7 +34,7 @@ class AssessmentLine(models.Model):
 	faculty_id = fields.Many2one(comodel_name='ix.faculty', related='assessment_id.faculty_id', store=True)	
 	ilo_id = fields.Many2one('ixcatalog.course.ilo', 'ILO', required=True)
 	so_ids = fields.One2many('ixquality.student.outcome', compute='_so_ids', string='SOs')
-	assessment_technique_ids = fields.One2many(comodel_name='ixlms.assessment.technique', compute='_assessment_technique_ids')
+	assessment_technique_ids = fields.One2many(comodel_name='ixlms.assessment.technique', compute='_assessment_technique_ids', string="Assessment Techniques")
 
 	@api.onchange('assessment_id', 'ilo_id')
 	def _assessment_technique_ids(self):
@@ -49,6 +49,29 @@ class AssessmentLine(models.Model):
 				rec.assessment_technique_ids = False
 					
 
+	sos = fields.Char(compute='_sos')
+
+	def _sos(self):
+		for rec in self:
+			sos = ''
+			if rec.so_ids:
+				if len(rec.so_ids) == 1:
+					sos = rec.so_ids[0].name
+				else:
+					sos = ', '.join([so.name for so in rec.so_ids])
+			rec.sos = sos
+
+	assessment_techniques = fields.Char(compute='_assessment_techniques')
+
+	def _assessment_techniques(self):
+		for rec in self:
+			assessment_techniques = ''
+			if rec.assessment_technique_ids:
+				if len(rec.assessment_technique_ids) == 1:
+					assessment_techniques = rec.assessment_technique_ids[0].name
+				else:
+					assessment_techniques = ', '.join([assessment_technique.name for assessment_technique in rec.assessment_technique_ids])
+			rec.assessment_techniques = assessment_techniques
 
 	targetted = fields.Selection(string='Targetted', selection=[
 		('70', '70'), ('75', '75'), ('80', '80'),

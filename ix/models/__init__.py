@@ -1,6 +1,7 @@
 from . import expandable
 from . import term
 from . import activity
+from . import institution_owned
 from . import school_owned
 from . import course
 from . import discipline

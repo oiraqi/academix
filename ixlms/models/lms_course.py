@@ -28,7 +28,7 @@ from odoo.exceptions import ValidationError
 class LmsCourse(models.Model):
 	_name = 'ixlms.course'
 	_description = 'LMS Course'
-	_inherit = ['ix.activity', 'ix.expandable']
+	_inherit = ['ix.activity', 'ix.expandable', 'ix.institution.owned']
 	_sql_constraints = [('section_ukey', 'unique(section_id)', 'LMS course already created!')]
 
 	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)	
@@ -81,13 +81,6 @@ class LmsCourse(models.Model):
 				else:
 					office_hours = ', '.join([office_hour.name for office_hour in rec.office_hour_ids])
 			rec.office_hours = office_hours
-	
-
-	institution_id = fields.Many2one(comodel_name='res.company', compute='_institution_id')
-
-	def _institution_id(self):
-		for rec in self:
-			rec.institution_id = self.env['res.company'].search([])[0]
 	
 
 	module_ids = fields.One2many(comodel_name='ixlms.module', inverse_name='course_id', string='Modules')

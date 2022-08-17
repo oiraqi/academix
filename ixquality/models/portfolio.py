@@ -27,7 +27,7 @@ from odoo import api, models, fields
 class Portfolio(models.Model):
 	_name = 'ixquality.portfolio'
 	_description = 'Portfolio'
-	_inherit = 'ix.faculty.activity'
+	_inherit = ['ix.faculty.activity', 'ix.institution.owned']
 	_sql_constraints = [('section_ukey', 'unique(section_id)', 'A portfolio already exists for this section')]
 
 	name = fields.Char('Name', compute='_compute_name', store=True)
