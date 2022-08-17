@@ -171,19 +171,19 @@
                         </t>
                     </table>
                     <t t-if="o.attendance_percentage &gt; 0">
-                    <br/>
+                    <p>
                     <b>Attendance Grading: </b>
                     <t t-if="o.attendance_grading == 'rate'">
                     <span>Attendance Rate</span>
                     </t>
                     <t t-elif="o.attendance_grading == 'penalty'">
-                    <span t-field="o.penalty_per_absence" />%<span> Penalty / Absence</span>
+                    <span t-field="o.penalty_per_absence" />%<span> penalty / absence</span>
                     </t>
                     <t t-if="o.zero_after_max_abs">
                     <span> - Zero after </span><span t-field="o.max_absences" /><span> absences</span>
                     </t>
+                    </p>
                     </t>                    
-                    <br/>
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Additional Information</b>
                     </h2>
