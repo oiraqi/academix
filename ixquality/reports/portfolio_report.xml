@@ -166,6 +166,28 @@
                         <b>Significant Deviations in Course Content from Syllabus</b>
                     </h2>
                     <span t-raw="o.deviations" />
+                    <h2 style="border-bottom: 1px solid black;">
+                        <b>Grade Matrix</b>
+                    </h2>
+                    <h2 style="border-bottom: 1px solid black;">
+                        <b>Student Assessment Samples (Accessible Online)</b>
+                    </h2>
+                    <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
+                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
+                            <th style="border: 1px solid black; text-align: center;">Assessment</th>
+                            <th style="border: 1px solid black; text-align: center;">Good Performance</th>                            
+                            <th style="border: 1px solid black; text-align: center;">Average Performance</th>
+                            <th style="border: 1px solid black; text-align: center;">Poor Performance</th>                            
+                        </tr>
+                        <t t-foreach="o.lms_assessment_ids" t-as="lms_assessment">
+                        <tr>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="lms_assessment.name" /></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><t t-if="lms_assessment.good_performance">X</t></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><t t-if="lms_assessment.avg_performance">X</t></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><t t-if="lms_assessment.poor_performance">X</t></td>
+                        </tr>
+                        </t>                        
+                    </table>                    
                 </div>
             </t>
         </template>
