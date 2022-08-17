@@ -55,7 +55,7 @@ class Portfolio(models.Model):
 	def _compute_name(self):
 		for rec in self:
 			if rec.section_id:
-				rec.name = rec.section_id.name + '-Portfolio'
+				rec.name = rec.section_id.name + ' Portfolio'
 				if rec.faculty_id:
 					rec.name += ' - ' + rec.faculty_id.name
 			else:
