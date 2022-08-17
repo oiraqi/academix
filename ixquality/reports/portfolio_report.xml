@@ -157,13 +157,11 @@
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Recommended Changes To Course ILOs</b>
                     </h2>
-                    <span t-raw="o.ilo_changes" />
-                    <br/>
+                    <span t-raw="o.ilo_changes" />                    
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Recommended Modifications To Assssment Techniques</b>
                     </h2>
-                    <span t-raw="o.ass_tech_modifications" />
-                    <br/>
+                    <span t-raw="o.ass_tech_modifications" />                    
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Significant Deviations in Course Content from Syllabus</b>
                     </h2>
