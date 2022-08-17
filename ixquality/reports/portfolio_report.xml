@@ -94,7 +94,7 @@
                             </td>
                         </tr>
                     </table>                    
-                    <h4><b>Course ILO / Program SO Mapping</b></h4>
+                    <b>Course ILO / Program SO Mapping</b>
                     <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
                         <tr style="border: 1px solid black; background-color: #D0D0D0;">
                             <th style="border: 1px solid black; text-align: center;">SO</th>
@@ -109,7 +109,8 @@
                         </tr>
                         </t>
                     </table>
-                    <h4><b>ILO Achievement by Students</b></h4>
+                    <br/>
+                    <b>ILO Achievement by Students</b>
                     <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
                         <tr style="border: 1px solid black; background-color: #D0D0D0;">
                             <th style="border: 1px solid black; text-align: center;">ILO</th>
