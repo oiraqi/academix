@@ -234,19 +234,23 @@
                         <th style="border: 1px solid black; text-align: center;">Letter Grade</th>
                     </tr>
                     <t t-foreach="o.lms_course_id.enrollment_ids" t-as="enrollment">
-                        <t t-if="enrollment.state in ['enrolled', 'withdrawn']">
+                        <t t-if="enrollment.state == 'enrolled'">
                             <tr>
                                 <t t-foreach="o.lms_course_id.assessment_ids" t-as="assessment">
                                     <t t-if="assessment.graded">
-                                        <th style="border: 1px solid black; text-align: center;">80.0</th>
+                                        <t t-foreach="enrollment.assessment_line_ids" t-as="assessment_line">
+                                            <t t-if="assessment_line.assessment_id == assessment">
+                                                <th style="border: 1px solid black; text-align: center;"><span t-field="assessment_line.egrade" /></th>
+                                            </t>
+                                        </t>                                        
                                     </t>
                                 </t>
-                                <th style="border: 1px solid black; text-align: center;">80.0</th>
+                                <th style="border: 1px solid black; text-align: center;"><span t-field="enrollment.assessment_grade" /></th>
                                 <t t-if="o.lms_course_id.attendance_percentage &gt; 0">
-                                    <th style="border: 1px solid black; text-align: center;">80.0</th>
+                                    <th style="border: 1px solid black; text-align: center;"><span t-field="enrollment.attendance_grade" /></th>
                                 </t>
-                                <th style="border: 1px solid black; text-align: center;">80.0</th>
-                                <th style="border: 1px solid black; text-align: center;">B-</th>
+                                <th style="border: 1px solid black; text-align: center;"><span t-field="enrollment.overall_grade" /></th>
+                                <th style="border: 1px solid black; text-align: center;"><span t-field="enrollment.letter_grade" /></th>
                             </tr>
                         </t>
                     </t>
