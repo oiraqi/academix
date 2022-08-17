@@ -510,7 +510,9 @@
             <field name="code">CSC 2306</field>
             <field name="req_class"></field>
             <field name="remarks">3 lecture hours</field>
-            <field name="description">This course builds on the broad understanding acquired in the previous programming courses to allow students to scale-up and be able to solve more complex problems through object-oriented methodology. The object-oriented paradigm encapsulates code complexity within objects and integrates features such as abstraction, cohesion, encapsulation, information hiding, inheritance, and polymorphism. The approach emphasizes software qualities such as robustness, maintainability, extensibility, and reusability principles in software development. This course also covers design patterns such as Observer, Template Method, Decorator, Factory, and Builder. Students will gain experience building object-oriented software solutions using the United Modeling Language (UML) and the Java programming language.</field>
+            <field name="description">This course builds on the broad understanding acquired in the previous programming courses to allow students to scale up and to solve more complex problems through the objected-oriented methodology.
+The object-oriented paradigm encapsulates code complexity within objects and integrates features such as abstraction, cohesion, encapsulation, information hiding, inheritance, and polymorphism. The approach emphasizes software qualities such as robustness, maintainability, extensibility, and reusability principles in software development. 
+Students will gain experience building object-oriented software solutions using the Unified Modeling Language (UML) and the Java programming language.</field>
         </record>
 
         <record id="ix_course_csc_2309" model="ix.course">

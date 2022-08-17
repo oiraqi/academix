@@ -145,11 +145,11 @@
                         </tr>
                         <t t-foreach="o.action_ids" t-as="action">
                         <tr>
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="action.name" /></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="action.name" /></td>
                             <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="action.ilo_id.name" /></td>                            
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="action.description" /></td>                            
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="action.assessment_criteria" /></td>
-                            <td style="border: 1px solid black; text-align: center;"><span t-field="action.assessment_methodology" /></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="action.description" /></td>                            
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="action.assessment_criteria" /></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="action.assessment_methodology" /></td>
                         </tr>
                         </t>                        
                     </table>
