@@ -138,28 +138,51 @@
                         <tr style="border: 1px solid black; background-color: #D0D0D0;">                            
                             <th style="border: 1px solid black; text-align: center;">Assessment Technique</th>
                             <th style="border: 1px solid black; text-align: center;"># of Assessments</th>
-                            <th style="border: 1px solid black; text-align: center;">%</th>                            
+                            <t t-if="o.grade_weighting == 'percentage'">
+                            <th style="border: 1px solid black; text-align: center;">%</th>
+                            </t>
+                            <t t-elif="o.grade_weighting == 'points'">
+                            <th style="border: 1px solid black; text-align: center;">Points</th>
+                            </t>
                         </tr>
                         <t t-foreach="o.technique_ids" t-as="technique">                        
                         <tr>
                             <td style="border: 1px solid black; text-align: center;"><span t-field="technique.name" /></td>
                             <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="technique.nassessments" /></td>
+                            <t t-if="o.grade_weighting == 'percentage'">
                             <td style="border: 1px solid black; text-align: center;"><span t-field="technique.percentage" /></td>
+                            </t>
+                            <t t-elif="o.grade_weighting == 'points'">
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="technique.points" /></td>
+                            </t>
                         </tr>
                         </t>
                         <tr>
                             <td></td>
-                            <td style="border: 1px solid black; text-align: center;"><b>Total</b></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><b>Assessment Total</b></td>
                             <td style="border: 1px solid black; text-align: center;"><b>90.0</b></td>
                         </tr>
                         <t t-if="o.attendance_percentage &gt; 0">
                         <tr>
                             <td></td>
-                            <td style="border: 1px solid black; text-align: center;"><b>Attendance</b></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><b>Attendance</b></td>
                             <td style="border: 1px solid black; text-align: center;"><b><span t-field="o.attendance_percentage" /></b></td>
                         </tr>
                         </t>
                     </table>
+                    <t t-if="o.attendance_percentage &gt; 0">
+                    <br/>
+                    <b>Attendance Grading: </b>
+                    <t t-if="o.attendance_grading == 'rate'">
+                    <span>Attendance Rate</span>
+                    </t>
+                    <t t-elif="o.attendance_grading == 'penaly'">
+                    <span t-field="o.penalty_per_absence" />%<span> Penalty / Absence</span>
+                    </t>
+                    <t t-if="o.zero_after_max_absences">
+                    <span> - Zero after </span><span t-field="o.max_absences" />
+                    </t>
+                    </t>                    
                     <br/>
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Additional Information</b>
