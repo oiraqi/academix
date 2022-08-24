@@ -64,7 +64,7 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 - Dean
 - VPAA
 - President
-## Screenshots
+## Screenshots (Academix applied to Al Akhawayn University)
 ### Communication & Collaboration
 <p align="center"><img src="ixyaui/static/snapshots/board.png"><br/>Figure 1. Communication & Collaboration Board</p>
 
