@@ -54,7 +54,7 @@ class Section(models.Model):
     syllabus = fields.Binary(string='Syllabus')
     capacity = fields.Integer(string='Capacity', default=30, required=True)    
     student_ids = fields.One2many('ix.student', compute='_active_enrollment_ids', string='Students')
-    active_enrollment_ids = fields.One2many('ixroster.enrollment', compute='_active_enrollment_ids', string='Dropped Students')
+    active_enrollment_ids = fields.One2many('ixroster.enrollment', compute='_active_enrollment_ids', string='Enrolled Students')
     dropped_enrollment_ids = fields.One2many('ixroster.enrollment', compute='_dropped_enrollment_ids', string='Dropped Students')
     withdrawn_enrollment_ids = fields.One2many('ixroster.enrollment', compute='_withdrawn_enrollment_ids', string='Withdrawn Students')
     enrollment_ids = fields.One2many('ixroster.enrollment', compute='_enrollment_ids', string='Withdrawn Students')
