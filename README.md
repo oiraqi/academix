@@ -43,6 +43,20 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 - The Data Model
 - The Technology Stack
 
+## Integrated Applications (the list is growing)
+- **Catalog Management**: Schools, Programs, Disciplines, Courses (description, ILOs, pre/co requisites, textbooks)
+- **Planning & Roster Management**: Calendar, Terms (important dates; add/drop, last day to drop with W, grade submission, etc.), Sections, Resources (buildings, rooms, reservations)
+- **Advising**: Advisees, Degree Plans (automatic generation)
+- **Learning Management System (LMS)**: 
+
+## Actors / Security Roles (the list is growing)
+- Student
+- Faculty
+- Roster Manager
+- Coordinator
+- Course Manager
+- Dean
+- VPAA
 ## Screenshots
 ### Communication & Collaboration
 <p align="center"><img src="ixyaui/static/snapshots/board.png"><br/>Figure 1. Communication & Collaboration Board</p>
@@ -54,7 +68,7 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 
 ### Planning
 <p align="center"><img src="ixyaui/static/snapshots/planning/calendar.png"><br/>Figure 5. Calendar</p>
-<p align="center"><img src="ixyaui/static/snapshots/planning/calendar.png"><br/>Figure 6. Term & Important Dates/Events</p>
+<p align="center"><img src="ixyaui/static/snapshots/planning/term.png"><br/>Figure 6. Term & Important Dates/Events</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/sections.png"><br/>Figure 7. Sections</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/section.png"><br/>Figure 8. Section Information</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/enrollment.png"><br/>Figure 9. Enrolled Student Management</p>
