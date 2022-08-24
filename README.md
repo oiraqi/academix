@@ -42,3 +42,7 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 - The Subject-matter Expertise
 - The Data Model
 - The Technology Stack
+
+## Screenshots
+### Communication & Collaboration Board
+<p align="center"><img src="ixyaui/static/snapshots/board.png"><br/>Figure 1. Board</p>
