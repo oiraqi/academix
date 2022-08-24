@@ -95,6 +95,7 @@
                             </li>
                         </t>
                     </ol>
+                    <t t-if="len(o.chapter_ids) &gt; 0">
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Course Content and Timeline</b>
                     </h2>
@@ -120,6 +121,7 @@
                     </table>
                     <br/>
                     </t>
+                    <t t-if="len(o.textbook_ids) &gt; 0">                    
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Textbook(s)</b>
                     </h2>
@@ -142,6 +144,8 @@
                         </t>
                     </table>
                     <br/>
+                    </t>
+                    </t>
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Assessment</b>
                     </h2>

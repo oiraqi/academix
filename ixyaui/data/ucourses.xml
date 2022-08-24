@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
-    <data>
+    <data noupdate="1">
         <record id="ix_course_acc_2301" model="ix.course">
             <field name="name_only">Accounting Principles I</field>
             <field name="code">ACC 2301</field>
