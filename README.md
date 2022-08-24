@@ -44,7 +44,8 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 - The Technology Stack
 
 ## Implemented (Integrated) Applications (the list is growing)
-- **Catalog Management**: Schools, Programs, Disciplines, Courses (description, ILOs, pre/co requisites, textbooks)
+- **Communication & Collaboration**: Visio-conferencing, Chat, Notifications
+- **Catalog Management System (CMS)**: Schools, Programs, Disciplines, Courses (description, ILOs, pre/co requisites, textbooks)
 - **Planning & Roster Management System (PRMS)**: Calendar, Terms (important dates; add/drop, last day to drop with W, grade submission, etc.), Sections, Resources (buildings, rooms, reservations)
 - **Advising**: Advisees, Degree Plans (automatic generation)
 - **Learning Management System (LMS)**: Course Creation and Management (modules, chapters, assessments, statistics), Attendance Management, Syllabus Generation (PDF), Communication Channels (visio, chat)
@@ -73,7 +74,7 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 <p align="center"><img src="ixyaui/static/snapshots/catalog/course.png"><br/>Figure 3. Course Information</p>
 <p align="center"><img src="ixyaui/static/snapshots/catalog/course-search.png"><br/>Figure 4. Course Search</p>
 
-### Planning
+### Planning & Roster
 <p align="center"><img src="ixyaui/static/snapshots/planning/calendar.png"><br/>Figure 5. Calendar</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/term.png"><br/>Figure 6. Term & Important Dates/Events</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/sections.png"><br/>Figure 7. Sections</p>
@@ -83,3 +84,9 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 <p align="center"><img src="ixyaui/static/snapshots/planning/building.png"><br/>Figure 11. Building Information</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/room.png"><br/>Figure 12. Room Information</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/reservation.png"><br/>Figure 13. Room Reservation</p>
+
+### LMS
+<p align="center"><img src="ixyaui/static/snapshots/lms/assessments.png"><br/>Figure 14. Assessments</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/assessment1.png"><br/>Figure 15. Assessment</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/assessment2.png"><br/>Figure 16. Assessment</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/assessment3.png"><br/>Figure 17. Assessment</p>
