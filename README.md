@@ -96,4 +96,4 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 <p align="center"><img src="ixyaui/static/snapshots/lms/assessment2.png"><br/>Figure 21. Assessment</p>
 <p align="center"><img src="ixyaui/static/snapshots/lms/assessment3.png"><br/>Figure 22. Assessment</p>
 <p align="center"><img src="ixyaui/static/snapshots/lms/attendance-sheets.png"><br/>Figure 23. Attendance Sheets</p>
-<p align="center"><img src="ixyaui/static/snapshots/lms/grades.png"><br/>Figure 24. Student Grades by Program</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/grades.png"><br/>Figure 24. Student Grades Organized By Program</p>
