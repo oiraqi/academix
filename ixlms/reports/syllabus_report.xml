@@ -175,8 +175,9 @@
                         <tr>
                             <td></td>
                             <td style="border: 1px solid black; text-align: center; padding: 5px;"><b>Assessment Total</b></td>
-                            <td style="border: 1px solid black; text-align: center;"><b>90.0</b></td>
+                            <td style="border: 1px solid black; text-align: center;"><b><span t-field="o.assessment_percentage" /></b></td>
                         </tr>
+                        <t t-if="o.grade_weighting == 'percentage'">
                         <t t-if="o.attendance_percentage &gt; 0">
                         <tr>
                             <td></td>
@@ -184,9 +185,19 @@
                             <td style="border: 1px solid black; text-align: center;"><b><span t-field="o.attendance_percentage" /></b></td>
                         </tr>
                         </t>
+                        </t>
+                        <t t-elif="o.grade_weighting == 'points'">
+                        <t t-if="o.attendance_points &gt; 0">
+                        <tr>
+                            <td></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><b>Attendance</b></td>
+                            <td style="border: 1px solid black; text-align: center;"><b><span t-field="o.attendance_points" /></b></td>
+                        </tr>
+                        </t>
+                        </t>
                     </table>
                     <br/>
-                    <t t-if="o.attendance_percentage &gt; 0">
+                    <t t-if="(o.grade_weighting == 'percentage' and o.attendance_percentage &gt; 0) or (o.grade_weighting == 'points' and o.attendance_points &gt; 0)">
                     <p>
                     <b>Attendance Grading: </b>
                     <t t-if="o.attendance_grading == 'rate'">

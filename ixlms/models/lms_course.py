@@ -115,15 +115,17 @@ class LmsCourse(models.Model):
 	grade_grouping = fields.Selection(string='Assessment Grouping', selection=[('module', 'Course Module'), ('technique', 'Assessment Technique'),], default='module', required=True)
 	grade_weighting = fields.Selection(string='Assessment Weighting', selection=[('percentage', 'Percentage'), ('points', 'Points'),], default='percentage', required=True)	
 	attendance_points = fields.Integer(string='Attendance Points', default=0)
-	attendance_percentage = fields.Float(string='Attendance %', compute='_attendance_percentage')
+	assessment_percentage = fields.Float(string='Assessment %', compute='_ass_att_percentage')
+	attendance_percentage = fields.Float(string='Attendance %', compute='_ass_att_percentage')
 	attendance_weight = fields.Float(compute='_attendance_weight')
 
 	@api.onchange('assessment_ids')
-	def _attendance_percentage(self):
+	def _ass_att_percentage(self):
 		for rec in self:			
-			assessment_percentages = sum([assessment.percentage for assessment in rec.assessment_ids])
-			if assessment_percentages <= 100:
-				rec.attendance_percentage = 100 - assessment_percentages
+			assessment_percentage = sum([assessment.percentage for assessment in rec.assessment_ids])
+			if assessment_percentage <= 100:
+				rec.assessment_percentage = assessment_percentage
+				rec.attendance_percentage = 100 - assessment_percentage
 			else:
 				rec.attendance_percentage = 0.0
 				raise ValidationError('The sum of assessment percentages cannot exceed 100%')
