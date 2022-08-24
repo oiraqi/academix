@@ -109,3 +109,7 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 ### DMS
 <p align="center"><img src="ixyaui/static/snapshots/dms/dms.png"><br/>Figure 32. DMS</p>
 <p align="center"><img src="ixyaui/static/snapshots/dms/dms1.png"><br/>Figure 33. DMS</p>
+
+### Research
+<p align="center"><img src="ixyaui/static/snapshots/research/research.png"><br/>Figure 34. Research - New Journal Article</p>
+<p align="center"><img src="ixyaui/static/snapshots/research/research1.png"><br/>Figure 35. Research - New Journal</p>
