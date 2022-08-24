@@ -37,7 +37,7 @@ class Scheduled(models.AbstractModel):
             
             if rec.start_timeslot and rec.end_timeslot and rec.end_timeslot > rec.start_timeslot:
                 start_hours = int(rec.start_timeslot)
-                start_minutes = int((rec.start_timeslot - start_hours) * 60)
+                start_minutes = round((rec.start_timeslot - start_hours) * 60)
                 if start_hours < 10:
                     start_hours = '0' + str(start_hours)
                 else:
@@ -47,7 +47,7 @@ class Scheduled(models.AbstractModel):
                 start_time = start_hours + ':' + str(start_minutes)
                 
                 end_hours = int(rec.end_timeslot)
-                end_minutes = int((rec.end_timeslot - end_hours) * 60)
+                end_minutes = round((rec.end_timeslot - end_hours) * 60)
                 if end_hours < 10:
                     end_hours = '0' + str(end_hours)
                 else:
