@@ -97,3 +97,11 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 <p align="center"><img src="ixyaui/static/snapshots/lms/assessment3.png"><br/>Figure 22. Assessment</p>
 <p align="center"><img src="ixyaui/static/snapshots/lms/attendance-sheets.png"><br/>Figure 23. Attendance Sheets</p>
 <p align="center"><img src="ixyaui/static/snapshots/lms/grades.png"><br/>Figure 24. Student Grades Organized By Program</p>
+
+### QMS
+<p align="center"><img src="ixyaui/static/snapshots/qms/ilo-assessment.png"><br/>Figure 25. ILO Assessment</p>
+<p align="center"><img src="ixyaui/static/snapshots/qms/portfolio.png"><br/>Figure 27. Course Portfolio</p>
+<p align="center"><img src="ixyaui/static/snapshots/qms/portfolio2.png"><br/>Figure 28. Course Portfolio</p>
+<p align="center"><img src="ixyaui/static/snapshots/qms/portfolio3.png"><br/>Figure 20. Course Portfolio</p>
+<p align="center"><img src="ixyaui/static/snapshots/qms/portfolio4.png"><br/>Figure 30. Course Portfolio</p>
+<p align="center"><img src="ixyaui/static/snapshots/qms/portfolio5.png"><br/>Figure 31. Course Portfolio</p>
