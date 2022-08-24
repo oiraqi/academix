@@ -57,7 +57,7 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 ## Actors / Security Roles (the list is growing)
 - Student
 - Faculty
-- Roster Manager
+- Registrar
 - Coordinator
 - Course Manager
 - Program Manager
