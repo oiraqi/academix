@@ -13,7 +13,8 @@
 **Enrollment Services**: Because some recent updates in our Roster Management System may not have been replicated on our Learning Management System.
 
 **Student**: Dear Advisor, I would like to stop by to get my course pre-registration form signed.<br/>
-**Advisor**: OK, but did you prepare/update your degree plan? *Student*: I have submitted it last semester as an Excel file. It hasn't changed since.<br/>
+**Advisor**: OK, but did you prepare/update your degree plan?<br/>
+**Student**: I have submitted it last semester as an Excel file. It hasn't changed since.<br/>
 **Advisor**: I can't find it, please send it again. Also, remind me about the program you're enrolled in and your minor, as well as your overall performance so far.
 
 **VPAA**: Dear colleagues, I am delighted to announce the launching of yet another software, dedicated to Quality Assurance. You will receive instructions explaining how to copy your sections from the LMS to the new Quality Assurance software, as well as how to export some material to include in your course portfolios.
