@@ -44,5 +44,10 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 - The Technology Stack
 
 ## Screenshots
-### Communication & Collaboration Board
-<p align="center"><img src="ixyaui/static/snapshots/board.png"><br/>Figure 1. Board</p>
+### Communication & Collaboration
+<p align="center"><img src="ixyaui/static/snapshots/board.png"><br/>Figure 1. Communication & Collaboration Board</p>
+
+### Catalog
+<p align="center"><img src="ixyaui/static/snapshots/catalog/courses.png"><br/>Figure 2. Courses</p>
+<p align="center"><img src="ixyaui/static/snapshots/catalog/course.png"><br/>Figure 3. Course</p>
+<p align="center"><img src="ixyaui/static/snapshots/catalog/course-search.png"><br/>Figure 4. Course Search</p>
