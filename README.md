@@ -104,4 +104,8 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 <p align="center"><img src="ixyaui/static/snapshots/qms/portfolio2.png"><br/>Figure 28. Course Portfolio - Student Assessment Samples</p>
 <p align="center"><img src="ixyaui/static/snapshots/qms/portfolio3.png"><br/>Figure 29. Course Portfolio</p>
 <p align="center"><img src="ixyaui/static/snapshots/qms/portfolio4.png"><br/>Figure 30. Course Portfolio - ILO Acquisition By Program / Student Population</p>
-<p align="center"><img src="ixyaui/static/snapshots/qms/portfolio5.png"><br/>Figure 31. Course Portfolio</p>
+<p align="center"><img src="ixyaui/static/snapshots/qms/portfolio5.png"><br/>Figure 31. Course Portfolio - ILO/SO Mapping</p>
+
+### DMS
+<p align="center"><img src="ixyaui/static/snapshots/dms/dms.png"><br/>Figure 32. DMS</p>
+<p align="center"><img src="ixyaui/static/snapshots/dms/dms1.png"><br/>Figure 33. DMS</p>
