@@ -49,11 +49,16 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 
 ### Catalog
 <p align="center"><img src="ixyaui/static/snapshots/catalog/courses.png"><br/>Figure 2. Courses</p>
-<p align="center"><img src="ixyaui/static/snapshots/catalog/course.png"><br/>Figure 3. Course</p>
+<p align="center"><img src="ixyaui/static/snapshots/catalog/course.png"><br/>Figure 3. Course Information</p>
 <p align="center"><img src="ixyaui/static/snapshots/catalog/course-search.png"><br/>Figure 4. Course Search</p>
 
 ### Planning
 <p align="center"><img src="ixyaui/static/snapshots/planning/calendar.png"><br/>Figure 5. Calendar</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/calendar.png"><br/>Figure 6. Term & Important Dates/Events</p>
-<p align="center"><img src="ixyaui/static/snapshots/planning/sections.png"><br/>Sections</p>
-<p align="center"><img src="ixyaui/static/snapshots/planning/section.png"><br/>Section</p>
+<p align="center"><img src="ixyaui/static/snapshots/planning/sections.png"><br/>Figure 7. Sections</p>
+<p align="center"><img src="ixyaui/static/snapshots/planning/section.png"><br/>Figure 8. Section Information</p>
+<p align="center"><img src="ixyaui/static/snapshots/planning/enrollment.png"><br/>Figure 9. Enrolled Student Management</p>
+<p align="center"><img src="ixyaui/static/snapshots/planning/buildings.png"><br/>Figure 10. Buildings</p>
+<p align="center"><img src="ixyaui/static/snapshots/planning/building.png"><br/>Figure 11. Building Information</p>
+<p align="center"><img src="ixyaui/static/snapshots/planning/room.png"><br/>Figure 12. Room Information</p>
+<p align="center"><img src="ixyaui/static/snapshots/planning/reservation.png"><br/>Figure 13. Room Reservation</p>
