@@ -86,7 +86,12 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 <p align="center"><img src="ixyaui/static/snapshots/planning/reservation.png"><br/>Figure 13. Room Reservation</p>
 
 ### LMS
-<p align="center"><img src="ixyaui/static/snapshots/lms/assessments.png"><br/>Figure 14. Assessments</p>
-<p align="center"><img src="ixyaui/static/snapshots/lms/assessment1.png"><br/>Figure 15. Assessment</p>
-<p align="center"><img src="ixyaui/static/snapshots/lms/assessment2.png"><br/>Figure 16. Assessment</p>
-<p align="center"><img src="ixyaui/static/snapshots/lms/assessment3.png"><br/>Figure 17. Assessment</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/courses.png"><br/>Figure 14. LMS Courses</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/course.png"><br/>Figure 15. LMS Course</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/chapters.png"><br/>Figure 16. LMS Course Chapters</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/assessment-structure.png"><br/>Figure 17. LMS Course Assessment Structure</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/textbook.png"><br/>Figure 18. LMS Course Textbooks</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/assessments.png"><br/>Figure 19. Assessments</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/assessment1.png"><br/>Figure 20. Assessment</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/assessment2.png"><br/>Figure 21. Assessment</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/assessment3.png"><br/>Figure 22. Assessment</p>
