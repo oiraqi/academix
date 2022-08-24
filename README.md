@@ -55,8 +55,11 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 - Roster Manager
 - Coordinator
 - Course Manager
+- Program Manager
+- Internship/Capstone Manager
 - Dean
 - VPAA
+- President
 ## Screenshots
 ### Communication & Collaboration
 <p align="center"><img src="ixyaui/static/snapshots/board.png"><br/>Figure 1. Communication & Collaboration Board</p>
