@@ -45,9 +45,13 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 
 ## Integrated Applications (the list is growing)
 - **Catalog Management**: Schools, Programs, Disciplines, Courses (description, ILOs, pre/co requisites, textbooks)
-- **Planning & Roster Management**: Calendar, Terms (important dates; add/drop, last day to drop with W, grade submission, etc.), Sections, Resources (buildings, rooms, reservations)
+- **Planning & Roster Management System (PRMS)**: Calendar, Terms (important dates; add/drop, last day to drop with W, grade submission, etc.), Sections, Resources (buildings, rooms, reservations)
 - **Advising**: Advisees, Degree Plans (automatic generation)
-- **Learning Management System (LMS)**: 
+- **Learning Management System (LMS)**: Course Creation and Management (modules, chapters, assessments, statistics), Attendance Management, Syllabus Generation (PDF), Communication Channels (visio, chat)
+- **Quality Management System (QMS)**: Accreditation Management, Portfolio Management
+- **Document Management Systems (DMS)**: Folders, Documents, Favorites, Sharing (e.g., with students of a given program or faculty in a given discipline), Workspaces
+- **Capstone/Internship Management System (CIMS)**: Project Lifecycle Mangement (proposal, approval, diaries, defense, report, archive)
+- **Research Management System (RMS)**: Journal Articles, Conference Papers, Books, Presentations, Activities
 
 ## Actors / Security Roles (the list is growing)
 - Student
