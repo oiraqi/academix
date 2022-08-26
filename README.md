@@ -10,7 +10,7 @@
 
 **Enrollment Services**: Dear Faculty, please verify that the list of students in your sections is correct.<br/>
 **Faculty**: Dear Enrollment Services, how/why could/would a list of students be incorrect?<br/>
-**Enrollment Services**: Because some recent updates in our Roster Management System may not have been replicated on our Learning Management System.
+**Enrollment Services**: Some recent updates in our Roster Management System may not have been replicated in our Learning Management System.
 
 **Student**: Dear Advisor, I would like to stop by to get my course pre-registration form signed.<br/>
 **Advisor**: OK, but did you prepare/update your degree plan?<br/>
