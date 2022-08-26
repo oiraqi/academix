@@ -79,12 +79,12 @@
 						</h1>
 						<br/>
 						<div class="oe_button_box" name="button_box" attrs="{'invisible': [('id', '=', False)]}">
-							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-puzzle-piece" groups="ix.group_faculty">
+							<!--<button name="get_modules" type="object" class="oe_stat_button" icon="fa-puzzle-piece" groups="ix.group_faculty">
 								<field name="nmodules" string="Modules" widget="statinfo"/>
 							</button>
 							<button name="get_techniques" type="object" class="oe_stat_button" icon="fa-pencil-square-o" groups="ix.group_faculty">
 								<field name="ntechniques" string="Assess. Techniques" widget="statinfo"/>
-							</button>
+							</button>-->
 							<button name="get_channels" type="object" class="oe_stat_button" icon="fa-comments">
 								<field name="nchannels" string="Channels" widget="statinfo"/>
 							</button>							
@@ -96,10 +96,7 @@
 							</button>
 							<button name="get_assessments" type="object" class="oe_stat_button" icon="fa-edit">
 								<field name="nassessments" string="Assessments" widget="statinfo"/>
-							</button>
-							<!--<button name="get_grade_matrix" type="object" class="oe_stat_button" icon="fa-percent">
-								<field name="nassessment_lines" string="Grade Matrix" widget="statinfo"/>
-							</button>-->
+							</button>							
 							<button name="get_students" type="object" class="oe_stat_button" icon="fa-users" groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
 								<field name="nstudents" string="Students" widget="statinfo"/>
 							</button>
@@ -153,7 +150,7 @@
 									<field name="grade_weighting" style="width: 50%" string="Weighted by"/>
 								</group>								
 								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
-									<field name="module_ids" nolabel="1" readonly="1">
+									<field name="module_ids" nolabel="1">
 										<tree>
 											<field name="name" string="Course Module"/>
 											<field name="nassessments"/>
@@ -161,7 +158,7 @@
 											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
 										</tree>
 									</field>
-									<field name="technique_ids" nolabel="1" readonly="1">
+									<field name="technique_ids" nolabel="1">
 										<tree>											
 											<field name="technique_id"/>
 											<field name="nassessments"/>
