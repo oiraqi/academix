@@ -5,10 +5,10 @@
 **FEC Chair**: Dear colleague, unfortunately, we don't have access to those reports on the course management portal. And as you know, the faculty evaluation software is different and disconnected from course management.
 
 **Dean**: Dear colleagues, please send your published articles over the current year for the annual activity report.<br/>
-**Faculty**: Dear Dean, I have just submitted my faculty evaluation file. Please find it there.<br/>
+**Faculty**: Dear Dean, I have just submitted my faculty evaluation file. Please find them there.<br/>
 **Dean**: Yes, but that's a different process and system. Please send that information again.
 
-**Enrollment Services**: Dear Faculty, please verify that the list of students in your sections is correct.<br/>
+**Enrollment Services**: Dear Faculty, please verify that the lists of students in your sections are correct.<br/>
 **Faculty**: Dear Enrollment Services, how/why could/would a list of students be incorrect?<br/>
 **Enrollment Services**: Some recent updates in our Roster Management System may not have been replicated in our Learning Management System.
 
