@@ -144,7 +144,7 @@
 									</field>
 								</group>
 							</page>
-							<page string="Assessment Structure" name="assessment" attrs="{'invisible': ['|', ('nmodules', '=', 0), ('ntechniques', '=', 0)]}">
+							<page string="Assessment Structure" name="assessment">
 								<group col="4" string="Assessment Grouping &#38; Weighting">
 									<field name="grade_grouping" style="width: 50%" string="Grouped by"/>
 									<field name="grade_weighting" style="width: 50%" string="Weighted by"/>
