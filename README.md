@@ -70,7 +70,7 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 <p align="center"><img src="ixyaui/static/snapshots/board.png"><br/>Figure 1. Communication & Collaboration Board</p>
 
 ### Catalog
-<p align="center"><img src="ixyaui/static/snapshots/catalog/courses.png"><br/>Figure 2. Courses</p>
+<p align="center"><img src="ixyaui/static/snapshots/catalog/courses.png"><br/>Figure 2. Courses organized by School & Discipline</p>
 <p align="center"><img src="ixyaui/static/snapshots/catalog/course.png"><br/>Figure 3. Course Information</p>
 <p align="center"><img src="ixyaui/static/snapshots/catalog/course-search.png"><br/>Figure 4. Course Search</p>
 
