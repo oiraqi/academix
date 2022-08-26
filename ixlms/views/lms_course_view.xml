@@ -151,7 +151,7 @@
 								</group>								
 								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
 									<field name="module_ids" nolabel="1">
-										<tree>
+										<tree editable="bottom">
 											<field name="name" string="Course Module"/>
 											<field name="nassessments"/>
 											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
@@ -159,8 +159,8 @@
 										</tree>
 									</field>
 									<field name="technique_ids" nolabel="1">
-										<tree>											
-											<field name="technique_id"/>
+										<tree editable="bottom">											
+											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 											<field name="nassessments"/>
 											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
 											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
