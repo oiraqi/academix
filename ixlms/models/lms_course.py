@@ -190,7 +190,7 @@ class LmsCourse(models.Model):
 	
 	details = fields.Html(string='More Details')
 
-	channel_ids = fields.One2many(comodel_name='mail.channel', inverse_name='course_id', string='Channels')
+	channel_ids = fields.One2many(comodel_name='mail.channel', inverse_name='lms_course_id', string='Channels')
 	nchannels = fields.Integer(string='Channels', compute='_nchannels')
 
 	def _nchannels(self):
