@@ -25,7 +25,7 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 
 
-META_EVENTS = [('add_drop', 'Add/Drop'), ('w', 'Last day to drop with W'), ('grade_submission', 'Grade Submission')]
+META_EVENTS = [('add_drop', 'Add/Drop'), ('w', 'Last day to drop with W'), ('holiday', 'Holiday'), ('grade_submission', 'Grade Submission')]
 
 class Event(models.Model):
 	_name = 'calendar.event'
