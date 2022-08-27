@@ -269,8 +269,8 @@ class LmsCourse(models.Model):
 
 	def get_attendance(self):
 		self.ensure_one()
-		domain = [('course_id', '=', self.id)]
-		context = {'default_course_id': self.id}
+		domain = [('lms_course_id', '=', self.id)]
+		context = {'default_lms_course_id': self.id}
 		return self._expand_to('ixlms.action_attendance', domain, context)
 
 	def get_teamsets(self):
