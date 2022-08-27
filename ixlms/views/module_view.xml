@@ -10,7 +10,7 @@
 						<h1>
 							<field name="name" default_focus="1" placeholder="Name..."/>
 						</h1>
-						<field name="course_id" invisible="1"/>
+						<field name="lms_course_id" invisible="1"/>
 						<group name="chapters" string="Chapters &#38; Timeline">
 							<field name="chapter_ids" nolabel="1">
 								<tree editable="bottom">
@@ -40,7 +40,7 @@
 				<tree string="Modules" editable="bottom">
 					<field name="sequence" widget="handle"/>
 					<field name="name"/>
-					<field name="course_id" invisible="1"/>
+					<field name="lms_course_id" invisible="1"/>
 				</tree>
 			</field>
 		</record>

@@ -83,7 +83,7 @@ class LmsCourse(models.Model):
 			rec.office_hours = office_hours
 	
 
-	module_ids = fields.One2many(comodel_name='ixlms.module', inverse_name='course_id', string='Modules')
+	module_ids = fields.One2many(comodel_name='ixlms.module', inverse_name='lms_course_id', string='Modules')
 	nmodules = fields.Integer(string='Modules', compute='_nmodules')
 	assessed_module_ids = fields.One2many(comodel_name='ixlms.module', compute='_assessed_module_ids', string='Modules')
 
@@ -281,8 +281,8 @@ class LmsCourse(models.Model):
 
 	def get_modules(self):
 		self.ensure_one()
-		domain = [('course_id', '=', self.id)]
-		context = {'default_course_id': self.id}
+		domain = [('lms_course_id', '=', self.id)]
+		context = {'default_lms_course_id': self.id}
 		return self._expand_to('ixlms.action_module', domain, context)
 
 	def get_techniques(self):

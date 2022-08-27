@@ -34,6 +34,7 @@ class Module(models.Model):
 	points = fields.Integer(string='Points', compute='_points')
 	percentage = fields.Float(string='%', compute='_percentage')
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='course_id', store=True)
 	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='module_id', string='Assessments')
 	nassessments = fields.Integer(string='# of Assessments', compute='_nassessments')
 	chapter_ids = fields.One2many(comodel_name='ixlms.chapter', inverse_name='module_id', string='Chapters & Timeline')
