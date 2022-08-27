@@ -8,7 +8,7 @@
 				<form string="Attendance">
 					<sheet>
 						<h1><field name="name"/></h1>
-						<field name="course_id" invisible="1"/>
+						<field name="lms_course_id" invisible="1"/>
 						<group name="date">
 							<field name="day" style="width: 25%"/>
 						</group>

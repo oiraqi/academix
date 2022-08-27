@@ -32,6 +32,7 @@ class Attendance(models.Model):
 
 	name = fields.Char('Name', compute='_set_name')
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='Course', required=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='course_id', store=True)
 	section_id = fields.Many2one(comodel_name='ixroster.section', related='course_id.section_id', store=True)
 	term_id = fields.Many2one(comodel_name='ix.term', related='course_id.section_id.term_id', store=True)
 	school_id = fields.Many2one(comodel_name='ix.school', related='course_id.section_id.school_id', store=True)
