@@ -27,8 +27,7 @@ class MailChannel(models.Model):
     _inherit = 'mail.channel'
 
     cname = fields.Char(string='Channel Name')    
-    course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course')
-    lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='course_id', store=True)
+    lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course')    
 
     @api.onchange('cname', 'lms_course_id')
     def _cname(self):
