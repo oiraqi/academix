@@ -28,12 +28,13 @@ class MailChannel(models.Model):
 
     cname = fields.Char(string='Channel Name')    
     course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course')
+    lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='course_id', store=True)
 
-    @api.onchange('cname', 'course_id')
+    @api.onchange('cname', 'lms_course_id')
     def _cname(self):
         for rec in self:
-            if rec.course_id and rec.course_id.name and rec.cname:
-                rec.name = rec.course_id.name
+            if rec.lms_course_id and rec.lms_course_id.name and rec.cname:
+                rec.name = rec.lms_course_id.name
                 if rec.cname:
                     rec.name += '-' + rec.cname
 
