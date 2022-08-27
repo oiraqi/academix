@@ -28,18 +28,19 @@ class Chapter(models.Model):
 	_name = 'ixlms.chapter'
 	_description = 'Chapter'
 	_order = "sequence"
-	_sql_constraints = [('course_sequence_ukey', 'unique(course_id, sequence)', 'Duplicate chapter sequence!')]
+	_sql_constraints = [('course_sequence_ukey', 'unique(lms_course_id, sequence)', 'Duplicate chapter sequence!')]
 
 	name = fields.Char('Name', required=True)
 	sequence = fields.Integer('Ch.', required=True)
 	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
-	ccourse_id = fields.Many2one(comodel_name='ix.course', related='course_id.course_id')
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='course_id', store=True)
+	ccourse_id = fields.Many2one(comodel_name='ix.course', related='lms_course_id.course_id')
 	start_date = fields.Date(string='Start Date')
 	nsessions = fields.Integer(string='Sessions')
 	resource_ids = fields.Many2many(comodel_name='ixlms.resource', string='Resources')
 	nresources = fields.Integer(string='Resources', compute='_nresources')
-	module_ids = fields.One2many(comodel_name='ixlms.module', related='course_id.module_ids')
+	module_ids = fields.One2many(comodel_name='ixlms.module', related='lms_course_id.module_ids')
 
 	def _nresources(self):
 		for rec in self:

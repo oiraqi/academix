@@ -164,7 +164,7 @@ class LmsCourse(models.Model):
 			else:
 				rec.nteamsets = 0
 	
-	chapter_ids = fields.One2many(comodel_name='ixlms.chapter', inverse_name='course_id', string="Chapters & Timeline")
+	chapter_ids = fields.One2many(comodel_name='ixlms.chapter', inverse_name='lms_course_id', string="Chapters & Timeline")
 	nchapters = fields.Integer(string='Chapters', compute='_nchapters')
 
 	def _nchapters(self):
@@ -299,8 +299,8 @@ class LmsCourse(models.Model):
 
 	def get_chapters(self):
 		self.ensure_one()
-		domain = [('course_id', '=', self.id)]
-		context = {'default_course_id': self.id, 'group_by': 'module_id'}
+		domain = [('lms_course_id', '=', self.id)]
+		context = {'default_lms_course_id': self.id, 'group_by': 'module_id'}
 		return self._expand_to('ixlms.action_chapter', domain, context)
 
 

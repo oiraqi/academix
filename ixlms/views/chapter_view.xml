@@ -12,7 +12,7 @@
 							<field name="module_id" domain="[('course_id', '=', course_id)]"/>
 							<field name="start_date"/>
 							<field name="nsessions"/>
-							<field name="course_id" invisible="1"/>
+							<field name="lms_course_id" invisible="1"/>
 							<field name="ccourse_id" invisible="1"/>
 						</group>
 						<group name="resources" string="Resources">
