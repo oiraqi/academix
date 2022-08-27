@@ -12,5 +12,6 @@
 		<menuitem id="planning_room_menu" name="Rooms" action="ix.action_room" parent="planning_root_menu" sequence="140"/>
 		<menuitem id="planning_term_menu" name="Terms" parent="planning_root_menu" action="ix.action_term" sequence="160"/>
 		<menuitem id="planning_session_menu" name="Sessions" parent="planning_root_menu" action="ix.action_session" sequence="180" groups="ixroster.group_registrar"/>
+		<menuitem id="ix.ix_student_menu" name="Students" parent="ix.ix_root_menu" sequence="200" action="ix.action_student" groups="ix.group_setup,ix.group_coordinator,ix.group_vpaa,ixroster.group_registrar"/>
 	</data>
 </odoo>
