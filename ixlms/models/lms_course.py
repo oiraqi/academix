@@ -101,7 +101,7 @@ class LmsCourse(models.Model):
 			assessed_module_ids = [assessment.module_id.id for assessment in rec.assessment_ids]
 			rec.assessed_module_ids = self.env['ixlms.module'].search([('id', 'in', assessed_module_ids)])
 
-	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', inverse_name='course_id', string='Techniques')
+	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', inverse_name='lms_course_id', string='Techniques')
 	ntechniques = fields.Integer(string='Techniques', compute='_ntechniques')
 
 	@api.onchange('technique_ids')

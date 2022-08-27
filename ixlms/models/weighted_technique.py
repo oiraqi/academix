@@ -27,7 +27,7 @@ from odoo import models, fields, api
 class WeightedTechnique(models.Model):
 	_name = 'ixlms.weighted.technique'
 	_description = 'Weighted Technique'
-	_sql_constraints = [('course_technique_ukey', 'unique(course_id, technique_id)', 'Assessment techniques: Remove duplicates!')]
+	_sql_constraints = [('course_technique_ukey', 'unique(lms_course_id, technique_id)', 'Assessment techniques: Remove duplicates!')]
 
 	technique_id = fields.Many2one(comodel_name='ixlms.assessment.technique', string='Assessment Technique', required=True)
 	name = fields.Char(related='technique_id.name')
@@ -35,6 +35,7 @@ class WeightedTechnique(models.Model):
 	points = fields.Integer(string='Points', compute='_points')
 	percentage = fields.Float(string='%', compute='_percentage')
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='course_id', store=True)
 	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='technique_id', string='Assessments')
 	nassessments = fields.Integer(string='# of Assessments', compute='_nassessments')
 	

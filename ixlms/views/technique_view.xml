@@ -29,7 +29,7 @@
 				<tree string="Techniques" editable="bottom">
 					<field name="sequence" widget="handle"/>
 					<field name="technique_id"/>
-					<field name="course_id" invisible="1"/>
+					<field name="lms_course_id" invisible="1"/>
 				</tree>
 			</field>
 		</record>
