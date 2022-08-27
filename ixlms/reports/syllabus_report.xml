@@ -98,25 +98,25 @@
                     <t t-if="len(o.chapter_ids) &gt; 0">
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Course Content and Timeline</b>
-                    </h2>
-                    <t t-foreach="o.module_ids" t-as="module">
-                    <h4><b><span t-field="module.name" /></b></h4>
+                    </h2>                    
                     <table style="border: 1px solid black; width: 100%; font-size: 100%; border-collapse: collapse;">
-                        <tr style="border: 1px solid black; background-color: #D0D0D0;">                            
+                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
                             <th style="border: 1px solid black; text-align: center; width: 5%;">Ch.</th>
                             <th style="border: 1px solid black; text-align: center; width: 60%;">Name</th>                            
                             <th style="border: 1px solid black; text-align: center; width: 20%;">Start Date</th>
                             <th style="border: 1px solid black; text-align: center; width: 15%;"># of Sessions</th>
                         </tr>
-                        <t t-foreach="o.chapter_ids" t-as="chapter">
-                        <t t-if="chapter.module_id == module">
+                        <t t-foreach="o.module_ids" t-as="module">
+                        <tr style="border: 1px solid black; background-color: #F0F0F0;">
+                            <td style="border: 1px solid black; text-align: center;" colspan="4"><h4><b><span t-field="module.name" /></b></h4></td>
+                        </tr>
+                        <t t-foreach="module.chapter_ids" t-as="chapter">                        
                         <tr>
                             <td style="border: 1px solid black; text-align: center;"><span t-field="chapter.sequence" /></td>
                             <td style="border: 1px solid black; text-align: left; padding: 5px;"><span t-field="chapter.name" /></td>                            
                             <td style="border: 1px solid black; text-align: center;"><span t-field="chapter.start_date" /></td>
                             <td style="border: 1px solid black; text-align: center;"><span t-field="chapter.nsessions" /></td>
-                        </tr>
-                        </t>
+                        </tr>                        
                         </t>
                     </table>
                     <br/>
@@ -204,10 +204,10 @@
                     <span>Attendance Rate</span>
                     </t>
                     <t t-elif="o.attendance_grading == 'penalty'">
-                    <span t-field="o.penalty_per_absence" />%<span> penalty / absence</span>
+                    <span t-field="o.penalty_per_absence" />%<span> penalty / unexcused absence</span>
                     </t>
                     <t t-if="o.zero_after_max_abs">
-                    <span> - Zero after </span><span t-field="o.max_absences" /><span> absences</span>
+                    <span> - Zero after </span><span t-field="o.max_absences" /><span> unexcused absences</span>
                     </t>
                     </p>
                     </t>

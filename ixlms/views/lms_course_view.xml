@@ -171,7 +171,7 @@
 									<field name="attendance_percentage" string="Attendance %" style="width: 10%" attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" colspan="4"/>
 									<label for="attendance_grading" string="Attendance Grading" attrs="{'invisible': [('attendance_weight', '=', 0.0)]}"/>
 									<div attrs="{'invisible': [('attendance_weight', '=', 0.0)]}">
-										<field name="attendance_grading" style="max-width: 60%" attrs="{'required': [('attendance_weight', '>', 0.0)]}"/>
+										<field name="attendance_grading" style="max-width: 65%" attrs="{'required': [('attendance_weight', '>', 0.0)]}"/>
 										<![CDATA[&nbsp;]]>
 										<field name="penalty_per_absence" style="max-width: 15%" attrs="{'invisible': [('attendance_grading', '!=', 'penalty')], 'required': [('attendance_grading', '=', 'penalty')]}"/>
 										<![CDATA[&nbsp;]]>
@@ -183,7 +183,7 @@
 										<field name="max_absences" style="width: 10%" attrs="{'invisible': [('zero_after_max_abs', '=', False)],
 												'required': [('zero_after_max_abs', '=', True)]}"/>
 										<![CDATA[&nbsp;]]>
-										<span attrs="{'invisible': [('zero_after_max_abs', '=', False)]}">Absences</span>
+										<span attrs="{'invisible': [('zero_after_max_abs', '=', False)]}">Unexcused Absences</span>
 									</div>
 									<field name="attendance_weight" invisible="1"/>
 								</group>

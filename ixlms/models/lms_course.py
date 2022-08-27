@@ -142,7 +142,7 @@ class LmsCourse(models.Model):
 				rec.attendance_weight = 0.0
 
 	attendance_grading = fields.Selection(string='Attendance Grading', selection=[('rate', 'Attendance Rate'),
-		('penalty', 'Penalty / Absence')], default='rate')	
+		('penalty', 'Penalty / Unexcused Absence')], default='rate')	
 	penalty_per_absence = fields.Float(string='Penalty(%) / Absence', default=5.0)
 	zero_after_max_abs = fields.Boolean(string='Zero after Max Absences', default=False)	
 	max_absences = fields.Integer(string='Max Absences', default=5)
