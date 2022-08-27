@@ -17,8 +17,8 @@
 							<field name="end_date"/>						
 							<field name="event_ids" colspan="4">
 								<tree editable="bottom" default_order="start_date">
-									<field name="meta" string="Standard Event" required="1"/>
-									<field name="name"/>
+									<field name="meta" string="Standard Event" groups="ix.group_setup" required="1"/>
+									<field name="name" string="Custom Event Name"/>
 									<field name="start_date"/>
 									<field name="stop_date"/>									
 									<field name="allday" invisible="1"/>
