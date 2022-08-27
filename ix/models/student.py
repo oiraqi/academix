@@ -28,8 +28,7 @@ import string
 
 class Student(models.Model):
     _name = 'ix.student'
-    _inherits = {'res.partner': 'partner_id'}
-    _inherit = ['ix.school.owned', 'mail.thread']
+    _inherit = ['ix.partnered', 'ix.school.owned', 'mail.thread']
     _description = 'Student'
     _order = 'name'
     _sql_constraints = [('sid_ukey', 'unique(sid)', 'Student ID already exists')]

@@ -3,6 +3,7 @@ from . import term
 from . import activity
 from . import institution_owned
 from . import school_owned
+from . import partnered
 from . import course
 from . import discipline
 from . import faculty

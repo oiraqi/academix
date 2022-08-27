@@ -5,9 +5,9 @@
         <record id="view_student_form_advising" model="ir.ui.view">
             <field name="name">ix.student.inherit.view.form</field>
             <field name="model">ix.student</field>
-            <field name="inherit_id" ref="ixcatalog.view_student_form_catalog"/>
+            <field name="inherit_id" ref="ix.view_student_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='program_id']" position="after">                    
+                <xpath expr="//field[@name='attendance_mode']" position="after">                    
                     <field name="advisor_id" domain="[('school_id', '=', school_id)]"
                         options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                 </xpath>                
