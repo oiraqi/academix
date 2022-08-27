@@ -31,6 +31,7 @@ class Teamset(models.Model):
 
 	name = fields.Char('Name', required=True)
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='course_id', store=True)
 	nmembers_per_team = fields.Integer(string='Initial Number of Members per Team', default=2, required=True)	
 	team_ids = fields.One2many(comodel_name='ixlms.team', inverse_name='teamset_id', string='Teams')		
 

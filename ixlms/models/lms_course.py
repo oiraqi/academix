@@ -153,7 +153,7 @@ class LmsCourse(models.Model):
 	used_technique_ids = fields.One2many(comodel_name='ixlms.assessment.technique', compute='_assessment_ids')
 	attendance_ids = fields.One2many(comodel_name='ixlms.attendance', inverse_name='lms_course_id', string='Attendance Sheets')
 	nattendance_sheets = fields.Integer(string='Number of Attendance Sheets', compute='_attendance_ids')
-	teamset_ids = fields.One2many(comodel_name='ixlms.teamset', inverse_name='course_id', string='Team Sets')
+	teamset_ids = fields.One2many(comodel_name='ixlms.teamset', inverse_name='lms_course_id', string='Team Sets')
 	nteamsets = fields.Integer(string='Team Sets', compute='_nteamsets')
 
 	@api.onchange('teamset_ids')
@@ -275,8 +275,8 @@ class LmsCourse(models.Model):
 
 	def get_teamsets(self):
 		self.ensure_one()
-		domain = [('course_id', '=', self.id)]
-		context = {'default_course_id': self.id}
+		domain = [('lms_course_id', '=', self.id)]
+		context = {'default_lms_course_id': self.id}
 		return self._expand_to('ixlms.action_teamset', domain, context)
 
 	def get_modules(self):
