@@ -32,7 +32,8 @@ class Team(models.Model):
 	teamset_id = fields.Many2one(comodel_name='ixlms.teamset', string='Team Set', required=True)	
 	member_ids = fields.One2many(comodel_name='ixlms.team.membership', inverse_name='team_id', string='Members')
 	course_id = fields.Many2one(comodel_name='ixlms.course', related='teamset_id.lms_course_id', store=True)
-	student_ids = fields.One2many(comodel_name='ix.student', related='course_id.student_ids')
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='teamset_id.lms_course_id', store=True)
+	student_ids = fields.One2many(comodel_name='ix.student', related='lms_course_id.student_ids')
 
 	@api.onchange('member_ids')
 	def _set_name(self):
