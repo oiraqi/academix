@@ -10,7 +10,7 @@
                 <xpath expr="//field[@name='school_id']" position="after">
                     <field name="program_id" domain="[('school_id', '=', school_id)]"
                         options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-                    <field name="level" widget="radio" options="{'horizontal': True}"/>
+                    <field name="level"/>
                 </xpath>                
             </field>
         </record>       
