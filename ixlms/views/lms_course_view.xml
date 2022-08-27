@@ -124,8 +124,7 @@
 								<group name="ilos">
 									<field name="ilo_ids" nolabel="1">
 										<tree>
-											<field name="name"/>
-											<field name="description"/>
+											<field name="idx_description"/>
 										</tree>
 									</field>
 								</group>

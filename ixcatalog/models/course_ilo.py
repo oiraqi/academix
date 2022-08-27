@@ -39,7 +39,7 @@ class ILO(models.Model):
             rec.name = 'ILO' + str(rec.sequence)
     
     description = fields.Char(string='ILO', required=True)
-    idx_description = fields.Char(string='ILO', compute='_idx_description')
+    idx_description = fields.Text(string='ILO', compute='_idx_description')
     sequence = fields.Integer(string='Sequence', default=1)
     course_id = fields.Many2one('ix.course', string='Course', required=True)
 
