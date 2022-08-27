@@ -147,7 +147,7 @@ class LmsCourse(models.Model):
 	zero_after_max_abs = fields.Boolean(string='Zero after Max Absences', default=False)	
 	max_absences = fields.Integer(string='Max Absences', default=5)
 	
-	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='course_id', string='Assessments')
+	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='lms_course_id', string='Assessments')
 	nassessments = fields.Integer(string='Assessments', compute='_assessment_ids')
 	nassessment_lines = fields.Integer(string='Number of Assessment Lines', compute='_assessment_ids')
 	used_technique_ids = fields.One2many(comodel_name='ixlms.assessment.technique', compute='_assessment_ids')
@@ -233,8 +233,8 @@ class LmsCourse(models.Model):
 
 	def get_assessments(self):
 		self.ensure_one()
-		domain = [('course_id', '=', self.id)]
-		context = {'default_course_id': self.id}
+		domain = [('lms_course_id', '=', self.id)]
+		context = {'default_lms_course_id': self.id}
 		if self.grade_grouping == 'module' and self.grade_weighting == 'percentage':
 			context.update({'group_by': 'module_id'})
 			return self._expand_to('ixlms.action_assessment_module_percentage', domain, context)

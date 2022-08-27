@@ -35,11 +35,12 @@ class Assessment(models.Model):
 	description = fields.Html(string='Description')
 	
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
-	section_id = fields.Many2one(comodel_name='ixroster.section', related='course_id.section_id', store=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='course_id', store=True)
+	section_id = fields.Many2one(comodel_name='ixroster.section', related='lms_course_id.section_id', store=True)
 	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
 	technique_id = fields.Many2one(comodel_name='ixlms.weighted.technique', string='Technique', required=True)
 	graded = fields.Boolean(string='Graded', required=True, default=True)
-	grade_weighting = fields.Selection(related='course_id.grade_weighting')
+	grade_weighting = fields.Selection(related='lms_course_id.grade_weighting')
 	points = fields.Integer(string='Points', required=True, default=0)
 	percentage = fields.Float(string='%', required=True, default=0.0)
 	grade_scale = fields.Integer(string='Graded over', required=True, default=100)
@@ -98,10 +99,10 @@ class Assessment(models.Model):
 			if rec.percentage < 0 or rec.percentage > 100:
 				raise ValidationError('The assessment % must be between 0 and 100%')
 
-			rec.course_id.check_sum_percentages()
+			rec.lms_course_id.check_sum_percentages()
 	
-	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', related='course_id.technique_ids')
-	module_ids = fields.One2many(comodel_name='ixlms.module', related='course_id.module_ids')
+	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', related='lms_course_id.technique_ids')
+	module_ids = fields.One2many(comodel_name='ixlms.module', related='lms_course_id.module_ids')
 
 	submission_type = fields.Selection(string='Submission Type', selection=[('online', 'Online'), ('paper', 'Paper'), ('nosub', 'No Submission / Self-assessment')], required=True, default='online')
 	is_file_req = fields.Boolean(string='File Required', default=False)
@@ -201,7 +202,7 @@ class Assessment(models.Model):
 	def get_assessment_lines(self):
 		self.ensure_one()
 		student_ids = [assessment_line.student_id.id for assessment_line in self.assessment_line_ids]
-		for student in self.course_id.student_ids:
+		for student in self.lms_course_id.student_ids:
 			if student.id not in student_ids:
 				self.env['ixlms.assessment.line'].create({
 					'assessment_id': self.id,
