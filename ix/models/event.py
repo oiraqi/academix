@@ -25,13 +25,24 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 
 
-META_EVENTS = [('add_drop', 'Add/Drop'), ('w', 'Last day to drop with W'), ('holiday', 'Holiday'), ('grade_submission', 'Grade Submission')]
+META_EVENTS = [
+	('general_faculty_convocation', 'General Faculty Convocation'),
+	('new_students_registration', 'New and International Students Registration'), 
+	('new_students_orientation', 'New Students Orientation Program'), 
+	('continuing_students_registration', 'Continuing Students Registration'), 
+	('first_day_of_class', 'First Day of Class'), ('add_drop', 'Add/Drop'), 
+	('last_day_to_revise_schedule', 'Last Day to Revise Schedule'),
+	('last_day_of_late_registration', 'Last Day of Late Registration'),
+	('holiday', 'Holiday'), ('faculty_mid_semester_evaluations', 'Mid-Semester Evaluations by Faculty'),
+	('w', 'Last day to drop with W'), ('wp_wf', 'Last Day to Drop a Course with "WP" or "WF"'),	
+	('last_day_to_withdraw_from_university', 'Last Day to Withdraw from the University'),
+	('last_regular_class_day', ' Last Regular Class Day'), ('review_day', 'Review Day'),
+	('final_exams', 'Final Exams'), ('grade_submission', 'Grade Submission')]
 
 class Event(models.Model):
 	_name = 'calendar.event'
 	_inherit = ['calendar.event', 'ix.activity']
 	_description = 'Event'
-	_sql_constraints = [('term_meta_ukey', 'unique(term_id, meta)', 'Duplicate events!')]
 
 	allday = fields.Boolean('All Day', default=True)
 	meta = fields.Selection(string='Type', selection=META_EVENTS)
