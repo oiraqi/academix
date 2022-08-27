@@ -37,7 +37,7 @@
 						</group>
 						<group name="teamwork" string="Teamwork" col="4">
 							<field name="teamwork"/>
-							<field name="teamset_id" attrs="{'invisible': [('teamwork', '=', False)], 'required': [('teamwork', '=', True)]}" domain="[('course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>							
+							<field name="teamset_id" attrs="{'invisible': [('teamwork', '=', False)], 'required': [('teamwork', '=', True)]}" domain="[('lms_course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>							
 						</group>
 						<group name="timeline" string="Timeline(s)" col="4">
 							<field name="timeline"/>

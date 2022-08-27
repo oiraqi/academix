@@ -30,7 +30,7 @@
 					<field name="name"/>
 					<field name="nmembers_per_team"/>
 					<button string="Open" name="get_teams" type="object" icon="fa-folder-open"/>
-					<field name="course_id" invisible="1"/>
+					<field name="lms_course_id" invisible="1"/>
 				</tree>
 			</field>
 		</record>
