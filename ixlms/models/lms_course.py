@@ -151,7 +151,7 @@ class LmsCourse(models.Model):
 	nassessments = fields.Integer(string='Assessments', compute='_assessment_ids')
 	nassessment_lines = fields.Integer(string='Number of Assessment Lines', compute='_assessment_ids')
 	used_technique_ids = fields.One2many(comodel_name='ixlms.assessment.technique', compute='_assessment_ids')
-	attendance_ids = fields.One2many(comodel_name='ixlms.attendance', inverse_name='course_id', string='Attendance Sheets')
+	attendance_ids = fields.One2many(comodel_name='ixlms.attendance', inverse_name='lms_course_id', string='Attendance Sheets')
 	nattendance_sheets = fields.Integer(string='Number of Attendance Sheets', compute='_attendance_ids')
 	teamset_ids = fields.One2many(comodel_name='ixlms.teamset', inverse_name='course_id', string='Team Sets')
 	nteamsets = fields.Integer(string='Team Sets', compute='_nteamsets')
