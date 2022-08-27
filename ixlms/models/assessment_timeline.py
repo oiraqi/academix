@@ -34,7 +34,7 @@ class AssessmentTimeline(models.Model):
 	due_time = fields.Datetime(string='Due')
 	from_time = fields.Datetime(string='Open from')
 	to_time = fields.Datetime(string='Until')
-	student_ids = fields.One2many(comodel_name='ix.student', related='assessment_id.course_id.student_ids')
+	student_ids = fields.One2many(comodel_name='ix.student', related='assessment_id.lms_course_id.student_ids')
 	team_ids = fields.One2many(comodel_name='ixlms.team', related='assessment_id.teamset_id.team_ids')
 	
 		
