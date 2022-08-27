@@ -36,7 +36,6 @@ class AssessmentLine(models.Model):
 	student_id = fields.Many2one(comodel_name='ix.student', string='Student', required=True)	
 	assessment_id = fields.Many2one(comodel_name='ixlms.assessment', string='Assessment', required=True)
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', related='student_id.program_id', store=True)	
-	course_id = fields.Many2one(comodel_name='ixlms.course', related='assessment_id.lms_course_id', store=True)
 	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='assessment_id.lms_course_id', store=True)
 	section_id = fields.Many2one(comodel_name='ixroster.section', related='assessment_id.section_id', store=True)
 	module_id = fields.Many2one(comodel_name='ixlms.module', related='assessment_id.module_id', store=True)
