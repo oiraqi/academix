@@ -114,12 +114,18 @@ class Enrollment(models.Model):
 
     @api.model
     def check_time_conflict(self, student, section):
-        current_sections = self.search([('student_id', '=', student.id), (
+        current_enrollments = self.search([('student_id', '=', student.id), (
             'term_id', '=', section.term_id.id), ('state', '=', 'enrolled')])
-        for sec in current_sections:
-            if section.start_time <= sec.end_time and section.end_time >= sec.start_time:
+        for enrollment in current_enrollments:
+            if (section.monday == enrollment.section_id.monday or \
+                section.tuesday == enrollment.section_id.tuesday or \
+                section.wednesday == enrollment.section_id.wednesday or \
+                section.thursday == enrollment.section_id.thursday or \
+                section.friday == enrollment.section_id.friday) and \
+                section.start_timeslot <= enrollment.section_id.end_timeslot and \
+                section.end_timeslot >= enrollment.section_id.start_timeslot:
                 raise ValidationError(
-                    'Time Conflict with ' + sec.name + ': ' + sec.timeslot)
+                    'Time Conflict with ' + enrollment.section_id.name + ': ' + enrollment.section_id.timeslot)
 
     @api.onchange('student_id', 'section_id')
     def _set_name(self):

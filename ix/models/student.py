@@ -33,7 +33,6 @@ class Student(models.Model):
     _order = 'name'
     _sql_constraints = [('sid_ukey', 'unique(sid)', 'Student ID already exists')]
 
-    partner_id = fields.Many2one('res.partner', string='Partner', required=True)
     sid = fields.Char(string='ID', required=True)
     attendance_mode = fields.Selection(string='Attendance Mode', selection=[('f2f', 'Face To Face'), ('online', 'Online'),], default='f2f', required=True, tracking=True)
     max_ncourses = fields.Integer(string='Max Number of Courses / Semester', default=6, required=True, tracking=True)

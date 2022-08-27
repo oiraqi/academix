@@ -19,7 +19,7 @@
             <field name="model">ix.student</field>
             <field name="inherit_id" ref="ix.view_student_tree"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='name']" position="after">
+                <xpath expr="//field[@name='attendance_mode']" position="after">
                     <field name="advisor_id"/>
                 </xpath>                
             </field>
