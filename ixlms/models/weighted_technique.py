@@ -34,8 +34,7 @@ class WeightedTechnique(models.Model):
 	sequence = fields.Integer(string='Sequence', required=True)
 	points = fields.Integer(string='Points', compute='_points')
 	percentage = fields.Float(string='%', compute='_percentage')
-	course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
-	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='course_id', store=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)	
 	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='technique_id', string='Assessments')
 	nassessments = fields.Integer(string='# of Assessments', compute='_nassessments')
 	
