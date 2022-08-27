@@ -77,7 +77,7 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 ### Planning & Roster
 <p align="center"><img src="ixyaui/static/snapshots/planning/calendar.png"><br/>Figure 5. Calendar</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/term.png"><br/>Figure 6. Term & Important Dates/Events</p>
-<p align="center"><img src="ixyaui/static/snapshots/planning/sections.png"><br/>Figure 7. Sections</p>
+<p align="center"><img src="ixyaui/static/snapshots/planning/sections.png"><br/>Figure 7. Sections organized by Term, School, Discipline, and Course</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/section.png"><br/>Figure 8. Section Information</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/enrollment.png"><br/>Figure 9. Enrolled Student Management</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/buildings.png"><br/>Figure 10. Buildings</p>
