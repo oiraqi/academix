@@ -227,9 +227,9 @@ class LmsCourse(models.Model):
 
 	def get_my(self):
 		self.ensure_one()
-		domain = [('section_id', '=', self.section_id.id), ('student_id', '=', self.env.user.student_id.id), ('state', 'in', ['enrolled', 'withdrawn'])]
+		domain = [('section_id', '=', self.section_id.id), ('student_id', '=', self.env.user.student_id.id), ('state', 'in', ['enrolled', 'withdrawn', 'completed'])]
 		enrollment_id = self.env['ixroster.enrollment'].search(domain)
-		return self._expand_to('ixlms.action_enrollment', domain, False, enrollment_id.id)
+		return self._expand_to('ixlms.action_enrollment_my', domain, False, enrollment_id.id)
 
 	def get_assessments(self):
 		self.ensure_one()

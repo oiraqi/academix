@@ -105,6 +105,14 @@
                 </p>
             </field>
         </record>
+        <record id="action_enrollment_my" model="ir.actions.act_window">
+            <field name="name">Students</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ixroster.enrollment</field>
+            <field name="view_mode">form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>            
+        </record>
         <record id="action_enrollment_tree_view" model="ir.actions.act_window.view">
             <field name="sequence" eval="1"/>
             <field name="view_mode">tree</field>
