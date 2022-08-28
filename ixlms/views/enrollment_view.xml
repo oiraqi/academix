@@ -11,7 +11,7 @@
                     <button string="Submit Final Grade" class="oe_highlight" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="submit_final_grade" type="object" groups="ix.group_faculty"/>
                 </xpath>
                 <xpath expr="//h1" position="after">
-                    <h1><field name="letter_grade_assigned"/></h1>
+                    <h1 attrs="{'invisible': [('state', '!=', 'completed')]}"><field name="letter_grade_assigned"/></h1>
                 </xpath>
                 <xpath expr="//group[@name='info']" position="after">
                     <group name="student_info" string="Student Information" col="4">
