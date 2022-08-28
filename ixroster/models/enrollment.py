@@ -86,8 +86,10 @@ class Enrollment(models.Model):
                 # From a performance perspective, we should start with the cheap is_open check,
                 # then the time conflict check, and only then, the prerequisites check.
                 # However, for a more pertinent feedback to the user, we deem it's worth it to start
-                # with the more expensive prerequisites check.
+                # with the more expensive prerequisites and corequisites check.
                 self.env['ixroster.enrollment'].check_prerequisites(
+                    rec.student_id, rec.section_id.course_id)
+                self.env['ixroster.enrollment'].check_corequisites(
                     rec.student_id, rec.section_id.course_id)
                 if not rec.section_id.is_open:
                     raise ValidationError('Section closed!')
@@ -98,19 +100,30 @@ class Enrollment(models.Model):
     def check_prerequisites(self, student, course):
         for prerequisite in course.prerequisite_ids:
             alternatives = []
+            fulfilled = False
             for alternative in prerequisite.alternative_ids:
-                alternatives.append(alternative.name)
-                fulfilled = False
-                if self.search([('student_id', '=', student.id), ('section_id.course_id', '=', alternative.id), ('passed', '=', True)]):
+                alternatives.append(alternative.name)                
+                if self.search([('student_id', '=', student.id), ('section_id.course_id', '=', alternative.id), ('state', '=', 'completed')]):
                     fulfilled = True
                     break
-                if not fulfilled:
-                    if len(alternatives) > 1:
-                        raise ValidationError(
-                            'None of these alternative prerequisites is fulfilled: ' + str(alternatives))
-                    else:
-                        raise ValidationError(
-                            'Unfulfilled prerequisite: ' + alternatives[0])
+            
+            if not fulfilled:
+                if len(alternatives) > 1:
+                    raise ValidationError(
+                        'None of these alternative prerequisites is fulfilled: ' + str(alternatives))
+                else:
+                    raise ValidationError(
+                        'Unfulfilled prerequisite: ' + alternatives[0])
+
+    @api.model
+    def check_corequisites(self, student, course):
+        fulfilled = False
+        for corequisite in course.corequisite_ids:
+            if self.search([('student_id', '=', student.id), ('section_id.course_id', '=', corequisite.corequisite_id.id), ('state', 'in', ['enrolled', 'completed'])]):
+                fulfilled = True
+                break
+            if not fulfilled:            
+                raise ValidationError('Unfulfilled corequisite: ' + corequisite.corequisite_id.name)
 
     @api.model
     def check_time_conflict(self, student, section):
