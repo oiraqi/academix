@@ -37,8 +37,9 @@ class Enrollment(models.Model):
     attendance_grade = fields.Float(string='Attendance Grade', compute='_attendance')
     assessment_grade = fields.Float(string='Assessment Grade', compute='_grade')
     overall_grade = fields.Float(string='Overall Grade (%)', compute='_grade')
-    letter_grade = fields.Char(string='Letter Grade', compute='_grade')
+    letter_grade = fields.Char(string='Computed Letter Grade', compute='_grade')
     passed = fields.Boolean(string='Passed', compute='_grade')
+    letter_grade_assigned = fields.Many2one('ixlms.letter.grade', string='Assigned Letter Grade')
 
     def _grade(self):
         for rec in self:
@@ -49,7 +50,7 @@ class Enrollment(models.Model):
                 rec.letter_grade = 'A+'
                 rec.passed = True
                 continue
-            
+
             rec.assessment_grade, assessment_weight = rec._assessment_grade(lms_course_id)            
             if lms_course_id.attendance_weight > 0:
                 rec.overall_grade = fields.Float.round((rec.assessment_grade * assessment_weight + rec.attendance_grade * lms_course_id.attendance_weight) / (assessment_weight + lms_course_id.attendance_weight), 2)
@@ -113,11 +114,15 @@ class Enrollment(models.Model):
                         rec.attendance_grade = 100 - penalty
                     else:
                         rec.attendance_grade = 0
-            
-    
+        
     def _assessment_line_ids(self):
         for rec in self:
             rec.assessment_line_ids = self.env['ixlms.assessment.line'].search([
                 ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id)])
      
-    
+    def complete(self):
+        self.ensure_one()
+        if not self.letter_grade_assigned:
+            raise ValidationError('A final (letter) grade shall be assigned first!')
+        
+        self.state = 'complete'
