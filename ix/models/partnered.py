@@ -22,6 +22,7 @@
 ###############################################################################
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 import string
 
 
@@ -33,28 +34,43 @@ class Partnered(models.AbstractModel):
     firstname = fields.Char(string='First Name', required=True)
     lastname = fields.Char(string='Last Name', required=True)
 
-    @api.onchange('firstname')
-    @api.depends('firstname')
-    def _firstname(self):
+    @api.constrains('name')
+    def _check_name(self):
         for rec in self:
-            if rec.firstname:
-                firstname = string.capwords(rec.firstname.strip())
-                if rec.firstname != firstname:
-                    rec.firstname = firstname
+            if not rec.name or len(rec.name.split(', ')) != 2:
+                raise ValidationError('Name shall be formatted as: Lastname, Firstname')
 
-    @api.onchange('lastname')
-    @api.depends('lastname')
-    def _lastname(self):
+    @api.onchange('name')
+    @api.depends('name')
+    def _update_firstname_lastname(self):
         for rec in self:
-            if rec.lastname:
-                lastname = string.capwords(rec.lastname.strip())
-                if rec.lastname != lastname:
-                    rec.lastname = lastname
+            if rec.name:
+                last_first = rec.name.split(',')
+                if len(last_first) == 2:
+                    lastname = string.capwords(last_first[0].strip())
+                    firstname = string.capwords(last_first[1].strip())
+                    name = lastname + ', ' + firstname
+                    if rec.name != name:
+                        rec.name = name
+                    if rec.firstname != firstname:
+                        rec.firstname = firstname
+                    if rec.lastname != lastname:
+                        rec.lastname = lastname
     
     @api.onchange('firstname', 'lastname')
     @api.depends('firstname', 'lastname')
     def _update_name(self):
         for rec in self:
+            if rec.firstname:
+                firstname = string.capwords(rec.firstname.strip())
+                if rec.firstname != firstname:
+                    rec.firstname = firstname
+            if rec.lastname:
+                lastname = string.capwords(rec.lastname.strip())
+                if rec.lastname != lastname:
+                    rec.lastname = lastname
             if rec.firstname and rec.lastname:
-                rec.name = string.capwords(rec.lastname.strip()) + ', ' + string.capwords(rec.firstname.strip())
+                name = string.capwords(rec.lastname.strip()) + ', ' + string.capwords(rec.firstname.strip())
+                if rec.name != name:
+                    rec.name = name
  

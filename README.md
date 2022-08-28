@@ -50,7 +50,7 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 - **Advising**: Advisees, Degree Plans (automatic generation)
 - **Learning Management System (LMS)**: Course Creation and Management (modules, chapters, assessments, statistics), Attendance Management, Syllabus Generation (PDF), Communication Channels (visio, chat)
 - **Quality Management System (QMS)**: Accreditation Management, ILO/SO Mapping and Tracking, Portfolio Management
-- **Document Management Systems (DMS)**: Folders, Documents, Favorites, Sharing (e.g., with students of a given program or faculty in a given discipline), Workspaces
+- **Document Management System (DMS)**: Folders, Documents, Favorites, Sharing (e.g., with students of a given program or faculty in a given discipline), Workspaces
 - **Capstone/Internship Management System (CIMS)**: Project Lifecycle Mangement (proposal, approval, diaries, defense, report, archive)
 - **Research Management System (RMS)**: Journal Articles, Conference Papers, Books, Presentations, Activities
 
