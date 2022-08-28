@@ -24,7 +24,7 @@
         <record id="student_assessment_rule" model="ir.rule">
             <field name="name">Restrict access to Section Assessments</field>
             <field name="model_id" ref="model_ixlms_assessment"/>
-            <field name="domain_force">[('course_id.student_ids', 'in', user.student_id.id)]</field>
+            <field name="domain_force">[('lms_course_id.student_ids', 'in', user.student_id.id)]</field>
             <field name="groups" eval="[(4, ref('ix.group_student'))]"/>
         </record>
         <record id="faculty_attendance_rule" model="ir.rule">
