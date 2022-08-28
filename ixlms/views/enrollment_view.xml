@@ -13,14 +13,14 @@
                         <field name="attendance_mode" widget="badge"/>
                         <field name="email"/>
                     </group>
-                    <group name="student_performance" string="Student Performance">
+                    <group name="student_performance" string="Student Performance" col="4">
                         <field name="assessment_grade" widget="percentpie" nolabel="1"/>
-                        <field name="attendance_grade" widget="percentpie" nolabel="1"/>                        
+                        <field name="attendance_grade" widget="percentpie" nolabel="1"/>
                         <field name="overall_grade" widget="percentpie" nolabel="1"/>
                         <field name="letter_grade" widget="badge" style="font-weight: bold"/>
                         <field name="letter_grade_assigned" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                     </group>
-                    <notebook>                        
+                    <notebook>
                         <page string="Assessment" name="assessment">
                             <group>
                                 <field name="assessment_line_ids" nolabel="1">
