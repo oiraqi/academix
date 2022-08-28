@@ -222,7 +222,7 @@ class LmsCourse(models.Model):
 		
 	def get_students(self):
 		self.ensure_one()
-		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn'])]		
+		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn', 'completed'])]		
 		return self._expand_to('ixlms.action_enrollment', domain)
 
 	def get_my(self):
