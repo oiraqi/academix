@@ -21,7 +21,7 @@
 #
 ###############################################################################
 
-from odoo import models, fields
+from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 
@@ -120,9 +120,15 @@ class Enrollment(models.Model):
             rec.assessment_line_ids = self.env['ixlms.assessment.line'].search([
                 ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id)])
      
-    def complete(self):
+    def submit_final_grade(self):
         self.ensure_one()
         if not self.letter_grade_assigned:
             raise ValidationError('A final (letter) grade shall be assigned first!')
         
         self.state = 'complete'
+
+    @api.constrains('letter_grade_assigned')
+    def _check_state(self):
+        self.ensure_one()
+        if self.state == 'complete':
+            raise ValidationError('Final grade has already been submitted. You can\'t change it afterwards!')
