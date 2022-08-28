@@ -31,8 +31,8 @@ class Partnered(models.AbstractModel):
     _inherits = {'res.partner': 'partner_id'}
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
-    firstname = fields.Char(string='First Name', required=True)
-    lastname = fields.Char(string='Last Name', required=True)
+    firstname = fields.Char(string='First Name')
+    lastname = fields.Char(string='Last Name')
 
     @api.constrains('name')
     def _check_name(self):
@@ -46,16 +46,18 @@ class Partnered(models.AbstractModel):
         for rec in self:
             if rec.name:
                 last_first = rec.name.split(',')
-                if len(last_first) == 2:
-                    lastname = string.capwords(last_first[0].strip())
-                    firstname = string.capwords(last_first[1].strip())
-                    name = lastname + ', ' + firstname
-                    if rec.name != name:
-                        rec.name = name
-                    if rec.firstname != firstname:
-                        rec.firstname = firstname
-                    if rec.lastname != lastname:
-                        rec.lastname = lastname
+                if len(last_first) != 2:
+                    raise ValidationError('Name shall be formatted as: Lastname, Firstname')
+                
+                lastname = string.capwords(last_first[0].strip())
+                firstname = string.capwords(last_first[1].strip())
+                name = lastname + ', ' + firstname
+                if rec.name != name:
+                    rec.name = name
+                if rec.firstname != firstname:
+                    rec.firstname = firstname
+                if rec.lastname != lastname:
+                    rec.lastname = lastname
     
     @api.onchange('firstname', 'lastname')
     @api.depends('firstname', 'lastname')
