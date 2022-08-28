@@ -39,7 +39,14 @@ class Enrollment(models.Model):
     overall_grade = fields.Float(string='Overall Grade (%)', compute='_grade')
     letter_grade = fields.Char(string='Letter Grade', compute='_grade')    
     letter_grade_assigned = fields.Char('Assigned Letter Grade')
-    passed = fields.Boolean(string='Passed', related='letter_grade_assigned.passing', store=True)
+    passed = fields.Boolean(string='Passed', compute='_passed', store=True)
+
+    @api.depends('letter_grade_assigned')
+    def _passed(self):
+        for rec in self:
+            letter_grade = self.env['ixlms.letter.grade'].search([('name', '=', rec.letter_grade)])
+            rec.passed = letter_grade and letter_grade.passing
+
 
     def _grade(self):
         for rec in self:
