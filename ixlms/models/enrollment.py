@@ -130,10 +130,10 @@ class Enrollment(models.Model):
     def submit_final_grade(self):
         self.ensure_one()
         self.letter_grade_assigned = self.letter_grade        
-        self.state = 'complete'
+        self.state = 'completed'
 
     @api.constrains('letter_grade_assigned')
     def _check_state(self):
         self.ensure_one()
-        if self.state == 'complete':
+        if self.state == 'completed':
             raise ValidationError('Final grade has already been submitted. You can\'t change it afterwards!')
