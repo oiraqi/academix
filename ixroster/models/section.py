@@ -72,7 +72,7 @@ class Section(models.Model):
     @api.onchange('capacity')
     def _active_enrollment_ids(self):
         for rec in self:
-            enrollment_ids = self.env['ixroster.enrollment'].search([('section_id', '=', rec.id), ('state', '=', 'enrolled')])
+            enrollment_ids = self.env['ixroster.enrollment'].search([('section_id', '=', rec.id), ('state', 'in', ['enrolled', 'completed'])])
             if enrollment_ids:
                 rec.student_ids = [enrollment.student_id.id for enrollment in enrollment_ids]
                 rec.active_enrollment_ids = enrollment_ids                
