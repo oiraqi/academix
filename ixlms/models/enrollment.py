@@ -127,6 +127,25 @@ class Enrollment(models.Model):
             rec.assessment_line_ids = self.env['ixlms.assessment.line'].search([
                 ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id)])
      
+    @api.model
+    def check_prerequisites(self, student, course):
+        for prerequisite in course.prerequisite_ids:
+            alternatives = []
+            fulfilled = False
+            for alternative in prerequisite.alternative_ids:
+                alternatives.append(alternative.name)
+                if self.search([('student_id', '=', student.id), ('section_id.course_id', '=', alternative.id), ('state', '=', 'completed'), ('passed', '=', True)]):
+                    fulfilled = True
+                    break
+            
+            if not fulfilled:
+                if len(alternatives) > 1:
+                    raise ValidationError(
+                        'None of these alternative prerequisites is fulfilled: ' + str(alternatives))
+                else:
+                    raise ValidationError(
+                        'Unfulfilled prerequisite: ' + alternatives[0])
+    
     def submit_final_grade(self):
         self.ensure_one()
         self.letter_grade_assigned = self.letter_grade        

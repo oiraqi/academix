@@ -98,22 +98,8 @@ class Enrollment(models.Model):
 
     @api.model
     def check_prerequisites(self, student, course):
-        for prerequisite in course.prerequisite_ids:
-            alternatives = []
-            fulfilled = False
-            for alternative in prerequisite.alternative_ids:
-                alternatives.append(alternative.name)                
-                if self.search([('student_id', '=', student.id), ('section_id.course_id', '=', alternative.id), ('state', '=', 'completed')]):
-                    fulfilled = True
-                    break
-            
-            if not fulfilled:
-                if len(alternatives) > 1:
-                    raise ValidationError(
-                        'None of these alternative prerequisites is fulfilled: ' + str(alternatives))
-                else:
-                    raise ValidationError(
-                        'Unfulfilled prerequisite: ' + alternatives[0])
+        # Template method. Will be overriden in ixlms
+        return
 
     @api.model
     def check_corequisites(self, student, course):
