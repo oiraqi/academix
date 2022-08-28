@@ -11,7 +11,7 @@
                     <group name="ilo_achievement" col="4" attrs="{'invisible': [('id', '=', False)]}"
                         groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
                         <field name="acquisition_level" widget="radio" options="{'horizontal': True}"/>
-                        <field name="ilo_program_ids" nolabel="1" colspan="4" groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
+                        <field name="ilo_program_ids" nolabel="1" colspan="4">
                             <tree editable="bottom">
                                 <field name="ilo_id" domain="[('course_id', '=', parent.course_id)]"
                                     options="{'no_quick_create': True, 'no_create_edit': True}"/>
