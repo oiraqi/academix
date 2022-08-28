@@ -6,9 +6,12 @@
             <field name="name">ixroster.enrollment.inherit.lms.view.form</field>
             <field name="model">ixroster.enrollment</field>
             <field name="inherit_id" ref="ixroster.view_enrollment_form"/>
-            <field name="arch" type="xml">
+            <field name="arch" type="xml">                
                 <xpath expr="//button[@name='file_ip']" position="after">
-                    <button string="Submit Final Grade &#38; Close" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="submit_final_grade" type="object" groups="ix.group_faculty"/>
+                    <button string="Submit Final Grade" class="oe_highlight" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="submit_final_grade" type="object" groups="ix.group_faculty"/>
+                </xpath>
+                <xpath expr="//h1" position="after">
+                    <h1><field name="letter_grade_assigned"/></h1>
                 </xpath>
                 <xpath expr="//group[@name='info']" position="after">
                     <group name="student_info" string="Student Information" col="4">
@@ -20,9 +23,7 @@
                         <field name="assessment_grade" widget="percentpie" nolabel="1" colspan="2"/>
                         <field name="attendance_grade" widget="percentpie" nolabel="1" colspan="2"/>
                         <field name="overall_grade" widget="percentpie" nolabel="1" colspan="2"/>
-                        <field name="letter_grade" widget="badge" style="font-weight: bold"/>
-                        <field name="letter_grade_assigned" attrs="{'readonly': [('state', '=', 'complete')]}"
-                            style= "width: 40%" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                        <field name="letter_grade" widget="badge" style="font-weight: bold"/>                        
                     </group>
                     <notebook>
                         <page string="Assessment" name="assessment">

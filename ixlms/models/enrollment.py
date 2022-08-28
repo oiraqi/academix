@@ -37,9 +37,9 @@ class Enrollment(models.Model):
     attendance_grade = fields.Float(string='Attendance Grade', compute='_attendance')
     assessment_grade = fields.Float(string='Assessment Grade', compute='_grade')
     overall_grade = fields.Float(string='Overall Grade (%)', compute='_grade')
-    letter_grade = fields.Char(string='Computed Letter Grade', compute='_grade')
-    passed = fields.Boolean(string='Passed', compute='_grade')
-    letter_grade_assigned = fields.Many2one('ixlms.letter.grade', string='Assigned Letter Grade')
+    letter_grade = fields.Char(string='Letter Grade', compute='_grade')    
+    letter_grade_assigned = fields.Char('Assigned Letter Grade')
+    passed = fields.Boolean(string='Passed', related='letter_grade_assigned.passing', store=True)
 
     def _grade(self):
         for rec in self:
@@ -122,9 +122,7 @@ class Enrollment(models.Model):
      
     def submit_final_grade(self):
         self.ensure_one()
-        if not self.letter_grade_assigned:
-            raise ValidationError('A final (letter) grade shall be assigned first!')
-        
+        self.letter_grade_assigned = self.letter_grade        
         self.state = 'complete'
 
     @api.constrains('letter_grade_assigned')
