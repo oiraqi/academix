@@ -33,6 +33,36 @@ class Student(models.Model):
     _order = 'name'
     _sql_constraints = [('sid_ukey', 'unique(sid)', 'Student ID already exists')]
 
+    @api.model
+    def create(self, vals):
+        vals['email'] = vals['email'].strip().lower()
+        vals['name'] = string.capwords(vals['name'].strip())
+        lastname_firstname = vals['name'].split(', ')
+        if len(lastname_firstname) != 2:
+            raise UserError('Student name shall be formatted as: Lastname, Firstname')
+        
+        if 'lastname' not in vals:
+            vals['lastname'] = lastname_firstname[0]
+        if 'firstname' not in vals:
+            vals['firstname'] = lastname_firstname[1]
+        user = self.sudo().env['res.users'].search([('login', '=', vals['email'])])
+        if user:
+            student = self.env['ix.student'].search([('user_id', '=', user.id)])
+            if student:
+                raise UserError('Student already exists')
+            
+            vals['partner_id'] = user.partner_id.id
+            vals['user_id'] = user.id
+            student = super(Student, self).create(vals)
+        else:
+            student = super(Student, self).create(vals)
+            user = self.sudo().env['res.users'].create(
+                {'login': vals['email'], 'partner_id': student.partner_id.id})
+            student.user_id = user
+
+        user.sudo().groups_id = [(4, self.env.ref('ix.group_student').id)]
+        return student
+
     sid = fields.Char(string='ID', required=True)
     attendance_mode = fields.Selection(string='Attendance Mode', selection=[('f2f', 'Face To Face'), ('online', 'Online'),], default='f2f', required=True, tracking=True)
     max_ncourses = fields.Integer(string='Max Number of Courses / Semester', default=6, required=True, tracking=True)
