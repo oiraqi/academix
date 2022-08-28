@@ -2,7 +2,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ix_course_user,access.ix.course.user,model_ix_course,base.group_user,1,0,0,0
 access_ix_course_cousre_manager,access.ix.course.course.manager,model_ix_course,group_course_manager,1,1,1,0
 
-access_ix_student_user,access.ix.student.user,model_ix_course,base.group_user,1,0,0,0
+access_ix_student_user,access.ix.student.user,model_ix_student,base.group_user,1,0,0,0
 access_ix_student_setup,access.ix.student.setup,model_ix_student,group_setup,1,1,1,0
 access_ix_student_faculty,access.ix.student.faculty,model_ix_student,group_faculty,1,1,1,0
 access_ix_student_coordinator,access.ix.student.coordinator,model_ix_student,group_coordinator,1,1,1,0
