@@ -31,6 +31,7 @@ class LmsCourseIloProgram(models.Model):
 	_order = 'ilo_id'
 
 	course_id = fields.Many2one(comodel_name='ixlms.course', string='Course', required=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='course_id', store=True)
 	ilo_id = fields.Many2one(comodel_name='ixcatalog.course.ilo', string='Course ILO', required=True)
 	lms_course_ilo_id = fields.Many2one(comodel_name='ixlms.course.ilo', string='Course ILO', required=True)
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True)	
@@ -39,7 +40,7 @@ class LmsCourseIloProgram(models.Model):
 	def _percentage(self):
 		for rec in self:
 			s, c, a = {}, {}, 0
-			assessed_ilos = self.env['ixquality.assessed.ilo'].search([('course_id', '=', rec.course_id.id), ('program_id', '=', rec.program_id.id), ('ilo_id', '=', rec.ilo_id.id)])
+			assessed_ilos = self.env['ixquality.assessed.ilo'].search([('course_id', '=', rec.course_id.id), ('program_id', '=', rec.program_id.id), ('lms_course_ilo_id', '=', rec.lms_course_ilo_id.id)])
 			for assessed_ilo in assessed_ilos:
 				if str(assessed_ilo.student_id) in s:
 					s[str(assessed_ilo.student_id)] += int(assessed_ilo.acquisition_level)

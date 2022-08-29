@@ -38,7 +38,7 @@ class LmsCourse(models.Model):
                 })
         return course
 
-    ilo_program_ids = fields.One2many('ixquality.lms.course.ilo.program', inverse_name='course_id', groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa")
+    ilo_program_ids = fields.One2many('ixquality.lms.course.ilo.program', inverse_name='lms_course_id', groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa")
     acquisition_level = fields.Selection(string='Targetted Acquisition Level (TAL)', selection=[
 		('3', '60%+'), ('4', '80%+'), ('5', 'Fully Acquired')], default='4', required=True)
     
