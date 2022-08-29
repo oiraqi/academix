@@ -33,7 +33,6 @@ class Action(models.Model):
 	description = fields.Html(string='Description', required=True)	
 	portfolio_id = fields.Many2one(comodel_name='ixquality.portfolio', string='Portfolio')
 	assessment_line_id = fields.Many2one(comodel_name='ixquality.assessment.line', string='Assessment Line')
-	ilo_id = fields.Many2one(comodel_name='ixcatalog.course.ilo', string='ILO')
 	lms_course_ilo_id = fields.Many2one(comodel_name='ixlms.course.ilo', string='ILO')
 	assessment_criteria = fields.Text(string='Assessment Criteria')
 	assessment_methodology = fields.Text(string='Assessment Methodology')
@@ -44,8 +43,7 @@ class Action(models.Model):
 	def _assessment_line(self):
 		for rec in self:
 			if rec.assessment_line_id:
-				rec.portfolio_id = rec.assessment_line_id.assessment_id.portfolio_id
-				rec.ilo_id = rec.assessment_line_id.ilo_id
+				rec.portfolio_id = rec.assessment_line_id.assessment_id.portfolio_id				
 				rec.lms_course_ilo_id = rec.assessment_line_id.lms_course_ilo_id
 
 	state = fields.Selection([
