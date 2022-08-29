@@ -43,7 +43,11 @@ class CourseProgram(models.Model):
             if not rec.ilo_so_ids:
                 rec.covered_so_ids = False
                 continue
-            rec.covered_so_ids = [record.so_id.id for record in rec.ilo_so_ids]
+            covered_so_ids = []
+            for ilo_so in rec.ilo_so_ids:
+                if ilo_so.so_id.id not in covered_so_ids:
+                    covered_so_ids.append(ilo_so.so_id.id)
+            rec.covered_so_ids = covered_so_ids
     
 
     @api.onchange('course_id', 'program_id')

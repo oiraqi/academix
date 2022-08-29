@@ -32,7 +32,6 @@ class AssessmentLine(models.Model):
 	assessment_id = fields.Many2one('ixquality.assessment', 'Assessment', required=True)
 	course_id = fields.Many2one(comodel_name='ix.course', related='assessment_id.course_id')
 	faculty_id = fields.Many2one(comodel_name='ix.faculty', related='assessment_id.faculty_id', store=True)	
-	ilo_id = fields.Many2one('ixcatalog.course.ilo', 'ILO', required=True)
 	lms_course_ilo_id = fields.Many2one('ixlms.course.ilo', 'ILO', required=True)
 	so_ids = fields.One2many('ixquality.student.outcome', compute='_so_ids', string='SOs')
 	assessment_technique_ids = fields.One2many(comodel_name='ixlms.assessment.technique', compute='_assessment_technique_ids', string="Assessment Techniques")
