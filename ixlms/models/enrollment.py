@@ -38,7 +38,14 @@ class Enrollment(models.Model):
     assessment_grade = fields.Float(string='Assessment Grade', compute='_grade')
     overall_grade = fields.Float(string='Overall Grade (%)', compute='_grade')
     letter_grade = fields.Char(string='Letter Grade', compute='_grade')    
-    letter_grade_assigned = fields.Char('Assigned Letter Grade')
+    letter_grade_assigned = fields.Char('Assigned Letter Grade', groups='ix.group_faculty')
+    letter_grade_assigned_ro = fields.Char('Assigned Letter Grade', compute='_lgaro')
+
+    @api.depends('letter_grade_assigned')
+    def _lgaro(self):
+        for rec in self:
+            rec.letter_grade_assigned_ro = rec.sudo().letter_grade_assigned
+    
     passed = fields.Boolean(string='Passed', compute='_passed', store=True)
 
     @api.depends('letter_grade_assigned')

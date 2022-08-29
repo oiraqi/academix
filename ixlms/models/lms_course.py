@@ -220,6 +220,15 @@ class LmsCourse(models.Model):
 			if sum([assessment.percentage for assessment in rec.assessment_ids]) > 100:
 				raise ValidationError('The sum of assessment percentages cannot exceed 100%')
 		
+	user_ids = fields.One2many(comodel_name='res.users', compute='_user_ids')
+
+	def _user_ids(self):
+		for rec in self:
+			users = [student.user_id.id for student in rec.student_ids]
+			users.append(rec.instructor_id.user_id.id)
+			rec.user_ids = len(users) > 0 and users or False			
+	
+	
 	def get_students(self):
 		self.ensure_one()
 		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn', 'completed'])]		

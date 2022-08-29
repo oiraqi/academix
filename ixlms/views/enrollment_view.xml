@@ -11,7 +11,10 @@
                     <button string="Submit Final Grade" class="oe_highlight" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="submit_final_grade" type="object" groups="ix.group_faculty"/>
                 </xpath>
                 <xpath expr="//h1" position="after">
-                    <h1 attrs="{'invisible': [('state', '!=', 'completed')]}"><field name="letter_grade_assigned"/></h1>
+                    <h1 attrs="{'invisible': [('state', '!=', 'completed')]}">
+                        <field name="letter_grade_assigned" groups="ix.group_faculty"/>
+                        <field name="letter_grade_assigned_ro" groups="ix.group_student,ix.group_coordinator,ix.group_vpaa"/>
+                    </h1>
                 </xpath>
                 <xpath expr="//group[@name='info']" position="after">
                     <group name="student_info" string="Student Information" col="4">
@@ -111,7 +114,7 @@
             <field name="res_model">ixroster.enrollment</field>
             <field name="view_mode">form</field>
             <field name="domain">[]</field>
-            <field name="context">{}</field>            
+            <field name="context">{'create': False, 'edit': False}</field>            
         </record>
         <record id="action_enrollment_tree_view" model="ir.actions.act_window.view">
             <field name="sequence" eval="1"/>

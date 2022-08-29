@@ -248,13 +248,13 @@
 
 				</p>
 			</field>
-		</record>
+		</record>		
 		<record id="action_lms_course_current" model="ir.actions.act_window">
 			<field name="name">Current Courses</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.course</field>
 			<field name="view_mode">kanban,tree,form</field>
-			<field name="domain">[('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d'))]</field>
+			<field name="domain">[('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d')), ('user_ids', 'in', uid)]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
