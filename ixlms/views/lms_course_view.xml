@@ -261,7 +261,7 @@
 			        'view_mode': 'kanban,tree,form',
 			        'res_model': 'ixlms.course',
 					'views': [(False, 'kanban'), (False, 'tree'), (False, 'form')],
-					'domain': [('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d')), ('id', 'in', env['ixlms.course'].get_accessible_ids())],
+					'domain': [('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d')), ('id', 'in', env['ixlms.course'].sudo().get_accessible_ids())],
             	}
             </field>
         </record>
