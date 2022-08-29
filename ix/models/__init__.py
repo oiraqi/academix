@@ -1,3 +1,4 @@
+from . import ir_actions
 from . import expandable
 from . import term
 from . import activity

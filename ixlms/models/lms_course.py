@@ -220,27 +220,6 @@ class LmsCourse(models.Model):
 			if sum([assessment.percentage for assessment in rec.assessment_ids]) > 100:
 				raise ValidationError('The sum of assessment percentages cannot exceed 100%')
 		
-	def _allowed_ids(self):
-		for rec in self:
-			ids = []
-			if self.env.ref('ix.group_student') in self.env.user.groups_id:
-				for enrollment in self.env.user.student_id.enrollment_ids:
-					if enrollment.state in ['enrolled', 'completed'] and enrollment.section_id.lms_course_id:
-						ids.append(enrollment.section_id.lms_course_id.id)
-		
-			elif self.env.ref('ix.group_faculty') in self.env.user.groups_id:
-				lms_courses = self.search([('instructor_id.user_id', '=', self.env.user.id)])
-				ids = [lms_course.id for lms_course in lms_courses]
-		
-			rec.allowed_ids = ids
-
-	def _user_ids(self):
-		for rec in self:
-			users = [student.user_id.id for student in rec.student_ids]
-			users.append(rec.instructor_id.user_id.id)
-			rec.user_ids = len(users) > 0 and users or False			
-	
-	
 	def get_students(self):
 		self.ensure_one()
 		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn', 'completed'])]		
