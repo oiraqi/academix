@@ -30,6 +30,7 @@ class LmsCourse(models.Model):
 	_description = 'LMS Course'
 	_inherit = ['ix.activity', 'ix.expandable', 'ix.institution.owned']
 	_sql_constraints = [('section_ukey', 'unique(section_id)', 'LMS course already created!')]
+	_order = 'section_id'
 
 	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)	
 	name = fields.Char(related='section_id.name')
