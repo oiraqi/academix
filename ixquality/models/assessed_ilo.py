@@ -30,10 +30,11 @@ class AssessedIlo(models.Model):
 	_sql_constraints = [('ilo_assessment_line_ukey', 'unique(ilo_id, assessment_line_id)', 'Duplicate ILO assessment!')]
 
 	ilo_id = fields.Many2one(comodel_name='ixcatalog.course.ilo', string='Course ILO', required=True)
-	lms_course_ilo_id = fields.Many2one(comodel_name='ixlms.course.ilo', string='LMS Course ILO')
+	lms_course_ilo_id = fields.Many2one(comodel_name='ixlms.course.ilo', string='LMS Course ILO', required=True)
 	assessment_line_id = fields.Many2one(comodel_name='ixlms.assessment.line', string='LMS Assessment Line', required=True)
 	assessment_id = fields.Many2one(comodel_name='ixlms.assessment', related='assessment_line_id.assessment_id')
 	course_id = fields.Many2one(comodel_name='ixlms.course', related='assessment_id.lms_course_id', store=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='assessment_id.lms_course_id', store=True)
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', related='assessment_line_id.student_id.program_id', store=True)
 	student_id = fields.Many2one(comodel_name='ix.student', related='assessment_line_id.student_id')
 	acquisition_level_id = fields.Many2one(comodel_name='ixquality.acquisition.level', string='Acquisition Level')
