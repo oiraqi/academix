@@ -24,7 +24,7 @@
 									<field name="assessment_technique_ids" widget="many2many_tags"/>
 									<field name="achieved" string="Achieved (%)*"/>
 									<field name="targetted" string="Targetted (%)*"/>
-									<field name="action_id" domain="[('state', '=', 'planned'), ('ilo_id', '=', ilo_id)]"
+									<field name="action_id" domain="[('state', '=', 'planned'), ('lms_course_ilo_id', '=', lms_course_ilo_id)]"
 										context="{'default_lms_course_ilo_id': lms_course_ilo_id, 'default_portfolio_id': parent.portfolio_id}"/>
 									<field name="course_id" invisible="1"/>
 								</tree>
