@@ -249,7 +249,7 @@
 				</p>
 			</field>
 		</record>
-		<!--<record id="action_lms_course_current" model="ir.actions.server">
+		<record id="action_lms_course_current" model="ir.actions.server">
             <field name="name">LMS Courses</field>
             <field name="model_id" ref="model_ixlms_course"/>
             <field name="state">code</field>
@@ -261,11 +261,11 @@
 			        'view_mode': 'kanban,tree,form',
 			        'res_model': 'ixlms.course',
 					'views': [(False, 'kanban'), (False, 'tree'), (False, 'form')],
-					'domain': [('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d'))],
+					'domain': [('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d')), ('id', 'in', env['ixlms.course'].get_accessible_ids())],
             	}
             </field>
-        </record>-->
-		<record id="action_lms_course_current" model="ir.actions.act_window">
+        </record>
+		<!--<record id="action_lms_course_current" model="ir.actions.act_window">
 			<field name="name">Current Courses</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.course</field>
@@ -280,7 +280,7 @@
 
 				</p>
 			</field>
-		</record>
+		</record>-->
 		<record id="action_lms_course_past" model="ir.actions.act_window">
 			<field name="name">Past Courses</field>
 			<field name="type">ir.actions.act_window</field>
