@@ -28,6 +28,7 @@ class LmsAssessment(models.Model):
 
     course_ilo_ids = fields.One2many('ixcatalog.course.ilo', related='lms_course_id.ilo_ids')
     ilo_ids = fields.Many2many(comodel_name='ixcatalog.course.ilo', string='Assessed ILOs')
+    lms_course_ilo_ids = fields.Many2many(comodel_name='ixlms.course.ilo', string='Assessed ILOs')
 
     good_performance = fields.Binary(string='Good Performance')
     avg_performance = fields.Binary(string='Avg. Performance')
