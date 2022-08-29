@@ -49,7 +49,7 @@ class LmsCourseIloProgram(models.Model):
 
 			if len(s) > 0:
 				for t in s:
-					if s[t]/c[t] >= int(rec.course_id.acquisition_level):
+					if s[t]/c[t] >= int(rec.lms_course_id.acquisition_level):
 						a += 1
 					rec.percentage = fields.Float.round(100 * a / len(s), 2)
 			else:
