@@ -32,6 +32,17 @@ class LmsCourse(models.Model):
 	_sql_constraints = [('section_ukey', 'unique(section_id)', 'LMS course already created!')]
 	_order = 'section_id'
 
+	@api.model
+	def create(self, vals):
+		lms_course = super(LmsCourse, self).create(vals)
+		for ilo in lms_course.course_id.ilo_ids:
+			self.env['ixlms.course.ilo'].create({
+				'description': ilo.description,
+				'course_id': ilo.course_id.id,
+				'lms_course_id': lms_course.id
+			})
+		return lms_course
+
 	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)	
 	name = fields.Char(related='section_id.name')
 	color = fields.Integer(string='Color Index')	

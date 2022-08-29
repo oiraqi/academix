@@ -4,6 +4,11 @@ access_ixlms_course_student,access.ixlms.course.student,model_ixlms_course,ix.gr
 access_ixlms_course_coordinator,access.ixlms.course.coordinator,model_ixlms_course,ix.group_coordinator,1,0,0,0
 access_ixlms_course_vpaa,access.ixlms.course.vpaa,model_ixlms_course,ix.group_vpaa,1,0,0,0
 
+access_ixlms_course_ilo_faculty,access.ixlms.course.ilo.faculty,model_ixlms_course_ilo,ix.group_faculty,1,1,1,1
+access_ixlms_course_ilo_student,access.ixlms.course.ilo.student,model_ixlms_course_ilo,ix.group_student,1,0,0,0
+access_ixlms_course_ilo_coordinator,access.ixlms.course.ilo.coordinator,model_ixlms_course_ilo,ix.group_coordinator,1,0,0,0
+access_ixlms_course_ilo_vpaa,access.ixlms.course.ilo.vpaa,model_ixlms_course_ilo,ix.group_vpaa,1,0,0,0
+
 access_ixlms_textbook_user,access.ixlms.textbook.user,model_ixlms_textbook,base.group_user,1,0,0,0
 access_ixlms_textbook_faculty,access.ixlms.textbook.faculty,model_ixlms_textbook,ix.group_faculty,1,1,1,1
 
