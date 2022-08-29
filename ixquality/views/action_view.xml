@@ -20,7 +20,7 @@
 							<field name="assessment_results"/>
 							<field name="portfolio_id" invisible="1"/>
 							<field name="assessment_line_id" invisible="1"/>
-							<field name="ilo_id" invisible="1"/>
+							<field name="lms_course_ilo_id" invisible="1"/>
 						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
@@ -39,7 +39,7 @@
 			<field name="arch" type="xml">
 				<tree string="Actions">
 					<field name="name"/>
-					<field name="ilo_id"/>
+					<field name="lms_course_ilo_id"/>
 					<field name="state" widget="badge"/>
 					<field name="portfolio_id" invisible="1"/>
 				</tree>
