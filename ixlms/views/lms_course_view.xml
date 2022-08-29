@@ -24,43 +24,7 @@
 								<div class="oe_module_desc">
 									<h1>
 										<field name="name"/>
-									</h1>
-									<field name="instructor_id"/>
-									<br/>
-									<t t-if="record.timeslot.raw_value">
-										<field name="timeslot"/>
-									</t>
-									<t t-if="record.timeslot.raw_value and record.room_id.raw_value">
-									 / 
-									</t>
-									<t t-if="record.room_id.raw_value">
-										<field name="room_id"/>
-									</t>
-									<br/>
-									<br/>
-									<div groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
-										<field name="nstudents"/>
-										<t t-if="record.nstudents.raw_value==1">Student</t>
-										<t t-else="">Students</t>
-										<br/>
-									</div>
-									<field name="nmodules"/>
-									<t t-if="record.nmodules.raw_value==1">Module</t>
-									<t t-else="">Modules</t>, 
-									<field name="nchapters"/>
-									<t t-if="record.nchapters.raw_value==1">Chapter</t>
-									<t t-else="">Chapters</t>									
-									<br/>
-									<field name="nassessments"/>
-									<t t-if="record.nassessments.raw_value==1">Assessment</t>
-									<t t-else="">Assessments</t>, 
-									<field name="ntechniques"/>
-									<t t-if="record.ntechniques.raw_value==1">Technique</t>
-									<t t-else="">Techniques</t>
-									<br/>
-									<field name="nchannels"/>
-									<t t-if="record.nchannels.raw_value==1">Channel</t>
-									<t t-else="">Channels</t>
+									</h1>									
 								</div>
 							</div>
 						</t>
