@@ -256,6 +256,7 @@
             <field name="code">
             	action = {
             		'type': 'ir.actions.act_window',
+					'view_type': 'form',
 			        'view_mode': 'kanban,tree,form',
 			        'res_model': 'ixlms.course',
 					'views': [(False, 'kanban'), (False, 'tree'), (False, 'form')],
