@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ixlms_course_faculty,access.ixlms.course.faculty,model_ixlms_course,ix.group_faculty,1,1,1,0
-access_ixlms_course_student,access.ixlms.course.student,model_ixlms_course,ix.group_student,1,1,1,0
+access_ixlms_course_student,access.ixlms.course.student,model_ixlms_course,ix.group_student,1,0,0,0
 access_ixlms_course_coordinator,access.ixlms.course.coordinator,model_ixlms_course,ix.group_coordinator,1,0,0,0
 access_ixlms_course_vpaa,access.ixlms.course.vpaa,model_ixlms_course,ix.group_vpaa,1,0,0,0
 

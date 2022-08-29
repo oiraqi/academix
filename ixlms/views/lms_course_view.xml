@@ -256,11 +256,12 @@
             <field name="code">
             	action = {
             		'type': 'ir.actions.act_window',
+					'name': 'LMS Courses',
 					'view_type': 'form',
 			        'view_mode': 'kanban,tree,form',
 			        'res_model': 'ixlms.course',
 					'views': [(False, 'kanban'), (False, 'tree'), (False, 'form')],
-					'domain': [('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d')), ('user_ids', 'in', env.user.id)],                	
+					'domain': [('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d'))],
             	}
             </field>
         </record>
