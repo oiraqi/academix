@@ -30,17 +30,15 @@ class LmsCourseIloProgram(models.Model):
 	_sql_constraints = [('lms_course_ilo_program_ukey', 'unique(lms_course_id, ilo_id, program_id)', 'Duplicate Course/ILO/Program lines!')]
 	_order = 'ilo_id'
 
-	course_id = fields.Many2one(comodel_name='ixlms.course', string='Course', required=True)
-	lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='course_id', store=True)
-	ilo_id = fields.Many2one(comodel_name='ixcatalog.course.ilo', string='Course ILO', required=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='Course', required=True)		
 	lms_course_ilo_id = fields.Many2one(comodel_name='ixlms.course.ilo', string='Course ILO', required=True)
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True)	
-	percentage = fields.Float(string='Students who reached TAL (%)', compute='_percentage')
+	percentage = fields.Float(string='Students who reached TAL (%)', compute='_percentage', store=True)
 
 	def _percentage(self):
 		for rec in self:
 			s, c, a = {}, {}, 0
-			assessed_ilos = self.env['ixquality.assessed.ilo'].search([('course_id', '=', rec.course_id.id), ('program_id', '=', rec.program_id.id), ('lms_course_ilo_id', '=', rec.lms_course_ilo_id.id)])
+			assessed_ilos = self.env['ixquality.assessed.ilo'].search([('lms_course_id', '=', rec.lms_course_id.id), ('program_id', '=', rec.program_id.id), ('lms_course_ilo_id', '=', rec.lms_course_ilo_id.id)])
 			for assessed_ilo in assessed_ilos:
 				if str(assessed_ilo.student_id) in s:
 					s[str(assessed_ilo.student_id)] += int(assessed_ilo.acquisition_level)
