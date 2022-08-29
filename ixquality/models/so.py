@@ -56,7 +56,11 @@ class StudentOutcome(models.Model):
             records = self.env['ixquality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'introduce'), ('course_program_id.program_id', '=', rec.program_id.id)])
             if records:
-                rec.introducing_course_ids = [record.course_program_id.course_id.id for record in records]
+                introducing_course_ids = []
+                for record in records:
+                    if record.course_program_id.course_id.id not in introducing_course_ids:
+                        introducing_course_ids.append(record.course_program_id.course_id.id)
+                rec.introducing_course_ids = introducing_course_ids
             else:
                 rec.introducing_course_ids = False
 
