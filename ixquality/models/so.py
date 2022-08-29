@@ -70,7 +70,11 @@ class StudentOutcome(models.Model):
             records = self.env['ixquality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'reinforce'), ('course_program_id.program_id', '=', rec.program_id.id)])
             if records:
-                rec.reinforcing_course_ids = [record.course_program_id.course_id.id for record in records]
+                reinforcing_course_ids = []
+                for record in records:
+                    if record.course_program_id.course_id.id not in reinforcing_course_ids:
+                        reinforcing_course_ids.append(record.course_program_id.course_id.id)
+                rec.reinforcing_course_ids = reinforcing_course_ids
             else:
                 rec.reinforcing_course_ids = False
 
@@ -80,6 +84,10 @@ class StudentOutcome(models.Model):
             records = self.env['ixquality.course.ilo.so'].search([('so_id', '=', rec.id), (
                 'level', '=', 'emphasize'), ('course_program_id.program_id', '=', rec.program_id.id)])
             if records:
-                rec.emphasizing_course_ids = [record.course_program_id.course_id.id for record in records]
+                emphasizing_course_ids = []
+                for record in records:
+                    if record.course_program_id.course_id.id not in emphasizing_course_ids:
+                        emphasizing_course_ids.append(record.course_program_id.course_id.id)
+                rec.emphasizing_course_ids = emphasizing_course_ids
             else:
                 rec.emphasizing_course_ids = False
