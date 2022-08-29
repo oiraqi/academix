@@ -232,7 +232,6 @@ class LmsCourse(models.Model):
 			lms_courses = self.search([('instructor_id.user_id', '=', self.env.user.id)])
 			ids = [lms_course.id for lms_course in lms_courses]
 		
-		raise ValidationError(ids)
 		return ids
 
 	def _user_ids(self):
