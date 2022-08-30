@@ -8,13 +8,10 @@
             <field name="inherit_id" ref="ixlms.view_chapter_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='module_id']" position="after">
-                    <field name="ilo_ids" widget="many2many_tags"
-                        domain="[('id', 'in', course_ilo_ids)]"
+                    <field name="lms_course_ilo_ids" widget="many2many_tags"
+                        domain="[('lms_course_id', '=', lms_course_id)]"
                         options="{'no_quick_create': True, 'no_create_edit': True}"/>                    
-                </xpath>
-                <xpath expr="//group[@name='info']" position="after">                    
-                    <field name="course_ilo_ids" invisible="1"/>
-                </xpath>
+                </xpath>                
             </field>
         </record>
         <!-- ixlms.chapter inherit tree view -->

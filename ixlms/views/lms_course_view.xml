@@ -119,7 +119,7 @@
 							</page>
 							<page string="Course ILOs" name="ilos">
 								<group name="ilos">
-									<field name="ilo_ids" nolabel="1">
+									<field name="lms_course_ilo_ids" nolabel="1" readonly="1">
 										<tree>
 											<field name="idx_description"/>
 										</tree>
