@@ -36,7 +36,7 @@ class Portfolio(models.Model):
 	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id', store=True)
 	school_id = fields.Many2one(comodel_name='ix.school', related='section_id.school_id', store=True)
 	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', related='lms_course_id.technique_ids')
-	lms_assessment_ids = fields.One2many(comodel_name='ixlms.assessment', compute='_assessment_ids')
+	lms_assessment_ids = fields.One2many(comodel_name='ixlms.assessment', related='lms_course_id.assessment_ids')
 
 	@api.onchange('lms_course_id')
 	def _assessment_ids(self):
