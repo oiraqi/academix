@@ -81,7 +81,7 @@ class AssessmentLine(models.Model):
 	@api.onchange('assessment_id', 'lms_course_ilo_id')
 	def _achieved(self):
 		for rec in self:
-			result = self.env['ixquality.lms.course.ilo.program'].search([('course_id', '=', rec.assessment_id.portfolio_id.lms_course_id.id), ('program_id', '=', rec.assessment_id.program_id.id), ('lms_course_ilo_id', '=', rec.lms_course_ilo_id.id)])
+			result = self.env['ixquality.lms.course.ilo.program'].search([('lms_course_id', '=', rec.assessment_id.portfolio_id.lms_course_id.id), ('program_id', '=', rec.assessment_id.program_id.id), ('lms_course_ilo_id', '=', rec.lms_course_ilo_id.id)])
 			if result:
 				rec.achieved = result.percentage
 			else:
