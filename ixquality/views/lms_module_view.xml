@@ -9,7 +9,17 @@
             <field name="arch" type="xml">                
                 <xpath expr="//field[@name='chapter_ids']/tree/field[@name='name']" position="after">                    
                     <field name="lms_course_ilo_ids" widget="many2many_tags"/>
-                </xpath>                
+                </xpath>
+            </field>
+        </record>
+        <record id="view_lms_module_tree_quality" model="ir.ui.view">
+            <field name="name">ixlms.module.inherit.quality.view.tree</field>
+            <field name="model">ixlms.module</field>
+            <field name="inherit_id" ref="ixlms.view_module_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">                    
+                    <field name="lms_course_ilo_ids" widget="many2many_tags"/>
+                </xpath>
             </field>
         </record>
     </data>
