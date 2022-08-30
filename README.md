@@ -32,7 +32,7 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 ## Academix High-level Design Principles
 - Single Source of Truth
 - Infinite eXpansion - IX
-- Integration by Design (Not an afterthought)
+- Integration by Design (Not as an afterthought, through Data Import/Export/Replication, or APIs)
 - Best-in-class Coverage
 - Ideal UX
   - Extreme automation
