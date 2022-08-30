@@ -37,6 +37,7 @@ class Module(models.Model):
 	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='module_id', string='Assessments')
 	nassessments = fields.Integer(string='# of Assessments', compute='_nassessments')
 	chapter_ids = fields.One2many(comodel_name='ixlms.chapter', inverse_name='module_id', string='Chapters & Timeline')
+	nchapters = fields.Integer(string='# of Chapters', compute='_nchapters')
 
 	@api.onchange('assessment_ids')
 	def _points(self):
@@ -58,3 +59,8 @@ class Module(models.Model):
 	def _nassessments(self):
 		for rec in self:
 			rec.nassessments = len(rec.assessment_ids)
+
+	@api.onchange('chapter_ids')
+	def _nchapters(self):
+		for rec in self:
+			rec.nchapters = len(rec.chapter_ids)
