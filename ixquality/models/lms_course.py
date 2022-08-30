@@ -28,15 +28,15 @@ class LmsCourse(models.Model):
 
     @api.model
     def create(self, vals):
-        course = super(LmsCourse, self).create(vals)
-        for ilo in course.ilo_ids:
-            for program in course.program_ids:
+        lms_course = super(LmsCourse, self).create(vals)
+        for lms_course_ilo in lms_course.lms_course_ilo_ids:
+            for program in lms_course.program_ids:
                 self.env['ixquality.lms.course.ilo.program'].create({
-                    'course_id': course.id,
-                    'ilo_id': ilo.id,
+                    'lms_course_id': lms_course.id,
+                    'lms_course_ilo_id': lms_course_ilo.id,
                     'program_id': program.id
                 })
-        return course
+        return lms_course
 
     ilo_program_ids = fields.One2many('ixquality.lms.course.ilo.program', inverse_name='lms_course_id', groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa")
     acquisition_level = fields.Selection(string='Targetted Acquisition Level (TAL)', selection=[

@@ -80,6 +80,7 @@ class LmsCourse(models.Model):
 	nstudents = fields.Integer(related='section_id.nstudents')
 	description = fields.Html(related='course_id.description')
 	ilo_ids = fields.One2many('ixcatalog.course.ilo', related='course_id.ilo_ids')
+	lms_course_ilo_ids = fields.One2many(comodel_name='ixlms.course.ilo', inverse_name='lms_course_id', string='ILOs')	
 	textbook_ids = fields.One2many(comodel_name='ixlms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='ixroster.office.hour', related='instructor_id.office_hour_ids')
 	office_hours = fields.Char(compute='_office_hours')
