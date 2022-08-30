@@ -31,17 +31,19 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 
 ## Academix High-level Design Principles
 - Single Source of Truth
-- Infinite eXpansion
+- Infinite eXpansion - IX
+- Integration By Design (Not an afterthought)
 - Best-in-class Coverage
-- Ideal User eXperience
+- Ideal UX
   - Extreme automation
   - Zero redundancy
 
 ## Academix Unique Strengths
-- The Vision
+- The Design Principles
 - The Subject-matter Expertise
 - The Data Model
 - The Technology Stack
+- The Open-Source Model
 
 ## Implemented (Integrated) Applications (the list is growing)
 - **Communication & Collaboration**: Visio-conferencing, Chat, Notifications
