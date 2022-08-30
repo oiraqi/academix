@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <!-- QWeb Reports -->
-        <report id="ixcatalog_master_syllabus_reports" model="ix.course" string="Master Syllabus" report_type="qweb-pdf" name="ixlms.report_syllabus" file="ixlms.report_syllabus" attachment="'Master-Syllabus.pdf'" />
+        <report id="ixcatalog_master_syllabus_reports" model="ix.course" string="Master Syllabus" report_type="qweb-pdf" name="ixcatalog.report_master_syllabus" file="ixlms.report_syllabus" attachment="'Master-Syllabus.pdf'" />
 
-        <template id="report_syllabus">
+        <template id="report_master_syllabus">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-call="ixcatalog.report_master_syllabus_document"/>
