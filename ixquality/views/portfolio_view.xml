@@ -38,7 +38,7 @@
 								</group>
 							</page>
 						</notebook>
-						<group name="assessment" string="Assessment per Program and Student Population">
+						<!--<group name="assessment" string="Assessment per Program and Student Population">
 							<field name="assessment_ids" nolabel="1" context="{'default_school_id': school_id, 'default_course_id': course_id}">
 								<tree>
 									<field name="program_id"/>
@@ -48,7 +48,7 @@
 									<field name="school_id" invisible="1"/>
 								</tree>
 							</field>
-						</group>
+						</group>-->
 						<group name="ilo_changes" string="Recommended Remedial Actions">
 							<field name="action_ids" nolabel="1">
 								<tree>
