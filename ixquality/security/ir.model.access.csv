@@ -2,6 +2,9 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ixquality_course_ilo_so_user,access.ixquality_course_ilo_so.user,model_ixquality_course_ilo_so,base.group_user,1,0,0,0
 access_ixquality_course_ilo_so_coordinator,access.ixquality_course_ilo_so.coordinator,model_ixquality_course_ilo_so,ix.group_coordinator,1,1,1,1
 
+access_ixquality_lms_course_ilo_so_user,access.ixquality_lms_course_ilo_so.user,model_ixquality_lms_course_ilo_so,base.group_user,1,0,0,0
+access_ixquality_lms_course_ilo_so_faculty,access.ixquality_lms_course_ilo_so.faculty,model_ixquality_lms_course_ilo_so,ix.group_faculty,1,1,1,1
+
 access_ixquality_course_program_user,access.ixquality_course_program.user,model_ixquality_course_program,base.group_user,1,0,0,0
 access_ixquality_course_program_coordinator,access.ixquality_course_program.coordinator,model_ixquality_course_program,ix.group_coordinator,1,1,1,0
 

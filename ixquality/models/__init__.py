@@ -4,6 +4,7 @@ from . import course_program
 from . import course
 from . import program
 from . import course_ilo_so
+from . import lms_course_ilo_so
 from . import portfolio
 from . import assessment
 from . import assessment_line
