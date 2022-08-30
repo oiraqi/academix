@@ -8,10 +8,7 @@
             <field name="inherit_id" ref="ixlms.view_module_form"/>
             <field name="arch" type="xml">                
                 <xpath expr="//field[@name='chapter_ids']/tree/field[@name='name']" position="after">                    
-                    <field name="ilo_ids"
-                        domain="[('id', 'in', course_ilo_ids)]"
-                        widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                    <field name="course_ilo_ids" invisible="1"/>
+                    <field name="lms_course_ilo_ids" widget="many2many_tags"/>
                 </xpath>                
             </field>
         </record>
