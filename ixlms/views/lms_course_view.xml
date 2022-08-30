@@ -114,7 +114,7 @@
 						<notebook>
 							<page string="Course Description" name="description">
 								<group>
-									<field name="description" nolabel="1"/>
+									<field name="description" nolabel="1" readonly="1"/>
 								</group>
 							</page>
 							<page string="Course ILOs" name="ilos">

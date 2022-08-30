@@ -22,6 +22,7 @@
         'views/school_view.xml',
         'views/student_view.xml',
         'views/catalog_menu.xml',
+        'reports/master_syllabus_report.xml',
     ],
     'installable': True,
     'auto_install': False,

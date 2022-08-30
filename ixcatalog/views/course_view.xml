@@ -68,8 +68,7 @@
                                 <field name="name" />
                                 <field name="description"/>
                             </tree>
-                        </field>
-                        <field name="syllabus"/>
+                        </field>                        
                     </group>
                 </xpath>
             </field>

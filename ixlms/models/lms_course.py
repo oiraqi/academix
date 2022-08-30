@@ -35,6 +35,7 @@ class LmsCourse(models.Model):
 	@api.model
 	def create(self, vals):
 		lms_course = super(LmsCourse, self).create(vals)
+		lms_course.description = lms_course.course_id.description
 		for ilo in lms_course.course_id.ilo_ids:
 			self.env['ixlms.course.ilo'].create({
 				'description': ilo.description,
@@ -78,7 +79,7 @@ class LmsCourse(models.Model):
 	student_ids = fields.One2many('ix.student', related='section_id.student_ids')
 	enrollment_ids = fields.One2many('ixroster.enrollment', related='section_id.enrollment_ids')
 	nstudents = fields.Integer(related='section_id.nstudents')
-	description = fields.Html(related='course_id.description')
+	description = fields.Html(related='course_id.description', store=True)
 	ilo_ids = fields.One2many('ixcatalog.course.ilo', related='course_id.ilo_ids')
 	lms_course_ilo_ids = fields.One2many(comodel_name='ixlms.course.ilo', inverse_name='lms_course_id', string='ILOs')	
 	textbook_ids = fields.One2many(comodel_name='ixlms.textbook', related='course_id.textbook_ids')

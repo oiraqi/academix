@@ -89,7 +89,7 @@
                     </h2>
                     <p>Students successfully passing the course will be able to:</p>
                     <ol>
-                        <t t-foreach="o.ilo_ids" t-as="ilo">
+                        <t t-foreach="o.lms_course_ilo_ids" t-as="ilo">
                             <li>
                                 <span t-field="ilo.description" />
                             </li>

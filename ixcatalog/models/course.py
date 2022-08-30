@@ -45,7 +45,6 @@ class Course(models.Model):
     session_ids = fields.Many2many(comodel_name='ix.session', string='Offered in')    
     is_internship = fields.Boolean(string='Internship', default=False)
     ilo_ids = fields.One2many('ixcatalog.course.ilo', 'course_id', string='ILOs')
-    syllabus = fields.Binary(string='Master Syllabus')
 
     def _corequisite_ids(self):
         for rec in self:

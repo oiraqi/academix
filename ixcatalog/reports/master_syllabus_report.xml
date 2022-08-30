@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <report id="ixcatalog_master_syllabus_reports" model="ix.course" string="Master Syllabus" report_type="qweb-pdf" name="ixlms.report_syllabus" file="ixlms.report_syllabus" attachment="'Master-Syllabus.pdf'" />
+
+        <template id="report_syllabus">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="ixcatalog.report_master_syllabus_document"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_master_syllabus_document">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1 style="border-bottom: 1px solid black; margin-bottom: 10px; padding: 15px; background-color: #D0D0D0;" align="center">
+                        <b>
+                            <span t-field="o.institution_id.name" />
+                        </b>
+                        <br/>
+                        <b>
+                            <span t-field="o.school_id.name" />
+                        </b>
+                        <br/>
+                        <br/>
+                        <b>
+                            <span t-field="o.name" />
+                        </b>
+                        <br/>
+                        <b>
+                            Master Syllabus
+                        </b>
+                    </h1>
+                    <br/>
+                    <h2 style="border-bottom: 1px solid black;">
+                        <b>General Information</b>
+                    </h2>
+                    <table style="border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
+                        <tr style="border: none;">
+                            <td style="width: 20%">
+                                <b>Prerequisites:</b>
+                            </td>
+                            <td style="width: 80%">
+                                <span t-field="o.prerequisites" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">
+                                <b>Corequisites:</b>
+                            </td>
+                            <td style="width: 80%">
+                                <span t-field="o.corequisites" />
+                            </td>
+                        </tr>                        
+                    </table>
+                    <br/>
+                    <h2 style="border-bottom: 1px solid black;">
+                        <b>Course Description</b>
+                    </h2>
+                    <span t-raw="o.description" />
+                    <h2 style="border-bottom: 1px solid black;">
+                        <b>Course ILOs</b>
+                    </h2>
+                    <p>Students successfully passing the course will be able to:</p>
+                    <ol>
+                        <t t-foreach="o.ilo_ids" t-as="ilo">
+                            <li>
+                                <span t-field="ilo.description" />
+                            </li>
+                        </t>
+                    </ol>
+                    <br/>                    
+                    <t t-if="len(o.textbook_ids) &gt; 0">                    
+                    <h2 style="border-bottom: 1px solid black;">
+                        <b>Textbook(s)</b>
+                    </h2>
+                    <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
+                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
+                            <th style="border: 1px solid black; text-align: center;">Title</th>
+                            <th style="border: 1px solid black; text-align: center;">ISBN</th>
+                            <th style="border: 1px solid black; text-align: center;">Author(s)</th>
+                            <th style="border: 1px solid black; text-align: center;">Publisher</th>
+                            <th style="border: 1px solid black; text-align: center;">Edition</th>
+                        </tr>
+                        <t t-foreach="o.textbook_ids" t-as="textbook">
+                        <tr>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.name" /></td>
+                            <td style="border: 1px solid black; text-align: center; padding: 5px;"><span t-field="textbook.isbn" /></td>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.authors" /></td>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.publisher" /></td>
+                            <td style="border: 1px solid black; text-align: center;"><span t-field="textbook.edition" /></td>
+                        </tr>
+                        </t>
+                    </table>
+                    <br/>
+                    </t>
+                    </t>                    
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
