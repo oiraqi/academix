@@ -27,7 +27,7 @@ from odoo import models, fields
 class LmsCourseIloProgram(models.Model):
 	_name = 'ixquality.lms.course.ilo.program'
 	_description = 'Lms Course ILO Program'
-	_sql_constraints = [('lms_course_ilo_program_ukey', 'unique(lms_course_id, ilo_id, program_id)', 'Duplicate Course/ILO/Program lines!')]
+	_sql_constraints = [('lms_course_ilo_program_ukey', 'unique(lms_course_id, lms_course_ilo_id, program_id)', 'Duplicate Course/ILO/Program lines!')]
 	_order = 'ilo_id'
 
 	lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='Course', required=True)		
