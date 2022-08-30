@@ -1,4 +1,4 @@
-# Welcome To Academix: The Ultimate ERP for Higher-Ed Institutions
+# Welcome To Academix: The Ultimate, All-in-one ERP for Higher-Ed Institutions
 ## Common User Stories and Problems
 **Faculty Evaluation Committee (FEC) Chair**: Dear colleagues, please don't forget to include all required evidence, e.g., student evaluation reports, in your faculty evaluation file.<br/>
 **Faculty**: Dear FEC Chair, all student evaluation reports are available on our course management portal. Moreover, to protect information integrity, it would be better if you fetched them directly from there.<br/>
