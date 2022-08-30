@@ -106,10 +106,10 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 <p align="center"><img src="ixyaui/static/snapshots/qms/portfolio4.png"><br/>Figure 30. Course Portfolio - ILO Acquisition by Program and Student Population</p>
 <p align="center"><img src="ixyaui/static/snapshots/qms/portfolio5.png"><br/>Figure 31. Course Portfolio - ILO/SO Mapping</p>
 
-### DMS
+### Document Management System - DMS
 <p align="center"><img src="ixyaui/static/snapshots/dms/dms.png"><br/>Figure 32. DMS</p>
 <p align="center"><img src="ixyaui/static/snapshots/dms/dms1.png"><br/>Figure 33. DMS</p>
 
-### Research
+### Research Mangement
 <p align="center"><img src="ixyaui/static/snapshots/research/research.png"><br/>Figure 34. Research - New Journal Article</p>
 <p align="center"><img src="ixyaui/static/snapshots/research/research2.png"><br/>Figure 35. Research - New Journal</p>
