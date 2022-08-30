@@ -46,25 +46,25 @@ class Course(models.Model):
     is_internship = fields.Boolean(string='Internship', default=False)
     ilo_ids = fields.One2many('ixcatalog.course.ilo', 'course_id', string='ILOs')
     prerequisites = fields.Char(compute='_requisites')
-	corequisites = fields.Char(compute='_requisites')
-
-	def _requisites(self):
-		for rec in self:
-			prerequisites = 'None'
-			if rec.prerequisite_ids:
-				if len(rec.prerequisite_ids) == 1:
-					prerequisites = rec.prerequisite_ids[0].name
-				else:
-					prerequisites = ', '.join([prerequisite.name for prerequisite in rec.prerequisite_ids])
-			rec.prerequisites = prerequisites
+    corequisites = fields.Char(compute='_requisites')
+    
+    def _requisites(self):
+        for rec in self:
+            prerequisites = 'None'
+            if rec.prerequisite_ids:
+                if len(rec.prerequisite_ids) == 1:
+                    prerequisites = rec.prerequisite_ids[0].name
+                else:
+                    prerequisites = ', '.join([prerequisite.name for prerequisite in rec.prerequisite_ids])
+            rec.prerequisites = prerequisites
 			
-			corequisites = 'None'
-			if rec.corequisite_ids:
-				if len(rec.corequisite_ids) == 1:
-					corequisites = rec.corequisite_ids[0].name
-				else:
-					corequisites = ', '.join([corequisite.name for corequisite in rec.corequisite_ids])
-			rec.corequisites = corequisites
+            corequisites = 'None'
+            if rec.corequisite_ids:
+                if len(rec.corequisite_ids) == 1:
+                    corequisites = rec.corequisite_ids[0].name
+                else:
+                    corequisites = ', '.join([corequisite.name for corequisite in rec.corequisite_ids])
+            rec.corequisites = corequisites
 
 
     def _corequisite_ids(self):
