@@ -25,7 +25,7 @@
 									<field name="not_recommended_assessment_technique_ids" domain="[('id', 'in', technique_ids), ('id', 'not in', useful_assessment_technique_ids)]" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 								</group>
 							</page>
-							<page string="Student Assessment Samples" name="samples">
+							<!--<page string="Student Assessment Samples" name="samples">
 								<group name="samples" col="6">
 									<field name="lms_assessment_ids" nolabel="1">
 										<tree editable="bottom">
@@ -36,7 +36,7 @@
 										</tree>
 									</field>							
 								</group>
-							</page>
+							</page>-->
 						</notebook>
 						<!--<group name="assessment" string="Assessment per Program and Student Population">
 							<field name="assessment_ids" nolabel="1" context="{'default_school_id': school_id, 'default_course_id': course_id}">
