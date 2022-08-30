@@ -69,12 +69,12 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 ### Communication & Collaboration
 <p align="center"><img src="ixyaui/static/snapshots/board.png"><br/>Figure 1. Communication & Collaboration Board</p>
 
-### Catalog
+### Catalog Management
 <p align="center"><img src="ixyaui/static/snapshots/catalog/courses.png"><br/>Figure 2. Courses organized by School & Discipline</p>
 <p align="center"><img src="ixyaui/static/snapshots/catalog/course.png"><br/>Figure 3. Course Information</p>
 <p align="center"><img src="ixyaui/static/snapshots/catalog/course-search.png"><br/>Figure 4. Course Search</p>
 
-### Planning & Roster
+### Planning & Roster Mangement
 <p align="center"><img src="ixyaui/static/snapshots/planning/calendar.png"><br/>Figure 5. Calendar</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/term.png"><br/>Figure 6. Term & Important Dates/Events</p>
 <p align="center"><img src="ixyaui/static/snapshots/planning/sections.png"><br/>Figure 7. Sections organized by Term, School, Discipline, and Course</p>
@@ -88,7 +88,7 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 ### LMS
 <p align="center"><img src="ixyaui/static/snapshots/lms/courses.png"><br/>Figure 14. LMS Courses</p>
 <p align="center"><img src="ixyaui/static/snapshots/lms/course.png"><br/>Figure 15. LMS Course</p>
-<p align="center"><img src="ixyaui/static/snapshots/lms/chapters.png"><br/>Figure 16. LMS Course Chapters</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/chapters.png"><br/>Figure 16. LMS Course Chapters organized by Module</p>
 <p align="center"><img src="ixyaui/static/snapshots/lms/assessment-structure.png"><br/>Figure 17. LMS Course Assessment Structure</p>
 <p align="center"><img src="ixyaui/static/snapshots/lms/textbook.png"><br/>Figure 18. LMS Course Textbooks</p>
 <p align="center"><img src="ixyaui/static/snapshots/lms/assessments.png"><br/>Figure 19. Assessments</p>
@@ -96,14 +96,14 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
 <p align="center"><img src="ixyaui/static/snapshots/lms/assessment2.png"><br/>Figure 21. Assessment</p>
 <p align="center"><img src="ixyaui/static/snapshots/lms/assessment3.png"><br/>Figure 22. Assessment</p>
 <p align="center"><img src="ixyaui/static/snapshots/lms/attendance-sheets.png"><br/>Figure 23. Attendance Sheets</p>
-<p align="center"><img src="ixyaui/static/snapshots/lms/grades.png"><br/>Figure 24. Student Grades Organized By Program</p>
+<p align="center"><img src="ixyaui/static/snapshots/lms/grades.png"><br/>Figure 24. Student Grades organized by Program</p>
 
 ### QMS
 <p align="center"><img src="ixyaui/static/snapshots/qms/ilo-assessment.png"><br/>Figure 25. ILO Assessment</p>
 <p align="center"><img src="ixyaui/static/snapshots/qms/portfolio.png"><br/>Figure 27. Course Portfolio</p>
 <p align="center"><img src="ixyaui/static/snapshots/qms/portfolio2.png"><br/>Figure 28. Course Portfolio - Student Assessment Samples</p>
 <p align="center"><img src="ixyaui/static/snapshots/qms/portfolio3.png"><br/>Figure 29. Course Portfolio</p>
-<p align="center"><img src="ixyaui/static/snapshots/qms/portfolio4.png"><br/>Figure 30. Course Portfolio - ILO Acquisition By Program / Student Population</p>
+<p align="center"><img src="ixyaui/static/snapshots/qms/portfolio4.png"><br/>Figure 30. Course Portfolio - ILO Acquisition by Program and Student Population</p>
 <p align="center"><img src="ixyaui/static/snapshots/qms/portfolio5.png"><br/>Figure 31. Course Portfolio - ILO/SO Mapping</p>
 
 ### DMS
