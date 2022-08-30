@@ -38,12 +38,12 @@ To become the N°1 choice of higher-ed institutions worldwide, for holistic and 
   - Extreme automation
   - Zero redundancy
 
-## Academix Unique Strengths
+## Academix Unique (mix of) Strengths
 - The Design Principles
 - The Subject-matter Expertise
+- The Open-Source Model
 - The Data Model
 - The Technology Stack
-- The Open-Source Model
 
 ## Implemented (Integrated) Applications (the list is growing)
 - **Communication & Collaboration**: Visio-conferencing, Chat, Notifications
