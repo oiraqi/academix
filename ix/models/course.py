@@ -28,6 +28,7 @@ import re
 
 class Course(models.Model):
     _name = 'ix.course'
+    _inherit = ['ix.institution.owned']
     _sql_constraints = [
         ('code_ukey', 'unique(code)', 'Course already exists')]
     _order = 'code'
