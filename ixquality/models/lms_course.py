@@ -36,6 +36,14 @@ class LmsCourse(models.Model):
                     'lms_course_ilo_id': lms_course_ilo.id,
                     'program_id': program.id
                 })
+                ilo_so_ids = self.env['ixquality.course.ilo.so'].search([('course_id', '=', lms_course.course_id.id), ('program_id', '=', program.id), ('ilo_id.sequence', '=', lms_course_ilo.sequence)])
+                for ilo_so in ilo_so_ids:
+                    self.env['ixquality.lms.course.ilo.so'].create({
+                        'lms_course_ilo_id': lms_course_ilo.id,
+                        'so_id': ilo_so.so_id.id,
+                        'course_program_id': ilo_so.course_program_id.id,
+                        'level': ilo_so.level,
+                    })
         return lms_course
 
     ilo_program_ids = fields.One2many('ixquality.lms.course.ilo.program', inverse_name='lms_course_id', groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa")

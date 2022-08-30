@@ -79,13 +79,13 @@ class Assessment(models.Model):
 	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
 	section_id = fields.Many2one('ixroster.section', related='portfolio_id.section_id')
 	faculty_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id', store=True)
-	ilo_so_ids = fields.One2many(comodel_name='ixquality.course.ilo.so', compute='_ilo_so_ids', string='ILO/SO Mapping')
+	ilo_so_ids = fields.One2many(comodel_name='ixquality.lms.course.ilo.so', compute='_ilo_so_ids', string='ILO/SO Mapping')
 	assessed_so_ids = fields.One2many(comodel_name='ixquality.student.outcome', compute='_ilo_so_ids', string='Covered/Assessed SOs')
 	
 	@api.onchange('course_id', 'program_id')
 	def _ilo_so_ids(self):
 		for rec in self:
-			records = self.env['ixquality.course.ilo.so'].search([('course_id', '=', rec.course_id.id), ('program_id', '=', rec.program_id.id)])
+			records = self.env['ixquality.lms.course.ilo.so'].search([('course_id', '=', rec.course_id.id), ('program_id', '=', rec.program_id.id)])
 			if not records:
 				rec.ilo_so_ids = False
 				rec.assessed_so_ids = False
