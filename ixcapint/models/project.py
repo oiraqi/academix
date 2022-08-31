@@ -111,7 +111,8 @@ class Project(models.Model):
                                  readonly=True, states={'ongoing': [('readonly', False)], 'defense': [('readonly', False)]})
 
     tag_ids = fields.Many2many(
-        comodel_name='ixcapint.tag', string='Keywords', required=True)
+        comodel_name='ixcapint.tag', string='Keywords', required=True,
+            readonly=True, states={'draft': [('readonly', False)]})
 
     internal_examiner_ids = fields.Many2many('ix.faculty', string='Internal Examiners',
                                 readonly=True, states={'ongoing': [('readonly', False)]})
