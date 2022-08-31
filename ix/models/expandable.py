@@ -36,7 +36,6 @@ class Expandable(models.AbstractModel):
             action['context'] = context
         if res_id:
             action['res_id'] = res_id
-            action['view_mode'] = 'form'
-            action['view_type'] = 'form'
+            action['view_mode'] = 'form'            
         return action
     
