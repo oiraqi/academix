@@ -133,9 +133,12 @@
         <record id="project_view_tree_no_create_defense" model="ir.ui.view">
             <field name="name">ixcapint.project.inherit.defense.view.tree</field>
             <field name="model">ixcapint.project</field>
-            <field name="inherit_id" ref="project_view_tree_no_create"/>
+            <field name="inherit_id" ref="project_view_tree"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="create">false</attribute>
+                </xpath>
                 <xpath expr="//field[@name='cosupervisor_ids']" position="after">
                     <field name="internal_examiner_ids" widget="many2many_tags"/>
                     <field name="external_examiner_ids" widget="many2many_tags"/>
