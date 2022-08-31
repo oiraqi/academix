@@ -111,7 +111,7 @@ class Project(models.Model):
                                  readonly=True, states={'ongoing': [('readonly', False)], 'defense': [('readonly', False)]})
 
     tag_ids = fields.Many2many(
-        comodel_name='ixcapint.tag', string='Keywords', required=True,
+        comodel_name='ixcapint.tag', string='Keywords',
             readonly=True, states={'draft': [('readonly', False)]})
 
     diary_ids = fields.One2many(comodel_name='ixcapint.diary', inverse_name='project_id', string='Diaries')    
