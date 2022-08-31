@@ -42,7 +42,7 @@ class Project(models.Model):
                        states={'draft': [('readonly', False)]})
 
     student_id = fields.Many2one('ix.student', string='Student', required=True, readonly=True,
-                                 default=lambda self: self.env['ix.student'].search(
+                                 default=lambda self: self.env['ix.student'].sudo().search(
                                      [('user_id', '=', self.env.user.id)]),
                                  states={'draft': [('readonly', False)]})
 
@@ -70,7 +70,7 @@ class Project(models.Model):
                 rec.code = ''
 
     supervisor_id = fields.Many2one('ix.faculty', string='Supervisor', required=True,
-                                    default=lambda self: self.env['ix.faculty'].search(
+                                    default=lambda self: self.env['ix.faculty'].sudo().search(
                                         [('user_id', '=', self.env.user.id)]),
                                     readonly=True, states={'draft': [('readonly', False)]})
 

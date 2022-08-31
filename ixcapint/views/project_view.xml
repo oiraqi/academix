@@ -9,7 +9,7 @@
                     <header>
                         <button string="Approve" states="draft" name="supervisor_approve" type="object" class="oe_highlight" attrs="{'invisible': [('is_supervisor', '=', False)]}" groups="ix.group_faculty"/>
                         <button string="Approve" states="supervisor" name="coordinator_approve" type="object" class="oe_highlight" groups="ixcapint.group_capint_coordinator"/>
-                        <button string="Schedule for Defense" states="ongoing" name="schedule_defense" type="object" class="oe_highlight" groups="ixcapint.group_capint_coordinator"/>
+                        <button string="Schedule Defense" states="ongoing" name="schedule_defense" type="object" class="oe_highlight" groups="ixcapint.group_capint_coordinator"/>
                         <button string="Mark Completed" states="defense" name="mark_done" type="object" class="oe_highlight" groups="ixcapint.group_capint_coordinator"/>
                         <field name="state" widget="statusbar" />
                         <field name="is_supervisor" invisible="1" />
