@@ -4,6 +4,8 @@ from odoo import models, fields, api
 STATES = [('draft', 'Draft'), 
 		('submitted', 'Submitted by Student'), ('corrections_required', 'Corrections Required'), ('checked', 'Checked by Supervisor')]
 
+STATES_DICT = dict(STATES)
+
 class Diary(models.Model):
 	_name = 'ixcapint.diary'
 	_description = 'Diary'
@@ -27,35 +29,23 @@ class Diary(models.Model):
 	
 	def submit_diary(self):
 		self.ensure_one()
-		state = ''
-		for s in STATES:
-			if s[0] == self.state:
-				state = s[1]
-				break
+		state = self.state
 		self.state = 'submitted'
 		self.submission_time = fields.Datetime.now()
-		self.message_post(body=f'State Changed: {state} --> Submitted by Student')
+		self.message_post(body=f'State Changed: {STATES_DICT[state]} --> {STATES_DICT[self.state]}')
 
 	def correct_diary(self):
 		self.ensure_one()
-		state = ''
-		for s in STATES:
-			if s[0] == self.state:
-				state = s[1]
-				break
+		state = self.state
 		self.state = 'corrections_required'
-		self.message_post(body=f'State Changed: {state} --> Corrections Required')
+		self.message_post(body=f'State Changed: {STATES_DICT[state]} --> {STATES_DICT[self.state]}')
 	
 	def check_diary(self):
 		self.ensure_one()
-		state = ''
-		for s in STATES:
-			if s[0] == self.state:
-				state = s[1]
-				break
+		state = self.state
 		self.state = 'checked'
 		self.checking_time = fields.Datetime.now()
-		self.message_post(body=f'State Changed: {state} --> Checked by Supervisor')
+		self.message_post(body=f'State Changed: {STATES_DICT[state]} --> {STATES_DICT[self.state]}')
 
 	def open_diary(self):
 		self.ensure_one()		
