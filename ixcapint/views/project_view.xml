@@ -24,15 +24,12 @@
                             </h2>
                         </div>
                         <group string="Project Information" col="4">
-                            <field name="term_id" attrs="{'readonly': [('state', '!=', 'draft')]}"
-                                options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                            <field name="term_id" attrs="{'readonly': [('state', '!=', 'draft')]}" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="type" />
                             <field name="student_id" context="{'default_school_id': school_id}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
                             <field name="tag_ids" widget="many2many_tags" />
-                            <field name="supervisor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>                            
-                            <field name="cosupervisor_ids" widget="many2many_tags"
-                                domain="[('id', '!=', supervisor_id)]"
-                                options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>                            
+                            <field name="supervisor_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="cosupervisor_ids" widget="many2many_tags" domain="[('id', '!=', supervisor_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                             <field name="initial_idea" widget="html" colspan="4" attrs="{'invisible': [('state', 'in', ['defense', 'done'])]}"/>
                             <field name="final_abstract" widget="html" colspan="4" attrs="{'invisible': [('state', 'not in', ['ongoing', 'defense', 'done'])]}"/>
                             <field name="school_id" invisible="1"/>
@@ -42,9 +39,9 @@
                                 <tree>
                                     <field name="name"/>
                                     <field name="state"/>
-					                <field name="submission_time"/>
-					                <field name="checking_time"/>
-					                <button string="Open" name="open_diary" type="object"/>
+                                    <field name="submission_time"/>
+                                    <field name="checking_time"/>
+                                    <button string="Open" name="open_diary" type="object"/>
                                 </tree>
                             </field>
                             <field name="final_report" />
@@ -55,13 +52,10 @@
                             <label for="building_id" string="Location"/>
                             <div>
                                 <field name="building_id" options="{'no_quick_create': True, 'no_create_edit': True}" style="width: 50%"/>
-                                <field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True}"
-                                    domain="[('building_id', '=', building_id), ('type', '!=', 'office')]" style="width: 50%"/>
+                                <field name="room_id" options="{'no_quick_create': True, 'no_create_edit': True}" domain="[('building_id', '=', building_id), ('type', '!=', 'office')]" style="width: 50%"/>
                             </div>
                             <field name="videocall_location"/>
-                            <field name="internal_examiner_ids" widget="many2many_tags"
-                                domain="[('id', '!=', supervisor_id), ('id', 'not in', cosupervisor_ids)]"
-                                options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
+                            <field name="internal_examiner_ids" widget="many2many_tags" domain="[('id', '!=', supervisor_id), ('id', 'not in', cosupervisor_ids)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
                             <field name="external_examiner_ids" widget="many2many_tags"/>
                         </group>
                         <group name="evaluation" groups="ix.group_faculty,ixcapint.group_capint_coordinator" attrs="{'invisible': [('state', 'not in', ['defense', 'done'])]}">
@@ -132,19 +126,20 @@
         <!-- ixcapint.project inherit tree view -->
         <record id="project_view_tree_defense" model="ir.ui.view">
             <field name="name">ixcapint.project.inherit.defense.view.tree</field>
-            <field name="model">ixcapint.project</field>            
+            <field name="model">ixcapint.project</field>
             <field name="arch" type="xml">
-                <tree string="Projects" create="false">                
-                <field name="name" />
-                <field name="type" widget="badge"/>
-                <field name="student_id" />
-                <field name="supervisor_id" />
-                <field name="cosupervisor_ids" widget="many2many_tags"/>
-                <field name="state" invisible="1"/>
-                <field name="internal_examiner_ids" widget="many2many_tags"/>
-                <field name="external_examiner_ids" widget="many2many_tags"/>
-                <field name="start_time" string="Defense Start Time"/>
-                <field name="end_time" string="Defense End Time"/>                
+                <tree string="Projects" create="false">
+                    <field name="name" />
+                    <field name="type" widget="badge"/>
+                    <field name="student_id" />
+                    <field name="supervisor_id" />
+                    <field name="cosupervisor_ids" widget="many2many_tags"/>
+                    <field name="state" invisible="1"/>
+                    <field name="internal_examiner_ids" widget="many2many_tags"/>
+                    <field name="external_examiner_ids" widget="many2many_tags"/>
+                    <field name="start_time" string="Defense Start Time"/>
+                    <field name="end_time" string="Defense End Time"/>
+                </tree>
             </field>
         </record>
 
