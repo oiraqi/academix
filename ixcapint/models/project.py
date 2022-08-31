@@ -114,6 +114,8 @@ class Project(models.Model):
         comodel_name='ixcapint.tag', string='Keywords', required=True,
             readonly=True, states={'draft': [('readonly', False)]})
 
+    diary_ids = fields.One2many(comodel_name='ixcapint.diary', inverse_name='project_id', string='Diaries')    
+
     internal_examiner_ids = fields.Many2many('ix.faculty', string='Internal Examiners',
                                 readonly=True, states={'ongoing': [('readonly', False)]})
 
