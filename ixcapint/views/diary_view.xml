@@ -40,7 +40,7 @@
 				<tree string="Diaries">
 					<field name="name"/>
 					<field name="state"/>
-					<field name="submittion_time"/>
+					<field name="submission_time"/>
 					<field name="checking_time"/>
 					<button string="Open" name="open_diary"/>
 				</tree>
