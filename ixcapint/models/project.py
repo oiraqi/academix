@@ -32,6 +32,11 @@ TYPES = {   'CAP': 'Capstone',
             'MT': 'Master Thesis',
         }
 
+STATES = [('draft', 'Draft Proposal'), ('supervisor', 'Approved by The Supervisor'),
+            ('ongoing', 'Approved by The Coordinator - Ongoing'),
+            ('defense', 'Scheduled for Defense'), ('done', 'Completed')]
+STATES_DICT = dict(STATES)
+
 class Project(models.Model):
     _name = 'ixcapint.project'
     _inherit = ['ix.school.activity', 'ix.calendarized', 'mail.thread']
@@ -127,17 +132,19 @@ class Project(models.Model):
 
     final_report = fields.Binary(string='Final Report')
 
-    state = fields.Selection([
-        ('draft', 'Draft Proposal'), ('supervisor', 'Approved by The Supervisor'),
-        ('ongoing', 'Approved by The Coordinator - Ongoing'), ('defense',
-                                                               'Scheduled for Defense'), ('done', 'Completed')
-    ], string='State', default='draft', required=True, tracking=True)
+    state = fields.Selection(STATES, string='State', default='draft', required=True, tracking=True)
 
     def supervisor_approve(self):
-        self.write({'state': 'supervisor'})
+        self.ensure_one()
+        state = self.state
+        self.state = 'supervisor'
+        self.message_post(body=f'State changed: {STATES_DICT[state]} --> {STATES_DICT[self.state]}')
 
     def coordinator_approve(self):
-        self.write({'state': 'ongoing'})
+        self.ensure_one()
+        state = self.state
+        self.state = 'ongoing'
+        self.message_post(body=f'State changed: {STATES_DICT[state]} --> {STATES_DICT[self.state]}')
 
     def schedule_defense(self):
         for rec in self:

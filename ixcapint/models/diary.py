@@ -1,6 +1,9 @@
 from odoo import models, fields, api
 
 
+STATES = [('draft', 'Draft'), 
+		('submitted', 'Submitted by Student'), ('corrections_required', 'Corrections Required'), ('checked', 'Checked by Supervisor')]
+
 class Diary(models.Model):
 	_name = 'ixcapint.diary'
 	_description = 'Diary'
@@ -14,8 +17,7 @@ class Diary(models.Model):
 
 	name = fields.Char('Title', required=True, readonly=True, states={'draft': [('readonly', False)], 'corrections_required': [('readonly', False)]})
 	content = fields.Html(string='Content', required=True, readonly=True, states={'draft': [('readonly', False)], 'corrections_required': [('readonly', False)]})
-	state = fields.Selection(string='State', selection=[('draft', 'Draft'), 
-		('submitted', 'Submitted by Student'), ('corrections_required', 'Corrections Required'), ('checked', 'Checked by Supervisor')],
+	state = fields.Selection(string='State', selection=STATES,
 		default='draft', required=True, tracking=True)
 	submission_time = fields.Datetime(string='Submitted by Student At')
 	checking_time = fields.Datetime(string='Checked by Supervisor At')
@@ -25,20 +27,32 @@ class Diary(models.Model):
 	
 	def submit_diary(self):
 		self.ensure_one()
-		state = self.state
+		state = ''
+		for s in STATES:
+			if s[0] == self.state:
+				state = s[1]
+				break
 		self.state = 'submitted'
 		self.submission_time = fields.Datetime.now()
 		self.message_post(body=f'State Changed: {state} --> Submitted by Student')
 
 	def correct_diary(self):
 		self.ensure_one()
-		state = self.state
+		state = ''
+		for s in STATES:
+			if s[0] == self.state:
+				state = s[1]
+				break
 		self.state = 'corrections_required'
 		self.message_post(body=f'State Changed: {state} --> Corrections Required')
 	
 	def check_diary(self):
 		self.ensure_one()
-		state = self.state
+		state = ''
+		for s in STATES:
+			if s[0] == self.state:
+				state = s[1]
+				break
 		self.state = 'checked'
 		self.checking_time = fields.Datetime.now()
 		self.message_post(body=f'State Changed: {state} --> Checked by Supervisor')
