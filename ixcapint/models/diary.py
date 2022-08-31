@@ -9,7 +9,7 @@ class Diary(models.Model):
 	name = fields.Char('Title', required=True, readonly=True, states={'draft': [('readonly', False)], 'corrections_requested': [('readonly', False)]})
 	content = fields.Html(string='Content', required=True, readonly=True, states={'draft': [('readonly', False)], 'corrections_requested': [('readonly', False)]})
 	state = fields.Selection(string='State', selection=[('draft', 'Draft'), 
-		('submitted', 'Submitted by Student'), ('corrections_requested', 'Corrections Requested'), ('checked', 'Checked by Supervisor')],
+		('submitted', 'Submitted by Student'), ('corrections_required', 'Corrections Required'), ('checked', 'Checked by Supervisor')],
 		default='draft', required=True, tracking=True)
 	submission_time = fields.Datetime(string='Submitted by Student At')
 	checking_time = fields.Datetime(string='Checked by Supervisor At')
@@ -24,7 +24,7 @@ class Diary(models.Model):
 
 	def correct_diary(self):
 		self.ensure_one()
-		self.state = 'corrections_requested'
+		self.state = 'corrections_required'
 	
 	def check_diary(self):
 		self.ensure_one()
