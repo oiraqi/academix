@@ -150,7 +150,7 @@
             <field name="res_model">ixcapint.project</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state', 'in', ['draft', 'supervisor'])]</field>
-            <field name="context">{'group_by': 'state'}</field>
+            <field name="context">{'group_by': ['school_id', 'state']}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Create project proposals here
@@ -165,6 +165,7 @@
             <field name="res_model">ixcapint.project</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state', '=', 'ongoing')]</field>
+            <field name="context">{'group_by': ['school_id']}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Approved / Ongoing projects will be organized here by type
@@ -179,6 +180,7 @@
             <field name="res_model">ixcapint.project</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state', '=', 'defense')]</field>
+            <field name="context">{'group_by': ['school_id']}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Scheduled defenses will be organized here by type
@@ -193,6 +195,7 @@
             <field name="res_model">ixcapint.project</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state', '=', 'done')]</field>
+            <field name="context">{'group_by': ['school_id', 'term_id']}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Completed projects will be organized here by year, semester and type
