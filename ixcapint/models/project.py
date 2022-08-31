@@ -123,7 +123,7 @@ class Project(models.Model):
                                            readonly=True, states={'ongoing': [('readonly', False)]})
 
     evaluation_ids = fields.One2many('ixcapint.evaluation', 'project_id', 'Evaluations',
-                                     readonly=True, states={'defense': [('readonly', False)]})
+                                     readonly=True, states={'defense': [('readonly', False)]}, groups='ix.group_faculty,ixcapint.group_capint_coordinator')
 
     final_report = fields.Binary(string='Final Report')
 
