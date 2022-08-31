@@ -66,13 +66,13 @@
 			</field>
 		</record>
 		<record id="action_diary_form_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="2"/>
+			<field name="sequence" eval="1"/>
 			<field name="view_mode">form</field>
 			<field name="view_id" ref="view_diary_form"/>
 			<field name="act_window_id" ref="action_diary"/>
 		</record>
 		<record id="action_diary_tree_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="1"/>
+			<field name="sequence" eval="2"/>
 			<field name="view_mode">tree</field>
 			<field name="view_id" ref="view_diary_tree"/>
 			<field name="act_window_id" ref="action_diary"/>
