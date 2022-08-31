@@ -110,11 +110,7 @@
                     <field name="type" widget="badge"/>
                     <field name="student_id" />
                     <field name="supervisor_id" />
-                    <field name="cosupervisor_ids" widget="many2many_tags"/>
-                    <field name="internal_examiner_ids" widget="many2many_tags"/>
-                    <field name="external_examiner_ids" widget="many2many_tags"/>
-                    <field name="start_time" string="Defense Start Time"/>
-                    <field name="end_time" string="Defense End Time"/>
+                    <field name="cosupervisor_ids" widget="many2many_tags"/>                    
                     <field name="state" invisible="1"/>
                 </tree>
             </field>
@@ -129,6 +125,22 @@
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="attributes">
                     <attribute name="create">false</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- ixcapint.project inherit tree view -->
+        <record id="project_view_tree_no_create_defense" model="ir.ui.view">
+            <field name="name">ixcapint.project.inherit.defense.view.tree</field>
+            <field name="model">ixcapint.project</field>
+            <field name="inherit_id" ref="project_view_tree_no_create"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='cosupervisor_ids']" position="after">
+                    <field name="internal_examiner_ids" widget="many2many_tags"/>
+                    <field name="external_examiner_ids" widget="many2many_tags"/>
+                    <field name="start_time" string="Defense Start Time"/>
+                    <field name="end_time" string="Defense End Time"/>
                 </xpath>
             </field>
         </record>
@@ -225,7 +237,7 @@
         <record id="project_action_defenses_tree_view" model="ir.actions.act_window.view">
             <field name="sequence" eval="1"/>
             <field name="view_mode">tree</field>
-            <field name="view_id" ref="project_view_tree_no_create"/>
+            <field name="view_id" ref="project_view_tree_no_create_defense"/>
             <field name="act_window_id" ref="project_action_defenses"/>
         </record>
 
@@ -235,10 +247,10 @@
             <field name="view_id" ref="project_view_form_no_create"/>
             <field name="act_window_id" ref="project_action_completed"/>
         </record>
-        <record id="project_actioncompleted_tree_view" model="ir.actions.act_window.view">
+        <record id="project_action_completed_tree_view" model="ir.actions.act_window.view">
             <field name="sequence" eval="1"/>
             <field name="view_mode">tree</field>
-            <field name="view_id" ref="project_view_tree_no_create"/>
+            <field name="view_id" ref="project_view_tree_no_create_defense"/>
             <field name="act_window_id" ref="project_action_completed"/>
         </record>
     </data>
