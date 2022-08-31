@@ -46,7 +46,6 @@
 					<field name="state"/>
 					<field name="submission_time"/>
 					<field name="checking_time"/>
-					<button string="Open" name="open_diary"/>
 				</tree>
 			</field>
 		</record>
