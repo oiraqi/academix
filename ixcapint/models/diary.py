@@ -1,10 +1,16 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class Diary(models.Model):
 	_name = 'ixcapint.diary'
 	_description = 'Diary'
 	_inherit = ['ix.expandable', 'mail.thread']
+
+	@api.model
+	def create(self, vals):
+		diary = super(Diary, self).create(vals)
+		diary.message_subscribe([diary.project_id.supervisor_id.partner_id.id])
+		return diary
 
 	name = fields.Char('Title', required=True, readonly=True, states={'draft': [('readonly', False)], 'corrections_required': [('readonly', False)]})
 	content = fields.Html(string='Content', required=True, readonly=True, states={'draft': [('readonly', False)], 'corrections_required': [('readonly', False)]})
@@ -19,17 +25,23 @@ class Diary(models.Model):
 	
 	def submit_diary(self):
 		self.ensure_one()
+		state = self.state
 		self.state = 'submitted'
 		self.submission_time = fields.Datetime.now()
+		self.message_post(f'State Changed: {state} --> Submitted by Student')
 
 	def correct_diary(self):
 		self.ensure_one()
+		state = self.state
 		self.state = 'corrections_required'
+		self.message_post(f'State Changed: {state} --> Corrections Required')
 	
 	def check_diary(self):
 		self.ensure_one()
+		state = self.state
 		self.state = 'checked'
 		self.checking_time = fields.Datetime.now()
+		self.message_post(f'State Changed: {state} --> Checked by Supervisor')
 
 	def open_diary(self):
 		self.ensure_one()		
