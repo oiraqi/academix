@@ -28,20 +28,20 @@ class Diary(models.Model):
 		state = self.state
 		self.state = 'submitted'
 		self.submission_time = fields.Datetime.now()
-		self.message_post(f'State Changed: {state} --> Submitted by Student')
+		self.message_post(body=f'State Changed: {state} --> Submitted by Student')
 
 	def correct_diary(self):
 		self.ensure_one()
 		state = self.state
 		self.state = 'corrections_required'
-		self.message_post(f'State Changed: {state} --> Corrections Required')
+		self.message_post(body=f'State Changed: {state} --> Corrections Required')
 	
 	def check_diary(self):
 		self.ensure_one()
 		state = self.state
 		self.state = 'checked'
 		self.checking_time = fields.Datetime.now()
-		self.message_post(f'State Changed: {state} --> Checked by Supervisor')
+		self.message_post(body=f'State Changed: {state} --> Checked by Supervisor')
 
 	def open_diary(self):
 		self.ensure_one()		
