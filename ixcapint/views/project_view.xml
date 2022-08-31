@@ -245,11 +245,11 @@
             <field name="view_id" ref="project_view_form_no_create"/>
             <field name="act_window_id" ref="project_action_completed"/>
         </record>
-        <!--<record id="project_action_completed_tree_view" model="ir.actions.act_window.view">
+        <record id="project_action_completed_tree_view" model="ir.actions.act_window.view">
             <field name="sequence" eval="1"/>
             <field name="view_mode">tree</field>
             <field name="view_id" ref="project_view_tree_defense"/>
             <field name="act_window_id" ref="project_action_completed"/>
-        </record>-->
+        </record>
     </data>
 </odoo>
