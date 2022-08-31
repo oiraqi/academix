@@ -33,5 +33,5 @@ class Diary(models.Model):
 
 	def open_diary(self):
 		self.ensure_one()		
-		return self._expand_to('ixcapint.action_diary', [('id', '=', self.context.get('active_id'))], {'default_project_id': self.project_id.id}, self.context.get('active_id'))
+		return self._expand_to('ixcapint.action_diary', [('id', '=', self.env.context.get('active_id'))], {'default_project_id': self.project_id.id}, self.env.context.get('active_id'))
 
