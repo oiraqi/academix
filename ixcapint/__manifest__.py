@@ -14,6 +14,7 @@ Student Capstones, Internships, Combined, Master Projects and Theses.
     'data': [
         'security/capint_security.xml',
         'security/ir.model.access.csv',
+        'views/diary_view.xml',
         'views/project_view.xml',
         'views/evaluation_view.xml',
         'views/capint_menu.xml',
