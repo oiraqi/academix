@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form string="Project">
                     <header>
-                        <button string="Approve" states="draft" name="supervisor_approve" type="object" class="oe_highlight" attrs="{'invisible': [('is_supervisor', '=', False)]}" groups="ix.group_faculty"/>
+                        <button string="Approve" name="supervisor_approve" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('is_supervisor', '=', False)]}" groups="ix.group_faculty"/>
                         <button string="Approve" states="supervisor" name="coordinator_approve" type="object" class="oe_highlight" groups="ixcapint.group_capint_coordinator"/>
                         <button string="Schedule Defense" states="ongoing" name="schedule_defense" type="object" class="oe_highlight" groups="ixcapint.group_capint_coordinator"/>
                         <button string="Mark Completed" states="defense" name="mark_done" type="object" class="oe_highlight" groups="ixcapint.group_capint_coordinator"/>

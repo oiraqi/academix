@@ -139,7 +139,7 @@ class Project(models.Model):
     def schedule_defense(self):
         for rec in self:
             if not rec.start_time or not rec.end_time:
-                raise ValidationError('Start Time and End Time must be set!')
+                raise ValidationError('Defense start time and end time must be set!')
             if (not rec.room_id or not rec.building_id) and not rec.videocall_location:
                 raise ValidationError('Room and Building must be set, or at least the conference URL!')
             if not rec.internal_examiner_ids:
