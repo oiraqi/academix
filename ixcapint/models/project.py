@@ -92,7 +92,7 @@ class Project(models.Model):
     @api.depends('supervisor_id')
     def _compute_is_supervisor(self):
         for rec in self:
-            rec.is_supervisor = rec.supervisor_id.user_id == self.env.user
+            rec.is_supervisor = rec.supervisor_id.sudo().user_id == self.env.user
 
     @api.onchange('cosupervisor_ids')
     @api.depends('cosupervisor_ids')
@@ -100,7 +100,7 @@ class Project(models.Model):
         for rec in self:
             rec.is_cosupervisor = False
             for cosupervisor in rec.cosupervisor_ids:
-                if cosupervisor.user_id == self.env.user:
+                if cosupervisor.sudo().user_id == self.env.user:
                     rec.is_cosupervisor = True
                     break
     
