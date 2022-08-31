@@ -7,7 +7,7 @@
 			<field name="arch" type="xml">
 				<form string="Diary">
 					<header>
-						<button string="Submit" states="draft,corrections_required" name="submit_diary" type="object" class="oe_highlight"/>						
+						<button string="Submit" states="draft,corrections_required" name="submit_diary" type="object" class="oe_highlight" groups="ix.group_student"/>
 						<button string="Check" states="submitted" name="check_diary" type="object" class="oe_highlight" groups="ix.group_faculty"/>
 						<button string="Require Corrections" states="submitted" name="correct_diary" type="object" groups="ix.group_faculty"/>
 						<field name="state" widget="statusbar" statusbar_visible="draft,submitted,checked"/>
