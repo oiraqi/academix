@@ -54,7 +54,7 @@
 			<field name="name">Diaries</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixcapint.diary</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
