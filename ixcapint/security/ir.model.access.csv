@@ -1,5 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ixcapint_project_user,access.ixcapint.project.user,model_ixcapint_project,base.group_user,1,0,0,0
+access_ixcapint_project_student,access.ixcapint.project.student,model_ixcapint_project,ix.group_student,1,1,1,0
 access_ixcapint_project_faculty,access.ixcapint.project.faculty,model_ixcapint_project,ix.group_faculty,1,1,1,0
 
 access_ixcapint_tag_user,access.ixcapint.tag.user,model_ixcapint_tag,base.group_user,1,0,0,0
@@ -8,6 +9,7 @@ access_ixcapint_tag_capint_coordinator,access.ixcapint.tag.capint_coordinator,mo
 
 access_ixcapint_evaluation_faculty,access.ixcapint.evaluation.faculty,model_ixcapint_evaluation,ix.group_faculty,1,1,1,0
 access_ixcapint_evaluation_capint_coordinator,access.ixcapint.evaluation.capint_coordinator,model_ixcapint_evaluation,ixcapint.group_capint_coordinator,1,0,0,0
+
 access_ixcapint_diary_student,access.ixcapint.diary.student,model_ixcapint_diary,ix.group_student,1,1,1,0
 access_ixcapint_diary_faculty,access.ixcapint.diary.faculty,model_ixcapint_diary,ix.group_faculty,1,1,0,0
 access_ixcapint_diary_capint_coordinator,access.ixcapint.diary.capint_coordinator,model_ixcapint_diary,ixcapint.group_capint_coordinator,1,0,0,0

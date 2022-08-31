@@ -41,6 +41,7 @@
                             <field name="diary_ids" string="Diaries">
                                 <tree>
                                     <field name="name"/>
+                                    <field name="state"/>
 					                <field name="submission_time"/>
 					                <field name="checking_time"/>
 					                <button string="Open" name="open_diary" type="object"/>
