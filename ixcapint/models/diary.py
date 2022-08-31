@@ -6,8 +6,8 @@ class Diary(models.Model):
 	_description = 'Diary'
 	_inherit = ['ix.expandable', 'mail.thread']
 
-	name = fields.Char('Title', required=True, readonly=True, states={'draft': [('readonly', False)], 'corrections_requested': [('readonly', False)]})
-	content = fields.Html(string='Content', required=True, readonly=True, states={'draft': [('readonly', False)], 'corrections_requested': [('readonly', False)]})
+	name = fields.Char('Title', required=True, readonly=True, states={'draft': [('readonly', False)], 'corrections_required': [('readonly', False)]})
+	content = fields.Html(string='Content', required=True, readonly=True, states={'draft': [('readonly', False)], 'corrections_required': [('readonly', False)]})
 	state = fields.Selection(string='State', selection=[('draft', 'Draft'), 
 		('submitted', 'Submitted by Student'), ('corrections_required', 'Corrections Required'), ('checked', 'Checked by Supervisor')],
 		default='draft', required=True, tracking=True)
