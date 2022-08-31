@@ -163,7 +163,8 @@ class Project(models.Model):
             attendee_ids.append(rec.supervisor_id.id)
             for external_examiner in rec.external_examiner_ids:
                 attendee_ids.append(external_examiner.id)
-            attendee_ids.append(self.env.user.partner_id.id)
+            if self.env.user.partner_id.id not in attendee_ids:
+                attendee_ids.append(self.env.user.partner_id.id)
             rec.set_event(rec.name, [(6, 0, attendee_ids)])
             rec.event_id.project_id = rec
 
