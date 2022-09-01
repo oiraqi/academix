@@ -165,7 +165,7 @@ class Project(models.Model):
                 attendee_ids.append(external_examiner.id)
             if self.env.user.partner_id.id not in attendee_ids:
                 attendee_ids.append(self.env.user.partner_id.id)
-            rec.set_event(rec.name, [(6, 0, attendee_ids)])
+            rec.set_event(rec.name, attendee_ids)
             rec.event_id.project_id = rec
 
             message = 'The defense of the ' + TYPES[rec.type] + ' ' + rec.name + ' by the student ' + rec.student_id.name + ' has been scheduled: ' + fields.Datetime.to_string(rec.start_time) + ' - ' + fields.Datetime.to_string(rec.end_time)
