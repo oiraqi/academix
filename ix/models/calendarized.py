@@ -33,7 +33,7 @@ class Calendarized(models.AbstractModel):
 					'privacy': 'private',
 					'allday': False,
 					'partner_ids': [(6, 0, partner_ids)],
-					'term_id': rec.term_id,
+					'term_id': rec.term_id.id,
 				})
 
 	@api.depends('room_id', 'start_time', 'end_time')
