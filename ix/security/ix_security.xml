@@ -62,13 +62,13 @@
         </record>
         
         <!-- Specific Rules -->
-        <record id="faculty_own_faculty_rule" model="ir.rule">
+        <!--<record id="faculty_own_faculty_rule" model="ir.rule">
             <field name="name">Grant access to own faculty record only</field>
             <field name="model_id" ref="model_ix_faculty"/>
             <field name="domain_force">[('partner_id', '=', user.partner_id.id)]</field>
             <field name="groups" eval="[(4, ref('group_faculty'))]"/>
             <field name="perm_create" eval="False"/>
-        </record>
+        </record>-->
         <record id="setup_faculty_rule" model="ir.rule">
             <field name="name">Grant access to all faculty</field>
             <field name="model_id" ref="model_ix_faculty"/>
