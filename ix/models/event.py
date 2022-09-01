@@ -59,13 +59,13 @@ class Event(models.Model):
 	@api.constrains('start_date', 'term_id')
 	def _check_start_date_against_term(self):
 		for rec in self:
-			if rec.start_date < rec.term_id.start_date:
+			if rec.start_date and rec.start_date < rec.term_id.start_date:
 				raise UserError('Event must start after the corresponding term start date')
 
 	@api.constrains('stop_date', 'term_id')
 	def _check_end_date_against_term(self):
 		for rec in self:
-			if rec.stop_date > rec.term_id.end_date:
+			if rec.stop_date and rec.stop_date > rec.term_id.end_date:
 				raise UserError('Event must end before the corresponding term end date')
 			
 	
