@@ -11,6 +11,7 @@ class Calendarized(models.AbstractModel):
 	building_id = fields.Many2one(comodel_name='ix.building', string='Building')
 	room_id = fields.Many2one(comodel_name='ix.room', string='Room')
 	videocall_location = fields.Char(string='Conference URL')
+	term_id = fields.Many2one('ix.term', string='Term')
 	
 
 	@api.onchange('building_id')
@@ -31,7 +32,8 @@ class Calendarized(models.AbstractModel):
 					'videocall_location': videocall_location,
 					'privacy': 'private',
 					'allday': False,
-					'partner_ids': [(6, 0, partner_ids)]
+					'partner_ids': [(6, 0, partner_ids)],
+					'term_id': rec.term_id,
 				})
 
 	@api.depends('room_id', 'start_time', 'end_time')
