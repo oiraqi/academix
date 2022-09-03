@@ -5,10 +5,22 @@ class Curriculum(models.Model):
 	_name = 'ixcatalog.curriculum'
 	_description = 'Curriculum'
 
-	name = fields.Char('Name', required=True)
-	code = fields.Char('Code', required=True)
+	name = fields.Char('Name', compute="_compute_name_code", store=True)
+	code = fields.Char('Code', compute="_compute_name_code", store=True)
+
+	@api.onchange('program_id', 'starting_term_id')
+	def _compute_name_code(self):
+		for rec in self:
+			if rec.program_id and rec.starting_term_id:
+				rec.name = rec.program_id.name + ' / ' + rec.starting_term_id.name
+				rec.code = rec.program_id.code + '-' + rec.starting_term_id.code
+			else:
+				rec.name = ''
+				rec.code = ''
+	
 	sequence = fields.Integer('Sequence', required=True)	
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True)
+	starting_term_id = fields.Many2one(comodel_name='ix.term', string='Starting Temr', required=True)	
 	level = fields.Selection(related='program_id.level', store=True)
 	school_id = fields.Many2one(comodel_name='ix.school', related='program_id.school_id', store=True)
 	component_ids = fields.Many2many('ixcatalog.component', 'ixcatalog_program_component_rel', 'program_id', 'component_id', string='Components')
