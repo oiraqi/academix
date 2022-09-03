@@ -14,7 +14,7 @@
                                     <tree>
                                         <field name="code"/>
                                         <field name="name"/>
-                                        <field name="sch"/>
+                                        <field name="ncurricula"/>
                                         <field name="manager_ids" widget="many2many_tags"/>
                                         <field name="level" widget="badge"/>
                                     </tree>
