@@ -8,7 +8,7 @@
 
 		<menuitem id="ix_course_menu" name="Courses" parent="ix_root_menu" sequence="40" action="action_course"/>
 
-		<menuitem id="ix_school_menu" name="Schools &#38; Centers" parent="ix_root_menu" sequence="60" action="action_school"/>
+		<menuitem id="ix_school_menu" name="Schools &#38; Centers" parent="ix_root_menu" sequence="70" action="action_school"/>
 
 		<menuitem id="ix_faculty_my_menu" name="Profile" parent="ix_root_menu" sequence="100" action="action_faculty_my" groups="ix.group_faculty"/>
 
