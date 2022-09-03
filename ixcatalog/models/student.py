@@ -28,8 +28,9 @@ class Student(models.Model):
     _name = 'ix.student'
     _inherit = 'ix.student'
 
+    curriculum_id = fields.Many2one(comodel_name='ixcatalog.curriculum', string='Curriculum', required=True, tracking=True)
     program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True, tracking=True)
-    program_sch = fields.Integer(related='program_id.sch', string='Total Credits')
+    program_sch = fields.Integer(related='curriculum_id.sch', string='Total Credits')
     level = fields.Selection(related='program_id.level', store=True)
 
     @api.onchange('school_id')
