@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ixadmission_student_info_admission_staff,access.ixadmission.student.info.admission_staff,model_ixadmission_student_info,ixadmission.group_admission_staff,1,1,1,0
+access_ixadmission_student_info_coordinator,access.ixadmission.student.info.coordinator,model_ixadmission_student_info,ix.group_coordinator,1,0,0,0
+access_ixadmission_student_info_vpaa,access.ixadmission.student.info.vpaa,model_ixadmission_student_info,ix.group_vpaa,1,0,0,0
+
