@@ -28,7 +28,7 @@
             <field name="inherit_id" ref="view_program_form_quality"/>
             <field name="mode">primary</field>
             <field name="arch" type="xml">
-                <xpath expr="//group[@name='components']" position="replace"/>
+                <xpath expr="//group[@name='curricula']" position="replace"/>
                 <xpath expr="//group[@name='sos']" position="after">                    
                     <group name="soc" string="SO Coverage" col="4">
                         <field name="soc_ids" nolabel="1">
