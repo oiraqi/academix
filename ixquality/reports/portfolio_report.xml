@@ -127,7 +127,7 @@
                                         <span t-field="ilo_so.so_id.name" />
                                     </td>
                                     <td style="border: 1px solid black; text-align: center; padding: 5px;">
-                                        <span t-field="ilo_so.ilo_id.name" />
+                                        <span t-field="ilo_so.lms_course_ilo_id.name" />
                                     </td>
                                     <td style="border: 1px solid black; text-align: center;">
                                         <span t-field="ilo_so.level" />
@@ -148,7 +148,7 @@
                             <t t-foreach="assessment.assessment_line_ids" t-as="assessment_line">
                                 <tr>
                                     <td style="border: 1px solid black; text-align: center;">
-                                        <span t-field="assessment_line.ilo_id.name" />
+                                        <span t-field="assessment_line.lms_course_ilo_id.name" />
                                     </td>
                                     <td style="border: 1px solid black; text-align: center; padding: 5px;">
                                         <span t-field="assessment_line.sos" />
@@ -187,7 +187,7 @@
                                 <span t-field="action.name" />
                             </td>
                             <td style="border: 1px solid black; text-align: center; padding: 5px;">
-                                <span t-field="action.ilo_id.name" />
+                                <span t-field="action.lms_course_ilo_id.name" />
                             </td>
                             <td style="border: 1px solid black; text-align: center; padding: 5px;">
                                 <span t-field="action.description" />
