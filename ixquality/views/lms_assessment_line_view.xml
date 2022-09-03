@@ -12,7 +12,7 @@
                         <button string="Add Assessment Lines" name="create_assessed_ilos" type="object"/>
                         <field name="assessed_ilo_ids" colspan="4" nolabel="1">
                             <tree create="false" editable="bottom">                                
-                                <field name="ilo_id"/>
+                                <field name="lms_course_ilo_id"/>
                                 <field name="acquisition_level" widget="priority"/>                                
                             </tree>
                         </field>
