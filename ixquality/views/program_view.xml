@@ -6,7 +6,7 @@
             <field name="model">ixcatalog.program</field>
             <field name="inherit_id" ref="ixcatalog.view_program_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='sch']" position="after">                    
+                <xpath expr="//field[@name='description']" position="after">                    
                     <field name="accreditation_ids" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                 </xpath>
                 <xpath expr="//group[@name='curricula']" position="after">                    
