@@ -26,6 +26,5 @@ from odoo import models, fields
 class LmsChapter(models.Model):
     _inherit = 'ixlms.chapter'
 
-    ilo_ids = fields.Many2many(comodel_name='ixcatalog.course.ilo', string='Covered ILOs')
     lms_course_ilo_ids = fields.Many2many(comodel_name='ixlms.course.ilo', string='Covered ILOs')
     

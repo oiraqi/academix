@@ -26,7 +26,6 @@ from odoo import models, fields
 class LmsAssessment(models.Model):
     _inherit = 'ixlms.assessment'
 
-    ilo_ids = fields.Many2many(comodel_name='ixcatalog.course.ilo', string='Assessed ILOs')
     lms_course_ilo_ids = fields.Many2many(comodel_name='ixlms.course.ilo', string='Assessed ILOs')
 
     good_performance = fields.Binary(string='Good Performance')
