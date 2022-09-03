@@ -30,6 +30,8 @@
                                 <tree>
                                     <field name="sequence" widget="handle"/>
                                     <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="starting_term_id" widget="badge"/>
                                     <field name="sch" sum="Total SCH"/>
                                     <field name="school_id" invisible="1"/>
                                     <field name="level" invisible="1"/>
