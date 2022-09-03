@@ -21,7 +21,7 @@
 #
 ###############################################################################
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class Program(models.Model):
@@ -34,16 +34,13 @@ class Program(models.Model):
     description = fields.Html(string='Description', required=True)    
     level = fields.Selection(
         [('u', 'Undergraduate'), ('g', 'Graduate')], 'Level', default='u', required=True)
-    component_ids = fields.Many2many('ixcatalog.component', 'ixcatalog_program_component_rel', 'program_id', 'component_id', string='Components')
-    sch = fields.Integer(compute='_compute_sch_ncomponents', string='SCH')
-    ncomponents = fields.Integer(compute='_compute_sch_ncomponents', string='Number of Components')
+    curriculum_ids = fields.One2many(comodel_name='ixcatalog.curriculum', inverse_name='program_id', string='Curricula')
+    ncurricula = fields.Integer(compute='_ncurricula', string='Number of Curricula')
     manager_ids = fields.Many2many('ix.faculty', 'ixcatalog_program_ix_faculty', 'program_id', 'manager_id', string='Managers')
     
-    
-    
-    @api.onchange('component_ids')
-    @api.depends('component_ids')
-    def _compute_sch_ncomponents(self):
+    def _ncurricula(self):
         for rec in self:
-            rec.sch = sum(component.sch for component in rec.component_ids if not component.parent_id)
-            rec.ncomponents = sum(1 for component in rec.component_ids if not component.parent_id)
+            if rec.curriculum_ids:
+                rec.ncurricula = len(rec.curriculum_ids)
+            else:
+                rec.ncurricula = 0

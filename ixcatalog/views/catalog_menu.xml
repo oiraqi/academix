@@ -1,4 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <menuitem id="ixcatalog_program_menu" name="Programs" parent="ix.ix_root_menu" sequence="50" action="action_program"/>
+    <menuitem id="ixcatalog_curriculum_menu" name="Curricula" parent="ix.ix_root_menu" sequence="60" action="action_curriculum"/>
 </odoo>

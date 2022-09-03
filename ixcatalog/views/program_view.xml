@@ -17,14 +17,13 @@
                         <group name="info" string="General Information" col="4">                            
                             <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                             <field name="level" widget="radio" options="{'horizontal': True}"/>
-                            <field name="description" colspan="4"/>
-                            <field name="sch"/>
+                            <field name="description" colspan="4"/>                            
                             <field name="manager_ids"
                                 domain="[('school_id', '=', school_id)]"
                                 options="{'no_quick_create': True, 'no_create_edit': True}" widget="many2many_tags"/>
                         </group>
-                        <group name="components" string="Components">
-                            <field name="component_ids"
+                        <group name="curricula" string="Curricula">
+                            <field name="curriculum_ids"
                                 domain="[('school_id', '=', school_id), ('level', '=', level), ('parent_id', '=', False)]"
                                 context="{'default_school_id': school_id, 'default_level': level}"
                                 nolabel="1">
@@ -34,7 +33,7 @@
                                     <field name="sch" sum="Total SCH"/>                                    
                                     <field name="school_id" invisible="1"/>
                                     <field name="level" invisible="1"/>
-                                    <field name="parent_id" invisible="1"/>
+                                    <field name="program_id" invisible="1"/>                                    
                                 </tree>
                             </field>
                         </group>
@@ -50,10 +49,9 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="code"/>
-                    <field name="name"/>
-                    <field name="sch"/>
+                    <field name="name"/>                    
                     <field name="manager_ids" widget="many2many_tags"/>
-                    <field name="ncomponents"/>
+                    <field name="ncurricula"/>
                 </tree>
             </field>
         </record>

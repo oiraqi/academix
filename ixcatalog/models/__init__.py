@@ -7,3 +7,4 @@ from . import school
 from . import component
 from . import faculty
 from . import student
+from . import curriculum

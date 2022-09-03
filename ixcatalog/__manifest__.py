@@ -18,6 +18,7 @@
         'security/ir.model.access.csv',        
         'views/course_view.xml',
         'views/program_view.xml',
+        'views/curriculum_view.xml',
         'views/component_view.xml',
         'views/school_view.xml',
         'views/student_view.xml',
