@@ -3,8 +3,8 @@ from . import course_ilo
 from . import prerequisite
 from . import corequisite
 from . import program
+from . import curriculum
 from . import school
 from . import component
 from . import faculty
 from . import student
-from . import curriculum

@@ -24,7 +24,7 @@
                         </group>
                         <group name="curricula" string="Curricula">
                             <field name="curriculum_ids"
-                                domain="[('school_id', '=', school_id), ('level', '=', level), ('parent_id', '=', False)]"
+                                domain="[('school_id', '=', school_id), ('level', '=', level)]"
                                 context="{'default_school_id': school_id, 'default_level': level}"
                                 nolabel="1">
                                 <tree>
