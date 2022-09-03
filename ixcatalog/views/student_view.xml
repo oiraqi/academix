@@ -10,6 +10,8 @@
                 <xpath expr="//field[@name='school_id']" position="after">
                     <field name="program_id" domain="[('school_id', '=', school_id)]"
                         options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                    <field name="curriculum_id" domain="[('program_id', '=', program_id)]"
+                        options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
                     <field name="level"/>
                 </xpath>                
             </field>
@@ -21,7 +23,7 @@
             <field name="res_model">ix.student</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
-            <field name="context">{'group_by': ['school_id', 'level', 'program_id']}</field>
+            <field name="context">{'group_by': ['school_id', 'level', 'program_id', 'curriculum_id']}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                 Create a student
