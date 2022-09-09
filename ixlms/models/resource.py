@@ -38,7 +38,7 @@ class Resource(models.Model):
 	def _has_text(self):
 		stripper = re.compile('<.*?>')
 		for rec in self:			
-			rec.has_text = len(re.sub(stripper, '', rec.text).strip()) > 0
+			rec.has_text = rec.text and len(re.sub(stripper, '', rec.text).strip()) > 0
 	
 	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)	
 	
