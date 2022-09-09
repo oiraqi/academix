@@ -208,7 +208,7 @@ class LmsCourse(models.Model):
 	def _has_details(self):
 		stripper = re.compile('<.*?>')
 		for rec in self:			
-			rec.has_details = len(re.sub(stripper, '', rec.details).strip()) > 0
+			rec.has_details = rec.details and len(re.sub(stripper, '', rec.details).strip()) > 0
 
 	channel_ids = fields.One2many(comodel_name='mail.channel', inverse_name='lms_course_id', string='Channels')
 	nchannels = fields.Integer(string='Channels', compute='_nchannels')

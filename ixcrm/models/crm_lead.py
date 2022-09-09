@@ -23,9 +23,10 @@
 
 from odoo import models, fields
 
+class Lead(models.Model):
+    _name = 'crm.lead'
+    _inherit = ['crm.lead', 'ix.school.owned']
 
-class Faculty(models.Model):
-	_inherit = 'ix.faculty'
-
-	managed_program_ids = fields.Many2many('ixcatalog.program', 'ixcatalog_program_ix_faculty', 'manager_id', 'program_id', string='Managed Programs')	
-	
+    program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program')
+    term_id = fields.Many2one(comodel_name='ix.term', string='Term')
+    
