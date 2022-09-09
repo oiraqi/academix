@@ -39,11 +39,20 @@ class Lead(models.Model):
             if rec.school_id:
                 name = rec.school_id.code
             if rec.program_id:
-                name += rec.program_id.code
+                if name:
+                    name += '-' + rec.program_id.code
+                else:
+                    name = rec.program_id.code
             if rec.term_id:
-                name += rec.term_id.code
+                if name:
+                    name += '-' + rec.term_id.code
+                else:
+                    name = rec.term_id.code
             if rec.partner_id:
-                name += rec.partner_id.name
+                if name:
+                    name += '-' + rec.partner_id.name
+                else:
+                    name = rec.partner_id.name
             if name:
                 rec.name = name
 
