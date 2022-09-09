@@ -10,7 +10,9 @@ access_ixcatalog_corequisite_course_manager,access.ixcatalog.corequisite.course.
 
 
 access_ixcatalog_program_user,access.ixcatalog.program.user,model_ixcatalog_program,base.group_user,1,0,0,0
-access_ixcatalog_program_program_manager,access.ixcatalog.program.program.manager,model_ixcatalog_program,ixcatalog.group_program_manager,1,1,1,1
+access_ixcatalog_program_vpaa,access.ixcatalog.program.vpaa,model_ixcatalog_program,ix.group_vpaa,1,1,1,0
+access_ixcatalog_program_dean,access.ixcatalog.program.dean,model_ixcatalog_program,ix.group_dean,1,1,1,0
+access_ixcatalog_program_program_manager,access.ixcatalog.program.program.manager,model_ixcatalog_program,ixcatalog.group_program_manager,1,1,1,0
 
 access_ixcatalog_component_user,access.ixcatalog.component.user,model_ixcatalog_component,base.group_user,1,0,0,0
 access_ixcatalog_component_program_manager,access.ixcatalog.component.program_manager,model_ixcatalog_component,ixcatalog.group_program_manager,1,1,1,1

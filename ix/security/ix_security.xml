@@ -37,7 +37,7 @@
             <field name="implied_ids" eval="[(4, ref('ix.group_user'))]"/>
         </record>
         <record id="group_dean" model="res.groups">
-            <field name="name">School Dean</field>
+            <field name="name">Dean</field>
             <field name="category_id" ref="module_category_ix"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
             <field name="implied_ids" eval="[(4, ref('group_coordinator'))]"/>
@@ -60,36 +60,32 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
             <field name="implied_ids" eval="[(4, ref('ix.group_user'))]"/>
         </record>
+        <record id="group_planner" model="res.groups">
+            <field name="name">Planner</field>
+            <field name="category_id" ref="module_category_ix"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="implied_ids" eval="[(4, ref('ix.group_user'))]"/>
+        </record>
         
         <!-- Specific Rules -->
-        <!--<record id="faculty_own_faculty_rule" model="ir.rule">
-            <field name="name">Grant access to own faculty record only</field>
-            <field name="model_id" ref="model_ix_faculty"/>
-            <field name="domain_force">[('partner_id', '=', user.partner_id.id)]</field>
-            <field name="groups" eval="[(4, ref('group_faculty'))]"/>
-            <field name="perm_create" eval="False"/>
-        </record>-->
+        <record id="user_event_rule" model="ir.rule">
+            <field name="name">Deny create/write access to public events</field>
+            <field name="model_id" ref="calendar.model_calendar_event"/>
+            <field name="domain_force">[('type', '=', private)]</field>
+            <field name="groups" eval="[(4, ref('group_user'))]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record id="planner_event_rule" model="ir.rule">
+            <field name="name">Grant access to all events</field>
+            <field name="model_id" ref="calendar.model_calendar_event"/>
+            <field name="domain_force">[('1', '=', '1')]</field>
+            <field name="groups" eval="[(4, ref('group_planner'))]"/>            
+        </record>
         <record id="setup_faculty_rule" model="ir.rule">
             <field name="name">Grant access to all faculty</field>
             <field name="model_id" ref="model_ix_faculty"/>
             <field name="domain_force">[(1, '=', 1)]</field>
             <field name="groups" eval="[(4, ref('group_setup'))]"/>
-        </record>
-        <!--<record id="generic_read_own_faculty_rule" model="ir.rule">
-            <field name="name">Grant read access to own records only</field>
-            <field name="model_id" ref="model_ix_faculty_owned"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
-            <field name="groups" eval="[(4, ref('ix.group_faulty'))]"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_write" eval="False"/>
-        </record>
-        <record id="generic_write_own_faculty_rule" model="ir.rule">
-            <field name="name">Grant write access to own, unlocked records only</field>
-            <field name="model_id" ref="model_ix_faculty_owned"/>
-            <field name="domain_force">[('create_uid', '=', user.id), ('locked', '=', 'False')]</field>
-            <field name="groups" eval="[(4, ref('ix.group_faulty'))]"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_read" eval="False"/>
-        </record>-->
+        </record>        
     </data>
 </odoo>

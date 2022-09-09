@@ -7,6 +7,20 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
+        <record id="program_dean_rule" model="ir.rule">
+            <field name="name">Grant write access to school programs only</field>
+            <field name="model_id" ref="model_ixcatalog_program"/>
+            <field name="domain_force">[('id', 'in', user.managed_program_ids.ids)]</field>
+            <field name="groups" eval="[(4, ref('ix.group_dean'))]"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record id="program_manager_rule" model="ir.rule">
+            <field name="name">Grant write access to managed programs only</field>
+            <field name="model_id" ref="model_ixcatalog_program"/>
+            <field name="domain_force">[('manager_ids.faculty_id', '=', user.faculty_id.id)]</field>
+            <field name="groups" eval="[(4, ref('ix.group_faulty'))]"/>            
+            <field name="perm_read" eval="False"/>
+        </record>
     </data>
     
 </odoo>
