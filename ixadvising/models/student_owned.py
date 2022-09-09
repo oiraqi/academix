@@ -28,4 +28,5 @@ class StudentOwned(models.AbstractModel):
     _inherit = 'ix.student.owned'
 
     program_id = fields.Many2one('ixcatalog.program', related='student_id.program_id', store=True)
+    curriculum_id = fields.Many2one('ixcatalog.program', related='student_id.curriculum_id', store=True)
     advisor_id = fields.Many2one('ix.faculty', related='student_id.advisor_id')

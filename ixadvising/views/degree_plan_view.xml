@@ -20,6 +20,7 @@
                         <group name="info" string="General Information" col="4">
                             <field name="school_id" />
                             <field name="program_id"/>
+                            <field name="curriculum_id"/>
                             <field name="advisor_id"/>
                         </group>
                         <group name="info" string="Initial Parameters" col="4">
