@@ -76,6 +76,7 @@
                 <tree string="Degree Plan Wizard">
                     <field name="student_id"/>
                     <field name="program_id"/>
+                    <field name="curriculum_id"/>
                     <field name="term_id" string="Starting Term"/>                    
                     <field name="pace"/>
                     <field name="session_ids" widget="many2many_tags"/>
