@@ -7,10 +7,11 @@
 			<field name="arch" type="xml">
 				<form string="Resource">
 					<sheet>
-						<h1><field name="name"/></h1>
+						<h1><field name="name" placeholder="Resource Title..."/></h1>
 						<group name="content" string="Content" col="4">							
 							<field name="file"/>
 							<field name="url"/>
+							<field name="text" colspan="4"/>
 							<field name="course_id" invisible="1"/>
 						</group>
 						<group name="log" string="Log" col="4">
@@ -32,6 +33,7 @@
 					<field name="name"/>
 					<field name="file"/>
 					<field name="url"/>
+					<field name="has_text"/>
 				</tree>
 			</field>
 		</record>

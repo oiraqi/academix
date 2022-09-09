@@ -23,6 +23,7 @@
 
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+import re
 
 
 class LmsCourse(models.Model):
@@ -202,6 +203,12 @@ class LmsCourse(models.Model):
 				rec.nassessment_lines = 0
 	
 	details = fields.Html(string='More Details')
+	has_details = fields.Boolean(compute='_has_details')
+	
+	def _has_details(self):
+		stripper = re.compile('<.*?>')
+		for rec in self:			
+			rec.has_details = len(re.sub(stripper, '', rec.details).strip()) > 0
 
 	channel_ids = fields.One2many(comodel_name='mail.channel', inverse_name='lms_course_id', string='Channels')
 	nchannels = fields.Integer(string='Channels', compute='_nchannels')

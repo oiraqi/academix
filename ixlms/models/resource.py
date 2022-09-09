@@ -22,6 +22,7 @@
 ###############################################################################
 
 from odoo import models, fields
+import re
 
 
 class Resource(models.Model):
@@ -30,8 +31,14 @@ class Resource(models.Model):
 
 	name = fields.Char('Name', required=True)	
 	file = fields.Binary(string='File')
-	url = fields.Char(string='URL')	
-	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
+	url = fields.Char(string='URL')
+	text = fields.Html(string='Text')
+	has_text = fields.Boolean(string='Text', compute='_has_text')
 	
+	def _has_text(self):
+		stripper = re.compile('<.*?>')
+		for rec in self:			
+			rec.has_text = len(re.sub(stripper, '', rec.text).strip()) > 0
 	
+	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)	
 	
