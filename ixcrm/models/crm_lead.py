@@ -21,12 +21,30 @@
 #
 ###############################################################################
 
-from odoo import models, fields
+from odoo import models, fields, api
 
 class Lead(models.Model):
     _name = 'crm.lead'
     _inherit = ['crm.lead', 'ix.school.owned']
 
+    name = fields.Char(string='')
+    
     program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program')
     term_id = fields.Many2one(comodel_name='ix.term', string='Term')
+
+    @api.onchange('school_id', 'program_id', 'term_id', 'partner_id')
+    def _onchange_school_program_term_partner(self):
+        for rec in self:
+            name = ''
+            if rec.school_id:
+                name = rec.school_id.code
+            if rec.program_id:
+                name += rec.program_id.code
+            if rec.term_id:
+                name += rec.term_id.code
+            if rec.partner_id:
+                name += rec.partner_id.name
+            if name:
+                rec.name = name
+
     
