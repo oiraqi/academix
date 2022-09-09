@@ -24,7 +24,7 @@
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//group[@name='partner_id']" position="after">
+                <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="school_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                     <field name="program_id" options="{'no_quick_create': True, 'no_create_edit': True}"
                         domain="[('school_id', '=', school_id)]"/>
