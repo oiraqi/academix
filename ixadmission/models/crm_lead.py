@@ -28,6 +28,6 @@ class Lead(models.Model):
     
     institution_id = fields.Many2one(comodel_name='ixadmission.institution', string='Institution')
     education_system_id = fields.Many2one(comodel_name='ixadmission.education.system', related='institution_id.education_system_id', store=True)
-    degree_id = fields.Many2one(comodel_name='ixadmission_id', string='Degree')
+    degree_id = fields.Many2one(comodel_name='ixadmission.degree', string='Degree')
     rx_date = fields.Date(string='Earned/Expected Date')
     
