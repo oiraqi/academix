@@ -3,3 +3,14 @@ access_ixadmission_student_info_admission_staff,access.ixadmission.student.info.
 access_ixadmission_student_info_coordinator,access.ixadmission.student.info.coordinator,model_ixadmission_student_info,ix.group_coordinator,1,0,0,0
 access_ixadmission_student_info_vpaa,access.ixadmission.student.info.vpaa,model_ixadmission_student_info,ix.group_vpaa,1,0,0,0
 
+access_ixadmission_education_system_setup,access.ixadmission.education.system.setup,model_ixadmission_education_system,ix.group_setup,1,1,1,1
+access_ixadmission_education_system_user,access.ixadmission.education.system.user,model_ixadmission_education_system,ix.group_user,1,0,0,0
+
+access_ixadmission_degree_setup,access.ixadmission.degree.setup,model_ixadmission_degree,ix.group_setup,1,1,1,1
+access_ixadmission_degree_user,access.ixadmission.degree.user,model_ixadmission_degree,ix.group_user,1,0,0,0
+
+access_ixadmission_institution_sales,access.ixadmission.institution.sales,model_ixadmission_institution,ixcrm.group_salesperson,1,1,1,0
+access_ixadmission_institution_user,access.ixadmission.institution.user,model_ixadmission_institution,ix.group_user,1,0,0,0
+
+access_ixadmission_academic_record_sales,access.ixadmission.academic.record.sales,model_ixadmission_academic_record,ixcrm.group_salesperson,1,1,1,0
+

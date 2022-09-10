@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- crm.lead inherit form view -->
+        <record id="crm_lead_view_form" model="ir.ui.view">
+            <field name="name">crm.lead.admission.inherit.view.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="before">
+                    <page string="Intake" name="academic_records">
+                        <group>
+                            <field name="institution_id" domain="[('company_type', '=', 'company')]"
+                                context="{'default_company_type': 'company'}"/>
+                            <field name="education_system_id"/>
+                            <field name="degree_id" options="{'no_quick_create': True, 'no_create_edit': True}" domain="[('education_system_id', '=', education_system_id)]"/>
+                            <field name="rx_date"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>

@@ -15,6 +15,8 @@
         'crm',
     ],
     'data': [
+        'security/ixcrm_security.xml',
+        'security/ir.model.access.csv',
         'views/crm_lead_view.xml',
         'views/education_system_view.xml',
     ],
