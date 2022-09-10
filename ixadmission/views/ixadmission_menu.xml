@@ -1,0 +1,6 @@
+<odoo>
+	<data>
+        <menuitem id="ixadmission_menu_root" name="Admissions" sequence="20"/>
+		<menuitem id="ixadmission_education_system_menu" name="EducationSystems" parent="ixadmission_menu_root" action="action_education_system" sequence="500"/>
+	</data>
+</odoo>
