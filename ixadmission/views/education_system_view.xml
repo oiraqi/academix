@@ -37,7 +37,7 @@
 			</field>
 		</record>
 		<record id="action_education_system" model="ir.actions.act_window">
-			<field name="name">EducationSystems</field>
+			<field name="name">Education Systems</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixadmission.education.system</field>
 			<field name="view_mode">tree,form</field>
