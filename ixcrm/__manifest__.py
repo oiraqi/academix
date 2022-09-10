@@ -16,7 +16,7 @@
     ],
     'data': [
         'security/ixcrm_security.xml',
-        'security/ir.model.access.csv',
+        #'security/ir.model.access.csv',
         'views/crm_lead_view.xml',
     ],
     'installable': True,
