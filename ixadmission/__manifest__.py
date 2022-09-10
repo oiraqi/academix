@@ -16,6 +16,7 @@ The IX Admission Module
         'security/ir.model.access.csv',
         'views/crm_lead_view.xml',
         'views/education_system_view.xml',
+        'views/institution_view.xml',
     ],
     'test': [],
     'installable': True,
