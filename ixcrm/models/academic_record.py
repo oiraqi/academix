@@ -2,7 +2,7 @@ from odoo import models, fields
 
 
 class AcademicRecord(models.Model):
-	_name = 'icxrm.academic.record'
+	_name = 'ixcrm.academic.record'
 	_description = 'Academic Record'
 	_order = 'rx_date'	
 
