@@ -20,7 +20,7 @@
                         <group>
                             <field name="academic_record_ids" nolabel="1">
                                 <tree editable="bottom">
-                                    <field name="institution_id" domain="[('company_type', '=', 'company')]"
+                                    <field name="institution_id"
                                         context="{'default_company_type': 'company'}"/>
                                     <field name="education_system_id"/>
                                     <field name="degree_id" options="{'no_quick_create': True, 'no_create_edit': True}"
