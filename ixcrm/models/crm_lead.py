@@ -28,8 +28,7 @@ class Lead(models.Model):
     _inherit = ['crm.lead', 'ix.school.owned']
     
     program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program')
-    term_id = fields.Many2one(comodel_name='ix.term', string='Term')
-    academic_record_ids = fields.One2many(comodel_name='ixcrm.academic.record', inverse_name='lead_id', string='Academic Records')
+    term_id = fields.Many2one(comodel_name='ix.term', string='Term')    
     
 
     @api.onchange('school_id', 'program_id', 'term_id', 'partner_id')
