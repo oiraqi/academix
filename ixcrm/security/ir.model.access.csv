@@ -1,0 +1,11 @@
+access_ixcrm_education_system_setup,access.ixcrm.education.system.setup,model_ixcrm_education_system,ix.group_setup,1,1,1,1
+access_ixcrm_education_system_user,access.ixcrm.education.system.user,model_ixcrm_education_system,ix.group_user,1,0,0,0
+
+access_ixcrm_degree_setup,access.ixcrm.degree.setup,model_ixcrm_degree,ix.group_setup,1,1,1,1
+access_ixcrm_degree_user,access.ixcrm.degree.user,model_ixcrm_degree,ix.group_user,1,0,0,0
+
+access_ixcrm_institution_sales,access.ixcrm.institution.sales,model_ixcrm_institution,ixcrm.group_sales,1,1,1,0
+access_ixcrm_institution_user,access.ixcrm.institution.user,model_ixcrm_institution,ix.group_user,1,0,0,0
+
+access_icxrm_academic_record_sales,access.icxrm.academic.record.sales,model_icxrm_academic_record,ixcrm.group_sales,1,1,1,0
+

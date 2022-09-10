@@ -16,6 +16,7 @@
     ],
     'data': [
         'views/crm_lead_view.xml',
+        'views/education_system_view.xml',
     ],
     'installable': True,
     'auto_install': False,

@@ -30,6 +30,21 @@
                         domain="[('school_id', '=', school_id)]"/>
                     <field name="term_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                 </xpath>
+                <xpath expr="//page[@name='internal_notes']" position="before">
+                    <page string="Academic Records" name="academic_records">
+                        <group>
+                            <field name="academic_record_ids" nolabel="1">
+                                <tree>
+                                    <field name="institution_id"/>
+                                    <field name="education_system_id"/>
+                                    <field name="degree_id" options="{'no_quick_create': True, 'no_create_edit': True}"
+                                        domain="[('education_system_id', '=', education_system_id)]"/>
+                                    <field name="rx_date"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
             </field>
         </record>
     </data>
