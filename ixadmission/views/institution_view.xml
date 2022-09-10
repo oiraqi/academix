@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_institution_form" model="ir.ui.view">
-			<field name="name">ixcrm.institution.form</field>
-			<field name="model">ixcrm.institution</field>
+			<field name="name">ixadmission.institution.form</field>
+			<field name="model">ixadmission.institution</field>
 			<field name="arch" type="xml">
 				<form string="Institution">
 					<sheet>
@@ -22,8 +22,8 @@
 			</field>
 		</record>
 		<record id="view_institution_tree" model="ir.ui.view">
-			<field name="name">ixcrm.institution.tree</field>
-			<field name="model">ixcrm.institution</field>
+			<field name="name">ixadmission.institution.tree</field>
+			<field name="model">ixadmission.institution</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Institutions">
@@ -34,7 +34,7 @@
 		<record id="action_institution" model="ir.actions.act_window">
 			<field name="name">Institutions</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">ixcrm.institution</field>
+			<field name="res_model">ixadmission.institution</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>

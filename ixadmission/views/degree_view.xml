@@ -2,8 +2,8 @@
 <odoo>
 	<data>
 		<record id="view_degree_form" model="ir.ui.view">
-			<field name="name">ixcrm.degree.form</field>
-			<field name="model">ixcrm.degree</field>
+			<field name="name">ixadmission.degree.form</field>
+			<field name="model">ixadmission.degree</field>
 			<field name="arch" type="xml">
 				<form string="Degree">
 					<sheet>
@@ -22,8 +22,8 @@
 			</field>
 		</record>
 		<record id="view_degree_tree" model="ir.ui.view">
-			<field name="name">ixcrm.degree.tree</field>
-			<field name="model">ixcrm.degree</field>
+			<field name="name">ixadmission.degree.tree</field>
+			<field name="model">ixadmission.degree</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
 				<tree string="Degrees">
@@ -34,7 +34,7 @@
 		<record id="action_degree" model="ir.actions.act_window">
 			<field name="name">Degrees</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">ixcrm.degree</field>
+			<field name="res_model">ixadmission.degree</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{'group_by': 'education_system_id'}</field>
