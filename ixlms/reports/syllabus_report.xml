@@ -72,6 +72,14 @@
                         </tr>
                         <tr>
                             <td style="width: 20%">
+                                <b>Office:</b>
+                            </td>
+                            <td style="width: 80%">
+                                <span t-field="o.instructor_id.room_id.name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">
                                 <b>Office Hours:</b>
                             </td>
                             <td style="width: 80%">
@@ -107,6 +115,7 @@
                             <th style="border: 1px solid black; text-align: center; width: 15%;"># of Sessions</th>
                         </tr>
                         <t t-foreach="o.module_ids" t-as="module">
+                        <t t-if="len(module.chapter_ids) &gt; 0">
                         <tr style="border: 1px solid black; background-color: #F0F0F0;">
                             <td style="border: 1px solid black; text-align: center; padding: 5px;" colspan="4"><h4><b><span t-field="module.name" /></b></h4></td>
                         </tr>
@@ -119,8 +128,9 @@
                         </tr>                        
                         </t>
                         </t>
+                        </t>
                     </table>
-                    <br/>                    
+                    <br/>
                     <t t-if="len(o.textbook_ids) &gt; 0">                    
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Textbook(s)</b>
