@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='info']" position="after">
                     <notebook>
-                        <page name="sections" string="Sections">
+                        <page name="sections" string="Sections" attrs="{'invisible': [('type', '=', 'office')]}">
                             <field name="section_ids" nolabel="1" readonly="1">
                                 <tree>
                                     <field name="name"/>
@@ -19,7 +19,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page name="reservations" string="Reservations">
+                        <page name="reservations" string="Reservations" attrs="{'invisible': [('type', '=', 'office')]}">
                             <group>
                                 <field name="reservation_ids" nolabel="1" readonly="1">
                                     <tree>                                        
