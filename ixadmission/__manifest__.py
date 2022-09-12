@@ -17,6 +17,7 @@ The IX Admission Module
         'views/crm_lead_view.xml',
         'views/education_system_view.xml',
         'views/institution_view.xml',
+        'views/degree_view.xml',
         'views/ixadmission_menu.xml',
     ],
     'test': [],
