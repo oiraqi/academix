@@ -40,5 +40,13 @@ class Resource(models.Model):
 		for rec in self:			
 			rec.has_text = rec.text and len(re.sub(stripper, '', rec.text).strip()) > 0
 	
-	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)	
+	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
 	
+	def open_url(self):
+		self.ensure_one()
+		if self.url:
+			return {
+				'type': 'ir.actions.act_url',
+				'target': 'new',
+				'url': self.url
+			}

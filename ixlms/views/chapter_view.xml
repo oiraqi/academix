@@ -23,6 +23,7 @@
 									<field name="has_text"/>
 									<field name="file" widget="binary"/>
 									<field name="url"/>
+									<button name="open_url" string="Open URL" type="object" attrs="{'invisible': [('url', '=', False)]}"/>
 								</tree>
 							</field>
 						</group>
