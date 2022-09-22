@@ -4,9 +4,9 @@ access_ix_course_cousre_manager,access.ix.course.course.manager,model_ix_course,
 
 access_ix_student_user,access.ix.student.user,model_ix_student,base.group_user,1,0,0,0
 access_ix_student_setup,access.ix.student.setup,model_ix_student,group_setup,1,1,1,0
-access_ix_student_faculty,access.ix.student.faculty,model_ix_student,group_faculty,1,1,1,0
-access_ix_student_coordinator,access.ix.student.coordinator,model_ix_student,group_coordinator,1,1,1,0
-access_ix_student_vpaa,access.ix.student.vpaa,model_ix_student,group_vpaa,1,1,0,0
+access_ix_student_faculty,access.ix.student.faculty,model_ix_student,group_faculty,1,0,0,0
+access_ix_student_coordinator,access.ix.student.coordinator,model_ix_student,group_coordinator,1,0,0,0
+access_ix_student_vpaa,access.ix.student.vpaa,model_ix_student,group_vpaa,1,0,0,0
 
 access_ix_discipline_user,access.ix.discipline.user,model_ix_discipline,base.group_user,1,0,0,0
 access_ix_discipline_setup,access.ix.discipline.setup,model_ix_discipline,group_setup,1,1,1,0
@@ -14,7 +14,7 @@ access_ix_discipline_faculty,access.ix.discipline.faculty,model_ix_discipline,gr
 access_ix_discipline_coordinator,access.ix.discipline.coordinator,model_ix_discipline,group_coordinator,1,1,1,0
 access_ix_discipline_vpaa,access.ix.discipline.vpaa,model_ix_discipline,group_vpaa,1,1,0,0
 
-access_ix_faculty_faculty,access.ix.faculty.faculty,model_ix_faculty,group_faculty,1,1,0,0
+access_ix_faculty_faculty,access.ix.faculty.faculty,model_ix_faculty,group_faculty,1,0,0,0
 access_ix_faculty_student,access.ix.faculty.student,model_ix_faculty,group_student,1,0,0,0
 access_ix_faculty_coordinator,access.ix.faculty.coordinator,model_ix_faculty,group_coordinator,1,1,1,0
 access_ix_faculty_vpaa,access.ix.faculty.vpaa,model_ix_faculty,group_vpaa,1,1,0,0
