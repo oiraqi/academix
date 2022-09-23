@@ -49,7 +49,7 @@ class Project(models.Model):
     student_id = fields.Many2one('ix.student', string='Student', required=True, readonly=True,
                                  default=lambda self: self.env['ix.student'].sudo().search(
                                      [('user_id', '=', self.env.user.id)]),
-                                 states={'draft': [('readonly', False)]})
+                                 states={'draft': [('readonly', False), ('required', False)]})
 
     type = fields.Selection([('CAP', 'Capstone'), ('INT',
                             'Internship'), ('CMB', 'Combined'),
@@ -77,7 +77,7 @@ class Project(models.Model):
     supervisor_id = fields.Many2one('ix.faculty', string='Supervisor', required=True,
                                     default=lambda self: self.env['ix.faculty'].sudo().search(
                                         [('user_id', '=', self.env.user.id)]),
-                                    readonly=True, states={'draft': [('readonly', False)]})
+                                    readonly=True, states={'draft': [('readonly', False), ('required', False)]})
 
     cosupervisor_ids = fields.Many2many('ix.faculty', relation='ixcapint_project_cosupervisor_rel', string='Co-supervisors',                                    
                                     readonly=True, states={'draft': [('readonly', False)]})
