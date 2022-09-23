@@ -72,5 +72,5 @@ class Event(models.Model):
 	@api.onchange('start_date')
 	def _onchange_start_date(self):
 		for rec in self:
-			if rec.stop_date <= rec.start_date:
-				rec.start_date = rec.stop_date
+			if rec.stop_date < rec.start_date:
+				rec.stop_date = rec.start_date
