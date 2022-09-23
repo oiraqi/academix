@@ -77,14 +77,6 @@
             <field name="perm_write" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record id="user_write_delete_event_rule" model="ir.rule">
-            <field name="name">Deny write and delete access to public events</field>
-            <field name="model_id" ref="calendar.model_calendar_event"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
-            <field name="groups" eval="[(4, ref('ix.group_user'))]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_create" eval="False"/>            
-        </record>
         <record id="planner_event_rule" model="ir.rule">
             <field name="name">Grant access to all events</field>
             <field name="model_id" ref="calendar.model_calendar_event"/>
