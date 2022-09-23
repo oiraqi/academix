@@ -42,9 +42,11 @@ class Enrollment(models.Model):
     dstate = fields.Selection(string='Drop State', selection=[(
         'draft', 'Draft'), ('confirmed', 'Confirmed')], default='draft')
     dtriggered = fields.Boolean(default=False)
+    can_drop = fields.Boolean(compute='_can_drop_withdraw')
     wstate = fields.Selection(string='W State', selection=[('draft', 'Draft'), ('wreq', 'Request To Withdraw'), (
         'wadv', 'W Approved by Advisor'), ('winst', 'W Approved by Instructor')], default='draft', tracking=True)
     wtriggered = fields.Boolean(default=False)
+    can_withdraw = fields.Boolean(compute='_can_drop_withdraw')
     wfstate = fields.Selection(string='WF State', selection=[('draft', 'Draft'), ('wfreq', 'WF Request'), ('wfdean', 'WF Approved by the Dean/Director'), ('wfreg', 'WF Processed')],
                                default='draft', tracking=True)
     wftriggered = fields.Boolean(default=False)
@@ -55,6 +57,26 @@ class Enrollment(models.Model):
                                default='draft', tracking=True)
     iptriggered = fields.Boolean(default=False)
     wdtime = fields.Datetime()
+
+    def _can_drop_withdraw(self):
+        current_term = self.env['ix.term'].get_current()
+        if not current_term:
+            self.write({'can_drop': False, 'can_withdraw': False})
+            return
+        
+        add_drop = self.env['calandar.event'].search([('term_id', '=', current_term.id), ('meta', '=', 'add_drop')])
+        if not add_drop:
+            self.write({'can_drop': False, 'can_withdraw': False})
+            return
+        today = fields.Date.today()
+        if today >= add_drop.start_date and today <= add_drop.stop_date:
+            self.write({'can_drop': True, 'can_withdraw': False})
+        else:
+            withdraw = self.env['calandar.event'].search([('term_id', '=', current_term.id), ('meta', '=', 'w')])
+            if not withdraw or today <= add_drop.stop_date or today > withdraw.stop_date:
+                self.write({'can_drop': False, 'can_withdraw': False})
+            else:
+                self.write({'can_drop': False, 'can_withdraw': True})            
 
     # Related fields
     school_id = fields.Many2one(
