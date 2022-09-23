@@ -1,6 +1,6 @@
 <odoo>
 	<data>
-        <menuitem id="ixadmission_menu_root" name="Admissions" sequence="5"/>
+        <menuitem id="ixadmission_menu_root" name="Admissions" groups="group_admission_staff" sequence="5"/>
         <menuitem id="ixadmission_configuration_menu" name="Configuration" parent="ixadmission_menu_root" sequence="500"/>
 		<menuitem id="ixadmission_education_system_menu" name="Education Systems" parent="ixadmission_configuration_menu" action="action_education_system" sequence="5"/>
 	</data>

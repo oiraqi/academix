@@ -51,7 +51,7 @@ class DegreePlan(models.Model):
         
         planned_course_ids = []
         program_course_ids = []
-        for component in self.curriculum_id.component_ids:
+        for component in self.student_id.curriculum_id.component_ids:
             for course in component.course_ids:
                 program_course_ids.append(course.id)
 
