@@ -71,7 +71,7 @@
         <record id="user_create_event_rule" model="ir.rule">
             <field name="name">Deny create access to public events</field>
             <field name="model_id" ref="calendar.model_calendar_event"/>
-            <field name="domain_force">[('type', '=', 'private')]</field>
+            <field name="domain_force">[('privacy', '=', 'private')]</field>
             <field name="groups" eval="[(4, ref('ix.group_user'))]"/>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
