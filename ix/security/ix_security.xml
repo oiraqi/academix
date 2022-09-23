@@ -75,7 +75,7 @@
             <field name="groups" eval="[(4, ref('ix.group_user'))]"/>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
-            <field name="perm_delete" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
         </record>
         <record id="planner_event_rule" model="ir.rule">
             <field name="name">Grant access to all events</field>
