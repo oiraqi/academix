@@ -12,12 +12,12 @@
 					<field name="wftriggered" invisible="1"/>
 					<field name="iptriggered" invisible="1"/>
 					<header attrs="{'invisible': [('id', '=', False)]}">
-						<button string="Enroll" states="created" name="enroll" type="object" class="oe_highlight" groups="ixroster.group_registrar"/>
+						<!--<button string="Enroll" states="created" name="enroll" type="object" class="oe_highlight" groups="ixroster.group_registrar"/>
 						<button string="Drop" attrs="{'invisible': ['|', ('dtriggered', '=', True), ('state', '!=', 'enrolled')]}" name="drop" type="object" groups="ix.group_student"/>
 						<button string="Request To Withdraw" attrs="{'invisible': ['|', ('wtriggered', '=', True), ('state', '!=', 'enrolled')]}" name="req_w" type="object" groups="ix.group_student"/>
 						<button string="File a WP" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="file_wp" type="object" groups="ix.group_faculty"/>
 						<button string="File a WF" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="file_wf" type="object" groups="ix.group_faculty"/>
-						<button string="File an IP" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="file_ip" type="object" groups="ix.group_faculty"/>
+						<button string="File an IP" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="file_ip" type="object" groups="ix.group_faculty"/>-->
 						<field name="state" widget="statusbar" statusbar_visible="enrolled"/>
 					</header>
 					<header attrs="{'invisible': ['|', ('dtriggered', '=', False), ('state', '!=', 'enrolled')]}">
