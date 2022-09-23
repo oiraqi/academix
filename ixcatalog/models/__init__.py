@@ -1,4 +1,5 @@
 from . import course
+from . import student_owned
 from . import course_ilo
 from . import prerequisite
 from . import corequisite

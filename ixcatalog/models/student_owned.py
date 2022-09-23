@@ -27,4 +27,5 @@ from odoo import models, fields
 class StudentOwned(models.AbstractModel):
     _inherit = 'ix.student.owned'
 
-    advisor_id = fields.Many2one('ix.faculty', related='student_id.advisor_id')
+    program_id = fields.Many2one('ixcatalog.program', related='student_id.program_id', store=True)
+    curriculum_id = fields.Many2one('ixcatalog.curriculum', related='student_id.curriculum_id', store=True)
