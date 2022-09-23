@@ -64,7 +64,7 @@ class Enrollment(models.Model):
             self.write({'can_drop': False, 'can_withdraw': False})
             return
         
-        add_drop = self.env['calandar.event'].search([('term_id', '=', current_term.id), ('meta', '=', 'add_drop')])
+        add_drop = self.env['calendar.event'].search([('term_id', '=', current_term.id), ('meta', '=', 'add_drop')])
         if not add_drop:
             self.write({'can_drop': False, 'can_withdraw': False})
             return
@@ -72,7 +72,7 @@ class Enrollment(models.Model):
         if today >= add_drop.start_date and today <= add_drop.stop_date:
             self.write({'can_drop': True, 'can_withdraw': False})
         else:
-            withdraw = self.env['calandar.event'].search([('term_id', '=', current_term.id), ('meta', '=', 'w')])
+            withdraw = self.env['calendar.event'].search([('term_id', '=', current_term.id), ('meta', '=', 'w')])
             if not withdraw or today <= add_drop.stop_date or today > withdraw.stop_date:
                 self.write({'can_drop': False, 'can_withdraw': False})
             else:
