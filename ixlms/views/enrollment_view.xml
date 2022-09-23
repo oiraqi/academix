@@ -7,9 +7,9 @@
             <field name="model">ixroster.enrollment</field>
             <field name="inherit_id" ref="ixroster.view_enrollment_form"/>
             <field name="arch" type="xml">                
-                <!--<xpath expr="//button[@name='file_ip']" position="after">
+                <xpath expr="//button[@name='file_ip']" position="after">
                     <button string="Submit Final Grade" class="oe_highlight" attrs="{'invisible': ['|', ('wptriggered', '=', True), '|', ('wftriggered', '=', True), '|', ('iptriggered', '=', True), ('state', '!=', 'enrolled')]}" name="submit_final_grade" type="object" groups="ix.group_faculty"/>
-                </xpath>-->
+                </xpath>
                 <xpath expr="//h1" position="after">
                     <h1 attrs="{'invisible': [('state', '!=', 'completed')]}">
                         <field name="letter_grade_assigned" groups="ix.group_faculty"/>
