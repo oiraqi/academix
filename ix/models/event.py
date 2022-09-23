@@ -69,4 +69,8 @@ class Event(models.Model):
 				raise UserError('Event must end before the corresponding term end date')
 			
 	
-	
+	@api.onchange('start_date')
+	def _onchange_start_date(self):
+		for rec in self:
+			if rec.stop_date <= rec.start_date:
+				rec.start_date = rec.stop_date
