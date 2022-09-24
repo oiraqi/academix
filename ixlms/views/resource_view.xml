@@ -10,9 +10,7 @@
 						<h1><field name="name" placeholder="Resource Title..."/></h1>
 						<group name="content" string="Content">							
 							<field name="file" widget="binary"/>
-							<field name="url"/>
-							<button name="open_url" string="Open URL" type="object" class="oe_highlight"
-								attrs="{'invisible': [('url', '=', False)]}"/>
+							<field name="url" widget="url"/>							
 							<field name="text"/>
 							<field name="course_id" invisible="1"/>
 						</group>
