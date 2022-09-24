@@ -45,8 +45,7 @@
             <field name="name">Restrict access to own Attendance Lines</field>
             <field name="model_id" ref="model_ixlms_attendance_line"/>
             <field name="domain_force">[('student_id', '=', user.student_id.id)]</field>
-            <field name="groups" eval="[(4, ref('ix.group_student'))]"/>
-            <field name="perm_create" eval="False"/>
+            <field name="groups" eval="[(4, ref('ix.group_student'))]"/>            
         </record>
         <record id="student_assessment_line_rule" model="ir.rule">
             <field name="name">Restrict access to Own Assessment Lines</field>
@@ -59,6 +58,7 @@
             <field name="model_id" ref="model_ixlms_assessment_submission"/>
             <field name="domain_force">[('create_uid', '=', user.id)]</field>
             <field name="groups" eval="[(4, ref('ix.group_student'))]"/>
+            <field name="perm_create" eval="False"/>
         </record>
     </data>
     
