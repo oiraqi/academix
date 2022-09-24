@@ -34,11 +34,16 @@ class Resource(models.Model):
 	url = fields.Char(string='URL')
 	text = fields.Html(string='Text')
 	has_text = fields.Boolean(string='Text', compute='_has_text')
+	has_url = fields.Boolean(string='URL', compute='_has_url')
 	
 	def _has_text(self):
 		stripper = re.compile('<.*?>')
 		for rec in self:			
 			rec.has_text = rec.text and len(re.sub(stripper, '', rec.text).strip()) > 0
+
+	def _has_url(self):
+		for rec in self:			
+			rec.has_url = len(rec.url) > 0
 	
 	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
 	
