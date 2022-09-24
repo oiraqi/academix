@@ -16,7 +16,7 @@
 							<button name="get_submissions" type="object" class="oe_stat_button" icon="fa-check-circle" attrs="{'invisible': [('submission_type', '!=', 'online')]}">
 								<field name="nsubmissions" string="Submissions" widget="statinfo"/>
 							</button>
-							<button name="get_assessment_lines" type="object" class="oe_stat_button" icon="fa-percent">
+							<button name="get_assessment_lines" type="object" class="oe_stat_button" icon="fa-percent" groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
 								<field name="ngraded" string="Graded" widget="statinfo"/>
 							</button>
 						</div>
