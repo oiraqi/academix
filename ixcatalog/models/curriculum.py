@@ -19,10 +19,10 @@ class Curriculum(models.Model):
 				rec.name = ''
 				rec.code = ''
 	
+	school_id = fields.Many2one(comodel_name='ix.school', string='School', required=True)
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True)
 	starting_term_id = fields.Many2one(comodel_name='ix.term', string='Starting Term', required=True)	
-	level = fields.Selection(related='program_id.level', store=True)
-	school_id = fields.Many2one(comodel_name='ix.school', related='program_id.school_id', store=True)
+	level = fields.Selection(related='program_id.level', store=True)	
 	component_ids = fields.Many2many('ixcatalog.component', 'ixcatalog_program_component_rel', 'program_id', 'component_id', string='Components')
 	sch = fields.Integer(compute='_compute_sch_ncomponents', string='SCH')
 	ncomponents = fields.Integer(compute='_compute_sch_ncomponents', string='Number of Components')
