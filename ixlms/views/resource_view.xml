@@ -35,7 +35,7 @@
 					<field name="has_text"/>
 					<button name="open_url" string="Open URL" type="object" class="oe_highlight"
 						attrs="{'invisible': [('url', '=', False)]}"/>
-					<field name="utl" invisible="1"/>
+					<field name="url" invisible="1"/>
 				</tree>
 			</field>
 		</record>
