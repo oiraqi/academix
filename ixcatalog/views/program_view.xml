@@ -27,8 +27,7 @@
                                 domain="[('school_id', '=', school_id), ('level', '=', level)]"
                                 context="{'default_school_id': school_id, 'default_level': level}"
                                 nolabel="1">
-                                <tree>
-                                    <field name="sequence" widget="handle"/>
+                                <tree>                                    
                                     <field name="name"/>
                                     <field name="code"/>
                                     <field name="starting_term_id" widget="badge"/>
