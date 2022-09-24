@@ -31,7 +31,13 @@
                                     <field name="max_ncredits" options="{'type': 'number', 'step': 1, 'format': 0}" style="width: 30%"/>
                                 </group>
                             </page>
-                        </notebook>                        
+                        </notebook>
+                        <group name="log" string="Log" col="4">
+							<field name="create_uid"/>
+							<field name="create_date"/>
+							<field name="write_uid"/>
+							<field name="write_date"/>
+						</group>
                     </sheet>
                     <div class="oe_chatter" groups="ix.group_coordinator,ix.group_vpaa">
                         <field name="message_follower_ids" widget="mail_followers"/>
