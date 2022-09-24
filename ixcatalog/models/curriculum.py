@@ -4,6 +4,7 @@ from odoo import models, fields, api
 class Curriculum(models.Model):
 	_name = 'ixcatalog.curriculum'
 	_description = 'Curriculum'
+	_order = 'school_id,program_id,starting_term_id'
 
 	name = fields.Char('Name', compute="_compute_name_code", store=True)
 	code = fields.Char('Code', compute="_compute_name_code", store=True)
@@ -18,7 +19,6 @@ class Curriculum(models.Model):
 				rec.name = ''
 				rec.code = ''
 	
-	sequence = fields.Integer('Sequence', required=True)	
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True)
 	starting_term_id = fields.Many2one(comodel_name='ix.term', string='Starting Term', required=True)	
 	level = fields.Selection(related='program_id.level', store=True)
