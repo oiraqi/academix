@@ -161,7 +161,7 @@ class Assessment(models.Model):
 	def _stats(self):
 		for rec in self:
 			min_grade, max_grade, s, s2, count = 100, 0, 0, 0, 0
-			for assessment_line in rec.assessment_line_ids:
+			for assessment_line in rec.sudo().assessment_line_ids:
 				if assessment_line.grade and assessment_line.grade != '':
 					if assessment_line.egrade < min_grade:
 						min_grade = assessment_line.egrade

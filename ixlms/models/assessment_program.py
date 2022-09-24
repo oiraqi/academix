@@ -41,7 +41,7 @@ class AssessmentProgram(models.Model):
 	def _stats(self):
 		for rec in self:
 			min_grade, max_grade, s, s2, count = 100, 0, 0, 0, 0
-			for assessment_line in rec.assessment_id.assessment_line_ids:
+			for assessment_line in rec.sudo().assessment_id.assessment_line_ids:
 				if assessment_line.student_id.program_id != rec.program_id:
 					continue
 				
