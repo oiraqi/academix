@@ -71,6 +71,7 @@ access_ixlms_resource_coordinator,access.ixlms.resource.coordinator,model_ixlms_
 access_ixlms_resource_vpaa,access.ixlms.resource.vpaa,model_ixlms_resource,ix.group_vpaa,1,0,0,0
 
 access_ixlms_assessment_program_faculty,access.ixlms.assessment.program.faculty,model_ixlms_assessment_program,ix.group_faculty,1,1,1,1
+access_ixlms_assessment_program_student,access.ixlms.assessment.program.student,model_ixlms_assessment_program,ix.group_student,1,0,0,0
 access_ixlms_assessment_program_coordinator,access.ixlms.assessment.program.coordinator,model_ixlms_assessment_program,ix.group_coordinator,1,0,0,0
 access_ixlms_assessment_program_vpaa,access.ixlms.assessment.program.vpaa,model_ixlms_assessment_program,ix.group_vpaa,1,0,0,0
 
