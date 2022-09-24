@@ -10,6 +10,7 @@ class Curriculum(models.Model):
 	code = fields.Char('Code', compute="_compute_name_code", store=True)
 
 	@api.onchange('program_id', 'starting_term_id')
+	@api.depends('program_id', 'starting_term_id')
 	def _compute_name_code(self):
 		for rec in self:
 			if rec.program_id and rec.starting_term_id:
