@@ -41,6 +41,38 @@ class Enrollment(models.Model):
     letter_grade_assigned = fields.Char('Assigned Letter Grade', groups='ix.group_faculty')
     letter_grade_assigned_ro = fields.Char('Assigned Letter Grade', compute='_lgaro')
 
+    def enroll(self):
+        super(Enrollment, self).enroll()
+        if self.state == 'enrolled':
+            self._unsubscribe_from_lms_course_channels()
+
+    def confirm_drop(self):
+        super(Enrollment, self).confirm_drop()
+        if self.state == 'dropped':
+            self._unsubscribe_from_lms_course_channels()
+
+    def app_wp_reg(self):
+        super(Enrollment, self).app_wp_reg()
+        if self.state == 'withdrawn':
+            self._unsubscribe_from_lms_course_channels()
+
+    def app_wf_reg(self):
+        super(Enrollment, self).app_wf_reg()
+        if self.state == 'withdrawn':
+            self._unsubscribe_from_lms_course_channels()
+
+    def app_ip_reg(self):
+        super(Enrollment, self).app_ip_reg()
+        if self.state == 'withdrawn':
+            self._unsubscribe_from_lms_course_channels()
+
+    def _unsubscribe_from_lms_course_channels(self):
+        if not self.section_id.lms_course_id:
+            return
+        
+        for channel in self.section_id.lms_course_id.channel_ids:
+                channel.message_unsubscribe([self.student_id.partner_id.id])
+
     @api.depends('letter_grade_assigned')
     def _lgaro(self):
         for rec in self:

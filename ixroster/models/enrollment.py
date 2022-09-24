@@ -160,9 +160,8 @@ class Enrollment(models.Model):
         if self.state == 'created':
             self.state = 'enrolled'
 
-    def drop(self):
-        raise ValidationError('Drop period elapsed!')
-        #self.dtriggered = True
+    def drop(self):        
+        self.dtriggered = True
 
     def req_w(self):
         self.wtriggered = True

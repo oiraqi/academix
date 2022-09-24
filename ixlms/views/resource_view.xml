@@ -8,10 +8,10 @@
 				<form string="Resource">
 					<sheet>
 						<h1><field name="name" placeholder="Resource Title..."/></h1>
-						<group name="content" string="Content" col="4">							
+						<group name="content" string="Content">							
 							<field name="file"/>
 							<field name="url"/>
-							<field name="text" colspan="4"/>
+							<field name="text"/>
 							<field name="course_id" invisible="1"/>
 						</group>
 						<group name="log" string="Log" col="4">
@@ -31,9 +31,11 @@
 			<field name="arch" type="xml">
 				<tree string="Resources">
 					<field name="name"/>
-					<field name="file"/>
-					<field name="url"/>
+					<field name="file"/>					
 					<field name="has_text"/>
+					<button name="open_url" string="Open URL" type="object" class="oe_highlight"
+						attrs="{'invisible': [('url', '=', False)]}"/>
+					<field name="utl" invisible="1"/>
 				</tree>
 			</field>
 		</record>
