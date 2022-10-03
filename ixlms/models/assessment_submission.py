@@ -53,7 +53,7 @@ class AssessmentSubmission(models.Model):
 	is_file_req = fields.Boolean(related='assessment_id.is_file_req')
 	is_url_req = fields.Boolean(related='assessment_id.is_url_req')
 	is_text_req = fields.Boolean(related='assessment_id.is_text_req')	
-	team_id = fields.Many2one(comodel_name='ixlms.team', string='Team')	
+	team_id = fields.Many2one(comodel_name='ixlms.team', string='Team')
 	file = fields.Binary(string='File', tracking=True)
 	url = fields.Char(string='URL', tracking=True)
 	text = fields.Html(string='Text', tracking=True)
