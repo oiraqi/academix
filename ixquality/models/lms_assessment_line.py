@@ -35,7 +35,7 @@ class LmsAssessmentLine(models.Model):
             if ilo.id not in assessed_ilo_ids:
                 self.env['ixquality.assessed.ilo'].create({            
                     'assessment_line_id': self.id,
-                    'ilo_id': ilo.id,
+                    'lms_course_ilo_id': ilo.id,
                 })
 
     
