@@ -49,10 +49,7 @@ class Component(models.Model):
     @api.depends('child_ids')
     def _compute_hide_children(self):
         for rec in self:
-            if rec.child_ids or self.env.ref('ix.group_setup') in self.sudo().env.user.groups_id or self.env.ref('ix.group_coordinator') in self.sudo().env.user.groups_id:
-                rec.hide_children = False
-            else:
-                rec.hide_children = True
+            rec.hide_children = not (rec.child_ids or self.env.ref('ix.group_setup') in self.sudo().env.user.groups_id or self.env.ref('ix.group_coordinator') in self.sudo().env.user.groups_id)            
 
     hide_courses = fields.Boolean(
         compute='_compute_hide_courses', string='hide_courses')
