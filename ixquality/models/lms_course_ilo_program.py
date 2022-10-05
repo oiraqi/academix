@@ -34,7 +34,7 @@ class LmsCourseIloProgram(models.Model):
 	lms_course_ilo_id = fields.Many2one(comodel_name='ixlms.course.ilo', string='Course ILO', required=True)
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True)	
 	percentage = fields.Float(string='Students who reached TAL (%)', compute='_percentage')
-	count = fields.Float(string='Assessed Students', compute='_percentage')
+	count = fields.Integer(string='Assessed Students', compute='_percentage')
 
 	def _percentage(self):
 		for rec in self:
