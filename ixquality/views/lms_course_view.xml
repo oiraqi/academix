@@ -17,6 +17,7 @@
                                     options="{'no_quick_create': True, 'no_create_edit': True}"/>
                                 <field name="program_id" domain="[('id', 'in', parent.program_ids)]"
                                     options="{'no_quick_create': True, 'no_create_edit': True}"/>                                
+                                <field name="count"/>
                                 <field name="percentage"/>
                             </tree>
                         </field>

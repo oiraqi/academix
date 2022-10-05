@@ -34,6 +34,7 @@ class LmsCourseIloProgram(models.Model):
 	lms_course_ilo_id = fields.Many2one(comodel_name='ixlms.course.ilo', string='Course ILO', required=True)
 	program_id = fields.Many2one(comodel_name='ixcatalog.program', string='Program', required=True)	
 	percentage = fields.Float(string='Students who reached TAL (%)', compute='_percentage')
+	count = fields.Float(string='Assessed Students', compute='_percentage')
 
 	def _percentage(self):
 		for rec in self:
@@ -47,11 +48,12 @@ class LmsCourseIloProgram(models.Model):
 					s[str(assessed_ilo.student_id)] = int(assessed_ilo.acquisition_level)
 					c[str(assessed_ilo.student_id)] = 1
 
+			rec.count = len(s)
 			if len(s) > 0:
 				for t in s:
 					if s[t]/c[t] >= int(rec.lms_course_id.acquisition_level):
 						a += 1
-					rec.percentage = fields.Float.round(100 * a / len(s), 2)
+				rec.percentage = fields.Float.round(100 * a / len(s), 2)
 			else:
 				rec.percentage = 0
 
