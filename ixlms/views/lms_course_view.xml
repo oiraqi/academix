@@ -118,7 +118,6 @@
 								</group>
 							</page>
 							<page string="Course ILOs" name="ilos">
-								<button string="Refresh" name="refresh" type="object" class="oe_highlight"/>
 								<group name="ilos">
 									<field name="lms_course_ilo_ids" nolabel="1" readonly="1">
 										<tree>

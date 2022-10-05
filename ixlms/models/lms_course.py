@@ -323,11 +323,3 @@ class LmsCourse(models.Model):
 		context = {'default_lms_course_id': self.id, 'group_by': 'module_id'}
 		return self._expand_to('ixlms.action_chapter', domain, context)
 
-	def refresh(self):
-		self.ensure_one()
-		return {
-    		'type': 'ir.actions.client',
-    		'tag': 'reload',
-		}
-
-
