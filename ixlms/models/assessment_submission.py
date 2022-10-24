@@ -27,7 +27,7 @@ from odoo import models, fields, api
 class AssessmentSubmission(models.Model):
 	_name = 'ixlms.assessment.submission'
 	_description = 'Assessment Submission'
-	_inherit = 'mail.thread'
+	_inherit = ['mail.thread', 'ix.expandable']
 
 	@api.model
 	def create(self, vals):
