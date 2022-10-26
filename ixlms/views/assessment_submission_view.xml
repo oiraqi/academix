@@ -9,7 +9,7 @@
 					<sheet>
 						<group name="artifacts" string="Submission Artifacts">
 							<field name="file" attrs="{'required': [('is_file_req', '=', True)]}"/>
-							<field name="url" attrs="{'required': [('is_url_req', '=', True)]}"/>
+							<field name="url" attrs="{'required': [('is_url_req', '=', True)]}" widget="url"/>
 							<field name="text" attrs="{'required': [('is_text_req', '=', True)]}"/>
 							<field name="is_file_req" invisible="1"/>
 							<field name="is_url_req" invisible="1"/>
