@@ -34,19 +34,19 @@ class AssessmentLine(models.Model):
 	faculty_id = fields.Many2one(comodel_name='ix.faculty', related='assessment_id.faculty_id', store=True)	
 	lms_course_ilo_id = fields.Many2one('ixlms.course.ilo', 'ILO', required=True)
 	so_ids = fields.One2many('ixquality.student.outcome', compute='_so_ids', string='SOs')
-	assessment_technique_ids = fields.One2many(comodel_name='ixlms.assessment.technique', compute='_assessment_technique_ids', string="Assessment Techniques")
+	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', compute='_assessment_ids', string="Assessments")
 
 	@api.onchange('assessment_id', 'lms_course_ilo_id')
-	def _assessment_technique_ids(self):
+	def _assessment_ids(self):
 		for rec in self:
-			technique_ids = []
+			assessment_ids = []
 			for assessment in rec.assessment_id.portfolio_id.lms_course_id.assessment_ids:
-				if rec.lms_course_ilo_id in assessment.lms_course_ilo_ids and assessment.technique_id.technique_id.id not in technique_ids:
-					technique_ids.append(assessment.technique_id.technique_id.id)
-			if len(technique_ids) > 0:
-				rec.assessment_technique_ids = technique_ids
+				if rec.lms_course_ilo_id in assessment.lms_course_ilo_ids:
+					assessment_ids.append(assessment.id)
+			if len(assessment_ids) > 0:
+				rec.assessment_ids = assessment_ids
 			else:
-				rec.assessment_technique_ids = False
+				rec.assessment_ids = False
 					
 
 	sos = fields.Char(compute='_sos')
@@ -61,17 +61,17 @@ class AssessmentLine(models.Model):
 					sos = ', '.join([so.name for so in rec.so_ids])
 			rec.sos = sos
 
-	assessment_techniques = fields.Char(compute='_assessment_techniques')
+	assessments = fields.Char(compute='_assessments')
 
-	def _assessment_techniques(self):
+	def _assessments(self):
 		for rec in self:
-			assessment_techniques = ''
-			if rec.assessment_technique_ids:
-				if len(rec.assessment_technique_ids) == 1:
-					assessment_techniques = rec.assessment_technique_ids[0].name
+			assessments = ''
+			if rec.assessment_ids:
+				if len(rec.assessment_ids) == 1:
+					assessments = rec.assessment_ids[0].name
 				else:
-					assessment_techniques = ', '.join([assessment_technique.name for assessment_technique in rec.assessment_technique_ids])
-			rec.assessment_techniques = assessment_techniques
+					assessments = ', '.join([assessment.name for assessment in rec.assessment_ids])
+			rec.assessments = assessments
 
 	targetted = fields.Selection(string='Targetted', selection=[
 		('70', '70'), ('75', '75'), ('80', '80'),

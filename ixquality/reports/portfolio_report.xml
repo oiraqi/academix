@@ -141,7 +141,7 @@
                             <tr style="border: 1px solid black; background-color: #D0D0D0;">
                                 <th style="border: 1px solid black; text-align: center;">ILO</th>
                                 <th style="border: 1px solid black; text-align: center;">SOs</th>
-                                <th style="border: 1px solid black; text-align: center;">Assessment Techniques</th>
+                                <th style="border: 1px solid black; text-align: center;">Assessments</th>
                                 <th style="border: 1px solid black; text-align: center;">Achieved (%)*</th>
                                 <th style="border: 1px solid black; text-align: center;">Targetted (%)*</th>
                             </tr>
@@ -154,7 +154,7 @@
                                         <span t-field="assessment_line.sos" />
                                     </td>
                                     <td style="border: 1px solid black; text-align: center;">
-                                        <span t-field="assessment_line.assessment_techniques" />
+                                        <span t-field="assessment_line.assessments" />
                                     </td>
                                     <td style="border: 1px solid black; text-align: center;">
                                         <span t-field="assessment_line.achieved" />
