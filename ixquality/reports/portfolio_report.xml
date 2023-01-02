@@ -215,8 +215,8 @@
                 </t>
                 <t t-else="">
                     <span>No change is needed.</span>
-                    <br/>
-                </t>
+                    <br/><br/>
+                </t>                
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Modifications To Assssment Techniques</b>
                 </h2>
@@ -225,8 +225,8 @@
                 </t>
                 <t t-else="">
                     <span>No modification is needed.</span>
-                    <br/>
-                </t>
+                    <br/><br/>
+                </t>                
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Significant Deviations in Course Content from Syllabus</b>
                 </h2>
@@ -235,8 +235,8 @@
                 </t>
                 <t t-else="">
                     <span>No deviation has taken place.</span>
-                    <br/>
-                </t>
+                    <br/><br/>
+                </t>                
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Grade Matrix</b>
                 </h2>
