@@ -211,7 +211,7 @@
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Changes To Course ILOs</b>
                 </h2>
-                <t t-if="len(o.ilo_changes) &gt; 10">
+                <t t-if="o.ilo_changes != '<p><br></p>'">
                     <span t-raw="o.ilo_changes" />
                 </t>
                 <t t-else="">
@@ -220,7 +220,7 @@
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Modifications To Assssment Techniques</b>
                 </h2>
-                <t t-if="len(o.ass_tech_modifications) &gt; 8">
+                <t t-if="o.ass_tech_modifications) != '<p><br></p>'">
                     <span t-raw="o.ass_tech_modifications" />
                 </t>
                 <t t-else="">
@@ -229,7 +229,7 @@
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Significant Deviations in Course Content from Syllabus</b>
                 </h2>
-                <t t-if="len(o.deviations) &gt; 6">
+                <t t-if="o.deviations != '<p><br></p>'">
                     <span t-raw="o.deviations" />
                 </t>
                 <t t-else="">
@@ -288,7 +288,7 @@
                 </table>
                 <br/>
                 <h2 style="border-bottom: 1px solid black;">
-                    <b>Student Assessment Samples (Accessible Online)</b>
+                    <b>Student Assessment Samples</b>
                 </h2>
                 <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
                     <tr style="border: 1px solid black; background-color: #D0D0D0;">
@@ -303,13 +303,13 @@
                                 <span t-field="lms_assessment.name" />
                             </td>
                             <td style="border: 1px solid black; text-align: center; padding: 5px;">
-                                <t t-if="lms_assessment.good_performance">X</t>
+                                <t t-if="lms_assessment.good_performance">&#10003;</t>
                             </td>
                             <td style="border: 1px solid black; text-align: center; padding: 5px;">
-                                <t t-if="lms_assessment.avg_performance">X</t>
+                                <t t-if="lms_assessment.avg_performance">&#10003;</t>
                             </td>
                             <td style="border: 1px solid black; text-align: center; padding: 5px;">
-                                <t t-if="lms_assessment.poor_performance">X</t>
+                                <t t-if="lms_assessment.poor_performance">&#10003;</t>
                             </td>
                         </tr>
                     </t>
