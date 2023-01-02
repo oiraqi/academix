@@ -173,47 +173,67 @@
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Remedial Actions</b>
                 </h2>
-                <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
-                    <tr style="border: 1px solid black; background-color: #D0D0D0;">
-                        <th style="border: 1px solid black; text-align: center;">Title</th>
-                        <th style="border: 1px solid black; text-align: center; padding-left: 5px; padding-right: 5px;">ILO</th>
-                        <th style="border: 1px solid black; text-align: center;">Description</th>
-                        <th style="border: 1px solid black; text-align: center;">Assessment Criteria</th>
-                        <th style="border: 1px solid black; text-align: center;">Assessment Methodology</th>
-                    </tr>
-                    <t t-foreach="o.action_ids" t-as="action">
-                        <tr>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
-                                <span t-field="action.name" />
-                            </td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
-                                <span t-field="action.lms_course_ilo_id.name" />
-                            </td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
-                                <span t-field="action.description" />
-                            </td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
-                                <span t-field="action.assessment_criteria" />
-                            </td>
-                            <td style="border: 1px solid black; text-align: center; padding: 5px;">
-                                <span t-field="action.assessment_methodology" />
-                            </td>
+                <t t-if="len(o.action_ids) == 0">
+                    <span>No remedial action is needed.</span>
+                </t>
+                <t t-else="">
+                    <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
+                        <tr style="border: 1px solid black; background-color: #D0D0D0;">
+                            <th style="border: 1px solid black; text-align: center;">Title</th>
+                            <th style="border: 1px solid black; text-align: center; padding-left: 5px; padding-right: 5px;">ILO</th>
+                            <th style="border: 1px solid black; text-align: center;">Description</th>
+                            <th style="border: 1px solid black; text-align: center;">Assessment Criteria</th>
+                            <th style="border: 1px solid black; text-align: center;">Assessment Methodology</th>
                         </tr>
-                    </t>
-                </table>
+                        <t t-foreach="o.action_ids" t-as="action">
+                            <tr>
+                                <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                    <span t-field="action.name" />
+                                </td>
+                                <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                    <span t-field="action.lms_course_ilo_id.name" />
+                                </td>
+                                <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                    <span t-field="action.description" />
+                                </td>
+                                <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                    <span t-field="action.assessment_criteria" />
+                                </td>
+                                <td style="border: 1px solid black; text-align: center; padding: 5px;">
+                                    <span t-field="action.assessment_methodology" />
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </t>
                 <br/>
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Changes To Course ILOs</b>
                 </h2>
-                <span t-raw="o.ilo_changes" />
+                <t t-if="o.ilo_changes">
+                    <span t-raw="o.ilo_changes" />
+                </t>
+                <t t-else="">
+                    <span>No change is needed.</span>
+                </t>
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Modifications To Assssment Techniques</b>
                 </h2>
-                <span t-raw="o.ass_tech_modifications" />
+                <t t-if="o.ass_tech_modifications">
+                    <span t-raw="o.ass_tech_modifications" />
+                </t>
+                <t t-else="">
+                    <span>No modification is needed.</span>
+                </t>
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Significant Deviations in Course Content from Syllabus</b>
                 </h2>
-                <span t-raw="o.deviations" />
+                <t t-if="o.deviations">
+                    <span t-raw="o.deviations" />
+                </t>
+                <t t-else="">
+                    <span>No deviation has taken place.</span>
+                </t>
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Grade Matrix</b>
                 </h2>
@@ -240,17 +260,27 @@
                                     <t t-if="assessment.graded">
                                         <t t-foreach="enrollment.assessment_line_ids" t-as="assessment_line">
                                             <t t-if="assessment_line.assessment_id == assessment">
-                                                <th style="border: 1px solid black; text-align: center;"><span t-field="assessment_line.egrade" /></th>
+                                                <th style="border: 1px solid black; text-align: center;">
+                                                    <span t-field="assessment_line.egrade" />
+                                                </th>
                                             </t>
-                                        </t>                                        
+                                        </t>
                                     </t>
                                 </t>
-                                <th style="border: 1px solid black; text-align: center;"><span t-field="enrollment.assessment_grade" /></th>
+                                <th style="border: 1px solid black; text-align: center;">
+                                    <span t-field="enrollment.assessment_grade" />
+                                </th>
                                 <t t-if="o.lms_course_id.attendance_percentage &gt; 0">
-                                    <th style="border: 1px solid black; text-align: center;"><span t-field="enrollment.attendance_grade" /></th>
+                                    <th style="border: 1px solid black; text-align: center;">
+                                        <span t-field="enrollment.attendance_grade" />
+                                    </th>
                                 </t>
-                                <th style="border: 1px solid black; text-align: center;"><span t-field="enrollment.overall_grade" /></th>
-                                <th style="border: 1px solid black; text-align: center;"><span t-field="enrollment.letter_grade" /></th>
+                                <th style="border: 1px solid black; text-align: center;">
+                                    <span t-field="enrollment.overall_grade" />
+                                </th>
+                                <th style="border: 1px solid black; text-align: center;">
+                                    <span t-field="enrollment.letter_grade" />
+                                </th>
                             </tr>
                         </t>
                     </t>
