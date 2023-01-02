@@ -205,13 +205,13 @@
                                 </td>
                             </tr>
                         </t>
-                    </table>
-                    <br/>
-                </t>                
+                    </table>                    
+                </t>
+                <br/>        
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Changes To Course ILOs</b>
                 </h2>
-                <t t-if="len(o.ilo_changes) &gt; 5">
+                <t t-if="len(o.ilo_changes) &gt; 10">
                     <span t-raw="o.ilo_changes" />
                 </t>
                 <t t-else="">
@@ -220,7 +220,7 @@
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Modifications To Assssment Techniques</b>
                 </h2>
-                <t t-if="len(o.ass_tech_modifications) &gt; 5">
+                <t t-if="len(o.ass_tech_modifications) &gt; 8">
                     <span t-raw="o.ass_tech_modifications" />
                 </t>
                 <t t-else="">
@@ -229,7 +229,7 @@
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Significant Deviations in Course Content from Syllabus</b>
                 </h2>
-                <t t-if="len(o.deviations) &gt; 5">
+                <t t-if="len(o.deviations) &gt; 6">
                     <span t-raw="o.deviations" />
                 </t>
                 <t t-else="">
