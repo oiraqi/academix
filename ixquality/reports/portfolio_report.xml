@@ -63,7 +63,7 @@
                                 <td style="border: 1px solid black; text-align: center;">
                                     <span t-field="uat.technique_id.name" />
                                 </td>
-                                <td style="border: 1px solid black; text-align: center; padding: 5px;">X</td>
+                                <td style="border: 1px solid black; text-align: center; padding: 5px;">&#10003;</td>
                                 <td style="border: 1px solid black; text-align: center;"></td>
                             </tr>
                         </t>
@@ -73,7 +73,7 @@
                                     <span t-field="nrat.technique_id.name" />
                                 </td>
                                 <td style="border: 1px solid black; text-align: center; padding: 5px;"></td>
-                                <td style="border: 1px solid black; text-align: center;">X</td>
+                                <td style="border: 1px solid black; text-align: center;">&#10003;</td>
                             </tr>
                         </t>
                     </table>
@@ -113,13 +113,12 @@
                                     </h4>
                                 </td>
                             </tr>
-                        </table>
-                        <b>Course ILO / Program SO Mapping</b>
+                        </table>                        
                         <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
                             <tr style="border: 1px solid black; background-color: #D0D0D0;">
-                                <th style="border: 1px solid black; text-align: center;">SO</th>
-                                <th style="border: 1px solid black; text-align: center;">ILO</th>
-                                <th style="border: 1px solid black; text-align: center;">Level</th>
+                                <th style="border: 1px solid black; text-align: center;">Program SO</th>
+                                <th style="border: 1px solid black; text-align: center;">Course ILO</th>
+                                <th style="border: 1px solid black; text-align: center;">Mapping Level</th>
                             </tr>
                             <t t-foreach="assessment.ilo_so_ids" t-as="ilo_so">
                                 <tr>
@@ -216,6 +215,7 @@
                 </t>
                 <t t-else="">
                     <span>No change is needed.</span>
+                    <br/>
                 </t>
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Modifications To Assssment Techniques</b>
@@ -225,6 +225,7 @@
                 </t>
                 <t t-else="">
                     <span>No modification is needed.</span>
+                    <br/>
                 </t>
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Significant Deviations in Course Content from Syllabus</b>
@@ -234,6 +235,7 @@
                 </t>
                 <t t-else="">
                     <span>No deviation has taken place.</span>
+                    <br/>
                 </t>
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Grade Matrix</b>
