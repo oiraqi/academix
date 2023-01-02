@@ -220,7 +220,7 @@
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Modifications To Assssment Techniques</b>
                 </h2>
-                <t t-if="o.ass_tech_modifications) != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'">
+                <t t-if="o.ass_tech_modifications != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'">
                     <span t-raw="o.ass_tech_modifications" />
                 </t>
                 <t t-else="">
