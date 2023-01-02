@@ -175,6 +175,7 @@
                 </h2>
                 <t t-if="len(o.action_ids) == 0">
                     <span>No remedial action is needed.</span>
+                    <br/>
                 </t>
                 <t t-else="">
                     <table style="margin-top: 10px; border: none; width: 100%; font-size: 100%; border-collapse: collapse;">
@@ -210,7 +211,7 @@
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Changes To Course ILOs</b>
                 </h2>
-                <t t-if="o.ilo_changes">
+                <t t-if="len(o.ilo_changes) &gt; 5">
                     <span t-raw="o.ilo_changes" />
                 </t>
                 <t t-else="">
@@ -219,7 +220,7 @@
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Recommended Modifications To Assssment Techniques</b>
                 </h2>
-                <t t-if="o.ass_tech_modifications">
+                <t t-if="len(o.ass_tech_modifications) &gt; 5">
                     <span t-raw="o.ass_tech_modifications" />
                 </t>
                 <t t-else="">
@@ -228,7 +229,7 @@
                 <h2 style="border-bottom: 1px solid black;">
                     <b>Significant Deviations in Course Content from Syllabus</b>
                 </h2>
-                <t t-if="o.deviations">
+                <t t-if="len(o.deviations) &gt; 5">
                     <span t-raw="o.deviations" />
                 </t>
                 <t t-else="">
