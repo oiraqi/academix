@@ -41,6 +41,7 @@ class LmsCourse(models.Model):
 			self.env['ixlms.course.ilo'].create({
 				'description': ilo.description,
 				'course_id': ilo.course_id.id,
+				'sequence': ilo.sequence,
 				'lms_course_id': lms_course.id
 			})
 		return lms_course
