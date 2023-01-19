@@ -28,5 +28,6 @@ class LMSCourseILO(models.Model):
     _name = 'ixlms.course.ilo'
     _inherit = 'ixcatalog.course.ilo'
     _description = 'LMS Course ILO'
+    _sql_constraints = []
     
     lms_course_id = fields.Many2one('ixlms.course', string='LMS Course', required=True)
