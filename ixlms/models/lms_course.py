@@ -46,8 +46,8 @@ class LmsCourse(models.Model):
 				'lms_course_id': lms_course.id
 			})
 		
-		previous_lms_courses = self.env['ixlms.course'].search([('instructor_id', '=', lms_course.instructor_id.id), ('course_id', '=', lms_course.course_id.id)], order='term_id desc')
-		if len(previous_lms_courses) > 0:			
+		previous_lms_courses = self.env['ixlms.course'].search([('instructor_id', '=', lms_course.section_id.instructor_id.id), ('course_id', '=', lms_course.section_id.course_id.id)], order='term_id desc')
+		if len(previous_lms_courses) > 0:
 			latest_lms_course = previous_lms_courses[0]
 
 			lms_course.write({
