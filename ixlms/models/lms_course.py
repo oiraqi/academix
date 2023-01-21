@@ -48,19 +48,16 @@ class LmsCourse(models.Model):
 		
 		previous_lms_courses = self.env['ixlms.course'].search([('instructor_id', '=', lms_course.section_id.instructor_id.id), ('course_id', '=', lms_course.section_id.course_id.id)], order='term_id desc')
 		if len(previous_lms_courses) > 0:
-			raise ValidationError('Hi!')
 			latest_lms_course = previous_lms_courses[0]
 
-			lms_course.write({
-				'details': latest_lms_course.details,
-				'grade_grouping': latest_lms_course.grade_grouping,
-				'grade_weighting': latest_lms_course.grade_weighting,
-				'attendance_points': latest_lms_course.attendance_points,
-				'attendance_grading': latest_lms_course.attendance_grading,
-				'penalty_per_absence': latest_lms_course.penalty_per_absence,
-				'zero_after_max_abs': latest_lms_course.zero_after_max_abs,
-				'max_absences': latest_lms_course.max_absences
-			})
+			lms_course.details = latest_lms_course.details
+			lms_course.grade_grouping = latest_lms_course.grade_grouping,
+			lms_course.grade_weighting = latest_lms_course.grade_weighting
+			lms_course.attendance_points = latest_lms_course.attendance_points
+			lms_course.attendance_grading = latest_lms_course.attendance_grading
+			lms_course.penalty_per_absence = latest_lms_course.penalty_per_absence
+			lms_course.zero_after_max_abs = latest_lms_course.zero_after_max_abs
+			lms_course.max_absences = latest_lms_course.max_absences
 			
 			techniques = {}
 			for technique in latest_lms_course.technique_ids:
