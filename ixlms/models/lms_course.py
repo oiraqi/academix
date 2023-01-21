@@ -78,7 +78,7 @@ class LmsCourse(models.Model):
 					self.env['ixlms.chapter'].create({
 						'name': chapter.name,
 						'sequence': chapter.sequence,
-						'modume_id': new_module.id,
+						'module_id': new_module.id,
 						'lms_course_id': lms_course.id,
 						'nsessions': chapter.nsessions,
 						'resource_ids': [(6, 0, [resource.id for resource in chapter.resource_ids])]
