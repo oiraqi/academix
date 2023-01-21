@@ -35,6 +35,11 @@ class LmsCourse(models.Model):
 
 	@api.model
 	def create(self, vals):
+		latest_lms_course = False
+		previous_lms_courses = self.env['ixlms.course'].search([], order='term_id desc')
+		if len(previous_lms_courses) > 0:
+			latest_lms_course = previous_lms_courses[0]
+
 		lms_course = super(LmsCourse, self).create(vals)
 		lms_course.description = lms_course.course_id.description
 		for ilo in lms_course.course_id.ilo_ids:
@@ -44,6 +49,46 @@ class LmsCourse(models.Model):
 				'sequence': ilo.sequence,
 				'lms_course_id': lms_course.id
 			})
+		if latest_lms_course:
+			lms_course.details = latest_lms_course.details
+			techniques = {}
+			for technique in latest_lms_course.technique_ids:
+				techniques[technique.id] = self.env['ixlms.weighted.technique'].create({
+					'technique_id': technique.technique_id.id,
+					'sequence': technique.sequence,
+					'lms_course_id': lms_course.id
+				})
+			for module in latest_lms_course.module_ids:
+				new_module = self.env['ixlms.module'].create({
+					'name':module.name,
+					'sequence':module.sequence,
+					'lms_course_id': lms_course.id,
+				})
+				for chapter in module.chapter_ids:
+					self.env['ixlms.chapter'].create({
+						'name': chapter.name,
+						'sequence': chapter.sequence,
+						'modume_id': new_module.id,
+						'lms_course_id': lms_course.id,
+						'nsessions': chapter.nsessions,
+						'resource_ids': [(6, 0, [resource.id for resource in chapter.resource_ids])]
+					})
+				for assessment in module.assessment_ids:
+					self.env['ixlms.assessment'].create({
+						'name': assessment.name,
+						'description': assessment.description,
+						'lms_course_id': lms_course.id,
+						'module_id': new_module.id,
+						'technique_id': techniques[assessment.technique_id.id].id,
+						'graded': assessment.graded,
+						'points': assessment.points,
+						'percentage': assessment.percentage,
+						'grade_scale': assessment.grade_scale,
+						'submission_type': assessment.submission_type,
+						'is_file_req': assessment.is_file_req,
+						'is_url_req': assessment.is_url_req,
+						'is_text_req': assessment.is_text_req
+					})
 		return lms_course
 
 	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)	
@@ -81,7 +126,7 @@ class LmsCourse(models.Model):
 	student_ids = fields.One2many('ix.student', related='section_id.student_ids')
 	enrollment_ids = fields.One2many('ixroster.enrollment', related='section_id.enrollment_ids')
 	nstudents = fields.Integer(related='section_id.nstudents')
-	description = fields.Html('description')	
+	description = fields.Html('description')
 	lms_course_ilo_ids = fields.One2many(comodel_name='ixlms.course.ilo', inverse_name='lms_course_id', string='ILOs')	
 	textbook_ids = fields.One2many(comodel_name='ixlms.textbook', related='course_id.textbook_ids')
 	office_hour_ids = fields.One2many(comodel_name='ixroster.office.hour', related='instructor_id.office_hour_ids')
