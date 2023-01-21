@@ -51,7 +51,7 @@ class LmsCourse(models.Model):
 			latest_lms_course = previous_lms_courses[0]
 
 			lms_course.details = latest_lms_course.details
-			lms_course.grade_grouping = latest_lms_course.grade_grouping,
+			lms_course.grade_grouping = latest_lms_course.grade_grouping
 			lms_course.grade_weighting = latest_lms_course.grade_weighting
 			lms_course.attendance_points = latest_lms_course.attendance_points
 			lms_course.attendance_grading = latest_lms_course.attendance_grading
