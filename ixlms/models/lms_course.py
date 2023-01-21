@@ -35,13 +35,9 @@ class LmsCourse(models.Model):
 
 	@api.model
 	def create(self, vals):
-		latest_lms_course = False
-		previous_lms_courses = self.env['ixlms.course'].search([], order='term_id desc')
-		if len(previous_lms_courses) > 0:
-			latest_lms_course = previous_lms_courses[0]
-
 		lms_course = super(LmsCourse, self).create(vals)
 		lms_course.description = lms_course.course_id.description
+		
 		for ilo in lms_course.course_id.ilo_ids:
 			self.env['ixlms.course.ilo'].create({
 				'description': ilo.description,
@@ -49,8 +45,22 @@ class LmsCourse(models.Model):
 				'sequence': ilo.sequence,
 				'lms_course_id': lms_course.id
 			})
-		if latest_lms_course:
-			lms_course.details = latest_lms_course.details
+		
+		previous_lms_courses = self.env['ixlms.course'].search([('instructor_id', '=', lms_course.instructor_id.id), ('course_id', '=', lms_course.course_id.id)], order='term_id desc')
+		if len(previous_lms_courses) > 0:			
+			latest_lms_course = previous_lms_courses[0]
+
+			lms_course.write({
+				'details': latest_lms_course.details,
+				'grade_grouping': latest_lms_course.grade_grouping,
+				'grade_weighting': latest_lms_course.grade_weighting,
+				'attendance_points': latest_lms_course.attendance_points,
+				'attendance_grading': latest_lms_course.attendance_grading,
+				'penalty_per_absence': latest_lms_course.penalty_per_absence,
+				'zero_after_max_abs': latest_lms_course.zero_after_max_abs,
+				'max_absences': latest_lms_course.max_absences
+			})
+			
 			techniques = {}
 			for technique in latest_lms_course.technique_ids:
 				techniques[technique.id] = self.env['ixlms.weighted.technique'].create({
@@ -87,14 +97,15 @@ class LmsCourse(models.Model):
 						'submission_type': assessment.submission_type,
 						'is_file_req': assessment.is_file_req,
 						'is_url_req': assessment.is_url_req,
-						'is_text_req': assessment.is_text_req
+						'is_text_req': assessment.is_text_req,
+						'teamwork': assessment.teamwork,
 					})
 		return lms_course
 
 	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)	
 	name = fields.Char(related='section_id.name')
 	color = fields.Integer(string='Color Index')	
-	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id')
+	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id', store=True)
 	school_id = fields.Many2one(comodel_name='ix.school', related='section_id.school_id', store=True)	
 	prerequisite_ids = fields.One2many('ixcatalog.prerequisite', related='course_id.prerequisite_ids')
 	corequisite_ids = fields.One2many('ixcatalog.corequisite', related='course_id.corequisite_ids')
