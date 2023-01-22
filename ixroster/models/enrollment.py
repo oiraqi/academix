@@ -109,10 +109,10 @@ class Enrollment(models.Model):
                 # then the time conflict check, and only then, the prerequisites check.
                 # However, for a more pertinent feedback to the user, we deem it's worth it to start
                 # with the more expensive prerequisites and corequisites check.
-                self.env['ixroster.enrollment'].check_prerequisites(
-                    rec.student_id, rec.section_id.course_id)
-                self.env['ixroster.enrollment'].check_corequisites(
-                    rec.student_id, rec.section_id.course_id)
+                #self.env['ixroster.enrollment'].check_prerequisites(
+                #    rec.student_id, rec.section_id.course_id)
+                #self.env['ixroster.enrollment'].check_corequisites(
+                #    rec.student_id, rec.section_id.course_id)
                 if not rec.section_id.is_open:
                     raise ValidationError('Section closed!')
                 self.env['ixroster.enrollment'].check_time_conflict(
