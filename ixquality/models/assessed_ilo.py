@@ -38,6 +38,6 @@ class AssessedIlo(models.Model):
 	student_id = fields.Many2one(comodel_name='ix.student', related='assessment_line_id.student_id')
 	acquisition_level_id = fields.Many2one(comodel_name='ixquality.acquisition.level', string='Acquisition Level')
 	acquisition_level = fields.Selection(string='Acquisition Level', selection=[
-		('0', 'Not acquired'), ('3', '60%+'), ('4', '80%+'), ('5', 'Fully Acquired')], default='0')
+		('0', 'Not acquired'), ('1', '60%'), ('2', '70%'),  ('3', '80%'), ('4', '90%'), ('5', 'Fully Acquired')], default='0')
 	ilo_idx_description = fields.Char(related='lms_course_ilo_id.idx_description')
 		
