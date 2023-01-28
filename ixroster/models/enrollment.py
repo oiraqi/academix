@@ -176,7 +176,7 @@ class Enrollment(models.Model):
         self.iptriggered = True
 
     def confirm_drop(self):
-        self.write({'stae': 'dropped', 'wdtime': fields.Datetime.now()})
+        self.write({'state': 'dropped', 'wdtime': fields.Datetime.now()})
 
     def cancel_drop(self):
         self.dtriggered = False

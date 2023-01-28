@@ -44,7 +44,7 @@ class Enrollment(models.Model):
     def enroll(self):
         super(Enrollment, self).enroll()
         if self.state == 'enrolled':
-            self._unsubscribe_from_lms_course_channels()
+            self._subscribe_to_lms_course_channels()
 
     def confirm_drop(self):
         super(Enrollment, self).confirm_drop()
@@ -66,6 +66,13 @@ class Enrollment(models.Model):
         if self.state == 'withdrawn':
             self._unsubscribe_from_lms_course_channels()
 
+    def _subscribe_to_lms_course_channels(self):
+        if not self.section_id.lms_course_id:
+            return
+        
+        for channel in self.section_id.lms_course_id.channel_ids:
+                channel.message_subscribe([self.student_id.partner_id.id])
+    
     def _unsubscribe_from_lms_course_channels(self):
         if not self.section_id.lms_course_id:
             return
