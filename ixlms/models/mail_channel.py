@@ -33,7 +33,7 @@ class MailChannel(models.Model):
     def create(self, vals):
         channel = super(MailChannel, self).create(vals)
         if channel.lms_course_id:
-            channel.message_subscribe([student.partner.id for student in channel.lms_course_id.student_ids])
+            channel.message_subscribe([student.partner_id.id for student in channel.lms_course_id.student_ids])
         return channel
 
     @api.onchange('cname', 'lms_course_id')
