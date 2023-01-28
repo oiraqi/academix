@@ -71,7 +71,7 @@ class Enrollment(models.Model):
             return
         
         for channel in self.section_id.lms_course_id.channel_ids:
-                channel.message_subscribe([self.student_id.partner_id.id])
+                channel.add_members([self.student_id.partner_id.id])
     
     def _unsubscribe_from_lms_course_channels(self):
         if not self.section_id.lms_course_id:
