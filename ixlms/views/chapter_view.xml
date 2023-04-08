@@ -21,7 +21,7 @@
 								<tree>
 									<field name="type"/>
 									<field name="name"/>
-									<field name="has_url"/>
+									<field name="has_url" invisible="1"/>
 									<button type="object" class="oe_highlight" name="open_url" icon="fa-external-link"
 										attrs="{'invisible': [('has_url', '=', False)]}"/>
 									<field name="file" widget="binary"/>
