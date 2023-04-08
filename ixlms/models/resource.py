@@ -29,7 +29,8 @@ class Resource(models.Model):
 	_name = 'ixlms.resource'
 	_description = 'Resource'
 
-	name = fields.Char('Title', required=True)	
+	name = fields.Char('Title', required=True)
+	sequence = fields.Integer('Sequence', default=1)
 	file = fields.Binary(string='File')
 	url = fields.Char(string='URL')
 	text = fields.Html(string='Text')
