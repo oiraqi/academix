@@ -35,7 +35,7 @@ class Resource(models.Model):
 	text = fields.Html(string='Text')
 	has_text = fields.Boolean(string='Text', compute='_has_text')
 	has_url = fields.Boolean(string='URL', compute='_has_url')
-	type = fields.Selection(string='Type', selection=[('book', 'Book'), ('notes', 'Notes'), ('paper', 'Paper'), ('slides', 'Slides'), ('video', 'Video')])
+	type = fields.Selection(string='Type', selection=[('book', 'Book'), ('case_study', 'Case Study'), ('notes', 'Notes'), ('paper', 'Paper'), ('slides', 'Slides'), ('video', 'Video')])
 	
 	def _has_text(self):
 		stripper = re.compile('<.*?>')
