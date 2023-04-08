@@ -21,9 +21,9 @@
 								<tree>
 									<field name="type"/>
 									<field name="name"/>
-									<field name="file" widget="binary"/>
-									<field name="has_text"/>																		
 									<field name="has_url"/>
+									<field name="file" widget="binary"/>
+									<field name="has_text"/>									
 								</tree>
 							</field>
 						</group>

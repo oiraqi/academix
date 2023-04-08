@@ -29,7 +29,7 @@ class Resource(models.Model):
 	_name = 'ixlms.resource'
 	_description = 'Resource'
 
-	name = fields.Char('Name', required=True)	
+	name = fields.Char('Title', required=True)	
 	file = fields.Binary(string='File')
 	url = fields.Char(string='URL')
 	text = fields.Html(string='Text')
