@@ -22,7 +22,7 @@
 									<field name="type"/>
 									<field name="name"/>
 									<field name="has_url"/>
-									<button type="object" class="oe_highlight" name="open_url" icon="fa-arrow-up-right-from-square"
+									<button type="object" class="oe_highlight" name="open_url" icon="fa-up-right-from-square"
 										attrs="{'invisible': [('has_url', '=', False)]}"/>
 									<field name="file" widget="binary"/>
 									<field name="has_text"/>									
