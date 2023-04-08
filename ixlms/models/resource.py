@@ -48,14 +48,12 @@ class Resource(models.Model):
 
 	def open_url(self):
 		self.ensure_one()
-		if not self._has_url():
-			return
-		
-		return {
-            "type": "ir.actions.act_url",
-            "url": self.url,
-            "target": "new",
-        }
+		if self.url and len(self.url) > 0:
+			return {
+            	"type": "ir.actions.act_url",
+            	"url": self.url,
+            	"target": "new",
+        	}
 	
 	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
 	
