@@ -9,9 +9,12 @@
 					<sheet>
 						<h1><field name="type" style="width: 20%"/><field name="name" placeholder="Resource Title..." style="width: 80%"/></h1>
 						<group name="content" string="Content">
-							<field name="url" widget="url"/>						
-							<field name="file" widget="binary"/>							
+							<field name="url" widget="url"/>
+							<button type="object" class="oe_highlight" 	name="open_url"	string="Take me there"
+								attrs="{'invisible': [('has_url', '=', False)]}" groups="ix.group_faculty"/>
+							<field name="file" widget="binary"/>
 							<field name="text"/>
+							<field name="has_url" invisible="1"/>
 							<field name="course_id" invisible="1"/>
 						</group>
 						<group name="log" string="Log" col="4">

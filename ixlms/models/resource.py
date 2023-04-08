@@ -45,6 +45,17 @@ class Resource(models.Model):
 	def _has_url(self):
 		for rec in self:			
 			rec.has_url = rec.url and len(rec.url) > 0
+
+	def open_url(self):
+		self.ensure_one()
+		if not self._has_url():
+			return
+		
+		return {
+            "type": "ir.actions.act_url",
+            "url": self.url,
+            "target": "new",
+        }
 	
 	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
 	
