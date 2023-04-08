@@ -19,6 +19,7 @@
 							<field name="resource_ids" nolabel="1" domain="[('course_id', '=', course_id)]"
 								context="{'default_course_id': course_id}">
 								<tree>
+									<field name="type"/>
 									<field name="name"/>
 									<field name="file" widget="binary"/>
 									<field name="has_text"/>																		

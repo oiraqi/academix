@@ -7,7 +7,7 @@
 			<field name="arch" type="xml">
 				<form string="Resource">
 					<sheet>
-						<h1><field name="name" placeholder="Resource Title..."/></h1>
+						<h1><field name="type" style="width: 15%"><field name="name" placeholder="Resource Title..." style="width: 85%"/></h1>
 						<group name="content" string="Content">							
 							<field name="file" widget="binary"/>
 							<field name="url" widget="url"/>							
