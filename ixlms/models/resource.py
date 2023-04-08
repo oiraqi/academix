@@ -31,7 +31,7 @@ class Resource(models.Model):
 
 	name = fields.Char('Title', required=True)
 	sequence = fields.Integer('Sequence', default=1)
-	file = fields.Binary(string='Downloadable File')
+	file = fields.Binary(string='File')
 	url = fields.Char(string='URL')
 	text = fields.Html(string='Text')
 	has_text = fields.Boolean(string='Text', compute='_has_text')
