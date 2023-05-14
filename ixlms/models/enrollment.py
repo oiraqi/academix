@@ -125,7 +125,7 @@ class Enrollment(models.Model):
         if lms_course_id.grade_weighting == 'points':
             sum_epoints, sum_wgrade = 0.0, 0.0
             for assessment_line in self.assessment_line_ids:
-                if assessment_line.sum_epoints > 0:
+                if assessment_line.epoints > 0:
                     sum_epoints += assessment_line.epoints
                     sum_wgrade += assessment_line.wgrade
             if sum_epoints > 0:
@@ -171,7 +171,7 @@ class Enrollment(models.Model):
     def _assessment_line_ids(self):
         for rec in self:
             rec.assessment_line_ids = self.env['ixlms.assessment.line'].search([
-                ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id)])
+                ('section_id', '=', rec.section_id.id), ('student_id', '=', rec.student_id.id), ('grade', '!=', '')])
      
     @api.model
     def check_prerequisites(self, student, course):
