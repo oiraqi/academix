@@ -35,5 +35,6 @@ class LmsCourseIloSO(models.Model):
     level = fields.Selection(string='Level', selection=[('introduce', 'Introduce'), ('reinforce', 'Reinforce'), ('emphasize', 'Emphasize')], default='introduce', required=True)
     course_id = fields.Many2one(comodel_name='ix.course', related='course_program_id.course_id', store=True)
     program_id = fields.Many2one(comodel_name='ixcatalog.program', related='course_program_id.program_id', store=True)
+    lms_course_id = fields.Many2one(comodel_name='ixlms.course', related='lms_course_ilo_id.lms_course_id', store=True)
     
     

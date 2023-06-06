@@ -30,12 +30,7 @@ class LmsCourse(models.Model):
     def create(self, vals):
         lms_course = super(LmsCourse, self).create(vals)
         for lms_course_ilo in lms_course.lms_course_ilo_ids:
-            for program in lms_course.program_ids:
-                self.env['ixquality.lms.course.ilo.program'].create({
-                    'lms_course_id': lms_course.id,
-                    'lms_course_ilo_id': lms_course_ilo.id,
-                    'program_id': program.id
-                })
+            for program in lms_course.program_ids:                
                 ilo_so_ids = self.env['ixquality.course.ilo.so'].search([('course_id', '=', lms_course.course_id.id), ('program_id', '=', program.id), ('ilo_id.sequence', '=', lms_course_ilo.sequence)])
                 for ilo_so in ilo_so_ids:
                     self.env['ixquality.lms.course.ilo.so'].create({

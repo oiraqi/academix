@@ -98,7 +98,7 @@ class AssessmentLine(models.Model):
 				continue
 			
 			records = self.env['ixquality.lms.course.ilo.so'].search([
-				('course_program_id.program_id', '=', rec.assessment_id.program_id.id),
+				('program_id', '=', rec.assessment_id.program_id.id),
 				('lms_course_ilo_id', '=', rec.lms_course_ilo_id.id)])
 			if not records:
 				rec.so_ids = False

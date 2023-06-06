@@ -86,7 +86,7 @@ class Assessment(models.Model):
 	@api.onchange('course_id', 'program_id')
 	def _ilo_so_ids(self):
 		for rec in self:
-			records = self.env['ixquality.lms.course.ilo.so'].search([('course_id', '=', rec.course_id.id), ('program_id', '=', rec.program_id.id)], order="so_id, lms_course_ilo_id")
+			records = self.env['ixquality.lms.course.ilo.so'].search([('lms_course_id', '=', rec.lms_course_id.id), ('program_id', '=', rec.program_id.id)], order="so_id, lms_course_ilo_id")
 			if not records:
 				rec.ilo_so_ids = False
 				rec.assessed_so_ids = False
