@@ -27,7 +27,7 @@
 									<field name="targetted" string="Targetted (%)*"/>
 									<field name="action_id" domain="[('state', '=', 'planned'), ('lms_course_ilo_id', '=', lms_course_ilo_id)]"
 										context="{'default_lms_course_ilo_id': lms_course_ilo_id, 'default_portfolio_id': parent.portfolio_id}"/>
-									<field name="course_id" invisible="1"/>
+									<field name="lms_course_id" invisible="1"/>
 								</tree>
 							</field>
 							<span>(*): % of students who achieved the minimum ILO acquisition %</span>
