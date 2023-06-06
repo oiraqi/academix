@@ -13,13 +13,14 @@
 							<field name="acquisition_level"/>
 							<field name="portfolio_id" invisible="1"/>
 							<field name="school_id" invisible="1"/>
-							<field name="course_id" invisible="1"/>							
+							<field name="course_id" invisible="1"/>
+							<field name="lms_course_id" invisible="1"/>
 							<field name="program_ids" invisible="1"/>
 						</group>						
 						<group name="assessment_lines" string="Assessment Lines" col="4">
 							<field name="assessment_line_ids" nolabel="1" colspan="4">
 								<tree editable="bottom">
-									<field name="lms_course_ilo_id" domain="[('course_id', '=', course_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+									<field name="lms_course_ilo_id" domain="[('lms_course_id', '=', lms_course_id)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
 									<field name="so_ids" widget="many2many_tags"/>
 									<field name="assessment_ids" widget="many2many_tags"/>
 									<field name="achieved" string="Achieved (%)*"/>

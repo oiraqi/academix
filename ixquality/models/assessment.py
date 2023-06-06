@@ -78,6 +78,7 @@ class Assessment(models.Model):
 
 	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
 	section_id = fields.Many2one('ixroster.section', related='portfolio_id.section_id')
+	lms_course_id = fields.Many2one('ixlms.course', related='portfolio_id.lms_course_id')
 	faculty_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id', store=True)
 	ilo_so_ids = fields.One2many(comodel_name='ixquality.lms.course.ilo.so', compute='_ilo_so_ids', string='ILO/SO Mapping')
 	assessed_so_ids = fields.One2many(comodel_name='ixquality.student.outcome', compute='_ilo_so_ids', string='Covered/Assessed SOs')

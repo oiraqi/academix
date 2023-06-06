@@ -39,11 +39,12 @@
 							</page>-->
 						</notebook>
 						<group name="assessment" string="Assessment per Program and Student Population">
-							<field name="assessment_ids" nolabel="1" context="{'default_school_id': school_id, 'default_course_id': course_id}">
+							<field name="assessment_ids" nolabel="1" context="{'default_school_id': school_id, 'default_course_id': course_id, 'default_section_id': section_id}">
 								<tree>
 									<field name="program_id"/>
 									<field name="nstudents"/>
 									<field name="assessed_so_ids" widget="many2many_tags"/>
+									<field name="lms_course_id" invisible="1"/>
 									<field name="course_id" invisible="1"/>
 									<field name="school_id" invisible="1"/>
 								</tree>
