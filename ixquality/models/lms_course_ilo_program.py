@@ -21,7 +21,7 @@
 #
 ###############################################################################
 
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class LmsCourseIloProgram(models.Model):
@@ -29,6 +29,21 @@ class LmsCourseIloProgram(models.Model):
 	_description = 'Lms Course ILO Program'
 	_sql_constraints = [('lms_course_ilo_program_ukey', 'unique(lms_course_id, lms_course_ilo_id, program_id)', 'Duplicate Course/ILO/Program lines!')]
 	_order = 'lms_course_ilo_id'
+
+	@api.model
+	def create(self, vals):
+		lms_course_ilo_program = super(LmsCourseIloProgram, self).create(vals)
+		ilo_so_ids = self.env['ixquality.course.ilo.so'].search([('course_id', '=', lms_course_ilo_program.lms_course_id.course_id.id), ('program_id', '=', lms_course_ilo_program.program_id.id), ('ilo_id.sequence', '=', lms_course_ilo_program.lms_course_ilo_id.sequence)])
+		for ilo_so in ilo_so_ids:
+			if not self.env['ixquality.lms.course.ilo.so'].search([('lms_course_ilo_id', '=', lms_course_ilo_program.lms_course_ilo_id.id),
+					('so_id', '=', ilo_so.so_id.id), ('course_program_id', '=', ilo_so.course_program_id.id)]):
+				self.env['ixquality.lms.course.ilo.so'].create({
+		            'lms_course_ilo_id': lms_course_ilo_program.lms_course_ilo_id.id,
+    		        'so_id': ilo_so.so_id.id,
+        		    'course_program_id': ilo_so.course_program_id.id,
+            		'level': ilo_so.level,
+        		})
+		return lms_course_ilo_program
 
 	lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='Course', required=True)		
 	lms_course_ilo_id = fields.Many2one(comodel_name='ixlms.course.ilo', string='Course ILO', required=True)
