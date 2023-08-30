@@ -14,7 +14,7 @@ access_ix_discipline_faculty,access.ix.discipline.faculty,model_ix_discipline,gr
 access_ix_discipline_coordinator,access.ix.discipline.coordinator,model_ix_discipline,group_coordinator,1,1,1,0
 access_ix_discipline_vpaa,access.ix.discipline.vpaa,model_ix_discipline,group_vpaa,1,1,0,0
 
-access_ix_faculty_faculty,access.ix.faculty.faculty,model_ix_faculty,group_faculty,1,0,0,0
+access_ix_faculty_faculty,access.ix.faculty.faculty,model_ix_faculty,group_faculty,1,1,0,0
 access_ix_faculty_student,access.ix.faculty.student,model_ix_faculty,group_student,1,0,0,0
 access_ix_faculty_coordinator,access.ix.faculty.coordinator,model_ix_faculty,group_coordinator,1,1,1,0
 access_ix_faculty_vpaa,access.ix.faculty.vpaa,model_ix_faculty,group_vpaa,1,1,0,0
