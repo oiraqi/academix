@@ -193,9 +193,9 @@ class LmsCourse(models.Model):
 			rec.timeslot_room = timeslot_room
 	
 	student_ids = fields.One2many('ix.student', compute='_student_ids')
-	def _student_ids(self):
-		student_ids = []
+	def _student_ids(self):		
 		for rec in self:
+			student_ids = []
 			for section in rec.section_ids:
 				for student in section.student_ids:
 					student_ids.append(student.id)
