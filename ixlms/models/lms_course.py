@@ -167,7 +167,13 @@ class LmsCourse(models.Model):
 	room_id = fields.Many2one(comodel_name='ix.room', related='section_id.room_id')
 	student_ids = fields.One2many('ix.student', related='section_id.student_ids')
 	enrollment_ids = fields.One2many('ixroster.enrollment', related='section_id.enrollment_ids')
-	nstudents = fields.Integer(related='section_id.nstudents')
+	nstudents = fields.Integer(compute='_nstudents')
+	def _nstudents(self):
+		for rec in self:
+			nstudents = 0
+			for section in rec.section_ids:
+				nstudents += section.nstudents
+			rec.nstudents = nstudents
 	description = fields.Html('description')
 	lms_course_ilo_ids = fields.One2many(comodel_name='ixlms.course.ilo', inverse_name='lms_course_id', string='ILOs')	
 	textbook_ids = fields.One2many(comodel_name='ixlms.textbook', related='course_id.textbook_ids')
