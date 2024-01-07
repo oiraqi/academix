@@ -30,8 +30,7 @@ class LmsCourse(models.Model):
 	_name = 'ixlms.course'
 	_description = 'LMS Course'
 	_inherit = ['ix.activity', 'ix.expandable', 'ix.institution.owned']
-	_sql_constraints = [('section_ukey', 'unique(section_id)', 'LMS course already created!')]
-	_order = 'section_id'
+	_order = 'term_id'
 
 	@api.model
 	def create(self, vals):
@@ -162,8 +161,19 @@ class LmsCourse(models.Model):
 					corequisites = ', '.join([corequisite.name for corequisite in rec.corequisite_ids])
 			rec.corequisites = corequisites
 
-	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id', store=True)
-	discipline_id = fields.Many2one(comodel_name='ix.discipline', related='section_id.discipline_id')
+	instructor_id = fields.Many2one(comodel_name='ix.faculty', compute='_instructor_id', store=True)
+	@api.depends('section_ids')
+	def _instructor_id(self):
+		for rec in self:
+			if rec.section_ids:
+				rec.instructor_id = rec.section_ids[0].instructor_id
+	
+	discipline_id = fields.Many2one(comodel_name='ix.discipline', compute='_discipline_id')
+	def _discipline_id(self):
+		for rec in self:
+			if rec.section_ids:
+				rec.discipline_id = rec.section_ids[0].discipline_id
+	
 	timeslot_room = fields.Char(compute='_timeslot_room')
 	def _timeslot_room(self):
 		for rec in self:
@@ -182,8 +192,15 @@ class LmsCourse(models.Model):
 				timeslot_room += ' / ' + rec.section_ids[0].room_id.name
 			rec.timeslot_room = timeslot_room
 	
-	student_ids = fields.One2many('ix.student', related='section_id.student_ids')
-	enrollment_ids = fields.One2many('ixroster.enrollment', related='section_id.enrollment_ids')
+	student_ids = fields.One2many('ix.student', compute='_student_ids')
+	def _student_ids(self):
+		student_ids = []
+		for rec in self:
+			for section in rec.section_ids:
+				student_ids += section.student_ids
+			rec.student_ids = student_ids
+	
+	enrollment_ids = fields.One2many('ixroster.enrollment', domain=[('section_id', 'in', 'section_ids')])
 	nstudents = fields.Integer(compute='_nstudents')
 	def _nstudents(self):
 		for rec in self:
