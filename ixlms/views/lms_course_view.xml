@@ -103,7 +103,7 @@
 							<field name="office_hour_ids" widget="many2many_tags"/>
 							<field name="timeslot_room_ids">
 								<tree nolabel="1">
-									<field name="name"/>
+									<field name="number" string="Section #"/>
 									<field name="timeslot"/>
 									<field name="room_id"/>
 								</tree>
