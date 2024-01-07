@@ -152,7 +152,7 @@ class Enrollment(models.Model):
     def _set_name(self):
         for rec in self:
             if rec.student_id and rec.section_id:
-                rec.name = rec.student_id.name + ' / ' + rec.section_id.name
+                rec.name = rec.student_id.name + ' / ' + rec.sid + '/' + rec.section_id.name
             else:
                 rec.name = ''
 
