@@ -197,7 +197,8 @@ class LmsCourse(models.Model):
 		student_ids = []
 		for rec in self:
 			for section in rec.section_ids:
-				student_ids += section.student_ids.ids
+				for student in section.student_ids:
+					student_ids.append(student.id)
 			rec.student_ids = student_ids
 	
 	enrollment_ids = fields.One2many('ixroster.enrollment', compute='_enrollment_ids')
