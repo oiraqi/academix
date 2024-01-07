@@ -104,7 +104,6 @@ class LmsCourse(models.Model):
 
 	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)
 	section_ids = fields.One2many(comodel_name='ixroster.section', inverse_name='lms_course_id', string='Sections', required=True)
-
 	@api.constrains('section_ids')
 	def _check_same_course_for_sections(self):
 		for rec in self:
@@ -114,6 +113,8 @@ class LmsCourse(models.Model):
 			for section in rec.section_ids:
 				if section.course_id != course_id:
 					raise ValidationError('All sections should be of the same course!')
+	
+	timeslot_room_ids = fields.One2many(comodel_name='ixroster.section', inverse_name='lms_course_id', string='Timeslot and Room', readonly=True)
 	
 	name = fields.Char(compute='_set_name')
 	def _set_name(self):
