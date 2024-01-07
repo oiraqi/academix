@@ -199,7 +199,11 @@ class LmsCourse(models.Model):
 			for section in rec.section_ids:
 				for student in section.student_ids:
 					student_ids.append(student.id)
-			rec.student_ids = student_ids
+			
+			if len(rec.student_ids) > 0:
+				rec.student_ids = student_ids
+			else:
+				rec.student_ids = False
 	
 	enrollment_ids = fields.One2many('ixroster.enrollment', compute='_enrollment_ids')
 	def _enrollment_ids(self):
