@@ -103,7 +103,7 @@ class LmsCourse(models.Model):
 		return lms_course
 
 	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)
-	section_ids = fields.One2many(comodel_name='ixroster.section', inverse_name='lms_course_id', string='Sections')
+	section_ids = fields.One2many(comodel_name='ixroster.section', inverse_name='lms_course_id', string='Sections', required=True)
 
 	@api.constrains('section_ids')
 	def _check_same_course_for_sections(self):
@@ -115,10 +115,22 @@ class LmsCourse(models.Model):
 				if section.course_id != course_id:
 					raise ValidationError('All sections should be of the same course!')
 	
-	name = fields.Char(related='section_id.name')
+	name = fields.Char(compute='_set_name')
+	def _set_name(self):
+		for rec in self:
+			if rec.section_ids:
+				rec.name = rec.section_ids[0].course_id.name
+	
 	color = fields.Integer(string='Color Index')	
-	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id', store=True)
-	school_id = fields.Many2one(comodel_name='ix.school', related='section_id.school_id', store=True)	
+	course_id = fields.Many2one(comodel_name='ix.course', compute='_course_id', store=True)
+	@api.depends('section_ids')
+	@api.onchange('section_ids')
+	def _course_id(self):
+		for rec in self:
+			if rec.section_ids:
+				rec.course_id = rec.section_ids[0].course_id
+
+	school_id = fields.Many2one(comodel_name='ix.school', related='course_id.school_id', store=True)	
 	prerequisite_ids = fields.One2many('ixcatalog.prerequisite', related='course_id.prerequisite_ids')
 	corequisite_ids = fields.One2many('ixcatalog.corequisite', related='course_id.corequisite_ids')
 	prerequisites = fields.Char(compute='_requisites')
@@ -311,12 +323,15 @@ class LmsCourse(models.Model):
 		
 	def get_students(self):
 		self.ensure_one()
-		domain = [('section_id', '=', self.section_id.id), ('state', 'in', ['enrolled', 'withdrawn', 'completed'])]		
-		return self._expand_to('ixlms.action_enrollment', domain)
+		domain = [('section_id', 'in', self.section_ids.ids), ('state', 'in', ['enrolled', 'withdrawn', 'completed'])]
+		if len (self.section_ids) == 1:
+			return self._expand_to('ixlms.action_enrollment', domain)
+		
+		return self._expand_to('ixlms.action_enrollment_by_section', domain)
 
 	def get_my(self):
 		self.ensure_one()
-		domain = [('section_id', '=', self.section_id.id), ('student_id', '=', self.env.user.student_id.id), ('state', 'in', ['enrolled', 'withdrawn', 'completed'])]
+		domain = [('section_id', 'in', self.section_ids.ids), ('student_id', '=', self.env.user.student_id.id), ('state', 'in', ['enrolled', 'withdrawn', 'completed'])]
 		enrollment_id = self.env['ixroster.enrollment'].search(domain)
 		return self._expand_to('ixlms.action_enrollment_my', domain, False, enrollment_id.id)
 
