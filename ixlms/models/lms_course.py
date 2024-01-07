@@ -119,7 +119,14 @@ class LmsCourse(models.Model):
 	def _set_name(self):
 		for rec in self:
 			if rec.section_ids:
-				rec.name = rec.section_ids[0].course_id.name
+				name = rec.section_ids[0].name
+				first = True
+				for section in rec.section_ids:
+					if first:
+						first = False
+						continue
+					name += '/' + section.number
+				rec.name = name
 	
 	color = fields.Integer(string='Color Index')	
 	course_id = fields.Many2one(comodel_name='ix.course', compute='_course_id', store=True)
