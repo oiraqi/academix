@@ -11,7 +11,7 @@
         <record id="student_lms_course_rule" model="ir.rule">
             <field name="name">Restrict access to own LMS courses</field>
             <field name="model_id" ref="model_ixlms_course"/>
-            <field name="domain_force">[('section_id.student_ids', 'in', user.student_id.id)]</field>
+            <field name="domain_force">[('student_ids', 'in', user.student_id.id)]</field>
             <field name="groups" eval="[(4, ref('ix.group_student'))]"/>
         </record>
         <record id="faculty_assessment_rule" model="ir.rule">
