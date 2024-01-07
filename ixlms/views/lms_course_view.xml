@@ -7,8 +7,7 @@
 			<field name="priority" eval="10"/>
 			<field name="arch" type="xml">
 				<kanban>
-					<field name="room_id"/>
-					<field name="timeslot"/>
+					<field name="timeslot_room"/>
 					<field name="color"/>
 					<templates>
 						<t t-name="kanban-box">
@@ -221,8 +220,7 @@
 				<tree string="Courses">
 					<field name="name"/>
 					<field name="instructor_id"/>
-					<field name="timeslot"/>
-					<field name="room_id"/>
+					<field name="timeslot_room"/>
 					<field name="nstudents"/>
 					<field name="nmodules"/>
 					<field name="nchannels"/>
