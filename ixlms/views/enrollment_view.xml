@@ -23,9 +23,9 @@
                         <field name="email"/>
                     </group>
                     <group name="student_performance" string="Student Performance" col="4">
-                        <field name="assessment_grade" widget="percentpie" nolabel="1" colspan="2"/>
-                        <field name="attendance_grade" widget="percentpie" nolabel="1" colspan="2"/>
-                        <field name="overall_grade" widget="percentpie" nolabel="1" colspan="2"/>
+                        <field name="assessment_grade" colspan="2"/>
+                        <field name="attendance_grade" colspan="2"/>
+                        <field name="overall_grade" colspan="2"/>
                         <field name="letter_grade" widget="badge" style="font-weight: bold"/>                        
                     </group>
                     <notebook>
