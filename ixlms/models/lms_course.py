@@ -163,7 +163,7 @@ class LmsCourse(models.Model):
 
 	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id', store=True)
 	discipline_id = fields.Many2one(comodel_name='ix.discipline', related='section_id.discipline_id')
-	timeslot = fields.Char(related='section_id.timeslot')
+	timeslot = fields.Char(compute='_timeslot')
 	def _timeslot(self):
 		for rec in self:
 			timeslot = rec.section_ids[0].timeslot
