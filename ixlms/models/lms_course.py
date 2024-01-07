@@ -163,21 +163,24 @@ class LmsCourse(models.Model):
 
 	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id', store=True)
 	discipline_id = fields.Many2one(comodel_name='ix.discipline', related='section_id.discipline_id')
-	timeslot = fields.Char(compute='_timeslot')
-	def _timeslot(self):
+	timeslot_room = fields.Char(compute='_timeslot_room')
+	def _timeslot_room(self):
 		for rec in self:
-			timeslot = rec.section_ids[0].timeslot
+			timeslot_room = rec.section_ids[0].timeslot
 			if len(rec.section_ids) > 1:
-				timeslot = rec.section_ids[0].number + ': ' + timeslot
-			first = True
-			for section in rec.section_ids:
-				if first:
-					first = False
-					continue
-				timeslot += ', ' + section.number + ': ' + section.timeslot
-			rec.timeslot = timeslot
-			
-	room_id = fields.Many2one(comodel_name='ix.room', related='section_id.room_id')
+				timeslot_room = rec.section_ids[0].number + ': ' + timeslot_room
+				first = True
+				for section in rec.section_ids:
+					if first:
+						first = False
+						continue
+					timeslot_room += ' | ' + section.number + ': ' + section.timeslot
+					if section.room_id:
+						timeslot_room += ' / ' + section.room_id.name
+			elif rec.section_ids[0].room_id:
+				timeslot_room += ' / ' + rec.section_ids[0].room_id.name
+			rec.timeslot = timeslot_room
+	
 	student_ids = fields.One2many('ix.student', related='section_id.student_ids')
 	enrollment_ids = fields.One2many('ixroster.enrollment', related='section_id.enrollment_ids')
 	nstudents = fields.Integer(compute='_nstudents')

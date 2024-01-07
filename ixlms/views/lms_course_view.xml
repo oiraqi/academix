@@ -27,14 +27,8 @@
 									</h1>
 									<field name="instructor_id"/>
 									<br/>
-									<t t-if="record.timeslot.raw_value">
-										<field name="timeslot"/>
-									</t>
-									<t t-if="record.timeslot.raw_value and record.room_id.raw_value">
-									 / 
-									</t>
-									<t t-if="record.room_id.raw_value">
-										<field name="room_id"/>
+									<t t-if="record.timeslot_room.raw_value">
+										<field name="timeslot_room"/>
 									</t>
 									<br/>
 									<br/>
@@ -103,11 +97,15 @@
 						</div>
 						<group name="info" string="General Information" col="4">
 							<field name="term_id" attrs="{'readonly': [('id', '!=', False)]}" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-							<field name="section_ids" attrs="{'readonly': [('id', '!=', False)]}" widget="many2many_tags" domain="[('instructor_id.user_id', '=', uid), ('term_id', '=', term_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+							<field name="section_ids" attrs="{'readonly': [('id', '!=', False)]}" domain="[('instructor_id.user_id', '=', uid), ('term_id', '=', term_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}">
+								<tree nolabel="1">
+									<field name="name"/>
+									<field name="timeslot"/>
+									<field name="room_id"/>
+								</tree>
+							</field>
 							<field name="prerequisite_ids" widget="many2many_tags"/>
 							<field name="corequisite_ids" widget="many2many_tags"/>
-							<field name="timeslot" widget="badge"/>
-							<field name="room_id"/>
 							<field name="instructor_id"/>
 							<field name="office_hour_ids" widget="many2many_tags"/>
 						</group>
