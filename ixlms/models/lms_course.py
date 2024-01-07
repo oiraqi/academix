@@ -200,7 +200,11 @@ class LmsCourse(models.Model):
 				student_ids += section.student_ids
 			rec.student_ids = student_ids
 	
-	enrollment_ids = fields.One2many('ixroster.enrollment', domain=[('section_id', 'in', 'section_ids')])
+	enrollment_ids = fields.One2many('ixroster.enrollment', compute='_enrollment_ids')
+	def _enrollment_ids(self):
+		for rec in self:
+			rec.enrollment_ids = self.env['ixroster.enrollment'].search([('section_id', 'in', 'section_ids'), ('state', 'in', ['enrolled', 'withdrawn'])])
+	
 	nstudents = fields.Integer(compute='_nstudents')
 	def _nstudents(self):
 		for rec in self:
