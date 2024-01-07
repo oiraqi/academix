@@ -179,7 +179,7 @@ class LmsCourse(models.Model):
 						timeslot_room += ' / ' + section.room_id.name
 			elif rec.section_ids[0].room_id:
 				timeslot_room += ' / ' + rec.section_ids[0].room_id.name
-			rec.timeslot = timeslot_room
+			rec.timeslot_room = timeslot_room
 	
 	student_ids = fields.One2many('ix.student', related='section_id.student_ids')
 	enrollment_ids = fields.One2many('ixroster.enrollment', related='section_id.enrollment_ids')
