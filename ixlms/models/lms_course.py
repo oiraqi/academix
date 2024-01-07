@@ -30,7 +30,7 @@ class LmsCourse(models.Model):
 	_name = 'ixlms.course'
 	_description = 'LMS Course'
 	_inherit = ['ix.activity', 'ix.expandable', 'ix.institution.owned']
-	_order = 'term_id'
+	_order = 'term_id, course_id'
 
 	@api.model
 	def create(self, vals):
