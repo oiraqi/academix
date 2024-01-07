@@ -101,7 +101,7 @@
 							<field name="corequisite_ids" widget="many2many_tags"/>
 							<field name="instructor_id"/>
 							<field name="office_hour_ids" widget="many2many_tags"/>
-							<field name="timeslot_room_ids">
+							<field name="timeslot_room_ids" colspan="4">
 								<tree nolabel="1">
 									<field name="number" string="Section #"/>
 									<field name="timeslot"/>
