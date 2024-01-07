@@ -163,7 +163,20 @@ class LmsCourse(models.Model):
 
 	instructor_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id', store=True)
 	discipline_id = fields.Many2one(comodel_name='ix.discipline', related='section_id.discipline_id')
-	timeslot = fields.Char(related='section_id.timeslot')	
+	timeslot = fields.Char(related='section_id.timeslot')
+	def _timeslot(self):
+		for rec in self:
+			timeslot = rec.section_ids[0].timeslot
+			if len(rec.section_ids) > 1:
+				timeslot = rec.section_ids[0].number + ': ' + timeslot
+			first = True
+			for section in rec.section_ids:
+				if first:
+					first = False
+					continue
+				timeslot += ', ' + section.number + ': ' + section.timeslot
+			rec.timeslot = timeslot
+			
 	room_id = fields.Many2one(comodel_name='ix.room', related='section_id.room_id')
 	student_ids = fields.One2many('ix.student', related='section_id.student_ids')
 	enrollment_ids = fields.One2many('ixroster.enrollment', related='section_id.enrollment_ids')
