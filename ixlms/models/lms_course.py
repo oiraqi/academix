@@ -102,7 +102,8 @@ class LmsCourse(models.Model):
 					})
 		return lms_course
 
-	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)	
+	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)
+	section_ids = fields.One2many(comodel_name='ixroster.section', inverse_name='lms_course_id', string='Sections')
 	name = fields.Char(related='section_id.name')
 	color = fields.Integer(string='Color Index')	
 	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id', store=True)

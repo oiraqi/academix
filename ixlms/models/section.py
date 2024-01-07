@@ -21,19 +21,20 @@
 #
 ###############################################################################
 
-from odoo import models, fields, api
+from odoo import models, fields
 
 
 class Section(models.Model):
     _inherit = 'ixroster.section'
 
-    lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', compute='_lms_course_id')
+    #lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', compute='_lms_course_id')
+    lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course')
 
-    def _lms_course_id(self):
-        for rec in self:
-            lms_course_ids = self.env['ixlms.course'].search([('section_id', '=', rec.id)])
-            if lms_course_ids:
-                rec.lms_course_id = lms_course_ids[0]
-            else:
-                rec.lms_course_id = False
+    #def _lms_course_id(self):
+    #    for rec in self:
+    #        lms_course_ids = self.env['ixlms.course'].search([('section_id', '=', rec.id)])
+    #        if lms_course_ids:
+    #            rec.lms_course_id = lms_course_ids[0]
+    #        else:
+    #            rec.lms_course_id = False
     
