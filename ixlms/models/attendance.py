@@ -85,7 +85,7 @@ class Attendance(models.Model):
 						'student_id': student.id,
 						'attendance_id': rec.id,
 						'state': 'present',
-					})
+					}).id
 				if len(attendance_line_ids) > 0:
 					rec.attendance_line_ids = attendance_line_ids
 				else:
