@@ -80,7 +80,7 @@ class Attendance(models.Model):
 		for rec in self:
 			if rec.day and rec.section_id:
 				for attendance in rec.attendance_line_ids:
-					attendance.unlink()
+					attendance.sudo().unlink()
 				
 				for student in rec.section_id.student_ids:
 					rec.attendance_line_ids += self.env['ixlms.attendance.line'].new({
