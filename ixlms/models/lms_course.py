@@ -434,6 +434,7 @@ class LmsCourse(models.Model):
 		if len (self.section_ids) == 1:
 			return self._expand_to('ixlms.action_attendance', domain, context)
 		
+		context['group_by'] = 'section_id'
 		return self._expand_to('ixlms.action_attendance_by_section', domain, context)
 
 	def get_teamsets(self):
