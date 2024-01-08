@@ -34,8 +34,7 @@ class Assessment(models.Model):
 	name = fields.Char('Name', required=True)
 	description = fields.Html(string='Description')
 	
-	lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)	
-	section_id = fields.Many2one(comodel_name='ixroster.section', related='lms_course_id.section_id', store=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
 	module_id = fields.Many2one(comodel_name='ixlms.module', string='Module', required=True)
 	technique_id = fields.Many2one(comodel_name='ixlms.weighted.technique', string='Technique', required=True)
 	graded = fields.Boolean(string='Graded', required=True, default=True)
@@ -201,14 +200,20 @@ class Assessment(models.Model):
 	def get_assessment_lines(self):
 		self.ensure_one()
 		student_ids = [assessment_line.student_id.id for assessment_line in self.assessment_line_ids]
-		for student in self.lms_course_id.student_ids:
-			if student.id not in student_ids:
-				self.env['ixlms.assessment.line'].create({
-					'assessment_id': self.id,
-					'student_id': student.id
-				})
+		for section in self.lms_course_id.section_ids:
+			for student in section.student_ids:
+				if student.id not in student_ids:
+					self.env['ixlms.assessment.line'].create({
+						'assessment_id': self.id,
+						'student_id': student.id,
+						'section_id': section.id
+					})
+		
 		domain = [('assessment_id', '=', self.id)]
-		return self._expand_to('ixlms.action_assessment_line', domain)
+		if len(self.lms_course_id.section_ids) == 1:
+			return self._expand_to('ixlms.action_assessment_line', domain)
+		
+		return self._expand_to('ixlms.action_assessment_line', domain, {'group_by': 'section_id'})
 
 	def get_submissions(self):
 		self.ensure_one()

@@ -200,7 +200,7 @@ class LmsCourse(models.Model):
 				for student in section.student_ids:
 					student_ids.append(student.id)
 			
-			if len(rec.student_ids) > 0:
+			if len(student_ids) > 0:
 				rec.student_ids = student_ids
 			else:
 				rec.student_ids = False
