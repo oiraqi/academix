@@ -79,14 +79,11 @@ class Attendance(models.Model):
 	def _onchange_lms_course_id(self):
 		for rec in self:
 			if rec.day and rec.lms_course_id and rec.section_id:
-				attendance_line_ids = []
+				rec.attendance_line_ids = []
 				for student in rec.section_id.student_ids:
-					attendance_line_ids += self.env['ixlms.attendance.line'].new({
+					rec.attendance_line_ids += self.env['ixlms.attendance.line'].new({
 						'student_id': student.id,
 						'attendance_id': rec.id,
 						'state': 'present',
-					}).id
-				if len(attendance_line_ids) > 0:
-					rec.attendance_line_ids = attendance_line_ids
-				else:
-					rec.attendance_line_ids = False
+					})
+				
