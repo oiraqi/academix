@@ -431,11 +431,9 @@ class LmsCourse(models.Model):
 		self.ensure_one()
 		domain = [('lms_course_id', '=', self.id)]
 		context = {'default_lms_course_id': self.id}
-		if len (self.section_ids) == 1:
-			return self._expand_to('ixlms.action_attendance', domain, context)
-		
-		context['group_by'] = 'section_id'
-		return self._expand_to('ixlms.action_attendance_by_section', domain, context)
+		if len (self.section_ids) > 1:
+			context['group_by'] = 'section_id'
+		return self._expand_to('ixlms.action_attendance', domain, context)
 
 	def get_teamsets(self):
 		self.ensure_one()
