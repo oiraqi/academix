@@ -75,13 +75,18 @@ class Attendance(models.Model):
 			else:
 				rec.name = ''
 
-	@api.onchange('lms_course_id', 'day')
+	@api.onchange('section_id')
 	def _onchange_lms_course_id(self):
 		for rec in self:
-			if rec.day and rec.lms_course_id and rec.lms_course_id.student_ids and not rec.attendance_line_ids:
-				for student in rec.lms_course_id.student_ids:
-					rec.attendance_line_ids += self.env['ixlms.attendance.line'].new({
+			if rec.day and rec.lms_course_id and rec.section_id and rec.lms_course_id.student_ids:
+				attendance_line_ids = []
+				for student in rec.section_id.student_ids:
+					attendance_line_ids += self.env['ixlms.attendance.line'].new({
 						'student_id': student.id,
 						'attendance_id': rec.id,
 						'state': 'present',
 					})
+				if len(attendance_line_ids) > 0:
+					rec.rec.attendance_line_ids = attendance_line_ids
+				else:
+					rec.rec.attendance_line_ids = False
