@@ -87,6 +87,6 @@ class Attendance(models.Model):
 						'state': 'present',
 					})
 				if len(attendance_line_ids) > 0:
-					rec.rec.attendance_line_ids = attendance_line_ids
+					rec.attendance_line_ids = attendance_line_ids
 				else:
-					rec.rec.attendance_line_ids = False
+					rec.attendance_line_ids = False
