@@ -78,7 +78,7 @@ class Attendance(models.Model):
 	@api.onchange('section_id')
 	def _onchange_lms_course_id(self):
 		for rec in self:
-			if rec.day and rec.lms_course_id and rec.section_id and rec.lms_course_id.student_ids:
+			if rec.day and rec.lms_course_id and rec.section_id:
 				attendance_line_ids = []
 				for student in rec.section_id.student_ids:
 					attendance_line_ids += self.env['ixlms.attendance.line'].new({
