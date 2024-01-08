@@ -11,7 +11,8 @@
 						<field name="lms_course_id" invisible="1"/>
 						<group name="date_section" col="4">
 							<field name="day" style="width: 25%"/>
-							<field name="section_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+							<field name="section_id" attrs="{'readonly': [('id', '!=', False)]}"
+								options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
 								domain="[('lms_course_id', '=', lms_course_id)]"/>
 						</group>
 						<group name="info" col="4">							
