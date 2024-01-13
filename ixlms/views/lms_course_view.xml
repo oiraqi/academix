@@ -332,22 +332,22 @@ action = {
 			<field name="model_id" ref="model_ixlms_course" />
 			<field name="state">code</field>
 			<field name="code">
-domain = [('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d'))]
+domain = [('term_id.end_date', '&lt;', datetime.date.today().strftime('%Y-%m-%d'))]
 ids = []
 if env.ref('ix.group_student') in env.user.groups_id:
 	for enrollment in env.user.student_id.enrollment_ids:
 		if enrollment.state in ['enrolled', 'completed'] and enrollment.section_id.lms_course_id:
 			ids.append(enrollment.section_id.lms_course_id.id)
 	domain.append(('id', 'in', ids))
-		
+						
 elif env.ref('ix.group_faculty') in env.user.groups_id:
 	lms_courses = env['ixlms.course'].search([('instructor_id.user_id', '=', env.user.id)])				
 	ids = [lms_course.id for lms_course in lms_courses]
 	domain.append(('id', 'in', ids))
-
+				
 action = {
 	'type': 'ir.actions.act_window',
-	'name': 'Current LMS Courses',
+	'name': 'Past LMS Courses',
 	'view_type': 'form',
 	'view_mode': 'kanban,tree,form',
 	'res_model': 'ixlms.course',	
