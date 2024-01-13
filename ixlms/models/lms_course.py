@@ -101,7 +101,6 @@ class LmsCourse(models.Model):
 					})
 		return lms_course
 
-	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section', required=True)
 	section_ids = fields.One2many(comodel_name='ixroster.section', inverse_name='lms_course_id', string='Sections', required=True)
 	@api.constrains('section_ids')
 	def _check_same_course_for_sections(self):

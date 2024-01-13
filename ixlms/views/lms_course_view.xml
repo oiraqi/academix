@@ -4,56 +4,70 @@
 		<record id="view_lms_course_kanban" model="ir.ui.view">
 			<field name="name">ixlms.course.kanban</field>
 			<field name="model">ixlms.course</field>
-			<field name="priority" eval="10"/>
+			<field name="priority" eval="10" />
 			<field name="arch" type="xml">
 				<kanban>
-					<field name="timeslot_room"/>
-					<field name="color"/>
+					<field name="timeslot_room" />
+					<field name="color" />
 					<templates>
 						<t t-name="kanban-box">
-							<div t-attf-class="#{kanban_color(record.color.raw_value)} oe_module_vignette oe_kanban_global_click">
+							<div
+								t-attf-class="#{kanban_color(record.color.raw_value)} oe_module_vignette oe_kanban_global_click">
 								<div class="o_dropdown_kanban dropdown">
-									<a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
-										<span class="fa fa-ellipsis-v"/>
+									<a role="button" class="dropdown-toggle o-no-caret btn"
+										data-toggle="dropdown" data-display="static" href="#"
+										aria-label="Dropdown menu" title="Dropdown menu">
+										<span class="fa fa-ellipsis-v" />
 									</a>
 									<div class="dropdown-menu" role="menu">
-										<ul class="oe_kanban_colorpicker" data-field="color"/>
+										<ul class="oe_kanban_colorpicker" data-field="color" />
 									</div>
 								</div>
 								<div class="oe_module_desc">
 									<h1>
-										<field name="name"/>
+										<field name="name" />
 									</h1>
-									<field name="instructor_id"/>
-									<br/>
-									<t t-if="record.timeslot_room.raw_value">
-										<field name="timeslot_room"/>
+									<field
+										name="instructor_id" />
+									<br />
+									<t
+										t-if="record.timeslot_room.raw_value">
+										<field name="timeslot_room" />
 									</t>
-									<br/>
-									<br/>
-									<div groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
-										<field name="nstudents"/>
+									<br />
+									<br />
+									<div
+										groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
+										<field name="nstudents" />
 										<t t-if="record.nstudents.raw_value==1">Student</t>
 										<t t-else="">Students</t>
-										<br/>
+										<br />
 									</div>
-									<field name="nmodules"/>
-									<t t-if="record.nmodules.raw_value==1">Module</t>
-									<t t-else="">Modules</t>, 
-									<field name="nchapters"/>
-									<t t-if="record.nchapters.raw_value==1">Chapter</t>
-									<t t-else="">Chapters</t>									
-									<br/>
-									<field name="nassessments"/>
-									<t t-if="record.nassessments.raw_value==1">Assessment</t>
-									<t t-else="">Assessments</t>, 
-									<field name="ntechniques"/>
-									<t t-if="record.ntechniques.raw_value==1">Technique</t>
-									<t t-else="">Techniques</t>
-									<br/>
-									<field name="nchannels"/>
-									<t t-if="record.nchannels.raw_value==1">Channel</t>
-									<t t-else="">Channels</t>
+									<field
+										name="nmodules" />
+									<t t-if="record.nmodules.raw_value==1">
+									Module</t>
+									<t t-else="">Modules</t>, <field name="nchapters" />
+									<t
+										t-if="record.nchapters.raw_value==1">Chapter</t>
+									<t t-else="">
+									Chapters</t>									
+									<br />
+									<field name="nassessments" />
+									<t
+										t-if="record.nassessments.raw_value==1">Assessment</t>
+									<t
+										t-else="">Assessments</t>, <field name="ntechniques" />
+									<t
+										t-if="record.ntechniques.raw_value==1">Technique</t>
+									<t
+										t-else="">Techniques</t>
+									<br />
+									<field name="nchannels" />
+									<t
+										t-if="record.nchannels.raw_value==1">Channel</t>
+									<t t-else="">
+									Channels</t>
 								</div>
 							</div>
 						</t>
@@ -68,146 +82,186 @@
 				<form string="Course">
 					<sheet>
 						<h1>
-							<field name="course_id"/>
+							<field name="course_id" />
 						</h1>
-						<br/>
-						<div class="oe_button_box" name="button_box" attrs="{'invisible': [('id', '=', False)]}">							
-							<button name="get_channels" type="object" class="oe_stat_button" icon="fa-comments">
-								<field name="nchannels" string="Channels" widget="statinfo"/>
+						<br />
+						<div class="oe_button_box" name="button_box"
+							attrs="{'invisible': [('id', '=', False)]}">
+							<button name="get_channels" type="object" class="oe_stat_button"
+								icon="fa-comments">
+								<field name="nchannels" string="Channels" widget="statinfo" />
 							</button>
-							<button name="get_modules" type="object" class="oe_stat_button" icon="fa-puzzle-piece" groups="ix.group_faculty">
-								<field name="nmodules" string="Modules" widget="statinfo"/>
+							<button name="get_modules" type="object" class="oe_stat_button"
+								icon="fa-puzzle-piece" groups="ix.group_faculty">
+								<field name="nmodules" string="Modules" widget="statinfo" />
 							</button>
-							<button name="get_chapters" type="object" class="oe_stat_button" icon="fa-file">
-								<field name="nchapters" string="Chapters" widget="statinfo"/>
-							</button>							
-							<button name="get_attendance" type="object" class="oe_stat_button" icon="fa-calendar-check-o" groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
-								<field name="nattendance_sheets" string="Att. Sheets" widget="statinfo"/>
+							<button name="get_chapters" type="object" class="oe_stat_button"
+								icon="fa-file">
+								<field name="nchapters" string="Chapters" widget="statinfo" />
 							</button>
-							<button name="get_assessments" type="object" class="oe_stat_button" icon="fa-edit">
-								<field name="nassessments" string="Assessments" widget="statinfo"/>
-							</button>							
-							<button name="get_students" type="object" class="oe_stat_button" icon="fa-users" groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
-								<field name="nstudents" string="Students" widget="statinfo"/>
+							<button name="get_attendance" type="object" class="oe_stat_button"
+								icon="fa-calendar-check-o"
+								groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
+								<field name="nattendance_sheets" string="Att. Sheets"
+									widget="statinfo" />
 							</button>
-							<button name="get_my" type="object" class="oe_stat_button" icon="fa-user" groups="ix.group_student">
+							<button name="get_assessments" type="object" class="oe_stat_button"
+								icon="fa-edit">
+								<field name="nassessments" string="Assessments" widget="statinfo" />
+							</button>
+							<button name="get_students" type="object" class="oe_stat_button"
+								icon="fa-users"
+								groups="ix.group_faculty,ix.group_coordinator,ix.group_vpaa">
+								<field name="nstudents" string="Students" widget="statinfo" />
+							</button>
+							<button name="get_my" type="object" class="oe_stat_button"
+								icon="fa-user" groups="ix.group_student">
 								<span>My</span>
 							</button>
 						</div>
 						<group name="info" string="General Information" col="4">
-							<field name="term_id" attrs="{'readonly': [('id', '!=', False)]}" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-							<field name="section_ids" attrs="{'readonly': [('id', '!=', False)]}" widget="many2many_tags" domain="[('instructor_id.user_id', '=', uid), ('term_id', '=', term_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
-							<field name="prerequisite_ids" widget="many2many_tags"/>
-							<field name="corequisite_ids" widget="many2many_tags"/>
-							<field name="instructor_id"/>
-							<field name="office_hour_ids" widget="many2many_tags"/>
+							<field name="term_id" attrs="{'readonly': [('id', '!=', False)]}"
+								options="{'no_quick_create': True, 'no_create_edit': True}" />
+							<field name="section_ids" attrs="{'readonly': [('id', '!=', False)]}"
+								widget="many2many_tags"
+								domain="[('instructor_id.user_id', '=', uid), ('term_id', '=', term_id)]"
+								options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}" />
+							<field name="prerequisite_ids" widget="many2many_tags" />
+							<field name="corequisite_ids" widget="many2many_tags" />
+							<field name="instructor_id" />
+							<field name="office_hour_ids" widget="many2many_tags" />
 							<field name="timeslot_room_ids" colspan="4">
 								<tree nolabel="1">
-									<field name="number" string="Section #"/>
-									<field name="timeslot"/>
-									<field name="room_id"/>
+									<field name="number" string="Section #" />
+									<field name="timeslot" />
+									<field name="room_id" />
 								</tree>
 							</field>
 						</group>
 						<notebook>
 							<page string="Course Description" name="description">
 								<group>
-									<field name="description" nolabel="1" readonly="1"/>
+									<field name="description" nolabel="1" readonly="1" />
 								</group>
 							</page>
 							<page string="Course ILOs" name="ilos">
 								<group name="ilos">
 									<field name="lms_course_ilo_ids" nolabel="1" readonly="1">
 										<tree>
-											<field name="idx_description"/>
+											<field name="idx_description" />
 										</tree>
 									</field>
 								</group>
-							</page>							
+							</page>
 							<page string="Textbooks" name="textbooks">
 								<group>
 									<field name="textbook_ids" nolabel="1">
 										<tree>
-											<field name="thumbnail" widget="image" class="oe_left oe_avatar"/>
-											<field name="name"/>
-											<field name="isbn" string="ISBN"/>
-											<field name="authors"/>
-											<field name="publisher"/>
-											<field name="edition"/>
+											<field name="thumbnail" widget="image"
+												class="oe_left oe_avatar" />
+											<field name="name" />
+											<field name="isbn" string="ISBN" />
+											<field name="authors" />
+											<field name="publisher" />
+											<field name="edition" />
 										</tree>
 									</field>
 								</group>
 							</page>
 							<page string="Assessment Structure" name="assessment">
 								<group col="4" string="Assessment Grouping &#38; Weighting">
-									<field name="grade_grouping" style="width: 50%" string="Grouped by"/>
-									<field name="grade_weighting" style="width: 50%" string="Weighted by"/>
-								</group>								
-								<group col="4" string="Course Modules, Assessment Techniques &#38; Weights">
+									<field name="grade_grouping" style="width: 50%"
+										string="Grouped by" />
+									<field name="grade_weighting" style="width: 50%"
+										string="Weighted by" />
+								</group>
+								<group col="4"
+									string="Course Modules, Assessment Techniques &#38; Weights">
 									<field name="module_ids" nolabel="1">
 										<tree editable="bottom">
-											<field name="sequence" widget="handle"/>
-											<field name="name" string="Course Module"/>
-											<field name="nassessments"/>
-											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
-											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
+											<field name="sequence" widget="handle" />
+											<field name="name" string="Course Module" />
+											<field name="nassessments" />
+											<field name="percentage" sum="%"
+												attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}" />
+											<field name="points" sum="Points"
+												attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}" />
 										</tree>
 									</field>
 									<field name="technique_ids" nolabel="1">
 										<tree editable="bottom">
-											<field name="sequence" widget="handle"/>						
-											<field name="technique_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-											<field name="nassessments"/>
-											<field name="percentage" sum="%" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}"/>
-											<field name="points" sum="Points" attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}"/>
+											<field name="sequence" widget="handle" />
+											<field name="technique_id"
+												options="{'no_quick_create': True, 'no_create_edit': True}" />
+											<field name="nassessments" />
+											<field name="percentage" sum="%"
+												attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'percentage')]}" />
+											<field name="points" sum="Points"
+												attrs="{'column_invisible': [('parent.grade_weighting', '!=', 'points')]}" />
 										</tree>
 									</field>
-								</group>								
+								</group>
 								<group string="Attendance" col="4">
-									<field name="attendance_points" string="Attendance Points" style="width: 10%" attrs="{'invisible': [('grade_weighting', '!=', 'points')]}" colspan="4"/>
-									<field name="attendance_percentage" string="Attendance %" style="width: 10%" attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}" colspan="4"/>
-									<label for="attendance_grading" string="Attendance Grading" attrs="{'invisible': [('attendance_weight', '=', 0.0)]}"/>
+									<field name="attendance_points" string="Attendance Points"
+										style="width: 10%"
+										attrs="{'invisible': [('grade_weighting', '!=', 'points')]}"
+										colspan="4" />
+									<field name="attendance_percentage" string="Attendance %"
+										style="width: 10%"
+										attrs="{'invisible': [('grade_weighting', '!=', 'percentage')]}"
+										colspan="4" />
+									<label for="attendance_grading" string="Attendance Grading"
+										attrs="{'invisible': [('attendance_weight', '=', 0.0)]}" />
 									<div attrs="{'invisible': [('attendance_weight', '=', 0.0)]}">
-										<field name="attendance_grading" style="max-width: 65%" attrs="{'required': [('attendance_weight', '>', 0.0)]}"/>
+										<field name="attendance_grading" style="max-width: 65%"
+											attrs="{'required': [('attendance_weight', '>', 0.0)]}" />
 										<![CDATA[&nbsp;]]>
-										<field name="penalty_per_absence" style="max-width: 15%" attrs="{'invisible': [('attendance_grading', '!=', 'penalty')], 'required': [('attendance_grading', '=', 'penalty')]}"/>
+										<field name="penalty_per_absence" style="max-width: 15%"
+											attrs="{'invisible': [('attendance_grading', '!=', 'penalty')], 'required': [('attendance_grading', '=', 'penalty')]}" />
 										<![CDATA[&nbsp;]]>
-										<span attrs="{'invisible': [('attendance_grading', '!=', 'penalty')]}">%</span>
+										<span
+											attrs="{'invisible': [('attendance_grading', '!=', 'penalty')]}">
+											%</span>
 									</div>
-									<label for="zero_after_max_abs" string="Zero after" attrs="{'invisible': [('attendance_weight', '=', 0)]}"/>
+									<label for="zero_after_max_abs" string="Zero after"
+										attrs="{'invisible': [('attendance_weight', '=', 0)]}" />
 									<div attrs="{'invisible': [('attendance_weight', '=', 0)]}">
-										<field name="zero_after_max_abs" style="width: 20%"/>
-										<field name="max_absences" style="width: 10%" attrs="{'invisible': [('zero_after_max_abs', '=', False)],
-												'required': [('zero_after_max_abs', '=', True)]}"/>
+										<field name="zero_after_max_abs" style="width: 20%" />
+										<field name="max_absences" style="width: 10%"
+											attrs="{'invisible': [('zero_after_max_abs', '=', False)],
+												'required': [('zero_after_max_abs', '=', True)]}" />
 										<![CDATA[&nbsp;]]>
-										<span attrs="{'invisible': [('zero_after_max_abs', '=', False)]}">Unexcused Absences</span>
+										<span
+											attrs="{'invisible': [('zero_after_max_abs', '=', False)]}">Unexcused
+											Absences</span>
 									</div>
-									<field name="attendance_weight" invisible="1"/>
+									<field name="attendance_weight" invisible="1" />
 								</group>
 							</page>
 							<page string="Teams" name="teams">
 								<group>
 									<field name="teamset_ids">
 										<tree editable="bottom">
-											<field name="name"/>
-											<field name="nmembers_per_team"/>
-											<button string="Open" name="get_teams" type="object" icon="fa-slideshare"/>
-											<field name="lms_course_id" invisible="1"/>
+											<field name="name" />
+											<field name="nmembers_per_team" />
+											<button string="Open" name="get_teams" type="object"
+												icon="fa-slideshare" />
+											<field name="lms_course_id" invisible="1" />
 										</tree>
 									</field>
 								</group>
 							</page>
 							<page string="Additional Information" name="details">
 								<group name="details">
-									<field name="details" widget="html" nolabel="1"/>
+									<field name="details" widget="html" nolabel="1" />
 								</group>
 							</page>
 						</notebook>
 						<group name="log" string="Log" col="4">
-							<field name="create_uid"/>
-							<field name="create_date"/>
-							<field name="write_uid"/>
-							<field name="write_date"/>
+							<field name="create_uid" />
+							<field name="create_date" />
+							<field name="write_uid" />
+							<field name="write_date" />
 						</group>
 					</sheet>
 				</form>
@@ -216,16 +270,16 @@
 		<record id="view_lms_course_tree" model="ir.ui.view">
 			<field name="name">ixlms.course.tree</field>
 			<field name="model">ixlms.course</field>
-			<field eval="8" name="priority"/>
+			<field eval="8" name="priority" />
 			<field name="arch" type="xml">
 				<tree string="Courses">
-					<field name="name"/>
-					<field name="instructor_id"/>
-					<field name="timeslot_room"/>
-					<field name="nstudents"/>
-					<field name="nmodules"/>
-					<field name="nchannels"/>
-					<field name="nassessments"/>
+					<field name="name" />
+					<field name="instructor_id" />
+					<field name="timeslot_room" />
+					<field name="nstudents" />
+					<field name="nmodules" />
+					<field name="nchannels" />
+					<field name="nassessments" />
 				</tree>
 			</field>
 		</record>
@@ -246,83 +300,73 @@
 			</field>
 		</record>
 		<record id="action_lms_course_current" model="ir.actions.server">
-            <field name="name">Current LMS Courses</field>
-            <field name="model_id" ref="model_ixlms_course"/>
-            <field name="state">code</field>
-            <field name="code">
-domain = [('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d'))]
-ids = []
-if env.ref('ix.group_student') in env.user.groups_id:
-	for enrollment in env.user.student_id.enrollment_ids:
-		if enrollment.state in ['enrolled', 'completed'] and enrollment.section_id.lms_course_id:
-			ids.append(enrollment.section_id.lms_course_id.id)
-	domain.append(('id', 'in', ids))
-		
-elif env.ref('ix.group_faculty') in env.user.groups_id:
-	lms_courses = env['ixlms.course'].search([('instructor_id.user_id', '=', env.user.id)])				
-	ids = [lms_course.id for lms_course in lms_courses]
-	domain.append(('id', 'in', ids))
+			<field name="name">Current LMS Courses</field>
+			<field name="model_id" ref="model_ixlms_course" />
+			<field name="state">code</field>
+			<field name="code">
+				domain = [('term_id.start_date', '&lt;=',
+				datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=',
+				datetime.date.today().strftime('%Y-%m-%d'))]
+				ids = []
+				if env.ref('ix.group_student') in env.user.groups_id:
+				for enrollment in env.user.student_id.enrollment_ids:
+				if enrollment.state in ['enrolled', 'completed'] and
+				enrollment.section_id.lms_course_id:
+				ids.append(enrollment.section_id.lms_course_id.id)
+				domain.append(('id', 'in', ids))
 
-action = {
-	'type': 'ir.actions.act_window',
-	'name': 'Current LMS Courses',
-	'view_type': 'form',
-	'view_mode': 'kanban,tree,form',
-	'res_model': 'ixlms.course',	
-	'domain': domain,
-}
-            </field>
-        </record>
-		<!--<record id="action_lms_course_current" model="ir.actions.act_window">
-			<field name="name">Current Courses</field>
-			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">ixlms.course</field>
-			<field name="view_mode">kanban,tree,form</field>
-			<field name="domain">[('term_id.start_date', '&lt;=', datetime.date.today().strftime('%Y-%m-%d')), ('term_id.end_date', '&gt;=', datetime.date.today().strftime('%Y-%m-%d')), ('id', '=', 4)]</field>
-			<field name="context">{}</field>
-			<field name="help" type="html">
-				<p class="o_view_nocontent_smiling_face">
+				elif env.ref('ix.group_faculty') in env.user.groups_id:
+				lms_courses = env['ixlms.course'].search([('instructor_id.user_id', '=',
+				env.user.id)])
+				ids = [lms_course.id for lms_course in lms_courses]
+				domain.append(('id', 'in', ids))
 
-				</p>
-				<p>
-
-				</p>
+				action = {
+				'type': 'ir.actions.act_window',
+				'name': 'Current LMS Courses',
+				'view_type': 'form',
+				'view_mode': 'kanban,tree,form',
+				'res_model': 'ixlms.course',
+				'domain': domain,
+				}
 			</field>
-		</record>-->
-			<record id="action_lms_course_past" model="ir.actions.server">
-            <field name="name">Past LMS Courses</field>
-            <field name="model_id" ref="model_ixlms_course"/>
-            <field name="state">code</field>
-            <field name="code">
-domain = [('term_id.end_date', '&lt;', datetime.date.today().strftime('%Y-%m-%d'))]
-ids = []
-if env.ref('ix.group_student') in env.user.groups_id:
-	for enrollment in env.user.student_id.enrollment_ids:
-		if enrollment.state in ['enrolled', 'completed'] and enrollment.section_id.lms_course_id:
-			ids.append(enrollment.section_id.lms_course_id.id)
-	domain.append(('id', 'in', ids))
-		
-elif env.ref('ix.group_faculty') in env.user.groups_id:
-	lms_courses = env['ixlms.course'].search([('instructor_id.user_id', '=', env.user.id)])				
-	ids = [lms_course.id for lms_course in lms_courses]
-	domain.append(('id', 'in', ids))
+		</record>
+		<record id="action_lms_course_past" model="ir.actions.server">
+			<field name="name">Past LMS Courses</field>
+			<field name="model_id" ref="model_ixlms_course" />
+			<field name="state">code</field>
+			<field name="code">
+				domain = [('term_id.end_date', '&lt;', datetime.date.today().strftime('%Y-%m-%d'))]
+				ids = []
+				if env.ref('ix.group_student') in env.user.groups_id:
+					for enrollment in env.user.student_id.enrollment_ids:
+						if enrollment.state in ['enrolled', 'completed'] and enrollment.section_id.lms_course_id:
+							ids.append(enrollment.section_id.lms_course_id.id)
+					domain.append(('id', 'in', ids))
 
-action = {
-	'type': 'ir.actions.act_window',
-	'name': 'Past LMS Courses',
-	'view_type': 'form',
-	'view_mode': 'kanban,tree,form',
-	'res_model': 'ixlms.course',	
-	'domain': domain,
-}
-            </field>
-        </record>
-		<!--<record id="action_lms_course_past" model="ir.actions.act_window">
+				elif env.ref('ix.group_faculty') in env.user.groups_id:
+					lms_courses = env['ixlms.course'].search([('instructor_id.user_id', '=', env.user.id)])
+					ids = [lms_course.id for lms_course in lms_courses]
+					domain.append(('id', 'in', ids))
+
+				action = {
+				'type': 'ir.actions.act_window',
+				'name': 'Past LMS Courses',
+				'view_type': 'form',
+				'view_mode': 'kanban,tree,form',
+				'res_model': 'ixlms.course',
+				'domain': domain,
+				}
+			</field>
+		</record>
+		<!--<record
+		id="action_lms_course_past" model="ir.actions.act_window">
 			<field name="name">Past Courses</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">ixlms.course</field>
 			<field name="view_mode">kanban,tree,form</field>
-			<field name="domain">[('term_id.end_date', '&lt;', datetime.date.today().strftime('%Y-%m-%d'))]</field>
+			<field name="domain">[('term_id.end_date', '&lt;',
+		datetime.date.today().strftime('%Y-%m-%d'))]</field>
 			<field name="context">{}</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
@@ -334,22 +378,22 @@ action = {
 			</field>
 		</record>-->
 		<record id="action_lms_course_form_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="3"/>
+			<field name="sequence" eval="3" />
 			<field name="view_mode">form</field>
-			<field name="view_id" ref="view_lms_course_form"/>
-			<field name="act_window_id" ref="action_lms_course"/>
+			<field name="view_id" ref="view_lms_course_form" />
+			<field name="act_window_id" ref="action_lms_course" />
 		</record>
 		<record id="action_lms_course_tree_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="2"/>
+			<field name="sequence" eval="2" />
 			<field name="view_mode">tree</field>
-			<field name="view_id" ref="view_lms_course_tree"/>
-			<field name="act_window_id" ref="action_lms_course"/>
+			<field name="view_id" ref="view_lms_course_tree" />
+			<field name="act_window_id" ref="action_lms_course" />
 		</record>
 		<record id="action_lms_course_kanban_view" model="ir.actions.act_window.view">
-			<field name="sequence" eval="1"/>
+			<field name="sequence" eval="1" />
 			<field name="view_mode">kanban</field>
-			<field name="view_id" ref="view_lms_course_kanban"/>
-			<field name="act_window_id" ref="action_lms_course"/>
+			<field name="view_id" ref="view_lms_course_kanban" />
+			<field name="act_window_id" ref="action_lms_course" />
 		</record>
 	</data>
 </odoo>
