@@ -59,7 +59,7 @@
                                 <b>Time &#38; Location:</b>
                             </td>
                             <td style="width: 80%">
-                                <span t-field="o.timeslot" /> | <span t-field="o.room_id.name" />
+                                <span t-field="o.timeslot_room" />
                             </td>                            
                         </tr>
                         <tr style="border: none;">
