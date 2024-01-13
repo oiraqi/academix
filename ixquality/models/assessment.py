@@ -22,7 +22,6 @@
 ###############################################################################
 
 from odoo import api, models, fields
-from odoo.exceptions import UserError
 
 
 class Assessment(models.Model):
@@ -42,7 +41,7 @@ class Assessment(models.Model):
 		for rec in self:
 			nstudents = 0
 			if rec.portfolio_id and rec.program_id:
-				for student in rec.portfolio_id.section_id.student_ids:
+				for student in rec.portfolio_id.lms_course_id.student_ids:
 					if student.program_id == rec.program_id:
 						nstudents += 1
 			rec.nstudents = nstudents
@@ -77,9 +76,8 @@ class Assessment(models.Model):
 			rec.assessment_line_ids = False
 
 	course_id = fields.Many2one(comodel_name='ix.course', string='Course', required=True)
-	section_id = fields.Many2one('ixroster.section', related='portfolio_id.section_id')
 	lms_course_id = fields.Many2one('ixlms.course', related='portfolio_id.lms_course_id')
-	faculty_id = fields.Many2one(comodel_name='ix.faculty', related='section_id.instructor_id', store=True)
+	faculty_id = fields.Many2one(comodel_name='ix.faculty', related='lms_course_id.instructor_id', store=True)
 	ilo_so_ids = fields.One2many(comodel_name='ixquality.lms.course.ilo.so', compute='_ilo_so_ids', string='ILO/SO Mapping')
 	assessed_so_ids = fields.One2many(comodel_name='ixquality.student.outcome', compute='_ilo_so_ids', string='Covered/Assessed SOs')
 	
