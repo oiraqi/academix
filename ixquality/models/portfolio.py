@@ -28,13 +28,12 @@ class Portfolio(models.Model):
 	_name = 'ixquality.portfolio'
 	_description = 'Portfolio'
 	_inherit = ['ix.faculty.activity', 'ix.institution.owned']
-	_sql_constraints = [('section_ukey', 'unique(section_id)', 'A portfolio already exists for this section')]
+	_sql_constraints = [('lms_course_ukey', 'unique(lms_course_id)', 'A portfolio already exists for this section')]
 
 	name = fields.Char('Name', compute='_compute_name', store=True)
-	lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)	
-	section_id = fields.Many2one('ixroster.section', related='lms_course_id.section_id', store=True)
-	course_id = fields.Many2one(comodel_name='ix.course', related='section_id.course_id', store=True)
-	school_id = fields.Many2one(comodel_name='ix.school', related='section_id.school_id', store=True)
+	lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course', required=True)
+	course_id = fields.Many2one(comodel_name='ix.course', related='lms_course_id.course_id', store=True)
+	school_id = fields.Many2one(comodel_name='ix.school', related='lms_course_id.school_id', store=True)
 	technique_ids = fields.One2many(comodel_name='ixlms.weighted.technique', related='lms_course_id.technique_ids')
 	lms_assessment_ids = fields.One2many(comodel_name='ixlms.assessment', compute='_assessment_ids')
 
@@ -50,12 +49,12 @@ class Portfolio(models.Model):
 			else:
 				rec.lms_assessment_ids = False
 
-	@api.onchange('section_id', 'faculty_id')
-	@api.depends('section_id', 'faculty_id')
+	@api.onchange('lms_course_id', 'faculty_id')
+	@api.depends('lms_course_id', 'faculty_id')
 	def _compute_name(self):
 		for rec in self:
-			if rec.section_id:
-				rec.name = rec.section_id.name + ' Portfolio'
+			if rec.lms_course_id:
+				rec.name = rec.lms_course_id.name + ' Portfolio'
 				if rec.faculty_id:
 					rec.name += ' - ' + rec.faculty_id.name
 			else:
