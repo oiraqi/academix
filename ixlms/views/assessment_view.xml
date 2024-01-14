@@ -48,7 +48,7 @@
 							<field name="timelines"/>
 							<field name="timeline_ids" string="" attrs="{'invisible': [('timelines', '=', False)]}" colspan="4">
 								<tree editable="bottom" context="{'default_lms_course_id', '=', lms_course_id}">
-									<field name="targetted_section_id" domain="[('lms_course_id', '=', lms_course_id)]" attrs="{'column_invisible': [('parent.teamwork', '=', True)]}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+									<field name="section_id" domain="[('lms_course_id', '=', lms_course_id)]" attrs="{'column_invisible': [('parent.teamwork', '=', True)]}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="targetted_student_ids" widget="many2many_tags" domain="[('id', 'in', student_ids)]" attrs="{'column_invisible': [('parent.teamwork', '=', True)]}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="targetted_team_ids" widget="many2many_tags" domain="[('id', 'in', team_ids)]" attrs="{'column_invisible': [('parent.teamwork', '=', False)]}" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
 									<field name="due_time"/>
