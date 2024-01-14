@@ -56,7 +56,7 @@
 									<field name="due_time"/>
 									<field name="from_time"/>
 									<field name="to_time"/>
-									<field name="lms_course_id"/>
+									<field name="lms_course_id" invisible="1"/>
 									<field name="student_ids" invisible="1"/>
 									<field name="team_ids" invisible="1"/>
 								</tree>
