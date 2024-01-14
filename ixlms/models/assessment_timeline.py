@@ -29,11 +29,13 @@ class AssessmentTimeline(models.Model):
 	_description = 'Assessment Timeline'
 
 	assessment_id = fields.Many2one(comodel_name='ixlms.assessment', string='Assessment')
+	targetted_section_id = fields.Many2many(comodel_name='ixroster.section', string='Section')
 	targetted_student_ids = fields.Many2many(comodel_name='ix.student', string='Students')
 	targetted_team_ids = fields.Many2many(comodel_name='ixlms.team', string='Teams')
 	due_time = fields.Datetime(string='Due')
 	from_time = fields.Datetime(string='Open from')
 	to_time = fields.Datetime(string='Until')
+	section_ids = fields.One2many(comodel_name='ixroster.section', related='assessment_id.lms_course_id.section_ids')
 	student_ids = fields.One2many(comodel_name='ix.student', related='assessment_id.lms_course_id.student_ids')
 	team_ids = fields.One2many(comodel_name='ixlms.team', related='assessment_id.teamset_id.team_ids')
 	
