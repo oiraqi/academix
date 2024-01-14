@@ -30,7 +30,7 @@ class AssessmentTimeline(models.Model):
 
 	assessment_id = fields.Many2one(comodel_name='ixlms.assessment', string='Assessment')
 	lms_course_id = fields.Many2one(comodel_name='ixlms.course', string='LMS Course')
-	section_id = fields.Many2many(comodel_name='ixroster.section', string='Section')
+	section_id = fields.Many2one(comodel_name='ixroster.section', string='Section')
 	targetted_student_ids = fields.Many2many(comodel_name='ix.student', string='Students')
 	targetted_team_ids = fields.Many2many(comodel_name='ixlms.team', string='Teams')
 	due_time = fields.Datetime(string='Due')
