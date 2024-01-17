@@ -112,7 +112,7 @@ class LmsCourse(models.Model):
 				if section.course_id != course_id:
 					raise ValidationError('All sections should be of the same course!')
 	
-	timeslot_room_ids = fields.One2many(comodel_name='ixroster.section', inverse_name='lms_course_id', string='Timeslot and Room', readonly=True)
+	timeslot_room_ids = fields.One2many(comodel_name='ixroster.section', inverse_name='lms_course_id', string='Time and Location', readonly=True)
 	
 	name = fields.Char(compute='_set_name')
 	def _set_name(self):
