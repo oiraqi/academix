@@ -13,7 +13,7 @@ class Scheduled(models.AbstractModel):
     thursday = fields.Boolean(string='R', default=False)
     friday = fields.Boolean(string='F', default=False)
     days = fields.Char(compute='_timeslot')    
-    timeslot = fields.Char('Timeslot', compute='_timeslot')
+    timeslot = fields.Char('Time', compute='_timeslot')
 
     @api.depends('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
     @api.onchange('start_timeslot', 'end_timeslot', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')
