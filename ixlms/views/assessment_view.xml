@@ -72,6 +72,7 @@
 								<field name="penalty_per_late_day" attrs="{'invisible': [('percentage', '=', 0)]}" style="width: 15%"/>
 								<field name="bonus" attrs="{'invisible': [('percentage', '=', 0)]}" style="width: 15%"/>
 								<field name="makeup_grade_policy" style="width: 35%"/>
+								<field name="makeup_grade_upper_bound" attrs="{'invisible': [('makeup_grade_policy', '!=', 'bounded_max')]}" style="width: 15%"/>
 								<field name="grade_weighting" invisible="1"/>
 							</group>
 							<group name="grading_config_points" attrs="{'invisible': ['|', ('graded', '=', False), ('grade_weighting', '!=', 'points')]}" colspan="4" col="4">

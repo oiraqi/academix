@@ -75,6 +75,7 @@ class AssessmentLine(models.Model):
 	grade = fields.Char(string='Assigned Grade', default='')
 	mgrade = fields.Char(string='Assigned Make-up Grade', default='')
 	makeup_grade_policy = fields.Selection(related='assessment_id.makeup_grade_policy')
+	makeup_grade_upper_bound = fields.Float(related='assessment_id.makeup_grade_upper_bound')
 
 	@api.constrains('grade', 'mgrade')
 	def _check_grade(self):
@@ -120,12 +121,15 @@ class AssessmentLine(models.Model):
 				pmgrade = fields.Float.round(float(rec.mgrade) / rec.grade_scale * 100, 2)
 				if rec.assessment_id.makeup_grade_policy == 'max':
 					pgrade = max(pgrade, pmgrade)
-					rec.formatted_grade = f'Make-up: max-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale}'
-				elif rec.assessment_id.makeup_grade_policy == 'average':
+					rec.formatted_grade = f'Make-up: max({rec.grade}, {rec.mgrade}) / {rec.grade_scale}'
+				elif rec.assessment_id.makeup_grade_policy == 'bounded_max':
+					pgrade = max(pgrade, min(pmgrade, rec.assessment_id.makeup_grade_upper_bound))
+					rec.formatted_grade = f'Make-up: max({rec.grade}, min({rec.mgrade}, upper-bound={rec.assessment_id.makeup_grade_upper_bound})) / {rec.grade_scale}'
+				elif rec.assessment_id.makeup_grade_policy == 'avg':
 					pgrade = fields.Float.round((pgrade + pmgrade) / 2, 2)
-					rec.formatted_grade = f'Make-up: avg-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale}'
-				elif rec.assessment_id.makeup_grade_policy == 'makeup':
-					rec.formatted_grade = f'Make-up: make-up-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale}'
+					rec.formatted_grade = f'Make-up: avg({rec.grade}, {rec.mgrade}) / {rec.grade_scale}'
+				elif rec.assessment_id.makeup_grade_policy == 'last':
+					rec.formatted_grade = f'Make-up: last({rec.grade}, {rec.mgrade}) / {rec.grade_scale}'
 					pgrade = pmgrade
 			else:
 				rec.formatted_grade = f'{rec.grade} / {rec.grade_scale}'
