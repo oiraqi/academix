@@ -42,6 +42,7 @@ class Assessment(models.Model):
 	points = fields.Integer(string='Points', required=True, default=0)
 	percentage = fields.Float(string='%', required=True, default=0.0)
 	grade_scale = fields.Integer(string='Graded over', required=True, default=100)
+	makeup_grade_policy = fields.Selection(mstring='Make-up Grade Policy', selection=[('max', 'Max Grade'), ('avg', 'Average Grade'), ('makeup', 'Make-up Grade')], default='max')
 
 	@api.constrains('grade_scale')
 	def _check_grade_scale(self):

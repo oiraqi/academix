@@ -72,13 +72,14 @@ class AssessmentLine(models.Model):
 	submission_type = fields.Selection(related='assessment_id.submission_type')
 	teamwork = fields.Boolean(related='assessment_id.teamwork')
 	submission_ids = fields.Many2many('ixlms.assessment.submission', 'ixlms_assessment_line_submission', 'assessment_line_id', 'submission_id', string='Submissions')
-	grade = fields.Char(string='Assigned Grade', default='')	
+	grade = fields.Char(string='Assigned Grade', default='')
+	mgrade = fields.Char(string='Assigned Make-up Grade', default='')	
 
-	@api.constrains('grade')
+	@api.constrains('grade', 'mgrade')
 	def _check_grade(self):
 		for rec in self:
 			try:
-				if rec.grade and float(rec.grade) < 0:
+				if (rec.grade and float(rec.grade)) or rec.mgrade and float(rec.mgrade) < 0:
 					raise ValidationError('Grade must be a positive number')
 			except TypeError:
 				raise ValidationError('Grade must be a (positive) number')
@@ -108,14 +109,27 @@ class AssessmentLine(models.Model):
 				rec.grade_range = 'Not graded yet'
 				return
 			try:
-				if float(rec.grade) < 0:
+				if float(rec.grade) < 0 or (rec.mgrade and float(rec.mgrade) < 0):
 					raise ValidationError('The grade must be a positive number')
 			except TypeError:
 					raise ValidationError('The grade must be a (positive) number')
 			
 			pgrade = fields.Float.round(float(rec.grade) / rec.grade_scale * 100, 2)
-			rec.egrade = pgrade + rec.bonus - rec.penalty
-			rec.formatted_grade = f'{rec.grade} / {rec.grade_scale} ({pgrade}%)'
+			if rec.mgrade:
+				pmgrade = fields.Float.round(float(rec.mgrade) / rec.grade_scale * 100, 2)
+				if rec.assessment_id.makeup_grade_policy == 'max':
+					pgrade = max(pgrade, pmgrade)
+					rec.formatted_grade = f'Make-up:max-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale} ({pgrade}%)'
+				elif rec.assessment_id.makeup_grade_policy == 'average':
+					pgrade = fields.Float.round((pgrade + pmgrade) / 2, 2)
+					rec.formatted_grade = f'Make-up:avg-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale} ({pgrade}%)'
+				elif rec.assessment_id.makeup_grade_policy == 'makeup':
+					rec.formatted_grade = f'Make-up:make-up-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale} ({pgrade}%)'
+					pgrade = pmgrade
+			else:
+				rec.formatted_grade = f'{rec.grade} / {rec.grade_scale} ({pgrade}%)'
+			
+			rec.egrade = pgrade + rec.bonus - rec.penalty			
 			formatted_egrade = str(fields.Float.round(rec.egrade / 100 * rec.grade_scale, 2)) + ' / ' + str(rec.grade_scale) + ' - ' + str(rec.egrade) + '%'
 			if rec.grade_weighting == 'percentage':
 				rec.wgrade = rec.egrade * rec.percentage / 100
