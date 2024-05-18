@@ -31,12 +31,16 @@
                     <notebook>
                         <page string="Assessment" name="assessment">
                             <group>
+                                <button name="get_assessment_lines" type="object" class="oe_highlight" string="Edit" groups="ix.group_faculty"/>
                                 <field name="assessment_line_ids" nolabel="1">
                                     <tree>
                                         <field name="assessment_id"/>
                                         <field name="module_id"/>
                                         <field name="technique_id" widget="badge"/>
-                                        <field name="egrade" string="Grade (%)"/>
+                                        <field name="formatted_grade"/>
+                                        <field name="penalty"/>
+                                        <field name="bonus"/>
+                                        <field name="egrade"/>
                                     </tree>
                                 </field>
                             </group>

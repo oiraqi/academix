@@ -26,7 +26,7 @@ from odoo.exceptions import ValidationError
 
 
 class Enrollment(models.Model):
-    _inherit = 'ixroster.enrollment'
+    _inherit = ['ixroster.enrollment', 'ix.expandable']
 
     assessment_line_ids = fields.One2many(comodel_name='ixlms.assessment.line', compute='_assessment_line_ids', string='Assessments')
     attendance_line_absent_late_ids = fields.One2many(comodel_name='ixlms.attendance.line', compute='_attendance', string='Absences')
@@ -202,3 +202,9 @@ class Enrollment(models.Model):
         self.ensure_one()
         if self.state == 'completed':
             raise ValidationError('Final grade has already been submitted. You can\'t change it afterwards!')
+        
+    def get_assessment_lines(self):
+        self.ensure_one()
+        domain = [
+                ('section_id', '=', self.section_id.id), ('student_id', '=', self.student_id.id), ('grade', '!=', '')]
+        return self._expand_to('ixlms.action_assessment_line', domain)

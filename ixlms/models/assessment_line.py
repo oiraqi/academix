@@ -120,15 +120,15 @@ class AssessmentLine(models.Model):
 				pmgrade = fields.Float.round(float(rec.mgrade) / rec.grade_scale * 100, 2)
 				if rec.assessment_id.makeup_grade_policy == 'max':
 					pgrade = max(pgrade, pmgrade)
-					rec.formatted_grade = f'Make-up: max-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale} ({pgrade}%)'
+					rec.formatted_grade = f'Make-up: max-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale}'
 				elif rec.assessment_id.makeup_grade_policy == 'average':
 					pgrade = fields.Float.round((pgrade + pmgrade) / 2, 2)
-					rec.formatted_grade = f'Make-up: avg-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale} ({pgrade}%)'
+					rec.formatted_grade = f'Make-up: avg-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale}'
 				elif rec.assessment_id.makeup_grade_policy == 'makeup':
-					rec.formatted_grade = f'Make-up: make-up-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale} ({pgrade}%)'
+					rec.formatted_grade = f'Make-up: make-up-grade({rec.grade}, {rec.mgrade}) / {rec.grade_scale}'
 					pgrade = pmgrade
 			else:
-				rec.formatted_grade = f'{rec.grade} / {rec.grade_scale} ({pgrade}%)'
+				rec.formatted_grade = f'{rec.grade} / {rec.grade_scale}'
 			
 			rec.egrade = pgrade + rec.bonus - rec.penalty			
 			formatted_egrade = str(fields.Float.round(rec.egrade / 100 * rec.grade_scale, 2)) + ' / ' + str(rec.grade_scale) + ' - ' + str(rec.egrade) + '%'
