@@ -26,7 +26,7 @@ from odoo.exceptions import ValidationError
 
 class Enrollment(models.Model):
     _name = 'ixroster.enrollment'
-    _inherit = 'mail.thread'
+    _inherit = ['mail.thread', 'ix.expandable']
     _description = 'Enrollment'
     _sql_constraints = [('student_section_ukey', 'unique(student_id, section_id)',
                          'Student already enrolled in this section')]
