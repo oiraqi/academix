@@ -23,7 +23,7 @@
 							<div>
 							<field name="mgrade" style="width: 15%"/> / <field name="grade_scale"/>
 							</div>
-							<field name="makeup_grade_policy" attrs="{'invisible': [('mgrade', '=', False)]}"/>
+							<field name="makeup_grade_policy" attrs="{'invisible': [('mgrade', '=', '')]}"/>
 							<field name="penalty" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 							<field name="cancel_penalty" attrs="{'invisible': [('penalty', '=', 0)]}"/>
 						</group>
