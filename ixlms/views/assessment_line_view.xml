@@ -18,11 +18,12 @@
 							<div>
 							<field name="grade" style="width: 15%"/> / <field name="grade_scale"/>
 							</div>
+							<field name="bonus"/>
 							<label for="mgrade" string="Make-up Grade"/>
 							<div>
 							<field name="mgrade" style="width: 15%"/> / <field name="grade_scale"/>
 							</div>
-							<field name="bonus"/>
+							<field name="makeup_grade_policy" attrs="{'invisible': [('mgrade', '=', False)]}"/>
 							<field name="penalty" attrs="{'invisible': [('submission_type', '!=', 'online')]}"/>
 							<field name="cancel_penalty" attrs="{'invisible': [('penalty', '=', 0)]}"/>
 						</group>

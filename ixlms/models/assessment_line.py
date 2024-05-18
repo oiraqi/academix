@@ -73,7 +73,8 @@ class AssessmentLine(models.Model):
 	teamwork = fields.Boolean(related='assessment_id.teamwork')
 	submission_ids = fields.Many2many('ixlms.assessment.submission', 'ixlms_assessment_line_submission', 'assessment_line_id', 'submission_id', string='Submissions')
 	grade = fields.Char(string='Assigned Grade', default='')
-	mgrade = fields.Char(string='Assigned Make-up Grade', default='')	
+	mgrade = fields.Char(string='Assigned Make-up Grade', default='')
+	makeup_grade_policy = fields.Selection(related='assessment_id.makeup_grade_policy')
 
 	@api.constrains('grade', 'mgrade')
 	def _check_grade(self):
@@ -98,8 +99,8 @@ class AssessmentLine(models.Model):
 	avg_grade = fields.Float(related='assessment_id.avg_grade')
 	
 
-	@api.depends('grade', 'bonus', 'grade_scale', 'grade_weighting', 'percentage', 'points')
-	@api.onchange('grade')
+	@api.depends('grade', 'mgrade', 'bonus', 'grade_scale', 'grade_weighting', 'percentage', 'points')
+	@api.onchange('grade', 'mgrade')
 	def _grade(self):
 		for rec in self:
 			if not rec.grade or rec.grade == '':
