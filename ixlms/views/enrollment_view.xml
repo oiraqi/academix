@@ -30,8 +30,8 @@
                     </group>
                     <notebook>
                         <page string="Assessment" name="assessment">
-                            <group>
-                                <button name="get_assessment_lines" type="object" class="oe_highlight" string="Edit" groups="ix.group_faculty"/>
+                            <button name="get_assessment_lines" type="object" class="oe_highlight" string="Edit" groups="ix.group_faculty"/>
+                            <group>                                
                                 <field name="assessment_line_ids" nolabel="1">
                                     <tree>
                                         <field name="assessment_id"/>
