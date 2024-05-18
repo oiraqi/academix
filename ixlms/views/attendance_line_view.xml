@@ -28,6 +28,8 @@
 			<field name="arch" type="xml">
 				<tree string="AttendanceLines">
 					<field name="name"/>
+					<field name="day"/>
+                    <field name="state"/>
 				</tree>
 			</field>
 		</record>
