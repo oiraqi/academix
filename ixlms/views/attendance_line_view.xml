@@ -26,7 +26,7 @@
 			<field name="model">ixlms.attendance.line</field>
 			<field eval="8" name="priority"/>
 			<field name="arch" type="xml">
-				<tree string="AttendanceLines">
+				<tree string="AttendanceLines" editable="bottom">
 					<field name="name"/>
 					<field name="day"/>
                     <field name="state"/>
