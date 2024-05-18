@@ -80,7 +80,7 @@ class AssessmentLine(models.Model):
 	def _check_grade(self):
 		for rec in self:
 			try:
-				if (rec.grade and float(rec.grade)) or rec.mgrade and float(rec.mgrade) < 0:
+				if (rec.grade and float(rec.grade) < 0) or (rec.mgrade and float(rec.mgrade) < 0):
 					raise ValidationError('Grade must be a positive number')
 			except TypeError:
 				raise ValidationError('Grade must be a (positive) number')
