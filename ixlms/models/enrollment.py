@@ -203,8 +203,8 @@ class Enrollment(models.Model):
         if self.state == 'completed':
             raise ValidationError('Final grade has already been submitted. You can\'t change it afterwards!')
         
-    #def get_assessment_lines(self):
-    #    self.ensure_one()
-    #    domain = [
-    #            ('section_id', '=', self.section_id.id), ('student_id', '=', self.student_id.id), ('grade', '!=', '')]
-    #    return self._expand_to('ixlms.action_assessment_line', domain)
+    def get_assessment_lines(self):
+        self.ensure_one()
+        domain = [
+                ('section_id', '=', self.section_id.id), ('student_id', '=', self.student_id.id), ('grade', '!=', '')]
+        return self._expand_to('ixlms.action_assessment_line', domain)
