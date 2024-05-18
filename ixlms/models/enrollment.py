@@ -209,3 +209,11 @@ class Enrollment(models.Model):
                 ('section_id', '=', self.section_id.id), ('student_id', '=', self.student_id.id), ('grade', '!=', '')]
         context = {'edit': True}
         return self._expand_to('ixlms.action_assessment_line', domain, context)
+    
+    def get_attendance_lines(self):
+        self.ensure_one()
+        domain = [
+                ('section_id', '=', self.section_id.id), ('student_id', '=', self.student_id.id),
+                ('state', 'in', ['absent', 'absentx', 'late'])]
+        context = {'edit': True}
+        return self._expand_to('ixlms.action_attendance_line', domain, context)

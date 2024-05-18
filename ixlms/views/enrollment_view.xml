@@ -51,6 +51,7 @@
                                 <field name="nabsences"/>
                                 <field name="nxabsences"/>
                                 <field name="nlates"/>
+                                <button name="get_attendance_lines" type="object" class="oe_highlight" string="Edit" groups="ix.group_faculty"/>
                                 <field name="attendance_line_absent_late_ids" nolabel="1" colspan="4">
                                     <tree>
                                         <field name="day"/>
