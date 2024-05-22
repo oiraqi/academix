@@ -2,6 +2,7 @@
 	<data>
 		<menuitem id="ixlms_root_menu" name="LMS" sequence="40"/>
 		<menuitem id="ixlms_course_current_menu" name="Current Courses" action="action_lms_course_current" sequence="10" parent="ixlms_root_menu"/>
+		<menuitem id="ixlms_course_upcoming_menu" name="Upcoming Courses" action="action_lms_course_upcoming" sequence="15" parent="ixlms_root_menu"/>
 		<menuitem id="ixlms_course_past_menu" name="Past Courses" action="action_lms_course_past" sequence="20" parent="ixlms_root_menu"/>
 		<menuitem id="ixlms_attendance_all_menu" name="Attendance" action="action_attendance_all" sequence="100" parent="ixlms_root_menu" groups="ix.group_coordinator,ix.group_vpaa"/>
 		<menuitem id="ixlms_assessment_technique_menu" name="Assessment Techniques" action="action_assessment_technique" parent="ixlms_root_menu" sequence="200"/>
