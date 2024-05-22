@@ -208,7 +208,7 @@ class Enrollment(models.Model):
         domain = [
                 ('section_id', '=', self.section_id.id), ('student_id', '=', self.student_id.id), ('grade', '!=', '')]
         context = {'edit': True}
-        return self._expand_to('ixlms.action_assessment_line', domain, context)
+        return self._expand_to('ixlms.action_assessment_line_assessment', domain, context)
     
     def get_attendance_lines(self):
         self.ensure_one()
