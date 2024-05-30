@@ -57,7 +57,8 @@ class LmsCourse(models.Model):
 				'attendance_grading': latest_lms_course.attendance_grading,
 				'penalty_per_absence': latest_lms_course.penalty_per_absence,
 				'zero_after_max_abs': latest_lms_course.zero_after_max_abs,
-				'max_absences': latest_lms_course.max_absences
+				'max_absences': latest_lms_course.max_absences,
+				'assessment_remarks': latest_lms_course.assessment_remarks,
 			})
 			
 			techniques = {}
@@ -296,6 +297,8 @@ class LmsCourse(models.Model):
 	penalty_per_absence = fields.Float(string='Penalty(%) / Absence', default=5.0)
 	zero_after_max_abs = fields.Boolean(string='Zero after Max Absences', default=False)	
 	max_absences = fields.Integer(string='Max Absences', default=5)
+
+	assessment_remarks = fields.Html(string='Remarks')
 	
 	assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='lms_course_id', string='Assessments')
 	nassessments = fields.Integer(string='Assessments', compute='_assessment_ids')

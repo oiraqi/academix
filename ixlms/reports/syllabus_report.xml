@@ -221,6 +221,12 @@
                     </t>
                     </p>
                     </t>
+                    <t t-if="o.assessment_remarks">
+                        <p>
+                        <b>Remarks: </b>
+                        <span t-raw="o.assessment_remarks" />
+                        </p>
+                    </t>
                     <t t-if="o.has_details">                    
                     <h2 style="border-bottom: 1px solid black;">
                         <b>Additional Information</b>
