@@ -237,6 +237,9 @@
 									</div>
 									<field name="attendance_weight" invisible="1" />
 								</group>
+								<group string="Remarks" col="4">
+									<field name="assessment_remarks" nolabel="1" colspan="4"/>
+								</group>
 							</page>
 							<page string="Teams" name="teams">
 								<group>
