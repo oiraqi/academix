@@ -9,7 +9,7 @@ class OfficeHour(models.Model):
 
 	def _compute_name(self):
 		for rec in self:
-			rec.name = rec.timeslot.name + ' (' + OfficeHour._mapping[rec.type] + ')'
+			rec.name = rec.timeslot + ' (' + OfficeHour._mapping[rec.type] + ')'
 	
 	name = fields.Char(compute='_compute_name')
 	type = fields.Selection(string='Type', selection=[('f2f', 'Face To Face'), ('online', 'Online')], default='f2f')
