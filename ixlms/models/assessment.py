@@ -44,6 +44,8 @@ class Assessment(models.Model):
 	grade_scale = fields.Integer(string='Graded over', required=True, default=100)
 	makeup_grade_policy = fields.Selection(mstring='Make-up Grade Policy', selection=[('max', 'Max Grade'), ('bounded_max', 'Bounded Max Grade'), ('avg', 'Average Grade'), ('last', 'LastGrade')], required=True, default='max')
 	makeup_grade_upper_bound = fields.Float(string='Make-up Grade Upper Bound', default=100.0)
+	makeup_assessment_id = fields.Many2one(comodel_name='ixlms.assessment', string='Makeup Assessment')
+	madeup_assessment_ids = fields.One2many(comodel_name='ixlms.assessment', inverse_name='makeup_assessment_id', string='Madeup Assessments')
 
 	@api.constrains('grade_scale')
 	def _check_grade_scale(self):

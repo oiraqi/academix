@@ -71,7 +71,9 @@
 								<field name="grade_scale" style="width: 15%"/>
 								<field name="penalty_per_late_day" attrs="{'invisible': [('percentage', '=', 0)]}" style="width: 15%"/>
 								<field name="bonus" attrs="{'invisible': [('percentage', '=', 0)]}" style="width: 15%"/>
-								<field name="makeup_grade_policy" style="width: 35%"/>
+								<field name="makeup_assessment_id" domain="[('lms_course_id', '=', lms_course_id)]" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+								<field name="madeup_assessment_ids" domain="[('lms_course_id', '=', lms_course_id)]" widget="many2many_tags" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+								<field name="makeup_grade_policy" style="width: 35%"/>								
 								<field name="makeup_grade_upper_bound" attrs="{'invisible': [('makeup_grade_policy', '!=', 'bounded_max')]}" style="width: 15%"/>
 								<field name="grade_weighting" invisible="1"/>
 							</group>
@@ -81,6 +83,7 @@
 								<field name="penalty_per_late_day" attrs="{'invisible': [('points', '=', 0)]}" style="width: 15%"/>
 								<field name="bonus" attrs="{'invisible': [('points', '=', 0)]}" style="width: 15%"/>
 								<field name="makeup_grade_policy" style="width: 35%"/>
+								<field name="makeup_grade_upper_bound" attrs="{'invisible': [('makeup_grade_policy', '!=', 'bounded_max')]}" style="width: 15%"/>
 								<field name="grade_weighting" invisible="1"/>
 							</group>
 						</group>
