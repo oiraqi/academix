@@ -79,7 +79,7 @@ class AssessmentLine(models.Model):
 	mgrade = fields.Char(string='Assigned Make-up Grade', default='')
 	makeup_grade_policy = fields.Selection(related='assessment_id.makeup_grade_policy')
 	makeup_grade_upper_bound = fields.Float(related='assessment_id.makeup_grade_upper_bound')
-	madeup_assessment_line_ids = fields.One2many(comodel='ixlms.assessment.line', string='Madeup Assessment Lines', compute='_madeup_assessment_line_ids')
+	madeup_assessment_line_ids = fields.One2many(comodel_name='ixlms.assessment.line', string='Madeup Assessment Lines', compute='_madeup_assessment_line_ids')
 
 	@api.constrains('grade', 'mgrade')
 	def _check_grade(self):
