@@ -43,8 +43,8 @@
 								</tree>
 							</field>
 						</group>
-						<group name="madeup_assessment_lines" string="Submission Attempts" attrs="{'invisible': [('madeup_assessment_line_ids', '=', False)]}">
-							<field name="madeup_assessment_line_ids" nolabel="1">
+						<group name="madeup_assessment_lines" string="Madeup Assessment Lines" attrs="{'invisible': [('madeup_assessment_line_ids', '=', False)]}">
+							<field name="madeup_assessment_line_ids" readonly="0" nolabel="1">
 								<tree>
 									<field name="assessment_id" readonly="1"/>
 									<field name="grade" readonly="1"/>
