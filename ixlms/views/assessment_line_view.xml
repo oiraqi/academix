@@ -42,7 +42,17 @@
 									<button icon="fa-folder-open" name="get_submission" type="object" class="oe_highlight"/>
 								</tree>
 							</field>
-						</group>						
+						</group>
+						<group name="madeup_assessment_lines" string="Submission Attempts" attrs="{'invisible': [('madeup_assessment_line_ids', '=', False)]}">
+							<field name="madeup_assessment_line_ids" nolabel="1">
+								<tree>
+									<field name="assessment_id" readonly="1"/>
+									<field name="grade" readonly="1"/>
+									<field name="mgrade"/>
+									<field name="formatted_grade"/>
+								</tree>
+							</field>
+						</group>
 						<group name="log" string="Log" col="4">
 							<field name="create_uid"/>
 							<field name="create_date"/>

@@ -68,6 +68,9 @@ class AssessmentLine(models.Model):
 				rec.epercentage = 0.0
 
 	bonus = fields.Float(related='assessment_id.bonus', store=True)
+
+	def _madeup_assessment_line_ids(self):
+		self.madeup_assessment_line_ids = self.env['ixlms.assessment.line'].search([('student_id', '=', self.student_id.id), ('assessment_id', 'in', self.assessment_id.madeup_assessment_ids.ids)])
 	
 	submission_type = fields.Selection(related='assessment_id.submission_type')
 	teamwork = fields.Boolean(related='assessment_id.teamwork')
@@ -76,6 +79,7 @@ class AssessmentLine(models.Model):
 	mgrade = fields.Char(string='Assigned Make-up Grade', default='')
 	makeup_grade_policy = fields.Selection(related='assessment_id.makeup_grade_policy')
 	makeup_grade_upper_bound = fields.Float(related='assessment_id.makeup_grade_upper_bound')
+	madeup_assessment_line_ids = fields.One2many(comodel='ixlms.assessment.line', string='Madeup Assessment Lines', compute='_madeup_assessment_line_ids')
 
 	@api.constrains('grade', 'mgrade')
 	def _check_grade(self):
