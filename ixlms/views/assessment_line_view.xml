@@ -44,7 +44,7 @@
 							</field>
 						</group>
 						<group name="madeup_assessment_lines" string="Madeup Assessment Lines" attrs="{'invisible': [('madeup_assessment_line_ids', '=', False)]}">
-							<field name="madeup_assessment_line_ids" edit="True" create="False" readonly="0" nolabel="1">
+							<field name="madeup_assessment_line_ids" edit="False" create="False" readonly="0" nolabel="1">
 								<tree editable="bottom">
 									<field name="assessment_id" readonly="1"/>
 									<field name="grade" readonly="1"/>
